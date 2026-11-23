@@ -1,6 +1,11 @@
 __pycache__/
+<<<<<<< HEAD
 *.py[cod]
 .venv/
 venv/
 out/
 guardian-out/
+=======
+*.pyc
+.env
+>>>>>>> 2dd260b (Add lockfile diff detector, runner, and suspicious.json)

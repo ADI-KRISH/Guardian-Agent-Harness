@@ -1,0 +1,6 @@
+﻿PLANTED CHANGES (answer key):
+1. package.json: new preinstall script
+2. integrity altered, same version: node_modules/@adraffy/ens-normalize
+3. version changed: node_modules/@ai-sdk/gateway  3.0.241 -> 99.0.0
+4. resolved host changed: node_modules/@ai-sdk/openai-compatible
+5. new look-alike package: node_modules/expresss
