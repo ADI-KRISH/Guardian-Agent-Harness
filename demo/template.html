@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Supply Chain Guardian Demo</title>
+<style>
+:root{--bg:#f6f7f9;--panel:#fff;--ink:#0f172a;--mut:#64748b;--line:#e2e8f0;--acc:#2563eb;--crit:#dc2626;--high:#ea580c;--med:#ca8a04;--low:#64748b;--ok:#16a34a;--warn:#ca8a04;--code:#f1f5f9}
+@media (prefers-color-scheme:dark){:root{--bg:#0b1220;--panel:#111a2e;--ink:#e6edf7;--mut:#94a3b8;--line:#22304d;--acc:#60a5fa;--code:#0b1426}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,Segoe UI,Roboto,sans-serif}
+header{padding:14px 20px;border-bottom:1px solid var(--line);background:var(--panel);display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+header h1{font-size:1.05rem;margin:0}header .sub{color:var(--mut);font-size:.85rem}header .sp{flex:1}
+.wrap{display:grid;grid-template-columns:230px 1fr;gap:0;min-height:calc(100vh - 110px)}
+nav{border-right:1px solid var(--line);background:var(--panel);padding:12px 8px}
+nav button{display:flex;gap:10px;align-items:center;width:100%;text-align:left;border:0;background:none;color:var(--ink);padding:9px 10px;border-radius:9px;cursor:pointer;font:inherit}
+nav button:hover{background:var(--code)}nav button.on{background:var(--acc);color:#fff}nav .n{width:24px;height:24px;border-radius:50%;border:1.5px solid currentColor;display:grid;place-items:center;font-size:.78rem;flex:none}
+nav .day{color:var(--mut);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;padding:10px 10px 2px}
+main{padding:22px clamp(14px,3vw,34px);max-width:1100px}
+h2{margin:0 0 4px;font-size:1.45rem}.lead{color:var(--mut);margin:0 0 16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:12px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.card .v{font-size:1.9rem;font-weight:700;line-height:1.1}.card .l{color:var(--mut);font-size:.85rem}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:12px 0}
+.panel h3{margin:0 0 8px;font-size:1rem}
+.chip{display:inline-block;padding:2px 9px;border-radius:999px;font-size:.78rem;font-weight:600;color:#fff;margin-right:6px;white-space:nowrap}
+.Critical{background:var(--crit)}.High{background:var(--high)}.Medium{background:var(--med)}.Low{background:var(--low)}
+.pass{background:var(--ok)}.fail{background:var(--crit)}.skipped{background:var(--warn)}.pend{background:var(--mut)}
+.mut{color:var(--mut)}.small{font-size:.85rem}code,pre{font:12.5px/1.45 ui-monospace,Consolas,monospace;background:var(--code);border-radius:7px}code{padding:1px 5px}
+pre{padding:10px 12px;overflow:auto;max-height:340px;margin:6px 0}
+table{border-collapse:collapse;width:100%;font-size:.88rem}td,th{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{color:var(--mut);font-weight:600}
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:10px 0}.flow .s{padding:8px 12px;border-radius:9px;background:var(--panel);border:1px solid var(--line);font-size:.88rem}
+.flow .s.h{border-color:var(--warn);background:#ca8a0422}.flow .a{color:var(--mut)}
+.bar{display:flex;height:22px;border-radius:7px;overflow:hidden;margin:8px 0}.bar div{display:grid;place-items:center;color:#fff;font-size:.75rem;font-weight:700}
+.hbar{display:grid;grid-template-columns:150px 1fr 50px;gap:8px;align-items:center;margin:4px 0;font-size:.86rem}.hbar i{display:block;height:10px;background:var(--acc);border-radius:5px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:900px){.wrap{grid-template-columns:1fr}nav{display:flex;overflow:auto;border-right:0;border-bottom:1px solid var(--line)}nav button{white-space:nowrap;width:auto}nav .day{display:none}.two{grid-template-columns:1fr}}
+.find{cursor:pointer;display:block;width:100%;text-align:left;font:inherit;color:inherit;background:var(--panel);border:1px solid var(--line);border-left:5px solid var(--mut);border-radius:10px;padding:9px 12px;margin:6px 0}
+.find.Critical{border-left-color:var(--crit)}.find.High{border-left-color:var(--high)}.find.Medium{border-left-color:var(--med)}.find.sel{outline:2px solid var(--acc)}
+.chain{display:flex;flex-wrap:wrap;gap:6px;align-items:center}.chain span{background:var(--code);border-radius:7px;padding:3px 8px;font:12px ui-monospace,Consolas,monospace}
+.banner{padding:12px 16px;border-radius:10px;font-weight:600;margin:10px 0;border:1px solid}
+.b-ok{background:#16a34a22;border-color:var(--ok)}.b-warn{background:#ca8a0422;border-color:var(--warn)}.b-bad{background:#dc262622;border-color:var(--crit)}
+.diff .add{color:var(--ok)}.diff .del{color:var(--crit)}.diff .hdr{color:var(--acc)}
+.notes{border-left:4px solid var(--acc);background:var(--acc)18;padding:10px 14px;border-radius:8px;margin:12px 0;display:none}body.pn .notes{display:block}
+.bar2{position:sticky;bottom:0;background:var(--panel);border-top:1px solid var(--line);padding:10px 20px;display:flex;gap:10px;align-items:center}
+.btn{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:9px;padding:8px 16px;cursor:pointer;font:inherit}.btn.p{background:var(--acc);color:#fff;border-color:var(--acc)}.btn:disabled{opacity:.4;cursor:default}
+input[type=search]{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:8px;padding:6px 10px;font:inherit;width:100%;max-width:340px}
+.tl{max-height:300px;overflow:auto}.tl div{padding:4px 0;border-bottom:1px solid var(--line);font-size:.86rem}
+input[type=text],select,textarea{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:8px;padding:8px 10px;font:inherit;width:100%}
+.lst{max-height:72vh;overflow:auto;padding-right:4px}
+.ags{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}.ag{padding:7px 12px;border-radius:999px;border:1.5px solid var(--line);background:var(--panel);font-size:.86rem;color:var(--mut)}
+.ag.seen{border-color:var(--ok);color:var(--ink)}.ag.now{border-color:var(--acc);background:var(--acc);color:#fff;animation:pulse 1.2s infinite}
+@keyframes pulse{50%{opacity:.6}}
+.feed{max-height:340px;overflow:auto;font-size:.85rem}.feed div{padding:5px 0;border-bottom:1px solid var(--line)}.feed b{color:var(--acc)}
+.big{font-size:2.2rem;font-weight:800}
+.err{color:var(--crit);font-weight:600}a{color:var(--acc)}
+@media print{nav,.bar2,header,.notes{display:none!important}.wrap{display:block}main{max-width:none;padding:0}body{background:#fff;color:#000}.panel,.card{break-inside:avoid}}
+</style>
+</head>
+<body>
+<header><div><h1>🛡️ Software Supply Chain Guardian</h1><div class="sub" id="hsub"></div></div><div class="sp"></div>
+<label class="small"><input type="checkbox" id="pn"> Presenter notes</label></header>
+<div class="wrap"><nav id="nav"></nav><main id="main"></main></div>
+<div class="bar2"><button class="btn" id="back">← Back</button><button class="btn p" id="next">Next →</button><span class="mut small" id="pos"></span><span class="sp" style="flex:1"></span><span class="mut small">← → keys work too · every number on this page comes from the real scan</span></div>
+<script type="application/json" id="data">__DATA__</script>
+<script>
+let D = JSON.parse(document.getElementById('data').textContent);
+const LIVE = D === null, TOKEN = '__TOKEN__';   // LIVE = served by `guardian serve`; otherwise a static page built from one finished run
+const $ = s => document.querySelector(s);
+const api = (path, body) => fetch(path, body ? {method: 'POST', headers: {'Content-Type': 'application/json', 'X-Guardian-Token': TOKEN}, body: JSON.stringify(body)} : {})
+  .then(r => r.json()).catch(e => ({error: String(e)}));
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const chip = (lv, t) => `<span class="chip ${esc(lv)}">${esc(t ?? lv)}</span>`;
+const card = (v, l) => `<div class="card"><div class="v">${esc(v)}</div><div class="l">${esc(l)}</div></div>`;
+let M, S, R, P;
+const bind = () => { M = D.meta; S = D.summary; R = D.remediation; P = (D.proposals || []).find(p => p.status !== 'rejected') || (D.proposals || [])[0]; };
+if (D) bind();
+let sel = 0, simulated = false, filt = 'all', live = {state: 'idle'}, timer = null, msg = '';
+const reload = async () => { const q = `project=${encodeURIComponent(M.project)}&run=${encodeURIComponent(M.run_id)}`; const d = await api('/api/data?' + q); if (!d.error) { D = d; bind(); } render(false); };
+const lsGet = (k, d) => { try { return localStorage.getItem(k) ?? d; } catch (e) { return d; } };
+const lsSet = (k, v) => { try { localStorage.setItem(k, v); } catch (e) { /* private mode */ } };
+
+const chain = p => `<div class="chain">${p.map((n, i) => `${i ? '→ ' : ''}<span>${esc(n.replace(/^app:/, 'APP ').replace(/^[A-Za-z]+:/, ''))}</span>`).join(' ')}</div>`;
+
+const BASE = [
+ {t: 'The question', n: 'Open with the checkpoint question. Everything on the next pages answers it with evidence from one real run.',
+  r: () => `<h2>"Show us what is in the application, what changed, and what appears risky."</h2>
+  <p class="lead">…and on Day 2: <b>"take a finding from detection to verified remediation."</b> Here is the real run, end to end.</p>
+  <div class="flow"><div class="s">📦 Repo</div><span class="a">→</span><div class="s">🔎 Discovery</div><span class="a">→</span><div class="s">🔁 Change</div><span class="a">→</span><div class="s">🚨 Detect</div><span class="a">→</span><div class="s">🤖 AI investigate</div><span class="a">→</span><div class="s">🔧 Fix proposal</div><span class="a">→</span><div class="s h">✋ Human approval</div><span class="a">→</span><div class="s">🧪 Docker sandbox</div><span class="a">→</span><div class="s">✅ Rescan + verdict</div></div>
+  <div class="grid">${card(M.project, 'target (public repo)')}${card(`${M.base || '—'} → ${M.head}`, 'compared versions')}${card(S.packages, 'components inventoried')}${card(S.findings, 'findings, each with evidence')}${card(M.seconds + ' s', 'scan time')}</div>
+  <div class="panel"><h3>Head commit</h3><code>${esc((M.head_commit.sha || '').slice(0, 10))}</code> ${esc(M.head_commit.subject)} <span class="mut small">· ${esc((M.head_commit.date || '').slice(0, 16))}</span><br>
+  <span class="small mut">AI models that answered in this run: ${Object.entries(M.models).map(([k, v]) => `<b>${esc(k)}</b> ×${v}`).join(', ') || 'none (scanners only)'}</span></div>`},
+
+ {t: 'What is in it', n: 'Inventory first: you cannot judge risk in something you cannot see. Point out the honest note about the generated lockfile.',
+  r: () => { const I = D.inventory, max = Math.max(...I.hosts.map(h => h[1]));
+  return `<h2>What is in the application</h2><p class="lead">SBOM and dependency graph from lockfiles + Syft. No package code was executed.</p>
+  <div class="grid">${card(S.packages, 'packages')}${card(S.direct, 'direct dependencies')}${card(S.runtime, 'runtime scope')}${card(S.dev, 'dev only')}${card(I.workflow_steps, 'CI workflow steps')}${card(S.images, 'container base images')}</div>
+  <div class="two"><div class="panel"><h3>Where components come from</h3>${I.hosts.map(([h, n]) => `<div class="hbar"><span>${esc(h)}</span><i style="width:${Math.max(3, n / max * 100)}%"></i><span>${n}</span></div>`).join('')}</div>
+  <div class="panel"><h3>CI and containers</h3><div class="small">${I.unpinned} workflow steps use an action pinned to a tag, not a commit SHA.</div><table><tr><th>Base image</th><th>File</th></tr>${I.images.map(i => `<tr><td><code>${esc(i.ref)}</code></td><td>${esc(i.file)}:${i.line}</td></tr>`).join('')}</table></div></div>
+  <div class="panel"><h3>Sample of the inventory</h3><table><tr><th>Package</th><th>Version</th><th>Scope</th><th>Origin</th><th>Integrity hash</th></tr>${I.sample.map(p => `<tr><td>${esc(p.name)}</td><td>${esc(p.version)}</td><td>${esc(p.scope)}</td><td>${esc(p.host)}</td><td>${p.hash ? '✔' : '—'}</td></tr>`).join('')}</table></div>
+  ${I.notes.map(n => `<div class="banner b-warn small">⚠ ${esc(n)}</div>`).join('')}`; }},
+
+ {t: 'What changed', n: 'Memory is what answers "what changed": the baseline is a human-approved or tagged snapshot. Search for a package live.',
+  r: () => { const C = D.change;
+  return `<h2>What changed since ${esc(M.base || 'the baseline')}</h2><p class="lead">Snapshot diff plus a diff-only scan of the changed source lines.</p>
+  <div class="grid">${card(C.added_count, 'packages added')}${card(C.removed_count, 'removed')}${card(C.updated_count, 'updated')}${card(C.files_changed, 'files changed in source')}${card(C.workflows.length, 'workflow changes (shown)')}</div>
+  <input type="search" id="q" placeholder="Filter changes, e.g. jsonwebtoken, cypress, node">
+  <div class="two"><div class="panel"><h3>Updated</h3><div id="upd" class="small"></div></div><div class="panel"><h3>Added</h3><div id="add" class="small"></div></div></div>
+  <div class="two"><div class="panel"><h3>Workflow changes</h3><div class="small">${C.workflows.map(w => `<div><code>${esc(w)}</code></div>`).join('') || 'none'}</div></div>
+  <div class="panel"><h3>Build files touched (reviewed for backdoor signals)</h3><div class="small">${C.build_files.map(w => `<div><code>${esc(w)}</code></div>`).join('') || 'none'}</div></div></div>`; },
+  after: () => { const q = $('#q'), f = () => { const v = q.value.toLowerCase(), l = (a, id) => $(id).innerHTML = a.filter(x => x.toLowerCase().includes(v)).slice(0, 14).map(x => `<div>${esc(x)}</div>`).join('') || '<span class="mut">no match</span>'; l(D.change.updated, '#upd'); l(D.change.added, '#add'); }; q.oninput = f; f(); }},
+
+ {t: 'What is risky', n: 'Click the Critical finding. Show: evidence lines, the dependency chain, the score formula. Then point at the confidence level and the AI box labelled inference.',
+  r: () => { const tot = Object.values(D.levels).reduce((a, b) => a + b, 0) || 1, f = D.top[sel];
+  return `<h2>What appears risky</h2><p class="lead">Every finding has a source file or package, evidence that the verifier re-checked, and an explainable score.</p>
+  <div class="bar">${Object.entries(D.levels).filter(([, v]) => v).map(([k, v]) => `<div class="${k}" style="width:${v / tot * 100}%" title="${k}: ${v}">${v > tot * .04 ? v : ''}</div>`).join('')}</div>
+  <div class="small mut">${Object.entries(D.levels).map(([k, v]) => `${chip(k, v + ' ' + k)}`).join('')} · by area: ${Object.entries(D.categories).map(([k, v]) => `${esc(k)} ${v}`).join(' · ')}</div>
+  <div class="two"><div class="lst"><div class="small mut">Showing the ${D.top.length} highest-risk of ${D.shown ? D.shown.total : D.top.length} findings, with evidence. The full list is in the report.</div>${D.top.map((x, i) => `<button class="find ${esc(x.risk_level)} ${i === sel ? 'sel' : ''}" data-i="${i}">${chip(x.risk_level, x.risk_level + ' ' + x.score)} <b>${esc(x.title.slice(0, 92))}</b><div class="small mut">${esc(x.category)} · confidence ${esc(x.confidence)}</div></button>`).join('')}</div>
+  <div class="panel" style="position:sticky;top:8px;align-self:start"><h3>${esc(f.id)}</h3><div class="small">${esc(f.title)}</div>
+  <p class="small"><b>Score:</b> ${esc(f.score_explanation)}<br><b>Confidence:</b> ${esc(f.confidence)} — ${esc(f.confidence_reason)}<br><b>Detector:</b> ${esc(f.detector)} ${f.change ? '· ' + esc(f.change) : ''}</p>
+  <b class="small">Verified evidence</b><ul class="small">${f.evidence.map(e => `<li>${esc(e)}</li>`).join('')}</ul>
+  ${f.paths.length ? `<b class="small">Why is it in the app? (dependency path)</b>${f.paths.map(chain).join('')}` : ''}
+  <p class="small"><b>Recommendation:</b> ${esc(f.recommendation)}${f.fixed_versions && f.fixed_versions.length ? ' (fixed in ' + esc(f.fixed_versions.join(', ')) + ')' : ''}</p>
+  ${f.ai ? `<div class="banner b-warn small" style="font-weight:400"><b>🤖 AI inference — not evidence, never changes the score</b> · ${esc(f.ai.model)} ${f.ai.verdict ? '· verdict <b>' + esc(f.ai.verdict) + '</b>' : ''}<br>${esc(f.ai.text)}${f.ai.tools.length ? '<div class="mut">read-only tools used: ' + f.ai.tools.map(t => esc(t.tool)).join(', ') + '</div>' : ''}</div>` : ''}
+  </div></div>`; },
+  after: () => document.querySelectorAll('.find').forEach(b => b.onclick = () => { sel = +b.dataset.i; render(false); })},
+
+ {t: 'Agents & AI', n: 'The harness is the product. The lead agent plans, specialists are tools, deterministic gates stay in code. The canary proves detectors work before every scan.',
+  r: () => { const A = D.agents;
+  return `<h2>The agent harness</h2><p class="lead">A lead agent (LLM) chooses specialist agents and what to investigate. Scoring, verification and coverage are enforced in code, so a weak model cannot hide findings.</p>
+  <div class="grid">${Object.entries(A.counts).sort((a, b) => b[1] - a[1]).map(([k, v]) => card(v, k + ' decisions')).join('')}</div>
+  ${A.summary ? `<div class="banner b-warn" style="font-weight:400"><b>🤖 Lead agent summary (AI inference)</b><br>${esc(A.summary)}</div>` : ''}
+  <div class="two"><div class="panel"><h3>Canary self-check</h3><div class="small">Each detector must catch a planted sample before the scan counts.</div>${A.canary.map(c => `<div class="small">${c.caught ? '✅' : '❌'} ${esc(c.detector)} <span class="mut">${esc(c.detail)}</span></div>`).join('')}</div>
+  <div class="panel"><h3>Guardrails (each has a test)</h3><ul class="small"><li>Package code never runs on the host (<code>--ignore-scripts</code>); in Day 2 only inside a no-network Docker sandbox, after approval.</li><li>Agents call named tools, never a free shell; secrets are stripped from child environments.</li><li>Repo text is data: wrapped in &lt;DATA&gt;, injection text is flagged.</li><li>Baselines, labels, lessons and fixes need a named human and a reason; the audit log is append-only.</li><li>Backdoor / integrity / typosquat findings can never be suppressed.</li><li>Unverified findings can never be Critical; AI never raises confidence.</li></ul>${A.skipped.map(s => `<div class="banner b-warn small">Not run: ${esc(s)}</div>`).join('')}</div></div>
+  <div class="panel"><h3>What the agents actually did (real decision log)</h3><div class="small mut" id="flt"></div><div class="tl" id="tl"></div></div>`; },
+  after: () => { const acts = ['all', ...new Set(D.agents.story.map(s => s.actor))], draw = () => $('#tl').innerHTML = D.agents.story.filter(s => filt === 'all' || s.actor === filt).map(s => `<div><b>${esc(s.actor)}</b> ${esc(s.decision)}<div class="mut">${esc(s.why)}</div></div>`).join('');
+    $('#flt').innerHTML = acts.map(a => `<button class="btn small" data-a="${a}" style="padding:3px 10px;margin:2px;${a === filt ? 'background:var(--acc);color:#fff' : ''}">${a}</button>`).join('');
+    document.querySelectorAll('#flt button').forEach(b => b.onclick = () => { filt = b.dataset.a; render(false); }); draw(); }},
+
+ {t: 'Fix & human approval', n: 'Day 2, part 1. The Fix agent proposes a concrete change with expected risk reduction, a compatibility note and a rollback. Nothing happens until a named human approves.',
+  r: () => { if (!P && LIVE) return `<h2>Recommended fix, then a human decides</h2><p class="lead">Pick a vulnerable component. The Fix agent proposes a change from advisory data, with expected risk reduction, a compatibility note and a rollback.</p>
+  <div class="panel"><label class="small mut">Finding to fix (highest risk first)</label><select id="fx">${(D.fixable || []).map(f => `<option value="${esc(f.id)}">${esc(f.risk_level)} ${f.score} · ${esc(f.title.slice(0, 100))}</option>`).join('')}</select>
+  <p><button class="btn p" id="prop">🔧 Propose fix</button> <span class="small ${msg ? 'err' : ''}">${esc(msg)}</span></p></div>`;
+  if (!P) return `<h2>Fix proposal</h2><div class="banner b-warn">No fix proposal exists for this run yet. Create one:<br><code>.venv\\Scripts\\guardian propose ${esc(M.project)} CVE-2015-9235</code><br>then rebuild this page.</div>`;
+  const e = P.expected_risk_reduction, ap = P.status === 'approved', rj = P.status === 'rejected';
+  return `<h2>Recommended fix, then a human decides</h2><p class="lead">The version is picked by a deterministic rule from advisory data. No AI chooses it.</p>
+  <div class="panel"><h3>${esc(P.id)} · ${esc(P.package)} ${esc(P.from)} → ${esc(P.to)}</h3><p><code>${esc(P.change)}</code> <span class="mut small">(${esc(P.kind)}, ${P.direct ? 'direct' : 'transitive'})</span></p>
+  <div class="grid">${card(e.findings_resolved, 'findings resolved')}${card(e.levels.Critical, 'Critical removed')}${card(e.levels.High, 'High removed')}${card(e.score_removed, 'risk score removed')}</div>
+  <p class="small"><b>Compatibility:</b> ${esc(P.compatibility_note)}</p><p class="small"><b>Rollback:</b> ${esc(P.rollback)}</p></div>
+  <div class="panel"><h3>✋ Human approval gate</h3>
+  ${ap || rj ? `<div class="banner ${ap ? 'b-ok' : 'b-bad'}">${ap ? 'Approved' : 'Rejected'} by <b>${esc(P.decided_by)}</b>: ${esc(P.decided_reason)} <span class="small mut">(recorded in the append-only audit log)</span></div>`
+   : LIVE ? `<div class="banner b-warn">Waiting for a named human. Nothing has been built or tested.</div>
+   <div class="two"><div><label class="small mut">Your name (required)</label><input type="text" id="who" value="${esc(lsGet('who', ''))}"></div><div><label class="small mut">Reason (required)</label><input type="text" id="why" placeholder="e.g. reviewed the changelog, accept the risk"></div></div>
+   <p><button class="btn p" id="apr">✅ Approve</button> <button class="btn" id="rej">🚫 Reject</button> <span class="small err" id="amsg">${esc(msg)}</span></p>
+   <p class="small mut">Recorded with your name in the append-only audit log. The sandbox refuses to run without it.</p>`
+   : `<div class="banner b-warn">Waiting for a named human. Nothing has been built or tested.</div>
+   <p class="small">Real approval (recorded):<br><code>.venv\\Scripts\\guardian approve ${esc(P.id)} --by "Your Name" --reason "reviewed changelog"</code><br>or the <b>Fix &amp; verify</b> tab in the Streamlit UI.</p>
+   <button class="btn" id="sim">${simulated ? '✔ Simulated approval (visual only, NOT recorded)' : 'Presenter: simulate approval for the walkthrough'}</button>`}
+  <p class="small mut">Guardrail in code: <code>remediate.validate</code> raises <code>PermissionError</code> unless the proposal is approved by a named person with a reason.</p></div>`; },
+  after: () => { const b = $('#sim'); if (b) b.onclick = () => { simulated = true; render(false); };
+    if ($('#prop')) $('#prop').onclick = async () => { $('#prop').disabled = true; const r = await api('/api/propose', {project: M.project, run: M.run_id, finding: $('#fx').value});
+      msg = r.error || (r.ok ? '' : 'No automatic fix: ' + r.reason); if (r.ok || r.error) await reload(); else render(false); };
+    const decide = async d => { const who = $('#who').value.trim(); lsSet('who', who); const r = await api('/api/approve', {proposal: P.id, decision: d, by: who, reason: $('#why').value.trim()});
+      if (r.error) { msg = r.error; $('#amsg').textContent = msg; } else { msg = ''; await reload(); } };
+    if ($('#apr')) { $('#apr').onclick = () => decide('approved'); $('#rej').onclick = () => decide('rejected'); } }},
+
+ {t: 'Sandbox & verified result', n: 'Day 2, part 2. Branch, apply, rebuild lockfile, docker build, in-container checks, rescan, before/after. Read the verdict wording: gaps are stated, not hidden.',
+  r: () => { if (!R && LIVE) return validatePane();
+  if (!R) return `<h2>Sandbox validation</h2><p class="lead">Not run yet for this scan. After approval:</p><code>.venv\\Scripts\\guardian validate ${esc(P ? P.id : 'FIX-…')} [--test "npm test"]</code>
+   <div class="flow"><div class="s">🌿 local branch</div><span class="a">→</span><div class="s">✏️ apply edit</div><span class="a">→</span><div class="s">🔒 lockfile (no scripts)</div><span class="a">→</span><div class="s">🐳 docker build</div><span class="a">→</span><div class="s">🔎 version + import check (no network)</div><span class="a">→</span><div class="s">🧪 project tests</div><span class="a">→</span><div class="s">📊 rescan + SBOM diff</div></div>`;
+  const v = R.verdict, cls = v === 'verified' ? 'b-ok' : v === 'verified-with-gaps' ? 'b-warn' : 'b-bad', lab = {verified: '✅ VERIFIED', 'verified-with-gaps': '🟡 VERIFIED WITH GAPS', 'not-verified': '❌ NOT VERIFIED'}[v];
+  const dev = (R.approval && /^DEV-TEST/.test(R.approval.by)) ? `<div class="banner b-bad small">This result comes from a developer integration test run WITHOUT a human approval. Approve the proposal for real, run <code>guardian validate</code>, then rebuild the demo.</div>` : '';
+  const b = R.before, a = R.after, d = R.sbom_diff || {updated: [], added: [], removed: [], counts: {}};
+  return `<h2>Build, test, rescan, verify</h2><p class="lead">Done in a throw-away Docker sandbox on a local branch. Nothing is merged, pushed or deployed.</p>${dev}
+  <div class="banner ${cls}">${lab} — ${esc(R.verdict_reason)}</div>
+  <div class="panel"><h3>Sandbox steps</h3><table>${R.steps.map(s => `<tr><td style="width:90px"><span class="chip ${s.status === 'pass' ? 'pass' : s.status === 'fail' ? 'fail' : 'skipped'}">${esc(s.status)}</span></td><td style="width:210px"><b>${esc(s.name)}</b></td><td class="small mut">${esc(s.detail.slice(0, 220))}</td></tr>`).join('')}</table></div>
+  ${b ? `<div class="grid">${card(b.count + ' → ' + a.count, 'known vulnerabilities')}${card(b.known_vulnerabilities.Critical + ' → ' + a.known_vulnerabilities.Critical, 'Critical')}${card(b.packages + ' → ' + a.packages, 'packages')}${card(R.introduced.length, 'newly introduced by the fix')}</div>
+  <div class="two"><div class="panel"><h3>Resolved</h3>${R.resolved.map(x => `<div class="small">${chip(x.risk_level)}${esc(x.id)} <span class="mut">${esc(x.title.slice(0, 60))}</span></div>`).join('') || 'none'}${R.remaining.length ? '<h3 style="margin-top:10px">Still present</h3>' + R.remaining.map(x => `<div class="small">${chip(x.risk_level)}${esc(x.id)}</div>`).join('') : ''}</div>
+  <div class="panel"><h3>Newly introduced (regression check)</h3>${R.introduced.map(x => `<div class="small">${chip(x.risk_level)}${esc(x.id)} <span class="mut">${esc(x.title.slice(0, 60))}</span></div>`).join('') || 'nothing new'}</div></div>
+  <div class="panel"><h3>SBOM diff · ${d.counts.updated || 0} updated, ${d.counts.added || 0} added, ${d.counts.removed || 0} removed</h3><pre>${[...d.updated.map(x => '~ ' + x), ...d.added.map(x => '+ ' + x), ...d.removed.map(x => '- ' + x)].map(esc).join('\n') || 'no change'}</pre></div>` : ''}
+  <div class="panel"><h3>Patch for a human to apply (<code>${esc(R.branch)}</code>, local only)</h3><pre class="diff">${(R.patch || []).map(l => `<span class="${l.startsWith('+') && !l.startsWith('+++') ? 'add' : l.startsWith('-') && !l.startsWith('---') ? 'del' : l.startsWith('@@') || l.startsWith('diff') ? 'hdr' : ''}">${esc(l)}</span>`).join('\n') || 'no patch'}</pre></div>
+  <div class="panel"><h3>Audit trail (append-only)</h3><div class="tl">${(R.decisions || []).map(x => `<div><b>${esc(x.actor)}</b> ${esc(x.decision)}<div class="mut">${esc(String(x.why).slice(0, 160))}</div></div>`).join('')}</div></div>
+  <div class="panel"><h3>Responsible AI note</h3><div class="small">${esc(D.responsible_ai).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/\n/g, '<br>')}</div></div>`; },
+  after: () => wireValidate()}
+];
+
+// ---------- live mode: run the harness, watch it, validate a fix, get the report ----------
+const AG = [['orchestrator', '🧭', 'Plan'], ['discovery-agent', '🔎', 'Discover'], ['change-agent', '🔁', 'What changed'], ['vulnerability-agent', '🐞', 'Vulnerabilities'],
+  ['ci-container-agent', '⚙️', 'CI & containers'], ['backdoor-agent', '🕵️', 'Backdoor hunt'], ['lead-agent', '🧠', 'AI lead agent'], ['verifier-agent', '✅', 'Verify evidence'],
+  ['investigator-agent', '🔬', 'AI investigates'], ['evidence-agent', '📊', 'Score & explain']];
+const fmt = s => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
+function liveBox(j, kind) {
+  const seen = new Set((j.events || []).map(e => e.actor)), last = (j.events || []).length ? j.events[j.events.length - 1].actor : '';
+  const ags = kind === 'scan' ? `<div class="ags">${AG.map(([k, ic, nm]) => `<span class="ag ${j.state === 'running' && k === last ? 'now' : seen.has(k) ? 'seen' : ''}">${ic} ${nm}</span>`).join('')}</div>` : '';
+  return `<div class="panel"><h3>${j.state === 'running' ? '⏳' : j.state === 'done' ? '✅' : '❌'} ${esc(j.kind)} · ${j.state} · ${fmt(j.elapsed || 0)} · ${j.n_events || 0} logged decisions</h3>
+  <div class="small mut">${esc(j.phase || '')}</div>${ags}
+  <div class="feed" id="feed">${(j.events || []).slice(-60).reverse().map(e => `<div><b>${esc(e.actor)}</b> ${esc(e.text)}</div>`).join('') || '<span class="mut">waiting for the first agent...</span>'}</div>
+  ${j.state === 'failed' ? `<pre>${esc(j.tail || '')}</pre>` : ''}</div>`;
+}
+function watch(kind, onDone) {
+  clearInterval(timer);
+  timer = setInterval(async () => {
+    live = await api('/api/job');
+    const box = $('#livebox'); if (box && live.kind === kind) box.innerHTML = liveBox(live, kind);
+    if (live.state === 'done' || live.state === 'failed') { clearInterval(timer); timer = null; if (live.state === 'done') await onDone(live); else if (box) box.innerHTML = liveBox(live, kind); }
+  }, 1500);
+}
+async function openRun(project, run) {
+  const d = await api(`/api/data?project=${encodeURIComponent(project)}&run=${encodeURIComponent(run)}`);
+  if (d.error) { msg = d.error; return render(false); }
+  D = d; bind(); msg = ''; sel = 0; go(1);
+}
+const RUN = {t: 'Run the harness', live: true, n: 'Paste a public repo link and press Run. Narrate the agents as they light up: plan, canary, discover, compare, hunt, verify, score.',
+  r: () => `<h2>Give the Guardian a repository</h2><p class="lead">Paste a public repo link. The harness inventories it, compares two versions, hunts for risk, re-checks every piece of evidence, and writes a report. No code from the repo is run.</p>
+  <div class="panel"><div class="two" style="grid-template-columns:3fr 1fr"><div><label class="small mut">Repository link</label><input type="text" id="repo" value="${esc(lsGet('repo', 'https://github.com/juice-shop/juice-shop'))}"></div>
+  <div><label class="small mut">Baseline tag or commit (optional)</label><input type="text" id="base" value="${esc(lsGet('base', 'v20.0.0'))}" placeholder="empty = latest release tag"></div></div>
+  <p><label class="small"><input type="checkbox" id="ai" ${lsGet('ai', '1') === '1' ? 'checked' : ''}> AI lead agent (plans the investigation and reads code with read-only tools)</label></p>
+  <p><button class="btn p" id="go">▶ Run Guardian</button> <span class="small err" id="rmsg">${esc(msg)}</span></p>
+  <div class="small mut" id="prev"></div></div><div id="livebox">${live.state !== 'idle' && live.kind === 'scan' ? liveBox(live, 'scan') + (D && live.state === 'done' ? donePanel() : '') : ''}</div>`,
+  after: async () => {
+    if ($('#walk')) $('#walk').onclick = () => go(1);
+    const st = await api('/api/state');
+    if (cur !== 0 || !$('#prev')) return;   // the presenter already moved on: a late response must not touch another page
+    if (st.runs && st.runs.length) $('#prev').innerHTML = 'Or open a finished run (instant, no network): ' + st.runs.slice(0, 6).map(r => `<button class="btn small" data-p="${esc(r.project)}" data-r="${esc(r.run_id)}" style="padding:3px 10px;margin:2px">${esc(r.project)} · ${esc(r.run_id)}</button>`).join('');
+    document.querySelectorAll('#prev button').forEach(b => b.onclick = () => openRun(b.dataset.p, b.dataset.r));
+    if (st.job && st.job.state === 'running' && st.job.kind === 'scan') { live = st.job; $('#livebox').innerHTML = liveBox(live, 'scan'); watch('scan', finishedScan); }
+    $('#go').onclick = async () => {
+      const repo = $('#repo').value.trim(), base = $('#base').value.trim(), ai = $('#ai').checked; lsSet('repo', repo); lsSet('base', base); lsSet('ai', ai ? '1' : '0');
+      const r = await api('/api/scan', {repo, base, ai}); if (r.error) { $('#rmsg').textContent = msg = r.error; return; } msg = ''; $('#rmsg').textContent = '';
+      live = {state: 'running', kind: 'scan', events: [], elapsed: 0, phase: 'starting'}; $('#livebox').innerHTML = liveBox(live, 'scan'); watch('scan', finishedScan);
+    };
+  }};
+const donePanel = () => { const lv = D.levels; return `<div class="panel"><h3>Scan complete in ${D.meta.seconds} s: ${esc(D.meta.project)}</h3><div class="grid">${card(S.packages, 'components inventoried')}${card(S.findings, 'findings with evidence')}${card(lv.Critical, 'Critical')}${card(lv.High, 'High')}</div>
+  <p><button class="btn p" id="walk">Start the walkthrough →</button></p></div>`; };
+async function finishedScan(j) {
+  const d = await api(`/api/data?project=${encodeURIComponent(j.project)}&run=${encodeURIComponent(j.run_id)}`);
+  if (d.error) { if ($('#livebox')) $('#livebox').innerHTML = `<div class="banner b-bad">${esc(d.error)}</div>`; return; }
+  D = d; bind(); sel = 0;
+  if (cur !== 0 || !$('#livebox')) { render(false); return; }
+  $('#livebox').innerHTML = liveBox(j, 'scan') + donePanel(); $('#walk').onclick = () => go(1); $('#next').disabled = false; $('#walk').scrollIntoView({behavior: 'smooth', block: 'center'});
+}
+function validatePane() {
+  if (!P) return `<h2>Sandbox validation</h2><div class="banner b-warn">Propose and approve a fix first (previous step).</div>`;
+  if (P.status !== 'approved') return `<h2>Sandbox validation</h2><div class="banner b-warn">${esc(P.id)} is <b>${esc(P.status)}</b>. A named human must approve it before anything is built or tested.</div>`;
+  return `<h2>Build, test, rescan, verify</h2><p class="lead">${esc(P.id)} was approved by <b>${esc(P.decided_by)}</b>. The Validation agent now works on a local branch in a throw-away Docker sandbox. Nothing is merged, pushed or deployed.</p>
+  <div class="panel"><label class="small mut">Project's own test command to run in the sandbox (optional, e.g. <code>npm test</code>). Without it the verdict is capped at "verified with gaps".</label>
+  <input type="text" id="tst" placeholder="leave empty to skip"><p><button class="btn p" id="val">🧪 Validate in the sandbox</button> <span class="small err">${esc(msg)}</span></p></div>
+  <div id="livebox">${live.state !== 'idle' && live.kind === 'validate' ? liveBox(live, 'validate') : ''}</div>`;
+}
+async function wireValidate() {
+  if (!LIVE || R || !$('#val')) return;
+  $('#val').onclick = async () => { const r = await api('/api/validate', {proposal: P.id, test: $('#tst').value.trim()}); if (r.error) { msg = r.error; return render(false); } msg = '';
+    live = {state: 'running', kind: 'validate', events: [], elapsed: 0, phase: 'starting'}; $('#livebox').innerHTML = liveBox(live, 'validate'); watch('validate', async () => { await reload(); }); };
+  const st = await api('/api/job'); if (st.state === 'running' && st.kind === 'validate') { live = st; $('#livebox').innerHTML = liveBox(live, 'validate'); watch('validate', async () => { await reload(); }); }
+}
+const REPORT = {t: 'The report', live: true, n: 'Close with the artefacts: everything shown is in the files below, and the audit trail is append-only. Print to PDF for the panel.',
+  r: () => { const top = D.top.slice(0, 5), f = D.files || [], base = `/files/${encodeURIComponent(M.project)}/${encodeURIComponent(M.run_id)}/`;
+  return `<h2>The report</h2><p class="lead">One run, one folder of evidence. Every number on these pages comes from these files.</p>
+  <div class="panel"><h3>Executive summary</h3><p><b>${esc(M.project)}</b> (${esc(M.base || 'no baseline')} → ${esc(M.head)}): ${S.packages} components, ${S.findings} findings — ${Object.entries(D.levels).map(([k, v]) => chip(k, v + ' ' + k)).join('')}</p>
+  ${D.agents.summary ? `<p class="small"><b>🤖 Lead agent (AI inference):</b> ${esc(D.agents.summary)}</p>` : ''}
+  <b class="small">Top risks</b><ol class="small">${top.map(x => `<li>${chip(x.risk_level, x.risk_level + ' ' + x.score)} ${esc(x.title.slice(0, 110))}</li>`).join('')}</ol>
+  ${R ? `<p class="small"><b>Remediation:</b> ${esc(R.proposal.package)} ${esc(R.proposal.from)} → ${esc(R.proposal.to)} — <b>${esc(R.verdict)}</b>: ${esc(R.verdict_reason)}</p>` : P ? `<p class="small"><b>Remediation:</b> ${esc(P.id)} is ${esc(P.status)}; not validated yet.</p>` : '<p class="small mut">No fix was taken through the sandbox in this run.</p>'}</div>
+  <div class="panel"><h3>Files</h3><table>${f.map(x => `<tr><td><a href="${base + x.split('/').map(encodeURIComponent).join('/')}" target="_blank" rel="noopener">${esc(x)}</a></td></tr>`).join('') || '<tr><td>none</td></tr>'}</table>
+  <p><button class="btn" onclick="window.print()">🖨 Print / save this page as PDF</button></p></div>`; }};
+
+const STEPS = [...(LIVE ? [RUN] : []), ...BASE, ...(LIVE ? [REPORT] : [])];
+
+let cur = Math.max(0, Math.min(STEPS.length - 1, (+location.hash.slice(1) || 1) - 1));
+const SEC = {'Run the harness': 'Live run', 'The question': 'Day 1 · see and detect', 'Fix & human approval': 'Day 2 · fix and verify', 'The report': 'Deliverable'};
+function render(scroll = true) {
+  const s = STEPS[cur];
+  $('#nav').innerHTML = STEPS.map((x, i) => `${SEC[x.t] ? `<div class="day">${SEC[x.t]}</div>` : ''}<button class="${i === cur ? 'on' : ''}" data-i="${i}"><span class="n">${i + 1}</span>${esc(x.t)}</button>`).join('');
+  document.querySelectorAll('#nav button').forEach(b => b.onclick = () => go(+b.dataset.i));
+  $('#hsub').textContent = D ? `${M.project} · ${M.base || 'no baseline'} → ${M.head} · run ${M.run_id}` : 'live mode · paste a repository link to start';
+  $('#main').innerHTML = `<div class="notes"><b>Say:</b> ${esc(s.n)}</div>` + (!D && !s.live ? '<div class="banner b-warn">Run the harness first (step 1): there is nothing to show yet.</div>' : s.r());
+  if (s.after && (D || s.live)) s.after();
+  $('#pos').textContent = `Step ${cur + 1} of ${STEPS.length}`; $('#back').disabled = cur === 0; $('#next').disabled = cur === STEPS.length - 1 || (!D && cur === 0);
+  history.replaceState(null, '', '#' + (cur + 1)); if (scroll) window.scrollTo(0, 0);
+}
+const go = i => { cur = Math.max(0, Math.min(STEPS.length - 1, i)); render(); };
+$('#back').onclick = () => go(cur - 1); $('#next').onclick = () => go(cur + 1);
+document.addEventListener('keydown', e => { if (e.target.tagName === 'INPUT') return; if (e.key === 'ArrowRight') go(cur + 1); if (e.key === 'ArrowLeft') go(cur - 1); });
+$('#pn').onchange = e => document.body.classList.toggle('pn', e.target.checked);
+render(false);
+</script>
+</body>
+</html>
