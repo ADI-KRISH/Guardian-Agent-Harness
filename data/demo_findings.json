@@ -1,0 +1,55 @@
+{
+  "demo": [
+    {
+      "role": "hero_fix",
+      "purl": "pkg:npm/ws@8.18.0",
+      "finding_ids": [
+        "F-CVE-029",
+        "F-CVE-053"
+      ]
+    },
+    {
+      "role": "one_fix_many_findings",
+      "purl": "pkg:npm/tar@6.2.1",
+      "finding_ids": [
+        "F-CVE-007",
+        "F-CVE-021",
+        "F-CVE-022",
+        "F-CVE-023",
+        "F-CVE-024",
+        "F-CVE-025",
+        "F-CVE-026",
+        "F-CVE-027",
+        "F-CVE-028",
+        "F-CVE-049",
+        "F-CVE-050",
+        "F-CVE-051"
+      ]
+    },
+    {
+      "role": "no_fix_accepted_risk",
+      "purl": "pkg:npm/marsdb@0.6.11",
+      "finding_ids": [
+        "F-CVE-006"
+      ]
+    },
+    {
+      "role": "compatibility_trap",
+      "purl": "pkg:npm/jsonwebtoken@0.4.0",
+      "finding_ids": [
+        "F-CVE-004",
+        "F-CVE-012",
+        "F-CVE-013",
+        "F-CVE-035",
+        "F-CVE-036"
+      ]
+    },
+    {
+      "role": "prioritization_medium",
+      "purl": "pkg:npm/uuid@8.3.2",
+      "finding_ids": [
+        "F-CVE-052"
+      ]
+    }
+  ]
+}

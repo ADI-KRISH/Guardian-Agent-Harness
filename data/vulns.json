@@ -1,0 +1,2594 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-11-23T10:17:47Z",
+  "target": {
+    "name": "juice-shop",
+    "ref": "v20.4.0",
+    "commit": "266448aba68cd8ba5915f526a128da4fa7bc3f9f"
+  },
+  "findings": [
+    {
+      "id": "F-CVE-001",
+      "type": "cve",
+      "title": "crypto-js: PBKDF2 1,000 times weaker than specified in 1993 and 1.3M times weaker than current standard",
+      "component": {
+        "purl": "pkg:npm/crypto-js@3.3.0",
+        "name": "crypto-js",
+        "version": "3.3.0",
+        "ecosystem": "npm"
+      },
+      "relationship": "transitive",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/pdfkit@0.11.0",
+        "pkg:npm/crypto-js@3.3.0"
+      ],
+      "severity": "critical",
+      "cvss": {
+        "score": 9.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+        "source": "nvd"
+      },
+      "advisory_ids": [
+        "CVE-2023-46233"
+      ],
+      "fixed_version": "4.2.0",
+      "fixed_versions": [
+        "4.2.0"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "crypto-js is a JavaScript library of crypto standards. Prior to version 4.2.0, crypto-js PBKDF2 is 1,000 times weaker than originally specified in 1993, and at least 1,300,000 times weaker than current industry standard. This is because it both defaults to SHA1, a cryptographic hash algorithm considered insecure since at least 2005, and defaults to one single iteration, a 'strength' or 'difficulty' value specified at 1,000 when specified in 1993. PBKDF2 relies on iteration count as a countermeasure to preimage and collision attacks. If used to protect passwords, the impact is high. If used to generate signatures, the impact is high. Version 4.2.0 contains a patch for this issue. As a workaround, configure crypto-js to use SHA256 with at least 250,000 iterations.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2023-46233"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "critical",
+        "reason": "Severity critical; fix available in 4.2.0"
+      }
+    },
+    {
+      "id": "F-CVE-002",
+      "type": "cve",
+      "title": "crypto-js: crypto-js: Insufficient Entropy in Cryptographic Secret Generation via Vulnerable CryptoJS Dependency Chain",
+      "component": {
+        "purl": "pkg:npm/crypto-js@3.3.0",
+        "name": "crypto-js",
+        "version": "3.3.0",
+        "ecosystem": "npm"
+      },
+      "relationship": "transitive",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/pdfkit@0.11.0",
+        "pkg:npm/crypto-js@3.3.0"
+      ],
+      "severity": "critical",
+      "cvss": {
+        "score": 9.1,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H",
+        "source": "ghsa"
+      },
+      "advisory_ids": [
+        "CVE-2026-71851"
+      ],
+      "fixed_version": "4.0.0",
+      "fixed_versions": [
+        "4.0.0"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "crypto-js is a JavaScript library of crypto standards. Versions of crypto-js prior to 4.0.0 generate randomness in CryptoJS.lib.WordArray.random() using a custom variation of the Multiply-With-Carry pseudorandom number generator, seeded from Math.random(), instead of a cryptographically secure source. This generator was introduced in version 3.1.2-4 and remained present in nearly every 3.x release. Nominal requests for 128 or 256 bits of entropy through this function produce effective search spaces of approximately 2 to the 39th and 2 to the 47th possibilities, small enough to enumerate on commodity hardware. Downstream wallet applications that used CryptoJS.lib.WordArray.random() as the entropy source for BIP39 recovery phrases are affected, and an attacker who enumerates the reduced output space can recover the resulting private keys and control the associated funds. This issue is fixed in version 4.0.0.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2026-71851"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "critical",
+        "reason": "Severity critical; fix available in 4.0.0"
+      }
+    },
+    {
+      "id": "F-CVE-003",
+      "type": "cve",
+      "title": "nodejs-jsonwebtoken: verification step bypass with an altered token",
+      "component": {
+        "purl": "pkg:npm/jsonwebtoken@0.1.0",
+        "name": "jsonwebtoken",
+        "version": "0.1.0",
+        "ecosystem": "npm"
+      },
+      "relationship": "transitive",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/express-jwt@0.1.3",
+        "pkg:npm/jsonwebtoken@0.1.0"
+      ],
+      "severity": "critical",
+      "cvss": {
+        "score": 9.8,
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "source": "nvd"
+      },
+      "advisory_ids": [
+        "CVE-2015-9235"
+      ],
+      "fixed_version": "4.2.2",
+      "fixed_versions": [
+        "4.2.2"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "In jsonwebtoken node module before 4.2.2 it is possible for an attacker to bypass verification when a token digitally signed with an asymmetric key (RS/ES family) of algorithms but instead the attacker send a token digitally signed with a symmetric algorithm (HS* family).",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2015-9235"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "critical",
+        "reason": "Severity critical; fix available in 4.2.2"
+      }
+    },
+    {
+      "id": "F-CVE-004",
+      "type": "cve",
+      "title": "nodejs-jsonwebtoken: verification step bypass with an altered token",
+      "component": {
+        "purl": "pkg:npm/jsonwebtoken@0.4.0",
+        "name": "jsonwebtoken",
+        "version": "0.4.0",
+        "ecosystem": "npm"
+      },
+      "relationship": "direct",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/jsonwebtoken@0.4.0"
+      ],
+      "severity": "critical",
+      "cvss": {
+        "score": 9.8,
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "source": "nvd"
+      },
+      "advisory_ids": [
+        "CVE-2015-9235"
+      ],
+      "fixed_version": "4.2.2",
+      "fixed_versions": [
+        "4.2.2"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "In jsonwebtoken node module before 4.2.2 it is possible for an attacker to bypass verification when a token digitally signed with an asymmetric key (RS/ES family) of algorithms but instead the attacker send a token digitally signed with a symmetric algorithm (HS* family).",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2015-9235"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "critical",
+        "reason": "Severity critical; fix available in 4.2.2"
+      }
+    },
+    {
+      "id": "F-CVE-005",
+      "type": "cve",
+      "title": "nodejs-lodash: prototype pollution in defaultsDeep function leading to modifying properties",
+      "component": {
+        "purl": "pkg:npm/lodash@2.4.2",
+        "name": "lodash",
+        "version": "2.4.2",
+        "ecosystem": "npm"
+      },
+      "relationship": "transitive",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/sanitize-html@1.4.2",
+        "pkg:npm/lodash@2.4.2"
+      ],
+      "severity": "critical",
+      "cvss": {
+        "score": 9.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
+        "source": "nvd"
+      },
+      "advisory_ids": [
+        "CVE-2019-10744"
+      ],
+      "fixed_version": "4.17.12",
+      "fixed_versions": [
+        "4.17.12"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "Versions of lodash lower than 4.17.12 are vulnerable to Prototype Pollution. The function defaultsDeep could be tricked into adding or modifying properties of Object.prototype using a constructor payload.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2019-10744"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "critical",
+        "reason": "Severity critical; fix available in 4.17.12"
+      }
+    },
+    {
+      "id": "F-CVE-006",
+      "type": "cve",
+      "title": "Command Injection in marsdb",
+      "component": {
+        "purl": "pkg:npm/marsdb@0.6.11",
+        "name": "marsdb",
+        "version": "0.6.11",
+        "ecosystem": "npm"
+      },
+      "relationship": "direct",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/marsdb@0.6.11"
+      ],
+      "severity": "critical",
+      "cvss": null,
+      "advisory_ids": [
+        "GHSA-5mrr-rgp6-x4gr"
+      ],
+      "fixed_version": null,
+      "fixed_versions": [],
+      "fix_available": false,
+      "status": "affected",
+      "description": "All versions of `marsdb` are vulnerable to Command Injection. In the `DocumentMatcher` class, selectors on `$where` clauses are passed to a Function constructor unsanitized. This allows attackers to run arbitrary commands in the system when the function is executed.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://github.com/advisories/GHSA-5mrr-rgp6-x4gr"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "critical",
+        "reason": "Severity critical; no fix available"
+      }
+    },
+    {
+      "id": "F-CVE-007",
+      "type": "cve",
+      "title": "tar: node-tar: Denial of Service via crafted gzip bomb",
+      "component": {
+        "purl": "pkg:npm/tar@6.2.1",
+        "name": "tar",
+        "version": "6.2.1",
+        "ecosystem": "npm"
+      },
+      "relationship": "transitive",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/sqlite3@5.1.7",
+        "pkg:npm/tar@6.2.1"
+      ],
+      "severity": "critical",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "source": "nvd"
+      },
+      "advisory_ids": [
+        "CVE-2026-59873"
+      ],
+      "fixed_version": "7.5.19",
+      "fixed_versions": [
+        "7.5.19"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "node-tar is a tar archive manipulation library for Node.js. Prior to 7.5.19, node-tar does not enforce hard upper bounds on total decompressed data, entry counts, or decompression ratio in extraction and parsing paths such as src/extract.ts, allowing a small crafted gzip bomb to exhaust disk space and CPU. This issue is fixed in version 7.5.19.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2026-59873"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "critical",
+        "reason": "Severity critical; fix available in 7.5.19"
+      }
+    },
+    {
+      "id": "F-CVE-008",
+      "type": "cve",
+      "title": "Out-of-bounds Read",
+      "component": {
+        "purl": "pkg:npm/base64url@0.0.6",
+        "name": "base64url",
+        "version": "0.0.6",
+        "ecosystem": "npm"
+      },
+      "relationship": "transitive",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/jsonwebtoken@0.4.0",
+        "pkg:npm/jws@0.2.6",
+        "pkg:npm/base64url@0.0.6"
+      ],
+      "severity": "high",
+      "cvss": null,
+      "advisory_ids": [
+        "NSWG-ECO-428"
+      ],
+      "fixed_version": "3.0.0",
+      "fixed_versions": [
+        "3.0.0"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "`base64url` allocates uninitialized Buffers when number is passed in input on Node.js 4.x and below",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://hackerone.com/reports/321687"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "high",
+        "reason": "Severity high; fix available in 3.0.0"
+      }
+    },
+    {
+      "id": "F-CVE-009",
+      "type": "cve",
+      "title": "Authorization bypass in express-jwt",
+      "component": {
+        "purl": "pkg:npm/express-jwt@0.1.3",
+        "name": "express-jwt",
+        "version": "0.1.3",
+        "ecosystem": "npm"
+      },
+      "relationship": "direct",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/express-jwt@0.1.3"
+      ],
+      "severity": "high",
+      "cvss": {
+        "score": 9.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+        "source": "nvd"
+      },
+      "advisory_ids": [
+        "CVE-2020-15084"
+      ],
+      "fixed_version": "6.0.0",
+      "fixed_versions": [
+        "6.0.0"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "In express-jwt (NPM package) up and including version 5.3.3, the algorithms entry to be specified in the configuration is not being enforced. When algorithms is not specified in the configuration, with the combination of jwks-rsa, it may lead to authorization bypass. You are affected by this vulnerability if all of the following conditions apply: - You are using express-jwt - You do not have **algorithms** configured in your express-jwt configuration. - You are using libraries such as jwks-rsa as the **secret**. You can fix this by specifying **algorithms** in the express-jwt configuration. See linked GHSA for example. This is also fixed in version 6.0.0.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2020-15084"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "high",
+        "reason": "Severity high; fix available in 6.0.0"
+      }
+    },
+    {
+      "id": "F-CVE-010",
+      "type": "cve",
+      "title": "jsonwebtoken: Unrestricted key type could lead to legacy keys usagen",
+      "component": {
+        "purl": "pkg:npm/jsonwebtoken@0.1.0",
+        "name": "jsonwebtoken",
+        "version": "0.1.0",
+        "ecosystem": "npm"
+      },
+      "relationship": "transitive",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/express-jwt@0.1.3",
+        "pkg:npm/jsonwebtoken@0.1.0"
+      ],
+      "severity": "high",
+      "cvss": {
+        "score": 8.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N",
+        "source": "nvd"
+      },
+      "advisory_ids": [
+        "CVE-2022-23539"
+      ],
+      "fixed_version": "9.0.0",
+      "fixed_versions": [
+        "9.0.0"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "Versions `<=8.5.1` of `jsonwebtoken` library could be misconfigured so that legacy, insecure key types are used for signature verification. For example, DSA keys could be used with the RS256 algorithm. You are affected if you are using an algorithm and a key type other than a combination listed in the GitHub Security Advisory as unaffected. This issue has been fixed, please update to version 9.0.0. This version validates for asymmetric key type and algorithm combinations. Please refer to the above mentioned algorithm / key type combinations for the valid secure configuration. After updating to version 9.0.0, if you still intend to continue with signing or verifying tokens using invalid key type/algorithm value combinations, you\u2019ll need to set the `allowInvalidAsymmetricKeyTypes` option  to `true` in the `sign()` and/or `verify()` functions.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2022-23539"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "high",
+        "reason": "Severity high; fix available in 9.0.0"
+      }
+    },
+    {
+      "id": "F-CVE-011",
+      "type": "cve",
+      "title": "Verification Bypass",
+      "component": {
+        "purl": "pkg:npm/jsonwebtoken@0.1.0",
+        "name": "jsonwebtoken",
+        "version": "0.1.0",
+        "ecosystem": "npm"
+      },
+      "relationship": "transitive",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/express-jwt@0.1.3",
+        "pkg:npm/jsonwebtoken@0.1.0"
+      ],
+      "severity": "high",
+      "cvss": null,
+      "advisory_ids": [
+        "NSWG-ECO-17"
+      ],
+      "fixed_version": "4.2.2",
+      "fixed_versions": [
+        "4.2.2"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "It is possible for an attacker to bypass verification when \"a token digitally signed with an asymetric key (RS/ES family) of algorithms but instead the attacker send a token digitally signed with a symmetric algorithm (HS* family)\" [1]",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": null
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "high",
+        "reason": "Severity high; fix available in 4.2.2"
+      }
+    },
+    {
+      "id": "F-CVE-012",
+      "type": "cve",
+      "title": "jsonwebtoken: Unrestricted key type could lead to legacy keys usagen",
+      "component": {
+        "purl": "pkg:npm/jsonwebtoken@0.4.0",
+        "name": "jsonwebtoken",
+        "version": "0.4.0",
+        "ecosystem": "npm"
+      },
+      "relationship": "direct",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/jsonwebtoken@0.4.0"
+      ],
+      "severity": "high",
+      "cvss": {
+        "score": 8.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N",
+        "source": "nvd"
+      },
+      "advisory_ids": [
+        "CVE-2022-23539"
+      ],
+      "fixed_version": "9.0.0",
+      "fixed_versions": [
+        "9.0.0"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "Versions `<=8.5.1` of `jsonwebtoken` library could be misconfigured so that legacy, insecure key types are used for signature verification. For example, DSA keys could be used with the RS256 algorithm. You are affected if you are using an algorithm and a key type other than a combination listed in the GitHub Security Advisory as unaffected. This issue has been fixed, please update to version 9.0.0. This version validates for asymmetric key type and algorithm combinations. Please refer to the above mentioned algorithm / key type combinations for the valid secure configuration. After updating to version 9.0.0, if you still intend to continue with signing or verifying tokens using invalid key type/algorithm value combinations, you\u2019ll need to set the `allowInvalidAsymmetricKeyTypes` option  to `true` in the `sign()` and/or `verify()` functions.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2022-23539"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "high",
+        "reason": "Severity high; fix available in 9.0.0"
+      }
+    },
+    {
+      "id": "F-CVE-013",
+      "type": "cve",
+      "title": "Verification Bypass",
+      "component": {
+        "purl": "pkg:npm/jsonwebtoken@0.4.0",
+        "name": "jsonwebtoken",
+        "version": "0.4.0",
+        "ecosystem": "npm"
+      },
+      "relationship": "direct",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/jsonwebtoken@0.4.0"
+      ],
+      "severity": "high",
+      "cvss": null,
+      "advisory_ids": [
+        "NSWG-ECO-17"
+      ],
+      "fixed_version": "4.2.2",
+      "fixed_versions": [
+        "4.2.2"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "It is possible for an attacker to bypass verification when \"a token digitally signed with an asymetric key (RS/ES family) of algorithms but instead the attacker send a token digitally signed with a symmetric algorithm (HS* family)\" [1]",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": null
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "high",
+        "reason": "Severity high; fix available in 4.2.2"
+      }
+    },
+    {
+      "id": "F-CVE-014",
+      "type": "cve",
+      "title": "Forgeable Public/Private Tokens",
+      "component": {
+        "purl": "pkg:npm/jws@0.2.6",
+        "name": "jws",
+        "version": "0.2.6",
+        "ecosystem": "npm"
+      },
+      "relationship": "transitive",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/jsonwebtoken@0.4.0",
+        "pkg:npm/jws@0.2.6"
+      ],
+      "severity": "high",
+      "cvss": {
+        "score": 8.7,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:N",
+        "source": "ghsa"
+      },
+      "advisory_ids": [
+        "CVE-2016-1000223"
+      ],
+      "fixed_version": "3.0.0",
+      "fixed_versions": [
+        "3.0.0"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "Since \"algorithm\" isn't enforced in `jws.verify()`, a malicious user could choose what algorithm is sent to the server. If the server is expecting RSA but is sent HMAC-SHA with RSA's public key, the server will think the public key is actually an HMAC private key. This could be used to forge any data an attacker wants.\n\nIn addition, there is the `none` algorithm to be concerned about.  In versions prior to 3.0.0, verification of the token could be bypassed when the `alg` field is set to `none`.\n\n*Edit ( 7/29/16 ): A previous version of this advisory incorrectly stated that the vulnerability was patched in version 2.0.0 instead of 3.0.0. The advisory has been updated to reflect this new information. Thanks to Fabien Catteau for reporting the error.*",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2016-1000223"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "high",
+        "reason": "Severity high; fix available in 3.0.0"
+      }
+    },
+    {
+      "id": "F-CVE-015",
+      "type": "cve",
+      "title": "node-jws: auth0/node-jws: Improper signature verification in HS256 algorithm",
+      "component": {
+        "purl": "pkg:npm/jws@0.2.6",
+        "name": "jws",
+        "version": "0.2.6",
+        "ecosystem": "npm"
+      },
+      "relationship": "transitive",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/jsonwebtoken@0.4.0",
+        "pkg:npm/jws@0.2.6"
+      ],
+      "severity": "high",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+        "source": "ghsa"
+      },
+      "advisory_ids": [
+        "CVE-2025-65945"
+      ],
+      "fixed_version": "3.2.3",
+      "fixed_versions": [
+        "3.2.3",
+        "4.0.1"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "auth0/node-jws is a JSON Web Signature implementation for Node.js. In versions 3.2.2 and earlier and version 4.0.0, auth0/node-jws has an improper signature verification vulnerability when using the HS256 algorithm under specific conditions. Applications are affected when they use the jws.createVerify() function for HMAC algorithms and use user-provided data from the JSON Web Signature protected header or payload in HMAC secret lookup routines, which can allow attackers to bypass signature verification. This issue has been patched in versions 3.2.3 and 4.0.1.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2025-65945"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "high",
+        "reason": "Severity high; fix available in 3.2.3"
+      }
+    },
+    {
+      "id": "F-CVE-016",
+      "type": "cve",
+      "title": "lodash: Prototype pollution in utilities function",
+      "component": {
+        "purl": "pkg:npm/lodash@2.4.2",
+        "name": "lodash",
+        "version": "2.4.2",
+        "ecosystem": "npm"
+      },
+      "relationship": "transitive",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/sanitize-html@1.4.2",
+        "pkg:npm/lodash@2.4.2"
+      ],
+      "severity": "high",
+      "cvss": {
+        "score": 5.6,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L",
+        "source": "nvd"
+      },
+      "advisory_ids": [
+        "CVE-2018-16487"
+      ],
+      "fixed_version": "4.17.11",
+      "fixed_versions": [
+        "4.17.11"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "A prototype pollution vulnerability was found in lodash <4.17.11 where the functions merge, mergeWith, and defaultsDeep can be tricked into adding or modifying properties of Object.prototype.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2018-16487"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "high",
+        "reason": "Severity high; fix available in 4.17.11"
+      }
+    },
+    {
+      "id": "F-CVE-017",
+      "type": "cve",
+      "title": "nodejs-lodash: command injection via template",
+      "component": {
+        "purl": "pkg:npm/lodash@2.4.2",
+        "name": "lodash",
+        "version": "2.4.2",
+        "ecosystem": "npm"
+      },
+      "relationship": "transitive",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/sanitize-html@1.4.2",
+        "pkg:npm/lodash@2.4.2"
+      ],
+      "severity": "high",
+      "cvss": {
+        "score": 7.2,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+        "source": "nvd"
+      },
+      "advisory_ids": [
+        "CVE-2021-23337"
+      ],
+      "fixed_version": "4.17.21",
+      "fixed_versions": [
+        "4.17.21"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "Lodash versions prior to 4.17.21 are vulnerable to Command Injection via the template function.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2021-23337"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "high",
+        "reason": "Severity high; fix available in 4.17.21"
+      }
+    },
+    {
+      "id": "F-CVE-018",
+      "type": "cve",
+      "title": "nodejs-moment: Regular expression denial of service",
+      "component": {
+        "purl": "pkg:npm/moment@2.0.0",
+        "name": "moment",
+        "version": "2.0.0",
+        "ecosystem": "npm"
+      },
+      "relationship": "transitive",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/express-jwt@0.1.3",
+        "pkg:npm/jsonwebtoken@0.1.0",
+        "pkg:npm/moment@2.0.0"
+      ],
+      "severity": "high",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "source": "nvd"
+      },
+      "advisory_ids": [
+        "CVE-2017-18214"
+      ],
+      "fixed_version": "2.19.3",
+      "fixed_versions": [
+        "2.19.3"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "The moment module before 2.19.3 for Node.js is prone to a regular expression denial of service via a crafted date string, a different vulnerability than CVE-2016-4055.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2017-18214"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "high",
+        "reason": "Severity high; fix available in 2.19.3"
+      }
+    },
+    {
+      "id": "F-CVE-019",
+      "type": "cve",
+      "title": "Moment.js: Path traversal  in moment.locale",
+      "component": {
+        "purl": "pkg:npm/moment@2.0.0",
+        "name": "moment",
+        "version": "2.0.0",
+        "ecosystem": "npm"
+      },
+      "relationship": "transitive",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/express-jwt@0.1.3",
+        "pkg:npm/jsonwebtoken@0.1.0",
+        "pkg:npm/moment@2.0.0"
+      ],
+      "severity": "high",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+        "source": "nvd"
+      },
+      "advisory_ids": [
+        "CVE-2022-24785"
+      ],
+      "fixed_version": "2.29.2",
+      "fixed_versions": [
+        "2.29.2"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "Moment.js is a JavaScript date library for parsing, validating, manipulating, and formatting dates. A path traversal vulnerability impacts npm (server) users of Moment.js between versions 1.0.1 and 2.29.1, especially if a user-provided locale string is directly used to switch moment locale. This problem is patched in 2.29.2, and the patch can be applied to all affected versions. As a workaround, sanitize the user-provided locale name before passing it to Moment.js.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2022-24785"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "high",
+        "reason": "Severity high; fix available in 2.29.2"
+      }
+    },
+    {
+      "id": "F-CVE-020",
+      "type": "cve",
+      "title": "sanitize-html: insecure global regular expression replacement logic may lead to ReDoS",
+      "component": {
+        "purl": "pkg:npm/sanitize-html@1.4.2",
+        "name": "sanitize-html",
+        "version": "1.4.2",
+        "ecosystem": "npm"
+      },
+      "relationship": "direct",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/sanitize-html@1.4.2"
+      ],
+      "severity": "high",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "source": "nvd"
+      },
+      "advisory_ids": [
+        "CVE-2022-25887"
+      ],
+      "fixed_version": "2.7.1",
+      "fixed_versions": [
+        "2.7.1"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "The package sanitize-html before 2.7.1 are vulnerable to Regular Expression Denial of Service (ReDoS) due to insecure global regular expression replacement logic of HTML comment removal.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2022-25887"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "high",
+        "reason": "Severity high; fix available in 2.7.1"
+      }
+    },
+    {
+      "id": "F-CVE-021",
+      "type": "cve",
+      "title": "node-tar: tar: node-tar: Arbitrary file overwrite and symlink poisoning via unsanitized linkpaths in archives",
+      "component": {
+        "purl": "pkg:npm/tar@6.2.1",
+        "name": "tar",
+        "version": "6.2.1",
+        "ecosystem": "npm"
+      },
+      "relationship": "transitive",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/sqlite3@5.1.7",
+        "pkg:npm/tar@6.2.1"
+      ],
+      "severity": "high",
+      "cvss": {
+        "score": 6.1,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:L/A:N",
+        "source": "nvd"
+      },
+      "advisory_ids": [
+        "CVE-2026-23745"
+      ],
+      "fixed_version": "7.5.3",
+      "fixed_versions": [
+        "7.5.3"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "node-tar is a Tar for Node.js. The node-tar library (<= 7.5.2) fails to sanitize the linkpath of Link (hardlink) and SymbolicLink entries when preservePaths is false (the default secure behavior). This allows malicious archives to bypass the extraction root restriction, leading to Arbitrary File Overwrite via hardlinks and Symlink Poisoning via absolute symlink targets. This vulnerability is fixed in 7.5.3.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2026-23745"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "high",
+        "reason": "Severity high; fix available in 7.5.3"
+      }
+    },
+    {
+      "id": "F-CVE-022",
+      "type": "cve",
+      "title": "node-tar: tar: node-tar: Arbitrary file overwrite via Unicode path collision race condition",
+      "component": {
+        "purl": "pkg:npm/tar@6.2.1",
+        "name": "tar",
+        "version": "6.2.1",
+        "ecosystem": "npm"
+      },
+      "relationship": "transitive",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/sqlite3@5.1.7",
+        "pkg:npm/tar@6.2.1"
+      ],
+      "severity": "high",
+      "cvss": {
+        "score": 5.9,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N",
+        "source": "nvd"
+      },
+      "advisory_ids": [
+        "CVE-2026-23950"
+      ],
+      "fixed_version": "7.5.4",
+      "fixed_versions": [
+        "7.5.4"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "node-tar,a Tar for Node.js, has a race condition vulnerability in versions up to and including 7.5.3. This is due to an incomplete handling of Unicode path collisions in the `path-reservations` system. On case-insensitive or normalization-insensitive filesystems (such as macOS APFS, In which it has been tested), the library fails to lock colliding paths (e.g., `\u00df` and `ss`), allowing them to be processed in parallel. This bypasses the library's internal concurrency safeguards and permits Symlink Poisoning attacks via race conditions. The library uses a `PathReservations` system to ensure that metadata checks and file operations for the same path are serialized. This prevents race conditions where one entry might clobber another concurrently. This is a Race Condition which enables Arbitrary File Overwrite. This vulnerability affects users and systems using node-tar on macOS (APFS/HFS+). Because of using `NFD` Unicode normalization (in which `\u00df` and `ss` are different), conflicting paths do not have their order properly preserved under filesystems that ignore Unicode normalization (e.g., APFS (in which `\u00df` causes an inode collision with `ss`)). This enables an attacker to circumvent internal parallelization locks (`PathReservations`) using conflicting filenames within a malicious tar archive. The patch in version 7.5.4 updates `path-reservations.js` to use a normalization form that matches the target filesystem's behavior (e.g., `NFKD`), followed by first `toLocaleLowerCase('en')` and then `toLocaleUpperCase('en')`. As a workaround, users who cannot upgrade promptly, and who are programmatically using `node-tar` to extract arbitrary tarball data should filter out all `SymbolicLink` entries (as npm does) to defend against arbitrary file writes via this file system entry name collision issue.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2026-23950"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "high",
+        "reason": "Severity high; fix available in 7.5.4"
+      }
+    },
+    {
+      "id": "F-CVE-023",
+      "type": "cve",
+      "title": "node-tar: tar: node-tar: Arbitrary file creation via path traversal bypass in hardlink security check",
+      "component": {
+        "purl": "pkg:npm/tar@6.2.1",
+        "name": "tar",
+        "version": "6.2.1",
+        "ecosystem": "npm"
+      },
+      "relationship": "transitive",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/sqlite3@5.1.7",
+        "pkg:npm/tar@6.2.1"
+      ],
+      "severity": "high",
+      "cvss": {
+        "score": 8.2,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:L/A:N",
+        "source": "ghsa"
+      },
+      "advisory_ids": [
+        "CVE-2026-24842"
+      ],
+      "fixed_version": "7.5.7",
+      "fixed_versions": [
+        "7.5.7"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "node-tar,a Tar for Node.js, contains a vulnerability in versions prior to 7.5.7 where the security check for hardlink entries uses different path resolution semantics than the actual hardlink creation logic. This mismatch allows an attacker to craft a malicious TAR archive that bypasses path traversal protections and creates hardlinks to arbitrary files outside the extraction directory. Version 7.5.7 contains a fix for the issue.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2026-24842"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "high",
+        "reason": "Severity high; fix available in 7.5.7"
+      }
+    },
+    {
+      "id": "F-CVE-024",
+      "type": "cve",
+      "title": "node-tar: node-tar: Arbitrary file read/write via malicious archive hardlink creation",
+      "component": {
+        "purl": "pkg:npm/tar@6.2.1",
+        "name": "tar",
+        "version": "6.2.1",
+        "ecosystem": "npm"
+      },
+      "relationship": "transitive",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/sqlite3@5.1.7",
+        "pkg:npm/tar@6.2.1"
+      ],
+      "severity": "high",
+      "cvss": {
+        "score": 7.1,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:N",
+        "source": "nvd"
+      },
+      "advisory_ids": [
+        "CVE-2026-26960"
+      ],
+      "fixed_version": "7.5.8",
+      "fixed_versions": [
+        "7.5.8"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "node-tar is a full-featured Tar for Node.js. When using default options in versions 7.5.7 and below, an attacker-controlled archive can create a hardlink inside the extraction directory that points to a file outside the extraction root, enabling arbitrary file read and write as the extracting user. Severity is high because the primitive bypasses path protections and turns archive extraction into a direct filesystem access primitive. This issue has been fixed in version 7.5.8.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2026-26960"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "high",
+        "reason": "Severity high; fix available in 7.5.8"
+      }
+    },
+    {
+      "id": "F-CVE-025",
+      "type": "cve",
+      "title": "node-tar: hardlink path traversal via drive-relative linkpath",
+      "component": {
+        "purl": "pkg:npm/tar@6.2.1",
+        "name": "tar",
+        "version": "6.2.1",
+        "ecosystem": "npm"
+      },
+      "relationship": "transitive",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/sqlite3@5.1.7",
+        "pkg:npm/tar@6.2.1"
+      ],
+      "severity": "high",
+      "cvss": {
+        "score": 6.3,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:C/C:N/I:H/A:N",
+        "source": "nvd"
+      },
+      "advisory_ids": [
+        "CVE-2026-29786"
+      ],
+      "fixed_version": "7.5.10",
+      "fixed_versions": [
+        "7.5.10"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "node-tar is a full-featured Tar for Node.js. Prior to version 7.5.10, tar can be tricked into creating a hardlink that points outside the extraction directory by using a drive-relative link target such as C:../target.txt, which enables file overwrite outside cwd during normal tar.x() extraction. This issue has been patched in version 7.5.10.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2026-29786"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "high",
+        "reason": "Severity high; fix available in 7.5.10"
+      }
+    },
+    {
+      "id": "F-CVE-026",
+      "type": "cve",
+      "title": "tar: tar: File overwrite via drive-relative symlink traversal",
+      "component": {
+        "purl": "pkg:npm/tar@6.2.1",
+        "name": "tar",
+        "version": "6.2.1",
+        "ecosystem": "npm"
+      },
+      "relationship": "transitive",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/sqlite3@5.1.7",
+        "pkg:npm/tar@6.2.1"
+      ],
+      "severity": "high",
+      "cvss": {
+        "score": 5.5,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N",
+        "source": "nvd"
+      },
+      "advisory_ids": [
+        "CVE-2026-31802"
+      ],
+      "fixed_version": "7.5.11",
+      "fixed_versions": [
+        "7.5.11"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "node-tar is a full-featured Tar for Node.js. Prior to version 7.5.11, tar (npm) can be tricked into creating a symlink that points outside the extraction directory by using a drive-relative symlink target such as C:../../../target.txt, which enables file overwrite outside cwd during normal tar.x() extraction. This vulnerability is fixed in 7.5.11.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2026-31802"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "high",
+        "reason": "Severity high; fix available in 7.5.11"
+      }
+    },
+    {
+      "id": "F-CVE-027",
+      "type": "cve",
+      "title": "tar: Node-tar: Denial of Service via malformed tar archive header",
+      "component": {
+        "purl": "pkg:npm/tar@6.2.1",
+        "name": "tar",
+        "version": "6.2.1",
+        "ecosystem": "npm"
+      },
+      "relationship": "transitive",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/sqlite3@5.1.7",
+        "pkg:npm/tar@6.2.1"
+      ],
+      "severity": "high",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "source": "nvd"
+      },
+      "advisory_ids": [
+        "CVE-2026-59874"
+      ],
+      "fixed_version": "7.5.18",
+      "fixed_versions": [
+        "7.5.18"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "node-tar is a tar archive manipulation library for Node.js. Prior to 7.5.18, tar.replace accepts a checksum-valid tar header with a negative base-256 encoded entry size, causing the archive scanner to make no progress while repeatedly parsing the same header. This issue is fixed in version 7.5.18.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2026-59874"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "high",
+        "reason": "Severity high; fix available in 7.5.18"
+      }
+    },
+    {
+      "id": "F-CVE-028",
+      "type": "cve",
+      "title": "tar: node-tar: Denial of Service via crafted long-path tar archive",
+      "component": {
+        "purl": "pkg:npm/tar@6.2.1",
+        "name": "tar",
+        "version": "6.2.1",
+        "ecosystem": "npm"
+      },
+      "relationship": "transitive",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/sqlite3@5.1.7",
+        "pkg:npm/tar@6.2.1"
+      ],
+      "severity": "high",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "source": "ghsa"
+      },
+      "advisory_ids": [
+        "CVE-2026-73566"
+      ],
+      "fixed_version": "7.5.21",
+      "fixed_versions": [
+        "7.5.21"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "node-tar is a tar archive manipulation library for Node.js. Prior to 7.5.21, node-tar's filesFilter in src/list.ts uses the recursive mapHas helper to walk an archive entry path upward with path.dirname() and no segment cap when tar.t(...) or tar.x(...) receives a non-empty member-selection list. A crafted GNU L or PAX x long-path header with thousands of slash-separated segments reaches this.filter(entry.path, entry) in Parser[CONSUMEHEADER] in src/parse.ts before Unpack[CHECKPATH] applies maxDepth, causing an uncatchable RangeError stack overflow that terminates asynchronous and streaming Node.js consumers. This issue is fixed in version 7.5.21.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2026-73566"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "high",
+        "reason": "Severity high; fix available in 7.5.21"
+      }
+    },
+    {
+      "id": "F-CVE-029",
+      "type": "cve",
+      "title": "ws: ws: Denial of Service via memory exhaustion from small WebSocket fragments",
+      "component": {
+        "purl": "pkg:npm/ws@8.18.0",
+        "name": "ws",
+        "version": "8.18.0",
+        "ecosystem": "npm"
+      },
+      "relationship": "transitive",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/ethers@5.8.0",
+        "pkg:npm/%40ethersproject/providers@5.8.0",
+        "pkg:npm/ws@8.18.0"
+      ],
+      "severity": "high",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "source": "ghsa"
+      },
+      "advisory_ids": [
+        "CVE-2026-48779"
+      ],
+      "fixed_version": "8.21.0",
+      "fixed_versions": [
+        "5.2.5",
+        "6.2.4",
+        "7.5.11",
+        "8.21.0"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "ws is an open source WebSocket client and server for Node.js. All versions from 1.1.0 up to (but not including) 5.2.5, from 6.0.0 up to 6.2.4, from 7.0.0 up to 7.5.11, and from 8.0.0 up to 8.21.0 are affected by a memory exhaustion DoS vulnerability. A peer can send a high volume of exceptionally small fragments and data chunks, with modest network traffic, to force the remote peer into allocating and holding structural wrappers that consume far more memory than the default documented message-size limit, leading to process termination due to OOM. This issue has been fixed in versions 5.2.5, 6.2.4, 7.5.11, and 8.21.0.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "frontend/package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2026-48779"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "high",
+        "reason": "Severity high; fix available in 8.21.0"
+      }
+    },
+    {
+      "id": "F-CVE-030",
+      "type": "cve",
+      "title": "Out-of-bounds Read in base64url",
+      "component": {
+        "purl": "pkg:npm/base64url@0.0.6",
+        "name": "base64url",
+        "version": "0.0.6",
+        "ecosystem": "npm"
+      },
+      "relationship": "transitive",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/jsonwebtoken@0.4.0",
+        "pkg:npm/jws@0.2.6",
+        "pkg:npm/base64url@0.0.6"
+      ],
+      "severity": "medium",
+      "cvss": null,
+      "advisory_ids": [
+        "GHSA-rvg8-pwq2-xj7q"
+      ],
+      "fixed_version": "3.0.0",
+      "fixed_versions": [
+        "3.0.0"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "Versions of `base64url` before 3.0.0 are vulnerable to to out-of-bounds reads as it allocates uninitialized Buffers when number is passed in input on Node.js 4.x and below.\n\n\n## Recommendation\n\nUpdate to version 3.0.0 or later.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://github.com/advisories/GHSA-rvg8-pwq2-xj7q"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "medium",
+        "reason": "Severity medium; fix available in 3.0.0"
+      }
+    },
+    {
+      "id": "F-CVE-031",
+      "type": "cve",
+      "title": "file-type: file-type: Denial of Service due to infinite loop in ASF file parsing",
+      "component": {
+        "purl": "pkg:npm/file-type@16.5.4",
+        "name": "file-type",
+        "version": "16.5.4",
+        "ecosystem": "npm"
+      },
+      "relationship": "direct",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/file-type@16.5.4"
+      ],
+      "severity": "medium",
+      "cvss": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+        "source": "ghsa"
+      },
+      "advisory_ids": [
+        "CVE-2026-31808"
+      ],
+      "fixed_version": "21.3.1",
+      "fixed_versions": [
+        "21.3.1"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "file-type detects the file type of a file, stream, or data. Prior to 21.3.1, a denial of service vulnerability exists in the ASF (WMV/WMA) file type detection parser. When parsing a crafted input where an ASF sub-header has a size field of zero, the parser enters an infinite loop. The payload value becomes negative (-24), causing tokenizer.ignore(payload) to move the read position backwards, so the same sub-header is read repeatedly forever. Any application that uses file-type to detect the type of untrusted/attacker-controlled input is affected. An attacker can stall the Node.js event loop with a 55-byte payload. Fixed in version 21.3.1.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2026-31808"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "medium",
+        "reason": "Severity medium; fix available in 21.3.1"
+      }
+    },
+    {
+      "id": "F-CVE-032",
+      "type": "cve",
+      "title": "hbs: Insertion of Sensitive Information into Externally-Accessible File or Directory and Exposure of Sensitive Information to an Unauthorized Actor",
+      "component": {
+        "purl": "pkg:npm/hbs@4.4.0",
+        "name": "hbs",
+        "version": "4.4.0",
+        "ecosystem": "npm"
+      },
+      "relationship": "direct",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/hbs@4.4.0"
+      ],
+      "severity": "medium",
+      "cvss": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+        "source": "nvd"
+      },
+      "advisory_ids": [
+        "CVE-2021-32822"
+      ],
+      "fixed_version": null,
+      "fixed_versions": [],
+      "fix_available": false,
+      "status": "affected",
+      "description": "The npm hbs package is an Express view engine wrapper for Handlebars. Depending on usage, users of hbs may be vulnerable to a file disclosure vulnerability. There is currently no patch for this vulnerability. hbs mixes pure template data with engine configuration options through the Express render API. By overwriting internal configuration options a file disclosure vulnerability may be triggered in downstream applications. For an example PoC see the referenced GHSL-2021-020.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2021-32822"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "medium",
+        "reason": "Severity medium; no fix available"
+      }
+    },
+    {
+      "id": "F-CVE-033",
+      "type": "cve",
+      "title": "jsonwebtoken: Insecure default algorithm in jwt.verify() could lead to signature validation bypass",
+      "component": {
+        "purl": "pkg:npm/jsonwebtoken@0.1.0",
+        "name": "jsonwebtoken",
+        "version": "0.1.0",
+        "ecosystem": "npm"
+      },
+      "relationship": "transitive",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/express-jwt@0.1.3",
+        "pkg:npm/jsonwebtoken@0.1.0"
+      ],
+      "severity": "medium",
+      "cvss": {
+        "score": 7.6,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:H/A:L",
+        "source": "nvd"
+      },
+      "advisory_ids": [
+        "CVE-2022-23540"
+      ],
+      "fixed_version": "9.0.0",
+      "fixed_versions": [
+        "9.0.0"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "In versions `<=8.5.1` of `jsonwebtoken` library, lack of algorithm definition in the `jwt.verify()` function can lead to signature validation bypass due to defaulting to the `none` algorithm for signature verification. Users are affected if you do not specify algorithms in the `jwt.verify()` function. This issue has been fixed, please update to version 9.0.0 which removes the default support for the none algorithm in the `jwt.verify()` method. There will be no impact, if you update to version 9.0.0 and you don\u2019t need to allow for the `none` algorithm. If you need 'none' algorithm, you have to explicitly specify that in `jwt.verify()` options.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2022-23540"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "medium",
+        "reason": "Severity medium; fix available in 9.0.0"
+      }
+    },
+    {
+      "id": "F-CVE-034",
+      "type": "cve",
+      "title": "jsonwebtoken: Insecure implementation of key retrieval function could lead to Forgeable Public/Private Tokens from RSA to HMAC",
+      "component": {
+        "purl": "pkg:npm/jsonwebtoken@0.1.0",
+        "name": "jsonwebtoken",
+        "version": "0.1.0",
+        "ecosystem": "npm"
+      },
+      "relationship": "transitive",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/express-jwt@0.1.3",
+        "pkg:npm/jsonwebtoken@0.1.0"
+      ],
+      "severity": "medium",
+      "cvss": {
+        "score": 6.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L",
+        "source": "nvd"
+      },
+      "advisory_ids": [
+        "CVE-2022-23541"
+      ],
+      "fixed_version": "9.0.0",
+      "fixed_versions": [
+        "9.0.0"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "jsonwebtoken is an implementation of JSON Web Tokens. Versions `<= 8.5.1` of `jsonwebtoken` library can be misconfigured so that passing a poorly implemented key retrieval function referring to the `secretOrPublicKey` argument from the readme link will result in incorrect verification of tokens. There is a possibility of using a different algorithm and key combination in verification, other than the one that was used to sign the tokens. Specifically, tokens signed with an asymmetric public key could be verified with a symmetric HS256 algorithm. This can lead to successful validation of  forged tokens. If your application is supporting usage of both symmetric key and asymmetric key in jwt.verify() implementation with the same key retrieval function. This issue has been patched, please update to version 9.0.0.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2022-23541"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "medium",
+        "reason": "Severity medium; fix available in 9.0.0"
+      }
+    },
+    {
+      "id": "F-CVE-035",
+      "type": "cve",
+      "title": "jsonwebtoken: Insecure default algorithm in jwt.verify() could lead to signature validation bypass",
+      "component": {
+        "purl": "pkg:npm/jsonwebtoken@0.4.0",
+        "name": "jsonwebtoken",
+        "version": "0.4.0",
+        "ecosystem": "npm"
+      },
+      "relationship": "direct",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/jsonwebtoken@0.4.0"
+      ],
+      "severity": "medium",
+      "cvss": {
+        "score": 7.6,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:H/A:L",
+        "source": "nvd"
+      },
+      "advisory_ids": [
+        "CVE-2022-23540"
+      ],
+      "fixed_version": "9.0.0",
+      "fixed_versions": [
+        "9.0.0"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "In versions `<=8.5.1` of `jsonwebtoken` library, lack of algorithm definition in the `jwt.verify()` function can lead to signature validation bypass due to defaulting to the `none` algorithm for signature verification. Users are affected if you do not specify algorithms in the `jwt.verify()` function. This issue has been fixed, please update to version 9.0.0 which removes the default support for the none algorithm in the `jwt.verify()` method. There will be no impact, if you update to version 9.0.0 and you don\u2019t need to allow for the `none` algorithm. If you need 'none' algorithm, you have to explicitly specify that in `jwt.verify()` options.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2022-23540"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "medium",
+        "reason": "Severity medium; fix available in 9.0.0"
+      }
+    },
+    {
+      "id": "F-CVE-036",
+      "type": "cve",
+      "title": "jsonwebtoken: Insecure implementation of key retrieval function could lead to Forgeable Public/Private Tokens from RSA to HMAC",
+      "component": {
+        "purl": "pkg:npm/jsonwebtoken@0.4.0",
+        "name": "jsonwebtoken",
+        "version": "0.4.0",
+        "ecosystem": "npm"
+      },
+      "relationship": "direct",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/jsonwebtoken@0.4.0"
+      ],
+      "severity": "medium",
+      "cvss": {
+        "score": 6.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L",
+        "source": "nvd"
+      },
+      "advisory_ids": [
+        "CVE-2022-23541"
+      ],
+      "fixed_version": "9.0.0",
+      "fixed_versions": [
+        "9.0.0"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "jsonwebtoken is an implementation of JSON Web Tokens. Versions `<= 8.5.1` of `jsonwebtoken` library can be misconfigured so that passing a poorly implemented key retrieval function referring to the `secretOrPublicKey` argument from the readme link will result in incorrect verification of tokens. There is a possibility of using a different algorithm and key combination in verification, other than the one that was used to sign the tokens. Specifically, tokens signed with an asymmetric public key could be verified with a symmetric HS256 algorithm. This can lead to successful validation of  forged tokens. If your application is supporting usage of both symmetric key and asymmetric key in jwt.verify() implementation with the same key retrieval function. This issue has been patched, please update to version 9.0.0.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2022-23541"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "medium",
+        "reason": "Severity medium; fix available in 9.0.0"
+      }
+    },
+    {
+      "id": "F-CVE-037",
+      "type": "cve",
+      "title": "moment.js: regular expression denial of service",
+      "component": {
+        "purl": "pkg:npm/moment@2.0.0",
+        "name": "moment",
+        "version": "2.0.0",
+        "ecosystem": "npm"
+      },
+      "relationship": "transitive",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/express-jwt@0.1.3",
+        "pkg:npm/jsonwebtoken@0.1.0",
+        "pkg:npm/moment@2.0.0"
+      ],
+      "severity": "medium",
+      "cvss": {
+        "score": 6.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+        "source": "nvd"
+      },
+      "advisory_ids": [
+        "CVE-2016-4055"
+      ],
+      "fixed_version": "2.11.2",
+      "fixed_versions": [
+        "2.11.2"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "The duration function in the moment package before 2.11.2 for Node.js allows remote attackers to cause a denial of service (CPU consumption) via a long string, aka a \"regular expression Denial of Service (ReDoS).\"",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2016-4055"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "medium",
+        "reason": "Severity medium; fix available in 2.11.2"
+      }
+    },
+    {
+      "id": "F-CVE-038",
+      "type": "cve",
+      "title": "Sandbox escape in notevil and argencoders-notevil",
+      "component": {
+        "purl": "pkg:npm/notevil@1.3.3",
+        "name": "notevil",
+        "version": "1.3.3",
+        "ecosystem": "npm"
+      },
+      "relationship": "direct",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/notevil@1.3.3"
+      ],
+      "severity": "medium",
+      "cvss": {
+        "score": 6.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N",
+        "source": "nvd"
+      },
+      "advisory_ids": [
+        "CVE-2021-23771"
+      ],
+      "fixed_version": null,
+      "fixed_versions": [],
+      "fix_available": false,
+      "status": "affected",
+      "description": "This affects all versions of package notevil; all versions of package argencoders-notevil. It is vulnerable to Sandbox Escape leading to Prototype pollution. The package fails to restrict access to the main context, allowing an attacker to add or modify an object's prototype. **Note:** This vulnerability derives from an incomplete fix in [SNYK-JS-NOTEVIL-608878](https://security.snyk.io/vuln/SNYK-JS-NOTEVIL-608878).",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2021-23771"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "medium",
+        "reason": "Severity medium; no fix available"
+      }
+    },
+    {
+      "id": "F-CVE-039",
+      "type": "cve",
+      "title": "XSS - Sanitization not applied recursively",
+      "component": {
+        "purl": "pkg:npm/sanitize-html@1.4.2",
+        "name": "sanitize-html",
+        "version": "1.4.2",
+        "ecosystem": "npm"
+      },
+      "relationship": "direct",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/sanitize-html@1.4.2"
+      ],
+      "severity": "medium",
+      "cvss": {
+        "score": 6.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "source": "nvd"
+      },
+      "advisory_ids": [
+        "CVE-2016-1000237"
+      ],
+      "fixed_version": "1.4.3",
+      "fixed_versions": [
+        "1.4.3"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "sanitize-html before 1.4.3 has XSS.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2016-1000237"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "medium",
+        "reason": "Severity medium; fix available in 1.4.3"
+      }
+    },
+    {
+      "id": "F-CVE-040",
+      "type": "cve",
+      "title": "Cross-Site Scripting in sanitize-html",
+      "component": {
+        "purl": "pkg:npm/sanitize-html@1.4.2",
+        "name": "sanitize-html",
+        "version": "1.4.2",
+        "ecosystem": "npm"
+      },
+      "relationship": "direct",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/sanitize-html@1.4.2"
+      ],
+      "severity": "medium",
+      "cvss": {
+        "score": 6.1,
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "source": "nvd"
+      },
+      "advisory_ids": [
+        "CVE-2017-16016"
+      ],
+      "fixed_version": "1.11.4",
+      "fixed_versions": [
+        "1.11.4"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "Sanitize-html is a library for scrubbing html input of malicious values. Versions 1.11.1 and below are vulnerable to cross site scripting (XSS) in certain scenarios: If allowed at least one nonTextTags, the result is a potential XSS vulnerability.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2017-16016"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "medium",
+        "reason": "Severity medium; fix available in 1.11.4"
+      }
+    },
+    {
+      "id": "F-CVE-041",
+      "type": "cve",
+      "title": "sanitize-html: sanitize-html cross site scripting",
+      "component": {
+        "purl": "pkg:npm/sanitize-html@1.4.2",
+        "name": "sanitize-html",
+        "version": "1.4.2",
+        "ecosystem": "npm"
+      },
+      "relationship": "direct",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/sanitize-html@1.4.2"
+      ],
+      "severity": "medium",
+      "cvss": {
+        "score": 6.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "source": "ghsa"
+      },
+      "advisory_ids": [
+        "CVE-2019-25225"
+      ],
+      "fixed_version": "2.0.0-beta",
+      "fixed_versions": [
+        "2.0.0-beta"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "`sanitize-html` prior to version 2.0.0-beta is vulnerable to Cross-site Scripting (XSS). The `sanitizeHtml()` function in `index.js` does not sanitize content when using the custom `transformTags` option, which is intended to convert attribute values into text. As a result, malicious input can be transformed into executable code.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2019-25225"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "medium",
+        "reason": "Severity medium; fix available in 2.0.0-beta"
+      }
+    },
+    {
+      "id": "F-CVE-042",
+      "type": "cve",
+      "title": "sanitize-html: improper handling of internationalized domain name (IDN) can lead to bypass hostname whitelist validation",
+      "component": {
+        "purl": "pkg:npm/sanitize-html@1.4.2",
+        "name": "sanitize-html",
+        "version": "1.4.2",
+        "ecosystem": "npm"
+      },
+      "relationship": "direct",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/sanitize-html@1.4.2"
+      ],
+      "severity": "medium",
+      "cvss": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+        "source": "nvd"
+      },
+      "advisory_ids": [
+        "CVE-2021-26539"
+      ],
+      "fixed_version": "2.3.1",
+      "fixed_versions": [
+        "2.3.1"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "Apostrophe Technologies sanitize-html before 2.3.1 does not properly handle internationalized domain name (IDN) which could allow an attacker to bypass hostname whitelist validation set by the \"allowedIframeHostnames\" option.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2021-26539"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "medium",
+        "reason": "Severity medium; fix available in 2.3.1"
+      }
+    },
+    {
+      "id": "F-CVE-043",
+      "type": "cve",
+      "title": "sanitize-html: improper validation of hostnames set by the \"allowedIframeHostnames\" option can lead to bypass hostname whitelist for iframe element",
+      "component": {
+        "purl": "pkg:npm/sanitize-html@1.4.2",
+        "name": "sanitize-html",
+        "version": "1.4.2",
+        "ecosystem": "npm"
+      },
+      "relationship": "direct",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/sanitize-html@1.4.2"
+      ],
+      "severity": "medium",
+      "cvss": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+        "source": "nvd"
+      },
+      "advisory_ids": [
+        "CVE-2021-26540"
+      ],
+      "fixed_version": "2.3.2",
+      "fixed_versions": [
+        "2.3.2"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "Apostrophe Technologies sanitize-html before 2.3.2 does not properly validate the hostnames set by the \"allowedIframeHostnames\" option when the \"allowIframeRelativeUrls\" is set to true, which allows attackers to bypass hostname whitelist for iframe element, related using an src value that starts with \"/\\\\example.com\".",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2021-26540"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "medium",
+        "reason": "Severity medium; fix available in 2.3.2"
+      }
+    },
+    {
+      "id": "F-CVE-044",
+      "type": "cve",
+      "title": "sanitize-html: Information Exposure when used on the backend",
+      "component": {
+        "purl": "pkg:npm/sanitize-html@1.4.2",
+        "name": "sanitize-html",
+        "version": "1.4.2",
+        "ecosystem": "npm"
+      },
+      "relationship": "direct",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/sanitize-html@1.4.2"
+      ],
+      "severity": "medium",
+      "cvss": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+        "source": "nvd"
+      },
+      "advisory_ids": [
+        "CVE-2024-21501"
+      ],
+      "fixed_version": "2.12.1",
+      "fixed_versions": [
+        "2.12.1"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "Versions of the package sanitize-html before 2.12.1 are vulnerable to Information Exposure when used on the backend and with the style attribute allowed, allowing enumeration of files in the system (including project dependencies). An attacker could exploit this vulnerability to gather details about the file system structure and dependencies of the targeted server.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2024-21501"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "medium",
+        "reason": "Severity medium; fix available in 2.12.1"
+      }
+    },
+    {
+      "id": "F-CVE-045",
+      "type": "cve",
+      "title": "sanitize-html: sanitize-html: HTML sanitization bypass via improper noscript tag handling",
+      "component": {
+        "purl": "pkg:npm/sanitize-html@1.4.2",
+        "name": "sanitize-html",
+        "version": "1.4.2",
+        "ecosystem": "npm"
+      },
+      "relationship": "direct",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/sanitize-html@1.4.2"
+      ],
+      "severity": "medium",
+      "cvss": {
+        "score": 4.7,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "source": "redhat"
+      },
+      "advisory_ids": [
+        "CVE-2026-113654"
+      ],
+      "fixed_version": "2.18.0",
+      "fixed_versions": [
+        "2.18.0"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "ApostropheCMS is an open-source Node.js content management system, and sanitize-html provides a simple HTML sanitizer with a clear API. Prior to sanitize-html 2.18.0, a non-default nonTextTags configuration that includes noscript can end its discard region early when htmlparser2 emits an implied ancestor close inside noscript. Because scripting-enabled browsers treat noscript content as raw text while the parser does not model that mode, content intended to remain inert can survive sanitization and render; the issue does not generalize to every default nonTextTags element. This issue is fixed in sanitize-html 2.18.0.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2026-113654"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "medium",
+        "reason": "Severity medium; fix available in 2.18.0"
+      }
+    },
+    {
+      "id": "F-CVE-046",
+      "type": "cve",
+      "title": "sanitize-html: sanitize-html: Cross-site scripting via unsafe meta refresh content attributes",
+      "component": {
+        "purl": "pkg:npm/sanitize-html@1.4.2",
+        "name": "sanitize-html",
+        "version": "1.4.2",
+        "ecosystem": "npm"
+      },
+      "relationship": "direct",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/sanitize-html@1.4.2"
+      ],
+      "severity": "medium",
+      "cvss": {
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
+        "source": "ghsa"
+      },
+      "advisory_ids": [
+        "CVE-2026-113661"
+      ],
+      "fixed_version": "2.18.0",
+      "fixed_versions": [
+        "2.18.0"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "ApostropheCMS is an open-source Node.js content management system, and sanitize-html provides a simple HTML sanitizer with a clear API. Prior to sanitize-html 2.18.0, a non-default configuration that allows meta refresh elements and their http-equiv and content attributes can retain unsafe script or redirect destinations embedded in the refresh content value. This issue is fixed in sanitize-html 2.18.0.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2026-113661"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "medium",
+        "reason": "Severity medium; fix available in 2.18.0"
+      }
+    },
+    {
+      "id": "F-CVE-047",
+      "type": "cve",
+      "title": "ApostropheCMS: Mutation-XSS / allowedTags bypass via literal `</textarea/>` solidus close",
+      "component": {
+        "purl": "pkg:npm/sanitize-html@1.4.2",
+        "name": "sanitize-html",
+        "version": "1.4.2",
+        "ecosystem": "npm"
+      },
+      "relationship": "direct",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/sanitize-html@1.4.2"
+      ],
+      "severity": "medium",
+      "cvss": {
+        "score": 6.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "source": "ghsa"
+      },
+      "advisory_ids": [
+        "CVE-2026-63670"
+      ],
+      "fixed_version": "2.17.6",
+      "fixed_versions": [
+        "2.17.6"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "ApostropheCMS is an open-source Node.js content management system. Prior to 2.17.6, sanitizeHtml() can pass disallowed executable markup through packages/sanitize-html/index.js when textarea or xmp is included in allowedTags because a literal solidus after the raw-text end-tag name is treated as text by htmlparser2 and the ontext handler emits that content without escaping, while a browser parses the following img onerror markup as active HTML. This issue is fixed in version 2.17.6.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2026-63670"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "medium",
+        "reason": "Severity medium; fix available in 2.17.6"
+      }
+    },
+    {
+      "id": "F-CVE-048",
+      "type": "cve",
+      "title": "Cross Site Scripting",
+      "component": {
+        "purl": "pkg:npm/sanitize-html@1.4.2",
+        "name": "sanitize-html",
+        "version": "1.4.2",
+        "ecosystem": "npm"
+      },
+      "relationship": "direct",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/sanitize-html@1.4.2"
+      ],
+      "severity": "medium",
+      "cvss": null,
+      "advisory_ids": [
+        "NSWG-ECO-154"
+      ],
+      "fixed_version": "1.11.4",
+      "fixed_versions": [
+        "1.11.4"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "Sanitize-html is a library for scrubbing html input of malicious values.\n\nVersions 1.11.1 and below are vulnerable to cross site scripting (XSS) in certain scenarios:\n\nIf allowed at least one nonTextTags, the result is a potential XSS vulnerability.\nPoC:\n\n```\nvar sanitizeHtml = require('sanitize-html');\n\nvar dirty = '!<textarea>&lt;/textarea&gt;<svg/onload=prompt`xs`&gt;</textarea>!';\nvar clean = sanitizeHtml(dirty, {\n    allowedTags: [ 'textarea' ]\n});\n\nconsole.log(clean);\n\n// !<textarea></textarea><svg/onload=prompt`xs`></textarea>!\n```",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": null
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "medium",
+        "reason": "Severity medium; fix available in 1.11.4"
+      }
+    },
+    {
+      "id": "F-CVE-049",
+      "type": "cve",
+      "title": "node-tar: node-tar: File smuggling due to inconsistent tar archive parsing",
+      "component": {
+        "purl": "pkg:npm/tar@6.2.1",
+        "name": "tar",
+        "version": "6.2.1",
+        "ecosystem": "npm"
+      },
+      "relationship": "transitive",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/sqlite3@5.1.7",
+        "pkg:npm/tar@6.2.1"
+      ],
+      "severity": "medium",
+      "cvss": {
+        "score": 5.5,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:N",
+        "source": "nvd"
+      },
+      "advisory_ids": [
+        "CVE-2026-53655"
+      ],
+      "fixed_version": "7.5.16",
+      "fixed_versions": [
+        "7.5.16"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "node-tar is a full-featured Tar for Node.js. Prior to 7.5.16, tar (node-tar) applies a PAX extended header's size= record (and other PAX overrides) to the next header entry of any type, including intermediary metadata headers such as a GNU long-name (L) or long-link (K) entry. Per POSIX pax, a PAX extended header (x) describes the next file entry, not the intermediary extension headers that may sit between the x header and the file it annotates. Because node-tar lets the PAX size override the byte length of an intervening L/K/x header, an attacker can desynchronize node-tar's stream cursor relative to every other mainstream tar implementation (GNU tar, libarchive/bsdtar, Python tarfile, and the now-fixed tar-rs / astral-tokio-tar). The result is a tar parser interpretation differential (CWE-436): a single crafted archive yields a different set of members under node-tar than under the reference tar tools. An attacker can use this to hide a member from one parser while it is visible to another, which defeats security tooling whose scanner and extractor disagree on archive contents (e.g. a malware/secret scanner that lists entries with one library while a downstream step extracts with another) This vulnerability is fixed in 7.5.16.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2026-53655"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "medium",
+        "reason": "Severity medium; fix available in 7.5.16"
+      }
+    },
+    {
+      "id": "F-CVE-050",
+      "type": "cve",
+      "title": "node-tar: node-tar: Denial of Service due to incorrect PAX path handling",
+      "component": {
+        "purl": "pkg:npm/tar@6.2.1",
+        "name": "tar",
+        "version": "6.2.1",
+        "ecosystem": "npm"
+      },
+      "relationship": "transitive",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/sqlite3@5.1.7",
+        "pkg:npm/tar@6.2.1"
+      ],
+      "severity": "medium",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "source": "nvd"
+      },
+      "advisory_ids": [
+        "CVE-2026-59871"
+      ],
+      "fixed_version": "7.5.18",
+      "fixed_versions": [
+        "7.5.18"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "node-tar is a tar archive manipulation library for Node.js. Prior to 7.5.18, node-tar coerces all-digit PAX path and linkpath values in src/pax.ts to JavaScript numbers, causing downstream path handling such as normalizeWindowsPath(entry.path).split('/') to throw an uncaught TypeError. This issue is fixed in version 7.5.18.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2026-59871"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "medium",
+        "reason": "Severity medium; fix available in 7.5.18"
+      }
+    },
+    {
+      "id": "F-CVE-051",
+      "type": "cve",
+      "title": "node-tar: node-tar: Denial of Service via crafted archive with NUL bytes in metadata",
+      "component": {
+        "purl": "pkg:npm/tar@6.2.1",
+        "name": "tar",
+        "version": "6.2.1",
+        "ecosystem": "npm"
+      },
+      "relationship": "transitive",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/sqlite3@5.1.7",
+        "pkg:npm/tar@6.2.1"
+      ],
+      "severity": "medium",
+      "cvss": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+        "source": "ghsa"
+      },
+      "advisory_ids": [
+        "CVE-2026-59875"
+      ],
+      "fixed_version": "7.5.17",
+      "fixed_versions": [
+        "7.5.17"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "node-tar is a tar archive manipulation library for Node.js. Prior to 7.5.17, node-tar does not strip NUL bytes from PAX path and linkpath records in src/pax.ts, allowing a crafted archive with values to reach fs.lstat or fs.open and terminate the process with an uncaught exception. This issue is fixed in version 7.5.17.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2026-59875"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "medium",
+        "reason": "Severity medium; fix available in 7.5.17"
+      }
+    },
+    {
+      "id": "F-CVE-052",
+      "type": "cve",
+      "title": "uuid: uuid: Out-of-bounds write vulnerability impacts data integrity and confidentiality",
+      "component": {
+        "purl": "pkg:npm/uuid@8.3.2",
+        "name": "uuid",
+        "version": "8.3.2",
+        "ecosystem": "npm"
+      },
+      "relationship": "transitive",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/sequelize@6.37.8",
+        "pkg:npm/uuid@8.3.2"
+      ],
+      "severity": "medium",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+        "source": "nvd"
+      },
+      "advisory_ids": [
+        "CVE-2026-41907"
+      ],
+      "fixed_version": "11.1.1",
+      "fixed_versions": [
+        "11.1.1",
+        "12.0.1",
+        "13.0.1"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "uuid is for the creation of RFC9562 (formerly RFC4122) UUIDs. Prior to 14.0.0, v3, v5, and v6 accept external output buffers but do not reject out-of-range writes (small buf or large offset). This allows silent partial writes into caller-provided buffers. This vulnerability is fixed in 14.0.0.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2026-41907"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "medium",
+        "reason": "Severity medium; fix available in 11.1.1"
+      }
+    },
+    {
+      "id": "F-CVE-053",
+      "type": "cve",
+      "title": "ws: ws: Uninitialized memory disclosure via `websocket.close()` with `TypedArray`",
+      "component": {
+        "purl": "pkg:npm/ws@8.18.0",
+        "name": "ws",
+        "version": "8.18.0",
+        "ecosystem": "npm"
+      },
+      "relationship": "transitive",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/ethers@5.8.0",
+        "pkg:npm/%40ethersproject/providers@5.8.0",
+        "pkg:npm/ws@8.18.0"
+      ],
+      "severity": "medium",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+        "source": "nvd"
+      },
+      "advisory_ids": [
+        "CVE-2026-45736"
+      ],
+      "fixed_version": "8.20.1",
+      "fixed_versions": [
+        "8.20.1"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "ws is an open source WebSocket client and server for Node.js. Prior to 8.20.1, the websocket.close() implementation is vulnerable to uninitialized memory disclosure when a TypedArray is passed as the reason argument. This vulnerability is fixed in 8.20.1.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "frontend/package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2026-45736"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "medium",
+        "reason": "Severity medium; fix available in 8.20.1"
+      }
+    },
+    {
+      "id": "F-CVE-054",
+      "type": "cve",
+      "title": "@tootallnate/once: @tootallnate/once: Denial of Service due to incorrect control flow scoping with AbortSignal",
+      "component": {
+        "purl": "pkg:npm/%40tootallnate/once@1.1.2",
+        "name": "@tootallnate/once",
+        "version": "1.1.2",
+        "ecosystem": "npm"
+      },
+      "relationship": "transitive",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/sqlite3@5.1.7",
+        "pkg:npm/node-gyp@8.4.1",
+        "pkg:npm/make-fetch-happen@9.1.0",
+        "pkg:npm/http-proxy-agent@4.0.1",
+        "pkg:npm/%40tootallnate/once@1.1.2"
+      ],
+      "severity": "low",
+      "cvss": {
+        "score": 3.3,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L",
+        "source": "ghsa"
+      },
+      "advisory_ids": [
+        "CVE-2026-3449"
+      ],
+      "fixed_version": "2.0.1",
+      "fixed_versions": [
+        "2.0.1",
+        "3.0.1"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "Versions of the package @tootallnate/once before 3.0.1 are vulnerable to Incorrect Control Flow Scoping in promise resolving when AbortSignal option is used. The Promise remains in a permanently pending state after the signal is aborted, causing any await or .then() usage to hang indefinitely. This can cause a control-flow leak that can lead to stalled requests, blocked workers, or degraded application availability.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2026-3449"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "low",
+        "reason": "Severity low; fix available in 2.0.1"
+      }
+    },
+    {
+      "id": "F-CVE-055",
+      "type": "cve",
+      "title": "elliptic: Key handling flaws in Elliptic",
+      "component": {
+        "purl": "pkg:npm/elliptic@6.6.1",
+        "name": "elliptic",
+        "version": "6.6.1",
+        "ecosystem": "npm"
+      },
+      "relationship": "transitive",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/ethers@5.8.0",
+        "pkg:npm/%40ethersproject/signing-key@5.8.0",
+        "pkg:npm/elliptic@6.6.1"
+      ],
+      "severity": "low",
+      "cvss": {
+        "score": 5.6,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L",
+        "source": "ghsa"
+      },
+      "advisory_ids": [
+        "CVE-2025-14505"
+      ],
+      "fixed_version": null,
+      "fixed_versions": [],
+      "fix_available": false,
+      "status": "affected",
+      "description": "The ECDSA implementation of the Elliptic package generates incorrect signatures if an interim value of 'k' (as computed based on step 3.2 of  RFC 6979 https://datatracker.ietf.org/doc/html/rfc6979 ) has leading zeros and is susceptible to cryptanalysis, which can lead to secret key exposure. This happens, because the byte-length of 'k' is incorrectly computed, resulting in its getting truncated during the computation. Legitimate transactions or communications will be broken as a result.\u00a0Furthermore, due to the nature of the fault, attackers could\u2013under certain conditions\u2013derive the secret key, if they could get their hands on both a faulty signature generated by a vulnerable version of Elliptic and a correct signature for the same inputs.\n\nThis issue affects all known versions of Elliptic (at the time of writing, versions less than or equal to 6.6.1).",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "frontend/package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2025-14505"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "low",
+        "reason": "Severity low; no fix available"
+      }
+    },
+    {
+      "id": "F-CVE-056",
+      "type": "cve",
+      "title": "lodash: Prototype pollution in utilities function",
+      "component": {
+        "purl": "pkg:npm/lodash@2.4.2",
+        "name": "lodash",
+        "version": "2.4.2",
+        "ecosystem": "npm"
+      },
+      "relationship": "transitive",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/sanitize-html@1.4.2",
+        "pkg:npm/lodash@2.4.2"
+      ],
+      "severity": "low",
+      "cvss": {
+        "score": 6.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N",
+        "source": "nvd"
+      },
+      "advisory_ids": [
+        "CVE-2018-3721"
+      ],
+      "fixed_version": "4.17.5",
+      "fixed_versions": [
+        "4.17.5"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "lodash node module before 4.17.5 suffers from a Modification of Assumed-Immutable Data (MAID) vulnerability via defaultsDeep, merge, and mergeWith functions, which allows a malicious user to modify the prototype of \"Object\" via __proto__, causing the addition or modification of an existing property that will exist on all objects.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2018-3721"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "low",
+        "reason": "Severity low; fix available in 4.17.5"
+      }
+    },
+    {
+      "id": "F-CVE-057",
+      "type": "cve",
+      "title": "messageformat has a prototype pollution vulnerability",
+      "component": {
+        "purl": "pkg:npm/messageformat@2.3.0",
+        "name": "messageformat",
+        "version": "2.3.0",
+        "ecosystem": "npm"
+      },
+      "relationship": "transitive",
+      "dependency_path": [
+        "pkg:npm/juice-shop@20.4.0",
+        "pkg:npm/i18n@0.11.1",
+        "pkg:npm/messageformat@2.3.0"
+      ],
+      "severity": "low",
+      "cvss": null,
+      "advisory_ids": [
+        "CVE-2025-57349"
+      ],
+      "fixed_version": "3.0.0-beta.0",
+      "fixed_versions": [
+        "3.0.0-beta.0"
+      ],
+      "fix_available": true,
+      "status": "fixed",
+      "description": "The messageformat package, an implementation of the Unicode MessageFormat 2 specification for JavaScript, is vulnerable to prototype pollution due to improper handling of message key paths in versions prior to 2.3.0. The flaw arises when processing nested message keys containing special characters (e.g., __proto__ ), which can lead to unintended modification of the JavaScript Object prototype. This vulnerability may allow a remote attacker to inject properties into the global object prototype via specially crafted message input, potentially causing denial of service or other undefined behaviors in applications using the affected component.",
+      "evidence": {
+        "tool": "trivy",
+        "tool_version": "0.76.2",
+        "scan_kind": "repo",
+        "source_file": "package-lock.json",
+        "raw_ref": "raw/trivy-repo.json",
+        "reference_url": "https://avd.aquasec.com/nvd/cve-2025-57349"
+      },
+      "verified": true,
+      "initial_risk": {
+        "level": "low",
+        "reason": "Severity low; fix available in 3.0.0-beta.0"
+      }
+    }
+  ]
+}
