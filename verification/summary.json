@@ -1,0 +1,27 @@
+{
+  "repository": "https://github.com/snyk-labs/nodejs-goof",
+  "scan_id": "7a261e9f6df6",
+  "unique_resolved_package_versions": 980,
+  "guardian_total_findings": 445,
+  "guardian_known_vulnerability_findings": 427,
+  "guardian_unique_package_advisory_pairs": 317,
+  "osv_unique_package_advisory_pairs": 317,
+  "counts": {
+    "TP": 317,
+    "FN_CANDIDATE": 2
+  },
+  "provisional_precision": 1.0,
+  "provisional_recall": 0.9937,
+  "unresolved_guardian_findings": [],
+  "osv_query_errors": 0,
+  "osv_advisory_detail_errors": [],
+  "limitations": [
+    "OSV is an independent advisory reference, not a complete ground truth.",
+    "FP_CANDIDATE and FN_CANDIDATE require manual adjudication.",
+    "Metrics count distinct ecosystem/package/version/advisory pairs, not file occurrences.",
+    "Different advisory aliases may lead to remaining duplicate matches.",
+    "Non-CVE findings (CI, typosquat, install scripts, backdoors) are excluded.",
+    "This checks the inventory from GuardianAI; missing dependencies cannot be measured.",
+    "OSV results are current, not a historical snapshot of the original scan."
+  ]
+}

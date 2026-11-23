@@ -1,0 +1,2 @@
+# Planted demonstration inventory
+This synthetic lockfile is a small educational graph, not an installable application or a complete Express dependency tree. The workflow and Dockerfile intentionally contain static policy violations. Do not install or execute this fixture. Known vulnerability results, when enabled, come from live OSV responses for the listed exact versions. All findings from the Demo button are marked planted.
