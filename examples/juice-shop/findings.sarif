@@ -1,0 +1,1599 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "supply-chain-guardian",
+          "version": "0.1.0",
+          "rules": [
+            {
+              "id": "VULN-KNOWN",
+              "name": "VULN-KNOWN",
+              "shortDescription": {
+                "text": "vulnerability"
+              }
+            },
+            {
+              "id": "CICD-UNPINNED-ACTION",
+              "name": "CICD-UNPINNED-ACTION",
+              "shortDescription": {
+                "text": "cicd"
+              }
+            },
+            {
+              "id": "CICD-PIPE-TO-SHELL",
+              "name": "CICD-PIPE-TO-SHELL",
+              "shortDescription": {
+                "text": "cicd"
+              }
+            },
+            {
+              "id": "IMAGE-UNTRUSTED-SOURCE",
+              "name": "IMAGE-UNTRUSTED-SOURCE",
+              "shortDescription": {
+                "text": "untrusted-image"
+              }
+            },
+            {
+              "id": "IMAGE-EOL",
+              "name": "IMAGE-EOL",
+              "shortDescription": {
+                "text": "untrusted-image"
+              }
+            },
+            {
+              "id": "IMAGE-MUTABLE-TAG",
+              "name": "IMAGE-MUTABLE-TAG",
+              "shortDescription": {
+                "text": "untrusted-image"
+              }
+            },
+            {
+              "id": "INSTALL-SCRIPT",
+              "name": "INSTALL-SCRIPT",
+              "shortDescription": {
+                "text": "install-script"
+              }
+            },
+            {
+              "id": "IMAGE-UNPINNED-TOOL",
+              "name": "IMAGE-UNPINNED-TOOL",
+              "shortDescription": {
+                "text": "untrusted-image"
+              }
+            },
+            {
+              "id": "IMAGE-NO-DIGEST",
+              "name": "IMAGE-NO-DIGEST",
+              "shortDescription": {
+                "text": "untrusted-image"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in crypto-js@3.3.0: crypto-js PBKDF2 1,000 times weaker than specified in 1993 and 1.3M times weaker than current standard | path: juice-shop@20.4.0-SNAPSHOT > pdfkit@0.11.0 > crypto-js@3.3.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "critical",
+            "guardianId": "GRD-2d0d24aad6"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in crypto-js@3.3.0: crypto-js: Insufficient Entropy in Cryptographic Secret Generation via Vulnerable CryptoJS Dependency Chain | path: juice-shop@20.4.0-SNAPSHOT > pdfkit@0.11.0 > crypto-js@3.3.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "critical",
+            "guardianId": "GRD-5ab3d5bccb"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in jsonwebtoken@0.1.0: Verification Bypass in jsonwebtoken | path: juice-shop@20.4.0-SNAPSHOT > express-jwt@0.1.3 > jsonwebtoken@0.1.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "critical",
+            "guardianId": "GRD-27658816a6"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in jsonwebtoken@0.4.0: Verification Bypass in jsonwebtoken | path: juice-shop@20.4.0-SNAPSHOT > jsonwebtoken@0.4.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "critical",
+            "guardianId": "GRD-2d7f8fdaa9"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in lodash@2.4.2: Prototype Pollution in lodash | path: juice-shop@20.4.0-SNAPSHOT > sanitize-html@1.4.2 > lodash@2.4.2"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "critical",
+            "guardianId": "GRD-a4254ed143"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in marsdb@0.6.11: Command Injection in marsdb | path: juice-shop@20.4.0-SNAPSHOT > marsdb@0.6.11"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "critical",
+            "guardianId": "GRD-b57ae0df1d"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in tar@6.2.1: node-tar: Decompression/parse DoS via unlimited input | path: juice-shop@20.4.0-SNAPSHOT > sqlite3@5.1.7 > tar@6.2.1"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "critical",
+            "guardianId": "GRD-29e67796f1"
+          }
+        },
+        {
+          "ruleId": "CICD-UNPINNED-ACTION",
+          "level": "error",
+          "message": {
+            "text": "GitHub Action calibreapp/image-actions: branch/unversioned ref 'main' (code changes on every run)"
+          },
+          "locations": [],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-46b77d7f63"
+          }
+        },
+        {
+          "ruleId": "CICD-PIPE-TO-SHELL",
+          "level": "error",
+          "message": {
+            "text": "Workflow pipes a downloaded script into a shell"
+          },
+          "locations": [],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-faa461971a"
+          }
+        },
+        {
+          "ruleId": "IMAGE-UNTRUSTED-SOURCE",
+          "level": "error",
+          "message": {
+            "text": "Image 'bkimminich/juice-shop' comes from a non-allowlisted publisher (docker.io)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "docker-compose.test.yml"
+                },
+                "region": {
+                  "startLine": 7
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-9d996a60f5"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in @cyclonedx/cyclonedx-npm@4.2.1: @cyclonedx/cyclonedx-npm: Shell Injection via Unsanitized --workspace Argument | path: juice-shop@20.4.0-SNAPSHOT > @cyclonedx/cyclonedx-npm@4.2.1"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-eff1a2b835"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in @cyclonedx/cyclonedx-npm@4.2.1: @cyclonedx/cyclonedx-npm: Shell Injection via Unsanitized --workspace Argument on Windows | path: juice-shop@20.4.0-SNAPSHOT > @cyclonedx/cyclonedx-npm@4.2.1"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-60b08f3779"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in express-jwt@0.1.3: Authorization bypass in express-jwt | path: juice-shop@20.4.0-SNAPSHOT > express-jwt@0.1.3"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-000db4f725"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in jsonwebtoken@0.1.0: jsonwebtoken unrestricted key type could lead to legacy keys usage  | path: juice-shop@20.4.0-SNAPSHOT > express-jwt@0.1.3 > jsonwebtoken@0.1.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-f30fc17d4a"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in jsonwebtoken@0.4.0: jsonwebtoken unrestricted key type could lead to legacy keys usage  | path: juice-shop@20.4.0-SNAPSHOT > jsonwebtoken@0.4.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-ec409d792d"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in jws@0.2.6: Forgeable Public/Private Tokens in jws | path: juice-shop@20.4.0-SNAPSHOT > jsonwebtoken@0.4.0 > jws@0.2.6"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-21ff3f02f2"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in jws@0.2.6: auth0/node-jws Improperly Verifies HMAC Signature | path: juice-shop@20.4.0-SNAPSHOT > jsonwebtoken@0.4.0 > jws@0.2.6"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-8c533f5a81"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in lodash@2.4.2: Command Injection in lodash | path: juice-shop@20.4.0-SNAPSHOT > sanitize-html@1.4.2 > lodash@2.4.2"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-f54abcfcae"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in lodash@2.4.2: Prototype Pollution in lodash | path: juice-shop@20.4.0-SNAPSHOT > sanitize-html@1.4.2 > lodash@2.4.2"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-95bed168b0"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in moment@2.0.0: Path Traversal: 'dir/../../filename' in moment.locale | path: juice-shop@20.4.0-SNAPSHOT > express-jwt@0.1.3 > jsonwebtoken@0.1.0 > moment@2.0.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-f9f7b41e3b"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in moment@2.0.0: Regular Expression Denial of Service in moment | path: juice-shop@20.4.0-SNAPSHOT > express-jwt@0.1.3 > jsonwebtoken@0.1.0 > moment@2.0.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-ac227d148c"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in sanitize-html@1.4.2: Sanitize-html Vulnerable To REDoS Attacks | path: juice-shop@20.4.0-SNAPSHOT > sanitize-html@1.4.2"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-f488b5ad0f"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in tar@6.2.1: Arbitrary File Read/Write via Hardlink Target Escape Through Symlink Chain in node-tar Extraction | path: juice-shop@20.4.0-SNAPSHOT > sqlite3@5.1.7 > tar@6.2.1"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-2945fd4159"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in tar@6.2.1: Race Condition in node-tar Path Reservations via Unicode Ligature Collisions on macOS APFS | path: juice-shop@20.4.0-SNAPSHOT > sqlite3@5.1.7 > tar@6.2.1"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-aa81ed47ab"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in tar@6.2.1: node-tar Symlink Path Traversal via Drive-Relative Linkpath | path: juice-shop@20.4.0-SNAPSHOT > sqlite3@5.1.7 > tar@6.2.1"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-b8d5a1975f"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in tar@6.2.1: node-tar Vulnerable to Arbitrary File Creation/Overwrite via Hardlink Path Traversal | path: juice-shop@20.4.0-SNAPSHOT > sqlite3@5.1.7 > tar@6.2.1"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-399c16e057"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in tar@6.2.1: node-tar is Vulnerable to Arbitrary File Overwrite and Symlink Poisoning via Insufficient Path Sanitization | path: juice-shop@20.4.0-SNAPSHOT > sqlite3@5.1.7 > tar@6.2.1"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-c54360c062"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in tar@6.2.1: node-tar: Negative tar entry size causes infinite loop in archive replace | path: juice-shop@20.4.0-SNAPSHOT > sqlite3@5.1.7 > tar@6.2.1"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-e9592c2979"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in tar@6.2.1: node-tar: Uncontrolled recursion in mapHas/filesFilter allows uncatchable stack-overflow DoS via crafted long-path tar w | path: juice-shop@20.4.0-SNAPSHOT > sqlite3@5.1.7 > tar@6.2.1"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-0f37244f8d"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in tar@6.2.1: tar has Hardlink Path Traversal via Drive-Relative Linkpath | path: juice-shop@20.4.0-SNAPSHOT > sqlite3@5.1.7 > tar@6.2.1"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-542423db49"
+          }
+        },
+        {
+          "ruleId": "CICD-UNPINNED-ACTION",
+          "level": "warning",
+          "message": {
+            "text": "GitHub Action coverallsapp/github-action: third-party action pinned to mutable tag 'v2'"
+          },
+          "locations": [],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-13ef80dcf2"
+          }
+        },
+        {
+          "ruleId": "CICD-UNPINNED-ACTION",
+          "level": "warning",
+          "message": {
+            "text": "GitHub Action peter-evans/create-pull-request: third-party action pinned to mutable tag 'v8'"
+          },
+          "locations": [],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-68aa098915"
+          }
+        },
+        {
+          "ruleId": "IMAGE-EOL",
+          "level": "warning",
+          "message": {
+            "text": "Base image node:20.19.2-bookworm is end-of-life (2026-04-30)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "infrastructure/Dockerfile"
+                },
+                "region": {
+                  "startLine": 6
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-0c0ba9db8c"
+          }
+        },
+        {
+          "ruleId": "IMAGE-EOL",
+          "level": "warning",
+          "message": {
+            "text": "Base image node:20.19.2-bookworm-slim is end-of-life (2026-04-30)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "infrastructure/Dockerfile"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-8a20a6dec8"
+          }
+        },
+        {
+          "ruleId": "IMAGE-MUTABLE-TAG",
+          "level": "warning",
+          "message": {
+            "text": "Image 'alpine' uses a mutable tag (implicit latest)"
+          },
+          "locations": [],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-53a57b3741"
+          }
+        },
+        {
+          "ruleId": "IMAGE-MUTABLE-TAG",
+          "level": "warning",
+          "message": {
+            "text": "Image 'bkimminich/juice-shop' uses a mutable tag (latest)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "docker-compose.test.yml"
+                },
+                "region": {
+                  "startLine": 7
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-99be4be03b"
+          }
+        },
+        {
+          "ruleId": "IMAGE-MUTABLE-TAG",
+          "level": "warning",
+          "message": {
+            "text": "Image 'gcr.io/distroless/nodejs24-debian13' uses a mutable tag (implicit latest)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "Dockerfile"
+                },
+                "region": {
+                  "startLine": 22
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-b20b764572"
+          }
+        },
+        {
+          "ruleId": "IMAGE-MUTABLE-TAG",
+          "level": "warning",
+          "message": {
+            "text": "Image 'juice-shop' uses a mutable tag (latest)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "infrastructure/docker-compose.yml"
+                },
+                "region": {
+                  "startLine": 21
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-ce993dc67e"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "warning",
+          "message": {
+            "text": "Known vulnerability in base64url@0.0.6: Out-of-bounds Read in base64url | path: juice-shop@20.4.0-SNAPSHOT > jsonwebtoken@0.4.0 > jws@0.2.6 > base64url@0.0.6"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-9f27d5d797"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "warning",
+          "message": {
+            "text": "Known vulnerability in file-type@16.5.4: file-type affected by infinite loop in ASF parser on malformed input with zero-size sub-header | path: juice-shop@20.4.0-SNAPSHOT > file-type@16.5.4"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-1ef8b63c28"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "warning",
+          "message": {
+            "text": "Known vulnerability in glob@10.5.0: Glob: AbortSignal cancellation bypass allows post-timeout filesystem traversal | path: juice-shop@20.4.0-SNAPSHOT > @cyclonedx/cyclonedx-npm@4.2.1 > libxmljs2@0.37.0 > node-gyp@11.5.0 > make-fetch-happen@14.0.3 > cacache@19.0.1 > glob@10.5.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-035c157e9c"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "warning",
+          "message": {
+            "text": "Known vulnerability in hbs@4.4.0: hbs: Insertion of Sensitive Information into Externally-Accessible File or Directory and Exposure of Sensitive Informati | path: juice-shop@20.4.0-SNAPSHOT > hbs@4.4.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-17dc05f63a"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "warning",
+          "message": {
+            "text": "Known vulnerability in jsonwebtoken@0.1.0: jsonwebtoken vulnerable to signature validation bypass due to insecure default algorithm in jwt.verify() | path: juice-shop@20.4.0-SNAPSHOT > express-jwt@0.1.3 > jsonwebtoken@0.1.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-3a0beadd6d"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "warning",
+          "message": {
+            "text": "Known vulnerability in jsonwebtoken@0.1.0: jsonwebtoken's insecure implementation of key retrieval function could lead to Forgeable Public/Private Tokens from RSA  | path: juice-shop@20.4.0-SNAPSHOT > express-jwt@0.1.3 > jsonwebtoken@0.1.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-bfd3f2d517"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "warning",
+          "message": {
+            "text": "Known vulnerability in jsonwebtoken@0.4.0: jsonwebtoken vulnerable to signature validation bypass due to insecure default algorithm in jwt.verify() | path: juice-shop@20.4.0-SNAPSHOT > jsonwebtoken@0.4.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-7646ef6cfd"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "warning",
+          "message": {
+            "text": "Known vulnerability in jsonwebtoken@0.4.0: jsonwebtoken's insecure implementation of key retrieval function could lead to Forgeable Public/Private Tokens from RSA  | path: juice-shop@20.4.0-SNAPSHOT > jsonwebtoken@0.4.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-d92934aba6"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "warning",
+          "message": {
+            "text": "Known vulnerability in lodash@2.4.2: Prototype Pollution in lodash | path: juice-shop@20.4.0-SNAPSHOT > sanitize-html@1.4.2 > lodash@2.4.2"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-23dff82a3e"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "warning",
+          "message": {
+            "text": "Known vulnerability in minimatch@9.0.9: minimatch has potential denial of service via globparts amplification | path: juice-shop@20.4.0-SNAPSHOT > @cyclonedx/cyclonedx-npm@4.2.1 > libxmljs2@0.37.0 > node-gyp@11.5.0 > make-fetch-happen@14.0.3 > cacache@19.0.1 > glob@10.5.0 > minimatch@9.0.9"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-8d4b8975db"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "warning",
+          "message": {
+            "text": "Known vulnerability in moment@2.0.0: Regular Expression Denial of Service in moment | path: juice-shop@20.4.0-SNAPSHOT > express-jwt@0.1.3 > jsonwebtoken@0.1.0 > moment@2.0.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-6c6abee780"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "warning",
+          "message": {
+            "text": "Known vulnerability in notevil@1.3.3: Sandbox escape in notevil and argencoders-notevil | path: juice-shop@20.4.0-SNAPSHOT > notevil@1.3.3"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-ddea97271f"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "warning",
+          "message": {
+            "text": "Known vulnerability in sanitize-html@1.4.2: ApostropheCMS sanitize-html: nonTextTags discard region ends early on an implied close, letting <noscript> content rende | path: juice-shop@20.4.0-SNAPSHOT > sanitize-html@1.4.2"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-befcc4a77b"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "warning",
+          "message": {
+            "text": "Known vulnerability in sanitize-html@1.4.2: ApostropheCMS: Incomplete CVE-2026-53606: `meta http-equiv=refresh` `content` still ships `javascript:` / `data:` URLs | path: juice-shop@20.4.0-SNAPSHOT > sanitize-html@1.4.2"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-b66e0194cc"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "warning",
+          "message": {
+            "text": "Known vulnerability in sanitize-html@1.4.2: ApostropheCMS: Mutation-XSS / allowedTags bypass via literal `</textarea/>` solidus close | path: juice-shop@20.4.0-SNAPSHOT > sanitize-html@1.4.2"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-bfca965251"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "warning",
+          "message": {
+            "text": "Known vulnerability in sanitize-html@1.4.2: Cross-Site Scripting in sanitize-html | path: juice-shop@20.4.0-SNAPSHOT > sanitize-html@1.4.2"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-28b884891a"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "warning",
+          "message": {
+            "text": "Known vulnerability in sanitize-html@1.4.2: Cross-Site Scripting in sanitize-html | path: juice-shop@20.4.0-SNAPSHOT > sanitize-html@1.4.2"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-4daae006ca"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "warning",
+          "message": {
+            "text": "Known vulnerability in sanitize-html@1.4.2: Improper Input Validation in sanitize-html | path: juice-shop@20.4.0-SNAPSHOT > sanitize-html@1.4.2"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-bd51fc8de8"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "warning",
+          "message": {
+            "text": "Known vulnerability in sanitize-html@1.4.2: Improper Input Validation in sanitize-html | path: juice-shop@20.4.0-SNAPSHOT > sanitize-html@1.4.2"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-b0e32746a8"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "warning",
+          "message": {
+            "text": "Known vulnerability in sanitize-html@1.4.2: sanitize-html Information Exposure vulnerability | path: juice-shop@20.4.0-SNAPSHOT > sanitize-html@1.4.2"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-48e427a2ff"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "warning",
+          "message": {
+            "text": "Known vulnerability in sanitize-html@1.4.2: sanitize-html is vulnerable to XSS through incomprehensive sanitization | path: juice-shop@20.4.0-SNAPSHOT > sanitize-html@1.4.2"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-442b903de7"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "warning",
+          "message": {
+            "text": "Known vulnerability in tar@6.2.1: node-tar applies PAX size override to intermediary GNU long-name/long-link headers, causing tar parser interpretation di | path: juice-shop@20.4.0-SNAPSHOT > sqlite3@5.1.7 > tar@6.2.1"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-fe2edc9c3d"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "warning",
+          "message": {
+            "text": "Known vulnerability in tar@6.2.1: node-tar: Process crash via PAX numeric path type confusion | path: juice-shop@20.4.0-SNAPSHOT > sqlite3@5.1.7 > tar@6.2.1"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-6dee96ffc4"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "warning",
+          "message": {
+            "text": "Known vulnerability in tar@6.2.1: node-tar: Uncaught Exception DoS via NUL byte in PAX path/linkpath records | path: juice-shop@20.4.0-SNAPSHOT > sqlite3@5.1.7 > tar@6.2.1"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-7145c614a4"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "warning",
+          "message": {
+            "text": "Known vulnerability in uuid@8.3.2: uuid: Missing buffer bounds check in v3/v5/v6 when buf is provided | path: juice-shop@20.4.0-SNAPSHOT > sequelize@6.37.8 > uuid@8.3.2"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-981fd74289"
+          }
+        },
+        {
+          "ruleId": "CICD-UNPINNED-ACTION",
+          "level": "note",
+          "message": {
+            "text": "GitHub Action actions/checkout: first-party action pinned to mutable tag 'v6'"
+          },
+          "locations": [],
+          "properties": {
+            "severity": "low",
+            "guardianId": "GRD-2c057c877d"
+          }
+        },
+        {
+          "ruleId": "CICD-UNPINNED-ACTION",
+          "level": "note",
+          "message": {
+            "text": "GitHub Action github/codeql-action/analyze: first-party action pinned to mutable tag 'v3'"
+          },
+          "locations": [],
+          "properties": {
+            "severity": "low",
+            "guardianId": "GRD-6fe5b806a1"
+          }
+        },
+        {
+          "ruleId": "CICD-UNPINNED-ACTION",
+          "level": "note",
+          "message": {
+            "text": "GitHub Action github/codeql-action/autobuild: first-party action pinned to mutable tag 'v3'"
+          },
+          "locations": [],
+          "properties": {
+            "severity": "low",
+            "guardianId": "GRD-52345dfecd"
+          }
+        },
+        {
+          "ruleId": "CICD-UNPINNED-ACTION",
+          "level": "note",
+          "message": {
+            "text": "GitHub Action github/codeql-action/init: first-party action pinned to mutable tag 'v3'"
+          },
+          "locations": [],
+          "properties": {
+            "severity": "low",
+            "guardianId": "GRD-32d4bb8f8d"
+          }
+        },
+        {
+          "ruleId": "INSTALL-SCRIPT",
+          "level": "note",
+          "message": {
+            "text": "@scarf/scarf@1.4.0 runs a custom install script | path: juice-shop@20.4.0-SNAPSHOT > swagger-ui-express@5.0.1 > swagger-ui-dist@5.36.0 > @scarf/scarf@1.4.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "low",
+            "guardianId": "GRD-d9cf28cd98"
+          }
+        },
+        {
+          "ruleId": "INSTALL-SCRIPT",
+          "level": "note",
+          "message": {
+            "text": "cypress@16.3.0 runs a custom install script | path: juice-shop@20.4.0-SNAPSHOT > cypress@16.3.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "low",
+            "guardianId": "GRD-945102c354"
+          }
+        },
+        {
+          "ruleId": "IMAGE-UNPINNED-TOOL",
+          "level": "note",
+          "message": {
+            "text": "Dockerfile installs build tool 'typescript@^6.0.3' without an exact version"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "Dockerfile"
+                },
+                "region": {
+                  "startLine": 4
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "low",
+            "guardianId": "GRD-0c7d7b0da1"
+          }
+        },
+        {
+          "ruleId": "IMAGE-NO-DIGEST",
+          "level": "note",
+          "message": {
+            "text": "Image 'mongo:4.4.29' is not pinned by digest"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "infrastructure/docker-compose.yml"
+                },
+                "region": {
+                  "startLine": 59
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "low",
+            "guardianId": "GRD-4c148132fc"
+          }
+        },
+        {
+          "ruleId": "IMAGE-NO-DIGEST",
+          "level": "note",
+          "message": {
+            "text": "Image 'nginx:1.28.0-alpine' is not pinned by digest"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "infrastructure/docker-compose.yml"
+                },
+                "region": {
+                  "startLine": 4
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "low",
+            "guardianId": "GRD-5c84ae7bb2"
+          }
+        },
+        {
+          "ruleId": "IMAGE-NO-DIGEST",
+          "level": "note",
+          "message": {
+            "text": "Image 'redis:7.4.4-alpine' is not pinned by digest"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "infrastructure/docker-compose.yml"
+                },
+                "region": {
+                  "startLine": 44
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "low",
+            "guardianId": "GRD-f83c2be859"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "note",
+          "message": {
+            "text": "Known vulnerability in @tootallnate/once@1.1.2: @tootallnate/once vulnerable to Incorrect Control Flow Scoping | path: juice-shop@20.4.0-SNAPSHOT > sqlite3@5.1.7 > node-gyp@8.4.1 > make-fetch-happen@9.1.0 > http-proxy-agent@4.0.1 > @tootallnate/once@1.1.2"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "low",
+            "guardianId": "GRD-7403c836c5"
+          }
+        },
+        {
+          "ruleId": "INSTALL-SCRIPT",
+          "level": "note",
+          "message": {
+            "text": "esbuild@0.28.2 runs a standard native-build install script | path: juice-shop@20.4.0-SNAPSHOT > tsx@4.23.15 > esbuild@0.28.2"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "info",
+            "guardianId": "GRD-c0393ae548"
+          }
+        },
+        {
+          "ruleId": "INSTALL-SCRIPT",
+          "level": "note",
+          "message": {
+            "text": "fsevents@2.3.3 runs a standard native-build install script | path: juice-shop@20.4.0-SNAPSHOT > tsx@4.23.15 > fsevents@2.3.3"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "info",
+            "guardianId": "GRD-6bf1cce81c"
+          }
+        },
+        {
+          "ruleId": "INSTALL-SCRIPT",
+          "level": "note",
+          "message": {
+            "text": "libxmljs2@0.37.0 runs a standard native-build install script | path: juice-shop@20.4.0-SNAPSHOT > @cyclonedx/cyclonedx-npm@4.2.1 > libxmljs2@0.37.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "info",
+            "guardianId": "GRD-e301ad5c05"
+          }
+        },
+        {
+          "ruleId": "INSTALL-SCRIPT",
+          "level": "note",
+          "message": {
+            "text": "sqlite3@5.1.7 runs a standard native-build install script | path: juice-shop@20.4.0-SNAPSHOT > sqlite3@5.1.7"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "info",
+            "guardianId": "GRD-a2241d2330"
+          }
+        }
+      ]
+    }
+  ]
+}

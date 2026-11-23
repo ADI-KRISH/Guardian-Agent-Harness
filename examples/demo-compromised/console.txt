@@ -1,0 +1,41 @@
+[discover] shop-api@1.4.0: 157 components (14 direct, 143 transitive), depth 6, ecosystems {'npm': 152, 'docker': 2, 'github-actions': 3}
+[detect] vulnerability source: registry.npmjs.org advisories (GitHub Advisory DB)
+  vulnerabilities        ok    46
+  typosquatting          ok    1
+  install_scripts        ok    3
+  lockfile_integrity     ok    3
+  manifest_consistency   ok    2
+  container_images       ok    3
+  dockerfile             ok    1
+  cicd_workflows         ok    4
+  registry_verification  ok    5
+  baseline_diff          ok    7
+[detect] 75 findings  critical:10  high:31  medium:18  low:12  info:4
+  [CRITICAL] Suspicious install script in crossenv@6.1.1
+             path: shop-api@1.4.0 > crossenv@6.1.1
+  [CRITICAL] Integrity hash changed for unchanged version lodash@4.17.15
+             path: shop-api@1.4.0 > lodash@4.17.15
+  [CRITICAL] Lockfile hash for lodash@4.17.15 does not match the registry
+             path: shop-api@1.4.0 > lodash@4.17.15
+  [CRITICAL] Known malicious package in flatmap-stream@0.1.1: Malicious Package in flatmap-stream
+             path: shop-api@1.4.0 > event-stream@3.3.6 > flatmap-stream@0.1.1
+  [CRITICAL] Known malicious package in ua-parser-js@0.7.29: Embedded malware in ua-parser-js
+  [CRITICAL] crossenv was taken down by npm security (malicious package)
+             path: shop-api@1.4.0 > crossenv@6.1.1
+  [CRITICAL] flatmap-stream was taken down by npm security (malicious package)
+             path: shop-api@1.4.0 > event-stream@3.3.6 > flatmap-stream@0.1.1
+  [CRITICAL] Known vulnerability in event-stream@3.3.6: Critical severity vulnerability that affects event-stream and flatmap-stream
+             path: shop-api@1.4.0 > event-stream@3.3.6
+  [CRITICAL] Known vulnerability in flatmap-stream@0.1.1: Critical severity vulnerability that affects event-stream and flatmap-stream
+             path: shop-api@1.4.0 > event-stream@3.3.6 > flatmap-stream@0.1.1
+  [CRITICAL] Known vulnerability in minimist@1.2.5: Prototype Pollution in minimist
+             path: shop-api@1.4.0 > minimist@1.2.5
+  [HIGH    ] GitHub Action quick-actions/npm-cache: branch/unversioned ref 'main' (code changes on every run)
+  [HIGH    ] Untrusted event data interpolated into a workflow step
+  [HIGH    ] Download source for minimist@1.2.5 changed: registry.npmjs.org -> registry.npmjs-cdn.com
+             path: shop-api@1.4.0 > minimist@1.2.5
+  [HIGH    ] event-stream@3.3.6 is not published on the registry (unpublished or fabricated version)
+             path: shop-api@1.4.0 > event-stream@3.3.6
+  [HIGH    ] minimist@1.2.5 is fetched over plain HTTP
+             path: shop-api@1.4.0 > minimist@1.2.5
+[detect] wrote /home/claude/guardian/examples/demo-compromised/findings.json, findings.sarif, report.html

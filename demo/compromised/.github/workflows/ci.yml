@@ -1,0 +1,15 @@
+name: CI
+on:
+  issues:
+    types: [opened]
+  push:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions: write-all
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8
+      - uses: quick-actions/npm-cache@main
+      - run: npm ci
+      - run: echo "Triaging ${{ github.event.issue.title }}"

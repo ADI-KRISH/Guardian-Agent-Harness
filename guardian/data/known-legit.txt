@@ -1,0 +1,4 @@
+# Established packages whose names are close to popular ones (offline typosquat suppression).
+color colors through commondir http-proxy-agent https-proxy-agent object.assign listr2 xmlbuilder2 chalk-template
+yargs-parser fs-extra rimraf glob-parent minimatch micromatch pify pinkie bn.js js-base64 path-is-absolute
+lodash.isequal lodash.memoize core-js-compat core-js-pure ansi-escapes ansi-align is-glob globals

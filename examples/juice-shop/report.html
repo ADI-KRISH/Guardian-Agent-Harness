@@ -1,0 +1,511 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Guardian report — juice-shop@20.4.0-SNAPSHOT</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+body{font:14px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;color:#1f2328;background:#f6f7f9}
+header{background:#0f2537;color:#fff;padding:18px 28px} header h1{margin:0;font-size:20px} header p{margin:4px 0 0;opacity:.8}
+main{padding:20px 28px;max-width:1300px} h2{font-size:16px;margin:26px 0 10px}
+.cards{display:flex;gap:10px;flex-wrap:wrap} .card{background:#fff;padding:10px 16px;border-radius:6px;min-width:90px;box-shadow:0 1px 2px #0001}
+.card .n{font-size:22px;font-weight:600} .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.grid3>div{background:#fff;padding:8px 14px;border-radius:6px} table{width:100%;border-collapse:collapse;background:#fff}
+td,th{padding:8px 10px;border-bottom:1px solid #e6e8eb;vertical-align:top;text-align:left}
+.sev{color:#fff;border-radius:4px;padding:2px 7px;font-size:12px;text-transform:uppercase} summary{cursor:pointer;font-weight:500}
+.meta{color:#57606a;font-size:12px} .src{color:#57606a;font-family:ui-monospace,monospace;font-size:12px}
+.filters{display:flex;gap:10px;margin:8px 0} select,input{padding:5px 8px;border:1px solid #ccd;border-radius:4px}
+ul{margin:4px 0 8px;padding-left:20px} small{color:#57606a}
+</style></head><body>
+<header><h1>Software Supply Chain Guardian — Discover &amp; Detect</h1>
+<p>juice-shop@20.4.0-SNAPSHOT · generated 2026-11-23T09:47:00Z · vulnerability data: registry.npmjs.org advisories (GitHub Advisory DB)</p></header>
+<main>
+<h2>What is in the application</h2>
+<div class="cards"><div class="card"><div class="n">1143</div><div>components</div></div>
+<div class="card"><div class="n">133</div><div>direct</div></div>
+<div class="card"><div class="n">1010</div><div>transitive</div></div>
+<div class="card"><div class="n">10</div><div>max depth</div></div>
+<div class="card"><div class="n">2182</div><div>edges</div></div></div>
+<p><b>Ecosystems:</b> npm: 1108, docker: 10, github-actions: 25<br><b>Scopes:</b> prod: 472, dev: 596, optional: 47, build: 3, ci: 25<br><b>Inputs:</b> package.json, package-lock.json, Dockerfile, infrastructure/Dockerfile, test/smoke/Dockerfile, docker-compose.test.yml, infrastructure/docker-compose.yml, .github/workflows/ci.yml, .github/workflows/codeql-analysis.yml, .github/workflows/frontend-bundle-analysis.yml, .github/workflows/image_actions.yml, .github/workflows/issue-compliance.yml …</p>
+
+<h2>What appears risky (78 findings)</h2>
+<div class="cards"><div class="card" style="border-top:4px solid #b3261e"><div class="n">7</div><div>critical</div></div><div class="card" style="border-top:4px solid #d9480f"><div class="n">23</div><div>high</div></div><div class="card" style="border-top:4px solid #c08b00"><div class="n">33</div><div>medium</div></div><div class="card" style="border-top:4px solid #3b6fb6"><div class="n">11</div><div>low</div></div><div class="card" style="border-top:4px solid #6b7280"><div class="n">4</div><div>info</div></div></div>
+<div class="filters"><select id="sev"><option value="">all severities</option>
+<option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select>
+<select id="cat"><option value="">all categories</option><option value="cicd">cicd (8)</option><option value="install-script">install-script (6)</option><option value="untrusted-image">untrusted-image (11)</option><option value="vulnerability">vulnerability (53)</option></select>
+<input id="q" placeholder="search…" size="30"><label><input type="checkbox" id="hideinfo" checked> hide info</label></div>
+<table><thead><tr><th>Severity</th><th>Category</th><th>Finding (click for evidence)</th><th>Component</th></tr></thead>
+<tbody><tr class="f" data-sev="critical" data-cat="vulnerability">
+<td><span class="sev" style="background:#b3261e">critical</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in crypto-js@3.3.0: crypto-js PBKDF2 1,000 times weaker than specified in 1993 and 1.3M times weaker than current standard</summary>
+<p class="meta">GRD-2d0d24aad6 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-xwcq-pm8m-c4vf" target="_blank">GHSA-xwcq-pm8m-c4vf</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; pdfkit@0.11.0 &rarr; crypto-js@3.3.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-xwcq-pm8m-c4vf: crypto-js PBKDF2 1,000 times weaker than specified in 1993 and 1.3M times weaker than current standard</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/crypto-js]</span> installed crypto-js@3.3.0 is inside affected range &lt;4.2.0</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 9.1 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N)</li></ul><p><b>Fix info:</b> fixed in: 4.2.0 · introduced via: pdfkit@0.11.0</p></details></td>
+<td>crypto-js@3.3.0<br><small>transitive prod</small></td></tr><tr class="f" data-sev="critical" data-cat="vulnerability">
+<td><span class="sev" style="background:#b3261e">critical</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in crypto-js@3.3.0: crypto-js: Insufficient Entropy in Cryptographic Secret Generation via Vulnerable CryptoJS Dependency Chain</summary>
+<p class="meta">GRD-5ab3d5bccb · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-rg76-677x-56q9" target="_blank">GHSA-rg76-677x-56q9</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; pdfkit@0.11.0 &rarr; crypto-js@3.3.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-rg76-677x-56q9: crypto-js: Insufficient Entropy in Cryptographic Secret Generation via Vulnerable CryptoJS Dependency Chain</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/crypto-js]</span> installed crypto-js@3.3.0 is inside affected range &lt;4.0.0</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 9.0 (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H)</li></ul><p><b>Fix info:</b> fixed in: 4.0.0 · introduced via: pdfkit@0.11.0</p></details></td>
+<td>crypto-js@3.3.0<br><small>transitive prod</small></td></tr><tr class="f" data-sev="critical" data-cat="vulnerability">
+<td><span class="sev" style="background:#b3261e">critical</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in jsonwebtoken@0.1.0: Verification Bypass in jsonwebtoken</summary>
+<p class="meta">GRD-27658816a6 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-c7hr-j4mj-j2w6" target="_blank">GHSA-c7hr-j4mj-j2w6</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; express-jwt@0.1.3 &rarr; jsonwebtoken@0.1.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-c7hr-j4mj-j2w6: Verification Bypass in jsonwebtoken</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/express-jwt/node_modules/jsonwebtoken]</span> installed jsonwebtoken@0.1.0 is inside affected range &lt;4.2.2</li></ul><p><b>Fix info:</b> fixed in: 4.2.2 · introduced via: express-jwt@0.1.3</p></details></td>
+<td>jsonwebtoken@0.1.0<br><small>transitive prod</small></td></tr><tr class="f" data-sev="critical" data-cat="vulnerability">
+<td><span class="sev" style="background:#b3261e">critical</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in jsonwebtoken@0.4.0: Verification Bypass in jsonwebtoken</summary>
+<p class="meta">GRD-2d7f8fdaa9 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-c7hr-j4mj-j2w6" target="_blank">GHSA-c7hr-j4mj-j2w6</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; jsonwebtoken@0.4.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-c7hr-j4mj-j2w6: Verification Bypass in jsonwebtoken</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/jsonwebtoken]</span> installed jsonwebtoken@0.4.0 is inside affected range &lt;4.2.2</li></ul><p><b>Fix info:</b> fixed in: 4.2.2 · introduced via: jsonwebtoken@0.4.0</p></details></td>
+<td>jsonwebtoken@0.4.0<br><small>direct prod</small></td></tr><tr class="f" data-sev="critical" data-cat="vulnerability">
+<td><span class="sev" style="background:#b3261e">critical</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in lodash@2.4.2: Prototype Pollution in lodash</summary>
+<p class="meta">GRD-a4254ed143 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-jf85-cpcp-j695" target="_blank">GHSA-jf85-cpcp-j695</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; sanitize-html@1.4.2 &rarr; lodash@2.4.2</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-jf85-cpcp-j695: Prototype Pollution in lodash</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/sanitize-html/node_modules/lodash]</span> installed lodash@2.4.2 is inside affected range &lt;4.17.12</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 9.1 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H)</li></ul><p><b>Fix info:</b> fixed in: 4.17.12 · introduced via: sanitize-html@1.4.2</p></details></td>
+<td>lodash@2.4.2<br><small>transitive prod</small></td></tr><tr class="f" data-sev="critical" data-cat="vulnerability">
+<td><span class="sev" style="background:#b3261e">critical</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in marsdb@0.6.11: Command Injection in marsdb</summary>
+<p class="meta">GRD-b57ae0df1d · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-5mrr-rgp6-x4gr" target="_blank">GHSA-5mrr-rgp6-x4gr</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; marsdb@0.6.11</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-5mrr-rgp6-x4gr: Command Injection in marsdb</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/marsdb]</span> installed marsdb@0.6.11 is inside affected range &gt;=0.0.0</li></ul><p><b>Fix info:</b> no fixed version published · introduced via: marsdb@0.6.11</p></details></td>
+<td>marsdb@0.6.11<br><small>direct prod</small></td></tr><tr class="f" data-sev="critical" data-cat="vulnerability">
+<td><span class="sev" style="background:#b3261e">critical</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in tar@6.2.1: node-tar: Decompression/parse DoS via unlimited input</summary>
+<p class="meta">GRD-29e67796f1 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-23hp-3jrh-7fpw" target="_blank">GHSA-23hp-3jrh-7fpw</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; sqlite3@5.1.7 &rarr; tar@6.2.1</li><li>juice-shop@20.4.0-SNAPSHOT &rarr; sqlite3@5.1.7 &rarr; node-gyp@8.4.1 &rarr; tar@6.2.1</li><li>juice-shop@20.4.0-SNAPSHOT &rarr; sqlite3@5.1.7 &rarr; node-gyp@8.4.1 &rarr; make-fetch-happen@9.1.0 &rarr; cacache@15.3.0 &rarr; tar@6.2.1</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-23hp-3jrh-7fpw: node-tar: Decompression/parse DoS via unlimited input</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/sqlite3/node_modules/tar]</span> installed tar@6.2.1 is inside affected range &lt;=7.5.18</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 7.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)</li></ul><p><b>Fix info:</b> fixed in: 7.5.19 · introduced via: sqlite3@5.1.7</p></details></td>
+<td>tar@6.2.1<br><small>transitive prod</small></td></tr><tr class="f" data-sev="high" data-cat="cicd">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>cicd</td><td><details><summary>GitHub Action calibreapp/image-actions: branch/unversioned ref &#x27;main&#x27; (code changes on every run)</summary>
+<p class="meta">GRD-46b77d7f63 · rule CICD-UNPINNED-ACTION · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>workflow-line</b> <span class="src">[.github/workflows/image_actions.yml:.github/workflows/image_actions.yml:33]</span> uses: calibreapp/image-actions@main</li></ul><p><b>Fix info:</b> pin to a full commit SHA: uses: calibreapp/image-actions@&lt;40-char-sha&gt; # main</p></details></td>
+<td>calibreapp/image-actions@main<br><small>direct ci</small></td></tr><tr class="f" data-sev="high" data-cat="cicd">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>cicd</td><td><details><summary>Workflow pipes a downloaded script into a shell</summary>
+<p class="meta">GRD-faa461971a · rule CICD-PIPE-TO-SHELL · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>workflow-line</b> <span class="src">[.github/workflows/ci.yml:353]</span> run: curl https://cli-assets.heroku.com/install.sh | sh</li></ul></details></td>
+<td>—<br><small> </small></td></tr><tr class="f" data-sev="high" data-cat="untrusted-image">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>untrusted-image</td><td><details><summary>Image &#x27;bkimminich/juice-shop&#x27; comes from a non-allowlisted publisher (docker.io)</summary>
+<p class="meta">GRD-9d996a60f5 · rule IMAGE-UNTRUSTED-SOURCE · verified evidence · confidence medium
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>image-reference</b> <span class="src">[docker-compose.test.yml:docker-compose.test.yml:7]</span> image: bkimminich/juice-shop:latest</li><li><b>policy</b> <span class="src">[guardian policy]</span> not a Docker Official Image and not under trusted prefixes: gcr.io/distroless/, mcr.microsoft.com/, cgr.dev/chainguard/, registry.access.redhat.com/...</li></ul><p><b>Fix info:</b> use an official / verified-publisher image or add the publisher to the allowlist after review</p></details></td>
+<td>bkimminich/juice-shop@latest<br><small>direct prod</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in @cyclonedx/cyclonedx-npm@4.2.1: @cyclonedx/cyclonedx-npm: Shell Injection via Unsanitized --workspace Argument</summary>
+<p class="meta">GRD-eff1a2b835 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-v75r-vx73-82pj" target="_blank">GHSA-v75r-vx73-82pj</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; @cyclonedx/cyclonedx-npm@4.2.1</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-v75r-vx73-82pj: @cyclonedx/cyclonedx-npm: Shell Injection via Unsanitized --workspace Argument</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/@cyclonedx/cyclonedx-npm]</span> installed @cyclonedx/cyclonedx-npm@4.2.1 is inside affected range &gt;=2.1.0 &lt;5.0.0</li></ul><p><b>Fix info:</b> fixed in: 5.0.0 · introduced via: @cyclonedx/cyclonedx-npm@4.2.1</p></details></td>
+<td>@cyclonedx/cyclonedx-npm@4.2.1<br><small>direct dev</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in @cyclonedx/cyclonedx-npm@4.2.1: @cyclonedx/cyclonedx-npm: Shell Injection via Unsanitized --workspace Argument on Windows</summary>
+<p class="meta">GRD-60b08f3779 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-q69g-4hcv-6jg4" target="_blank">GHSA-q69g-4hcv-6jg4</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; @cyclonedx/cyclonedx-npm@4.2.1</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-q69g-4hcv-6jg4: @cyclonedx/cyclonedx-npm: Shell Injection via Unsanitized --workspace Argument on Windows</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/@cyclonedx/cyclonedx-npm]</span> installed @cyclonedx/cyclonedx-npm@4.2.1 is inside affected range &lt;6.0.0</li></ul><p><b>Fix info:</b> fixed in: 6.0.0 · introduced via: @cyclonedx/cyclonedx-npm@4.2.1</p></details></td>
+<td>@cyclonedx/cyclonedx-npm@4.2.1<br><small>direct dev</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in express-jwt@0.1.3: Authorization bypass in express-jwt</summary>
+<p class="meta">GRD-000db4f725 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-6g6m-m6h5-w9gf" target="_blank">GHSA-6g6m-m6h5-w9gf</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; express-jwt@0.1.3</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-6g6m-m6h5-w9gf: Authorization bypass in express-jwt</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/express-jwt]</span> installed express-jwt@0.1.3 is inside affected range &lt;=5.3.3</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 7.7 (CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:C/C:H/I:H/A:N)</li></ul><p><b>Fix info:</b> fixed in: 6.0.0 · introduced via: express-jwt@0.1.3</p></details></td>
+<td>express-jwt@0.1.3<br><small>direct prod</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in jsonwebtoken@0.1.0: jsonwebtoken unrestricted key type could lead to legacy keys usage </summary>
+<p class="meta">GRD-f30fc17d4a · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-8cf7-32gw-wr33" target="_blank">GHSA-8cf7-32gw-wr33</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; express-jwt@0.1.3 &rarr; jsonwebtoken@0.1.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-8cf7-32gw-wr33: jsonwebtoken unrestricted key type could lead to legacy keys usage </li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/express-jwt/node_modules/jsonwebtoken]</span> installed jsonwebtoken@0.1.0 is inside affected range &lt;=8.5.1</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 8.1 (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N)</li></ul><p><b>Fix info:</b> fixed in: 9.0.0 · introduced via: express-jwt@0.1.3</p></details></td>
+<td>jsonwebtoken@0.1.0<br><small>transitive prod</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in jsonwebtoken@0.4.0: jsonwebtoken unrestricted key type could lead to legacy keys usage </summary>
+<p class="meta">GRD-ec409d792d · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-8cf7-32gw-wr33" target="_blank">GHSA-8cf7-32gw-wr33</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; jsonwebtoken@0.4.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-8cf7-32gw-wr33: jsonwebtoken unrestricted key type could lead to legacy keys usage </li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/jsonwebtoken]</span> installed jsonwebtoken@0.4.0 is inside affected range &lt;=8.5.1</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 8.1 (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N)</li></ul><p><b>Fix info:</b> fixed in: 9.0.0 · introduced via: jsonwebtoken@0.4.0</p></details></td>
+<td>jsonwebtoken@0.4.0<br><small>direct prod</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in jws@0.2.6: Forgeable Public/Private Tokens in jws</summary>
+<p class="meta">GRD-21ff3f02f2 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-gjcw-v447-2w7q" target="_blank">GHSA-gjcw-v447-2w7q</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; jsonwebtoken@0.4.0 &rarr; jws@0.2.6</li><li>juice-shop@20.4.0-SNAPSHOT &rarr; express-jwt@0.1.3 &rarr; jsonwebtoken@0.1.0 &rarr; jws@0.2.6</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-gjcw-v447-2w7q: Forgeable Public/Private Tokens in jws</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/jws]</span> installed jws@0.2.6 is inside affected range &lt;3.0.0</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 8.7 (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:N)</li></ul><p><b>Fix info:</b> fixed in: 3.0.0 · introduced via: express-jwt@0.1.3, jsonwebtoken@0.4.0</p></details></td>
+<td>jws@0.2.6<br><small>transitive prod</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in jws@0.2.6: auth0/node-jws Improperly Verifies HMAC Signature</summary>
+<p class="meta">GRD-8c533f5a81 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-869p-cjfg-cm3x" target="_blank">GHSA-869p-cjfg-cm3x</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; jsonwebtoken@0.4.0 &rarr; jws@0.2.6</li><li>juice-shop@20.4.0-SNAPSHOT &rarr; express-jwt@0.1.3 &rarr; jsonwebtoken@0.1.0 &rarr; jws@0.2.6</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-869p-cjfg-cm3x: auth0/node-jws Improperly Verifies HMAC Signature</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/jws]</span> installed jws@0.2.6 is inside affected range &lt;3.2.3</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 7.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N)</li></ul><p><b>Fix info:</b> fixed in: 3.2.3 · introduced via: express-jwt@0.1.3, jsonwebtoken@0.4.0</p></details></td>
+<td>jws@0.2.6<br><small>transitive prod</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in lodash@2.4.2: Command Injection in lodash</summary>
+<p class="meta">GRD-f54abcfcae · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-35jh-r3h4-6jhm" target="_blank">GHSA-35jh-r3h4-6jhm</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; sanitize-html@1.4.2 &rarr; lodash@2.4.2</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-35jh-r3h4-6jhm: Command Injection in lodash</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/sanitize-html/node_modules/lodash]</span> installed lodash@2.4.2 is inside affected range &lt;4.17.21</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 7.2 (CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H)</li></ul><p><b>Fix info:</b> fixed in: 4.17.21 · introduced via: sanitize-html@1.4.2</p></details></td>
+<td>lodash@2.4.2<br><small>transitive prod</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in lodash@2.4.2: Prototype Pollution in lodash</summary>
+<p class="meta">GRD-95bed168b0 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-4xc9-xhrj-v574" target="_blank">GHSA-4xc9-xhrj-v574</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; sanitize-html@1.4.2 &rarr; lodash@2.4.2</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-4xc9-xhrj-v574: Prototype Pollution in lodash</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/sanitize-html/node_modules/lodash]</span> installed lodash@2.4.2 is inside affected range &lt;4.17.11</li></ul><p><b>Fix info:</b> fixed in: 4.17.11 · introduced via: sanitize-html@1.4.2</p></details></td>
+<td>lodash@2.4.2<br><small>transitive prod</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in moment@2.0.0: Path Traversal: &#x27;dir/../../filename&#x27; in moment.locale</summary>
+<p class="meta">GRD-f9f7b41e3b · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-8hfj-j24r-96c4" target="_blank">GHSA-8hfj-j24r-96c4</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; express-jwt@0.1.3 &rarr; jsonwebtoken@0.1.0 &rarr; moment@2.0.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-8hfj-j24r-96c4: Path Traversal: &#x27;dir/../../filename&#x27; in moment.locale</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/express-jwt/node_modules/moment]</span> installed moment@2.0.0 is inside affected range &lt;2.29.2</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 7.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N)</li></ul><p><b>Fix info:</b> fixed in: 2.29.2 · introduced via: express-jwt@0.1.3</p></details></td>
+<td>moment@2.0.0<br><small>transitive prod</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in moment@2.0.0: Regular Expression Denial of Service in moment</summary>
+<p class="meta">GRD-ac227d148c · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-446m-mv8f-q348" target="_blank">GHSA-446m-mv8f-q348</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; express-jwt@0.1.3 &rarr; jsonwebtoken@0.1.0 &rarr; moment@2.0.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-446m-mv8f-q348: Regular Expression Denial of Service in moment</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/express-jwt/node_modules/moment]</span> installed moment@2.0.0 is inside affected range &lt;2.19.3</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 7.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)</li></ul><p><b>Fix info:</b> fixed in: 2.19.3 · introduced via: express-jwt@0.1.3</p></details></td>
+<td>moment@2.0.0<br><small>transitive prod</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in sanitize-html@1.4.2: Sanitize-html Vulnerable To REDoS Attacks</summary>
+<p class="meta">GRD-f488b5ad0f · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-cgfm-xwp7-2cvr" target="_blank">GHSA-cgfm-xwp7-2cvr</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; sanitize-html@1.4.2</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-cgfm-xwp7-2cvr: Sanitize-html Vulnerable To REDoS Attacks</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/sanitize-html]</span> installed sanitize-html@1.4.2 is inside affected range &lt;2.7.1</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 7.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)</li></ul><p><b>Fix info:</b> fixed in: 2.7.1 · introduced via: sanitize-html@1.4.2</p></details></td>
+<td>sanitize-html@1.4.2<br><small>direct prod</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in tar@6.2.1: Arbitrary File Read/Write via Hardlink Target Escape Through Symlink Chain in node-tar Extraction</summary>
+<p class="meta">GRD-2945fd4159 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-83g3-92jg-28cx" target="_blank">GHSA-83g3-92jg-28cx</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; sqlite3@5.1.7 &rarr; tar@6.2.1</li><li>juice-shop@20.4.0-SNAPSHOT &rarr; sqlite3@5.1.7 &rarr; node-gyp@8.4.1 &rarr; tar@6.2.1</li><li>juice-shop@20.4.0-SNAPSHOT &rarr; sqlite3@5.1.7 &rarr; node-gyp@8.4.1 &rarr; make-fetch-happen@9.1.0 &rarr; cacache@15.3.0 &rarr; tar@6.2.1</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-83g3-92jg-28cx: Arbitrary File Read/Write via Hardlink Target Escape Through Symlink Chain in node-tar Extraction</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/sqlite3/node_modules/tar]</span> installed tar@6.2.1 is inside affected range &lt;7.5.8</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 7.1 (CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:N)</li></ul><p><b>Fix info:</b> fixed in: 7.5.8 · introduced via: sqlite3@5.1.7</p></details></td>
+<td>tar@6.2.1<br><small>transitive prod</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in tar@6.2.1: Race Condition in node-tar Path Reservations via Unicode Ligature Collisions on macOS APFS</summary>
+<p class="meta">GRD-aa81ed47ab · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-r6q2-hw4h-h46w" target="_blank">GHSA-r6q2-hw4h-h46w</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; sqlite3@5.1.7 &rarr; tar@6.2.1</li><li>juice-shop@20.4.0-SNAPSHOT &rarr; sqlite3@5.1.7 &rarr; node-gyp@8.4.1 &rarr; tar@6.2.1</li><li>juice-shop@20.4.0-SNAPSHOT &rarr; sqlite3@5.1.7 &rarr; node-gyp@8.4.1 &rarr; make-fetch-happen@9.1.0 &rarr; cacache@15.3.0 &rarr; tar@6.2.1</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-r6q2-hw4h-h46w: Race Condition in node-tar Path Reservations via Unicode Ligature Collisions on macOS APFS</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/sqlite3/node_modules/tar]</span> installed tar@6.2.1 is inside affected range &lt;=7.5.3</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 8.8 (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:H/A:L)</li></ul><p><b>Fix info:</b> fixed in: 7.5.4 · introduced via: sqlite3@5.1.7</p></details></td>
+<td>tar@6.2.1<br><small>transitive prod</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in tar@6.2.1: node-tar Symlink Path Traversal via Drive-Relative Linkpath</summary>
+<p class="meta">GRD-b8d5a1975f · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-9ppj-qmqm-q256" target="_blank">GHSA-9ppj-qmqm-q256</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; sqlite3@5.1.7 &rarr; tar@6.2.1</li><li>juice-shop@20.4.0-SNAPSHOT &rarr; sqlite3@5.1.7 &rarr; node-gyp@8.4.1 &rarr; tar@6.2.1</li><li>juice-shop@20.4.0-SNAPSHOT &rarr; sqlite3@5.1.7 &rarr; node-gyp@8.4.1 &rarr; make-fetch-happen@9.1.0 &rarr; cacache@15.3.0 &rarr; tar@6.2.1</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-9ppj-qmqm-q256: node-tar Symlink Path Traversal via Drive-Relative Linkpath</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/sqlite3/node_modules/tar]</span> installed tar@6.2.1 is inside affected range &lt;=7.5.10</li></ul><p><b>Fix info:</b> fixed in: 7.5.11 · introduced via: sqlite3@5.1.7</p></details></td>
+<td>tar@6.2.1<br><small>transitive prod</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in tar@6.2.1: node-tar Vulnerable to Arbitrary File Creation/Overwrite via Hardlink Path Traversal</summary>
+<p class="meta">GRD-399c16e057 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-34x7-hfp2-rc4v" target="_blank">GHSA-34x7-hfp2-rc4v</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; sqlite3@5.1.7 &rarr; tar@6.2.1</li><li>juice-shop@20.4.0-SNAPSHOT &rarr; sqlite3@5.1.7 &rarr; node-gyp@8.4.1 &rarr; tar@6.2.1</li><li>juice-shop@20.4.0-SNAPSHOT &rarr; sqlite3@5.1.7 &rarr; node-gyp@8.4.1 &rarr; make-fetch-happen@9.1.0 &rarr; cacache@15.3.0 &rarr; tar@6.2.1</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-34x7-hfp2-rc4v: node-tar Vulnerable to Arbitrary File Creation/Overwrite via Hardlink Path Traversal</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/sqlite3/node_modules/tar]</span> installed tar@6.2.1 is inside affected range &lt;7.5.7</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 8.2 (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:L/A:N)</li></ul><p><b>Fix info:</b> fixed in: 7.5.7 · introduced via: sqlite3@5.1.7</p></details></td>
+<td>tar@6.2.1<br><small>transitive prod</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in tar@6.2.1: node-tar is Vulnerable to Arbitrary File Overwrite and Symlink Poisoning via Insufficient Path Sanitization</summary>
+<p class="meta">GRD-c54360c062 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-8qq5-rm4j-mr97" target="_blank">GHSA-8qq5-rm4j-mr97</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; sqlite3@5.1.7 &rarr; tar@6.2.1</li><li>juice-shop@20.4.0-SNAPSHOT &rarr; sqlite3@5.1.7 &rarr; node-gyp@8.4.1 &rarr; tar@6.2.1</li><li>juice-shop@20.4.0-SNAPSHOT &rarr; sqlite3@5.1.7 &rarr; node-gyp@8.4.1 &rarr; make-fetch-happen@9.1.0 &rarr; cacache@15.3.0 &rarr; tar@6.2.1</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-8qq5-rm4j-mr97: node-tar is Vulnerable to Arbitrary File Overwrite and Symlink Poisoning via Insufficient Path Sanitization</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/sqlite3/node_modules/tar]</span> installed tar@6.2.1 is inside affected range &lt;=7.5.2</li></ul><p><b>Fix info:</b> fixed in: 7.5.3 · introduced via: sqlite3@5.1.7</p></details></td>
+<td>tar@6.2.1<br><small>transitive prod</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in tar@6.2.1: node-tar: Negative tar entry size causes infinite loop in archive replace</summary>
+<p class="meta">GRD-e9592c2979 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-8x88-c5mf-7j5w" target="_blank">GHSA-8x88-c5mf-7j5w</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; sqlite3@5.1.7 &rarr; tar@6.2.1</li><li>juice-shop@20.4.0-SNAPSHOT &rarr; sqlite3@5.1.7 &rarr; node-gyp@8.4.1 &rarr; tar@6.2.1</li><li>juice-shop@20.4.0-SNAPSHOT &rarr; sqlite3@5.1.7 &rarr; node-gyp@8.4.1 &rarr; make-fetch-happen@9.1.0 &rarr; cacache@15.3.0 &rarr; tar@6.2.1</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-8x88-c5mf-7j5w: node-tar: Negative tar entry size causes infinite loop in archive replace</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/sqlite3/node_modules/tar]</span> installed tar@6.2.1 is inside affected range &lt;=7.5.17</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 7.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)</li></ul><p><b>Fix info:</b> fixed in: 7.5.18 · introduced via: sqlite3@5.1.7</p></details></td>
+<td>tar@6.2.1<br><small>transitive prod</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in tar@6.2.1: node-tar: Uncontrolled recursion in mapHas/filesFilter allows uncatchable stack-overflow DoS via crafted long-path tar w</summary>
+<p class="meta">GRD-0f37244f8d · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-r292-9mhp-454m" target="_blank">GHSA-r292-9mhp-454m</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; sqlite3@5.1.7 &rarr; tar@6.2.1</li><li>juice-shop@20.4.0-SNAPSHOT &rarr; sqlite3@5.1.7 &rarr; node-gyp@8.4.1 &rarr; tar@6.2.1</li><li>juice-shop@20.4.0-SNAPSHOT &rarr; sqlite3@5.1.7 &rarr; node-gyp@8.4.1 &rarr; make-fetch-happen@9.1.0 &rarr; cacache@15.3.0 &rarr; tar@6.2.1</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-r292-9mhp-454m: node-tar: Uncontrolled recursion in mapHas/filesFilter allows uncatchable stack-overflow DoS via crafted long-path tar with member selection</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/sqlite3/node_modules/tar]</span> installed tar@6.2.1 is inside affected range &lt;=7.5.20</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 7.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)</li></ul><p><b>Fix info:</b> fixed in: 7.5.21 · introduced via: sqlite3@5.1.7</p></details></td>
+<td>tar@6.2.1<br><small>transitive prod</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in tar@6.2.1: tar has Hardlink Path Traversal via Drive-Relative Linkpath</summary>
+<p class="meta">GRD-542423db49 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-qffp-2rhf-9h96" target="_blank">GHSA-qffp-2rhf-9h96</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; sqlite3@5.1.7 &rarr; tar@6.2.1</li><li>juice-shop@20.4.0-SNAPSHOT &rarr; sqlite3@5.1.7 &rarr; node-gyp@8.4.1 &rarr; tar@6.2.1</li><li>juice-shop@20.4.0-SNAPSHOT &rarr; sqlite3@5.1.7 &rarr; node-gyp@8.4.1 &rarr; make-fetch-happen@9.1.0 &rarr; cacache@15.3.0 &rarr; tar@6.2.1</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-qffp-2rhf-9h96: tar has Hardlink Path Traversal via Drive-Relative Linkpath</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/sqlite3/node_modules/tar]</span> installed tar@6.2.1 is inside affected range &lt;=7.5.9</li></ul><p><b>Fix info:</b> fixed in: 7.5.10 · introduced via: sqlite3@5.1.7</p></details></td>
+<td>tar@6.2.1<br><small>transitive prod</small></td></tr><tr class="f" data-sev="medium" data-cat="cicd">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>cicd</td><td><details><summary>GitHub Action coverallsapp/github-action: third-party action pinned to mutable tag &#x27;v2&#x27;</summary>
+<p class="meta">GRD-13ef80dcf2 · rule CICD-UNPINNED-ACTION · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>workflow-line</b> <span class="src">[.github/workflows/ci.yml:.github/workflows/ci.yml:198]</span> uses: coverallsapp/github-action@v2</li></ul><p><b>Fix info:</b> pin to a full commit SHA: uses: coverallsapp/github-action@&lt;40-char-sha&gt; # v2</p></details></td>
+<td>coverallsapp/github-action@v2<br><small>direct ci</small></td></tr><tr class="f" data-sev="medium" data-cat="cicd">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>cicd</td><td><details><summary>GitHub Action peter-evans/create-pull-request: third-party action pinned to mutable tag &#x27;v8&#x27;</summary>
+<p class="meta">GRD-68aa098915 · rule CICD-UNPINNED-ACTION · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>workflow-line</b> <span class="src">[.github/workflows/image_actions.yml:.github/workflows/image_actions.yml:42]</span> uses: peter-evans/create-pull-request@v8</li></ul><p><b>Fix info:</b> pin to a full commit SHA: uses: peter-evans/create-pull-request@&lt;40-char-sha&gt; # v8</p></details></td>
+<td>peter-evans/create-pull-request@v8<br><small>direct ci</small></td></tr><tr class="f" data-sev="medium" data-cat="untrusted-image">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>untrusted-image</td><td><details><summary>Base image node:20.19.2-bookworm is end-of-life (2026-04-30)</summary>
+<p class="meta">GRD-0c0ba9db8c · rule IMAGE-EOL · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>image-reference</b> <span class="src">[infrastructure/Dockerfile:infrastructure/Dockerfile:6]</span> image: node:20.19.2-bookworm</li><li><b>eol-table</b> <span class="src">[guardian EOL data (2026-11)]</span> node 20 EOL 2026-04-30</li></ul><p><b>Fix info:</b> move to a supported release line</p></details></td>
+<td>node@20.19.2-bookworm<br><small>direct build</small></td></tr><tr class="f" data-sev="medium" data-cat="untrusted-image">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>untrusted-image</td><td><details><summary>Base image node:20.19.2-bookworm-slim is end-of-life (2026-04-30)</summary>
+<p class="meta">GRD-8a20a6dec8 · rule IMAGE-EOL · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>image-reference</b> <span class="src">[infrastructure/Dockerfile:infrastructure/Dockerfile:1]</span> image: node:20.19.2-bookworm-slim</li><li><b>eol-table</b> <span class="src">[guardian EOL data (2026-11)]</span> node 20 EOL 2026-04-30</li></ul><p><b>Fix info:</b> move to a supported release line</p></details></td>
+<td>node@20.19.2-bookworm-slim<br><small>direct build</small></td></tr><tr class="f" data-sev="medium" data-cat="untrusted-image">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>untrusted-image</td><td><details><summary>Image &#x27;alpine&#x27; uses a mutable tag (implicit latest)</summary>
+<p class="meta">GRD-53a57b3741 · rule IMAGE-MUTABLE-TAG · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>image-reference</b> <span class="src">[test/smoke/Dockerfile:test/smoke/Dockerfile:1]</span> image: alpine</li></ul><p><b>Fix info:</b> pin to a version tag and digest, e.g. alpine:&lt;version&gt;@sha256:&lt;digest&gt;</p></details></td>
+<td>alpine@latest<br><small>direct prod</small></td></tr><tr class="f" data-sev="medium" data-cat="untrusted-image">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>untrusted-image</td><td><details><summary>Image &#x27;bkimminich/juice-shop&#x27; uses a mutable tag (latest)</summary>
+<p class="meta">GRD-99be4be03b · rule IMAGE-MUTABLE-TAG · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>image-reference</b> <span class="src">[docker-compose.test.yml:docker-compose.test.yml:7]</span> image: bkimminich/juice-shop:latest</li></ul><p><b>Fix info:</b> pin to a version tag and digest, e.g. bkimminich/juice-shop:&lt;version&gt;@sha256:&lt;digest&gt;</p></details></td>
+<td>bkimminich/juice-shop@latest<br><small>direct prod</small></td></tr><tr class="f" data-sev="medium" data-cat="untrusted-image">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>untrusted-image</td><td><details><summary>Image &#x27;gcr.io/distroless/nodejs24-debian13&#x27; uses a mutable tag (implicit latest)</summary>
+<p class="meta">GRD-b20b764572 · rule IMAGE-MUTABLE-TAG · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>image-reference</b> <span class="src">[Dockerfile:Dockerfile:22]</span> image: gcr.io/distroless/nodejs24-debian13</li></ul><p><b>Fix info:</b> pin to a version tag and digest, e.g. gcr.io/distroless/nodejs24-debian13:&lt;version&gt;@sha256:&lt;digest&gt;</p></details></td>
+<td>gcr.io/distroless/nodejs24-debian13@latest<br><small>direct prod</small></td></tr><tr class="f" data-sev="medium" data-cat="untrusted-image">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>untrusted-image</td><td><details><summary>Image &#x27;juice-shop&#x27; uses a mutable tag (latest)</summary>
+<p class="meta">GRD-ce993dc67e · rule IMAGE-MUTABLE-TAG · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>image-reference</b> <span class="src">[infrastructure/docker-compose.yml:infrastructure/docker-compose.yml:21]</span> image: juice-shop:latest</li></ul><p><b>Fix info:</b> pin to a version tag and digest, e.g. juice-shop:&lt;version&gt;@sha256:&lt;digest&gt;</p></details></td>
+<td>juice-shop@latest<br><small>direct prod</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in base64url@0.0.6: Out-of-bounds Read in base64url</summary>
+<p class="meta">GRD-9f27d5d797 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-rvg8-pwq2-xj7q" target="_blank">GHSA-rvg8-pwq2-xj7q</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; jsonwebtoken@0.4.0 &rarr; jws@0.2.6 &rarr; base64url@0.0.6</li><li>juice-shop@20.4.0-SNAPSHOT &rarr; express-jwt@0.1.3 &rarr; jsonwebtoken@0.1.0 &rarr; jws@0.2.6 &rarr; base64url@0.0.6</li><li>juice-shop@20.4.0-SNAPSHOT &rarr; jsonwebtoken@0.4.0 &rarr; jws@0.2.6 &rarr; jwa@0.0.1 &rarr; base64url@0.0.6</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-rvg8-pwq2-xj7q: Out-of-bounds Read in base64url</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/base64url]</span> installed base64url@0.0.6 is inside affected range &lt;3.0.0</li></ul><p><b>Fix info:</b> fixed in: 3.0.0 · introduced via: express-jwt@0.1.3, jsonwebtoken@0.4.0</p></details></td>
+<td>base64url@0.0.6<br><small>transitive prod</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in file-type@16.5.4: file-type affected by infinite loop in ASF parser on malformed input with zero-size sub-header</summary>
+<p class="meta">GRD-1ef8b63c28 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-5v7r-6r5c-r473" target="_blank">GHSA-5v7r-6r5c-r473</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; file-type@16.5.4</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-5v7r-6r5c-r473: file-type affected by infinite loop in ASF parser on malformed input with zero-size sub-header</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/file-type]</span> installed file-type@16.5.4 is inside affected range &gt;=13.0.0 &lt;21.3.1</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 5.3 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L)</li></ul><p><b>Fix info:</b> fixed in: 21.3.1 · introduced via: file-type@16.5.4</p></details></td>
+<td>file-type@16.5.4<br><small>direct prod</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in glob@10.5.0: Glob: AbortSignal cancellation bypass allows post-timeout filesystem traversal</summary>
+<p class="meta">GRD-035c157e9c · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-3g3m-2fjr-6pw4" target="_blank">GHSA-3g3m-2fjr-6pw4</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; @cyclonedx/cyclonedx-npm@4.2.1 &rarr; libxmljs2@0.37.0 &rarr; node-gyp@11.5.0 &rarr; make-fetch-happen@14.0.3 &rarr; cacache@19.0.1 &rarr; glob@10.5.0</li><li>juice-shop@20.4.0-SNAPSHOT &rarr; @cyclonedx/cyclonedx-npm@4.2.1 &rarr; @cyclonedx/cyclonedx-library@10.5.1 &rarr; libxmljs2@0.37.0 &rarr; node-gyp@11.5.0 &rarr; make-fetch-happen@14.0.3 &rarr; cacache@19.0.1 &rarr; glob@10.5.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-3g3m-2fjr-6pw4: Glob: AbortSignal cancellation bypass allows post-timeout filesystem traversal</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/glob]</span> installed glob@10.5.0 is inside affected range &gt;=9.0.0 &lt;=14.0.1</li></ul><p><b>Fix info:</b> fixed in: 14.0.2 · introduced via: @cyclonedx/cyclonedx-npm@4.2.1</p></details></td>
+<td>glob@10.5.0<br><small>transitive dev</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in hbs@4.4.0: hbs: Insertion of Sensitive Information into Externally-Accessible File or Directory and Exposure of Sensitive Informati</summary>
+<p class="meta">GRD-17dc05f63a · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-7f5c-rpf4-86p8" target="_blank">GHSA-7f5c-rpf4-86p8</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; hbs@4.4.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-7f5c-rpf4-86p8: hbs: Insertion of Sensitive Information into Externally-Accessible File or Directory and Exposure of Sensitive Information to an Unauthorized Actor</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/hbs]</span> installed hbs@4.4.0 is inside affected range &lt;=4.4.0</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 4.0 (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:L/I:N/A:N)</li></ul><p><b>Fix info:</b> no fixed version published · introduced via: hbs@4.4.0</p></details></td>
+<td>hbs@4.4.0<br><small>direct prod</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in jsonwebtoken@0.1.0: jsonwebtoken vulnerable to signature validation bypass due to insecure default algorithm in jwt.verify()</summary>
+<p class="meta">GRD-3a0beadd6d · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-qwph-4952-7xr6" target="_blank">GHSA-qwph-4952-7xr6</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; express-jwt@0.1.3 &rarr; jsonwebtoken@0.1.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-qwph-4952-7xr6: jsonwebtoken vulnerable to signature validation bypass due to insecure default algorithm in jwt.verify()</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/express-jwt/node_modules/jsonwebtoken]</span> installed jsonwebtoken@0.1.0 is inside affected range &lt;9.0.0</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 6.4 (CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:H/A:L)</li></ul><p><b>Fix info:</b> fixed in: 9.0.0 · introduced via: express-jwt@0.1.3</p></details></td>
+<td>jsonwebtoken@0.1.0<br><small>transitive prod</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in jsonwebtoken@0.1.0: jsonwebtoken&#x27;s insecure implementation of key retrieval function could lead to Forgeable Public/Private Tokens from RSA </summary>
+<p class="meta">GRD-bfd3f2d517 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-hjrf-2m68-5959" target="_blank">GHSA-hjrf-2m68-5959</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; express-jwt@0.1.3 &rarr; jsonwebtoken@0.1.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-hjrf-2m68-5959: jsonwebtoken&#x27;s insecure implementation of key retrieval function could lead to Forgeable Public/Private Tokens from RSA to HMAC</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/express-jwt/node_modules/jsonwebtoken]</span> installed jsonwebtoken@0.1.0 is inside affected range &lt;=8.5.1</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 5.0 (CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:L)</li></ul><p><b>Fix info:</b> fixed in: 9.0.0 · introduced via: express-jwt@0.1.3</p></details></td>
+<td>jsonwebtoken@0.1.0<br><small>transitive prod</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in jsonwebtoken@0.4.0: jsonwebtoken vulnerable to signature validation bypass due to insecure default algorithm in jwt.verify()</summary>
+<p class="meta">GRD-7646ef6cfd · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-qwph-4952-7xr6" target="_blank">GHSA-qwph-4952-7xr6</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; jsonwebtoken@0.4.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-qwph-4952-7xr6: jsonwebtoken vulnerable to signature validation bypass due to insecure default algorithm in jwt.verify()</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/jsonwebtoken]</span> installed jsonwebtoken@0.4.0 is inside affected range &lt;9.0.0</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 6.4 (CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:H/A:L)</li></ul><p><b>Fix info:</b> fixed in: 9.0.0 · introduced via: jsonwebtoken@0.4.0</p></details></td>
+<td>jsonwebtoken@0.4.0<br><small>direct prod</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in jsonwebtoken@0.4.0: jsonwebtoken&#x27;s insecure implementation of key retrieval function could lead to Forgeable Public/Private Tokens from RSA </summary>
+<p class="meta">GRD-d92934aba6 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-hjrf-2m68-5959" target="_blank">GHSA-hjrf-2m68-5959</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; jsonwebtoken@0.4.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-hjrf-2m68-5959: jsonwebtoken&#x27;s insecure implementation of key retrieval function could lead to Forgeable Public/Private Tokens from RSA to HMAC</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/jsonwebtoken]</span> installed jsonwebtoken@0.4.0 is inside affected range &lt;=8.5.1</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 5.0 (CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:L)</li></ul><p><b>Fix info:</b> fixed in: 9.0.0 · introduced via: jsonwebtoken@0.4.0</p></details></td>
+<td>jsonwebtoken@0.4.0<br><small>direct prod</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in lodash@2.4.2: Prototype Pollution in lodash</summary>
+<p class="meta">GRD-23dff82a3e · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-fvqr-27wr-82fm" target="_blank">GHSA-fvqr-27wr-82fm</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; sanitize-html@1.4.2 &rarr; lodash@2.4.2</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-fvqr-27wr-82fm: Prototype Pollution in lodash</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/sanitize-html/node_modules/lodash]</span> installed lodash@2.4.2 is inside affected range &lt;4.17.5</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 6.5 (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N)</li></ul><p><b>Fix info:</b> fixed in: 4.17.5 · introduced via: sanitize-html@1.4.2</p></details></td>
+<td>lodash@2.4.2<br><small>transitive prod</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in minimatch@9.0.9: minimatch has potential denial of service via globparts amplification</summary>
+<p class="meta">GRD-8d4b8975db · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-g3hv-75wg-m249" target="_blank">GHSA-g3hv-75wg-m249</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; @cyclonedx/cyclonedx-npm@4.2.1 &rarr; libxmljs2@0.37.0 &rarr; node-gyp@11.5.0 &rarr; make-fetch-happen@14.0.3 &rarr; cacache@19.0.1 &rarr; glob@10.5.0 &rarr; minimatch@9.0.9</li><li>juice-shop@20.4.0-SNAPSHOT &rarr; @cyclonedx/cyclonedx-npm@4.2.1 &rarr; @cyclonedx/cyclonedx-library@10.5.1 &rarr; libxmljs2@0.37.0 &rarr; node-gyp@11.5.0 &rarr; make-fetch-happen@14.0.3 &rarr; cacache@19.0.1 &rarr; glob@10.5.0 &rarr; minimatch@9.0.9</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-g3hv-75wg-m249: minimatch has potential denial of service via globparts amplification</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/glob/node_modules/minimatch]</span> installed minimatch@9.0.9 is inside affected range &gt;=7.0.0 &lt;11.0.1</li></ul><p><b>Fix info:</b> fixed in: 11.0.1 · introduced via: @cyclonedx/cyclonedx-npm@4.2.1</p></details></td>
+<td>minimatch@9.0.9<br><small>transitive dev</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in moment@2.0.0: Regular Expression Denial of Service in moment</summary>
+<p class="meta">GRD-6c6abee780 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-87vv-r9j6-g5qv" target="_blank">GHSA-87vv-r9j6-g5qv</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; express-jwt@0.1.3 &rarr; jsonwebtoken@0.1.0 &rarr; moment@2.0.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-87vv-r9j6-g5qv: Regular Expression Denial of Service in moment</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/express-jwt/node_modules/moment]</span> installed moment@2.0.0 is inside affected range &lt;2.11.2</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 6.5 (CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H)</li></ul><p><b>Fix info:</b> fixed in: 2.11.2 · introduced via: express-jwt@0.1.3</p></details></td>
+<td>moment@2.0.0<br><small>transitive prod</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in notevil@1.3.3: Sandbox escape in notevil and argencoders-notevil</summary>
+<p class="meta">GRD-ddea97271f · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-8g4m-cjm2-96wq" target="_blank">GHSA-8g4m-cjm2-96wq</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; notevil@1.3.3</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-8g4m-cjm2-96wq: Sandbox escape in notevil and argencoders-notevil</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/notevil]</span> installed notevil@1.3.3 is inside affected range &lt;=1.3.3</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 6.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N)</li></ul><p><b>Fix info:</b> no fixed version published · introduced via: notevil@1.3.3</p></details></td>
+<td>notevil@1.3.3<br><small>direct prod</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in sanitize-html@1.4.2: ApostropheCMS sanitize-html: nonTextTags discard region ends early on an implied close, letting &lt;noscript&gt; content rende</summary>
+<p class="meta">GRD-befcc4a77b · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-x3q4-9hxx-gx8m" target="_blank">GHSA-x3q4-9hxx-gx8m</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; sanitize-html@1.4.2</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-x3q4-9hxx-gx8m: ApostropheCMS sanitize-html: nonTextTags discard region ends early on an implied close, letting &lt;noscript&gt; content render</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/sanitize-html]</span> installed sanitize-html@1.4.2 is inside affected range &lt;2.18.0</li></ul><p><b>Fix info:</b> fixed in: 2.18.0 · introduced via: sanitize-html@1.4.2</p></details></td>
+<td>sanitize-html@1.4.2<br><small>direct prod</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in sanitize-html@1.4.2: ApostropheCMS: Incomplete CVE-2026-53606: `meta http-equiv=refresh` `content` still ships `javascript:` / `data:` URLs</summary>
+<p class="meta">GRD-b66e0194cc · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-cv27-6wvh-8x7j" target="_blank">GHSA-cv27-6wvh-8x7j</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; sanitize-html@1.4.2</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-cv27-6wvh-8x7j: ApostropheCMS: Incomplete CVE-2026-53606: `meta http-equiv=refresh` `content` still ships `javascript:` / `data:` URLs</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/sanitize-html]</span> installed sanitize-html@1.4.2 is inside affected range &lt;2.18.0</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 5.4 (CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N)</li></ul><p><b>Fix info:</b> fixed in: 2.18.0 · introduced via: sanitize-html@1.4.2</p></details></td>
+<td>sanitize-html@1.4.2<br><small>direct prod</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in sanitize-html@1.4.2: ApostropheCMS: Mutation-XSS / allowedTags bypass via literal `&lt;/textarea/&gt;` solidus close</summary>
+<p class="meta">GRD-bfca965251 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-jxwj-j7wr-gfrw" target="_blank">GHSA-jxwj-j7wr-gfrw</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; sanitize-html@1.4.2</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-jxwj-j7wr-gfrw: ApostropheCMS: Mutation-XSS / allowedTags bypass via literal `&lt;/textarea/&gt;` solidus close</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/sanitize-html]</span> installed sanitize-html@1.4.2 is inside affected range &lt;=2.17.5</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 6.1 (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N)</li></ul><p><b>Fix info:</b> fixed in: 2.17.6 · introduced via: sanitize-html@1.4.2</p></details></td>
+<td>sanitize-html@1.4.2<br><small>direct prod</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in sanitize-html@1.4.2: Cross-Site Scripting in sanitize-html</summary>
+<p class="meta">GRD-28b884891a · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-xc6g-ggrc-qq4r" target="_blank">GHSA-xc6g-ggrc-qq4r</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; sanitize-html@1.4.2</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-xc6g-ggrc-qq4r: Cross-Site Scripting in sanitize-html</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/sanitize-html]</span> installed sanitize-html@1.4.2 is inside affected range &lt;=1.11.1</li></ul><p><b>Fix info:</b> fixed in: 1.11.2 · introduced via: sanitize-html@1.4.2</p></details></td>
+<td>sanitize-html@1.4.2<br><small>direct prod</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in sanitize-html@1.4.2: Cross-Site Scripting in sanitize-html</summary>
+<p class="meta">GRD-4daae006ca · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-3j7m-hmh3-9jmp" target="_blank">GHSA-3j7m-hmh3-9jmp</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; sanitize-html@1.4.2</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-3j7m-hmh3-9jmp: Cross-Site Scripting in sanitize-html</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/sanitize-html]</span> installed sanitize-html@1.4.2 is inside affected range &lt;1.4.3</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 6.1 (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N)</li></ul><p><b>Fix info:</b> fixed in: 1.4.3 · introduced via: sanitize-html@1.4.2</p></details></td>
+<td>sanitize-html@1.4.2<br><small>direct prod</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in sanitize-html@1.4.2: Improper Input Validation in sanitize-html</summary>
+<p class="meta">GRD-bd51fc8de8 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-mjxr-4v3x-q3m4" target="_blank">GHSA-mjxr-4v3x-q3m4</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; sanitize-html@1.4.2</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-mjxr-4v3x-q3m4: Improper Input Validation in sanitize-html</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/sanitize-html]</span> installed sanitize-html@1.4.2 is inside affected range &lt;2.3.2</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 5.3 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N)</li></ul><p><b>Fix info:</b> fixed in: 2.3.2 · introduced via: sanitize-html@1.4.2</p></details></td>
+<td>sanitize-html@1.4.2<br><small>direct prod</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in sanitize-html@1.4.2: Improper Input Validation in sanitize-html</summary>
+<p class="meta">GRD-b0e32746a8 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-rjqq-98f6-6j3r" target="_blank">GHSA-rjqq-98f6-6j3r</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; sanitize-html@1.4.2</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-rjqq-98f6-6j3r: Improper Input Validation in sanitize-html</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/sanitize-html]</span> installed sanitize-html@1.4.2 is inside affected range &lt;2.3.1</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 5.3 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N)</li></ul><p><b>Fix info:</b> fixed in: 2.3.1 · introduced via: sanitize-html@1.4.2</p></details></td>
+<td>sanitize-html@1.4.2<br><small>direct prod</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in sanitize-html@1.4.2: sanitize-html Information Exposure vulnerability</summary>
+<p class="meta">GRD-48e427a2ff · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-rm97-x556-q36h" target="_blank">GHSA-rm97-x556-q36h</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; sanitize-html@1.4.2</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-rm97-x556-q36h: sanitize-html Information Exposure vulnerability</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/sanitize-html]</span> installed sanitize-html@1.4.2 is inside affected range &lt;2.12.1</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 5.3 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N)</li></ul><p><b>Fix info:</b> fixed in: 2.12.1 · introduced via: sanitize-html@1.4.2</p></details></td>
+<td>sanitize-html@1.4.2<br><small>direct prod</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in sanitize-html@1.4.2: sanitize-html is vulnerable to XSS through incomprehensive sanitization</summary>
+<p class="meta">GRD-442b903de7 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-qhxp-v273-g94h" target="_blank">GHSA-qhxp-v273-g94h</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; sanitize-html@1.4.2</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-qhxp-v273-g94h: sanitize-html is vulnerable to XSS through incomprehensive sanitization</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/sanitize-html]</span> installed sanitize-html@1.4.2 is inside affected range &lt;2.0.0-beta</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 6.1 (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N)</li></ul><p><b>Fix info:</b> fixed in: 2.0.0 · introduced via: sanitize-html@1.4.2</p></details></td>
+<td>sanitize-html@1.4.2<br><small>direct prod</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in tar@6.2.1: node-tar applies PAX size override to intermediary GNU long-name/long-link headers, causing tar parser interpretation di</summary>
+<p class="meta">GRD-fe2edc9c3d · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-vmf3-w455-68vh" target="_blank">GHSA-vmf3-w455-68vh</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; sqlite3@5.1.7 &rarr; tar@6.2.1</li><li>juice-shop@20.4.0-SNAPSHOT &rarr; sqlite3@5.1.7 &rarr; node-gyp@8.4.1 &rarr; tar@6.2.1</li><li>juice-shop@20.4.0-SNAPSHOT &rarr; sqlite3@5.1.7 &rarr; node-gyp@8.4.1 &rarr; make-fetch-happen@9.1.0 &rarr; cacache@15.3.0 &rarr; tar@6.2.1</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-vmf3-w455-68vh: node-tar applies PAX size override to intermediary GNU long-name/long-link headers, causing tar parser interpretation differential (file smuggling)</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/sqlite3/node_modules/tar]</span> installed tar@6.2.1 is inside affected range &lt;=7.5.15</li></ul><p><b>Fix info:</b> fixed in: 7.5.16 · introduced via: sqlite3@5.1.7</p></details></td>
+<td>tar@6.2.1<br><small>transitive prod</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in tar@6.2.1: node-tar: Process crash via PAX numeric path type confusion</summary>
+<p class="meta">GRD-6dee96ffc4 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-w8wr-v893-vjvp" target="_blank">GHSA-w8wr-v893-vjvp</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; sqlite3@5.1.7 &rarr; tar@6.2.1</li><li>juice-shop@20.4.0-SNAPSHOT &rarr; sqlite3@5.1.7 &rarr; node-gyp@8.4.1 &rarr; tar@6.2.1</li><li>juice-shop@20.4.0-SNAPSHOT &rarr; sqlite3@5.1.7 &rarr; node-gyp@8.4.1 &rarr; make-fetch-happen@9.1.0 &rarr; cacache@15.3.0 &rarr; tar@6.2.1</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-w8wr-v893-vjvp: node-tar: Process crash via PAX numeric path type confusion</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/sqlite3/node_modules/tar]</span> installed tar@6.2.1 is inside affected range &lt;=7.5.17</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 5.3 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L)</li></ul><p><b>Fix info:</b> fixed in: 7.5.18 · introduced via: sqlite3@5.1.7</p></details></td>
+<td>tar@6.2.1<br><small>transitive prod</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in tar@6.2.1: node-tar: Uncaught Exception DoS via NUL byte in PAX path/linkpath records</summary>
+<p class="meta">GRD-7145c614a4 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-gvwx-54wh-qm9j" target="_blank">GHSA-gvwx-54wh-qm9j</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; sqlite3@5.1.7 &rarr; tar@6.2.1</li><li>juice-shop@20.4.0-SNAPSHOT &rarr; sqlite3@5.1.7 &rarr; node-gyp@8.4.1 &rarr; tar@6.2.1</li><li>juice-shop@20.4.0-SNAPSHOT &rarr; sqlite3@5.1.7 &rarr; node-gyp@8.4.1 &rarr; make-fetch-happen@9.1.0 &rarr; cacache@15.3.0 &rarr; tar@6.2.1</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-gvwx-54wh-qm9j: node-tar: Uncaught Exception DoS via NUL byte in PAX path/linkpath records</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/sqlite3/node_modules/tar]</span> installed tar@6.2.1 is inside affected range &lt;=7.5.16</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 5.3 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L)</li></ul><p><b>Fix info:</b> fixed in: 7.5.17 · introduced via: sqlite3@5.1.7</p></details></td>
+<td>tar@6.2.1<br><small>transitive prod</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in uuid@8.3.2: uuid: Missing buffer bounds check in v3/v5/v6 when buf is provided</summary>
+<p class="meta">GRD-981fd74289 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-w5hq-g745-h8pq" target="_blank">GHSA-w5hq-g745-h8pq</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; sequelize@6.37.8 &rarr; uuid@8.3.2</li><li>juice-shop@20.4.0-SNAPSHOT &rarr; nyc@15.1.0 &rarr; istanbul-lib-processinfo@2.0.3 &rarr; uuid@8.3.2</li><li>juice-shop@20.4.0-SNAPSHOT &rarr; @istanbuljs/nyc-config-typescript@1.0.2 &rarr; nyc@15.1.0 &rarr; istanbul-lib-processinfo@2.0.3 &rarr; uuid@8.3.2</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-w5hq-g745-h8pq: uuid: Missing buffer bounds check in v3/v5/v6 when buf is provided</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/uuid]</span> installed uuid@8.3.2 is inside affected range &lt;11.1.1</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 7.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N)</li></ul><p><b>Fix info:</b> fixed in: 11.1.1 · introduced via: @istanbuljs/nyc-config-typescript@1.0.2, nyc@15.1.0, sequelize@6.37.8</p></details></td>
+<td>uuid@8.3.2<br><small>transitive prod</small></td></tr><tr class="f" data-sev="low" data-cat="cicd">
+<td><span class="sev" style="background:#3b6fb6">low</span></td>
+<td>cicd</td><td><details><summary>GitHub Action actions/checkout: first-party action pinned to mutable tag &#x27;v6&#x27;</summary>
+<p class="meta">GRD-2c057c877d · rule CICD-UNPINNED-ACTION · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>workflow-line</b> <span class="src">[.github/workflows/image_actions.yml:.github/workflows/image_actions.yml:30]</span> uses: actions/checkout@v6</li></ul><p><b>Fix info:</b> pin to a full commit SHA: uses: actions/checkout@&lt;40-char-sha&gt; # v6</p></details></td>
+<td>actions/checkout@v6<br><small>direct ci</small></td></tr><tr class="f" data-sev="low" data-cat="cicd">
+<td><span class="sev" style="background:#3b6fb6">low</span></td>
+<td>cicd</td><td><details><summary>GitHub Action github/codeql-action/analyze: first-party action pinned to mutable tag &#x27;v3&#x27;</summary>
+<p class="meta">GRD-6fe5b806a1 · rule CICD-UNPINNED-ACTION · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>workflow-line</b> <span class="src">[.github/workflows/codeql-analysis.yml:.github/workflows/codeql-analysis.yml:36]</span> uses: github/codeql-action/analyze@v3</li></ul><p><b>Fix info:</b> pin to a full commit SHA: uses: github/codeql-action/analyze@&lt;40-char-sha&gt; # v3</p></details></td>
+<td>github/codeql-action/analyze@v3<br><small>direct ci</small></td></tr><tr class="f" data-sev="low" data-cat="cicd">
+<td><span class="sev" style="background:#3b6fb6">low</span></td>
+<td>cicd</td><td><details><summary>GitHub Action github/codeql-action/autobuild: first-party action pinned to mutable tag &#x27;v3&#x27;</summary>
+<p class="meta">GRD-52345dfecd · rule CICD-UNPINNED-ACTION · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>workflow-line</b> <span class="src">[.github/workflows/codeql-analysis.yml:.github/workflows/codeql-analysis.yml:34]</span> uses: github/codeql-action/autobuild@v3</li></ul><p><b>Fix info:</b> pin to a full commit SHA: uses: github/codeql-action/autobuild@&lt;40-char-sha&gt; # v3</p></details></td>
+<td>github/codeql-action/autobuild@v3<br><small>direct ci</small></td></tr><tr class="f" data-sev="low" data-cat="cicd">
+<td><span class="sev" style="background:#3b6fb6">low</span></td>
+<td>cicd</td><td><details><summary>GitHub Action github/codeql-action/init: first-party action pinned to mutable tag &#x27;v3&#x27;</summary>
+<p class="meta">GRD-32d4bb8f8d · rule CICD-UNPINNED-ACTION · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>workflow-line</b> <span class="src">[.github/workflows/codeql-analysis.yml:.github/workflows/codeql-analysis.yml:23]</span> uses: github/codeql-action/init@v3</li></ul><p><b>Fix info:</b> pin to a full commit SHA: uses: github/codeql-action/init@&lt;40-char-sha&gt; # v3</p></details></td>
+<td>github/codeql-action/init@v3<br><small>direct ci</small></td></tr><tr class="f" data-sev="low" data-cat="install-script">
+<td><span class="sev" style="background:#3b6fb6">low</span></td>
+<td>install-script</td><td><details><summary>@scarf/scarf@1.4.0 runs a custom install script</summary>
+<p class="meta">GRD-d9cf28cd98 · rule INSTALL-SCRIPT · verified evidence · confidence medium
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; swagger-ui-express@5.0.1 &rarr; swagger-ui-dist@5.36.0 &rarr; @scarf/scarf@1.4.0</li></ul><p><b>Evidence:</b></p><ul><li><b>lockfile-entry</b> <span class="src">[package-lock.json:node_modules/@scarf/scarf]</span> hasInstallScript: true</li><li><b>script</b> <span class="src">[registry.npmjs.org/@scarf/scarf/1.4.0]</span> postinstall: node ./report.js</li></ul><p><b>Fix info:</b> install with --ignore-scripts and allowlist required builds; pin version</p></details></td>
+<td>@scarf/scarf@1.4.0<br><small>transitive prod</small></td></tr><tr class="f" data-sev="low" data-cat="install-script">
+<td><span class="sev" style="background:#3b6fb6">low</span></td>
+<td>install-script</td><td><details><summary>cypress@16.3.0 runs a custom install script</summary>
+<p class="meta">GRD-945102c354 · rule INSTALL-SCRIPT · verified evidence · confidence medium
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; cypress@16.3.0</li></ul><p><b>Evidence:</b></p><ul><li><b>lockfile-entry</b> <span class="src">[package-lock.json:node_modules/cypress]</span> hasInstallScript: true</li><li><b>script</b> <span class="src">[registry.npmjs.org/cypress/16.3.0]</span> postinstall: node dist/index.js --exec install</li></ul><p><b>Fix info:</b> install with --ignore-scripts and allowlist required builds; pin version</p></details></td>
+<td>cypress@16.3.0<br><small>direct dev</small></td></tr><tr class="f" data-sev="low" data-cat="untrusted-image">
+<td><span class="sev" style="background:#3b6fb6">low</span></td>
+<td>untrusted-image</td><td><details><summary>Dockerfile installs build tool &#x27;typescript@^6.0.3&#x27; without an exact version</summary>
+<p class="meta">GRD-0c7d7b0da1 · rule IMAGE-UNPINNED-TOOL · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>dockerfile-line</b> <span class="src">[Dockerfile:4]</span> RUN npm install -g typescript@^6.0.3</li></ul><p><b>Fix info:</b> pin exact tool versions in images so rebuilds are reproducible</p></details></td>
+<td>—<br><small> </small></td></tr><tr class="f" data-sev="low" data-cat="untrusted-image">
+<td><span class="sev" style="background:#3b6fb6">low</span></td>
+<td>untrusted-image</td><td><details><summary>Image &#x27;mongo:4.4.29&#x27; is not pinned by digest</summary>
+<p class="meta">GRD-4c148132fc · rule IMAGE-NO-DIGEST · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>image-reference</b> <span class="src">[infrastructure/docker-compose.yml:infrastructure/docker-compose.yml:59]</span> image: mongo:4.4.29</li></ul><p><b>Fix info:</b> append @sha256:&lt;digest&gt; so the tag cannot be silently re-pointed</p></details></td>
+<td>mongo@4.4.29<br><small>direct prod</small></td></tr><tr class="f" data-sev="low" data-cat="untrusted-image">
+<td><span class="sev" style="background:#3b6fb6">low</span></td>
+<td>untrusted-image</td><td><details><summary>Image &#x27;nginx:1.28.0-alpine&#x27; is not pinned by digest</summary>
+<p class="meta">GRD-5c84ae7bb2 · rule IMAGE-NO-DIGEST · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>image-reference</b> <span class="src">[infrastructure/docker-compose.yml:infrastructure/docker-compose.yml:4]</span> image: nginx:1.28.0-alpine</li></ul><p><b>Fix info:</b> append @sha256:&lt;digest&gt; so the tag cannot be silently re-pointed</p></details></td>
+<td>nginx@1.28.0-alpine<br><small>direct prod</small></td></tr><tr class="f" data-sev="low" data-cat="untrusted-image">
+<td><span class="sev" style="background:#3b6fb6">low</span></td>
+<td>untrusted-image</td><td><details><summary>Image &#x27;redis:7.4.4-alpine&#x27; is not pinned by digest</summary>
+<p class="meta">GRD-f83c2be859 · rule IMAGE-NO-DIGEST · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>image-reference</b> <span class="src">[infrastructure/docker-compose.yml:infrastructure/docker-compose.yml:44]</span> image: redis:7.4.4-alpine</li></ul><p><b>Fix info:</b> append @sha256:&lt;digest&gt; so the tag cannot be silently re-pointed</p></details></td>
+<td>redis@7.4.4-alpine<br><small>direct prod</small></td></tr><tr class="f" data-sev="low" data-cat="vulnerability">
+<td><span class="sev" style="background:#3b6fb6">low</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in @tootallnate/once@1.1.2: @tootallnate/once vulnerable to Incorrect Control Flow Scoping</summary>
+<p class="meta">GRD-7403c836c5 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-vpq2-c234-7xj6" target="_blank">GHSA-vpq2-c234-7xj6</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; sqlite3@5.1.7 &rarr; node-gyp@8.4.1 &rarr; make-fetch-happen@9.1.0 &rarr; http-proxy-agent@4.0.1 &rarr; @tootallnate/once@1.1.2</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-vpq2-c234-7xj6: @tootallnate/once vulnerable to Incorrect Control Flow Scoping</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/@tootallnate/once]</span> installed @tootallnate/once@1.1.2 is inside affected range &lt;2.0.1</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 3.3 (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L)</li></ul><p><b>Fix info:</b> fixed in: 2.0.1 · introduced via: sqlite3@5.1.7</p></details></td>
+<td>@tootallnate/once@1.1.2<br><small>transitive optional</small></td></tr><tr class="f" data-sev="info" data-cat="install-script">
+<td><span class="sev" style="background:#6b7280">info</span></td>
+<td>install-script</td><td><details><summary>esbuild@0.28.2 runs a standard native-build install script</summary>
+<p class="meta">GRD-c0393ae548 · rule INSTALL-SCRIPT · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; tsx@4.23.15 &rarr; esbuild@0.28.2</li></ul><p><b>Evidence:</b></p><ul><li><b>lockfile-entry</b> <span class="src">[package-lock.json:node_modules/esbuild]</span> hasInstallScript: true</li><li><b>script</b> <span class="src">[registry.npmjs.org/esbuild/0.28.2]</span> postinstall: node install.js</li></ul><p><b>Fix info:</b> install with --ignore-scripts and allowlist required builds; pin version</p></details></td>
+<td>esbuild@0.28.2<br><small>transitive dev</small></td></tr><tr class="f" data-sev="info" data-cat="install-script">
+<td><span class="sev" style="background:#6b7280">info</span></td>
+<td>install-script</td><td><details><summary>fsevents@2.3.3 runs a standard native-build install script</summary>
+<p class="meta">GRD-6bf1cce81c · rule INSTALL-SCRIPT · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; tsx@4.23.15 &rarr; fsevents@2.3.3</li></ul><p><b>Evidence:</b></p><ul><li><b>lockfile-entry</b> <span class="src">[package-lock.json:node_modules/fsevents]</span> hasInstallScript: true</li><li><b>script</b> <span class="src">[registry.npmjs.org/fsevents/2.3.3]</span> install: node-gyp rebuild</li></ul><p><b>Fix info:</b> install with --ignore-scripts and allowlist required builds; pin version</p></details></td>
+<td>fsevents@2.3.3<br><small>transitive dev</small></td></tr><tr class="f" data-sev="info" data-cat="install-script">
+<td><span class="sev" style="background:#6b7280">info</span></td>
+<td>install-script</td><td><details><summary>libxmljs2@0.37.0 runs a standard native-build install script</summary>
+<p class="meta">GRD-e301ad5c05 · rule INSTALL-SCRIPT · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; @cyclonedx/cyclonedx-npm@4.2.1 &rarr; libxmljs2@0.37.0</li><li>juice-shop@20.4.0-SNAPSHOT &rarr; @cyclonedx/cyclonedx-npm@4.2.1 &rarr; @cyclonedx/cyclonedx-library@10.5.1 &rarr; libxmljs2@0.37.0</li></ul><p><b>Evidence:</b></p><ul><li><b>lockfile-entry</b> <span class="src">[package-lock.json:node_modules/libxmljs2]</span> hasInstallScript: true</li><li><b>script</b> <span class="src">[registry.npmjs.org/libxmljs2/0.37.0]</span> install: prebuild-install || node-gyp rebuild</li></ul><p><b>Fix info:</b> install with --ignore-scripts and allowlist required builds; pin version</p></details></td>
+<td>libxmljs2@0.37.0<br><small>transitive dev</small></td></tr><tr class="f" data-sev="info" data-cat="install-script">
+<td><span class="sev" style="background:#6b7280">info</span></td>
+<td>install-script</td><td><details><summary>sqlite3@5.1.7 runs a standard native-build install script</summary>
+<p class="meta">GRD-a2241d2330 · rule INSTALL-SCRIPT · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>juice-shop@20.4.0-SNAPSHOT &rarr; sqlite3@5.1.7</li></ul><p><b>Evidence:</b></p><ul><li><b>lockfile-entry</b> <span class="src">[package-lock.json:node_modules/sqlite3]</span> hasInstallScript: true</li><li><b>script</b> <span class="src">[registry.npmjs.org/sqlite3/5.1.7]</span> install: prebuild-install -r napi || node-gyp rebuild</li></ul><p><b>Fix info:</b> install with --ignore-scripts and allowlist required builds; pin version</p></details></td>
+<td>sqlite3@5.1.7<br><small>direct prod</small></td></tr></tbody></table>
+<h2>Checks run</h2><ul><li>vulnerabilities: ok (53)</li><li>typosquatting: ok (0)</li><li>install_scripts: ok (6)</li><li>lockfile_integrity: ok (0)</li><li>manifest_consistency: ok (0)</li><li>container_images: ok (10)</li><li>dockerfile: ok (1)</li><li>cicd_workflows: ok (8)</li></ul>
+<h2>Coverage notes &amp; limitations</h2><ul><li>none</li></ul>
+<p class="meta">Severity here is the initial, detector-assigned risk level. Contextual prioritisation (reachability, exposure, exploitability) is done by the Analyze stage from findings.json. "verified" evidence comes from deterministic data (lockfiles, advisories, registry); "heuristic" evidence is pattern-based and needs review.</p>
+</main>
+<script>
+const f=()=>{const s=sev.value,c=cat.value,t=q.value.toLowerCase(),h=hideinfo.checked;
+document.querySelectorAll("tr.f").forEach(r=>{r.style.display=((!s||r.dataset.sev==s)&&(!c||r.dataset.cat==c)&&(!t||r.textContent.toLowerCase().includes(t))&&!(h&&!s&&r.dataset.sev=="info"))?"":"none"})};
+[sev,cat,q,hideinfo].forEach(x=>x.addEventListener("input",f));f();
+</script></body></html>

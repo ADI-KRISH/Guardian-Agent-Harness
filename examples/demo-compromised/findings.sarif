@@ -1,0 +1,1643 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "supply-chain-guardian",
+          "version": "0.1.0",
+          "rules": [
+            {
+              "id": "INSTALL-SCRIPT",
+              "name": "INSTALL-SCRIPT",
+              "shortDescription": {
+                "text": "install-script"
+              }
+            },
+            {
+              "id": "CHANGE-INTEGRITY",
+              "name": "CHANGE-INTEGRITY",
+              "shortDescription": {
+                "text": "integrity"
+              }
+            },
+            {
+              "id": "INTEGRITY-REGISTRY-MISMATCH",
+              "name": "INTEGRITY-REGISTRY-MISMATCH",
+              "shortDescription": {
+                "text": "integrity"
+              }
+            },
+            {
+              "id": "MAL-KNOWN",
+              "name": "MAL-KNOWN",
+              "shortDescription": {
+                "text": "malicious-package"
+              }
+            },
+            {
+              "id": "REGISTRY-SECURITY-HOLDER",
+              "name": "REGISTRY-SECURITY-HOLDER",
+              "shortDescription": {
+                "text": "malicious-package"
+              }
+            },
+            {
+              "id": "VULN-KNOWN",
+              "name": "VULN-KNOWN",
+              "shortDescription": {
+                "text": "vulnerability"
+              }
+            },
+            {
+              "id": "CICD-UNPINNED-ACTION",
+              "name": "CICD-UNPINNED-ACTION",
+              "shortDescription": {
+                "text": "cicd"
+              }
+            },
+            {
+              "id": "CICD-SCRIPT-INJECTION",
+              "name": "CICD-SCRIPT-INJECTION",
+              "shortDescription": {
+                "text": "cicd"
+              }
+            },
+            {
+              "id": "CHANGE-SOURCE",
+              "name": "CHANGE-SOURCE",
+              "shortDescription": {
+                "text": "integrity"
+              }
+            },
+            {
+              "id": "REGISTRY-VERSION-MISSING",
+              "name": "REGISTRY-VERSION-MISSING",
+              "shortDescription": {
+                "text": "integrity"
+              }
+            },
+            {
+              "id": "INTEGRITY-INSECURE-URL",
+              "name": "INTEGRITY-INSECURE-URL",
+              "shortDescription": {
+                "text": "integrity"
+              }
+            },
+            {
+              "id": "TYPOSQUAT",
+              "name": "TYPOSQUAT",
+              "shortDescription": {
+                "text": "typosquat"
+              }
+            },
+            {
+              "id": "UNEXPECTED-LOCK-ONLY-DEP",
+              "name": "UNEXPECTED-LOCK-ONLY-DEP",
+              "shortDescription": {
+                "text": "unexpected-dependency"
+              }
+            },
+            {
+              "id": "IMAGE-PIPE-TO-SHELL",
+              "name": "IMAGE-PIPE-TO-SHELL",
+              "shortDescription": {
+                "text": "untrusted-image"
+              }
+            },
+            {
+              "id": "IMAGE-UNTRUSTED-SOURCE",
+              "name": "IMAGE-UNTRUSTED-SOURCE",
+              "shortDescription": {
+                "text": "untrusted-image"
+              }
+            },
+            {
+              "id": "CICD-BROAD-PERMISSIONS",
+              "name": "CICD-BROAD-PERMISSIONS",
+              "shortDescription": {
+                "text": "cicd"
+              }
+            },
+            {
+              "id": "INTEGRITY-MISSING",
+              "name": "INTEGRITY-MISSING",
+              "shortDescription": {
+                "text": "integrity"
+              }
+            },
+            {
+              "id": "INTEGRITY-UNTRUSTED-SOURCE",
+              "name": "INTEGRITY-UNTRUSTED-SOURCE",
+              "shortDescription": {
+                "text": "integrity"
+              }
+            },
+            {
+              "id": "CHANGE-NEW-PACKAGE",
+              "name": "CHANGE-NEW-PACKAGE",
+              "shortDescription": {
+                "text": "unexpected-dependency"
+              }
+            },
+            {
+              "id": "UNEXPECTED-ORPHAN",
+              "name": "UNEXPECTED-ORPHAN",
+              "shortDescription": {
+                "text": "unexpected-dependency"
+              }
+            },
+            {
+              "id": "IMAGE-MUTABLE-TAG",
+              "name": "IMAGE-MUTABLE-TAG",
+              "shortDescription": {
+                "text": "untrusted-image"
+              }
+            },
+            {
+              "id": "IMAGE-NO-DIGEST",
+              "name": "IMAGE-NO-DIGEST",
+              "shortDescription": {
+                "text": "untrusted-image"
+              }
+            },
+            {
+              "id": "CHANGE-VERSION",
+              "name": "CHANGE-VERSION",
+              "shortDescription": {
+                "text": "unexpected-dependency"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "INSTALL-SCRIPT",
+          "level": "error",
+          "message": {
+            "text": "Suspicious install script in crossenv@6.1.1 | path: shop-api@1.4.0 > crossenv@6.1.1"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "critical",
+            "guardianId": "GRD-d59b7c1df8"
+          }
+        },
+        {
+          "ruleId": "CHANGE-INTEGRITY",
+          "level": "error",
+          "message": {
+            "text": "Integrity hash changed for unchanged version lodash@4.17.15 | path: shop-api@1.4.0 > lodash@4.17.15"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "critical",
+            "guardianId": "GRD-704d795f51"
+          }
+        },
+        {
+          "ruleId": "INTEGRITY-REGISTRY-MISMATCH",
+          "level": "error",
+          "message": {
+            "text": "Lockfile hash for lodash@4.17.15 does not match the registry | path: shop-api@1.4.0 > lodash@4.17.15"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "critical",
+            "guardianId": "GRD-21c00fec6e"
+          }
+        },
+        {
+          "ruleId": "MAL-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known malicious package in flatmap-stream@0.1.1: Malicious Package in flatmap-stream | path: shop-api@1.4.0 > event-stream@3.3.6 > flatmap-stream@0.1.1"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "critical",
+            "guardianId": "GRD-613706260e"
+          }
+        },
+        {
+          "ruleId": "MAL-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known malicious package in ua-parser-js@0.7.29: Embedded malware in ua-parser-js"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "critical",
+            "guardianId": "GRD-98f61e9402"
+          }
+        },
+        {
+          "ruleId": "REGISTRY-SECURITY-HOLDER",
+          "level": "error",
+          "message": {
+            "text": "crossenv was taken down by npm security (malicious package) | path: shop-api@1.4.0 > crossenv@6.1.1"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "critical",
+            "guardianId": "GRD-ae3966a225"
+          }
+        },
+        {
+          "ruleId": "REGISTRY-SECURITY-HOLDER",
+          "level": "error",
+          "message": {
+            "text": "flatmap-stream was taken down by npm security (malicious package) | path: shop-api@1.4.0 > event-stream@3.3.6 > flatmap-stream@0.1.1"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "critical",
+            "guardianId": "GRD-ca39c1eed2"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in event-stream@3.3.6: Critical severity vulnerability that affects event-stream and flatmap-stream | path: shop-api@1.4.0 > event-stream@3.3.6"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "critical",
+            "guardianId": "GRD-0ed05bf1fe"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in flatmap-stream@0.1.1: Critical severity vulnerability that affects event-stream and flatmap-stream | path: shop-api@1.4.0 > event-stream@3.3.6 > flatmap-stream@0.1.1"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "critical",
+            "guardianId": "GRD-73005cb429"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in minimist@1.2.5: Prototype Pollution in minimist | path: shop-api@1.4.0 > minimist@1.2.5"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "critical",
+            "guardianId": "GRD-2dd08017e5"
+          }
+        },
+        {
+          "ruleId": "CICD-UNPINNED-ACTION",
+          "level": "error",
+          "message": {
+            "text": "GitHub Action quick-actions/npm-cache: branch/unversioned ref 'main' (code changes on every run)"
+          },
+          "locations": [],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-04410445f6"
+          }
+        },
+        {
+          "ruleId": "CICD-SCRIPT-INJECTION",
+          "level": "error",
+          "message": {
+            "text": "Untrusted event data interpolated into a workflow step"
+          },
+          "locations": [],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-86639082f3"
+          }
+        },
+        {
+          "ruleId": "CHANGE-SOURCE",
+          "level": "error",
+          "message": {
+            "text": "Download source for minimist@1.2.5 changed: registry.npmjs.org -> registry.npmjs-cdn.com | path: shop-api@1.4.0 > minimist@1.2.5"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-cbacc02b07"
+          }
+        },
+        {
+          "ruleId": "REGISTRY-VERSION-MISSING",
+          "level": "error",
+          "message": {
+            "text": "event-stream@3.3.6 is not published on the registry (unpublished or fabricated version) | path: shop-api@1.4.0 > event-stream@3.3.6"
+          },
+          "locations": [],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-0bb2f898bb"
+          }
+        },
+        {
+          "ruleId": "INTEGRITY-INSECURE-URL",
+          "level": "error",
+          "message": {
+            "text": "minimist@1.2.5 is fetched over plain HTTP | path: shop-api@1.4.0 > minimist@1.2.5"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-dfc22d0f2f"
+          }
+        },
+        {
+          "ruleId": "REGISTRY-VERSION-MISSING",
+          "level": "error",
+          "message": {
+            "text": "ua-parser-js@0.7.29 is not published on the registry (unpublished or fabricated version)"
+          },
+          "locations": [],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-d91accc1c1"
+          }
+        },
+        {
+          "ruleId": "TYPOSQUAT",
+          "level": "error",
+          "message": {
+            "text": "Possible typosquat: 'crossenv' looks like 'cross-env' | path: shop-api@1.4.0 > crossenv@6.1.1"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "inventory"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-d2c4aa3ad1"
+          }
+        },
+        {
+          "ruleId": "UNEXPECTED-LOCK-ONLY-DEP",
+          "level": "error",
+          "message": {
+            "text": "Lockfile root declares 'debug-helper-utils' which is not in package.json | path: shop-api@1.4.0 > debug-helper-utils@1.0.2"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-46055a5e2c"
+          }
+        },
+        {
+          "ruleId": "IMAGE-PIPE-TO-SHELL",
+          "level": "error",
+          "message": {
+            "text": "Dockerfile: RUN pipes a downloaded script into a shell"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "Dockerfile"
+                },
+                "region": {
+                  "startLine": 4
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-09f992c3b6"
+          }
+        },
+        {
+          "ruleId": "IMAGE-UNTRUSTED-SOURCE",
+          "level": "error",
+          "message": {
+            "text": "Image 'fastbuilds/node-runtime' comes from a non-allowlisted publisher (docker.io)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "Dockerfile"
+                },
+                "region": {
+                  "startLine": 8
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-a0dfadd0ab"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in body-parser@1.19.0: body-parser vulnerable to Denial of Service via trailing bytes after a compressed request body | path: shop-api@1.4.0 > express@4.17.1 > body-parser@1.19.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-b38171a52f"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in body-parser@1.19.0: body-parser vulnerable to denial of service when url encoding is enabled | path: shop-api@1.4.0 > express@4.17.1 > body-parser@1.19.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-7c9e777fa6"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in js-yaml@4.0.0: JS-YAML: Quadratic CPU consumption in !!omap resolution (3.x and 4.x) \u2014 CVE-2026-59870 fix not backported | path: shop-api@1.4.0 > mocha@8.4.0 > js-yaml@4.0.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-46855e70de"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in js-yaml@4.0.0: js-yaml: YAML merge-key chains can force quadratic CPU consumption | path: shop-api@1.4.0 > mocha@8.4.0 > js-yaml@4.0.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-e7a20cd82a"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in js-yaml@4.0.0: js-yaml: maxTotalMergeKeys does not limit CPU use for empty merge sources | path: shop-api@1.4.0 > mocha@8.4.0 > js-yaml@4.0.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-745c229a21"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in lodash@4.17.15: Command Injection in lodash | path: shop-api@1.4.0 > lodash@4.17.15"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-e21d6bab29"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in lodash@4.17.15: Prototype Pollution in lodash | path: shop-api@1.4.0 > lodash@4.17.15"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-844e5ccc16"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in lodash@4.17.15: lodash vulnerable to Code Injection via `_.template` imports key names | path: shop-api@1.4.0 > lodash@4.17.15"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-ad2936893a"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in minimatch@3.0.4: minimatch ReDoS vulnerability | path: shop-api@1.4.0 > mocha@8.4.0 > minimatch@3.0.4"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-c10ccf2b40"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in minimatch@3.0.4: minimatch ReDoS: nested *() extglobs generate catastrophically backtracking regular expressions | path: shop-api@1.4.0 > mocha@8.4.0 > minimatch@3.0.4"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-7a9576dd66"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in minimatch@3.0.4: minimatch has ReDoS: matchOne() combinatorial backtracking via multiple non-adjacent GLOBSTAR segments | path: shop-api@1.4.0 > mocha@8.4.0 > minimatch@3.0.4"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-58616691cd"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in minimatch@3.0.4: minimatch has a ReDoS via repeated wildcards with non-matching literal in pattern | path: shop-api@1.4.0 > mocha@8.4.0 > minimatch@3.0.4"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-1bb0a68bcd"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in nanoid@3.1.20: nanoid: Integer Overflow or Wraparound | path: shop-api@1.4.0 > mocha@8.4.0 > nanoid@3.1.20"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-89215d2ced"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in nanoid@3.1.20: nanoid: custom generators can loop indefinitely when size is zero | path: shop-api@1.4.0 > mocha@8.4.0 > nanoid@3.1.20"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-edf2c05b8a"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in nanoid@3.1.20: nanoid: non-secure generators can loop indefinitely with negative size | path: shop-api@1.4.0 > mocha@8.4.0 > nanoid@3.1.20"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-28e4ff8f49"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in node-fetch@2.6.0: node-fetch forwards secure headers to untrusted sites | path: shop-api@1.4.0 > node-fetch@2.6.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-575e3b161a"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in path-to-regexp@0.1.7: path-to-regexp contains a ReDoS | path: shop-api@1.4.0 > express@4.17.1 > path-to-regexp@0.1.7"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-1c5fa4dd94"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in path-to-regexp@0.1.7: path-to-regexp outputs backtracking regular expressions | path: shop-api@1.4.0 > express@4.17.1 > path-to-regexp@0.1.7"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-e29370793e"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in path-to-regexp@0.1.7: path-to-regexp vulnerable to Regular Expression Denial of Service via multiple route parameters | path: shop-api@1.4.0 > express@4.17.1 > path-to-regexp@0.1.7"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-1f7ff0a614"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in qs@6.7.0: qs vulnerable to Prototype Pollution | path: shop-api@1.4.0 > express@4.17.1 > qs@6.7.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-c83abdd646"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in serialize-javascript@5.0.1: Serialize JavaScript is Vulnerable to RCE via RegExp.flags and Date.prototype.toISOString() | path: shop-api@1.4.0 > mocha@8.4.0 > serialize-javascript@5.0.1"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-66c66a37b9"
+          }
+        },
+        {
+          "ruleId": "CICD-BROAD-PERMISSIONS",
+          "level": "warning",
+          "message": {
+            "text": "Workflow grants write-all token permissions"
+          },
+          "locations": [],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-ad6c4933dc"
+          }
+        },
+        {
+          "ruleId": "INTEGRITY-MISSING",
+          "level": "warning",
+          "message": {
+            "text": "debug-helper-utils@1.0.2 has no integrity hash in the lockfile | path: shop-api@1.4.0 > debug-helper-utils@1.0.2"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-5e99ff3e09"
+          }
+        },
+        {
+          "ruleId": "INTEGRITY-UNTRUSTED-SOURCE",
+          "level": "warning",
+          "message": {
+            "text": "debug-helper-utils@1.0.2 resolved from outside the npm registry (npm.corp-artifacts.net) | path: shop-api@1.4.0 > debug-helper-utils@1.0.2"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-a8cedcd7ed"
+          }
+        },
+        {
+          "ruleId": "CHANGE-NEW-PACKAGE",
+          "level": "warning",
+          "message": {
+            "text": "New direct dependency: crossenv@6.1.1 | path: shop-api@1.4.0 > crossenv@6.1.1"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-1387eece0e"
+          }
+        },
+        {
+          "ruleId": "CHANGE-NEW-PACKAGE",
+          "level": "warning",
+          "message": {
+            "text": "New direct dependency: debug-helper-utils@1.0.2 | path: shop-api@1.4.0 > debug-helper-utils@1.0.2"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-4b17ae29e8"
+          }
+        },
+        {
+          "ruleId": "UNEXPECTED-ORPHAN",
+          "level": "warning",
+          "message": {
+            "text": "ua-parser-js@0.7.29 is in the lockfile but nothing depends on it"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-4932c67577"
+          }
+        },
+        {
+          "ruleId": "IMAGE-MUTABLE-TAG",
+          "level": "warning",
+          "message": {
+            "text": "Image 'node' uses a mutable tag (latest)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "Dockerfile"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-3c26c523d8"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "warning",
+          "message": {
+            "text": "Known vulnerability in express@4.17.1: Express.js Open Redirect in malformed URLs | path: shop-api@1.4.0 > express@4.17.1"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-0bd24c48d9"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "warning",
+          "message": {
+            "text": "Known vulnerability in js-yaml@4.0.0: JS-YAML: Quadratic-complexity DoS in merge key handling via repeated aliases | path: shop-api@1.4.0 > mocha@8.4.0 > js-yaml@4.0.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-b003d43ebf"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "warning",
+          "message": {
+            "text": "Known vulnerability in js-yaml@4.0.0: js-yaml has prototype pollution in merge (<<) | path: shop-api@1.4.0 > mocha@8.4.0 > js-yaml@4.0.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-acfcf230f1"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "warning",
+          "message": {
+            "text": "Known vulnerability in lodash@4.17.15: Lodash has Prototype Pollution Vulnerability in `_.unset`, `_.omit`, and `_.pullAt` functions | path: shop-api@1.4.0 > lodash@4.17.15"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-a128fcec7d"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "warning",
+          "message": {
+            "text": "Known vulnerability in lodash@4.17.15: Regular Expression Denial of Service (ReDoS) in lodash | path: shop-api@1.4.0 > lodash@4.17.15"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-d268e6a322"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "warning",
+          "message": {
+            "text": "Known vulnerability in nanoid@3.1.20: Exposure of Sensitive Information to an Unauthorized Actor in nanoid | path: shop-api@1.4.0 > mocha@8.4.0 > nanoid@3.1.20"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-a93a3b77dd"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "warning",
+          "message": {
+            "text": "Known vulnerability in nanoid@3.1.20: Predictable results in nanoid generation when given non-integer values | path: shop-api@1.4.0 > mocha@8.4.0 > nanoid@3.1.20"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-ab191ff106"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "warning",
+          "message": {
+            "text": "Known vulnerability in qs@6.7.0: qs : qs.stringify with arrayFormat 'comma' throws an uncaught TypeError on array elements carrying a non-callable own to | path: shop-api@1.4.0 > express@4.17.1 > qs@6.7.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-89e19feeeb"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "warning",
+          "message": {
+            "text": "Known vulnerability in qs@6.7.0: qs's arrayLimit bypass in its bracket notation allows DoS via memory exhaustion | path: shop-api@1.4.0 > express@4.17.1 > qs@6.7.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-e1d691c1d2"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "warning",
+          "message": {
+            "text": "Known vulnerability in qs@6.7.0: qs: Denial of Service via Attacker Controlled isBuffer | path: shop-api@1.4.0 > express@4.17.1 > qs@6.7.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-26b5a19a16"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "warning",
+          "message": {
+            "text": "Known vulnerability in serialize-javascript@5.0.1: Serialize JavaScript has CPU Exhaustion Denial of Service via crafted array-like objects | path: shop-api@1.4.0 > mocha@8.4.0 > serialize-javascript@5.0.1"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-5d10b6e47d"
+          }
+        },
+        {
+          "ruleId": "CICD-UNPINNED-ACTION",
+          "level": "note",
+          "message": {
+            "text": "GitHub Action actions/checkout: first-party action pinned to mutable tag 'v4'"
+          },
+          "locations": [],
+          "properties": {
+            "severity": "low",
+            "guardianId": "GRD-0045796781"
+          }
+        },
+        {
+          "ruleId": "INSTALL-SCRIPT",
+          "level": "note",
+          "message": {
+            "text": "debug-helper-utils@1.0.2 runs an install-time script (contents not inspected) | path: shop-api@1.4.0 > debug-helper-utils@1.0.2"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "low",
+            "guardianId": "GRD-a5912c6d8d"
+          }
+        },
+        {
+          "ruleId": "IMAGE-NO-DIGEST",
+          "level": "note",
+          "message": {
+            "text": "Image 'fastbuilds/node-runtime:18' is not pinned by digest"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "Dockerfile"
+                },
+                "region": {
+                  "startLine": 8
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "low",
+            "guardianId": "GRD-179def240a"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "note",
+          "message": {
+            "text": "Known vulnerability in body-parser@1.19.0: body-parser vulnerable to denial of service when invalid limit value silently disables size enforcement | path: shop-api@1.4.0 > express@4.17.1 > body-parser@1.19.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "low",
+            "guardianId": "GRD-11583fc40e"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "note",
+          "message": {
+            "text": "Known vulnerability in cookie@0.4.0: cookie accepts cookie name, path, and domain with out of bounds characters | path: shop-api@1.4.0 > express@4.17.1 > cookie@0.4.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "low",
+            "guardianId": "GRD-b530dd30bd"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "note",
+          "message": {
+            "text": "Known vulnerability in diff@5.0.0: jsdiff has a Denial of Service vulnerability in parsePatch and applyPatch | path: shop-api@1.4.0 > mocha@8.4.0 > diff@5.0.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "low",
+            "guardianId": "GRD-b9d736681d"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "note",
+          "message": {
+            "text": "Known vulnerability in express@4.17.1: express vulnerable to XSS via response.redirect() | path: shop-api@1.4.0 > express@4.17.1"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "low",
+            "guardianId": "GRD-b92c8f07bb"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "note",
+          "message": {
+            "text": "Known vulnerability in node-fetch@2.6.0: The `size` option isn't honored after following a redirect in node-fetch | path: shop-api@1.4.0 > node-fetch@2.6.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "low",
+            "guardianId": "GRD-cac3402646"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "note",
+          "message": {
+            "text": "Known vulnerability in qs@6.7.0: qs's arrayLimit bypass in comma parsing allows denial of service | path: shop-api@1.4.0 > express@4.17.1 > qs@6.7.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "low",
+            "guardianId": "GRD-21cb217e64"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "note",
+          "message": {
+            "text": "Known vulnerability in send@0.17.1: send vulnerable to template injection that can lead to XSS | path: shop-api@1.4.0 > express@4.17.1 > send@0.17.1"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "low",
+            "guardianId": "GRD-b92970fd54"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "note",
+          "message": {
+            "text": "Known vulnerability in serialize-javascript@5.0.1: Serialize JavaScript: Cross-site scripting (XSS) via unescaped </script at the end of a serialized function body | path: shop-api@1.4.0 > mocha@8.4.0 > serialize-javascript@5.0.1"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "low",
+            "guardianId": "GRD-fefc70206b"
+          }
+        },
+        {
+          "ruleId": "VULN-KNOWN",
+          "level": "note",
+          "message": {
+            "text": "Known vulnerability in serve-static@1.14.1: serve-static vulnerable to template injection that can lead to XSS | path: shop-api@1.4.0 > express@4.17.1 > serve-static@1.14.1"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "low",
+            "guardianId": "GRD-6a3bfab569"
+          }
+        },
+        {
+          "ruleId": "INSTALL-SCRIPT",
+          "level": "note",
+          "message": {
+            "text": "fsevents@2.3.3 runs a standard native-build install script | path: shop-api@1.4.0 > mocha@8.4.0 > chokidar@3.5.1 > fsevents@2.3.3"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "info",
+            "guardianId": "GRD-6bf1cce81c"
+          }
+        },
+        {
+          "ruleId": "CHANGE-NEW-PACKAGE",
+          "level": "note",
+          "message": {
+            "text": "New transitive dependency: flatmap-stream@0.1.1 | path: shop-api@1.4.0 > event-stream@3.3.6 > flatmap-stream@0.1.1"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "info",
+            "guardianId": "GRD-aef1f39854"
+          }
+        },
+        {
+          "ruleId": "CHANGE-NEW-PACKAGE",
+          "level": "note",
+          "message": {
+            "text": "New transitive dependency: ua-parser-js@0.7.29"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "info",
+            "guardianId": "GRD-1d01f76d70"
+          }
+        },
+        {
+          "ruleId": "CHANGE-VERSION",
+          "level": "note",
+          "message": {
+            "text": "event-stream changed: 3.3.4 -> 3.3.6 | path: shop-api@1.4.0 > event-stream@3.3.6"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "info",
+            "guardianId": "GRD-72d6b0c46f"
+          }
+        }
+      ]
+    }
+  ]
+}

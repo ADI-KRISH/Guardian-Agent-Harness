@@ -1,0 +1,39 @@
+[discover] juice-shop@20.4.0-SNAPSHOT: 1143 components (133 direct, 1010 transitive), depth 10, ecosystems {'npm': 1108, 'docker': 10, 'github-actions': 25}
+[detect] vulnerability source: registry.npmjs.org advisories (GitHub Advisory DB)
+  vulnerabilities        ok    53
+  typosquatting          ok    0
+  install_scripts        ok    6
+  lockfile_integrity     ok    0
+  manifest_consistency   ok    0
+  container_images       ok    10
+  dockerfile             ok    1
+  cicd_workflows         ok    8
+[detect] 78 findings  critical:7  high:23  medium:33  low:11  info:4
+  [CRITICAL] Known vulnerability in crypto-js@3.3.0: crypto-js PBKDF2 1,000 times weaker than specified in 1993 and 1.3M times weaker than current standard
+             path: juice-shop@20.4.0-SNAPSHOT > pdfkit@0.11.0 > crypto-js@3.3.0
+  [CRITICAL] Known vulnerability in crypto-js@3.3.0: crypto-js: Insufficient Entropy in Cryptographic Secret Generation via Vulnerable CryptoJS Dependency Chain
+             path: juice-shop@20.4.0-SNAPSHOT > pdfkit@0.11.0 > crypto-js@3.3.0
+  [CRITICAL] Known vulnerability in jsonwebtoken@0.1.0: Verification Bypass in jsonwebtoken
+             path: juice-shop@20.4.0-SNAPSHOT > express-jwt@0.1.3 > jsonwebtoken@0.1.0
+  [CRITICAL] Known vulnerability in jsonwebtoken@0.4.0: Verification Bypass in jsonwebtoken
+             path: juice-shop@20.4.0-SNAPSHOT > jsonwebtoken@0.4.0
+  [CRITICAL] Known vulnerability in lodash@2.4.2: Prototype Pollution in lodash
+             path: juice-shop@20.4.0-SNAPSHOT > sanitize-html@1.4.2 > lodash@2.4.2
+  [CRITICAL] Known vulnerability in marsdb@0.6.11: Command Injection in marsdb
+             path: juice-shop@20.4.0-SNAPSHOT > marsdb@0.6.11
+  [CRITICAL] Known vulnerability in tar@6.2.1: node-tar: Decompression/parse DoS via unlimited input
+             path: juice-shop@20.4.0-SNAPSHOT > sqlite3@5.1.7 > tar@6.2.1
+  [HIGH    ] GitHub Action calibreapp/image-actions: branch/unversioned ref 'main' (code changes on every run)
+  [HIGH    ] Workflow pipes a downloaded script into a shell
+  [HIGH    ] Image 'bkimminich/juice-shop' comes from a non-allowlisted publisher (docker.io)
+  [HIGH    ] Known vulnerability in @cyclonedx/cyclonedx-npm@4.2.1: @cyclonedx/cyclonedx-npm: Shell Injection via Unsanitized --workspace Argument
+             path: juice-shop@20.4.0-SNAPSHOT > @cyclonedx/cyclonedx-npm@4.2.1
+  [HIGH    ] Known vulnerability in @cyclonedx/cyclonedx-npm@4.2.1: @cyclonedx/cyclonedx-npm: Shell Injection via Unsanitized --workspace Argument on Windows
+             path: juice-shop@20.4.0-SNAPSHOT > @cyclonedx/cyclonedx-npm@4.2.1
+  [HIGH    ] Known vulnerability in express-jwt@0.1.3: Authorization bypass in express-jwt
+             path: juice-shop@20.4.0-SNAPSHOT > express-jwt@0.1.3
+  [HIGH    ] Known vulnerability in jsonwebtoken@0.1.0: jsonwebtoken unrestricted key type could lead to legacy keys usage 
+             path: juice-shop@20.4.0-SNAPSHOT > express-jwt@0.1.3 > jsonwebtoken@0.1.0
+  [HIGH    ] Known vulnerability in jsonwebtoken@0.4.0: jsonwebtoken unrestricted key type could lead to legacy keys usage 
+             path: juice-shop@20.4.0-SNAPSHOT > jsonwebtoken@0.4.0
+[detect] wrote /home/claude/guardian/examples/juice-shop/findings.json, findings.sarif, report.html

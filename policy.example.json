@@ -1,0 +1,8 @@
+{
+  "trusted_image_prefixes": ["gcr.io/distroless/", "mcr.microsoft.com/", "cgr.dev/chainguard/",
+                             "registry.access.redhat.com/", "public.ecr.aws/docker/library/", "docker.io/library/",
+                             "bkimminich/"],
+  "first_party_action_owners": ["actions", "github"],
+  "require_action_sha_pin": true,
+  "require_image_digest": false
+}

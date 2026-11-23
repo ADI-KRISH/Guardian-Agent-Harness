@@ -1,0 +1,39 @@
+# Popular npm package names used as typosquatting targets. One per line. Extend freely.
+lodash react react-dom express axios chalk commander debug moment request async bluebird underscore uuid
+classnames prop-types yargs fs-extra glob mkdirp rimraf minimist colors body-parser webpack babel-core
+@babel/core @babel/runtime @babel/preset-env typescript tslib rxjs vue jquery dotenv cross-env cors
+semver inquirer core-js eslint prettier jest mocha chai sinon supertest nodemon ws socket.io socket.io-client
+redux react-redux react-router react-router-dom next nuxt angular @angular/core @angular/common zone.js
+mongoose mongodb mysql mysql2 pg sequelize redis ioredis knex typeorm prisma @prisma/client sqlite3
+jsonwebtoken bcrypt bcryptjs passport helmet morgan cookie-parser express-session multer compression
+node-fetch cheerio puppeteer playwright selenium-webdriver ejs pug handlebars mustache marked markdown-it
+highlight.js dayjs date-fns luxon validator joi yup ajv zod qs querystring query-string path-to-regexp
+http-proxy http-proxy-middleware https-proxy-agent agent-base node-forge crypto-js bn.js elliptic
+object-assign through2 readable-stream event-stream from stream-browserify buffer events util inherits
+safe-buffer string_decoder chokidar anymatch micromatch minimatch picomatch fast-glob globby ignore
+graceful-fs mime mime-types serve-static send finalhandler on-finished statuses http-errors depd
+cookie cookie-signature content-type content-disposition accepts negotiator type-is vary etag fresh
+range-parser proxy-addr forwarded ipaddr.js parseurl escape-html encodeurl merge-descriptors methods
+array-flatten utils-merge setprototypeof toidentifier iconv-lite safer-buffer raw-body bytes unpipe
+ee-first destroy source-map source-map-support esprima acorn estraverse esutils escodegen terser uglify-js
+postcss autoprefixer sass node-sass less stylus tailwindcss bootstrap font-awesome @fortawesome/fontawesome-free
+d3 chart.js three leaflet socket.io-parser engine.io xmlhttprequest form-data combined-stream delayed-stream
+asynckit follow-redirects proxy-from-env tough-cookie request-promise got superagent needle node-gyp
+nan node-addon-api bindings prebuild-install node-pre-gyp @mapbox/node-pre-gyp esbuild vite rollup parcel
+@types/node @types/react @types/express ts-node tsx ts-jest @typescript-eslint/parser @typescript-eslint/eslint-plugin
+eslint-plugin-react eslint-plugin-import eslint-config-airbnb husky lint-staged concurrently npm-run-all
+cross-spawn which shelljs execa open opn ora cli-progress progress listr boxen figlet ansi-styles
+ansi-regex strip-ansi supports-color has-flag color-convert color-name escape-string-regexp js-yaml yaml
+ini toml xml2js xmlbuilder fast-xml-parser sax htmlparser2 jsdom dompurify sanitize-html xss
+lru-cache node-cache memory-cache keyv cacheable-request p-limit p-queue p-map p-retry retry
+winston pino bunyan log4js loglevel signale npmlog
+ramda immutable immer mobx zustand recoil styled-components @emotion/react @emotion/styled
+@mui/material material-ui antd react-bootstrap semantic-ui-react framer-motion react-query @tanstack/react-query
+graphql apollo-server @apollo/client graphql-tag express-graphql
+aws-sdk @aws-sdk/client-s3 firebase firebase-admin googleapis stripe twilio nodemailer
+electron electron-builder react-native expo
+pako jszip archiver tar unzipper adm-zip yauzl
+shortid nanoid cuid hashids randomstring
+q when co thunkify kind-of is-number isarray isobject extend deep-extend merge defaults clone
+deepmerge lodash.merge lodash.get lodash.set lodash.debounce lodash.throttle lodash.clonedeep
+coa rc ua-parser-js

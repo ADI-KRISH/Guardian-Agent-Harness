@@ -1,0 +1,16 @@
+{
+  "name": "shop-api",
+  "version": "1.4.0",
+  "description": "Demo service for the Supply Chain Guardian (trusted baseline state)",
+  "main": "server.js",
+  "scripts": { "start": "node server.js", "test": "mocha" },
+  "dependencies": {
+    "express": "4.17.1",
+    "lodash": "4.17.15",
+    "minimist": "1.2.5",
+    "node-fetch": "2.6.0",
+    "event-stream": "3.3.4",
+    "cross-env": "7.0.3"
+  },
+  "devDependencies": { "mocha": "8.4.0" }
+}

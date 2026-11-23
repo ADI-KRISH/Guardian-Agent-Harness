@@ -1,0 +1,8 @@
+# Popular PyPI names (typosquat targets)
+requests urllib3 numpy pandas scipy matplotlib django flask fastapi sqlalchemy pydantic boto3 botocore
+setuptools wheel pip six python-dateutil pyyaml jinja2 markupsafe click certifi idna charset-normalizer
+cryptography pyopenssl paramiko pytest tox coverage black flake8 pylint mypy isort selenium beautifulsoup4
+lxml pillow opencv-python tensorflow torch keras scikit-learn xgboost lightgbm transformers tqdm colorama
+psycopg2 psycopg2-binary pymongo redis celery gunicorn uvicorn starlette aiohttp httpx websockets
+openpyxl xlrd jsonschema attrs packaging docutils sphinx pygments tornado twisted grpcio protobuf
+google-cloud-storage azure-storage-blob pyjwt python-jose passlib bcrypt itsdangerous werkzeug

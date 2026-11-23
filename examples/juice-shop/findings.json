@@ -1,0 +1,4467 @@
+{
+  "schema": "guardian.findings/v1",
+  "tool": {
+    "name": "supply-chain-guardian",
+    "stage": "discover+detect",
+    "version": "0.1.0"
+  },
+  "generated_at": "2026-11-23T09:47:00Z",
+  "project": "juice-shop@20.4.0-SNAPSHOT",
+  "inputs": [
+    "package.json",
+    "package-lock.json",
+    "Dockerfile",
+    "infrastructure/Dockerfile",
+    "test/smoke/Dockerfile",
+    "docker-compose.test.yml",
+    "infrastructure/docker-compose.yml",
+    ".github/workflows/ci.yml",
+    ".github/workflows/codeql-analysis.yml",
+    ".github/workflows/frontend-bundle-analysis.yml",
+    ".github/workflows/image_actions.yml",
+    ".github/workflows/issue-compliance.yml",
+    ".github/workflows/lint-fixer.yml",
+    ".github/workflows/lock.yml",
+    ".github/workflows/pr-compliance.yml",
+    ".github/workflows/rebase.yml",
+    ".github/workflows/release.yml",
+    ".github/workflows/stale.yml",
+    ".github/workflows/update-challenges-ebook.yml",
+    ".github/workflows/update-challenges-www-legacy.yml",
+    ".github/workflows/update-challenges-www.yml",
+    ".github/workflows/update-news-www-legacy.yml",
+    ".github/workflows/update-news-www.yml"
+  ],
+  "ecosystems": [
+    "npm",
+    "dockerfile",
+    "github-actions"
+  ],
+  "coverage_notes": [],
+  "inventory": {
+    "components": 1143,
+    "direct": 133,
+    "transitive": 1010,
+    "by_ecosystem": {
+      "npm": 1108,
+      "docker": 10,
+      "github-actions": 25
+    },
+    "by_scope": {
+      "prod": 472,
+      "dev": 596,
+      "optional": 47,
+      "build": 3,
+      "ci": 25
+    },
+    "edges": 2182,
+    "unreachable_from_root": 0,
+    "max_depth": 10
+  },
+  "vulnerability_source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+  "vulnerability_source_errors": [],
+  "checks": {
+    "vulnerabilities": {
+      "status": "ok",
+      "findings": 53
+    },
+    "typosquatting": {
+      "status": "ok",
+      "findings": 0
+    },
+    "install_scripts": {
+      "status": "ok",
+      "findings": 6
+    },
+    "lockfile_integrity": {
+      "status": "ok",
+      "findings": 0
+    },
+    "manifest_consistency": {
+      "status": "ok",
+      "findings": 0
+    },
+    "container_images": {
+      "status": "ok",
+      "findings": 10
+    },
+    "dockerfile": {
+      "status": "ok",
+      "findings": 1
+    },
+    "cicd_workflows": {
+      "status": "ok",
+      "findings": 8
+    }
+  },
+  "baseline_diff": null,
+  "summary": {
+    "total": 78,
+    "by_severity": {
+      "critical": 7,
+      "high": 23,
+      "medium": 33,
+      "low": 11,
+      "info": 4
+    },
+    "by_category": {
+      "vulnerability": 53,
+      "cicd": 8,
+      "untrusted-image": 11,
+      "install-script": 6
+    }
+  },
+  "findings": [
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in crypto-js@3.3.0: crypto-js PBKDF2 1,000 times weaker than specified in 1993 and 1.3M times weaker than current standard",
+      "severity": "critical",
+      "component": {
+        "id": "pkg:npm/crypto-js@3.3.0",
+        "name": "crypto-js",
+        "version": "3.3.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-xwcq-pm8m-c4vf: crypto-js PBKDF2 1,000 times weaker than specified in 1993 and 1.3M times weaker than current standard",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed crypto-js@3.3.0 is inside affected range <4.2.0",
+          "location": "node_modules/crypto-js"
+        },
+        {
+          "kind": "cvss",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "CVSS 9.1 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N)",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "pdfkit@0.11.0",
+          "crypto-js@3.3.0"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-xwcq-pm8m-c4vf"
+      ],
+      "identifiers": [
+        "GHSA-xwcq-pm8m-c4vf"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "4.2.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "pdfkit@0.11.0"
+        ],
+        "cvss_score": 9.1,
+        "cwe": [
+          "CWE-327",
+          "CWE-328",
+          "CWE-916"
+        ]
+      },
+      "id": "GRD-2d0d24aad6"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in crypto-js@3.3.0: crypto-js: Insufficient Entropy in Cryptographic Secret Generation via Vulnerable CryptoJS Dependency Chain",
+      "severity": "critical",
+      "component": {
+        "id": "pkg:npm/crypto-js@3.3.0",
+        "name": "crypto-js",
+        "version": "3.3.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-rg76-677x-56q9: crypto-js: Insufficient Entropy in Cryptographic Secret Generation via Vulnerable CryptoJS Dependency Chain",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed crypto-js@3.3.0 is inside affected range <4.0.0",
+          "location": "node_modules/crypto-js"
+        },
+        {
+          "kind": "cvss",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "CVSS 9.0 (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H)",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "pdfkit@0.11.0",
+          "crypto-js@3.3.0"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-rg76-677x-56q9"
+      ],
+      "identifiers": [
+        "GHSA-rg76-677x-56q9"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "4.0.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "pdfkit@0.11.0"
+        ],
+        "cvss_score": 9.0,
+        "cwe": [
+          "CWE-331",
+          "CWE-334",
+          "CWE-338"
+        ]
+      },
+      "id": "GRD-5ab3d5bccb"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in jsonwebtoken@0.1.0: Verification Bypass in jsonwebtoken",
+      "severity": "critical",
+      "component": {
+        "id": "pkg:npm/jsonwebtoken@0.1.0",
+        "name": "jsonwebtoken",
+        "version": "0.1.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-c7hr-j4mj-j2w6: Verification Bypass in jsonwebtoken",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed jsonwebtoken@0.1.0 is inside affected range <4.2.2",
+          "location": "node_modules/express-jwt/node_modules/jsonwebtoken"
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "express-jwt@0.1.3",
+          "jsonwebtoken@0.1.0"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-c7hr-j4mj-j2w6"
+      ],
+      "identifiers": [
+        "GHSA-c7hr-j4mj-j2w6"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "4.2.2"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express-jwt@0.1.3"
+        ],
+        "cvss_score": null,
+        "cwe": [
+          "CWE-20"
+        ]
+      },
+      "id": "GRD-27658816a6"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in jsonwebtoken@0.4.0: Verification Bypass in jsonwebtoken",
+      "severity": "critical",
+      "component": {
+        "id": "pkg:npm/jsonwebtoken@0.4.0",
+        "name": "jsonwebtoken",
+        "version": "0.4.0",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-c7hr-j4mj-j2w6: Verification Bypass in jsonwebtoken",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed jsonwebtoken@0.4.0 is inside affected range <4.2.2",
+          "location": "node_modules/jsonwebtoken"
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "jsonwebtoken@0.4.0"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-c7hr-j4mj-j2w6"
+      ],
+      "identifiers": [
+        "GHSA-c7hr-j4mj-j2w6"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "4.2.2"
+        ],
+        "available": true,
+        "introduced_via": [
+          "jsonwebtoken@0.4.0"
+        ],
+        "cvss_score": null,
+        "cwe": [
+          "CWE-20"
+        ]
+      },
+      "id": "GRD-2d7f8fdaa9"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in lodash@2.4.2: Prototype Pollution in lodash",
+      "severity": "critical",
+      "component": {
+        "id": "pkg:npm/lodash@2.4.2",
+        "name": "lodash",
+        "version": "2.4.2",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-jf85-cpcp-j695: Prototype Pollution in lodash",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed lodash@2.4.2 is inside affected range <4.17.12",
+          "location": "node_modules/sanitize-html/node_modules/lodash"
+        },
+        {
+          "kind": "cvss",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "CVSS 9.1 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H)",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sanitize-html@1.4.2",
+          "lodash@2.4.2"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-jf85-cpcp-j695"
+      ],
+      "identifiers": [
+        "GHSA-jf85-cpcp-j695"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "4.17.12"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sanitize-html@1.4.2"
+        ],
+        "cvss_score": 9.1,
+        "cwe": [
+          "CWE-20",
+          "CWE-1321"
+        ]
+      },
+      "id": "GRD-a4254ed143"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in marsdb@0.6.11: Command Injection in marsdb",
+      "severity": "critical",
+      "component": {
+        "id": "pkg:npm/marsdb@0.6.11",
+        "name": "marsdb",
+        "version": "0.6.11",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-5mrr-rgp6-x4gr: Command Injection in marsdb",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed marsdb@0.6.11 is inside affected range >=0.0.0",
+          "location": "node_modules/marsdb"
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "marsdb@0.6.11"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-5mrr-rgp6-x4gr"
+      ],
+      "identifiers": [
+        "GHSA-5mrr-rgp6-x4gr"
+      ],
+      "fix": {
+        "fixed_versions": [],
+        "available": false,
+        "introduced_via": [
+          "marsdb@0.6.11"
+        ],
+        "cvss_score": null,
+        "cwe": [
+          "CWE-77"
+        ]
+      },
+      "id": "GRD-b57ae0df1d"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in tar@6.2.1: node-tar: Decompression/parse DoS via unlimited input",
+      "severity": "critical",
+      "component": {
+        "id": "pkg:npm/tar@6.2.1",
+        "name": "tar",
+        "version": "6.2.1",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-23hp-3jrh-7fpw: node-tar: Decompression/parse DoS via unlimited input",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed tar@6.2.1 is inside affected range <=7.5.18",
+          "location": "node_modules/sqlite3/node_modules/tar"
+        },
+        {
+          "kind": "cvss",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "CVSS 7.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "make-fetch-happen@9.1.0",
+          "cacache@15.3.0",
+          "tar@6.2.1"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-23hp-3jrh-7fpw"
+      ],
+      "identifiers": [
+        "GHSA-23hp-3jrh-7fpw"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "7.5.19"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sqlite3@5.1.7"
+        ],
+        "cvss_score": 7.5,
+        "cwe": [
+          "CWE-770"
+        ]
+      },
+      "id": "GRD-29e67796f1"
+    },
+    {
+      "rule": "CICD-UNPINNED-ACTION",
+      "category": "cicd",
+      "title": "GitHub Action calibreapp/image-actions: branch/unversioned ref 'main' (code changes on every run)",
+      "severity": "high",
+      "component": {
+        "id": "pkg:githubactions/calibreapp/image-actions@main",
+        "name": "calibreapp/image-actions",
+        "version": "main",
+        "ecosystem": "github-actions",
+        "direct": true,
+        "scope": "ci"
+      },
+      "evidence": [
+        {
+          "kind": "workflow-line",
+          "source": ".github/workflows/image_actions.yml",
+          "detail": "uses: calibreapp/image-actions@main",
+          "location": ".github/workflows/image_actions.yml:33"
+        }
+      ],
+      "dependency_paths": [],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [],
+      "identifiers": [],
+      "fix": {
+        "suggestion": "pin to a full commit SHA: uses: calibreapp/image-actions@<40-char-sha> # main"
+      },
+      "id": "GRD-46b77d7f63"
+    },
+    {
+      "rule": "CICD-PIPE-TO-SHELL",
+      "category": "cicd",
+      "title": "Workflow pipes a downloaded script into a shell",
+      "severity": "high",
+      "component": null,
+      "evidence": [
+        {
+          "kind": "workflow-line",
+          "source": ".github/workflows/ci.yml",
+          "detail": "run: curl https://cli-assets.heroku.com/install.sh | sh",
+          "location": "353"
+        }
+      ],
+      "dependency_paths": [],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [],
+      "identifiers": [],
+      "fix": null,
+      "id": "GRD-faa461971a"
+    },
+    {
+      "rule": "IMAGE-UNTRUSTED-SOURCE",
+      "category": "untrusted-image",
+      "title": "Image 'bkimminich/juice-shop' comes from a non-allowlisted publisher (docker.io)",
+      "severity": "high",
+      "component": {
+        "id": "pkg:docker/bkimminich/juice-shop@latest",
+        "name": "bkimminich/juice-shop",
+        "version": "latest",
+        "ecosystem": "docker",
+        "direct": true,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "image-reference",
+          "source": "docker-compose.test.yml",
+          "detail": "image: bkimminich/juice-shop:latest",
+          "location": "docker-compose.test.yml:7"
+        },
+        {
+          "kind": "policy",
+          "source": "guardian policy",
+          "detail": "not a Docker Official Image and not under trusted prefixes: gcr.io/distroless/, mcr.microsoft.com/, cgr.dev/chainguard/, registry.access.redhat.com/...",
+          "location": null
+        }
+      ],
+      "dependency_paths": [],
+      "confidence": "medium",
+      "evidence_type": "verified",
+      "references": [],
+      "identifiers": [],
+      "fix": {
+        "suggestion": "use an official / verified-publisher image or add the publisher to the allowlist after review"
+      },
+      "id": "GRD-9d996a60f5"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in @cyclonedx/cyclonedx-npm@4.2.1: @cyclonedx/cyclonedx-npm: Shell Injection via Unsanitized --workspace Argument",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/%40cyclonedx/cyclonedx-npm@4.2.1",
+        "name": "@cyclonedx/cyclonedx-npm",
+        "version": "4.2.1",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "dev"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-v75r-vx73-82pj: @cyclonedx/cyclonedx-npm: Shell Injection via Unsanitized --workspace Argument",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed @cyclonedx/cyclonedx-npm@4.2.1 is inside affected range >=2.1.0 <5.0.0",
+          "location": "node_modules/@cyclonedx/cyclonedx-npm"
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "@cyclonedx/cyclonedx-npm@4.2.1"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-v75r-vx73-82pj"
+      ],
+      "identifiers": [
+        "GHSA-v75r-vx73-82pj"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "5.0.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "@cyclonedx/cyclonedx-npm@4.2.1"
+        ],
+        "cvss_score": null,
+        "cwe": [
+          "CWE-78"
+        ]
+      },
+      "id": "GRD-eff1a2b835"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in @cyclonedx/cyclonedx-npm@4.2.1: @cyclonedx/cyclonedx-npm: Shell Injection via Unsanitized --workspace Argument on Windows",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/%40cyclonedx/cyclonedx-npm@4.2.1",
+        "name": "@cyclonedx/cyclonedx-npm",
+        "version": "4.2.1",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "dev"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-q69g-4hcv-6jg4: @cyclonedx/cyclonedx-npm: Shell Injection via Unsanitized --workspace Argument on Windows",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed @cyclonedx/cyclonedx-npm@4.2.1 is inside affected range <6.0.0",
+          "location": "node_modules/@cyclonedx/cyclonedx-npm"
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "@cyclonedx/cyclonedx-npm@4.2.1"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-q69g-4hcv-6jg4"
+      ],
+      "identifiers": [
+        "GHSA-q69g-4hcv-6jg4"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "6.0.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "@cyclonedx/cyclonedx-npm@4.2.1"
+        ],
+        "cvss_score": null,
+        "cwe": [
+          "CWE-78"
+        ]
+      },
+      "id": "GRD-60b08f3779"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in express-jwt@0.1.3: Authorization bypass in express-jwt",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/express-jwt@0.1.3",
+        "name": "express-jwt",
+        "version": "0.1.3",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-6g6m-m6h5-w9gf: Authorization bypass in express-jwt",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed express-jwt@0.1.3 is inside affected range <=5.3.3",
+          "location": "node_modules/express-jwt"
+        },
+        {
+          "kind": "cvss",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "CVSS 7.7 (CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:C/C:H/I:H/A:N)",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "express-jwt@0.1.3"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-6g6m-m6h5-w9gf"
+      ],
+      "identifiers": [
+        "GHSA-6g6m-m6h5-w9gf"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "6.0.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express-jwt@0.1.3"
+        ],
+        "cvss_score": 7.7,
+        "cwe": [
+          "CWE-285",
+          "CWE-863"
+        ]
+      },
+      "id": "GRD-000db4f725"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in jsonwebtoken@0.1.0: jsonwebtoken unrestricted key type could lead to legacy keys usage ",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/jsonwebtoken@0.1.0",
+        "name": "jsonwebtoken",
+        "version": "0.1.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-8cf7-32gw-wr33: jsonwebtoken unrestricted key type could lead to legacy keys usage ",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed jsonwebtoken@0.1.0 is inside affected range <=8.5.1",
+          "location": "node_modules/express-jwt/node_modules/jsonwebtoken"
+        },
+        {
+          "kind": "cvss",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "CVSS 8.1 (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N)",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "express-jwt@0.1.3",
+          "jsonwebtoken@0.1.0"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-8cf7-32gw-wr33"
+      ],
+      "identifiers": [
+        "GHSA-8cf7-32gw-wr33"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "9.0.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express-jwt@0.1.3"
+        ],
+        "cvss_score": 8.1,
+        "cwe": [
+          "CWE-327"
+        ]
+      },
+      "id": "GRD-f30fc17d4a"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in jsonwebtoken@0.4.0: jsonwebtoken unrestricted key type could lead to legacy keys usage ",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/jsonwebtoken@0.4.0",
+        "name": "jsonwebtoken",
+        "version": "0.4.0",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-8cf7-32gw-wr33: jsonwebtoken unrestricted key type could lead to legacy keys usage ",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed jsonwebtoken@0.4.0 is inside affected range <=8.5.1",
+          "location": "node_modules/jsonwebtoken"
+        },
+        {
+          "kind": "cvss",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "CVSS 8.1 (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N)",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "jsonwebtoken@0.4.0"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-8cf7-32gw-wr33"
+      ],
+      "identifiers": [
+        "GHSA-8cf7-32gw-wr33"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "9.0.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "jsonwebtoken@0.4.0"
+        ],
+        "cvss_score": 8.1,
+        "cwe": [
+          "CWE-327"
+        ]
+      },
+      "id": "GRD-ec409d792d"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in jws@0.2.6: Forgeable Public/Private Tokens in jws",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/jws@0.2.6",
+        "name": "jws",
+        "version": "0.2.6",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-gjcw-v447-2w7q: Forgeable Public/Private Tokens in jws",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed jws@0.2.6 is inside affected range <3.0.0",
+          "location": "node_modules/jws"
+        },
+        {
+          "kind": "cvss",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "CVSS 8.7 (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:N)",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "jsonwebtoken@0.4.0",
+          "jws@0.2.6"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "express-jwt@0.1.3",
+          "jsonwebtoken@0.1.0",
+          "jws@0.2.6"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-gjcw-v447-2w7q"
+      ],
+      "identifiers": [
+        "GHSA-gjcw-v447-2w7q"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "3.0.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express-jwt@0.1.3",
+          "jsonwebtoken@0.4.0"
+        ],
+        "cvss_score": 8.7,
+        "cwe": []
+      },
+      "id": "GRD-21ff3f02f2"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in jws@0.2.6: auth0/node-jws Improperly Verifies HMAC Signature",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/jws@0.2.6",
+        "name": "jws",
+        "version": "0.2.6",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-869p-cjfg-cm3x: auth0/node-jws Improperly Verifies HMAC Signature",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed jws@0.2.6 is inside affected range <3.2.3",
+          "location": "node_modules/jws"
+        },
+        {
+          "kind": "cvss",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "CVSS 7.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N)",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "jsonwebtoken@0.4.0",
+          "jws@0.2.6"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "express-jwt@0.1.3",
+          "jsonwebtoken@0.1.0",
+          "jws@0.2.6"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-869p-cjfg-cm3x"
+      ],
+      "identifiers": [
+        "GHSA-869p-cjfg-cm3x"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "3.2.3"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express-jwt@0.1.3",
+          "jsonwebtoken@0.4.0"
+        ],
+        "cvss_score": 7.5,
+        "cwe": [
+          "CWE-347"
+        ]
+      },
+      "id": "GRD-8c533f5a81"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in lodash@2.4.2: Command Injection in lodash",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/lodash@2.4.2",
+        "name": "lodash",
+        "version": "2.4.2",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-35jh-r3h4-6jhm: Command Injection in lodash",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed lodash@2.4.2 is inside affected range <4.17.21",
+          "location": "node_modules/sanitize-html/node_modules/lodash"
+        },
+        {
+          "kind": "cvss",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "CVSS 7.2 (CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H)",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sanitize-html@1.4.2",
+          "lodash@2.4.2"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-35jh-r3h4-6jhm"
+      ],
+      "identifiers": [
+        "GHSA-35jh-r3h4-6jhm"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "4.17.21"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sanitize-html@1.4.2"
+        ],
+        "cvss_score": 7.2,
+        "cwe": [
+          "CWE-77",
+          "CWE-94"
+        ]
+      },
+      "id": "GRD-f54abcfcae"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in lodash@2.4.2: Prototype Pollution in lodash",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/lodash@2.4.2",
+        "name": "lodash",
+        "version": "2.4.2",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-4xc9-xhrj-v574: Prototype Pollution in lodash",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed lodash@2.4.2 is inside affected range <4.17.11",
+          "location": "node_modules/sanitize-html/node_modules/lodash"
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sanitize-html@1.4.2",
+          "lodash@2.4.2"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-4xc9-xhrj-v574"
+      ],
+      "identifiers": [
+        "GHSA-4xc9-xhrj-v574"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "4.17.11"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sanitize-html@1.4.2"
+        ],
+        "cvss_score": null,
+        "cwe": [
+          "CWE-400"
+        ]
+      },
+      "id": "GRD-95bed168b0"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in moment@2.0.0: Path Traversal: 'dir/../../filename' in moment.locale",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/moment@2.0.0",
+        "name": "moment",
+        "version": "2.0.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-8hfj-j24r-96c4: Path Traversal: 'dir/../../filename' in moment.locale",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed moment@2.0.0 is inside affected range <2.29.2",
+          "location": "node_modules/express-jwt/node_modules/moment"
+        },
+        {
+          "kind": "cvss",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "CVSS 7.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N)",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "express-jwt@0.1.3",
+          "jsonwebtoken@0.1.0",
+          "moment@2.0.0"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-8hfj-j24r-96c4"
+      ],
+      "identifiers": [
+        "GHSA-8hfj-j24r-96c4"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "2.29.2"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express-jwt@0.1.3"
+        ],
+        "cvss_score": 7.5,
+        "cwe": [
+          "CWE-22",
+          "CWE-27"
+        ]
+      },
+      "id": "GRD-f9f7b41e3b"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in moment@2.0.0: Regular Expression Denial of Service in moment",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/moment@2.0.0",
+        "name": "moment",
+        "version": "2.0.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-446m-mv8f-q348: Regular Expression Denial of Service in moment",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed moment@2.0.0 is inside affected range <2.19.3",
+          "location": "node_modules/express-jwt/node_modules/moment"
+        },
+        {
+          "kind": "cvss",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "CVSS 7.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "express-jwt@0.1.3",
+          "jsonwebtoken@0.1.0",
+          "moment@2.0.0"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-446m-mv8f-q348"
+      ],
+      "identifiers": [
+        "GHSA-446m-mv8f-q348"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "2.19.3"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express-jwt@0.1.3"
+        ],
+        "cvss_score": 7.5,
+        "cwe": [
+          "CWE-400"
+        ]
+      },
+      "id": "GRD-ac227d148c"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in sanitize-html@1.4.2: Sanitize-html Vulnerable To REDoS Attacks",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/sanitize-html@1.4.2",
+        "name": "sanitize-html",
+        "version": "1.4.2",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-cgfm-xwp7-2cvr: Sanitize-html Vulnerable To REDoS Attacks",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed sanitize-html@1.4.2 is inside affected range <2.7.1",
+          "location": "node_modules/sanitize-html"
+        },
+        {
+          "kind": "cvss",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "CVSS 7.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sanitize-html@1.4.2"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-cgfm-xwp7-2cvr"
+      ],
+      "identifiers": [
+        "GHSA-cgfm-xwp7-2cvr"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "2.7.1"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sanitize-html@1.4.2"
+        ],
+        "cvss_score": 7.5,
+        "cwe": [
+          "CWE-1333"
+        ]
+      },
+      "id": "GRD-f488b5ad0f"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in tar@6.2.1: Arbitrary File Read/Write via Hardlink Target Escape Through Symlink Chain in node-tar Extraction",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/tar@6.2.1",
+        "name": "tar",
+        "version": "6.2.1",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-83g3-92jg-28cx: Arbitrary File Read/Write via Hardlink Target Escape Through Symlink Chain in node-tar Extraction",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed tar@6.2.1 is inside affected range <7.5.8",
+          "location": "node_modules/sqlite3/node_modules/tar"
+        },
+        {
+          "kind": "cvss",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "CVSS 7.1 (CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:N)",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "make-fetch-happen@9.1.0",
+          "cacache@15.3.0",
+          "tar@6.2.1"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-83g3-92jg-28cx"
+      ],
+      "identifiers": [
+        "GHSA-83g3-92jg-28cx"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "7.5.8"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sqlite3@5.1.7"
+        ],
+        "cvss_score": 7.1,
+        "cwe": [
+          "CWE-22"
+        ]
+      },
+      "id": "GRD-2945fd4159"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in tar@6.2.1: Race Condition in node-tar Path Reservations via Unicode Ligature Collisions on macOS APFS",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/tar@6.2.1",
+        "name": "tar",
+        "version": "6.2.1",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-r6q2-hw4h-h46w: Race Condition in node-tar Path Reservations via Unicode Ligature Collisions on macOS APFS",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed tar@6.2.1 is inside affected range <=7.5.3",
+          "location": "node_modules/sqlite3/node_modules/tar"
+        },
+        {
+          "kind": "cvss",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "CVSS 8.8 (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:H/A:L)",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "make-fetch-happen@9.1.0",
+          "cacache@15.3.0",
+          "tar@6.2.1"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-r6q2-hw4h-h46w"
+      ],
+      "identifiers": [
+        "GHSA-r6q2-hw4h-h46w"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "7.5.4"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sqlite3@5.1.7"
+        ],
+        "cvss_score": 8.8,
+        "cwe": [
+          "CWE-176",
+          "CWE-367"
+        ]
+      },
+      "id": "GRD-aa81ed47ab"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in tar@6.2.1: node-tar Symlink Path Traversal via Drive-Relative Linkpath",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/tar@6.2.1",
+        "name": "tar",
+        "version": "6.2.1",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-9ppj-qmqm-q256: node-tar Symlink Path Traversal via Drive-Relative Linkpath",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed tar@6.2.1 is inside affected range <=7.5.10",
+          "location": "node_modules/sqlite3/node_modules/tar"
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "make-fetch-happen@9.1.0",
+          "cacache@15.3.0",
+          "tar@6.2.1"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-9ppj-qmqm-q256"
+      ],
+      "identifiers": [
+        "GHSA-9ppj-qmqm-q256"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "7.5.11"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sqlite3@5.1.7"
+        ],
+        "cvss_score": null,
+        "cwe": [
+          "CWE-22"
+        ]
+      },
+      "id": "GRD-b8d5a1975f"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in tar@6.2.1: node-tar Vulnerable to Arbitrary File Creation/Overwrite via Hardlink Path Traversal",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/tar@6.2.1",
+        "name": "tar",
+        "version": "6.2.1",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-34x7-hfp2-rc4v: node-tar Vulnerable to Arbitrary File Creation/Overwrite via Hardlink Path Traversal",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed tar@6.2.1 is inside affected range <7.5.7",
+          "location": "node_modules/sqlite3/node_modules/tar"
+        },
+        {
+          "kind": "cvss",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "CVSS 8.2 (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:L/A:N)",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "make-fetch-happen@9.1.0",
+          "cacache@15.3.0",
+          "tar@6.2.1"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-34x7-hfp2-rc4v"
+      ],
+      "identifiers": [
+        "GHSA-34x7-hfp2-rc4v"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "7.5.7"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sqlite3@5.1.7"
+        ],
+        "cvss_score": 8.2,
+        "cwe": [
+          "CWE-22",
+          "CWE-59"
+        ]
+      },
+      "id": "GRD-399c16e057"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in tar@6.2.1: node-tar is Vulnerable to Arbitrary File Overwrite and Symlink Poisoning via Insufficient Path Sanitization",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/tar@6.2.1",
+        "name": "tar",
+        "version": "6.2.1",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-8qq5-rm4j-mr97: node-tar is Vulnerable to Arbitrary File Overwrite and Symlink Poisoning via Insufficient Path Sanitization",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed tar@6.2.1 is inside affected range <=7.5.2",
+          "location": "node_modules/sqlite3/node_modules/tar"
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "make-fetch-happen@9.1.0",
+          "cacache@15.3.0",
+          "tar@6.2.1"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-8qq5-rm4j-mr97"
+      ],
+      "identifiers": [
+        "GHSA-8qq5-rm4j-mr97"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "7.5.3"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sqlite3@5.1.7"
+        ],
+        "cvss_score": null,
+        "cwe": [
+          "CWE-22"
+        ]
+      },
+      "id": "GRD-c54360c062"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in tar@6.2.1: node-tar: Negative tar entry size causes infinite loop in archive replace",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/tar@6.2.1",
+        "name": "tar",
+        "version": "6.2.1",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-8x88-c5mf-7j5w: node-tar: Negative tar entry size causes infinite loop in archive replace",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed tar@6.2.1 is inside affected range <=7.5.17",
+          "location": "node_modules/sqlite3/node_modules/tar"
+        },
+        {
+          "kind": "cvss",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "CVSS 7.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "make-fetch-happen@9.1.0",
+          "cacache@15.3.0",
+          "tar@6.2.1"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-8x88-c5mf-7j5w"
+      ],
+      "identifiers": [
+        "GHSA-8x88-c5mf-7j5w"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "7.5.18"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sqlite3@5.1.7"
+        ],
+        "cvss_score": 7.5,
+        "cwe": [
+          "CWE-835"
+        ]
+      },
+      "id": "GRD-e9592c2979"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in tar@6.2.1: node-tar: Uncontrolled recursion in mapHas/filesFilter allows uncatchable stack-overflow DoS via crafted long-path tar w",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/tar@6.2.1",
+        "name": "tar",
+        "version": "6.2.1",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-r292-9mhp-454m: node-tar: Uncontrolled recursion in mapHas/filesFilter allows uncatchable stack-overflow DoS via crafted long-path tar with member selection",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed tar@6.2.1 is inside affected range <=7.5.20",
+          "location": "node_modules/sqlite3/node_modules/tar"
+        },
+        {
+          "kind": "cvss",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "CVSS 7.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "make-fetch-happen@9.1.0",
+          "cacache@15.3.0",
+          "tar@6.2.1"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-r292-9mhp-454m"
+      ],
+      "identifiers": [
+        "GHSA-r292-9mhp-454m"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "7.5.21"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sqlite3@5.1.7"
+        ],
+        "cvss_score": 7.5,
+        "cwe": [
+          "CWE-400",
+          "CWE-674"
+        ]
+      },
+      "id": "GRD-0f37244f8d"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in tar@6.2.1: tar has Hardlink Path Traversal via Drive-Relative Linkpath",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/tar@6.2.1",
+        "name": "tar",
+        "version": "6.2.1",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-qffp-2rhf-9h96: tar has Hardlink Path Traversal via Drive-Relative Linkpath",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed tar@6.2.1 is inside affected range <=7.5.9",
+          "location": "node_modules/sqlite3/node_modules/tar"
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "make-fetch-happen@9.1.0",
+          "cacache@15.3.0",
+          "tar@6.2.1"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-qffp-2rhf-9h96"
+      ],
+      "identifiers": [
+        "GHSA-qffp-2rhf-9h96"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "7.5.10"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sqlite3@5.1.7"
+        ],
+        "cvss_score": null,
+        "cwe": [
+          "CWE-22",
+          "CWE-59"
+        ]
+      },
+      "id": "GRD-542423db49"
+    },
+    {
+      "rule": "CICD-UNPINNED-ACTION",
+      "category": "cicd",
+      "title": "GitHub Action coverallsapp/github-action: third-party action pinned to mutable tag 'v2'",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:githubactions/coverallsapp/github-action@v2",
+        "name": "coverallsapp/github-action",
+        "version": "v2",
+        "ecosystem": "github-actions",
+        "direct": true,
+        "scope": "ci"
+      },
+      "evidence": [
+        {
+          "kind": "workflow-line",
+          "source": ".github/workflows/ci.yml",
+          "detail": "uses: coverallsapp/github-action@v2",
+          "location": ".github/workflows/ci.yml:198"
+        }
+      ],
+      "dependency_paths": [],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [],
+      "identifiers": [],
+      "fix": {
+        "suggestion": "pin to a full commit SHA: uses: coverallsapp/github-action@<40-char-sha> # v2"
+      },
+      "id": "GRD-13ef80dcf2"
+    },
+    {
+      "rule": "CICD-UNPINNED-ACTION",
+      "category": "cicd",
+      "title": "GitHub Action peter-evans/create-pull-request: third-party action pinned to mutable tag 'v8'",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:githubactions/peter-evans/create-pull-request@v8",
+        "name": "peter-evans/create-pull-request",
+        "version": "v8",
+        "ecosystem": "github-actions",
+        "direct": true,
+        "scope": "ci"
+      },
+      "evidence": [
+        {
+          "kind": "workflow-line",
+          "source": ".github/workflows/image_actions.yml",
+          "detail": "uses: peter-evans/create-pull-request@v8",
+          "location": ".github/workflows/image_actions.yml:42"
+        }
+      ],
+      "dependency_paths": [],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [],
+      "identifiers": [],
+      "fix": {
+        "suggestion": "pin to a full commit SHA: uses: peter-evans/create-pull-request@<40-char-sha> # v8"
+      },
+      "id": "GRD-68aa098915"
+    },
+    {
+      "rule": "IMAGE-EOL",
+      "category": "untrusted-image",
+      "title": "Base image node:20.19.2-bookworm is end-of-life (2026-04-30)",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:docker/node@20.19.2-bookworm",
+        "name": "node",
+        "version": "20.19.2-bookworm",
+        "ecosystem": "docker",
+        "direct": true,
+        "scope": "build"
+      },
+      "evidence": [
+        {
+          "kind": "image-reference",
+          "source": "infrastructure/Dockerfile",
+          "detail": "image: node:20.19.2-bookworm",
+          "location": "infrastructure/Dockerfile:6"
+        },
+        {
+          "kind": "eol-table",
+          "source": "guardian EOL data (2026-11)",
+          "detail": "node 20 EOL 2026-04-30",
+          "location": null
+        }
+      ],
+      "dependency_paths": [],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [],
+      "identifiers": [],
+      "fix": {
+        "suggestion": "move to a supported release line"
+      },
+      "id": "GRD-0c0ba9db8c"
+    },
+    {
+      "rule": "IMAGE-EOL",
+      "category": "untrusted-image",
+      "title": "Base image node:20.19.2-bookworm-slim is end-of-life (2026-04-30)",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:docker/node@20.19.2-bookworm-slim",
+        "name": "node",
+        "version": "20.19.2-bookworm-slim",
+        "ecosystem": "docker",
+        "direct": true,
+        "scope": "build"
+      },
+      "evidence": [
+        {
+          "kind": "image-reference",
+          "source": "infrastructure/Dockerfile",
+          "detail": "image: node:20.19.2-bookworm-slim",
+          "location": "infrastructure/Dockerfile:1"
+        },
+        {
+          "kind": "eol-table",
+          "source": "guardian EOL data (2026-11)",
+          "detail": "node 20 EOL 2026-04-30",
+          "location": null
+        }
+      ],
+      "dependency_paths": [],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [],
+      "identifiers": [],
+      "fix": {
+        "suggestion": "move to a supported release line"
+      },
+      "id": "GRD-8a20a6dec8"
+    },
+    {
+      "rule": "IMAGE-MUTABLE-TAG",
+      "category": "untrusted-image",
+      "title": "Image 'alpine' uses a mutable tag (implicit latest)",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:docker/alpine@latest",
+        "name": "alpine",
+        "version": "latest",
+        "ecosystem": "docker",
+        "direct": true,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "image-reference",
+          "source": "test/smoke/Dockerfile",
+          "detail": "image: alpine",
+          "location": "test/smoke/Dockerfile:1"
+        }
+      ],
+      "dependency_paths": [],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [],
+      "identifiers": [],
+      "fix": {
+        "suggestion": "pin to a version tag and digest, e.g. alpine:<version>@sha256:<digest>"
+      },
+      "id": "GRD-53a57b3741"
+    },
+    {
+      "rule": "IMAGE-MUTABLE-TAG",
+      "category": "untrusted-image",
+      "title": "Image 'bkimminich/juice-shop' uses a mutable tag (latest)",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:docker/bkimminich/juice-shop@latest",
+        "name": "bkimminich/juice-shop",
+        "version": "latest",
+        "ecosystem": "docker",
+        "direct": true,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "image-reference",
+          "source": "docker-compose.test.yml",
+          "detail": "image: bkimminich/juice-shop:latest",
+          "location": "docker-compose.test.yml:7"
+        }
+      ],
+      "dependency_paths": [],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [],
+      "identifiers": [],
+      "fix": {
+        "suggestion": "pin to a version tag and digest, e.g. bkimminich/juice-shop:<version>@sha256:<digest>"
+      },
+      "id": "GRD-99be4be03b"
+    },
+    {
+      "rule": "IMAGE-MUTABLE-TAG",
+      "category": "untrusted-image",
+      "title": "Image 'gcr.io/distroless/nodejs24-debian13' uses a mutable tag (implicit latest)",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:docker/gcr.io/distroless/nodejs24-debian13@latest",
+        "name": "gcr.io/distroless/nodejs24-debian13",
+        "version": "latest",
+        "ecosystem": "docker",
+        "direct": true,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "image-reference",
+          "source": "Dockerfile",
+          "detail": "image: gcr.io/distroless/nodejs24-debian13",
+          "location": "Dockerfile:22"
+        }
+      ],
+      "dependency_paths": [],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [],
+      "identifiers": [],
+      "fix": {
+        "suggestion": "pin to a version tag and digest, e.g. gcr.io/distroless/nodejs24-debian13:<version>@sha256:<digest>"
+      },
+      "id": "GRD-b20b764572"
+    },
+    {
+      "rule": "IMAGE-MUTABLE-TAG",
+      "category": "untrusted-image",
+      "title": "Image 'juice-shop' uses a mutable tag (latest)",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:docker/juice-shop@latest",
+        "name": "juice-shop",
+        "version": "latest",
+        "ecosystem": "docker",
+        "direct": true,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "image-reference",
+          "source": "infrastructure/docker-compose.yml",
+          "detail": "image: juice-shop:latest",
+          "location": "infrastructure/docker-compose.yml:21"
+        }
+      ],
+      "dependency_paths": [],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [],
+      "identifiers": [],
+      "fix": {
+        "suggestion": "pin to a version tag and digest, e.g. juice-shop:<version>@sha256:<digest>"
+      },
+      "id": "GRD-ce993dc67e"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in base64url@0.0.6: Out-of-bounds Read in base64url",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/base64url@0.0.6",
+        "name": "base64url",
+        "version": "0.0.6",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-rvg8-pwq2-xj7q: Out-of-bounds Read in base64url",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed base64url@0.0.6 is inside affected range <3.0.0",
+          "location": "node_modules/base64url"
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "jsonwebtoken@0.4.0",
+          "jws@0.2.6",
+          "base64url@0.0.6"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "express-jwt@0.1.3",
+          "jsonwebtoken@0.1.0",
+          "jws@0.2.6",
+          "base64url@0.0.6"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "jsonwebtoken@0.4.0",
+          "jws@0.2.6",
+          "jwa@0.0.1",
+          "base64url@0.0.6"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-rvg8-pwq2-xj7q"
+      ],
+      "identifiers": [
+        "GHSA-rvg8-pwq2-xj7q"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "3.0.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express-jwt@0.1.3",
+          "jsonwebtoken@0.4.0"
+        ],
+        "cvss_score": null,
+        "cwe": [
+          "CWE-125"
+        ]
+      },
+      "id": "GRD-9f27d5d797"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in file-type@16.5.4: file-type affected by infinite loop in ASF parser on malformed input with zero-size sub-header",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/file-type@16.5.4",
+        "name": "file-type",
+        "version": "16.5.4",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-5v7r-6r5c-r473: file-type affected by infinite loop in ASF parser on malformed input with zero-size sub-header",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed file-type@16.5.4 is inside affected range >=13.0.0 <21.3.1",
+          "location": "node_modules/file-type"
+        },
+        {
+          "kind": "cvss",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "CVSS 5.3 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L)",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "file-type@16.5.4"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-5v7r-6r5c-r473"
+      ],
+      "identifiers": [
+        "GHSA-5v7r-6r5c-r473"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "21.3.1"
+        ],
+        "available": true,
+        "introduced_via": [
+          "file-type@16.5.4"
+        ],
+        "cvss_score": 5.3,
+        "cwe": [
+          "CWE-835"
+        ]
+      },
+      "id": "GRD-1ef8b63c28"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in glob@10.5.0: Glob: AbortSignal cancellation bypass allows post-timeout filesystem traversal",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/glob@10.5.0",
+        "name": "glob",
+        "version": "10.5.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "dev"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-3g3m-2fjr-6pw4: Glob: AbortSignal cancellation bypass allows post-timeout filesystem traversal",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed glob@10.5.0 is inside affected range >=9.0.0 <=14.0.1",
+          "location": "node_modules/glob"
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "@cyclonedx/cyclonedx-npm@4.2.1",
+          "libxmljs2@0.37.0",
+          "node-gyp@11.5.0",
+          "make-fetch-happen@14.0.3",
+          "cacache@19.0.1",
+          "glob@10.5.0"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "@cyclonedx/cyclonedx-npm@4.2.1",
+          "@cyclonedx/cyclonedx-library@10.5.1",
+          "libxmljs2@0.37.0",
+          "node-gyp@11.5.0",
+          "make-fetch-happen@14.0.3",
+          "cacache@19.0.1",
+          "glob@10.5.0"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-3g3m-2fjr-6pw4"
+      ],
+      "identifiers": [
+        "GHSA-3g3m-2fjr-6pw4"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "14.0.2"
+        ],
+        "available": true,
+        "introduced_via": [
+          "@cyclonedx/cyclonedx-npm@4.2.1"
+        ],
+        "cvss_score": null,
+        "cwe": [
+          "CWE-400"
+        ]
+      },
+      "id": "GRD-035c157e9c"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in hbs@4.4.0: hbs: Insertion of Sensitive Information into Externally-Accessible File or Directory and Exposure of Sensitive Informati",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/hbs@4.4.0",
+        "name": "hbs",
+        "version": "4.4.0",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-7f5c-rpf4-86p8: hbs: Insertion of Sensitive Information into Externally-Accessible File or Directory and Exposure of Sensitive Information to an Unauthorized Actor",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed hbs@4.4.0 is inside affected range <=4.4.0",
+          "location": "node_modules/hbs"
+        },
+        {
+          "kind": "cvss",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "CVSS 4.0 (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:L/I:N/A:N)",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "hbs@4.4.0"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-7f5c-rpf4-86p8"
+      ],
+      "identifiers": [
+        "GHSA-7f5c-rpf4-86p8"
+      ],
+      "fix": {
+        "fixed_versions": [],
+        "available": false,
+        "introduced_via": [
+          "hbs@4.4.0"
+        ],
+        "cvss_score": 4.0,
+        "cwe": [
+          "CWE-94",
+          "CWE-200",
+          "CWE-538"
+        ]
+      },
+      "id": "GRD-17dc05f63a"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in jsonwebtoken@0.1.0: jsonwebtoken vulnerable to signature validation bypass due to insecure default algorithm in jwt.verify()",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/jsonwebtoken@0.1.0",
+        "name": "jsonwebtoken",
+        "version": "0.1.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-qwph-4952-7xr6: jsonwebtoken vulnerable to signature validation bypass due to insecure default algorithm in jwt.verify()",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed jsonwebtoken@0.1.0 is inside affected range <9.0.0",
+          "location": "node_modules/express-jwt/node_modules/jsonwebtoken"
+        },
+        {
+          "kind": "cvss",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "CVSS 6.4 (CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:H/A:L)",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "express-jwt@0.1.3",
+          "jsonwebtoken@0.1.0"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-qwph-4952-7xr6"
+      ],
+      "identifiers": [
+        "GHSA-qwph-4952-7xr6"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "9.0.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express-jwt@0.1.3"
+        ],
+        "cvss_score": 6.4,
+        "cwe": [
+          "CWE-287",
+          "CWE-327",
+          "CWE-347"
+        ]
+      },
+      "id": "GRD-3a0beadd6d"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in jsonwebtoken@0.1.0: jsonwebtoken's insecure implementation of key retrieval function could lead to Forgeable Public/Private Tokens from RSA ",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/jsonwebtoken@0.1.0",
+        "name": "jsonwebtoken",
+        "version": "0.1.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-hjrf-2m68-5959: jsonwebtoken's insecure implementation of key retrieval function could lead to Forgeable Public/Private Tokens from RSA to HMAC",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed jsonwebtoken@0.1.0 is inside affected range <=8.5.1",
+          "location": "node_modules/express-jwt/node_modules/jsonwebtoken"
+        },
+        {
+          "kind": "cvss",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "CVSS 5.0 (CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:L)",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "express-jwt@0.1.3",
+          "jsonwebtoken@0.1.0"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-hjrf-2m68-5959"
+      ],
+      "identifiers": [
+        "GHSA-hjrf-2m68-5959"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "9.0.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express-jwt@0.1.3"
+        ],
+        "cvss_score": 5.0,
+        "cwe": [
+          "CWE-287",
+          "CWE-1259"
+        ]
+      },
+      "id": "GRD-bfd3f2d517"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in jsonwebtoken@0.4.0: jsonwebtoken vulnerable to signature validation bypass due to insecure default algorithm in jwt.verify()",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/jsonwebtoken@0.4.0",
+        "name": "jsonwebtoken",
+        "version": "0.4.0",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-qwph-4952-7xr6: jsonwebtoken vulnerable to signature validation bypass due to insecure default algorithm in jwt.verify()",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed jsonwebtoken@0.4.0 is inside affected range <9.0.0",
+          "location": "node_modules/jsonwebtoken"
+        },
+        {
+          "kind": "cvss",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "CVSS 6.4 (CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:H/A:L)",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "jsonwebtoken@0.4.0"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-qwph-4952-7xr6"
+      ],
+      "identifiers": [
+        "GHSA-qwph-4952-7xr6"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "9.0.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "jsonwebtoken@0.4.0"
+        ],
+        "cvss_score": 6.4,
+        "cwe": [
+          "CWE-287",
+          "CWE-327",
+          "CWE-347"
+        ]
+      },
+      "id": "GRD-7646ef6cfd"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in jsonwebtoken@0.4.0: jsonwebtoken's insecure implementation of key retrieval function could lead to Forgeable Public/Private Tokens from RSA ",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/jsonwebtoken@0.4.0",
+        "name": "jsonwebtoken",
+        "version": "0.4.0",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-hjrf-2m68-5959: jsonwebtoken's insecure implementation of key retrieval function could lead to Forgeable Public/Private Tokens from RSA to HMAC",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed jsonwebtoken@0.4.0 is inside affected range <=8.5.1",
+          "location": "node_modules/jsonwebtoken"
+        },
+        {
+          "kind": "cvss",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "CVSS 5.0 (CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:L)",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "jsonwebtoken@0.4.0"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-hjrf-2m68-5959"
+      ],
+      "identifiers": [
+        "GHSA-hjrf-2m68-5959"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "9.0.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "jsonwebtoken@0.4.0"
+        ],
+        "cvss_score": 5.0,
+        "cwe": [
+          "CWE-287",
+          "CWE-1259"
+        ]
+      },
+      "id": "GRD-d92934aba6"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in lodash@2.4.2: Prototype Pollution in lodash",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/lodash@2.4.2",
+        "name": "lodash",
+        "version": "2.4.2",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-fvqr-27wr-82fm: Prototype Pollution in lodash",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed lodash@2.4.2 is inside affected range <4.17.5",
+          "location": "node_modules/sanitize-html/node_modules/lodash"
+        },
+        {
+          "kind": "cvss",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "CVSS 6.5 (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N)",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sanitize-html@1.4.2",
+          "lodash@2.4.2"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-fvqr-27wr-82fm"
+      ],
+      "identifiers": [
+        "GHSA-fvqr-27wr-82fm"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "4.17.5"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sanitize-html@1.4.2"
+        ],
+        "cvss_score": 6.5,
+        "cwe": [
+          "CWE-471",
+          "CWE-1321"
+        ]
+      },
+      "id": "GRD-23dff82a3e"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in minimatch@9.0.9: minimatch has potential denial of service via globparts amplification",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/minimatch@9.0.9",
+        "name": "minimatch",
+        "version": "9.0.9",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "dev"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-g3hv-75wg-m249: minimatch has potential denial of service via globparts amplification",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed minimatch@9.0.9 is inside affected range >=7.0.0 <11.0.1",
+          "location": "node_modules/glob/node_modules/minimatch"
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "@cyclonedx/cyclonedx-npm@4.2.1",
+          "libxmljs2@0.37.0",
+          "node-gyp@11.5.0",
+          "make-fetch-happen@14.0.3",
+          "cacache@19.0.1",
+          "glob@10.5.0",
+          "minimatch@9.0.9"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "@cyclonedx/cyclonedx-npm@4.2.1",
+          "@cyclonedx/cyclonedx-library@10.5.1",
+          "libxmljs2@0.37.0",
+          "node-gyp@11.5.0",
+          "make-fetch-happen@14.0.3",
+          "cacache@19.0.1",
+          "glob@10.5.0",
+          "minimatch@9.0.9"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-g3hv-75wg-m249"
+      ],
+      "identifiers": [
+        "GHSA-g3hv-75wg-m249"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "11.0.1"
+        ],
+        "available": true,
+        "introduced_via": [
+          "@cyclonedx/cyclonedx-npm@4.2.1"
+        ],
+        "cvss_score": null,
+        "cwe": [
+          "CWE-405"
+        ]
+      },
+      "id": "GRD-8d4b8975db"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in moment@2.0.0: Regular Expression Denial of Service in moment",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/moment@2.0.0",
+        "name": "moment",
+        "version": "2.0.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-87vv-r9j6-g5qv: Regular Expression Denial of Service in moment",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed moment@2.0.0 is inside affected range <2.11.2",
+          "location": "node_modules/express-jwt/node_modules/moment"
+        },
+        {
+          "kind": "cvss",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "CVSS 6.5 (CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H)",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "express-jwt@0.1.3",
+          "jsonwebtoken@0.1.0",
+          "moment@2.0.0"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-87vv-r9j6-g5qv"
+      ],
+      "identifiers": [
+        "GHSA-87vv-r9j6-g5qv"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "2.11.2"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express-jwt@0.1.3"
+        ],
+        "cvss_score": 6.5,
+        "cwe": [
+          "CWE-400"
+        ]
+      },
+      "id": "GRD-6c6abee780"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in notevil@1.3.3: Sandbox escape in notevil and argencoders-notevil",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/notevil@1.3.3",
+        "name": "notevil",
+        "version": "1.3.3",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-8g4m-cjm2-96wq: Sandbox escape in notevil and argencoders-notevil",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed notevil@1.3.3 is inside affected range <=1.3.3",
+          "location": "node_modules/notevil"
+        },
+        {
+          "kind": "cvss",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "CVSS 6.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N)",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "notevil@1.3.3"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-8g4m-cjm2-96wq"
+      ],
+      "identifiers": [
+        "GHSA-8g4m-cjm2-96wq"
+      ],
+      "fix": {
+        "fixed_versions": [],
+        "available": false,
+        "introduced_via": [
+          "notevil@1.3.3"
+        ],
+        "cvss_score": 6.5,
+        "cwe": [
+          "CWE-1321"
+        ]
+      },
+      "id": "GRD-ddea97271f"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in sanitize-html@1.4.2: ApostropheCMS sanitize-html: nonTextTags discard region ends early on an implied close, letting <noscript> content rende",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/sanitize-html@1.4.2",
+        "name": "sanitize-html",
+        "version": "1.4.2",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-x3q4-9hxx-gx8m: ApostropheCMS sanitize-html: nonTextTags discard region ends early on an implied close, letting <noscript> content render",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed sanitize-html@1.4.2 is inside affected range <2.18.0",
+          "location": "node_modules/sanitize-html"
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sanitize-html@1.4.2"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-x3q4-9hxx-gx8m"
+      ],
+      "identifiers": [
+        "GHSA-x3q4-9hxx-gx8m"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "2.18.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sanitize-html@1.4.2"
+        ],
+        "cvss_score": null,
+        "cwe": [
+          "CWE-79"
+        ]
+      },
+      "id": "GRD-befcc4a77b"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in sanitize-html@1.4.2: ApostropheCMS: Incomplete CVE-2026-53606: `meta http-equiv=refresh` `content` still ships `javascript:` / `data:` URLs",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/sanitize-html@1.4.2",
+        "name": "sanitize-html",
+        "version": "1.4.2",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-cv27-6wvh-8x7j: ApostropheCMS: Incomplete CVE-2026-53606: `meta http-equiv=refresh` `content` still ships `javascript:` / `data:` URLs",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed sanitize-html@1.4.2 is inside affected range <2.18.0",
+          "location": "node_modules/sanitize-html"
+        },
+        {
+          "kind": "cvss",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "CVSS 5.4 (CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N)",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sanitize-html@1.4.2"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-cv27-6wvh-8x7j"
+      ],
+      "identifiers": [
+        "GHSA-cv27-6wvh-8x7j"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "2.18.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sanitize-html@1.4.2"
+        ],
+        "cvss_score": 5.4,
+        "cwe": [
+          "CWE-79"
+        ]
+      },
+      "id": "GRD-b66e0194cc"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in sanitize-html@1.4.2: ApostropheCMS: Mutation-XSS / allowedTags bypass via literal `</textarea/>` solidus close",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/sanitize-html@1.4.2",
+        "name": "sanitize-html",
+        "version": "1.4.2",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-jxwj-j7wr-gfrw: ApostropheCMS: Mutation-XSS / allowedTags bypass via literal `</textarea/>` solidus close",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed sanitize-html@1.4.2 is inside affected range <=2.17.5",
+          "location": "node_modules/sanitize-html"
+        },
+        {
+          "kind": "cvss",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "CVSS 6.1 (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N)",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sanitize-html@1.4.2"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-jxwj-j7wr-gfrw"
+      ],
+      "identifiers": [
+        "GHSA-jxwj-j7wr-gfrw"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "2.17.6"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sanitize-html@1.4.2"
+        ],
+        "cvss_score": 6.1,
+        "cwe": [
+          "CWE-79"
+        ]
+      },
+      "id": "GRD-bfca965251"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in sanitize-html@1.4.2: Cross-Site Scripting in sanitize-html",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/sanitize-html@1.4.2",
+        "name": "sanitize-html",
+        "version": "1.4.2",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-xc6g-ggrc-qq4r: Cross-Site Scripting in sanitize-html",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed sanitize-html@1.4.2 is inside affected range <=1.11.1",
+          "location": "node_modules/sanitize-html"
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sanitize-html@1.4.2"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-xc6g-ggrc-qq4r"
+      ],
+      "identifiers": [
+        "GHSA-xc6g-ggrc-qq4r"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "1.11.2"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sanitize-html@1.4.2"
+        ],
+        "cvss_score": null,
+        "cwe": [
+          "CWE-79"
+        ]
+      },
+      "id": "GRD-28b884891a"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in sanitize-html@1.4.2: Cross-Site Scripting in sanitize-html",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/sanitize-html@1.4.2",
+        "name": "sanitize-html",
+        "version": "1.4.2",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-3j7m-hmh3-9jmp: Cross-Site Scripting in sanitize-html",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed sanitize-html@1.4.2 is inside affected range <1.4.3",
+          "location": "node_modules/sanitize-html"
+        },
+        {
+          "kind": "cvss",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "CVSS 6.1 (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N)",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sanitize-html@1.4.2"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-3j7m-hmh3-9jmp"
+      ],
+      "identifiers": [
+        "GHSA-3j7m-hmh3-9jmp"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "1.4.3"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sanitize-html@1.4.2"
+        ],
+        "cvss_score": 6.1,
+        "cwe": [
+          "CWE-79"
+        ]
+      },
+      "id": "GRD-4daae006ca"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in sanitize-html@1.4.2: Improper Input Validation in sanitize-html",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/sanitize-html@1.4.2",
+        "name": "sanitize-html",
+        "version": "1.4.2",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-mjxr-4v3x-q3m4: Improper Input Validation in sanitize-html",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed sanitize-html@1.4.2 is inside affected range <2.3.2",
+          "location": "node_modules/sanitize-html"
+        },
+        {
+          "kind": "cvss",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "CVSS 5.3 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N)",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sanitize-html@1.4.2"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-mjxr-4v3x-q3m4"
+      ],
+      "identifiers": [
+        "GHSA-mjxr-4v3x-q3m4"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "2.3.2"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sanitize-html@1.4.2"
+        ],
+        "cvss_score": 5.3,
+        "cwe": [
+          "CWE-20"
+        ]
+      },
+      "id": "GRD-bd51fc8de8"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in sanitize-html@1.4.2: Improper Input Validation in sanitize-html",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/sanitize-html@1.4.2",
+        "name": "sanitize-html",
+        "version": "1.4.2",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-rjqq-98f6-6j3r: Improper Input Validation in sanitize-html",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed sanitize-html@1.4.2 is inside affected range <2.3.1",
+          "location": "node_modules/sanitize-html"
+        },
+        {
+          "kind": "cvss",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "CVSS 5.3 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N)",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sanitize-html@1.4.2"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-rjqq-98f6-6j3r"
+      ],
+      "identifiers": [
+        "GHSA-rjqq-98f6-6j3r"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "2.3.1"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sanitize-html@1.4.2"
+        ],
+        "cvss_score": 5.3,
+        "cwe": [
+          "CWE-20"
+        ]
+      },
+      "id": "GRD-b0e32746a8"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in sanitize-html@1.4.2: sanitize-html Information Exposure vulnerability",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/sanitize-html@1.4.2",
+        "name": "sanitize-html",
+        "version": "1.4.2",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-rm97-x556-q36h: sanitize-html Information Exposure vulnerability",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed sanitize-html@1.4.2 is inside affected range <2.12.1",
+          "location": "node_modules/sanitize-html"
+        },
+        {
+          "kind": "cvss",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "CVSS 5.3 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N)",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sanitize-html@1.4.2"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-rm97-x556-q36h"
+      ],
+      "identifiers": [
+        "GHSA-rm97-x556-q36h"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "2.12.1"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sanitize-html@1.4.2"
+        ],
+        "cvss_score": 5.3,
+        "cwe": [
+          "CWE-200",
+          "CWE-538"
+        ]
+      },
+      "id": "GRD-48e427a2ff"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in sanitize-html@1.4.2: sanitize-html is vulnerable to XSS through incomprehensive sanitization",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/sanitize-html@1.4.2",
+        "name": "sanitize-html",
+        "version": "1.4.2",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-qhxp-v273-g94h: sanitize-html is vulnerable to XSS through incomprehensive sanitization",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed sanitize-html@1.4.2 is inside affected range <2.0.0-beta",
+          "location": "node_modules/sanitize-html"
+        },
+        {
+          "kind": "cvss",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "CVSS 6.1 (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N)",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sanitize-html@1.4.2"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-qhxp-v273-g94h"
+      ],
+      "identifiers": [
+        "GHSA-qhxp-v273-g94h"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "2.0.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sanitize-html@1.4.2"
+        ],
+        "cvss_score": 6.1,
+        "cwe": [
+          "CWE-79"
+        ]
+      },
+      "id": "GRD-442b903de7"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in tar@6.2.1: node-tar applies PAX size override to intermediary GNU long-name/long-link headers, causing tar parser interpretation di",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/tar@6.2.1",
+        "name": "tar",
+        "version": "6.2.1",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-vmf3-w455-68vh: node-tar applies PAX size override to intermediary GNU long-name/long-link headers, causing tar parser interpretation differential (file smuggling)",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed tar@6.2.1 is inside affected range <=7.5.15",
+          "location": "node_modules/sqlite3/node_modules/tar"
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "make-fetch-happen@9.1.0",
+          "cacache@15.3.0",
+          "tar@6.2.1"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-vmf3-w455-68vh"
+      ],
+      "identifiers": [
+        "GHSA-vmf3-w455-68vh"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "7.5.16"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sqlite3@5.1.7"
+        ],
+        "cvss_score": null,
+        "cwe": [
+          "CWE-436"
+        ]
+      },
+      "id": "GRD-fe2edc9c3d"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in tar@6.2.1: node-tar: Process crash via PAX numeric path type confusion",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/tar@6.2.1",
+        "name": "tar",
+        "version": "6.2.1",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-w8wr-v893-vjvp: node-tar: Process crash via PAX numeric path type confusion",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed tar@6.2.1 is inside affected range <=7.5.17",
+          "location": "node_modules/sqlite3/node_modules/tar"
+        },
+        {
+          "kind": "cvss",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "CVSS 5.3 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L)",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "make-fetch-happen@9.1.0",
+          "cacache@15.3.0",
+          "tar@6.2.1"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-w8wr-v893-vjvp"
+      ],
+      "identifiers": [
+        "GHSA-w8wr-v893-vjvp"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "7.5.18"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sqlite3@5.1.7"
+        ],
+        "cvss_score": 5.3,
+        "cwe": [
+          "CWE-704"
+        ]
+      },
+      "id": "GRD-6dee96ffc4"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in tar@6.2.1: node-tar: Uncaught Exception DoS via NUL byte in PAX path/linkpath records",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/tar@6.2.1",
+        "name": "tar",
+        "version": "6.2.1",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-gvwx-54wh-qm9j: node-tar: Uncaught Exception DoS via NUL byte in PAX path/linkpath records",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed tar@6.2.1 is inside affected range <=7.5.16",
+          "location": "node_modules/sqlite3/node_modules/tar"
+        },
+        {
+          "kind": "cvss",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "CVSS 5.3 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L)",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "make-fetch-happen@9.1.0",
+          "cacache@15.3.0",
+          "tar@6.2.1"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-gvwx-54wh-qm9j"
+      ],
+      "identifiers": [
+        "GHSA-gvwx-54wh-qm9j"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "7.5.17"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sqlite3@5.1.7"
+        ],
+        "cvss_score": 5.3,
+        "cwe": [
+          "CWE-248"
+        ]
+      },
+      "id": "GRD-7145c614a4"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in uuid@8.3.2: uuid: Missing buffer bounds check in v3/v5/v6 when buf is provided",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/uuid@8.3.2",
+        "name": "uuid",
+        "version": "8.3.2",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-w5hq-g745-h8pq: uuid: Missing buffer bounds check in v3/v5/v6 when buf is provided",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed uuid@8.3.2 is inside affected range <11.1.1",
+          "location": "node_modules/uuid"
+        },
+        {
+          "kind": "cvss",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "CVSS 7.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N)",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sequelize@6.37.8",
+          "uuid@8.3.2"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "nyc@15.1.0",
+          "istanbul-lib-processinfo@2.0.3",
+          "uuid@8.3.2"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "@istanbuljs/nyc-config-typescript@1.0.2",
+          "nyc@15.1.0",
+          "istanbul-lib-processinfo@2.0.3",
+          "uuid@8.3.2"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-w5hq-g745-h8pq"
+      ],
+      "identifiers": [
+        "GHSA-w5hq-g745-h8pq"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "11.1.1"
+        ],
+        "available": true,
+        "introduced_via": [
+          "@istanbuljs/nyc-config-typescript@1.0.2",
+          "nyc@15.1.0",
+          "sequelize@6.37.8"
+        ],
+        "cvss_score": 7.5,
+        "cwe": [
+          "CWE-787",
+          "CWE-1285"
+        ]
+      },
+      "id": "GRD-981fd74289"
+    },
+    {
+      "rule": "CICD-UNPINNED-ACTION",
+      "category": "cicd",
+      "title": "GitHub Action actions/checkout: first-party action pinned to mutable tag 'v6'",
+      "severity": "low",
+      "component": {
+        "id": "pkg:githubactions/actions/checkout@v6",
+        "name": "actions/checkout",
+        "version": "v6",
+        "ecosystem": "github-actions",
+        "direct": true,
+        "scope": "ci"
+      },
+      "evidence": [
+        {
+          "kind": "workflow-line",
+          "source": ".github/workflows/image_actions.yml",
+          "detail": "uses: actions/checkout@v6",
+          "location": ".github/workflows/image_actions.yml:30"
+        }
+      ],
+      "dependency_paths": [],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [],
+      "identifiers": [],
+      "fix": {
+        "suggestion": "pin to a full commit SHA: uses: actions/checkout@<40-char-sha> # v6"
+      },
+      "id": "GRD-2c057c877d"
+    },
+    {
+      "rule": "CICD-UNPINNED-ACTION",
+      "category": "cicd",
+      "title": "GitHub Action github/codeql-action/analyze: first-party action pinned to mutable tag 'v3'",
+      "severity": "low",
+      "component": {
+        "id": "pkg:githubactions/github/codeql-action/analyze@v3",
+        "name": "github/codeql-action/analyze",
+        "version": "v3",
+        "ecosystem": "github-actions",
+        "direct": true,
+        "scope": "ci"
+      },
+      "evidence": [
+        {
+          "kind": "workflow-line",
+          "source": ".github/workflows/codeql-analysis.yml",
+          "detail": "uses: github/codeql-action/analyze@v3",
+          "location": ".github/workflows/codeql-analysis.yml:36"
+        }
+      ],
+      "dependency_paths": [],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [],
+      "identifiers": [],
+      "fix": {
+        "suggestion": "pin to a full commit SHA: uses: github/codeql-action/analyze@<40-char-sha> # v3"
+      },
+      "id": "GRD-6fe5b806a1"
+    },
+    {
+      "rule": "CICD-UNPINNED-ACTION",
+      "category": "cicd",
+      "title": "GitHub Action github/codeql-action/autobuild: first-party action pinned to mutable tag 'v3'",
+      "severity": "low",
+      "component": {
+        "id": "pkg:githubactions/github/codeql-action/autobuild@v3",
+        "name": "github/codeql-action/autobuild",
+        "version": "v3",
+        "ecosystem": "github-actions",
+        "direct": true,
+        "scope": "ci"
+      },
+      "evidence": [
+        {
+          "kind": "workflow-line",
+          "source": ".github/workflows/codeql-analysis.yml",
+          "detail": "uses: github/codeql-action/autobuild@v3",
+          "location": ".github/workflows/codeql-analysis.yml:34"
+        }
+      ],
+      "dependency_paths": [],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [],
+      "identifiers": [],
+      "fix": {
+        "suggestion": "pin to a full commit SHA: uses: github/codeql-action/autobuild@<40-char-sha> # v3"
+      },
+      "id": "GRD-52345dfecd"
+    },
+    {
+      "rule": "CICD-UNPINNED-ACTION",
+      "category": "cicd",
+      "title": "GitHub Action github/codeql-action/init: first-party action pinned to mutable tag 'v3'",
+      "severity": "low",
+      "component": {
+        "id": "pkg:githubactions/github/codeql-action/init@v3",
+        "name": "github/codeql-action/init",
+        "version": "v3",
+        "ecosystem": "github-actions",
+        "direct": true,
+        "scope": "ci"
+      },
+      "evidence": [
+        {
+          "kind": "workflow-line",
+          "source": ".github/workflows/codeql-analysis.yml",
+          "detail": "uses: github/codeql-action/init@v3",
+          "location": ".github/workflows/codeql-analysis.yml:23"
+        }
+      ],
+      "dependency_paths": [],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [],
+      "identifiers": [],
+      "fix": {
+        "suggestion": "pin to a full commit SHA: uses: github/codeql-action/init@<40-char-sha> # v3"
+      },
+      "id": "GRD-32d4bb8f8d"
+    },
+    {
+      "rule": "INSTALL-SCRIPT",
+      "category": "install-script",
+      "title": "@scarf/scarf@1.4.0 runs a custom install script",
+      "severity": "low",
+      "component": {
+        "id": "pkg:npm/%40scarf/scarf@1.4.0",
+        "name": "@scarf/scarf",
+        "version": "1.4.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "lockfile-entry",
+          "source": "package-lock.json",
+          "detail": "hasInstallScript: true",
+          "location": "node_modules/@scarf/scarf"
+        },
+        {
+          "kind": "script",
+          "source": "registry.npmjs.org/@scarf/scarf/1.4.0",
+          "detail": "postinstall: node ./report.js",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "swagger-ui-express@5.0.1",
+          "swagger-ui-dist@5.36.0",
+          "@scarf/scarf@1.4.0"
+        ]
+      ],
+      "confidence": "medium",
+      "evidence_type": "verified",
+      "references": [],
+      "identifiers": [],
+      "fix": {
+        "suggestion": "install with --ignore-scripts and allowlist required builds; pin version"
+      },
+      "id": "GRD-d9cf28cd98"
+    },
+    {
+      "rule": "INSTALL-SCRIPT",
+      "category": "install-script",
+      "title": "cypress@16.3.0 runs a custom install script",
+      "severity": "low",
+      "component": {
+        "id": "pkg:npm/cypress@16.3.0",
+        "name": "cypress",
+        "version": "16.3.0",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "dev"
+      },
+      "evidence": [
+        {
+          "kind": "lockfile-entry",
+          "source": "package-lock.json",
+          "detail": "hasInstallScript: true",
+          "location": "node_modules/cypress"
+        },
+        {
+          "kind": "script",
+          "source": "registry.npmjs.org/cypress/16.3.0",
+          "detail": "postinstall: node dist/index.js --exec install",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "cypress@16.3.0"
+        ]
+      ],
+      "confidence": "medium",
+      "evidence_type": "verified",
+      "references": [],
+      "identifiers": [],
+      "fix": {
+        "suggestion": "install with --ignore-scripts and allowlist required builds; pin version"
+      },
+      "id": "GRD-945102c354"
+    },
+    {
+      "rule": "IMAGE-UNPINNED-TOOL",
+      "category": "untrusted-image",
+      "title": "Dockerfile installs build tool 'typescript@^6.0.3' without an exact version",
+      "severity": "low",
+      "component": null,
+      "evidence": [
+        {
+          "kind": "dockerfile-line",
+          "source": "Dockerfile",
+          "detail": "RUN npm install -g typescript@^6.0.3",
+          "location": "4"
+        }
+      ],
+      "dependency_paths": [],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [],
+      "identifiers": [],
+      "fix": {
+        "suggestion": "pin exact tool versions in images so rebuilds are reproducible"
+      },
+      "id": "GRD-0c7d7b0da1"
+    },
+    {
+      "rule": "IMAGE-NO-DIGEST",
+      "category": "untrusted-image",
+      "title": "Image 'mongo:4.4.29' is not pinned by digest",
+      "severity": "low",
+      "component": {
+        "id": "pkg:docker/mongo@4.4.29",
+        "name": "mongo",
+        "version": "4.4.29",
+        "ecosystem": "docker",
+        "direct": true,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "image-reference",
+          "source": "infrastructure/docker-compose.yml",
+          "detail": "image: mongo:4.4.29",
+          "location": "infrastructure/docker-compose.yml:59"
+        }
+      ],
+      "dependency_paths": [],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [],
+      "identifiers": [],
+      "fix": {
+        "suggestion": "append @sha256:<digest> so the tag cannot be silently re-pointed"
+      },
+      "id": "GRD-4c148132fc"
+    },
+    {
+      "rule": "IMAGE-NO-DIGEST",
+      "category": "untrusted-image",
+      "title": "Image 'nginx:1.28.0-alpine' is not pinned by digest",
+      "severity": "low",
+      "component": {
+        "id": "pkg:docker/nginx@1.28.0-alpine",
+        "name": "nginx",
+        "version": "1.28.0-alpine",
+        "ecosystem": "docker",
+        "direct": true,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "image-reference",
+          "source": "infrastructure/docker-compose.yml",
+          "detail": "image: nginx:1.28.0-alpine",
+          "location": "infrastructure/docker-compose.yml:4"
+        }
+      ],
+      "dependency_paths": [],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [],
+      "identifiers": [],
+      "fix": {
+        "suggestion": "append @sha256:<digest> so the tag cannot be silently re-pointed"
+      },
+      "id": "GRD-5c84ae7bb2"
+    },
+    {
+      "rule": "IMAGE-NO-DIGEST",
+      "category": "untrusted-image",
+      "title": "Image 'redis:7.4.4-alpine' is not pinned by digest",
+      "severity": "low",
+      "component": {
+        "id": "pkg:docker/redis@7.4.4-alpine",
+        "name": "redis",
+        "version": "7.4.4-alpine",
+        "ecosystem": "docker",
+        "direct": true,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "image-reference",
+          "source": "infrastructure/docker-compose.yml",
+          "detail": "image: redis:7.4.4-alpine",
+          "location": "infrastructure/docker-compose.yml:44"
+        }
+      ],
+      "dependency_paths": [],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [],
+      "identifiers": [],
+      "fix": {
+        "suggestion": "append @sha256:<digest> so the tag cannot be silently re-pointed"
+      },
+      "id": "GRD-f83c2be859"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in @tootallnate/once@1.1.2: @tootallnate/once vulnerable to Incorrect Control Flow Scoping",
+      "severity": "low",
+      "component": {
+        "id": "pkg:npm/%40tootallnate/once@1.1.2",
+        "name": "@tootallnate/once",
+        "version": "1.1.2",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "optional"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-vpq2-c234-7xj6: @tootallnate/once vulnerable to Incorrect Control Flow Scoping",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "package-lock.json",
+          "detail": "installed @tootallnate/once@1.1.2 is inside affected range <2.0.1",
+          "location": "node_modules/@tootallnate/once"
+        },
+        {
+          "kind": "cvss",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "CVSS 3.3 (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L)",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "make-fetch-happen@9.1.0",
+          "http-proxy-agent@4.0.1",
+          "@tootallnate/once@1.1.2"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-vpq2-c234-7xj6"
+      ],
+      "identifiers": [
+        "GHSA-vpq2-c234-7xj6"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "2.0.1"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sqlite3@5.1.7"
+        ],
+        "cvss_score": 3.3,
+        "cwe": [
+          "CWE-705"
+        ]
+      },
+      "id": "GRD-7403c836c5"
+    },
+    {
+      "rule": "INSTALL-SCRIPT",
+      "category": "install-script",
+      "title": "esbuild@0.28.2 runs a standard native-build install script",
+      "severity": "info",
+      "component": {
+        "id": "pkg:npm/esbuild@0.28.2",
+        "name": "esbuild",
+        "version": "0.28.2",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "dev"
+      },
+      "evidence": [
+        {
+          "kind": "lockfile-entry",
+          "source": "package-lock.json",
+          "detail": "hasInstallScript: true",
+          "location": "node_modules/esbuild"
+        },
+        {
+          "kind": "script",
+          "source": "registry.npmjs.org/esbuild/0.28.2",
+          "detail": "postinstall: node install.js",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "tsx@4.23.15",
+          "esbuild@0.28.2"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [],
+      "identifiers": [],
+      "fix": {
+        "suggestion": "install with --ignore-scripts and allowlist required builds; pin version"
+      },
+      "id": "GRD-c0393ae548"
+    },
+    {
+      "rule": "INSTALL-SCRIPT",
+      "category": "install-script",
+      "title": "fsevents@2.3.3 runs a standard native-build install script",
+      "severity": "info",
+      "component": {
+        "id": "pkg:npm/fsevents@2.3.3",
+        "name": "fsevents",
+        "version": "2.3.3",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "dev"
+      },
+      "evidence": [
+        {
+          "kind": "lockfile-entry",
+          "source": "package-lock.json",
+          "detail": "hasInstallScript: true",
+          "location": "node_modules/fsevents"
+        },
+        {
+          "kind": "script",
+          "source": "registry.npmjs.org/fsevents/2.3.3",
+          "detail": "install: node-gyp rebuild",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "tsx@4.23.15",
+          "fsevents@2.3.3"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [],
+      "identifiers": [],
+      "fix": {
+        "suggestion": "install with --ignore-scripts and allowlist required builds; pin version"
+      },
+      "id": "GRD-6bf1cce81c"
+    },
+    {
+      "rule": "INSTALL-SCRIPT",
+      "category": "install-script",
+      "title": "libxmljs2@0.37.0 runs a standard native-build install script",
+      "severity": "info",
+      "component": {
+        "id": "pkg:npm/libxmljs2@0.37.0",
+        "name": "libxmljs2",
+        "version": "0.37.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "dev"
+      },
+      "evidence": [
+        {
+          "kind": "lockfile-entry",
+          "source": "package-lock.json",
+          "detail": "hasInstallScript: true",
+          "location": "node_modules/libxmljs2"
+        },
+        {
+          "kind": "script",
+          "source": "registry.npmjs.org/libxmljs2/0.37.0",
+          "detail": "install: prebuild-install || node-gyp rebuild",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "@cyclonedx/cyclonedx-npm@4.2.1",
+          "libxmljs2@0.37.0"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "@cyclonedx/cyclonedx-npm@4.2.1",
+          "@cyclonedx/cyclonedx-library@10.5.1",
+          "libxmljs2@0.37.0"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [],
+      "identifiers": [],
+      "fix": {
+        "suggestion": "install with --ignore-scripts and allowlist required builds; pin version"
+      },
+      "id": "GRD-e301ad5c05"
+    },
+    {
+      "rule": "INSTALL-SCRIPT",
+      "category": "install-script",
+      "title": "sqlite3@5.1.7 runs a standard native-build install script",
+      "severity": "info",
+      "component": {
+        "id": "pkg:npm/sqlite3@5.1.7",
+        "name": "sqlite3",
+        "version": "5.1.7",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "lockfile-entry",
+          "source": "package-lock.json",
+          "detail": "hasInstallScript: true",
+          "location": "node_modules/sqlite3"
+        },
+        {
+          "kind": "script",
+          "source": "registry.npmjs.org/sqlite3/5.1.7",
+          "detail": "install: prebuild-install -r napi || node-gyp rebuild",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [],
+      "identifiers": [],
+      "fix": {
+        "suggestion": "install with --ignore-scripts and allowlist required builds; pin version"
+      },
+      "id": "GRD-a2241d2330"
+    }
+  ],
+  "artifacts": {
+    "sbom": "sbom.cdx.json",
+    "inventory": "inventory.json",
+    "graph": "dependency-graph.json"
+  }
+}
