@@ -9,7 +9,7 @@ from pathlib import Path
 from urllib.parse import quote
 from .formats import parse_extra, sibling
 
-EXCLUDED = {'.git', 'node_modules', '.venv', 'venv', '__pycache__', '.guardian', 'dist', 'build', '.next'}
+EXCLUDED = {'.git', 'node_modules', '.guardian-python', '.venv', 'venv', '__pycache__', '.guardian', 'dist', 'build', '.next'}
 MAX_FILES = 12000
 MAX_FILE_SIZE = 16 * 1024 * 1024
 MAX_TOTAL_SIZE = 64 * 1024 * 1024
@@ -110,7 +110,7 @@ def discover(root, files):
             elif name == 'package.json' and not any(str(Path(file).parent / lock).removeprefix('./') in files for lock in ('package-lock.json', 'npm-shrinkwrap.json','yarn.lock','pnpm-lock.yaml')):
                 data = json.loads(info['text'])
                 for dep, version in {**data.get('dependencies', {}), **data.get('devDependencies', {})}.items():
-                    key = component(dep, version, 'npm', file + '#' + dep)
+                    key = component(dep, version, 'npm', file + '#' + dep, dev=dep in data.get('devDependencies', {}) and dep not in data.get('dependencies', {}))
                     nodes[key]['direct'] = True; edge('app', key)
                 warnings.append(f'{file}: no npm lockfile; transitive dependencies unavailable and ranges are not resolved')
             elif name.startswith('requirements') and name.endswith('.txt'):

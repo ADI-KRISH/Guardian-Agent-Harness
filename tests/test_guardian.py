@@ -169,5 +169,21 @@ class GuardianTests(unittest.TestCase):
         with self.assertRaises(urllib.error.HTTPError) as ctx:urllib.request.urlopen(req)
         self.assertEqual(ctx.exception.code,403); ctx.exception.close()
         with urllib.request.urlopen(url+'/app.js') as r:self.assertEqual(r.status,200)
+        # Exercise recommendation and human gate through the real HTTP boundary.
+        http_store = Store(Path(self.temp.name)/'http')
+        self.write('package.json', {'scripts': {'postinstall': 'echo review me'}})
+        scan = run_scan(str(self.root), http_store, offline=True)
+        target = next(f for f in scan['findings'] if f['rule'] == 'install-script')
+        def post(endpoint, payload):
+            req = urllib.request.Request(url+endpoint, data=json.dumps(payload).encode(), headers={'Content-Type':'application/json','X-Guardian-Token':token})
+            with urllib.request.urlopen(req) as response: return json.load(response)
+        plan = post('/api/remediation/recommend', {'scan_id':scan['id'], 'finding_id':target['id']})
+        self.assertEqual(plan['status'], 'pending')
+        decision = post('/api/remediation/decision', {'plan_id':plan['id'], 'status':'approved', 'actor':'HTTP reviewer', 'reason':'Investigate this script'})
+        self.assertFalse(decision['applied'])
+        with urllib.request.urlopen(url+'/api/scans/'+scan['id']+'/remediations') as response:
+            self.assertEqual(json.load(response)[0]['status'], 'approved')
+        self.assertEqual(http_store.get(scan['id'])['findings'][0]['status'], 'open')
+
 
 if __name__=='__main__':unittest.main()

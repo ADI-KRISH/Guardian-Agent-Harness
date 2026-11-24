@@ -21,6 +21,13 @@ def request_json(session, method, url, **kwargs):
             time.sleep(min(2 ** attempt, 20))
     raise RuntimeError('OSV request failed: ' + url)
 
+def advisory_match(gid, actual, alias_map):
+    # Exact identity must win over another advisory's overlapping alias list.
+    if gid in actual:
+        return gid
+    return next((oid for oid in sorted(actual) if gid in alias_map.get(oid, {oid})), None)
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('report', help='GuardianAI JSON export')
@@ -109,8 +116,7 @@ def main():
             continue
         matched_osv = set()
         for gid in sorted(reported):
-            found = next((oid for oid in sorted(actual)
-                          if gid in alias_map.get(oid, {oid})), None)
+            found = advisory_match(gid, actual, alias_map)
             if found:
                 matched_osv.add(found)
                 status, details = 'TP', 'Guardian advisory matches OSV ID or alias'

@@ -98,7 +98,7 @@ function render() {
 /* ── findings table ──────────────────────────────────────────────── */
 function findingTable(findings, limit) {
   const shown = limit ? findings.slice(0, limit) : findings;
-  return `<table><thead><tr><th>SEVERITY</th><th>FINDING / COMPONENT</th><th>CATEGORY</th><th>STATUS</th><th></th></tr></thead><tbody>${shown.map(f => `<tr class="clickable" data-finding="${esc(f.id)}" tabindex="0"><td>${badge(f.risk_level)}</td><td><strong>${esc(f.what)}</strong><small>${esc(nodeName(f.component))}${f.planted ? ' · planted' : ''}${f.suppressed ? ' · suppressed by lesson' : ''}</small></td><td>${esc(f.category)}</td><td><span class="status">${esc(f.status)}</span></td><td>↗</td></tr>`).join('') || '<tr><td colspan="5">No matching findings. Review scan coverage before drawing safety conclusions.</td></tr>'}</tbody></table><div class="table-bottom"><span>${shown.length} of ${findings.length} findings</span><span>Verified observations · inference kept separate</span></div>`;
+  return `<table><thead><tr><th>PRIORITY / SEVERITY</th><th>FINDING / COMPONENT</th><th>CATEGORY</th><th>STATUS</th><th></th></tr></thead><tbody>${shown.map(f => `<tr class="clickable" data-finding="${esc(f.id)}" tabindex="0"><td>${esc(f.priority?.tier || "")} ${badge(f.risk_level)}</td><td><strong>${esc(f.what)}</strong><small>${esc(nodeName(f.component))}${f.planted ? ' · planted' : ''}${f.suppressed ? ' · suppressed by lesson' : ''}</small></td><td>${esc(f.category)}</td><td><span class="status">${esc(f.status)}</span></td><td>↗</td></tr>`).join('') || '<tr><td colspan="5">No matching findings. Review scan coverage before drawing safety conclusions.</td></tr>'}</tbody></table><div class="table-bottom"><span>${shown.length} of ${findings.length} findings</span><span>Verified observations · inference kept separate</span></div>`;
 }
 function bindFindings() {
   $$('[data-finding]').forEach(el => {
@@ -588,6 +588,264 @@ function renderGraphPage() {
 }
 
 /* ── Node / Finding drawers ──────────────────────────────────────── */
+function renderRemediation(plan) {
+  const container = $('#remediation-plan');
+  if (!container) return;
+  container.innerHTML = `<h3>${esc(plan.action)}</h3>
+<p>${badge(plan.status)} · ${esc(plan.approval_kind)} · Validation: ${esc(plan.validation_status || 'not_run')}</p>
+<p><strong>Target:</strong> ${esc(plan.target_file || 'Requires investigation')}<br>
+<strong>Version:</strong> ${esc(plan.current_version || '—')} → ${esc(plan.target_version || 'Unresolved')}</p>
+<h3>Compatibility: ${esc(plan.compatibility)}</h3><p>${esc(plan.compatibility_warning)}</p>
+${plan.blockers.length ? `<h3>Required investigation</h3><ul>${plan.blockers.map(b => `<li>${esc(b)}</li>`).join('')}</ul>` : ''}
+<h3>Proposed diff</h3><pre>${esc(plan.diff || 'No precise patch available. Approval covers investigation only.')}</pre>
+<h3>Expected risk reduction</h3><p>${esc(plan.expected_risk_reduction)}</p>
+<h3>Rollback guidance</h3><p>${esc(plan.rollback)}</p>
+<p>Plan ${esc(plan.id)}. The original repository is never modified by validation.</p>
+${plan.candidate_verification ? `<h3>Candidate checks</h3><pre>${esc(JSON.stringify(plan.candidate_verification, null, 2))}</pre>` : ''}
+${plan.validation_profile ? `<h3>Sandbox execution plan</h3><p>${esc(plan.validation_profile.network_policy || plan.validation_profile.reason)}</p><pre>${esc(JSON.stringify(plan.validation_profile.commands, null, 2))}</pre><p>Checks not configured: ${esc((plan.validation_profile.missing_checks || []).join(', ') || 'None')}</p>` : ''}
+<div id="validation-result"></div>
+${plan.status === 'approved' && plan.execution_ready && plan.validation_status !== 'running' ? '<button class="primary" id="retry-validation">Run approved proposal in sandbox</button>' : ''}
+<button class="secondary" id="export-plan">Export plan JSON</button>
+${plan.status === 'pending' ? `<form id="remediation-decision">
+<label>Reviewer name<input id="remediation-actor" required maxlength="200" value="Security Engineer"></label>
+<label>Decision reason<textarea id="remediation-reason" required maxlength="4000">Approved proposed fix for automated sandbox validation and rescan</textarea></label>
+<button class="primary" type="submit" value="approved">${plan.execution_ready ? 'Approve & validate in sandbox' : plan.diff ? 'Approve proposal (execution unavailable)' : 'Approve investigation plan'}</button>
+<button class="secondary" type="submit" value="rejected">Reject</button>
+</form>` : `<p style="margin-top:12px;font-size:11px;color:#4f6d67"><strong>Decision:</strong> ${esc(plan.status.toUpperCase())} by ${esc(plan.decision?.actor || 'Reviewer')} (${esc(plan.decision?.created || '')})<br><em>${esc(plan.decision?.reason || '')}</em></p>`}`;
+
+  $('#export-plan').onclick = () => {
+    const url = URL.createObjectURL(new Blob([JSON.stringify(plan, null, 2)], {type: 'application/json'}));
+    const link = document.createElement('a'); link.href = url; link.download = plan.id + '.json'; link.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  };
+
+  if (plan.validation) {
+    if (plan.validation.status === 'running') {
+      showValidationRunning(plan.validation.id, plan);
+      pollValidation(plan.validation.id, plan);
+    } else {
+      showValidationResult(plan.validation, plan);
+    }
+  }
+
+  const retry = $('#retry-validation');
+  if (retry) retry.onclick = async () => {
+    retry.disabled = true;
+    try {
+      const job = await api('/api/remediation/validate', {plan_id: plan.id});
+      showValidationRunning(job.validation_id, plan);
+      pollValidation(job.validation_id, plan);
+    } catch (error) { toast(error.message); retry.disabled = false; }
+  };
+
+  if (plan.status !== 'pending') return;
+
+  $('#remediation-decision').onsubmit = async event => {
+    event.preventDefault();
+    const status = event.submitter?.value;
+    if (!status) return;
+    const buttons = [...event.currentTarget.querySelectorAll('button')];
+    buttons.forEach(b => b.disabled = true);
+    const actor = ($('#remediation-actor')?.value || '').trim() || 'Security Engineer';
+    const reason = ($('#remediation-reason')?.value || '').trim() || (status === 'approved' ? 'Approved patch for sandbox validation' : 'Rejected');
+    try {
+      const willValidate = status === 'approved' && plan.execution_ready;
+      const resp = await api('/api/remediation/decision', {
+        plan_id: plan.id,
+        status,
+        validate: willValidate,
+        actor,
+        reason
+      });
+      if (willValidate && resp.validation_id) {
+        toast('Approved! Running automated sandbox validation & rescan…');
+        showValidationRunning(resp.validation_id, plan);
+        pollValidation(resp.validation_id, plan);
+      } else {
+        state.scan = await api('/api/scans/' + state.scan.id);
+        showFinding(plan.finding_id);
+        toast('Decision recorded: ' + status);
+      }
+    } catch (error) {
+      toast(error.message);
+      buttons.forEach(b => b.disabled = false);
+    }
+  };
+}
+
+function showValidationRunning(validationId, plan) {
+  const target = $('#validation-result');
+  if (!target) return;
+  target.innerHTML = `
+<div style="margin:16px 0;padding:16px;background:rgba(20,124,103,0.06);border:1px solid #147c67;border-radius:8px">
+  <div style="display:flex;align-items:center;gap:10px">
+    <span class="loading"></span>
+    <strong style="font-size:13px;color:#147c67">Running Sandbox Validation & Rescan…</strong>
+  </div>
+  <p style="margin:8px 0 4px;font-size:12px;color:#456760" id="val-current-stage">
+    Applying patch in isolated /tmp sandbox, updating lockfile, and rescanning artifact…
+  </p>
+  <small style="color:#7f9892;font-size:10px">Your original workspace is protected and never modified.</small>
+</div>`;
+}
+
+function pollValidation(validationId, plan) {
+  let attempts = 0;
+  // Poll every 2s, give up to 20 minutes (600 attempts) for large repos with build/test
+  const POLL_INTERVAL = 2000;
+  const MAX_ATTEMPTS = 600;
+  const timer = setInterval(async () => {
+    attempts++;
+    const target = $('#validation-result');
+    // Update the elapsed time shown to the user
+    const stageEl = $('#val-current-stage');
+    if (stageEl) {
+      const elapsed = Math.round(attempts * POLL_INTERVAL / 1000);
+      const mins = Math.floor(elapsed / 60), secs = elapsed % 60;
+      const timeStr = mins > 0 ? `${mins}m ${secs}s` : `${secs}s`;
+      // Keep latest stage from server, just suffix with time
+      if (!stageEl.dataset.serverStage) stageEl.dataset.serverStage = stageEl.textContent;
+    }
+    try {
+      const val = await api('/api/validations/' + validationId);
+      if (val.status === 'running') {
+        if (stageEl) {
+          const elapsed = Math.round(attempts * POLL_INTERVAL / 1000);
+          const mins = Math.floor(elapsed / 60), secs = elapsed % 60;
+          const timeStr = mins > 0 ? `${mins}m ${secs}s` : `${secs}s`;
+          stageEl.textContent = (val.stage || 'Executing sandbox steps…') + ` (${timeStr} elapsed)`;
+        }
+        if (attempts > MAX_ATTEMPTS) {
+          clearInterval(timer);
+          if (target) target.innerHTML = `<p class="notice-inline">⚠ Validation is taking very long (>${Math.round(MAX_ATTEMPTS * POLL_INTERVAL / 60000)} min). It may still be running in the background — refresh the page or click the finding again to check status.</p>`;
+        }
+      } else {
+        clearInterval(timer);
+        state.scan = await api('/api/scans/' + plan.scan_id);
+        const updatedPlan = (state.scan.remediation_plans || []).find(p => p.id === plan.id) || plan;
+        showValidationResult(val, updatedPlan);
+        toast(val.status === 'verified' ? '✅ Sandbox validation verified! Finding eliminated with zero regressions.' : `Validation completed: ${val.status}`);
+      }
+    } catch (err) {
+      // Don't give up on transient network errors, just log
+      if (stageEl) stageEl.textContent = `Waiting for validation server… (attempt ${attempts})`;
+      if (attempts > 10) {
+        clearInterval(timer);
+        if (target) target.innerHTML = `<p class="notice-inline">⚠ Error checking validation: ${esc(err.message)}. Refresh the page to see the latest status.</p>`;
+      }
+    }
+  }, POLL_INTERVAL);
+}
+
+function showValidationResult(result, plan) {
+  const target = $('#validation-result');
+  if (!target) return;
+  const comparison = result.comparison;
+
+  const isVerified = result.status === 'verified';
+  const isFailed = result.status === 'failed';
+  const isBlocked = result.status === 'blocked';
+
+  let bannerHtml = '';
+  if (isVerified) {
+    bannerHtml = `
+<div style="background:#edf7f3;border:1.5px solid #147c67;border-radius:8px;padding:14px 16px;margin:14px 0">
+  <div style="font-size:14px;font-weight:700;color:#147c67;display:flex;align-items:center;gap:8px">
+    <span style="font-size:18px">✅</span> VERIFIED REMEDIATION
+  </div>
+  <p style="margin:6px 0 0;font-size:12px;color:#1c4b41;line-height:1.5">
+    The proposed fix was applied in an isolated sandbox and rescanned. <strong>Target vulnerability was successfully eliminated</strong> and zero new high/critical risks were introduced.
+  </p>
+</div>`;
+  } else if (isFailed) {
+    bannerHtml = `
+<div style="background:#fbe9ed;border:1.5px solid #d25058;border-radius:8px;padding:14px 16px;margin:14px 0">
+  <div style="font-size:14px;font-weight:700;color:#c3485b;display:flex;align-items:center;gap:8px">
+    <span style="font-size:18px">❌</span> REMEDIATION FAILED / UNVERIFIED
+  </div>
+  <p style="margin:6px 0 0;font-size:12px;color:#7a2331;line-height:1.5">
+    ${esc(result.error || result.stage || 'The fix failed validation or introduced regressions.')}
+  </p>
+</div>`;
+  } else if (isBlocked) {
+    bannerHtml = `
+<div style="background:#fff7de;border:1.5px solid #cc8b37;border-radius:8px;padding:14px 16px;margin:14px 0">
+  <div style="font-size:14px;font-weight:700;color:#9b6b19;display:flex;align-items:center;gap:8px">
+    <span style="font-size:18px">⚠️</span> VALIDATION BLOCKED
+  </div>
+  <p style="margin:6px 0 0;font-size:12px;color:#6b4d18;line-height:1.5">
+    ${esc(result.error || result.note || 'Validation was blocked by sandbox requirements.')}
+  </p>
+</div>`;
+  }
+
+  let detailsHtml = '';
+  if (comparison) {
+    const absent = comparison.target_absent_after;
+    const newHighs = comparison.new_high_or_unknown_findings || [];
+    detailsHtml = `
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0">
+  <div style="background:#fff;border:1px solid #dcece5;border-radius:6px;padding:10px">
+    <small style="color:#718781;font-size:9px;text-transform:uppercase;font-weight:700">Target Vulnerability</small>
+    <div style="font-size:12px;font-weight:600;margin-top:4px;color:${absent ? '#147c67' : '#d25058'}">
+      ${absent ? '✓ Successfully eliminated' : '✗ Still detected'}
+    </div>
+  </div>
+  <div style="background:#fff;border:1px solid #dcece5;border-radius:6px;padding:10px">
+    <small style="color:#718781;font-size:9px;text-transform:uppercase;font-weight:700">New Regressions</small>
+    <div style="font-size:12px;font-weight:600;margin-top:4px;color:${newHighs.length === 0 ? '#147c67' : '#d25058'}">
+      ${newHighs.length === 0 ? '✓ None (0 new issues)' : `⚠ ${newHighs.length} new finding(s)`}
+    </div>
+  </div>
+</div>
+<div style="background:#fff;border:1px solid #dcece5;border-radius:6px;padding:10px;margin-bottom:12px">
+  <small style="color:#718781;font-size:9px;text-transform:uppercase;font-weight:700">SBOM Package Delta</small>
+  <div style="font-size:11px;margin-top:4px">
+    <strong>Added:</strong> ${comparison.sbom_added.length ? comparison.sbom_added.map(p => `<code>${esc(Array.isArray(p) ? p[1] : p.name)}@${esc(Array.isArray(p) ? p[2] : p.version)}</code>`).join(', ') : 'None'}<br>
+    <strong>Removed:</strong> ${comparison.sbom_removed.length ? comparison.sbom_removed.map(p => `<code>${esc(Array.isArray(p) ? p[1] : p.name)}@${esc(Array.isArray(p) ? p[2] : p.version)}</code>`).join(', ') : 'None'}
+  </div>
+</div>`;
+  }
+
+  const stepsHtml = (result.steps || []).map(step => `
+<details style="margin-top:6px;background:#fff;border:1px solid #dcece5;border-radius:5px;padding:8px">
+  <summary style="cursor:pointer;font-weight:600;color:${step.passed ? '#147c67' : '#d25058'};font-size:11px">
+    ${step.passed ? '✓' : '✗'} ${esc(step.name)}
+  </summary>
+  <pre style="margin-top:8px;font-size:10px;background:#1e292d;color:#d8e8e2;padding:8px;border-radius:4px;overflow-x:auto;max-height:160px">${esc(step.output || '(No output recorded)')}</pre>
+</details>`).join('');
+
+  target.innerHTML = `
+<div style="margin-top:16px;border-top:1px solid #dcece5;padding-top:14px">
+  <h3 style="font-size:11px;color:#1c7362;margin:0 0 8px;text-transform:uppercase;letter-spacing:1px">Sandbox Validation Result</h3>
+  ${bannerHtml}
+  ${detailsHtml}
+  ${result.workspace ? `<p style="font-size:11px;color:#718781"><strong>Sandbox Copy:</strong> <code>${esc(result.workspace)}</code></p>` : ''}
+  ${stepsHtml ? `<div style="margin:12px 0"><strong style="font-size:11px;color:#4f6d67">Validation Steps Log:</strong>${stepsHtml}</div>` : ''}
+  <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+    ${result.after_scan_id ? '<button class="primary" id="open-validation-scan">Inspect Patched Sandbox Artifact →</button>' : ''}
+    ${result.status !== 'running' ? '<button class="secondary" id="export-validation">Export validation JSON</button>' : ''}
+  </div>
+</div>`;
+
+  if ($('#open-validation-scan')) {
+    $('#open-validation-scan').onclick = async () => {
+      $('#drawer').hidden = true;
+      await refresh(result.after_scan_id);
+    };
+  }
+  if ($('#export-validation')) {
+    $('#export-validation').onclick = () => {
+      const url = URL.createObjectURL(new Blob([JSON.stringify(result, null, 2)], { type: 'application/json' }));
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'validation-' + result.id + '.json';
+      link.click();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    };
+  }
+}
+
 function showFinding(id) {
   const f = state.scan.findings.find(f => f.id === id); if (!f) return;
   const d = $('#drawer'); d.hidden = false;
@@ -595,6 +853,7 @@ function showFinding(id) {
 <div class="eyebrow">FINDING / ${esc(f.id)}</div>
 <h2>${esc(f.what)}</h2>
 ${badge(f.risk_level)} ${badge(f.status)} ${f.planted ? '<span class="badge planted">Planted demo</span>' : ''}
+<h3>Priority: ${esc(f.priority?.tier || "Unranked")}</h3><p>${esc(f.priority?.reason)}</p><p>${esc(f.priority?.dependency_context)} · Runtime exposure and reachability: unknown.</p>
 <h3>Affected component</h3><p>${esc(nodeName(f.component))}</p><code>${esc(f.component)}</code>
 <h3>Dependency path</h3>
 <div class="path">${f.dependency_path.length ? f.dependency_path.map(p => `<span>${esc(nodeName(p))}</span>`).join(' → ') : '<p>Path unavailable from supplied inventory.</p>'}</div>
@@ -609,9 +868,25 @@ ${f.advisory ? `<h3>Advisory</h3><a href="https://osv.dev/vulnerability/${encode
 <h3>Decision trail</h3>
 ${state.scan.audit.filter(a => a.decision.includes(f.id) || a.reason.includes(f.id)).map(a => `<p>${esc(a.actor)} · ${esc(a.decision)}<br>${esc(a.reason)}</p>`).join('') || '<p>See the scan audit trail for stage-level verification.</p>'}
 ${f.review ? `<h3>Human review</h3><p>${esc(f.review.actor)}: ${esc(f.review.reason)}</p>` : ''}
-<button class="primary" id="review-finding">Review finding →</button>`;
+<button class="primary" id="review-finding">Review finding →</button>
+<h3>Recommended remediation</h3>
+<p>Generate a fix from repository evidence and registry data. Approve an executable proposal to apply it in Docker, run configured checks and rescan the sandbox.</p>
+<button class="secondary" id="recommend-fix">Generate recommendation →</button>
+<div id="remediation-plan"></div>`;
   $('#drawer-close').onclick = () => d.hidden = true;
   $('#review-finding').onclick = () => openReview('finding', id);
+  const existing = (state.scan.remediation_plans || []).find(p => p.finding_id === id);
+  if (existing) renderRemediation(existing);
+  $('#recommend-fix').onclick = async e => {
+    const slot = $('#remediation-plan');
+    const button = e.currentTarget; button.disabled = true; button.textContent = 'Preparing recommendation…';
+    try {
+      const plan = await api('/api/remediation/recommend', {scan_id: state.scan.id, finding_id: id});
+      state.scan = await api('/api/scans/' + state.scan.id);
+      if (slot.isConnected) renderRemediation(plan);
+    } catch (error) { toast(error.message); }
+    finally { button.disabled = false; button.textContent = 'Generate recommendation →'; }
+  };
   $('#explore-node').onclick = () => { showNeighbourhood(f.component); d.hidden = true; };
 }
 
@@ -891,34 +1166,53 @@ function openReview(mode, target) {
 }
 
 /* ── Scan start ──────────────────────────────────────────────────── */
-async function startScan(demo = false) {
-  const source = $('#source').value.trim();
+async function startScan(demo = false, customSource = null) {
+  let source = customSource ? customSource.trim() : ($('#source')?.value || '').trim();
+  if (demo) source = '';
   if (!demo && !source) { toast('Enter a repository path or GitHub URL'); return; }
   try {
     const { job_id } = await api('/api/scans', {
       source, demo,
-      offline: $('#offline').checked,
+      offline: $('#offline')?.checked || false,
       resolve: true,
       ai: document.getElementById('ai-opt')?.checked || false,
       scan_images: document.getElementById('scan-images-opt')?.checked || false,
     });
-    $('#scan-dialog').close();
+    const scanDialog = $('#scan-dialog');
+    if (scanDialog && scanDialog.open) scanDialog.close();
     state.job = 'Preparing analysis…';
     $('#new-scan').disabled = true;
+    if ($('#rescan-repo')) $('#rescan-repo').disabled = true;
     render();
     const poll = async () => {
       try {
         const job = await api('/api/jobs/' + job_id);
         if (job.status === 'running') { state.job = job.stage; render(); setTimeout(poll, 1200); }
         else {
-          state.job = null; $('#new-scan').disabled = false;
-          if (job.status === 'complete') { await refresh(job.scan_id); toast('Scan complete — evidence and graph are ready'); }
-          else { render(); toast(job.error || 'Scan failed'); }
+          state.job = null;
+          $('#new-scan').disabled = false;
+          if ($('#rescan-repo')) $('#rescan-repo').disabled = false;
+          if (job.status === 'complete') {
+            await refresh(job.scan_id);
+            toast('Scan complete — evidence and graph are ready');
+          } else {
+            render();
+            toast(job.error || 'Scan failed');
+          }
         }
-      } catch (e) { state.job = null; $('#new-scan').disabled = false; render(); toast(e.message); }
+      } catch (e) {
+        state.job = null;
+        $('#new-scan').disabled = false;
+        if ($('#rescan-repo')) $('#rescan-repo').disabled = false;
+        render();
+        toast(e.message);
+      }
     };
     poll();
-  } catch (e) { toast(e.message); }
+  } catch (e) {
+    if ($('#rescan-repo')) $('#rescan-repo').disabled = false;
+    toast(e.message);
+  }
 }
 
 /* ── Boot ────────────────────────────────────────────────────────── */
@@ -927,6 +1221,18 @@ $('#scan-form').onsubmit = e => { e.preventDefault(); startScan(); };
 $('#demo').onclick = () => startScan(true);
 $('#refresh').onclick = () => refresh().catch(e => toast(e.message));
 $('#scan-select').onchange = e => refresh(e.target.value).catch(e => toast(e.message));
+if ($('#rescan-repo')) {
+  $('#rescan-repo').onclick = () => {
+    if (!state.scan) {
+      toast('Select or run a scan first to rescan');
+      return;
+    }
+    const isDemo = Boolean(state.scan.planted || state.scan.repo === 'planted-demo' || (state.scan.source_root && state.scan.source_root.includes('examples/demo')));
+    const targetSource = state.scan.source_root || state.scan.repo;
+    toast(isDemo ? '↺ Rescanning planted demo…' : `↺ Rescanning ${state.scan.name || targetSource}…`);
+    startScan(isDemo, isDemo ? null : targetSource);
+  };
+}
 $$('[data-close]').forEach(b => b.onclick = () => $('#' + b.dataset.close).close());
 $('#review-form').onsubmit = async e => {
   e.preventDefault();

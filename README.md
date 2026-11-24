@@ -107,3 +107,8 @@ This container command is supplied but not validated on this machine. The image 
 This is an implemented Day 1 application, not every stretch item in the design. Syft, OSV-Scanner CLI, GuardDog, Semgrep, Grype and Trivy are not silently represented as installed tools; the native parsers/static rules and OSV API run directly. External CycloneDX output can be consumed. Package-versus-source provenance, nested remote action resolution, image-layer vulnerability scanning, maintainer history, actual call-graph reachability, LLM investigation, scheduled monitoring, remediation and sandbox fix validation are not implemented. Source differences currently report changed file hashes, not stored Git diff hunks. Repository clones have a time limit but no native OS disk quota. Use an isolated constrained filesystem for untrusted large inputs.
 
 See [scope map](docs/scope.md), [architecture](docs/architecture.md), [responsible-use note](docs/security.md), and [demo walkthrough](docs/demo.md).
+
+
+## Day 2: recommendations, approval and sandbox validation
+
+Open a finding and choose **Generate recommendation** to inspect a proposed diff or investigation plan, export JSON, and record approval or rejection with a reviewer and reason. For supported executable proposals, **Approve & validate in sandbox** applies the change only to a Docker workspace, runs configured checks, rescans and reports the outcome. See [implementation scope and API](docs/day2-human-approval.md) and [Day 1 audit](docs/day1-audit.md).

@@ -20,6 +20,9 @@ class Store:
             CREATE TABLE IF NOT EXISTS baselines(id INTEGER PRIMARY KEY, repo TEXT, scan_id TEXT, actor TEXT, reason TEXT, created TEXT);
             CREATE TABLE IF NOT EXISTS reviews(scan_id TEXT, finding_id TEXT, status TEXT, actor TEXT, reason TEXT, created TEXT, PRIMARY KEY(scan_id,finding_id));
             CREATE TABLE IF NOT EXISTS lessons(id INTEGER PRIMARY KEY, repo TEXT, rule TEXT, path TEXT, reason TEXT, expires TEXT, approved INTEGER DEFAULT 0, actor TEXT, created TEXT);
+            CREATE TABLE IF NOT EXISTS validations(id TEXT PRIMARY KEY, plan_id TEXT, status TEXT, data TEXT);
+            CREATE TABLE IF NOT EXISTS remediation_plans(id TEXT PRIMARY KEY, scan_id TEXT, data TEXT);
+            CREATE TABLE IF NOT EXISTS remediation_decisions(plan_id TEXT PRIMARY KEY, status TEXT, actor TEXT, reason TEXT, created TEXT);
             CREATE TABLE IF NOT EXISTS cache(key TEXT PRIMARY KEY, created TEXT, data TEXT);
             CREATE TABLE IF NOT EXISTS audit(id INTEGER PRIMARY KEY, scan_id TEXT, actor TEXT, decision TEXT, reason TEXT, created TEXT);
             CREATE TRIGGER IF NOT EXISTS audit_no_update BEFORE UPDATE ON audit BEGIN SELECT RAISE(ABORT,'append-only audit'); END;
@@ -59,7 +62,111 @@ class Store:
                     f['review'] = reviews[f['id']]
                     f['status'] = f['review']['status']
             scan['audit'] = [dict(r) for r in db.execute('SELECT * FROM audit WHERE scan_id=? ORDER BY id', (scan_id,))]
+            from .prioritizer import prioritize
+            nodes = {n['id']: n for n in scan['graph']['nodes']}
+            for finding in scan['findings']:
+                finding['priority'] = prioritize(finding, nodes.get(finding['component'], {}))
+            scan['findings'].sort(key=lambda f: (f['suppressed'], f['priority']['tier'], -f['score'], f['id']))
+            scan['remediation_plans'] = self.recommendations(scan_id)
             return scan
+
+    def recommendations(self, scan_id):
+        with self.connect() as db:
+            rows = db.execute('SELECT p.data, d.status, d.actor, d.reason, d.created FROM remediation_plans p LEFT JOIN remediation_decisions d ON p.id=d.plan_id WHERE p.scan_id=? ORDER BY p.rowid DESC', (scan_id,))
+            result = []
+            for row in rows:
+                plan = json.loads(row['data'])
+                if row['status']:
+                    plan['status'] = row['status']
+                    plan['decision'] = {k: row[k] for k in ('status', 'actor', 'reason', 'created')}
+                validation = db.execute('SELECT data FROM validations WHERE plan_id=? ORDER BY rowid DESC LIMIT 1', (plan['id'],)).fetchone()
+                if validation:
+                    plan['validation'] = json.loads(validation['data'])
+                    plan['validation_status'] = plan['validation']['status']
+                result.append(plan)
+            return result
+
+    def remediation_plan(self, plan_id):
+        with self.connect() as db:
+            row = db.execute('SELECT scan_id FROM remediation_plans WHERE id=?', (plan_id,)).fetchone()
+        if not row: raise ValueError('Remediation plan not found')
+        return next(p for p in self.recommendations(row['scan_id']) if p['id']==plan_id)
+
+    def begin_validation(self, plan_id):
+        import uuid
+        plan = self.remediation_plan(plan_id)
+        if plan['status'] != 'approved': raise ValueError('Human approval required')
+        if not plan.get('execution_ready'): raise ValueError('Plan has no supported sandbox patch; regenerate or investigate')
+        vid = uuid.uuid4().hex[:16]
+        result = {'id':vid,'plan_id':plan_id,'status':'running','created':now(),'stage':'Preparing sandbox'}
+        with self.connect() as db:
+            db.execute('BEGIN IMMEDIATE')
+            if db.execute("SELECT 1 FROM validations WHERE status='running'").fetchone():
+                raise ValueError('Another validation is running')
+            db.execute('INSERT INTO validations VALUES(?,?,?,?)',(vid,plan_id,'running',json.dumps(result)))
+        return vid
+
+    def validation(self, validation_id):
+        with self.connect() as db:
+            row = db.execute('SELECT data FROM validations WHERE id=?',(validation_id,)).fetchone()
+        if not row: raise ValueError('Validation not found')
+        return json.loads(row['data'])
+
+    def validation_progress(self, validation_id, stage):
+        result = self.validation(validation_id); result['stage'] = stage
+        with self.connect() as db:
+            db.execute('UPDATE validations SET data=? WHERE id=?',(json.dumps(result),validation_id))
+
+    def finish_validation(self, result):
+        plan = self.remediation_plan(result['plan_id'])
+        with self.connect() as db:
+            db.execute('UPDATE validations SET status=?,data=? WHERE id=?',(result['status'],json.dumps(result),result['id']))
+            db.execute('INSERT INTO audit(scan_id,actor,decision,reason,created) VALUES(?,?,?,?,?)',
+                       (plan['scan_id'],'Sandbox validator',result['plan_id']+': '+result['status'],
+                        plan['finding_id']+'; validation '+result['id']+'; original repository unchanged',now()))
+
+    def recover_validations(self):
+        with self.connect() as db:
+            for row in db.execute("SELECT id,data FROM validations WHERE status='running'").fetchall():
+                result = json.loads(row['data']); result.update(status='interrupted',error='Server restarted during validation; inspect retained sandbox and retry')
+                db.execute('UPDATE validations SET status=?,data=? WHERE id=?',('interrupted',json.dumps(result),row['id']))
+
+    def recommend(self, scan_id, finding_id):
+        from .remediation import propose
+        scan = self.get(scan_id)
+        finding = next((f for f in scan['findings'] if f['id'] == finding_id), None)
+        if not finding:
+            raise ValueError('Finding not found')
+        plan = propose(scan, finding, self)
+        with self.connect() as db:
+            inserted = db.execute('INSERT OR IGNORE INTO remediation_plans VALUES(?,?,?)', (plan['id'], scan_id, json.dumps(plan))).rowcount
+            if inserted:
+                db.execute('INSERT INTO audit(scan_id,actor,decision,reason,created) VALUES(?,?,?,?,?)', (scan_id, 'Remediation engine', 'Proposed '+plan['id'], finding_id+'; '+plan['action'], now()))
+        return next(p for p in self.recommendations(scan_id) if p['id'] == plan['id'])
+
+    def decide_remediation(self, plan_id, status, actor, reason):
+        self.identity(actor, reason)
+        if status not in ('approved', 'rejected'):
+            raise ValueError('Decision must be approved or rejected')
+        with self.connect() as db:
+            row = db.execute('SELECT data FROM remediation_plans WHERE id=?', (plan_id,)).fetchone()
+        if not row:
+            raise ValueError('Remediation plan not found')
+        plan = json.loads(row['data'])
+        if status == 'approved':
+            from .remediation import source
+            scan = self.get(plan['scan_id'])
+            for name, digest in plan['preconditions'].items():
+                if scan['files'].get(name, {}).get('hash') != digest or source(scan, name) is None:
+                    raise ValueError('Source changed since scanning. Rescan and generate a new recommendation.')
+        with self.connect() as db:
+            db.execute('BEGIN IMMEDIATE')
+            if db.execute('SELECT 1 FROM remediation_decisions WHERE plan_id=?', (plan_id,)).fetchone():
+                raise ValueError('This plan already has a final human decision')
+            created = now()
+            db.execute('INSERT INTO remediation_decisions VALUES(?,?,?,?,?)', (plan_id, status, actor, reason, created))
+            db.execute('INSERT INTO audit(scan_id,actor,decision,reason,created) VALUES(?,?,?,?,?)', (plan['scan_id'], actor, plan_id+': '+status, plan['finding_id']+'; '+reason+'; decision only; validation not run', created))
+        return dict(plan_id=plan_id, status=status, validation_status='not_run', applied=False)
 
     def list(self):
         with self.connect() as db:

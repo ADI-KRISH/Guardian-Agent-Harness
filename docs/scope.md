@@ -22,6 +22,8 @@
 | AI investigator, model/token budgets | Not configured; no model calls |
 | Native network/container enforcement | Offline container recipe provided; local process is not sandboxed |
 | Reachability/provenance/maintainer analysis | Stretch capabilities not implemented |
-| Remediation/build validation/PR creation | Day 2, not implemented |
+| Remediation recommendations and human approval | Implemented; see day2-human-approval.md |
+| Sandbox build/test/rescan | Implemented Docker pipeline for supported adapters, with explicit blocked/inconclusive outcomes |
+| Automatic PR / merge / production deployment | Not implemented |
 
 The runnable product closes the central Day 1 loop. The remaining design capabilities above are explicit boundaries, not hidden successful checks.

@@ -10,6 +10,7 @@ from .evaluation import evaluate
 
 
 def serve(store, host='127.0.0.1', port=8787):
+    store.recover_validations()
     token=secrets.token_urlsafe(32); jobs={}; lock=threading.Lock()
     static=Path(__file__).parent/'static'
     class Handler(BaseHTTPRequestHandler):
@@ -30,6 +31,8 @@ def serve(store, host='127.0.0.1', port=8787):
             path=urlparse(self.path).path
             try:
                 if path=='/api/session': return self.send(200,{'token':token})
+                if path.startswith('/api/validations/'):
+                    return self.send(200,store.validation(path.rsplit('/',1)[-1]))
                 if path=='/api/scans': return self.send(200,store.list())
                 if path=='/api/lessons': return self.send(200,store.lessons())
                 if path=='/api/evaluation': return self.send(200,evaluate())
@@ -38,6 +41,7 @@ def serve(store, host='127.0.0.1', port=8787):
                     return self.send(200,job) if job else self.send(404,{'error':'Job not found'})
                 if path.startswith('/api/scans/'):
                     parts=path.strip('/').split('/'); scan=store.get(parts[2])
+                    if len(parts)==4 and parts[3]=='remediations': return self.send(200,store.recommendations(scan['id']))
                     if len(parts)==4 and parts[3]=='sbom': return self.send(200,scan['sbom'])
                     return self.send(200,scan)
                 names={'/':'index.html','/app.js':'app.js','/style.css':'style.css','/cytoscape.min.js':'cytoscape.min.js'}
@@ -74,6 +78,19 @@ def serve(store, host='127.0.0.1', port=8787):
                             with lock: jobs[jid]={'status':'failed','error':str(exc)}
                     threading.Thread(target=work,daemon=True).start()
                     return self.send(202,{'job_id':jid})
+                if path=='/api/remediation/recommend':
+                    return self.send(200,store.recommend(data['scan_id'],data['finding_id']))
+                if path in ('/api/remediation/decision','/api/remediation/validate'):
+                    if path.endswith('/decision'):
+                        result=store.decide_remediation(data['plan_id'],data['status'],data.get('actor',''),data.get('reason',''))
+                        if data['status']!='approved' or not data.get('validate'):
+                            return self.send(200,result)
+                    validation_id=store.begin_validation(data['plan_id'])
+                    def validation_work():
+                        from .validator import validate
+                        validate(store,data['plan_id'],validation_id,lambda stage:store.validation_progress(validation_id,stage))
+                    threading.Thread(target=validation_work,daemon=True).start()
+                    return self.send(202,{'validation_id':validation_id,'status':'running','applied':False})
                 if path=='/api/review': store.review(data['scan_id'],data['finding_id'],data['status'],data.get('actor',''),data.get('reason',''))
                 elif path=='/api/baseline': store.promote(data['scan_id'],data.get('actor',''),data.get('reason',''))
                 elif path=='/api/lessons/approve': store.approve_lesson(int(data['lesson_id']),data.get('actor',''),data.get('reason',''))
