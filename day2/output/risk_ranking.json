@@ -1,0 +1,2902 @@
+{
+  "scan_id": "75a83dd1a8f1",
+  "reachability_assessed": true,
+  "ranking": [
+    {
+      "id": "G-164e05a1d696-GHSA-jf85-cpcp-j695",
+      "title": "Prototype Pollution in lodash",
+      "category": "known CVE",
+      "advisory": "GHSA-jf85-cpcp-j695",
+      "aliases": [
+        "CVE-2019-10744",
+        "SNYK-JS-LODASH-450202"
+      ],
+      "package": "lodash",
+      "version": "2.4.2",
+      "relationship": "transitive",
+      "day1_score": 9.5,
+      "score": 10.0,
+      "confidence": "High",
+      "reasons": [
+        "base 9.5 (Critical) from Day 1 severity",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "+1.0 'sanitize-html' is imported in app source (import check, not proof of exploitability)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/sanitize-html@1.4.2#package-lock.json#node_modules/sanitize-html",
+        "pkg:npm/lodash@2.4.2#package-lock.json#node_modules/sanitize-html/node_modules/lodash"
+      ],
+      "fix_versions": [
+        "4.17.12"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-42b36a09cb5a-GHSA-23hp-3jrh-7fpw",
+      "title": "node-tar: Decompression/parse DoS via unlimited input",
+      "category": "known CVE",
+      "advisory": "GHSA-23hp-3jrh-7fpw",
+      "aliases": [
+        "CVE-2026-59873"
+      ],
+      "package": "tar",
+      "version": "6.2.1",
+      "relationship": "transitive",
+      "day1_score": 9.5,
+      "score": 10.0,
+      "confidence": "Medium",
+      "reasons": [
+        "base 9.5 (Critical) from Day 1 severity",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "0 no direct import of 'sqlite3' found (it may still be loaded indirectly, e.g. as a driver)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/sqlite3@5.1.7#package-lock.json#node_modules/sqlite3",
+        "pkg:npm/tar@6.2.1#package-lock.json#node_modules/sqlite3/node_modules/tar"
+      ],
+      "fix_versions": [
+        "7.5.19"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-815910eba442-GHSA-xwcq-pm8m-c4vf",
+      "title": "crypto-js PBKDF2 1,000 times weaker than specified in 1993 and 1.3M times weaker than current standard",
+      "category": "known CVE",
+      "advisory": "GHSA-xwcq-pm8m-c4vf",
+      "aliases": [
+        "CVE-2023-46233"
+      ],
+      "package": "crypto-js",
+      "version": "3.3.0",
+      "relationship": "transitive",
+      "day1_score": 9.5,
+      "score": 10.0,
+      "confidence": "Medium",
+      "reasons": [
+        "base 9.5 (Critical) from Day 1 severity",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "0 no direct import of 'pdfkit' found (it may still be loaded indirectly, e.g. as a driver)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/pdfkit@0.11.0#package-lock.json#node_modules/pdfkit",
+        "pkg:npm/crypto-js@3.3.0#package-lock.json#node_modules/crypto-js"
+      ],
+      "fix_versions": [
+        "4.2.0"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-9e1b02b7e3cd-GHSA-rg76-677x-56q9",
+      "title": "crypto-js: Insufficient Entropy in Cryptographic Secret Generation via Vulnerable CryptoJS Dependency Chain",
+      "category": "known CVE",
+      "advisory": "GHSA-rg76-677x-56q9",
+      "aliases": [
+        "CVE-2026-71851"
+      ],
+      "package": "crypto-js",
+      "version": "3.3.0",
+      "relationship": "transitive",
+      "day1_score": 9.5,
+      "score": 10.0,
+      "confidence": "Medium",
+      "reasons": [
+        "base 9.5 (Critical) from Day 1 severity",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "0 no direct import of 'pdfkit' found (it may still be loaded indirectly, e.g. as a driver)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/pdfkit@0.11.0#package-lock.json#node_modules/pdfkit",
+        "pkg:npm/crypto-js@3.3.0#package-lock.json#node_modules/crypto-js"
+      ],
+      "fix_versions": [
+        "4.0.0"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-9fa5855c8ead-GHSA-c7hr-j4mj-j2w6",
+      "title": "Verification Bypass in jsonwebtoken",
+      "category": "known CVE",
+      "advisory": "GHSA-c7hr-j4mj-j2w6",
+      "aliases": [
+        "CVE-2015-9235"
+      ],
+      "package": "jsonwebtoken",
+      "version": "0.1.0",
+      "relationship": "transitive",
+      "day1_score": 9.5,
+      "score": 10.0,
+      "confidence": "High",
+      "reasons": [
+        "base 9.5 (Critical) from Day 1 severity",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "+1.0 'express-jwt' is imported in app source (import check, not proof of exploitability)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/express-jwt@0.1.3#package-lock.json#node_modules/express-jwt",
+        "pkg:npm/jsonwebtoken@0.1.0#package-lock.json#node_modules/express-jwt/node_modules/jsonwebtoken"
+      ],
+      "fix_versions": [
+        "4.2.2"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-d929526efec8-GHSA-5mrr-rgp6-x4gr",
+      "title": "Command Injection in marsdb",
+      "category": "known CVE",
+      "advisory": "GHSA-5mrr-rgp6-x4gr",
+      "aliases": [],
+      "package": "marsdb",
+      "version": "0.6.11",
+      "relationship": "direct",
+      "day1_score": 9.5,
+      "score": 10.0,
+      "confidence": "High",
+      "reasons": [
+        "base 9.5 (Critical) from Day 1 severity",
+        "+0.5 direct dependency",
+        "0 no fix available (accept / replace / escalate)",
+        "0 runtime (non-dev) dependency",
+        "+1.0 'marsdb' is imported in app source (import check, not proof of exploitability)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/marsdb@0.6.11#package-lock.json#node_modules/marsdb"
+      ],
+      "fix_versions": [],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-fc8acc7f7d0c-GHSA-c7hr-j4mj-j2w6",
+      "title": "Verification Bypass in jsonwebtoken",
+      "category": "known CVE",
+      "advisory": "GHSA-c7hr-j4mj-j2w6",
+      "aliases": [
+        "CVE-2015-9235"
+      ],
+      "package": "jsonwebtoken",
+      "version": "0.4.0",
+      "relationship": "direct",
+      "day1_score": 9.5,
+      "score": 10.0,
+      "confidence": "High",
+      "reasons": [
+        "base 9.5 (Critical) from Day 1 severity",
+        "+0.5 direct dependency",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "+1.0 'jsonwebtoken' is imported in app source (import check, not proof of exploitability)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/jsonwebtoken@0.4.0#package-lock.json#node_modules/jsonwebtoken"
+      ],
+      "fix_versions": [
+        "4.2.2"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-336bcf5108c9-GHSA-8cf7-32gw-wr33",
+      "title": "jsonwebtoken unrestricted key type could lead to legacy keys usage ",
+      "category": "known CVE",
+      "advisory": "GHSA-8cf7-32gw-wr33",
+      "aliases": [
+        "CVE-2022-23539"
+      ],
+      "package": "jsonwebtoken",
+      "version": "0.4.0",
+      "relationship": "direct",
+      "day1_score": 8,
+      "score": 10.0,
+      "confidence": "High",
+      "reasons": [
+        "base 8 (High) from Day 1 severity",
+        "+0.5 direct dependency",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "+1.0 'jsonwebtoken' is imported in app source (import check, not proof of exploitability)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/jsonwebtoken@0.4.0#package-lock.json#node_modules/jsonwebtoken"
+      ],
+      "fix_versions": [
+        "9.0.0"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-89df7fb5da11-GHSA-6g6m-m6h5-w9gf",
+      "title": "Authorization bypass in express-jwt",
+      "category": "known CVE",
+      "advisory": "GHSA-6g6m-m6h5-w9gf",
+      "aliases": [
+        "CVE-2020-15084"
+      ],
+      "package": "express-jwt",
+      "version": "0.1.3",
+      "relationship": "direct",
+      "day1_score": 8,
+      "score": 10.0,
+      "confidence": "High",
+      "reasons": [
+        "base 8 (High) from Day 1 severity",
+        "+0.5 direct dependency",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "+1.0 'express-jwt' is imported in app source (import check, not proof of exploitability)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/express-jwt@0.1.3#package-lock.json#node_modules/express-jwt"
+      ],
+      "fix_versions": [
+        "6.0.0"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-bb01dedeadbd-GHSA-cgfm-xwp7-2cvr",
+      "title": "Sanitize-html Vulnerable To REDoS Attacks",
+      "category": "known CVE",
+      "advisory": "GHSA-cgfm-xwp7-2cvr",
+      "aliases": [
+        "CVE-2022-25887"
+      ],
+      "package": "sanitize-html",
+      "version": "1.4.2",
+      "relationship": "direct",
+      "day1_score": 8,
+      "score": 10.0,
+      "confidence": "High",
+      "reasons": [
+        "base 8 (High) from Day 1 severity",
+        "+0.5 direct dependency",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "+1.0 'sanitize-html' is imported in app source (import check, not proof of exploitability)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/sanitize-html@1.4.2#package-lock.json#node_modules/sanitize-html"
+      ],
+      "fix_versions": [
+        "2.7.1"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-0c8a695b5c5b-GHSA-8hfj-j24r-96c4",
+      "title": "Path Traversal: 'dir/../../filename' in moment.locale",
+      "category": "known CVE",
+      "advisory": "GHSA-8hfj-j24r-96c4",
+      "aliases": [
+        "CVE-2022-24785"
+      ],
+      "package": "moment",
+      "version": "2.0.0",
+      "relationship": "transitive",
+      "day1_score": 8,
+      "score": 9.5,
+      "confidence": "High",
+      "reasons": [
+        "base 8 (High) from Day 1 severity",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "+1.0 'express-jwt' is imported in app source (import check, not proof of exploitability)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/express-jwt@0.1.3#package-lock.json#node_modules/express-jwt",
+        "pkg:npm/jsonwebtoken@0.1.0#package-lock.json#node_modules/express-jwt/node_modules/jsonwebtoken",
+        "pkg:npm/moment@2.0.0#package-lock.json#node_modules/express-jwt/node_modules/moment"
+      ],
+      "fix_versions": [
+        "2.29.2"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-164e05a1d696-GHSA-4xc9-xhrj-v574",
+      "title": "Prototype Pollution in lodash",
+      "category": "known CVE",
+      "advisory": "GHSA-4xc9-xhrj-v574",
+      "aliases": [
+        "CVE-2018-16487"
+      ],
+      "package": "lodash",
+      "version": "2.4.2",
+      "relationship": "transitive",
+      "day1_score": 8,
+      "score": 9.5,
+      "confidence": "High",
+      "reasons": [
+        "base 8 (High) from Day 1 severity",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "+1.0 'sanitize-html' is imported in app source (import check, not proof of exploitability)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/sanitize-html@1.4.2#package-lock.json#node_modules/sanitize-html",
+        "pkg:npm/lodash@2.4.2#package-lock.json#node_modules/sanitize-html/node_modules/lodash"
+      ],
+      "fix_versions": [
+        "4.17.11"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-6f203a814028-GHSA-869p-cjfg-cm3x",
+      "title": "auth0/node-jws Improperly Verifies HMAC Signature",
+      "category": "known CVE",
+      "advisory": "GHSA-869p-cjfg-cm3x",
+      "aliases": [
+        "CVE-2025-65945"
+      ],
+      "package": "jws",
+      "version": "0.2.6",
+      "relationship": "transitive",
+      "day1_score": 8,
+      "score": 9.5,
+      "confidence": "High",
+      "reasons": [
+        "base 8 (High) from Day 1 severity",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "+1.0 'jsonwebtoken' is imported in app source (import check, not proof of exploitability)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/jsonwebtoken@0.4.0#package-lock.json#node_modules/jsonwebtoken",
+        "pkg:npm/jws@0.2.6#package-lock.json#node_modules/jws"
+      ],
+      "fix_versions": [
+        "3.2.3",
+        "4.0.1"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-779c504a07fc-GHSA-35jh-r3h4-6jhm",
+      "title": "Command Injection in lodash",
+      "category": "known CVE",
+      "advisory": "GHSA-35jh-r3h4-6jhm",
+      "aliases": [
+        "CVE-2021-23337"
+      ],
+      "package": "lodash",
+      "version": "2.4.2",
+      "relationship": "transitive",
+      "day1_score": 8,
+      "score": 9.5,
+      "confidence": "High",
+      "reasons": [
+        "base 8 (High) from Day 1 severity",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "+1.0 'sanitize-html' is imported in app source (import check, not proof of exploitability)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/sanitize-html@1.4.2#package-lock.json#node_modules/sanitize-html",
+        "pkg:npm/lodash@2.4.2#package-lock.json#node_modules/sanitize-html/node_modules/lodash"
+      ],
+      "fix_versions": [
+        "4.17.21"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-7c3ae00793a0-GHSA-gjcw-v447-2w7q",
+      "title": "Forgeable Public/Private Tokens in jws",
+      "category": "known CVE",
+      "advisory": "GHSA-gjcw-v447-2w7q",
+      "aliases": [
+        "CVE-2016-1000223"
+      ],
+      "package": "jws",
+      "version": "0.2.6",
+      "relationship": "transitive",
+      "day1_score": 8,
+      "score": 9.5,
+      "confidence": "High",
+      "reasons": [
+        "base 8 (High) from Day 1 severity",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "+1.0 'jsonwebtoken' is imported in app source (import check, not proof of exploitability)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/jsonwebtoken@0.4.0#package-lock.json#node_modules/jsonwebtoken",
+        "pkg:npm/jws@0.2.6#package-lock.json#node_modules/jws"
+      ],
+      "fix_versions": [
+        "3.0.0"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-9f931d6447f7-GHSA-8cf7-32gw-wr33",
+      "title": "jsonwebtoken unrestricted key type could lead to legacy keys usage ",
+      "category": "known CVE",
+      "advisory": "GHSA-8cf7-32gw-wr33",
+      "aliases": [
+        "CVE-2022-23539"
+      ],
+      "package": "jsonwebtoken",
+      "version": "0.1.0",
+      "relationship": "transitive",
+      "day1_score": 8,
+      "score": 9.5,
+      "confidence": "High",
+      "reasons": [
+        "base 8 (High) from Day 1 severity",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "+1.0 'express-jwt' is imported in app source (import check, not proof of exploitability)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/express-jwt@0.1.3#package-lock.json#node_modules/express-jwt",
+        "pkg:npm/jsonwebtoken@0.1.0#package-lock.json#node_modules/express-jwt/node_modules/jsonwebtoken"
+      ],
+      "fix_versions": [
+        "9.0.0"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-b23599eaafa7-GHSA-446m-mv8f-q348",
+      "title": "Regular Expression Denial of Service in moment",
+      "category": "known CVE",
+      "advisory": "GHSA-446m-mv8f-q348",
+      "aliases": [
+        "CVE-2017-18214"
+      ],
+      "package": "moment",
+      "version": "2.0.0",
+      "relationship": "transitive",
+      "day1_score": 8,
+      "score": 9.5,
+      "confidence": "High",
+      "reasons": [
+        "base 8 (High) from Day 1 severity",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "+1.0 'express-jwt' is imported in app source (import check, not proof of exploitability)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/express-jwt@0.1.3#package-lock.json#node_modules/express-jwt",
+        "pkg:npm/jsonwebtoken@0.1.0#package-lock.json#node_modules/express-jwt/node_modules/jsonwebtoken",
+        "pkg:npm/moment@2.0.0#package-lock.json#node_modules/express-jwt/node_modules/moment"
+      ],
+      "fix_versions": [
+        "2.19.3"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-c812902a4f34-GHSA-96hv-2xvq-fx4p",
+      "title": "ws: Memory exhaustion DoS from tiny fragments and data chunks",
+      "category": "known CVE",
+      "advisory": "GHSA-96hv-2xvq-fx4p",
+      "aliases": [
+        "CVE-2026-48779"
+      ],
+      "package": "ws",
+      "version": "8.18.0",
+      "relationship": "transitive",
+      "day1_score": 8,
+      "score": 9.5,
+      "confidence": "High",
+      "reasons": [
+        "base 8 (High) from Day 1 severity",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "+1.0 'ethers' is imported in app source (import check, not proof of exploitability)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/ethers@5.8.0#frontend/package-lock.json#node_modules/ethers",
+        "pkg:npm/%40ethersproject/providers@5.8.0#frontend/package-lock.json#node_modules/@ethersproject/providers",
+        "pkg:npm/ws@8.18.0#frontend/package-lock.json#node_modules/ws"
+      ],
+      "fix_versions": [
+        "5.2.5",
+        "6.2.4",
+        "7.5.11",
+        "8.21.0"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-10cf19ebde81-GHSA-r292-9mhp-454m",
+      "title": "node-tar: Uncontrolled recursion in mapHas/filesFilter allows uncatchable stack-overflow DoS via crafted long-path tar with member selection",
+      "category": "known CVE",
+      "advisory": "GHSA-r292-9mhp-454m",
+      "aliases": [
+        "CVE-2026-73566"
+      ],
+      "package": "tar",
+      "version": "6.2.1",
+      "relationship": "transitive",
+      "day1_score": 8,
+      "score": 8.5,
+      "confidence": "Medium",
+      "reasons": [
+        "base 8 (High) from Day 1 severity",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "0 no direct import of 'sqlite3' found (it may still be loaded indirectly, e.g. as a driver)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/sqlite3@5.1.7#package-lock.json#node_modules/sqlite3",
+        "pkg:npm/tar@6.2.1#package-lock.json#node_modules/sqlite3/node_modules/tar"
+      ],
+      "fix_versions": [
+        "7.5.21"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-2d3515e46a78-GHSA-8qq5-rm4j-mr97",
+      "title": "node-tar is Vulnerable to Arbitrary File Overwrite and Symlink Poisoning via Insufficient Path Sanitization",
+      "category": "known CVE",
+      "advisory": "GHSA-8qq5-rm4j-mr97",
+      "aliases": [
+        "CVE-2026-23745"
+      ],
+      "package": "tar",
+      "version": "6.2.1",
+      "relationship": "transitive",
+      "day1_score": 8,
+      "score": 8.5,
+      "confidence": "Medium",
+      "reasons": [
+        "base 8 (High) from Day 1 severity",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "0 no direct import of 'sqlite3' found (it may still be loaded indirectly, e.g. as a driver)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/sqlite3@5.1.7#package-lock.json#node_modules/sqlite3",
+        "pkg:npm/tar@6.2.1#package-lock.json#node_modules/sqlite3/node_modules/tar"
+      ],
+      "fix_versions": [
+        "7.5.3"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-7d2cfcb69997-GHSA-34x7-hfp2-rc4v",
+      "title": "node-tar Vulnerable to Arbitrary File Creation/Overwrite via Hardlink Path Traversal",
+      "category": "known CVE",
+      "advisory": "GHSA-34x7-hfp2-rc4v",
+      "aliases": [
+        "CVE-2026-24842"
+      ],
+      "package": "tar",
+      "version": "6.2.1",
+      "relationship": "transitive",
+      "day1_score": 8,
+      "score": 8.5,
+      "confidence": "Medium",
+      "reasons": [
+        "base 8 (High) from Day 1 severity",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "0 no direct import of 'sqlite3' found (it may still be loaded indirectly, e.g. as a driver)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/sqlite3@5.1.7#package-lock.json#node_modules/sqlite3",
+        "pkg:npm/tar@6.2.1#package-lock.json#node_modules/sqlite3/node_modules/tar"
+      ],
+      "fix_versions": [
+        "7.5.7"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-9c561ca26884-GHSA-83g3-92jg-28cx",
+      "title": "Arbitrary File Read/Write via Hardlink Target Escape Through Symlink Chain in node-tar Extraction",
+      "category": "known CVE",
+      "advisory": "GHSA-83g3-92jg-28cx",
+      "aliases": [
+        "CVE-2026-26960"
+      ],
+      "package": "tar",
+      "version": "6.2.1",
+      "relationship": "transitive",
+      "day1_score": 8,
+      "score": 8.5,
+      "confidence": "Medium",
+      "reasons": [
+        "base 8 (High) from Day 1 severity",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "0 no direct import of 'sqlite3' found (it may still be loaded indirectly, e.g. as a driver)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/sqlite3@5.1.7#package-lock.json#node_modules/sqlite3",
+        "pkg:npm/tar@6.2.1#package-lock.json#node_modules/sqlite3/node_modules/tar"
+      ],
+      "fix_versions": [
+        "7.5.8"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-aa639747ac85-GHSA-9ppj-qmqm-q256",
+      "title": "node-tar Symlink Path Traversal via Drive-Relative Linkpath",
+      "category": "known CVE",
+      "advisory": "GHSA-9ppj-qmqm-q256",
+      "aliases": [
+        "CVE-2026-31802"
+      ],
+      "package": "tar",
+      "version": "6.2.1",
+      "relationship": "transitive",
+      "day1_score": 8,
+      "score": 8.5,
+      "confidence": "Medium",
+      "reasons": [
+        "base 8 (High) from Day 1 severity",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "0 no direct import of 'sqlite3' found (it may still be loaded indirectly, e.g. as a driver)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/sqlite3@5.1.7#package-lock.json#node_modules/sqlite3",
+        "pkg:npm/tar@6.2.1#package-lock.json#node_modules/sqlite3/node_modules/tar"
+      ],
+      "fix_versions": [
+        "7.5.11"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-c214cfbca3a0-GHSA-r6q2-hw4h-h46w",
+      "title": "Race Condition in node-tar Path Reservations via Unicode Ligature Collisions on macOS APFS",
+      "category": "known CVE",
+      "advisory": "GHSA-r6q2-hw4h-h46w",
+      "aliases": [
+        "CVE-2026-23950"
+      ],
+      "package": "tar",
+      "version": "6.2.1",
+      "relationship": "transitive",
+      "day1_score": 8,
+      "score": 8.5,
+      "confidence": "Medium",
+      "reasons": [
+        "base 8 (High) from Day 1 severity",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "0 no direct import of 'sqlite3' found (it may still be loaded indirectly, e.g. as a driver)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/sqlite3@5.1.7#package-lock.json#node_modules/sqlite3",
+        "pkg:npm/tar@6.2.1#package-lock.json#node_modules/sqlite3/node_modules/tar"
+      ],
+      "fix_versions": [
+        "7.5.4"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-cb96ffc34565-GHSA-qffp-2rhf-9h96",
+      "title": "tar has Hardlink Path Traversal via Drive-Relative Linkpath",
+      "category": "known CVE",
+      "advisory": "GHSA-qffp-2rhf-9h96",
+      "aliases": [
+        "CVE-2026-29786"
+      ],
+      "package": "tar",
+      "version": "6.2.1",
+      "relationship": "transitive",
+      "day1_score": 8,
+      "score": 8.5,
+      "confidence": "Medium",
+      "reasons": [
+        "base 8 (High) from Day 1 severity",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "0 no direct import of 'sqlite3' found (it may still be loaded indirectly, e.g. as a driver)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/sqlite3@5.1.7#package-lock.json#node_modules/sqlite3",
+        "pkg:npm/tar@6.2.1#package-lock.json#node_modules/sqlite3/node_modules/tar"
+      ],
+      "fix_versions": [
+        "7.5.10"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-cd219f26a6bd-GHSA-8x88-c5mf-7j5w",
+      "title": "node-tar: Negative tar entry size causes infinite loop in archive replace",
+      "category": "known CVE",
+      "advisory": "GHSA-8x88-c5mf-7j5w",
+      "aliases": [
+        "CVE-2026-59874"
+      ],
+      "package": "tar",
+      "version": "6.2.1",
+      "relationship": "transitive",
+      "day1_score": 8,
+      "score": 8.5,
+      "confidence": "Medium",
+      "reasons": [
+        "base 8 (High) from Day 1 severity",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "0 no direct import of 'sqlite3' found (it may still be loaded indirectly, e.g. as a driver)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/sqlite3@5.1.7#package-lock.json#node_modules/sqlite3",
+        "pkg:npm/tar@6.2.1#package-lock.json#node_modules/sqlite3/node_modules/tar"
+      ],
+      "fix_versions": [
+        "7.5.18"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-099baa5a9c79",
+      "title": "@fortawesome/free-solid-svg-icons declares an install script",
+      "category": "dependency change",
+      "day1_score": 8,
+      "score": 8,
+      "confidence": "Medium",
+      "reasons": [
+        "base 8 (High); non-CVE finding, not re-scored"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/%40fortawesome/free-solid-svg-icons@5.15.4#frontend/package-lock.json#node_modules/@fortawesome/free-solid-svg-icons"
+      ]
+    },
+    {
+      "id": "G-0d4a20726080",
+      "title": "Package declares postinstall lifecycle script",
+      "category": "dependency change",
+      "day1_score": 8,
+      "score": 8,
+      "confidence": "Medium",
+      "reasons": [
+        "base 8 (High); non-CVE finding, not re-scored"
+      ],
+      "path": [
+        "app"
+      ]
+    },
+    {
+      "id": "G-2022df1f994f",
+      "title": "@scarf/scarf declares an install script",
+      "category": "dependency change",
+      "day1_score": 8,
+      "score": 8,
+      "confidence": "Medium",
+      "reasons": [
+        "base 8 (High); non-CVE finding, not re-scored"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/swagger-ui-express@5.0.1#package-lock.json#node_modules/swagger-ui-express",
+        "pkg:npm/swagger-ui-dist@5.36.0#package-lock.json#node_modules/swagger-ui-dist",
+        "pkg:npm/%40scarf/scarf@1.4.0#package-lock.json#node_modules/@scarf/scarf"
+      ]
+    },
+    {
+      "id": "G-2d905f87f8f9",
+      "title": "libxmljs2 declares an install script",
+      "category": "dependency change",
+      "day1_score": 8,
+      "score": 8,
+      "confidence": "Medium",
+      "reasons": [
+        "base 8 (High); non-CVE finding, not re-scored"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/%40cyclonedx/cyclonedx-npm@4.2.1#package-lock.json#node_modules/@cyclonedx/cyclonedx-npm",
+        "pkg:npm/libxmljs2@0.37.0#package-lock.json#node_modules/libxmljs2"
+      ]
+    },
+    {
+      "id": "G-3d3855c115ea",
+      "title": "Sensitive value flows into an outbound network call (static candidate)",
+      "category": "backdoor signal",
+      "day1_score": 8,
+      "score": 8,
+      "confidence": "Medium",
+      "reasons": [
+        "base 8 (High); non-CVE finding, not re-scored"
+      ],
+      "path": [
+        "app"
+      ]
+    },
+    {
+      "id": "G-501cdba4b49e",
+      "title": "Sensitive value flows into an outbound network call (static candidate)",
+      "category": "backdoor signal",
+      "day1_score": 8,
+      "score": 8,
+      "confidence": "Medium",
+      "reasons": [
+        "base 8 (High); non-CVE finding, not re-scored"
+      ],
+      "path": [
+        "app"
+      ]
+    },
+    {
+      "id": "G-60a62678aa7a",
+      "title": "@parcel/watcher declares an install script",
+      "category": "dependency change",
+      "day1_score": 8,
+      "score": 8,
+      "confidence": "Medium",
+      "reasons": [
+        "base 8 (High); non-CVE finding, not re-scored"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/%40angular/build@22.3.0#frontend/package-lock.json#node_modules/@angular/build",
+        "pkg:npm/%40parcel/watcher@2.6.0#frontend/package-lock.json#node_modules/@parcel/watcher"
+      ]
+    },
+    {
+      "id": "G-616cfd71b66e",
+      "title": "esbuild declares an install script",
+      "category": "dependency change",
+      "day1_score": 8,
+      "score": 8,
+      "confidence": "Medium",
+      "reasons": [
+        "base 8 (High); non-CVE finding, not re-scored"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/%40angular/build@22.3.0#frontend/package-lock.json#node_modules/@angular/build",
+        "pkg:npm/esbuild@0.28.2#frontend/package-lock.json#node_modules/esbuild"
+      ]
+    },
+    {
+      "id": "G-797b063e3b3f",
+      "title": "lmdb declares an install script",
+      "category": "dependency change",
+      "day1_score": 8,
+      "score": 8,
+      "confidence": "Medium",
+      "reasons": [
+        "base 8 (High); non-CVE finding, not re-scored"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/%40angular/build@22.3.0#frontend/package-lock.json#node_modules/@angular/build",
+        "pkg:npm/lmdb@3.5.9#frontend/package-lock.json#node_modules/lmdb"
+      ]
+    },
+    {
+      "id": "G-8495e98cb1df",
+      "title": "fsevents declares an install script",
+      "category": "dependency change",
+      "day1_score": 8,
+      "score": 8,
+      "confidence": "Medium",
+      "reasons": [
+        "base 8 (High); non-CVE finding, not re-scored"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/tsx@4.23.15#package-lock.json#node_modules/tsx",
+        "pkg:npm/fsevents@2.3.3#package-lock.json#node_modules/fsevents"
+      ]
+    },
+    {
+      "id": "G-a490e9fa0e99",
+      "title": "fsevents declares an install script",
+      "category": "dependency change",
+      "day1_score": 8,
+      "score": 8,
+      "confidence": "Medium",
+      "reasons": [
+        "base 8 (High); non-CVE finding, not re-scored"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/%40angular/build@22.3.0#frontend/package-lock.json#node_modules/@angular/build",
+        "pkg:npm/vite@8.3.8#frontend/package-lock.json#node_modules/vite",
+        "pkg:npm/fsevents@2.3.3#frontend/package-lock.json#node_modules/fsevents"
+      ]
+    },
+    {
+      "id": "G-a90dfe2e1fed",
+      "title": "@fortawesome/free-brands-svg-icons declares an install script",
+      "category": "dependency change",
+      "day1_score": 8,
+      "score": 8,
+      "confidence": "Medium",
+      "reasons": [
+        "base 8 (High); non-CVE finding, not re-scored"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/%40fortawesome/free-brands-svg-icons@5.15.4#frontend/package-lock.json#node_modules/@fortawesome/free-brands-svg-icons"
+      ]
+    },
+    {
+      "id": "G-b5c943fa6162",
+      "title": "Privileged workflow requires review",
+      "category": "CI-container",
+      "day1_score": 8,
+      "score": 8,
+      "confidence": "Medium",
+      "reasons": [
+        "base 8 (High); non-CVE finding, not re-scored"
+      ],
+      "path": [
+        "app"
+      ]
+    },
+    {
+      "id": "G-c3976e804eb1",
+      "title": "@fortawesome/fontawesome-svg-core declares an install script",
+      "category": "dependency change",
+      "day1_score": 8,
+      "score": 8,
+      "confidence": "Medium",
+      "reasons": [
+        "base 8 (High); non-CVE finding, not re-scored"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/%40fortawesome/fontawesome-svg-core@1.2.36#frontend/package-lock.json#node_modules/@fortawesome/fontawesome-svg-core"
+      ]
+    },
+    {
+      "id": "G-cb1f877e6d96",
+      "title": "sqlite3 declares an install script",
+      "category": "dependency change",
+      "day1_score": 8,
+      "score": 8,
+      "confidence": "Medium",
+      "reasons": [
+        "base 8 (High); non-CVE finding, not re-scored"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/sqlite3@5.1.7#package-lock.json#node_modules/sqlite3"
+      ]
+    },
+    {
+      "id": "G-d159ef64f070",
+      "title": "cypress declares an install script",
+      "category": "dependency change",
+      "day1_score": 8,
+      "score": 8,
+      "confidence": "Medium",
+      "reasons": [
+        "base 8 (High); non-CVE finding, not re-scored"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/cypress@16.3.0#package-lock.json#node_modules/cypress"
+      ]
+    },
+    {
+      "id": "G-dc984bdd405d",
+      "title": "Build or source downloads and executes a script",
+      "category": "source change",
+      "day1_score": 8,
+      "score": 8,
+      "confidence": "Medium",
+      "reasons": [
+        "base 8 (High); non-CVE finding, not re-scored"
+      ],
+      "path": [
+        "app"
+      ]
+    },
+    {
+      "id": "G-f567ceac1b96",
+      "title": "@fortawesome/free-regular-svg-icons declares an install script",
+      "category": "dependency change",
+      "day1_score": 8,
+      "score": 8,
+      "confidence": "Medium",
+      "reasons": [
+        "base 8 (High); non-CVE finding, not re-scored"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/%40fortawesome/free-regular-svg-icons@5.15.4#frontend/package-lock.json#node_modules/@fortawesome/free-regular-svg-icons"
+      ]
+    },
+    {
+      "id": "G-f8ed32d35300",
+      "title": "msgpackr-extract declares an install script",
+      "category": "dependency change",
+      "day1_score": 8,
+      "score": 8,
+      "confidence": "Medium",
+      "reasons": [
+        "base 8 (High); non-CVE finding, not re-scored"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/%40angular/build@22.3.0#frontend/package-lock.json#node_modules/@angular/build",
+        "pkg:npm/lmdb@3.5.9#frontend/package-lock.json#node_modules/lmdb",
+        "pkg:npm/msgpackr@1.12.1#frontend/package-lock.json#node_modules/msgpackr",
+        "pkg:npm/msgpackr-extract@3.0.7#frontend/package-lock.json#node_modules/msgpackr-extract"
+      ]
+    },
+    {
+      "id": "G-fbd1254165e8",
+      "title": "esbuild declares an install script",
+      "category": "dependency change",
+      "day1_score": 8,
+      "score": 8,
+      "confidence": "Medium",
+      "reasons": [
+        "base 8 (High); non-CVE finding, not re-scored"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/tsx@4.23.15#package-lock.json#node_modules/tsx",
+        "pkg:npm/esbuild@0.28.2#package-lock.json#node_modules/esbuild"
+      ]
+    },
+    {
+      "id": "G-fce79e7d29b4",
+      "title": "@fortawesome/fontawesome-common-types declares an install script",
+      "category": "dependency change",
+      "day1_score": 8,
+      "score": 8,
+      "confidence": "Medium",
+      "reasons": [
+        "base 8 (High); non-CVE finding, not re-scored"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/%40fortawesome/fontawesome-svg-core@1.2.36#frontend/package-lock.json#node_modules/@fortawesome/fontawesome-svg-core",
+        "pkg:npm/%40fortawesome/fontawesome-common-types@0.2.36#frontend/package-lock.json#node_modules/@fortawesome/fontawesome-common-types"
+      ]
+    },
+    {
+      "id": "G-2e8dea20d616-GHSA-q69g-4hcv-6jg4",
+      "title": "@cyclonedx/cyclonedx-npm: Shell Injection via Unsanitized --workspace Argument on Windows",
+      "category": "known CVE",
+      "advisory": "GHSA-q69g-4hcv-6jg4",
+      "aliases": [
+        "CVE-2026-71538"
+      ],
+      "package": "@cyclonedx/cyclonedx-npm",
+      "version": "4.2.1",
+      "relationship": "direct",
+      "day1_score": 8,
+      "score": 7.5,
+      "confidence": "Medium",
+      "reasons": [
+        "base 8 (High) from Day 1 severity",
+        "+0.5 direct dependency",
+        "+0.5 fix available",
+        "-1.5 dev-only dependency",
+        "0 no direct import of '@cyclonedx/cyclonedx-npm' found (it may still be loaded indirectly, e.g. as a driver)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/%40cyclonedx/cyclonedx-npm@4.2.1#package-lock.json#node_modules/@cyclonedx/cyclonedx-npm"
+      ],
+      "fix_versions": [
+        "6.0.0"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-f79b9bdf7f3c-GHSA-v75r-vx73-82pj",
+      "title": "@cyclonedx/cyclonedx-npm: Shell Injection via Unsanitized --workspace Argument",
+      "category": "known CVE",
+      "advisory": "GHSA-v75r-vx73-82pj",
+      "aliases": [
+        "CVE-2026-55849"
+      ],
+      "package": "@cyclonedx/cyclonedx-npm",
+      "version": "4.2.1",
+      "relationship": "direct",
+      "day1_score": 8,
+      "score": 7.5,
+      "confidence": "Medium",
+      "reasons": [
+        "base 8 (High) from Day 1 severity",
+        "+0.5 direct dependency",
+        "+0.5 fix available",
+        "-1.5 dev-only dependency",
+        "0 no direct import of '@cyclonedx/cyclonedx-npm' found (it may still be loaded indirectly, e.g. as a driver)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/%40cyclonedx/cyclonedx-npm@4.2.1#package-lock.json#node_modules/@cyclonedx/cyclonedx-npm"
+      ],
+      "fix_versions": [
+        "5.0.0"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-12806132e51d-GHSA-mjxr-4v3x-q3m4",
+      "title": "Improper Input Validation in sanitize-html",
+      "category": "known CVE",
+      "advisory": "GHSA-mjxr-4v3x-q3m4",
+      "aliases": [
+        "CVE-2021-26540"
+      ],
+      "package": "sanitize-html",
+      "version": "1.4.2",
+      "relationship": "direct",
+      "day1_score": 5.5,
+      "score": 7.5,
+      "confidence": "High",
+      "reasons": [
+        "base 5.5 (Medium) from Day 1 severity",
+        "+0.5 direct dependency",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "+1.0 'sanitize-html' is imported in app source (import check, not proof of exploitability)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/sanitize-html@1.4.2#package-lock.json#node_modules/sanitize-html"
+      ],
+      "fix_versions": [
+        "2.3.2"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-12806132e51d-GHSA-rjqq-98f6-6j3r",
+      "title": "Improper Input Validation in sanitize-html",
+      "category": "known CVE",
+      "advisory": "GHSA-rjqq-98f6-6j3r",
+      "aliases": [
+        "CVE-2021-26539"
+      ],
+      "package": "sanitize-html",
+      "version": "1.4.2",
+      "relationship": "direct",
+      "day1_score": 5.5,
+      "score": 7.5,
+      "confidence": "High",
+      "reasons": [
+        "base 5.5 (Medium) from Day 1 severity",
+        "+0.5 direct dependency",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "+1.0 'sanitize-html' is imported in app source (import check, not proof of exploitability)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/sanitize-html@1.4.2#package-lock.json#node_modules/sanitize-html"
+      ],
+      "fix_versions": [
+        "2.3.1"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-1381e19a3591-GHSA-qwph-4952-7xr6",
+      "title": "jsonwebtoken vulnerable to signature validation bypass due to insecure default algorithm in jwt.verify()",
+      "category": "known CVE",
+      "advisory": "GHSA-qwph-4952-7xr6",
+      "aliases": [
+        "CVE-2022-23540"
+      ],
+      "package": "jsonwebtoken",
+      "version": "0.4.0",
+      "relationship": "direct",
+      "day1_score": 5.5,
+      "score": 7.5,
+      "confidence": "High",
+      "reasons": [
+        "base 5.5 (Medium) from Day 1 severity",
+        "+0.5 direct dependency",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "+1.0 'jsonwebtoken' is imported in app source (import check, not proof of exploitability)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/jsonwebtoken@0.4.0#package-lock.json#node_modules/jsonwebtoken"
+      ],
+      "fix_versions": [
+        "9.0.0"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-43396fb39064-GHSA-qhxp-v273-g94h",
+      "title": "sanitize-html is vulnerable to XSS through incomprehensive sanitization",
+      "category": "known CVE",
+      "advisory": "GHSA-qhxp-v273-g94h",
+      "aliases": [
+        "CVE-2019-25225"
+      ],
+      "package": "sanitize-html",
+      "version": "1.4.2",
+      "relationship": "direct",
+      "day1_score": 5.5,
+      "score": 7.5,
+      "confidence": "High",
+      "reasons": [
+        "base 5.5 (Medium) from Day 1 severity",
+        "+0.5 direct dependency",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "+1.0 'sanitize-html' is imported in app source (import check, not proof of exploitability)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/sanitize-html@1.4.2#package-lock.json#node_modules/sanitize-html"
+      ],
+      "fix_versions": [
+        "2.0.0-beta"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-4d31fd2e9be0-GHSA-hjrf-2m68-5959",
+      "title": "jsonwebtoken's insecure implementation of key retrieval function could lead to Forgeable Public/Private Tokens from RSA to HMAC",
+      "category": "known CVE",
+      "advisory": "GHSA-hjrf-2m68-5959",
+      "aliases": [
+        "CVE-2022-23541"
+      ],
+      "package": "jsonwebtoken",
+      "version": "0.4.0",
+      "relationship": "direct",
+      "day1_score": 5.5,
+      "score": 7.5,
+      "confidence": "High",
+      "reasons": [
+        "base 5.5 (Medium) from Day 1 severity",
+        "+0.5 direct dependency",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "+1.0 'jsonwebtoken' is imported in app source (import check, not proof of exploitability)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/jsonwebtoken@0.4.0#package-lock.json#node_modules/jsonwebtoken"
+      ],
+      "fix_versions": [
+        "9.0.0"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-59aa7a6d8225-GHSA-3j7m-hmh3-9jmp",
+      "title": "Cross-Site Scripting in sanitize-html",
+      "category": "known CVE",
+      "advisory": "GHSA-3j7m-hmh3-9jmp",
+      "aliases": [
+        "CVE-2016-1000237"
+      ],
+      "package": "sanitize-html",
+      "version": "1.4.2",
+      "relationship": "direct",
+      "day1_score": 5.5,
+      "score": 7.5,
+      "confidence": "High",
+      "reasons": [
+        "base 5.5 (Medium) from Day 1 severity",
+        "+0.5 direct dependency",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "+1.0 'sanitize-html' is imported in app source (import check, not proof of exploitability)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/sanitize-html@1.4.2#package-lock.json#node_modules/sanitize-html"
+      ],
+      "fix_versions": [
+        "1.4.3"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-59aa7a6d8225-GHSA-xc6g-ggrc-qq4r",
+      "title": "Cross-Site Scripting in sanitize-html",
+      "category": "known CVE",
+      "advisory": "GHSA-xc6g-ggrc-qq4r",
+      "aliases": [
+        "CVE-2017-16016"
+      ],
+      "package": "sanitize-html",
+      "version": "1.4.2",
+      "relationship": "direct",
+      "day1_score": 5.5,
+      "score": 7.5,
+      "confidence": "High",
+      "reasons": [
+        "base 5.5 (Medium) from Day 1 severity",
+        "+0.5 direct dependency",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "+1.0 'sanitize-html' is imported in app source (import check, not proof of exploitability)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/sanitize-html@1.4.2#package-lock.json#node_modules/sanitize-html"
+      ],
+      "fix_versions": [
+        "1.11.4"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-5f67b82980e9-GHSA-5v7r-6r5c-r473",
+      "title": "file-type affected by infinite loop in ASF parser on malformed input with zero-size sub-header",
+      "category": "known CVE",
+      "advisory": "GHSA-5v7r-6r5c-r473",
+      "aliases": [
+        "CVE-2026-31808"
+      ],
+      "package": "file-type",
+      "version": "16.5.4",
+      "relationship": "direct",
+      "day1_score": 5.5,
+      "score": 7.5,
+      "confidence": "High",
+      "reasons": [
+        "base 5.5 (Medium) from Day 1 severity",
+        "+0.5 direct dependency",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "+1.0 'file-type' is imported in app source (import check, not proof of exploitability)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/file-type@16.5.4#package-lock.json#node_modules/file-type"
+      ],
+      "fix_versions": [
+        "21.3.1"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-68ea821c599d-GHSA-jxwj-j7wr-gfrw",
+      "title": "ApostropheCMS: Mutation-XSS / allowedTags bypass via literal `</textarea/>` solidus close",
+      "category": "known CVE",
+      "advisory": "GHSA-jxwj-j7wr-gfrw",
+      "aliases": [
+        "CVE-2026-63670"
+      ],
+      "package": "sanitize-html",
+      "version": "1.4.2",
+      "relationship": "direct",
+      "day1_score": 5.5,
+      "score": 7.5,
+      "confidence": "High",
+      "reasons": [
+        "base 5.5 (Medium) from Day 1 severity",
+        "+0.5 direct dependency",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "+1.0 'sanitize-html' is imported in app source (import check, not proof of exploitability)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/sanitize-html@1.4.2#package-lock.json#node_modules/sanitize-html"
+      ],
+      "fix_versions": [
+        "2.17.6"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-a434fc1ae7af-GHSA-cv27-6wvh-8x7j",
+      "title": "ApostropheCMS: Incomplete CVE-2026-53606: `meta http-equiv=refresh` `content` still ships `javascript:` / `data:` URLs",
+      "category": "known CVE",
+      "advisory": "GHSA-cv27-6wvh-8x7j",
+      "aliases": [
+        "CVE-2026-113661"
+      ],
+      "package": "sanitize-html",
+      "version": "1.4.2",
+      "relationship": "direct",
+      "day1_score": 5.5,
+      "score": 7.5,
+      "confidence": "High",
+      "reasons": [
+        "base 5.5 (Medium) from Day 1 severity",
+        "+0.5 direct dependency",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "+1.0 'sanitize-html' is imported in app source (import check, not proof of exploitability)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/sanitize-html@1.4.2#package-lock.json#node_modules/sanitize-html"
+      ],
+      "fix_versions": [
+        "2.18.0"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-a500dc671004-GHSA-rm97-x556-q36h",
+      "title": "sanitize-html Information Exposure vulnerability",
+      "category": "known CVE",
+      "advisory": "GHSA-rm97-x556-q36h",
+      "aliases": [
+        "CVE-2024-21501"
+      ],
+      "package": "sanitize-html",
+      "version": "1.4.2",
+      "relationship": "direct",
+      "day1_score": 5.5,
+      "score": 7.5,
+      "confidence": "High",
+      "reasons": [
+        "base 5.5 (Medium) from Day 1 severity",
+        "+0.5 direct dependency",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "+1.0 'sanitize-html' is imported in app source (import check, not proof of exploitability)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/sanitize-html@1.4.2#package-lock.json#node_modules/sanitize-html"
+      ],
+      "fix_versions": [
+        "2.12.1"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-f4e7cccdc7f7-GHSA-x3q4-9hxx-gx8m",
+      "title": "ApostropheCMS sanitize-html: nonTextTags discard region ends early on an implied close, letting <noscript> content render",
+      "category": "known CVE",
+      "advisory": "GHSA-x3q4-9hxx-gx8m",
+      "aliases": [
+        "CVE-2026-113654"
+      ],
+      "package": "sanitize-html",
+      "version": "1.4.2",
+      "relationship": "direct",
+      "day1_score": 5.5,
+      "score": 7.5,
+      "confidence": "High",
+      "reasons": [
+        "base 5.5 (Medium) from Day 1 severity",
+        "+0.5 direct dependency",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "+1.0 'sanitize-html' is imported in app source (import check, not proof of exploitability)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/sanitize-html@1.4.2#package-lock.json#node_modules/sanitize-html"
+      ],
+      "fix_versions": [
+        "2.18.0"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-164e05a1d696-GHSA-fvqr-27wr-82fm",
+      "title": "Prototype Pollution in lodash",
+      "category": "known CVE",
+      "advisory": "GHSA-fvqr-27wr-82fm",
+      "aliases": [
+        "CVE-2018-3721"
+      ],
+      "package": "lodash",
+      "version": "2.4.2",
+      "relationship": "transitive",
+      "day1_score": 5.5,
+      "score": 7.0,
+      "confidence": "High",
+      "reasons": [
+        "base 5.5 (Medium) from Day 1 severity",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "+1.0 'sanitize-html' is imported in app source (import check, not proof of exploitability)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/sanitize-html@1.4.2#package-lock.json#node_modules/sanitize-html",
+        "pkg:npm/lodash@2.4.2#package-lock.json#node_modules/sanitize-html/node_modules/lodash"
+      ],
+      "fix_versions": [
+        "4.17.5"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-7a43bbdc24c9-GHSA-hjrf-2m68-5959",
+      "title": "jsonwebtoken's insecure implementation of key retrieval function could lead to Forgeable Public/Private Tokens from RSA to HMAC",
+      "category": "known CVE",
+      "advisory": "GHSA-hjrf-2m68-5959",
+      "aliases": [
+        "CVE-2022-23541"
+      ],
+      "package": "jsonwebtoken",
+      "version": "0.1.0",
+      "relationship": "transitive",
+      "day1_score": 5.5,
+      "score": 7.0,
+      "confidence": "High",
+      "reasons": [
+        "base 5.5 (Medium) from Day 1 severity",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "+1.0 'express-jwt' is imported in app source (import check, not proof of exploitability)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/express-jwt@0.1.3#package-lock.json#node_modules/express-jwt",
+        "pkg:npm/jsonwebtoken@0.1.0#package-lock.json#node_modules/express-jwt/node_modules/jsonwebtoken"
+      ],
+      "fix_versions": [
+        "9.0.0"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-8aa880bbe9e2-GHSA-w5hq-g745-h8pq",
+      "title": "uuid: Missing buffer bounds check in v3/v5/v6 when buf is provided",
+      "category": "known CVE",
+      "advisory": "GHSA-w5hq-g745-h8pq",
+      "aliases": [
+        "CVE-2026-41907",
+        "CVE-2026-41988"
+      ],
+      "package": "uuid",
+      "version": "8.3.2",
+      "relationship": "transitive",
+      "day1_score": 5.5,
+      "score": 7.0,
+      "confidence": "High",
+      "reasons": [
+        "base 5.5 (Medium) from Day 1 severity",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "+1.0 'sequelize' is imported in app source (import check, not proof of exploitability)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/sequelize@6.37.8#package-lock.json#node_modules/sequelize",
+        "pkg:npm/uuid@8.3.2#package-lock.json#node_modules/uuid"
+      ],
+      "fix_versions": [
+        "11.1.1",
+        "12.0.1",
+        "13.0.1"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-a7a3ef857cfa-GHSA-58qx-3vcg-4xpx",
+      "title": "ws: Uninitialized memory disclosure",
+      "category": "known CVE",
+      "advisory": "GHSA-58qx-3vcg-4xpx",
+      "aliases": [
+        "CVE-2026-45736"
+      ],
+      "package": "ws",
+      "version": "8.18.0",
+      "relationship": "transitive",
+      "day1_score": 5.5,
+      "score": 7.0,
+      "confidence": "High",
+      "reasons": [
+        "base 5.5 (Medium) from Day 1 severity",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "+1.0 'ethers' is imported in app source (import check, not proof of exploitability)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/ethers@5.8.0#frontend/package-lock.json#node_modules/ethers",
+        "pkg:npm/%40ethersproject/providers@5.8.0#frontend/package-lock.json#node_modules/@ethersproject/providers",
+        "pkg:npm/ws@8.18.0#frontend/package-lock.json#node_modules/ws"
+      ],
+      "fix_versions": [
+        "8.20.1"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-b23599eaafa7-GHSA-87vv-r9j6-g5qv",
+      "title": "Regular Expression Denial of Service in moment",
+      "category": "known CVE",
+      "advisory": "GHSA-87vv-r9j6-g5qv",
+      "aliases": [
+        "CVE-2016-4055"
+      ],
+      "package": "moment",
+      "version": "2.0.0",
+      "relationship": "transitive",
+      "day1_score": 5.5,
+      "score": 7.0,
+      "confidence": "High",
+      "reasons": [
+        "base 5.5 (Medium) from Day 1 severity",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "+1.0 'express-jwt' is imported in app source (import check, not proof of exploitability)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/express-jwt@0.1.3#package-lock.json#node_modules/express-jwt",
+        "pkg:npm/jsonwebtoken@0.1.0#package-lock.json#node_modules/express-jwt/node_modules/jsonwebtoken",
+        "pkg:npm/moment@2.0.0#package-lock.json#node_modules/express-jwt/node_modules/moment"
+      ],
+      "fix_versions": [
+        "2.11.2"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-b965218d9b55-GHSA-qwph-4952-7xr6",
+      "title": "jsonwebtoken vulnerable to signature validation bypass due to insecure default algorithm in jwt.verify()",
+      "category": "known CVE",
+      "advisory": "GHSA-qwph-4952-7xr6",
+      "aliases": [
+        "CVE-2022-23540"
+      ],
+      "package": "jsonwebtoken",
+      "version": "0.1.0",
+      "relationship": "transitive",
+      "day1_score": 5.5,
+      "score": 7.0,
+      "confidence": "High",
+      "reasons": [
+        "base 5.5 (Medium) from Day 1 severity",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "+1.0 'express-jwt' is imported in app source (import check, not proof of exploitability)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/express-jwt@0.1.3#package-lock.json#node_modules/express-jwt",
+        "pkg:npm/jsonwebtoken@0.1.0#package-lock.json#node_modules/express-jwt/node_modules/jsonwebtoken"
+      ],
+      "fix_versions": [
+        "9.0.0"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-c3d6555ddc68-GHSA-rvg8-pwq2-xj7q",
+      "title": "Out-of-bounds Read in base64url",
+      "category": "known CVE",
+      "advisory": "GHSA-rvg8-pwq2-xj7q",
+      "aliases": [],
+      "package": "base64url",
+      "version": "0.0.6",
+      "relationship": "transitive",
+      "day1_score": 5.5,
+      "score": 7.0,
+      "confidence": "High",
+      "reasons": [
+        "base 5.5 (Medium) from Day 1 severity",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "+1.0 'jsonwebtoken' is imported in app source (import check, not proof of exploitability)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/jsonwebtoken@0.4.0#package-lock.json#node_modules/jsonwebtoken",
+        "pkg:npm/jws@0.2.6#package-lock.json#node_modules/jws",
+        "pkg:npm/base64url@0.0.6#package-lock.json#node_modules/base64url"
+      ],
+      "fix_versions": [
+        "3.0.0"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-e0ba40dabf13-GHSA-8g4m-cjm2-96wq",
+      "title": "Sandbox escape in notevil and argencoders-notevil",
+      "category": "known CVE",
+      "advisory": "GHSA-8g4m-cjm2-96wq",
+      "aliases": [
+        "CVE-2021-23771"
+      ],
+      "package": "notevil",
+      "version": "1.3.3",
+      "relationship": "direct",
+      "day1_score": 5.5,
+      "score": 7.0,
+      "confidence": "High",
+      "reasons": [
+        "base 5.5 (Medium) from Day 1 severity",
+        "+0.5 direct dependency",
+        "0 no fix available (accept / replace / escalate)",
+        "0 runtime (non-dev) dependency",
+        "+1.0 'notevil' is imported in app source (import check, not proof of exploitability)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/notevil@1.3.3#package-lock.json#node_modules/notevil"
+      ],
+      "fix_versions": [],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-2665cddd8d9f-GHSA-w8wr-v893-vjvp",
+      "title": "node-tar: Process crash via PAX numeric path type confusion",
+      "category": "known CVE",
+      "advisory": "GHSA-w8wr-v893-vjvp",
+      "aliases": [
+        "CVE-2026-59871"
+      ],
+      "package": "tar",
+      "version": "6.2.1",
+      "relationship": "transitive",
+      "day1_score": 5.5,
+      "score": 6.0,
+      "confidence": "Medium",
+      "reasons": [
+        "base 5.5 (Medium) from Day 1 severity",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "0 no direct import of 'sqlite3' found (it may still be loaded indirectly, e.g. as a driver)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/sqlite3@5.1.7#package-lock.json#node_modules/sqlite3",
+        "pkg:npm/tar@6.2.1#package-lock.json#node_modules/sqlite3/node_modules/tar"
+      ],
+      "fix_versions": [
+        "7.5.18"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-855b947ee71e-GHSA-gvwx-54wh-qm9j",
+      "title": "node-tar: Uncaught Exception DoS via NUL byte in PAX path/linkpath records",
+      "category": "known CVE",
+      "advisory": "GHSA-gvwx-54wh-qm9j",
+      "aliases": [
+        "CVE-2026-59875"
+      ],
+      "package": "tar",
+      "version": "6.2.1",
+      "relationship": "transitive",
+      "day1_score": 5.5,
+      "score": 6.0,
+      "confidence": "Medium",
+      "reasons": [
+        "base 5.5 (Medium) from Day 1 severity",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "0 no direct import of 'sqlite3' found (it may still be loaded indirectly, e.g. as a driver)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/sqlite3@5.1.7#package-lock.json#node_modules/sqlite3",
+        "pkg:npm/tar@6.2.1#package-lock.json#node_modules/sqlite3/node_modules/tar"
+      ],
+      "fix_versions": [
+        "7.5.17"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-990d0aa01711-GHSA-7f5c-rpf4-86p8",
+      "title": "hbs: Insertion of Sensitive Information into Externally-Accessible File or Directory and Exposure of Sensitive Information to an Unauthorized Actor",
+      "category": "known CVE",
+      "advisory": "GHSA-7f5c-rpf4-86p8",
+      "aliases": [
+        "CVE-2021-32822"
+      ],
+      "package": "hbs",
+      "version": "4.4.0",
+      "relationship": "direct",
+      "day1_score": 5.5,
+      "score": 6.0,
+      "confidence": "Medium",
+      "reasons": [
+        "base 5.5 (Medium) from Day 1 severity",
+        "+0.5 direct dependency",
+        "0 no fix available (accept / replace / escalate)",
+        "0 runtime (non-dev) dependency",
+        "0 no direct import of 'hbs' found (it may still be loaded indirectly, e.g. as a driver)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/hbs@4.4.0#package-lock.json#node_modules/hbs"
+      ],
+      "fix_versions": [],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-bce57133e0e2-GHSA-vmf3-w455-68vh",
+      "title": "node-tar applies PAX size override to intermediary GNU long-name/long-link headers, causing tar parser interpretation differential (file smuggling)",
+      "category": "known CVE",
+      "advisory": "GHSA-vmf3-w455-68vh",
+      "aliases": [
+        "CVE-2026-53655"
+      ],
+      "package": "tar",
+      "version": "6.2.1",
+      "relationship": "transitive",
+      "day1_score": 5.5,
+      "score": 6.0,
+      "confidence": "Medium",
+      "reasons": [
+        "base 5.5 (Medium) from Day 1 severity",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "0 no direct import of 'sqlite3' found (it may still be loaded indirectly, e.g. as a driver)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/sqlite3@5.1.7#package-lock.json#node_modules/sqlite3",
+        "pkg:npm/tar@6.2.1#package-lock.json#node_modules/sqlite3/node_modules/tar"
+      ],
+      "fix_versions": [
+        "7.5.16"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-0dd758d0d25a",
+      "title": "Workflow action is not pinned to an immutable commit",
+      "category": "CI-container",
+      "day1_score": 5.5,
+      "score": 5.5,
+      "confidence": "Medium",
+      "reasons": [
+        "base 5.5 (Medium); non-CVE finding, not re-scored"
+      ],
+      "path": [
+        "app"
+      ]
+    },
+    {
+      "id": "G-1f4c71f43bac",
+      "title": "Workflow action is not pinned to an immutable commit",
+      "category": "CI-container",
+      "day1_score": 5.5,
+      "score": 5.5,
+      "confidence": "Medium",
+      "reasons": [
+        "base 5.5 (Medium); non-CVE finding, not re-scored"
+      ],
+      "path": [
+        "app"
+      ]
+    },
+    {
+      "id": "G-2f97647f9e9d",
+      "title": "Container base image is not digest-pinned",
+      "category": "CI-container",
+      "day1_score": 5.5,
+      "score": 5.5,
+      "confidence": "Medium",
+      "reasons": [
+        "base 5.5 (Medium); non-CVE finding, not re-scored"
+      ],
+      "path": [
+        "app"
+      ]
+    },
+    {
+      "id": "G-5debe9163369",
+      "title": "Container base image is not digest-pinned",
+      "category": "CI-container",
+      "day1_score": 5.5,
+      "score": 5.5,
+      "confidence": "Medium",
+      "reasons": [
+        "base 5.5 (Medium); non-CVE finding, not re-scored"
+      ],
+      "path": [
+        "app"
+      ]
+    },
+    {
+      "id": "G-65ef6eb5156a",
+      "title": "Workflow action is not pinned to an immutable commit",
+      "category": "CI-container",
+      "day1_score": 5.5,
+      "score": 5.5,
+      "confidence": "Medium",
+      "reasons": [
+        "base 5.5 (Medium); non-CVE finding, not re-scored"
+      ],
+      "path": [
+        "app"
+      ]
+    },
+    {
+      "id": "G-68901b30320e",
+      "title": "Workflow action is not pinned to an immutable commit",
+      "category": "CI-container",
+      "day1_score": 5.5,
+      "score": 5.5,
+      "confidence": "Medium",
+      "reasons": [
+        "base 5.5 (Medium); non-CVE finding, not re-scored"
+      ],
+      "path": [
+        "app"
+      ]
+    },
+    {
+      "id": "G-70175c1863ab",
+      "title": "Container base image is not digest-pinned",
+      "category": "CI-container",
+      "day1_score": 5.5,
+      "score": 5.5,
+      "confidence": "Medium",
+      "reasons": [
+        "base 5.5 (Medium); non-CVE finding, not re-scored"
+      ],
+      "path": [
+        "app"
+      ]
+    },
+    {
+      "id": "G-7c16c8b35f2d",
+      "title": "Container base image is not digest-pinned",
+      "category": "CI-container",
+      "day1_score": 5.5,
+      "score": 5.5,
+      "confidence": "Medium",
+      "reasons": [
+        "base 5.5 (Medium); non-CVE finding, not re-scored"
+      ],
+      "path": [
+        "app"
+      ]
+    },
+    {
+      "id": "G-9b10dc5c4b35",
+      "title": "Workflow action is not pinned to an immutable commit",
+      "category": "CI-container",
+      "day1_score": 5.5,
+      "score": 5.5,
+      "confidence": "Medium",
+      "reasons": [
+        "base 5.5 (Medium); non-CVE finding, not re-scored"
+      ],
+      "path": [
+        "app"
+      ]
+    },
+    {
+      "id": "G-b94dcf64e88f",
+      "title": "Workflow action is not pinned to an immutable commit",
+      "category": "CI-container",
+      "day1_score": 5.5,
+      "score": 5.5,
+      "confidence": "Medium",
+      "reasons": [
+        "base 5.5 (Medium); non-CVE finding, not re-scored"
+      ],
+      "path": [
+        "app"
+      ]
+    },
+    {
+      "id": "G-e5f85d2110f7",
+      "title": "Workflow action is not pinned to an immutable commit",
+      "category": "CI-container",
+      "day1_score": 5.5,
+      "score": 5.5,
+      "confidence": "Medium",
+      "reasons": [
+        "base 5.5 (Medium); non-CVE finding, not re-scored"
+      ],
+      "path": [
+        "app"
+      ]
+    },
+    {
+      "id": "G-f17f941b5220",
+      "title": "Container base image is not digest-pinned",
+      "category": "CI-container",
+      "day1_score": 5.5,
+      "score": 5.5,
+      "confidence": "Medium",
+      "reasons": [
+        "base 5.5 (Medium); non-CVE finding, not re-scored"
+      ],
+      "path": [
+        "app"
+      ]
+    },
+    {
+      "id": "G-17fa52a1cc4f-GHSA-g3hv-75wg-m249",
+      "title": "minimatch has potential denial of service via globparts amplification",
+      "category": "known CVE",
+      "advisory": "GHSA-g3hv-75wg-m249",
+      "aliases": [
+        "CVE-2026-118764"
+      ],
+      "package": "minimatch",
+      "version": "9.0.9",
+      "relationship": "transitive",
+      "day1_score": 5.5,
+      "score": 4.5,
+      "confidence": "Medium",
+      "reasons": [
+        "base 5.5 (Medium) from Day 1 severity",
+        "+0.5 fix available",
+        "-1.5 dev-only dependency",
+        "0 no direct import of '@cyclonedx/cyclonedx-npm' found (it may still be loaded indirectly, e.g. as a driver)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/%40cyclonedx/cyclonedx-npm@4.2.1#package-lock.json#node_modules/@cyclonedx/cyclonedx-npm",
+        "pkg:npm/libxmljs2@0.37.0#package-lock.json#node_modules/libxmljs2",
+        "pkg:npm/node-gyp@11.5.0#package-lock.json#node_modules/node-gyp",
+        "pkg:npm/make-fetch-happen@14.0.3#package-lock.json#node_modules/make-fetch-happen",
+        "pkg:npm/cacache@19.0.1#package-lock.json#node_modules/cacache",
+        "pkg:npm/glob@10.5.0#package-lock.json#node_modules/glob",
+        "pkg:npm/minimatch@9.0.9#package-lock.json#node_modules/glob/node_modules/minimatch"
+      ],
+      "fix_versions": [
+        "11.0.1"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-cb1c5d2fb2b6-GHSA-3g3m-2fjr-6pw4",
+      "title": "Glob: AbortSignal cancellation bypass allows post-timeout filesystem traversal",
+      "category": "known CVE",
+      "advisory": "GHSA-3g3m-2fjr-6pw4",
+      "aliases": [
+        "CVE-2026-118773"
+      ],
+      "package": "glob",
+      "version": "10.5.0",
+      "relationship": "transitive",
+      "day1_score": 5.5,
+      "score": 4.5,
+      "confidence": "Medium",
+      "reasons": [
+        "base 5.5 (Medium) from Day 1 severity",
+        "+0.5 fix available",
+        "-1.5 dev-only dependency",
+        "0 no direct import of '@cyclonedx/cyclonedx-npm' found (it may still be loaded indirectly, e.g. as a driver)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/%40cyclonedx/cyclonedx-npm@4.2.1#package-lock.json#node_modules/@cyclonedx/cyclonedx-npm",
+        "pkg:npm/libxmljs2@0.37.0#package-lock.json#node_modules/libxmljs2",
+        "pkg:npm/node-gyp@11.5.0#package-lock.json#node_modules/node-gyp",
+        "pkg:npm/make-fetch-happen@14.0.3#package-lock.json#node_modules/make-fetch-happen",
+        "pkg:npm/cacache@19.0.1#package-lock.json#node_modules/cacache",
+        "pkg:npm/glob@10.5.0#package-lock.json#node_modules/glob"
+      ],
+      "fix_versions": [
+        "14.0.2"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-eea6770185e5-GHSA-xfqm-j7pc-xrfc",
+      "title": "messageformat has a prototype pollution vulnerability",
+      "category": "known CVE",
+      "advisory": "GHSA-xfqm-j7pc-xrfc",
+      "aliases": [
+        "CVE-2025-57349"
+      ],
+      "package": "messageformat",
+      "version": "2.3.0",
+      "relationship": "transitive",
+      "day1_score": 2.5,
+      "score": 4.0,
+      "confidence": "High",
+      "reasons": [
+        "base 2.5 (Low) from Day 1 severity",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "+1.0 'i18n' is imported in app source (import check, not proof of exploitability)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/i18n@0.11.1#package-lock.json#node_modules/i18n",
+        "pkg:npm/messageformat@2.3.0#package-lock.json#node_modules/messageformat"
+      ],
+      "fix_versions": [
+        "3.0.0-beta.0"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-223e1bdb2957-GHSA-848j-6mx2-7j84",
+      "title": "Elliptic Uses a Cryptographic Primitive with a Risky Implementation",
+      "category": "known CVE",
+      "advisory": "GHSA-848j-6mx2-7j84",
+      "aliases": [
+        "CVE-2025-14505"
+      ],
+      "package": "elliptic",
+      "version": "6.6.1",
+      "relationship": "transitive",
+      "day1_score": 2.5,
+      "score": 3.5,
+      "confidence": "High",
+      "reasons": [
+        "base 2.5 (Low) from Day 1 severity",
+        "0 no fix available (accept / replace / escalate)",
+        "0 runtime (non-dev) dependency",
+        "+1.0 'ethers' is imported in app source (import check, not proof of exploitability)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/ethers@5.8.0#frontend/package-lock.json#node_modules/ethers",
+        "pkg:npm/%40ethersproject/signing-key@5.8.0#frontend/package-lock.json#node_modules/@ethersproject/signing-key",
+        "pkg:npm/elliptic@6.6.1#frontend/package-lock.json#node_modules/elliptic"
+      ],
+      "fix_versions": [],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    },
+    {
+      "id": "G-faf988d854d1-GHSA-vpq2-c234-7xj6",
+      "title": "@tootallnate/once vulnerable to Incorrect Control Flow Scoping",
+      "category": "known CVE",
+      "advisory": "GHSA-vpq2-c234-7xj6",
+      "aliases": [
+        "CVE-2026-3449"
+      ],
+      "package": "@tootallnate/once",
+      "version": "1.1.2",
+      "relationship": "transitive",
+      "day1_score": 2.5,
+      "score": 3.0,
+      "confidence": "Medium",
+      "reasons": [
+        "base 2.5 (Low) from Day 1 severity",
+        "+0.5 fix available",
+        "0 runtime (non-dev) dependency",
+        "0 no direct import of 'sqlite3' found (it may still be loaded indirectly, e.g. as a driver)"
+      ],
+      "path": [
+        "app",
+        "pkg:npm/sqlite3@5.1.7#package-lock.json#node_modules/sqlite3",
+        "pkg:npm/node-gyp@8.4.1#package-lock.json#node_modules/sqlite3/node_modules/node-gyp",
+        "pkg:npm/make-fetch-happen@9.1.0#package-lock.json#node_modules/sqlite3/node_modules/make-fetch-happen",
+        "pkg:npm/http-proxy-agent@4.0.1#package-lock.json#node_modules/sqlite3/node_modules/http-proxy-agent",
+        "pkg:npm/%40tootallnate/once@1.1.2#package-lock.json#node_modules/@tootallnate/once"
+      ],
+      "fix_versions": [
+        "2.0.1",
+        "3.0.1"
+      ],
+      "evidence": [
+        "OSV API",
+        "guardian-inventory-verifier"
+      ]
+    }
+  ],
+  "recommendations": [
+    {
+      "package": "tar",
+      "version": "6.2.1",
+      "target_version": "7.5.21",
+      "findings_cleared": 12,
+      "findings_total": 12,
+      "top_score": 10.0,
+      "action": "Upgrade tar 6.2.1 -> 7.5.21 (add npm 'overrides' for tar, or upgrade parent 'sqlite3' if a release pulls it in)",
+      "compatibility_impact": "HIGH (major bump, run tests)",
+      "relationship": "transitive",
+      "path": [
+        "app",
+        "pkg:npm/sqlite3@5.1.7#package-lock.json#node_modules/sqlite3",
+        "pkg:npm/tar@6.2.1#package-lock.json#node_modules/sqlite3/node_modules/tar"
+      ],
+      "note": "",
+      "rollback": "git revert the fix commit (or restore the previous package-lock.json), then rescan",
+      "evidence_ids": [
+        "G-42b36a09cb5a-GHSA-23hp-3jrh-7fpw",
+        "G-10cf19ebde81-GHSA-r292-9mhp-454m",
+        "G-2d3515e46a78-GHSA-8qq5-rm4j-mr97",
+        "G-7d2cfcb69997-GHSA-34x7-hfp2-rc4v",
+        "G-9c561ca26884-GHSA-83g3-92jg-28cx",
+        "G-aa639747ac85-GHSA-9ppj-qmqm-q256",
+        "G-c214cfbca3a0-GHSA-r6q2-hw4h-h46w",
+        "G-cb96ffc34565-GHSA-qffp-2rhf-9h96",
+        "G-cd219f26a6bd-GHSA-8x88-c5mf-7j5w",
+        "G-2665cddd8d9f-GHSA-w8wr-v893-vjvp",
+        "G-855b947ee71e-GHSA-gvwx-54wh-qm9j",
+        "G-bce57133e0e2-GHSA-vmf3-w455-68vh"
+      ]
+    },
+    {
+      "package": "sanitize-html",
+      "version": "1.4.2",
+      "target_version": "2.18.0",
+      "findings_cleared": 10,
+      "findings_total": 10,
+      "top_score": 10.0,
+      "action": "Upgrade sanitize-html 1.4.2 -> 2.18.0",
+      "compatibility_impact": "HIGH (major bump, run tests)",
+      "relationship": "direct",
+      "path": [
+        "app",
+        "pkg:npm/sanitize-html@1.4.2#package-lock.json#node_modules/sanitize-html"
+      ],
+      "note": "Juice Shop keeps this package old on purpose; upgrade may break its challenges/tests",
+      "rollback": "git revert the fix commit (or restore the previous package-lock.json), then rescan",
+      "evidence_ids": [
+        "G-bb01dedeadbd-GHSA-cgfm-xwp7-2cvr",
+        "G-12806132e51d-GHSA-mjxr-4v3x-q3m4",
+        "G-12806132e51d-GHSA-rjqq-98f6-6j3r",
+        "G-43396fb39064-GHSA-qhxp-v273-g94h",
+        "G-59aa7a6d8225-GHSA-3j7m-hmh3-9jmp",
+        "G-59aa7a6d8225-GHSA-xc6g-ggrc-qq4r",
+        "G-68ea821c599d-GHSA-jxwj-j7wr-gfrw",
+        "G-a434fc1ae7af-GHSA-cv27-6wvh-8x7j",
+        "G-a500dc671004-GHSA-rm97-x556-q36h",
+        "G-f4e7cccdc7f7-GHSA-x3q4-9hxx-gx8m"
+      ]
+    },
+    {
+      "package": "lodash",
+      "version": "2.4.2",
+      "target_version": "4.17.21",
+      "findings_cleared": 4,
+      "findings_total": 4,
+      "top_score": 10.0,
+      "action": "Upgrade lodash 2.4.2 -> 4.17.21 (add npm 'overrides' for lodash, or upgrade parent 'sanitize-html' if a release pulls it in)",
+      "compatibility_impact": "HIGH (major bump, run tests)",
+      "relationship": "transitive",
+      "path": [
+        "app",
+        "pkg:npm/sanitize-html@1.4.2#package-lock.json#node_modules/sanitize-html",
+        "pkg:npm/lodash@2.4.2#package-lock.json#node_modules/sanitize-html/node_modules/lodash"
+      ],
+      "note": "Juice Shop keeps this package old on purpose; upgrade may break its challenges/tests",
+      "rollback": "git revert the fix commit (or restore the previous package-lock.json), then rescan",
+      "evidence_ids": [
+        "G-164e05a1d696-GHSA-jf85-cpcp-j695",
+        "G-164e05a1d696-GHSA-4xc9-xhrj-v574",
+        "G-779c504a07fc-GHSA-35jh-r3h4-6jhm",
+        "G-164e05a1d696-GHSA-fvqr-27wr-82fm"
+      ]
+    },
+    {
+      "package": "jsonwebtoken",
+      "version": "0.1.0",
+      "target_version": "9.0.0",
+      "findings_cleared": 4,
+      "findings_total": 4,
+      "top_score": 10.0,
+      "action": "Upgrade jsonwebtoken 0.1.0 -> 9.0.0 (add npm 'overrides' for jsonwebtoken, or upgrade parent 'express-jwt' if a release pulls it in)",
+      "compatibility_impact": "HIGH (major bump, run tests)",
+      "relationship": "transitive",
+      "path": [
+        "app",
+        "pkg:npm/express-jwt@0.1.3#package-lock.json#node_modules/express-jwt",
+        "pkg:npm/jsonwebtoken@0.1.0#package-lock.json#node_modules/express-jwt/node_modules/jsonwebtoken"
+      ],
+      "note": "Juice Shop keeps this package old on purpose; upgrade may break its challenges/tests",
+      "rollback": "git revert the fix commit (or restore the previous package-lock.json), then rescan",
+      "evidence_ids": [
+        "G-9fa5855c8ead-GHSA-c7hr-j4mj-j2w6",
+        "G-9f931d6447f7-GHSA-8cf7-32gw-wr33",
+        "G-7a43bbdc24c9-GHSA-hjrf-2m68-5959",
+        "G-b965218d9b55-GHSA-qwph-4952-7xr6"
+      ]
+    },
+    {
+      "package": "jsonwebtoken",
+      "version": "0.4.0",
+      "target_version": "9.0.0",
+      "findings_cleared": 4,
+      "findings_total": 4,
+      "top_score": 10.0,
+      "action": "Upgrade jsonwebtoken 0.4.0 -> 9.0.0",
+      "compatibility_impact": "HIGH (major bump, run tests)",
+      "relationship": "direct",
+      "path": [
+        "app",
+        "pkg:npm/jsonwebtoken@0.4.0#package-lock.json#node_modules/jsonwebtoken"
+      ],
+      "note": "Juice Shop keeps this package old on purpose; upgrade may break its challenges/tests",
+      "rollback": "git revert the fix commit (or restore the previous package-lock.json), then rescan",
+      "evidence_ids": [
+        "G-fc8acc7f7d0c-GHSA-c7hr-j4mj-j2w6",
+        "G-336bcf5108c9-GHSA-8cf7-32gw-wr33",
+        "G-1381e19a3591-GHSA-qwph-4952-7xr6",
+        "G-4d31fd2e9be0-GHSA-hjrf-2m68-5959"
+      ]
+    },
+    {
+      "package": "crypto-js",
+      "version": "3.3.0",
+      "target_version": "4.2.0",
+      "findings_cleared": 2,
+      "findings_total": 2,
+      "top_score": 10.0,
+      "action": "Upgrade crypto-js 3.3.0 -> 4.2.0 (add npm 'overrides' for crypto-js, or upgrade parent 'pdfkit' if a release pulls it in)",
+      "compatibility_impact": "HIGH (major bump, run tests)",
+      "relationship": "transitive",
+      "path": [
+        "app",
+        "pkg:npm/pdfkit@0.11.0#package-lock.json#node_modules/pdfkit",
+        "pkg:npm/crypto-js@3.3.0#package-lock.json#node_modules/crypto-js"
+      ],
+      "note": "Juice Shop keeps this package old on purpose; upgrade may break its challenges/tests",
+      "rollback": "git revert the fix commit (or restore the previous package-lock.json), then rescan",
+      "evidence_ids": [
+        "G-815910eba442-GHSA-xwcq-pm8m-c4vf",
+        "G-9e1b02b7e3cd-GHSA-rg76-677x-56q9"
+      ]
+    },
+    {
+      "package": "express-jwt",
+      "version": "0.1.3",
+      "target_version": "6.0.0",
+      "findings_cleared": 1,
+      "findings_total": 1,
+      "top_score": 10.0,
+      "action": "Upgrade express-jwt 0.1.3 -> 6.0.0",
+      "compatibility_impact": "HIGH (major bump, run tests)",
+      "relationship": "direct",
+      "path": [
+        "app",
+        "pkg:npm/express-jwt@0.1.3#package-lock.json#node_modules/express-jwt"
+      ],
+      "note": "Juice Shop keeps this package old on purpose; upgrade may break its challenges/tests",
+      "rollback": "git revert the fix commit (or restore the previous package-lock.json), then rescan",
+      "evidence_ids": [
+        "G-89df7fb5da11-GHSA-6g6m-m6h5-w9gf"
+      ]
+    },
+    {
+      "package": "marsdb",
+      "version": "0.6.11",
+      "target_version": null,
+      "findings_cleared": 0,
+      "findings_total": 1,
+      "top_score": 10.0,
+      "action": "No fix for all advisories on marsdb@0.6.11: accept, replace, or escalate",
+      "compatibility_impact": "n/a",
+      "relationship": "direct",
+      "path": [
+        "app",
+        "pkg:npm/marsdb@0.6.11#package-lock.json#node_modules/marsdb"
+      ],
+      "note": "Juice Shop keeps this package old on purpose; upgrade may break its challenges/tests",
+      "rollback": "git revert the fix commit (or restore the previous package-lock.json), then rescan",
+      "evidence_ids": [
+        "G-d929526efec8-GHSA-5mrr-rgp6-x4gr"
+      ]
+    },
+    {
+      "package": "moment",
+      "version": "2.0.0",
+      "target_version": "2.29.2",
+      "findings_cleared": 3,
+      "findings_total": 3,
+      "top_score": 9.5,
+      "action": "Upgrade moment 2.0.0 -> 2.29.2 (add npm 'overrides' for moment, or upgrade parent 'express-jwt' if a release pulls it in)",
+      "compatibility_impact": "low (same major)",
+      "relationship": "transitive",
+      "path": [
+        "app",
+        "pkg:npm/express-jwt@0.1.3#package-lock.json#node_modules/express-jwt",
+        "pkg:npm/jsonwebtoken@0.1.0#package-lock.json#node_modules/express-jwt/node_modules/jsonwebtoken",
+        "pkg:npm/moment@2.0.0#package-lock.json#node_modules/express-jwt/node_modules/moment"
+      ],
+      "note": "Juice Shop keeps this package old on purpose; upgrade may break its challenges/tests",
+      "rollback": "git revert the fix commit (or restore the previous package-lock.json), then rescan",
+      "evidence_ids": [
+        "G-0c8a695b5c5b-GHSA-8hfj-j24r-96c4",
+        "G-b23599eaafa7-GHSA-446m-mv8f-q348",
+        "G-b23599eaafa7-GHSA-87vv-r9j6-g5qv"
+      ]
+    },
+    {
+      "package": "jws",
+      "version": "0.2.6",
+      "target_version": "3.2.3",
+      "findings_cleared": 2,
+      "findings_total": 2,
+      "top_score": 9.5,
+      "action": "Upgrade jws 0.2.6 -> 3.2.3 (add npm 'overrides' for jws, or upgrade parent 'jsonwebtoken' if a release pulls it in)",
+      "compatibility_impact": "HIGH (major bump, run tests)",
+      "relationship": "transitive",
+      "path": [
+        "app",
+        "pkg:npm/jsonwebtoken@0.4.0#package-lock.json#node_modules/jsonwebtoken",
+        "pkg:npm/jws@0.2.6#package-lock.json#node_modules/jws"
+      ],
+      "note": "Juice Shop keeps this package old on purpose; upgrade may break its challenges/tests",
+      "rollback": "git revert the fix commit (or restore the previous package-lock.json), then rescan",
+      "evidence_ids": [
+        "G-6f203a814028-GHSA-869p-cjfg-cm3x",
+        "G-7c3ae00793a0-GHSA-gjcw-v447-2w7q"
+      ]
+    },
+    {
+      "package": "ws",
+      "version": "8.18.0",
+      "target_version": "8.21.0",
+      "findings_cleared": 2,
+      "findings_total": 2,
+      "top_score": 9.5,
+      "action": "Upgrade ws 8.18.0 -> 8.21.0 (add npm 'overrides' for ws, or upgrade parent 'ethers' if a release pulls it in)",
+      "compatibility_impact": "low (same major)",
+      "relationship": "transitive",
+      "path": [
+        "app",
+        "pkg:npm/ethers@5.8.0#frontend/package-lock.json#node_modules/ethers",
+        "pkg:npm/%40ethersproject/providers@5.8.0#frontend/package-lock.json#node_modules/@ethersproject/providers",
+        "pkg:npm/ws@8.18.0#frontend/package-lock.json#node_modules/ws"
+      ],
+      "note": "",
+      "rollback": "git revert the fix commit (or restore the previous package-lock.json), then rescan",
+      "evidence_ids": [
+        "G-c812902a4f34-GHSA-96hv-2xvq-fx4p",
+        "G-a7a3ef857cfa-GHSA-58qx-3vcg-4xpx"
+      ]
+    },
+    {
+      "package": "@cyclonedx/cyclonedx-npm",
+      "version": "4.2.1",
+      "target_version": "6.0.0",
+      "findings_cleared": 2,
+      "findings_total": 2,
+      "top_score": 7.5,
+      "action": "Upgrade @cyclonedx/cyclonedx-npm 4.2.1 -> 6.0.0",
+      "compatibility_impact": "HIGH (major bump, run tests)",
+      "relationship": "direct",
+      "path": [
+        "app",
+        "pkg:npm/%40cyclonedx/cyclonedx-npm@4.2.1#package-lock.json#node_modules/@cyclonedx/cyclonedx-npm"
+      ],
+      "note": "",
+      "rollback": "git revert the fix commit (or restore the previous package-lock.json), then rescan",
+      "evidence_ids": [
+        "G-2e8dea20d616-GHSA-q69g-4hcv-6jg4",
+        "G-f79b9bdf7f3c-GHSA-v75r-vx73-82pj"
+      ]
+    },
+    {
+      "package": "file-type",
+      "version": "16.5.4",
+      "target_version": "21.3.1",
+      "findings_cleared": 1,
+      "findings_total": 1,
+      "top_score": 7.5,
+      "action": "Upgrade file-type 16.5.4 -> 21.3.1",
+      "compatibility_impact": "HIGH (major bump, run tests)",
+      "relationship": "direct",
+      "path": [
+        "app",
+        "pkg:npm/file-type@16.5.4#package-lock.json#node_modules/file-type"
+      ],
+      "note": "",
+      "rollback": "git revert the fix commit (or restore the previous package-lock.json), then rescan",
+      "evidence_ids": [
+        "G-5f67b82980e9-GHSA-5v7r-6r5c-r473"
+      ]
+    },
+    {
+      "package": "uuid",
+      "version": "8.3.2",
+      "target_version": "11.1.1",
+      "findings_cleared": 1,
+      "findings_total": 1,
+      "top_score": 7.0,
+      "action": "Upgrade uuid 8.3.2 -> 11.1.1 (add npm 'overrides' for uuid, or upgrade parent 'sequelize' if a release pulls it in)",
+      "compatibility_impact": "HIGH (major bump, run tests)",
+      "relationship": "transitive",
+      "path": [
+        "app",
+        "pkg:npm/sequelize@6.37.8#package-lock.json#node_modules/sequelize",
+        "pkg:npm/uuid@8.3.2#package-lock.json#node_modules/uuid"
+      ],
+      "note": "",
+      "rollback": "git revert the fix commit (or restore the previous package-lock.json), then rescan",
+      "evidence_ids": [
+        "G-8aa880bbe9e2-GHSA-w5hq-g745-h8pq"
+      ]
+    },
+    {
+      "package": "base64url",
+      "version": "0.0.6",
+      "target_version": "3.0.0",
+      "findings_cleared": 1,
+      "findings_total": 1,
+      "top_score": 7.0,
+      "action": "Upgrade base64url 0.0.6 -> 3.0.0 (add npm 'overrides' for base64url, or upgrade parent 'jsonwebtoken' if a release pulls it in)",
+      "compatibility_impact": "HIGH (major bump, run tests)",
+      "relationship": "transitive",
+      "path": [
+        "app",
+        "pkg:npm/jsonwebtoken@0.4.0#package-lock.json#node_modules/jsonwebtoken",
+        "pkg:npm/jws@0.2.6#package-lock.json#node_modules/jws",
+        "pkg:npm/base64url@0.0.6#package-lock.json#node_modules/base64url"
+      ],
+      "note": "Juice Shop keeps this package old on purpose; upgrade may break its challenges/tests",
+      "rollback": "git revert the fix commit (or restore the previous package-lock.json), then rescan",
+      "evidence_ids": [
+        "G-c3d6555ddc68-GHSA-rvg8-pwq2-xj7q"
+      ]
+    },
+    {
+      "package": "notevil",
+      "version": "1.3.3",
+      "target_version": null,
+      "findings_cleared": 0,
+      "findings_total": 1,
+      "top_score": 7.0,
+      "action": "No fix for all advisories on notevil@1.3.3: accept, replace, or escalate",
+      "compatibility_impact": "n/a",
+      "relationship": "direct",
+      "path": [
+        "app",
+        "pkg:npm/notevil@1.3.3#package-lock.json#node_modules/notevil"
+      ],
+      "note": "Juice Shop keeps this package old on purpose; upgrade may break its challenges/tests",
+      "rollback": "git revert the fix commit (or restore the previous package-lock.json), then rescan",
+      "evidence_ids": [
+        "G-e0ba40dabf13-GHSA-8g4m-cjm2-96wq"
+      ]
+    },
+    {
+      "package": "hbs",
+      "version": "4.4.0",
+      "target_version": null,
+      "findings_cleared": 0,
+      "findings_total": 1,
+      "top_score": 6.0,
+      "action": "No fix for all advisories on hbs@4.4.0: accept, replace, or escalate",
+      "compatibility_impact": "n/a",
+      "relationship": "direct",
+      "path": [
+        "app",
+        "pkg:npm/hbs@4.4.0#package-lock.json#node_modules/hbs"
+      ],
+      "note": "Juice Shop keeps this package old on purpose; upgrade may break its challenges/tests",
+      "rollback": "git revert the fix commit (or restore the previous package-lock.json), then rescan",
+      "evidence_ids": [
+        "G-990d0aa01711-GHSA-7f5c-rpf4-86p8"
+      ]
+    },
+    {
+      "package": "minimatch",
+      "version": "9.0.9",
+      "target_version": "11.0.1",
+      "findings_cleared": 1,
+      "findings_total": 1,
+      "top_score": 4.5,
+      "action": "Upgrade minimatch 9.0.9 -> 11.0.1 (add npm 'overrides' for minimatch, or upgrade parent '@cyclonedx/cyclonedx-npm' if a release pulls it in)",
+      "compatibility_impact": "HIGH (major bump, run tests)",
+      "relationship": "transitive",
+      "path": [
+        "app",
+        "pkg:npm/%40cyclonedx/cyclonedx-npm@4.2.1#package-lock.json#node_modules/@cyclonedx/cyclonedx-npm",
+        "pkg:npm/libxmljs2@0.37.0#package-lock.json#node_modules/libxmljs2",
+        "pkg:npm/node-gyp@11.5.0#package-lock.json#node_modules/node-gyp",
+        "pkg:npm/make-fetch-happen@14.0.3#package-lock.json#node_modules/make-fetch-happen",
+        "pkg:npm/cacache@19.0.1#package-lock.json#node_modules/cacache",
+        "pkg:npm/glob@10.5.0#package-lock.json#node_modules/glob",
+        "pkg:npm/minimatch@9.0.9#package-lock.json#node_modules/glob/node_modules/minimatch"
+      ],
+      "note": "",
+      "rollback": "git revert the fix commit (or restore the previous package-lock.json), then rescan",
+      "evidence_ids": [
+        "G-17fa52a1cc4f-GHSA-g3hv-75wg-m249"
+      ]
+    },
+    {
+      "package": "glob",
+      "version": "10.5.0",
+      "target_version": "14.0.2",
+      "findings_cleared": 1,
+      "findings_total": 1,
+      "top_score": 4.5,
+      "action": "Upgrade glob 10.5.0 -> 14.0.2 (add npm 'overrides' for glob, or upgrade parent '@cyclonedx/cyclonedx-npm' if a release pulls it in)",
+      "compatibility_impact": "HIGH (major bump, run tests)",
+      "relationship": "transitive",
+      "path": [
+        "app",
+        "pkg:npm/%40cyclonedx/cyclonedx-npm@4.2.1#package-lock.json#node_modules/@cyclonedx/cyclonedx-npm",
+        "pkg:npm/libxmljs2@0.37.0#package-lock.json#node_modules/libxmljs2",
+        "pkg:npm/node-gyp@11.5.0#package-lock.json#node_modules/node-gyp",
+        "pkg:npm/make-fetch-happen@14.0.3#package-lock.json#node_modules/make-fetch-happen",
+        "pkg:npm/cacache@19.0.1#package-lock.json#node_modules/cacache",
+        "pkg:npm/glob@10.5.0#package-lock.json#node_modules/glob"
+      ],
+      "note": "",
+      "rollback": "git revert the fix commit (or restore the previous package-lock.json), then rescan",
+      "evidence_ids": [
+        "G-cb1c5d2fb2b6-GHSA-3g3m-2fjr-6pw4"
+      ]
+    },
+    {
+      "package": "messageformat",
+      "version": "2.3.0",
+      "target_version": "3.0.0-beta.0",
+      "findings_cleared": 1,
+      "findings_total": 1,
+      "top_score": 4.0,
+      "action": "Upgrade messageformat 2.3.0 -> 3.0.0-beta.0 (add npm 'overrides' for messageformat, or upgrade parent 'i18n' if a release pulls it in)",
+      "compatibility_impact": "HIGH (major bump, run tests)",
+      "relationship": "transitive",
+      "path": [
+        "app",
+        "pkg:npm/i18n@0.11.1#package-lock.json#node_modules/i18n",
+        "pkg:npm/messageformat@2.3.0#package-lock.json#node_modules/messageformat"
+      ],
+      "note": "",
+      "rollback": "git revert the fix commit (or restore the previous package-lock.json), then rescan",
+      "evidence_ids": [
+        "G-eea6770185e5-GHSA-xfqm-j7pc-xrfc"
+      ]
+    },
+    {
+      "package": "elliptic",
+      "version": "6.6.1",
+      "target_version": null,
+      "findings_cleared": 0,
+      "findings_total": 1,
+      "top_score": 3.5,
+      "action": "No fix for all advisories on elliptic@6.6.1: accept, replace, or escalate",
+      "compatibility_impact": "n/a",
+      "relationship": "transitive",
+      "path": [
+        "app",
+        "pkg:npm/ethers@5.8.0#frontend/package-lock.json#node_modules/ethers",
+        "pkg:npm/%40ethersproject/signing-key@5.8.0#frontend/package-lock.json#node_modules/@ethersproject/signing-key",
+        "pkg:npm/elliptic@6.6.1#frontend/package-lock.json#node_modules/elliptic"
+      ],
+      "note": "",
+      "rollback": "git revert the fix commit (or restore the previous package-lock.json), then rescan",
+      "evidence_ids": [
+        "G-223e1bdb2957-GHSA-848j-6mx2-7j84"
+      ]
+    },
+    {
+      "package": "@tootallnate/once",
+      "version": "1.1.2",
+      "target_version": "2.0.1",
+      "findings_cleared": 1,
+      "findings_total": 1,
+      "top_score": 3.0,
+      "action": "Upgrade @tootallnate/once 1.1.2 -> 2.0.1 (add npm 'overrides' for @tootallnate/once, or upgrade parent 'sqlite3' if a release pulls it in)",
+      "compatibility_impact": "HIGH (major bump, run tests)",
+      "relationship": "transitive",
+      "path": [
+        "app",
+        "pkg:npm/sqlite3@5.1.7#package-lock.json#node_modules/sqlite3",
+        "pkg:npm/node-gyp@8.4.1#package-lock.json#node_modules/sqlite3/node_modules/node-gyp",
+        "pkg:npm/make-fetch-happen@9.1.0#package-lock.json#node_modules/sqlite3/node_modules/make-fetch-happen",
+        "pkg:npm/http-proxy-agent@4.0.1#package-lock.json#node_modules/sqlite3/node_modules/http-proxy-agent",
+        "pkg:npm/%40tootallnate/once@1.1.2#package-lock.json#node_modules/@tootallnate/once"
+      ],
+      "note": "",
+      "rollback": "git revert the fix commit (or restore the previous package-lock.json), then rescan",
+      "evidence_ids": [
+        "G-faf988d854d1-GHSA-vpq2-c234-7xj6"
+      ]
+    }
+  ]
+}

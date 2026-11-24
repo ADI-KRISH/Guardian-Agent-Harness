@@ -1,0 +1,1644 @@
+{
+  "source": "risk_ranking.json",
+  "scan_id": "75a83dd1a8f1",
+  "reachability_assessed": true,
+  "note": "Recommendations only. Nothing is applied until a human approves. Fix versions are verified (scanner data); compatibility and effort notes are rule-based and inferred.",
+  "package_recommendations": [
+    {
+      "package": "tar",
+      "current_version": "6.2.1",
+      "target_version": "7.5.21",
+      "tier": "Critical",
+      "relationship": "transitive",
+      "parent": "sqlite3",
+      "manifest": "package.json",
+      "dependency_path": [
+        "app",
+        "sqlite3@5.1.7",
+        "tar@6.2.1"
+      ],
+      "top_risk_score": 10.0,
+      "intentionally_old_in_juice_shop": false,
+      "demo_role": "one_fix_many_findings",
+      "evidence_ids": [
+        "G-42b36a09cb5a-GHSA-23hp-3jrh-7fpw",
+        "G-10cf19ebde81-GHSA-r292-9mhp-454m",
+        "G-2d3515e46a78-GHSA-8qq5-rm4j-mr97",
+        "G-7d2cfcb69997-GHSA-34x7-hfp2-rc4v",
+        "G-9c561ca26884-GHSA-83g3-92jg-28cx",
+        "G-aa639747ac85-GHSA-9ppj-qmqm-q256",
+        "G-c214cfbca3a0-GHSA-r6q2-hw4h-h46w",
+        "G-cb96ffc34565-GHSA-qffp-2rhf-9h96",
+        "G-cd219f26a6bd-GHSA-8x88-c5mf-7j5w",
+        "G-2665cddd8d9f-GHSA-w8wr-v893-vjvp",
+        "G-855b947ee71e-GHSA-gvwx-54wh-qm9j",
+        "G-bce57133e0e2-GHSA-vmf3-w455-68vh"
+      ],
+      "advisories": [
+        "GHSA-23hp-3jrh-7fpw",
+        "GHSA-34x7-hfp2-rc4v",
+        "GHSA-83g3-92jg-28cx",
+        "GHSA-8qq5-rm4j-mr97",
+        "GHSA-8x88-c5mf-7j5w",
+        "GHSA-9ppj-qmqm-q256",
+        "GHSA-gvwx-54wh-qm9j",
+        "GHSA-qffp-2rhf-9h96",
+        "GHSA-r292-9mhp-454m",
+        "GHSA-r6q2-hw4h-h46w",
+        "GHSA-vmf3-w455-68vh",
+        "GHSA-w8wr-v893-vjvp"
+      ],
+      "verified": {
+        "fix_versions_from": "OSV via GuardianAI report",
+        "fixed_versions": [
+          "7.5.3",
+          "7.5.4",
+          "7.5.7",
+          "7.5.8",
+          "7.5.10",
+          "7.5.11",
+          "7.5.16",
+          "7.5.17",
+          "7.5.18",
+          "7.5.19",
+          "7.5.21"
+        ]
+      },
+      "approval": {
+        "required": true,
+        "status": "pending",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "compatibility_impact": "HIGH",
+      "version_jump": "major",
+      "expected_risk_reduction": {
+        "findings_cleared": 12,
+        "by_severity": {
+          "Critical": 1,
+          "High": 8,
+          "Medium": 3
+        },
+        "advisories_cleared": 12
+      },
+      "action": "override",
+      "how": "First check whether a newer 'sqlite3' release already depends on a fixed tar. If not, add a scoped npm override in package.json so only sqlite3's copy changes.",
+      "change": {
+        "file": "package.json",
+        "set": {
+          "overrides": {
+            "sqlite3": {
+              "tar": "7.5.21"
+            }
+          }
+        }
+      },
+      "commands": [
+        "git checkout -b fix/tar-7.5.21",
+        "# edit package.json as shown in 'change', then:",
+        "npm install --package-lock-only --ignore-scripts --legacy-peer-deps",
+        "python3.12 -m guardian scan <juice-shop-path> --output day2/output/after_tar.json"
+      ],
+      "rollback": "git revert the fix commit (or `git checkout -- package.json package-lock.json`), then rescan to confirm the original state.",
+      "verify_after_fix": {
+        "rescan": "none of evidence_ids should be present",
+        "also_check": "no new findings introduced; build and tests pass"
+      }
+    },
+    {
+      "package": "lodash",
+      "current_version": "2.4.2",
+      "target_version": "4.17.21",
+      "tier": "Critical",
+      "relationship": "transitive",
+      "parent": "sanitize-html",
+      "manifest": "package.json",
+      "dependency_path": [
+        "app",
+        "sanitize-html@1.4.2",
+        "lodash@2.4.2"
+      ],
+      "top_risk_score": 10.0,
+      "intentionally_old_in_juice_shop": true,
+      "demo_role": "",
+      "evidence_ids": [
+        "G-164e05a1d696-GHSA-jf85-cpcp-j695",
+        "G-164e05a1d696-GHSA-4xc9-xhrj-v574",
+        "G-779c504a07fc-GHSA-35jh-r3h4-6jhm",
+        "G-164e05a1d696-GHSA-fvqr-27wr-82fm"
+      ],
+      "advisories": [
+        "GHSA-35jh-r3h4-6jhm",
+        "GHSA-4xc9-xhrj-v574",
+        "GHSA-fvqr-27wr-82fm",
+        "GHSA-jf85-cpcp-j695"
+      ],
+      "verified": {
+        "fix_versions_from": "OSV via GuardianAI report",
+        "fixed_versions": [
+          "4.17.5",
+          "4.17.11",
+          "4.17.12",
+          "4.17.21"
+        ]
+      },
+      "approval": {
+        "required": true,
+        "status": "pending",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "compatibility_impact": "HIGH",
+      "version_jump": "major",
+      "expected_risk_reduction": {
+        "findings_cleared": 4,
+        "by_severity": {
+          "Critical": 1,
+          "High": 2,
+          "Medium": 1
+        },
+        "advisories_cleared": 4
+      },
+      "action": "override",
+      "how": "First check whether a newer 'sanitize-html' release already depends on a fixed lodash. If not, add a scoped npm override in package.json so only sanitize-html's copy changes.",
+      "change": {
+        "file": "package.json",
+        "set": {
+          "overrides": {
+            "sanitize-html": {
+              "lodash": "4.17.21"
+            }
+          }
+        }
+      },
+      "commands": [
+        "git checkout -b fix/lodash-4.17.21",
+        "# edit package.json as shown in 'change', then:",
+        "npm install --package-lock-only --ignore-scripts --legacy-peer-deps",
+        "python3.12 -m guardian scan <juice-shop-path> --output day2/output/after_lodash.json"
+      ],
+      "rollback": "git revert the fix commit (or `git checkout -- package.json package-lock.json`), then rescan to confirm the original state.",
+      "verify_after_fix": {
+        "rescan": "none of evidence_ids should be present",
+        "also_check": "no new findings introduced; build and tests pass"
+      },
+      "parent_upgrade_may_clear": {
+        "parent": "sanitize-html",
+        "parent_target": "2.18.0",
+        "note": "Inferred: upgrade the parent first, rescan, and only add this override if the finding remains."
+      }
+    },
+    {
+      "package": "jsonwebtoken",
+      "current_version": "0.1.0",
+      "target_version": "9.0.0",
+      "tier": "Critical",
+      "relationship": "transitive",
+      "parent": "express-jwt",
+      "manifest": "package.json",
+      "dependency_path": [
+        "app",
+        "express-jwt@0.1.3",
+        "jsonwebtoken@0.1.0"
+      ],
+      "top_risk_score": 10.0,
+      "intentionally_old_in_juice_shop": true,
+      "demo_role": "",
+      "evidence_ids": [
+        "G-9fa5855c8ead-GHSA-c7hr-j4mj-j2w6",
+        "G-9f931d6447f7-GHSA-8cf7-32gw-wr33",
+        "G-7a43bbdc24c9-GHSA-hjrf-2m68-5959",
+        "G-b965218d9b55-GHSA-qwph-4952-7xr6"
+      ],
+      "advisories": [
+        "GHSA-8cf7-32gw-wr33",
+        "GHSA-c7hr-j4mj-j2w6",
+        "GHSA-hjrf-2m68-5959",
+        "GHSA-qwph-4952-7xr6"
+      ],
+      "verified": {
+        "fix_versions_from": "OSV via GuardianAI report",
+        "fixed_versions": [
+          "4.2.2",
+          "9.0.0"
+        ]
+      },
+      "approval": {
+        "required": true,
+        "status": "pending",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "compatibility_impact": "HIGH (0.x -> stable: API very likely changed)",
+      "version_jump": "major",
+      "expected_risk_reduction": {
+        "findings_cleared": 4,
+        "by_severity": {
+          "Critical": 1,
+          "High": 1,
+          "Medium": 2
+        },
+        "advisories_cleared": 4
+      },
+      "action": "override",
+      "how": "First check whether a newer 'express-jwt' release already depends on a fixed jsonwebtoken. If not, add a scoped npm override in package.json so only express-jwt's copy changes.",
+      "change": {
+        "file": "package.json",
+        "set": {
+          "overrides": {
+            "express-jwt": {
+              "jsonwebtoken": "9.0.0"
+            }
+          }
+        }
+      },
+      "commands": [
+        "git checkout -b fix/jsonwebtoken-9.0.0",
+        "# edit package.json as shown in 'change', then:",
+        "npm install --package-lock-only --ignore-scripts --legacy-peer-deps",
+        "python3.12 -m guardian scan <juice-shop-path> --output day2/output/after_jsonwebtoken.json"
+      ],
+      "rollback": "git revert the fix commit (or `git checkout -- package.json package-lock.json`), then rescan to confirm the original state.",
+      "verify_after_fix": {
+        "rescan": "none of evidence_ids should be present",
+        "also_check": "no new findings introduced; build and tests pass"
+      },
+      "parent_upgrade_may_clear": {
+        "parent": "express-jwt",
+        "parent_target": "6.0.0",
+        "note": "Inferred: upgrade the parent first, rescan, and only add this override if the finding remains."
+      }
+    },
+    {
+      "package": "jsonwebtoken",
+      "current_version": "0.4.0",
+      "target_version": "9.0.0",
+      "tier": "Critical",
+      "relationship": "direct",
+      "parent": null,
+      "manifest": "package.json",
+      "dependency_path": [
+        "app",
+        "jsonwebtoken@0.4.0"
+      ],
+      "top_risk_score": 10.0,
+      "intentionally_old_in_juice_shop": true,
+      "demo_role": "compatibility_trap",
+      "evidence_ids": [
+        "G-fc8acc7f7d0c-GHSA-c7hr-j4mj-j2w6",
+        "G-336bcf5108c9-GHSA-8cf7-32gw-wr33",
+        "G-1381e19a3591-GHSA-qwph-4952-7xr6",
+        "G-4d31fd2e9be0-GHSA-hjrf-2m68-5959"
+      ],
+      "advisories": [
+        "GHSA-8cf7-32gw-wr33",
+        "GHSA-c7hr-j4mj-j2w6",
+        "GHSA-hjrf-2m68-5959",
+        "GHSA-qwph-4952-7xr6"
+      ],
+      "verified": {
+        "fix_versions_from": "OSV via GuardianAI report",
+        "fixed_versions": [
+          "4.2.2",
+          "9.0.0"
+        ]
+      },
+      "approval": {
+        "required": true,
+        "status": "pending",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "compatibility_impact": "HIGH (0.x -> stable: API very likely changed)",
+      "version_jump": "major",
+      "expected_risk_reduction": {
+        "findings_cleared": 4,
+        "by_severity": {
+          "Critical": 1,
+          "High": 1,
+          "Medium": 2
+        },
+        "advisories_cleared": 4
+      },
+      "action": "upgrade",
+      "how": "In package.json, set dependency jsonwebtoken to 9.0.0, then regenerate the lockfile.",
+      "change": {
+        "file": "package.json",
+        "set": {
+          "dependencies": {
+            "jsonwebtoken": "9.0.0"
+          }
+        }
+      },
+      "commands": [
+        "git checkout -b fix/jsonwebtoken-9.0.0",
+        "# edit package.json as shown in 'change', then:",
+        "npm install --package-lock-only --ignore-scripts --legacy-peer-deps",
+        "python3.12 -m guardian scan <juice-shop-path> --output day2/output/after_jsonwebtoken.json"
+      ],
+      "rollback": "git revert the fix commit (or `git checkout -- package.json package-lock.json`), then rescan to confirm the original state.",
+      "verify_after_fix": {
+        "rescan": "none of evidence_ids should be present",
+        "also_check": "no new findings introduced; build and tests pass"
+      }
+    },
+    {
+      "package": "crypto-js",
+      "current_version": "3.3.0",
+      "target_version": "4.2.0",
+      "tier": "Critical",
+      "relationship": "transitive",
+      "parent": "pdfkit",
+      "manifest": "package.json",
+      "dependency_path": [
+        "app",
+        "pdfkit@0.11.0",
+        "crypto-js@3.3.0"
+      ],
+      "top_risk_score": 10.0,
+      "intentionally_old_in_juice_shop": true,
+      "demo_role": "",
+      "evidence_ids": [
+        "G-815910eba442-GHSA-xwcq-pm8m-c4vf",
+        "G-9e1b02b7e3cd-GHSA-rg76-677x-56q9"
+      ],
+      "advisories": [
+        "GHSA-rg76-677x-56q9",
+        "GHSA-xwcq-pm8m-c4vf"
+      ],
+      "verified": {
+        "fix_versions_from": "OSV via GuardianAI report",
+        "fixed_versions": [
+          "4.0.0",
+          "4.2.0"
+        ]
+      },
+      "approval": {
+        "required": true,
+        "status": "pending",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "compatibility_impact": "HIGH",
+      "version_jump": "major",
+      "expected_risk_reduction": {
+        "findings_cleared": 2,
+        "by_severity": {
+          "Critical": 2
+        },
+        "advisories_cleared": 2
+      },
+      "action": "override",
+      "how": "First check whether a newer 'pdfkit' release already depends on a fixed crypto-js. If not, add a scoped npm override in package.json so only pdfkit's copy changes.",
+      "change": {
+        "file": "package.json",
+        "set": {
+          "overrides": {
+            "pdfkit": {
+              "crypto-js": "4.2.0"
+            }
+          }
+        }
+      },
+      "commands": [
+        "git checkout -b fix/crypto-js-4.2.0",
+        "# edit package.json as shown in 'change', then:",
+        "npm install --package-lock-only --ignore-scripts --legacy-peer-deps",
+        "python3.12 -m guardian scan <juice-shop-path> --output day2/output/after_crypto-js.json"
+      ],
+      "rollback": "git revert the fix commit (or `git checkout -- package.json package-lock.json`), then rescan to confirm the original state.",
+      "verify_after_fix": {
+        "rescan": "none of evidence_ids should be present",
+        "also_check": "no new findings introduced; build and tests pass"
+      }
+    },
+    {
+      "package": "marsdb",
+      "current_version": "0.6.11",
+      "target_version": null,
+      "tier": "Critical",
+      "relationship": "direct",
+      "parent": null,
+      "manifest": "package.json",
+      "dependency_path": [
+        "app",
+        "marsdb@0.6.11"
+      ],
+      "top_risk_score": 10.0,
+      "intentionally_old_in_juice_shop": true,
+      "demo_role": "no_fix_escalate",
+      "evidence_ids": [
+        "G-d929526efec8-GHSA-5mrr-rgp6-x4gr"
+      ],
+      "advisories": [
+        "GHSA-5mrr-rgp6-x4gr"
+      ],
+      "verified": {
+        "fix_versions_from": "OSV via GuardianAI report",
+        "fixed_versions": []
+      },
+      "approval": {
+        "required": true,
+        "status": "pending",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "action": "escalate_or_accept",
+      "compatibility_impact": "n/a (no fixed version published for every advisory)",
+      "expected_risk_reduction": {
+        "findings_cleared": 0,
+        "by_severity": {},
+        "advisories_cleared": 0
+      },
+      "how": "No upstream fix covers every advisory. Human decision needed: (a) remove or replace the package (needs code changes), (b) accept with a written reason, owner and expiry date, or (c) escalate to the package maintainers/security lead.",
+      "rollback": "n/a (no change proposed)",
+      "verify_after_fix": {
+        "rescan": "finding stays open until a decision is recorded"
+      }
+    },
+    {
+      "package": "sanitize-html",
+      "current_version": "1.4.2",
+      "target_version": "2.18.0",
+      "tier": "High",
+      "relationship": "direct",
+      "parent": null,
+      "manifest": "package.json",
+      "dependency_path": [
+        "app",
+        "sanitize-html@1.4.2"
+      ],
+      "top_risk_score": 10.0,
+      "intentionally_old_in_juice_shop": true,
+      "demo_role": "",
+      "evidence_ids": [
+        "G-bb01dedeadbd-GHSA-cgfm-xwp7-2cvr",
+        "G-12806132e51d-GHSA-mjxr-4v3x-q3m4",
+        "G-12806132e51d-GHSA-rjqq-98f6-6j3r",
+        "G-43396fb39064-GHSA-qhxp-v273-g94h",
+        "G-59aa7a6d8225-GHSA-3j7m-hmh3-9jmp",
+        "G-59aa7a6d8225-GHSA-xc6g-ggrc-qq4r",
+        "G-68ea821c599d-GHSA-jxwj-j7wr-gfrw",
+        "G-a434fc1ae7af-GHSA-cv27-6wvh-8x7j",
+        "G-a500dc671004-GHSA-rm97-x556-q36h",
+        "G-f4e7cccdc7f7-GHSA-x3q4-9hxx-gx8m"
+      ],
+      "advisories": [
+        "GHSA-3j7m-hmh3-9jmp",
+        "GHSA-cgfm-xwp7-2cvr",
+        "GHSA-cv27-6wvh-8x7j",
+        "GHSA-jxwj-j7wr-gfrw",
+        "GHSA-mjxr-4v3x-q3m4",
+        "GHSA-qhxp-v273-g94h",
+        "GHSA-rjqq-98f6-6j3r",
+        "GHSA-rm97-x556-q36h",
+        "GHSA-x3q4-9hxx-gx8m",
+        "GHSA-xc6g-ggrc-qq4r"
+      ],
+      "verified": {
+        "fix_versions_from": "OSV via GuardianAI report",
+        "fixed_versions": [
+          "1.4.3",
+          "1.11.4",
+          "2.0.0-beta",
+          "2.3.1",
+          "2.3.2",
+          "2.7.1",
+          "2.12.1",
+          "2.17.6",
+          "2.18.0"
+        ]
+      },
+      "approval": {
+        "required": true,
+        "status": "pending",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "compatibility_impact": "HIGH",
+      "version_jump": "major",
+      "expected_risk_reduction": {
+        "findings_cleared": 10,
+        "by_severity": {
+          "High": 1,
+          "Medium": 9
+        },
+        "advisories_cleared": 10
+      },
+      "action": "upgrade",
+      "how": "In package.json, set dependency sanitize-html to 2.18.0, then regenerate the lockfile.",
+      "change": {
+        "file": "package.json",
+        "set": {
+          "dependencies": {
+            "sanitize-html": "2.18.0"
+          }
+        }
+      },
+      "commands": [
+        "git checkout -b fix/sanitize-html-2.18.0",
+        "# edit package.json as shown in 'change', then:",
+        "npm install --package-lock-only --ignore-scripts --legacy-peer-deps",
+        "python3.12 -m guardian scan <juice-shop-path> --output day2/output/after_sanitize-html.json"
+      ],
+      "rollback": "git revert the fix commit (or `git checkout -- package.json package-lock.json`), then rescan to confirm the original state.",
+      "verify_after_fix": {
+        "rescan": "none of evidence_ids should be present",
+        "also_check": "no new findings introduced; build and tests pass"
+      }
+    },
+    {
+      "package": "express-jwt",
+      "current_version": "0.1.3",
+      "target_version": "6.0.0",
+      "tier": "High",
+      "relationship": "direct",
+      "parent": null,
+      "manifest": "package.json",
+      "dependency_path": [
+        "app",
+        "express-jwt@0.1.3"
+      ],
+      "top_risk_score": 10.0,
+      "intentionally_old_in_juice_shop": true,
+      "demo_role": "",
+      "evidence_ids": [
+        "G-89df7fb5da11-GHSA-6g6m-m6h5-w9gf"
+      ],
+      "advisories": [
+        "GHSA-6g6m-m6h5-w9gf"
+      ],
+      "verified": {
+        "fix_versions_from": "OSV via GuardianAI report",
+        "fixed_versions": [
+          "6.0.0"
+        ]
+      },
+      "approval": {
+        "required": true,
+        "status": "pending",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "compatibility_impact": "HIGH (0.x -> stable: API very likely changed)",
+      "version_jump": "major",
+      "expected_risk_reduction": {
+        "findings_cleared": 1,
+        "by_severity": {
+          "High": 1
+        },
+        "advisories_cleared": 1
+      },
+      "action": "upgrade",
+      "how": "In package.json, set dependency express-jwt to 6.0.0, then regenerate the lockfile.",
+      "change": {
+        "file": "package.json",
+        "set": {
+          "dependencies": {
+            "express-jwt": "6.0.0"
+          }
+        }
+      },
+      "commands": [
+        "git checkout -b fix/express-jwt-6.0.0",
+        "# edit package.json as shown in 'change', then:",
+        "npm install --package-lock-only --ignore-scripts --legacy-peer-deps",
+        "python3.12 -m guardian scan <juice-shop-path> --output day2/output/after_express-jwt.json"
+      ],
+      "rollback": "git revert the fix commit (or `git checkout -- package.json package-lock.json`), then rescan to confirm the original state.",
+      "verify_after_fix": {
+        "rescan": "none of evidence_ids should be present",
+        "also_check": "no new findings introduced; build and tests pass"
+      }
+    },
+    {
+      "package": "moment",
+      "current_version": "2.0.0",
+      "target_version": "2.29.2",
+      "tier": "High",
+      "relationship": "transitive",
+      "parent": "express-jwt",
+      "manifest": "package.json",
+      "dependency_path": [
+        "app",
+        "express-jwt@0.1.3",
+        "jsonwebtoken@0.1.0",
+        "moment@2.0.0"
+      ],
+      "top_risk_score": 9.5,
+      "intentionally_old_in_juice_shop": true,
+      "demo_role": "",
+      "evidence_ids": [
+        "G-0c8a695b5c5b-GHSA-8hfj-j24r-96c4",
+        "G-b23599eaafa7-GHSA-446m-mv8f-q348",
+        "G-b23599eaafa7-GHSA-87vv-r9j6-g5qv"
+      ],
+      "advisories": [
+        "GHSA-446m-mv8f-q348",
+        "GHSA-87vv-r9j6-g5qv",
+        "GHSA-8hfj-j24r-96c4"
+      ],
+      "verified": {
+        "fix_versions_from": "OSV via GuardianAI report",
+        "fixed_versions": [
+          "2.11.2",
+          "2.19.3",
+          "2.29.2"
+        ]
+      },
+      "approval": {
+        "required": true,
+        "status": "pending",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "compatibility_impact": "LOW-MEDIUM",
+      "version_jump": "minor",
+      "expected_risk_reduction": {
+        "findings_cleared": 3,
+        "by_severity": {
+          "High": 2,
+          "Medium": 1
+        },
+        "advisories_cleared": 3
+      },
+      "action": "override",
+      "how": "First check whether a newer 'express-jwt' release already depends on a fixed moment. If not, add a scoped npm override in package.json so only express-jwt's copy changes.",
+      "change": {
+        "file": "package.json",
+        "set": {
+          "overrides": {
+            "express-jwt": {
+              "moment": "2.29.2"
+            }
+          }
+        }
+      },
+      "commands": [
+        "git checkout -b fix/moment-2.29.2",
+        "# edit package.json as shown in 'change', then:",
+        "npm install --package-lock-only --ignore-scripts --legacy-peer-deps",
+        "python3.12 -m guardian scan <juice-shop-path> --output day2/output/after_moment.json"
+      ],
+      "rollback": "git revert the fix commit (or `git checkout -- package.json package-lock.json`), then rescan to confirm the original state.",
+      "verify_after_fix": {
+        "rescan": "none of evidence_ids should be present",
+        "also_check": "no new findings introduced; build and tests pass"
+      },
+      "parent_upgrade_may_clear": {
+        "parent": "express-jwt",
+        "parent_target": "6.0.0",
+        "note": "Inferred: upgrade the parent first, rescan, and only add this override if the finding remains."
+      }
+    },
+    {
+      "package": "jws",
+      "current_version": "0.2.6",
+      "target_version": "3.2.3",
+      "tier": "High",
+      "relationship": "transitive",
+      "parent": "jsonwebtoken",
+      "manifest": "package.json",
+      "dependency_path": [
+        "app",
+        "jsonwebtoken@0.4.0",
+        "jws@0.2.6"
+      ],
+      "top_risk_score": 9.5,
+      "intentionally_old_in_juice_shop": true,
+      "demo_role": "",
+      "evidence_ids": [
+        "G-6f203a814028-GHSA-869p-cjfg-cm3x",
+        "G-7c3ae00793a0-GHSA-gjcw-v447-2w7q"
+      ],
+      "advisories": [
+        "GHSA-869p-cjfg-cm3x",
+        "GHSA-gjcw-v447-2w7q"
+      ],
+      "verified": {
+        "fix_versions_from": "OSV via GuardianAI report",
+        "fixed_versions": [
+          "3.0.0",
+          "3.2.3",
+          "4.0.1"
+        ]
+      },
+      "approval": {
+        "required": true,
+        "status": "pending",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "compatibility_impact": "HIGH (0.x -> stable: API very likely changed)",
+      "version_jump": "major",
+      "expected_risk_reduction": {
+        "findings_cleared": 2,
+        "by_severity": {
+          "High": 2
+        },
+        "advisories_cleared": 2
+      },
+      "action": "override",
+      "how": "First check whether a newer 'jsonwebtoken' release already depends on a fixed jws. If not, add a scoped npm override in package.json so only jsonwebtoken's copy changes.",
+      "change": {
+        "file": "package.json",
+        "set": {
+          "overrides": {
+            "jsonwebtoken": {
+              "jws": "3.2.3"
+            }
+          }
+        }
+      },
+      "commands": [
+        "git checkout -b fix/jws-3.2.3",
+        "# edit package.json as shown in 'change', then:",
+        "npm install --package-lock-only --ignore-scripts --legacy-peer-deps",
+        "python3.12 -m guardian scan <juice-shop-path> --output day2/output/after_jws.json"
+      ],
+      "rollback": "git revert the fix commit (or `git checkout -- package.json package-lock.json`), then rescan to confirm the original state.",
+      "verify_after_fix": {
+        "rescan": "none of evidence_ids should be present",
+        "also_check": "no new findings introduced; build and tests pass"
+      },
+      "parent_upgrade_may_clear": {
+        "parent": "jsonwebtoken",
+        "parent_target": "9.0.0",
+        "note": "Inferred: upgrade the parent first, rescan, and only add this override if the finding remains."
+      }
+    },
+    {
+      "package": "ws",
+      "current_version": "8.18.0",
+      "target_version": "8.21.0",
+      "tier": "High",
+      "relationship": "transitive",
+      "parent": "ethers",
+      "manifest": "frontend/package.json",
+      "dependency_path": [
+        "app",
+        "ethers@5.8.0",
+        "@ethersproject/providers@5.8.0",
+        "ws@8.18.0"
+      ],
+      "top_risk_score": 9.5,
+      "intentionally_old_in_juice_shop": false,
+      "demo_role": "hero_fix (safe minor bump)",
+      "evidence_ids": [
+        "G-c812902a4f34-GHSA-96hv-2xvq-fx4p",
+        "G-a7a3ef857cfa-GHSA-58qx-3vcg-4xpx"
+      ],
+      "advisories": [
+        "GHSA-58qx-3vcg-4xpx",
+        "GHSA-96hv-2xvq-fx4p"
+      ],
+      "verified": {
+        "fix_versions_from": "OSV via GuardianAI report",
+        "fixed_versions": [
+          "5.2.5",
+          "6.2.4",
+          "7.5.11",
+          "8.20.1",
+          "8.21.0"
+        ]
+      },
+      "approval": {
+        "required": true,
+        "status": "pending",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "compatibility_impact": "LOW-MEDIUM",
+      "version_jump": "minor",
+      "expected_risk_reduction": {
+        "findings_cleared": 2,
+        "by_severity": {
+          "High": 1,
+          "Medium": 1
+        },
+        "advisories_cleared": 2
+      },
+      "action": "override",
+      "how": "First check whether a newer 'ethers' release already depends on a fixed ws. If not, add a scoped npm override in frontend/package.json so only ethers's copy changes.",
+      "change": {
+        "file": "frontend/package.json",
+        "set": {
+          "overrides": {
+            "ethers": {
+              "ws": "8.21.0"
+            }
+          }
+        }
+      },
+      "commands": [
+        "git checkout -b fix/ws-8.21.0",
+        "# edit frontend/package.json as shown in 'change', then:",
+        "cd frontend && npm install --package-lock-only --ignore-scripts --legacy-peer-deps",
+        "python3.12 -m guardian scan <juice-shop-path> --output day2/output/after_ws.json"
+      ],
+      "rollback": "git revert the fix commit (or `git checkout -- frontend/package.json package-lock.json`), then rescan to confirm the original state.",
+      "verify_after_fix": {
+        "rescan": "none of evidence_ids should be present",
+        "also_check": "no new findings introduced; build and tests pass"
+      }
+    },
+    {
+      "package": "@cyclonedx/cyclonedx-npm",
+      "current_version": "4.2.1",
+      "target_version": "6.0.0",
+      "tier": "High",
+      "relationship": "direct",
+      "parent": null,
+      "manifest": "package.json",
+      "dependency_path": [
+        "app",
+        "@cyclonedx/cyclonedx-npm@4.2.1"
+      ],
+      "top_risk_score": 7.5,
+      "intentionally_old_in_juice_shop": false,
+      "demo_role": "",
+      "evidence_ids": [
+        "G-2e8dea20d616-GHSA-q69g-4hcv-6jg4",
+        "G-f79b9bdf7f3c-GHSA-v75r-vx73-82pj"
+      ],
+      "advisories": [
+        "GHSA-q69g-4hcv-6jg4",
+        "GHSA-v75r-vx73-82pj"
+      ],
+      "verified": {
+        "fix_versions_from": "OSV via GuardianAI report",
+        "fixed_versions": [
+          "5.0.0",
+          "6.0.0"
+        ]
+      },
+      "approval": {
+        "required": true,
+        "status": "pending",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "compatibility_impact": "HIGH",
+      "version_jump": "major",
+      "expected_risk_reduction": {
+        "findings_cleared": 2,
+        "by_severity": {
+          "High": 2
+        },
+        "advisories_cleared": 2
+      },
+      "action": "upgrade",
+      "how": "In package.json, set dependency @cyclonedx/cyclonedx-npm to 6.0.0, then regenerate the lockfile.",
+      "change": {
+        "file": "package.json",
+        "set": {
+          "dependencies": {
+            "@cyclonedx/cyclonedx-npm": "6.0.0"
+          }
+        }
+      },
+      "commands": [
+        "git checkout -b fix/cyclonedx-cyclonedx-npm-6.0.0",
+        "# edit package.json as shown in 'change', then:",
+        "npm install --package-lock-only --ignore-scripts --legacy-peer-deps",
+        "python3.12 -m guardian scan <juice-shop-path> --output day2/output/after_cyclonedx-cyclonedx-npm.json"
+      ],
+      "rollback": "git revert the fix commit (or `git checkout -- package.json package-lock.json`), then rescan to confirm the original state.",
+      "verify_after_fix": {
+        "rescan": "none of evidence_ids should be present",
+        "also_check": "no new findings introduced; build and tests pass"
+      }
+    },
+    {
+      "package": "file-type",
+      "current_version": "16.5.4",
+      "target_version": "21.3.1",
+      "tier": "Medium",
+      "relationship": "direct",
+      "parent": null,
+      "manifest": "package.json",
+      "dependency_path": [
+        "app",
+        "file-type@16.5.4"
+      ],
+      "top_risk_score": 7.5,
+      "intentionally_old_in_juice_shop": false,
+      "demo_role": "",
+      "evidence_ids": [
+        "G-5f67b82980e9-GHSA-5v7r-6r5c-r473"
+      ],
+      "advisories": [
+        "GHSA-5v7r-6r5c-r473"
+      ],
+      "verified": {
+        "fix_versions_from": "OSV via GuardianAI report",
+        "fixed_versions": [
+          "21.3.1"
+        ]
+      },
+      "approval": {
+        "required": true,
+        "status": "pending",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "compatibility_impact": "HIGH",
+      "version_jump": "major",
+      "expected_risk_reduction": {
+        "findings_cleared": 1,
+        "by_severity": {
+          "Medium": 1
+        },
+        "advisories_cleared": 1
+      },
+      "action": "upgrade",
+      "how": "In package.json, set dependency file-type to 21.3.1, then regenerate the lockfile.",
+      "change": {
+        "file": "package.json",
+        "set": {
+          "dependencies": {
+            "file-type": "21.3.1"
+          }
+        }
+      },
+      "commands": [
+        "git checkout -b fix/file-type-21.3.1",
+        "# edit package.json as shown in 'change', then:",
+        "npm install --package-lock-only --ignore-scripts --legacy-peer-deps",
+        "python3.12 -m guardian scan <juice-shop-path> --output day2/output/after_file-type.json"
+      ],
+      "rollback": "git revert the fix commit (or `git checkout -- package.json package-lock.json`), then rescan to confirm the original state.",
+      "verify_after_fix": {
+        "rescan": "none of evidence_ids should be present",
+        "also_check": "no new findings introduced; build and tests pass"
+      }
+    },
+    {
+      "package": "uuid",
+      "current_version": "8.3.2",
+      "target_version": "11.1.1",
+      "tier": "Medium",
+      "relationship": "transitive",
+      "parent": "sequelize",
+      "manifest": "package.json",
+      "dependency_path": [
+        "app",
+        "sequelize@6.37.8",
+        "uuid@8.3.2"
+      ],
+      "top_risk_score": 7.0,
+      "intentionally_old_in_juice_shop": false,
+      "demo_role": "",
+      "evidence_ids": [
+        "G-8aa880bbe9e2-GHSA-w5hq-g745-h8pq"
+      ],
+      "advisories": [
+        "GHSA-w5hq-g745-h8pq"
+      ],
+      "verified": {
+        "fix_versions_from": "OSV via GuardianAI report",
+        "fixed_versions": [
+          "11.1.1",
+          "12.0.1",
+          "13.0.1"
+        ]
+      },
+      "approval": {
+        "required": true,
+        "status": "pending",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "compatibility_impact": "HIGH",
+      "version_jump": "major",
+      "expected_risk_reduction": {
+        "findings_cleared": 1,
+        "by_severity": {
+          "Medium": 1
+        },
+        "advisories_cleared": 1
+      },
+      "action": "override",
+      "how": "First check whether a newer 'sequelize' release already depends on a fixed uuid. If not, add a scoped npm override in package.json so only sequelize's copy changes.",
+      "change": {
+        "file": "package.json",
+        "set": {
+          "overrides": {
+            "sequelize": {
+              "uuid": "11.1.1"
+            }
+          }
+        }
+      },
+      "commands": [
+        "git checkout -b fix/uuid-11.1.1",
+        "# edit package.json as shown in 'change', then:",
+        "npm install --package-lock-only --ignore-scripts --legacy-peer-deps",
+        "python3.12 -m guardian scan <juice-shop-path> --output day2/output/after_uuid.json"
+      ],
+      "rollback": "git revert the fix commit (or `git checkout -- package.json package-lock.json`), then rescan to confirm the original state.",
+      "verify_after_fix": {
+        "rescan": "none of evidence_ids should be present",
+        "also_check": "no new findings introduced; build and tests pass"
+      }
+    },
+    {
+      "package": "base64url",
+      "current_version": "0.0.6",
+      "target_version": "3.0.0",
+      "tier": "Medium",
+      "relationship": "transitive",
+      "parent": "jsonwebtoken",
+      "manifest": "package.json",
+      "dependency_path": [
+        "app",
+        "jsonwebtoken@0.4.0",
+        "jws@0.2.6",
+        "base64url@0.0.6"
+      ],
+      "top_risk_score": 7.0,
+      "intentionally_old_in_juice_shop": true,
+      "demo_role": "",
+      "evidence_ids": [
+        "G-c3d6555ddc68-GHSA-rvg8-pwq2-xj7q"
+      ],
+      "advisories": [
+        "GHSA-rvg8-pwq2-xj7q"
+      ],
+      "verified": {
+        "fix_versions_from": "OSV via GuardianAI report",
+        "fixed_versions": [
+          "3.0.0"
+        ]
+      },
+      "approval": {
+        "required": true,
+        "status": "pending",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "compatibility_impact": "HIGH (0.x -> stable: API very likely changed)",
+      "version_jump": "major",
+      "expected_risk_reduction": {
+        "findings_cleared": 1,
+        "by_severity": {
+          "Medium": 1
+        },
+        "advisories_cleared": 1
+      },
+      "action": "override",
+      "how": "First check whether a newer 'jsonwebtoken' release already depends on a fixed base64url. If not, add a scoped npm override in package.json so only jsonwebtoken's copy changes.",
+      "change": {
+        "file": "package.json",
+        "set": {
+          "overrides": {
+            "jsonwebtoken": {
+              "base64url": "3.0.0"
+            }
+          }
+        }
+      },
+      "commands": [
+        "git checkout -b fix/base64url-3.0.0",
+        "# edit package.json as shown in 'change', then:",
+        "npm install --package-lock-only --ignore-scripts --legacy-peer-deps",
+        "python3.12 -m guardian scan <juice-shop-path> --output day2/output/after_base64url.json"
+      ],
+      "rollback": "git revert the fix commit (or `git checkout -- package.json package-lock.json`), then rescan to confirm the original state.",
+      "verify_after_fix": {
+        "rescan": "none of evidence_ids should be present",
+        "also_check": "no new findings introduced; build and tests pass"
+      },
+      "parent_upgrade_may_clear": {
+        "parent": "jsonwebtoken",
+        "parent_target": "9.0.0",
+        "note": "Inferred: upgrade the parent first, rescan, and only add this override if the finding remains."
+      }
+    },
+    {
+      "package": "notevil",
+      "current_version": "1.3.3",
+      "target_version": null,
+      "tier": "Medium",
+      "relationship": "direct",
+      "parent": null,
+      "manifest": "package.json",
+      "dependency_path": [
+        "app",
+        "notevil@1.3.3"
+      ],
+      "top_risk_score": 7.0,
+      "intentionally_old_in_juice_shop": true,
+      "demo_role": "",
+      "evidence_ids": [
+        "G-e0ba40dabf13-GHSA-8g4m-cjm2-96wq"
+      ],
+      "advisories": [
+        "GHSA-8g4m-cjm2-96wq"
+      ],
+      "verified": {
+        "fix_versions_from": "OSV via GuardianAI report",
+        "fixed_versions": []
+      },
+      "approval": {
+        "required": true,
+        "status": "pending",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "action": "escalate_or_accept",
+      "compatibility_impact": "n/a (no fixed version published for every advisory)",
+      "expected_risk_reduction": {
+        "findings_cleared": 0,
+        "by_severity": {},
+        "advisories_cleared": 0
+      },
+      "how": "No upstream fix covers every advisory. Human decision needed: (a) remove or replace the package (needs code changes), (b) accept with a written reason, owner and expiry date, or (c) escalate to the package maintainers/security lead.",
+      "rollback": "n/a (no change proposed)",
+      "verify_after_fix": {
+        "rescan": "finding stays open until a decision is recorded"
+      }
+    },
+    {
+      "package": "hbs",
+      "current_version": "4.4.0",
+      "target_version": null,
+      "tier": "Medium",
+      "relationship": "direct",
+      "parent": null,
+      "manifest": "package.json",
+      "dependency_path": [
+        "app",
+        "hbs@4.4.0"
+      ],
+      "top_risk_score": 6.0,
+      "intentionally_old_in_juice_shop": true,
+      "demo_role": "",
+      "evidence_ids": [
+        "G-990d0aa01711-GHSA-7f5c-rpf4-86p8"
+      ],
+      "advisories": [
+        "GHSA-7f5c-rpf4-86p8"
+      ],
+      "verified": {
+        "fix_versions_from": "OSV via GuardianAI report",
+        "fixed_versions": []
+      },
+      "approval": {
+        "required": true,
+        "status": "pending",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "action": "escalate_or_accept",
+      "compatibility_impact": "n/a (no fixed version published for every advisory)",
+      "expected_risk_reduction": {
+        "findings_cleared": 0,
+        "by_severity": {},
+        "advisories_cleared": 0
+      },
+      "how": "No upstream fix covers every advisory. Human decision needed: (a) remove or replace the package (needs code changes), (b) accept with a written reason, owner and expiry date, or (c) escalate to the package maintainers/security lead.",
+      "rollback": "n/a (no change proposed)",
+      "verify_after_fix": {
+        "rescan": "finding stays open until a decision is recorded"
+      }
+    },
+    {
+      "package": "minimatch",
+      "current_version": "9.0.9",
+      "target_version": "11.0.1",
+      "tier": "Medium",
+      "relationship": "transitive",
+      "parent": "@cyclonedx/cyclonedx-npm",
+      "manifest": "package.json",
+      "dependency_path": [
+        "app",
+        "@cyclonedx/cyclonedx-npm@4.2.1",
+        "libxmljs2@0.37.0",
+        "node-gyp@11.5.0",
+        "make-fetch-happen@14.0.3",
+        "cacache@19.0.1",
+        "glob@10.5.0",
+        "minimatch@9.0.9"
+      ],
+      "top_risk_score": 4.5,
+      "intentionally_old_in_juice_shop": false,
+      "demo_role": "",
+      "evidence_ids": [
+        "G-17fa52a1cc4f-GHSA-g3hv-75wg-m249"
+      ],
+      "advisories": [
+        "GHSA-g3hv-75wg-m249"
+      ],
+      "verified": {
+        "fix_versions_from": "OSV via GuardianAI report",
+        "fixed_versions": [
+          "11.0.1"
+        ]
+      },
+      "approval": {
+        "required": true,
+        "status": "pending",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "compatibility_impact": "HIGH",
+      "version_jump": "major",
+      "expected_risk_reduction": {
+        "findings_cleared": 1,
+        "by_severity": {
+          "Medium": 1
+        },
+        "advisories_cleared": 1
+      },
+      "action": "override",
+      "how": "First check whether a newer '@cyclonedx/cyclonedx-npm' release already depends on a fixed minimatch. If not, add a scoped npm override in package.json so only @cyclonedx/cyclonedx-npm's copy changes.",
+      "change": {
+        "file": "package.json",
+        "set": {
+          "overrides": {
+            "@cyclonedx/cyclonedx-npm": {
+              "minimatch": "11.0.1"
+            }
+          }
+        }
+      },
+      "commands": [
+        "git checkout -b fix/minimatch-11.0.1",
+        "# edit package.json as shown in 'change', then:",
+        "npm install --package-lock-only --ignore-scripts --legacy-peer-deps",
+        "python3.12 -m guardian scan <juice-shop-path> --output day2/output/after_minimatch.json"
+      ],
+      "rollback": "git revert the fix commit (or `git checkout -- package.json package-lock.json`), then rescan to confirm the original state.",
+      "verify_after_fix": {
+        "rescan": "none of evidence_ids should be present",
+        "also_check": "no new findings introduced; build and tests pass"
+      },
+      "parent_upgrade_may_clear": {
+        "parent": "@cyclonedx/cyclonedx-npm",
+        "parent_target": "6.0.0",
+        "note": "Inferred: upgrade the parent first, rescan, and only add this override if the finding remains."
+      }
+    },
+    {
+      "package": "glob",
+      "current_version": "10.5.0",
+      "target_version": "14.0.2",
+      "tier": "Medium",
+      "relationship": "transitive",
+      "parent": "@cyclonedx/cyclonedx-npm",
+      "manifest": "package.json",
+      "dependency_path": [
+        "app",
+        "@cyclonedx/cyclonedx-npm@4.2.1",
+        "libxmljs2@0.37.0",
+        "node-gyp@11.5.0",
+        "make-fetch-happen@14.0.3",
+        "cacache@19.0.1",
+        "glob@10.5.0"
+      ],
+      "top_risk_score": 4.5,
+      "intentionally_old_in_juice_shop": false,
+      "demo_role": "",
+      "evidence_ids": [
+        "G-cb1c5d2fb2b6-GHSA-3g3m-2fjr-6pw4"
+      ],
+      "advisories": [
+        "GHSA-3g3m-2fjr-6pw4"
+      ],
+      "verified": {
+        "fix_versions_from": "OSV via GuardianAI report",
+        "fixed_versions": [
+          "14.0.2"
+        ]
+      },
+      "approval": {
+        "required": true,
+        "status": "pending",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "compatibility_impact": "HIGH",
+      "version_jump": "major",
+      "expected_risk_reduction": {
+        "findings_cleared": 1,
+        "by_severity": {
+          "Medium": 1
+        },
+        "advisories_cleared": 1
+      },
+      "action": "override",
+      "how": "First check whether a newer '@cyclonedx/cyclonedx-npm' release already depends on a fixed glob. If not, add a scoped npm override in package.json so only @cyclonedx/cyclonedx-npm's copy changes.",
+      "change": {
+        "file": "package.json",
+        "set": {
+          "overrides": {
+            "@cyclonedx/cyclonedx-npm": {
+              "glob": "14.0.2"
+            }
+          }
+        }
+      },
+      "commands": [
+        "git checkout -b fix/glob-14.0.2",
+        "# edit package.json as shown in 'change', then:",
+        "npm install --package-lock-only --ignore-scripts --legacy-peer-deps",
+        "python3.12 -m guardian scan <juice-shop-path> --output day2/output/after_glob.json"
+      ],
+      "rollback": "git revert the fix commit (or `git checkout -- package.json package-lock.json`), then rescan to confirm the original state.",
+      "verify_after_fix": {
+        "rescan": "none of evidence_ids should be present",
+        "also_check": "no new findings introduced; build and tests pass"
+      },
+      "parent_upgrade_may_clear": {
+        "parent": "@cyclonedx/cyclonedx-npm",
+        "parent_target": "6.0.0",
+        "note": "Inferred: upgrade the parent first, rescan, and only add this override if the finding remains."
+      }
+    },
+    {
+      "package": "messageformat",
+      "current_version": "2.3.0",
+      "target_version": "3.0.0-beta.0",
+      "tier": "Low",
+      "relationship": "transitive",
+      "parent": "i18n",
+      "manifest": "package.json",
+      "dependency_path": [
+        "app",
+        "i18n@0.11.1",
+        "messageformat@2.3.0"
+      ],
+      "top_risk_score": 4.0,
+      "intentionally_old_in_juice_shop": false,
+      "demo_role": "",
+      "evidence_ids": [
+        "G-eea6770185e5-GHSA-xfqm-j7pc-xrfc"
+      ],
+      "advisories": [
+        "GHSA-xfqm-j7pc-xrfc"
+      ],
+      "verified": {
+        "fix_versions_from": "OSV via GuardianAI report",
+        "fixed_versions": [
+          "3.0.0-beta.0"
+        ]
+      },
+      "approval": {
+        "required": true,
+        "status": "pending",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "compatibility_impact": "HIGH",
+      "version_jump": "major",
+      "expected_risk_reduction": {
+        "findings_cleared": 1,
+        "by_severity": {
+          "Low": 1
+        },
+        "advisories_cleared": 1
+      },
+      "action": "override",
+      "how": "First check whether a newer 'i18n' release already depends on a fixed messageformat. If not, add a scoped npm override in package.json so only i18n's copy changes.",
+      "change": {
+        "file": "package.json",
+        "set": {
+          "overrides": {
+            "i18n": {
+              "messageformat": "3.0.0-beta.0"
+            }
+          }
+        }
+      },
+      "commands": [
+        "git checkout -b fix/messageformat-3.0.0-beta.0",
+        "# edit package.json as shown in 'change', then:",
+        "npm install --package-lock-only --ignore-scripts --legacy-peer-deps",
+        "python3.12 -m guardian scan <juice-shop-path> --output day2/output/after_messageformat.json"
+      ],
+      "rollback": "git revert the fix commit (or `git checkout -- package.json package-lock.json`), then rescan to confirm the original state.",
+      "verify_after_fix": {
+        "rescan": "none of evidence_ids should be present",
+        "also_check": "no new findings introduced; build and tests pass"
+      }
+    },
+    {
+      "package": "elliptic",
+      "current_version": "6.6.1",
+      "target_version": null,
+      "tier": "Low",
+      "relationship": "transitive",
+      "parent": "ethers",
+      "manifest": "frontend/package.json",
+      "dependency_path": [
+        "app",
+        "ethers@5.8.0",
+        "@ethersproject/signing-key@5.8.0",
+        "elliptic@6.6.1"
+      ],
+      "top_risk_score": 3.5,
+      "intentionally_old_in_juice_shop": false,
+      "demo_role": "",
+      "evidence_ids": [
+        "G-223e1bdb2957-GHSA-848j-6mx2-7j84"
+      ],
+      "advisories": [
+        "GHSA-848j-6mx2-7j84"
+      ],
+      "verified": {
+        "fix_versions_from": "OSV via GuardianAI report",
+        "fixed_versions": []
+      },
+      "approval": {
+        "required": true,
+        "status": "pending",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "action": "escalate_or_accept",
+      "compatibility_impact": "n/a (no fixed version published for every advisory)",
+      "expected_risk_reduction": {
+        "findings_cleared": 0,
+        "by_severity": {},
+        "advisories_cleared": 0
+      },
+      "how": "No upstream fix covers every advisory. Human decision needed: (a) remove or replace the package (needs code changes), (b) accept with a written reason, owner and expiry date, or (c) escalate to the package maintainers/security lead.",
+      "rollback": "n/a (no change proposed)",
+      "verify_after_fix": {
+        "rescan": "finding stays open until a decision is recorded"
+      }
+    },
+    {
+      "package": "@tootallnate/once",
+      "current_version": "1.1.2",
+      "target_version": "2.0.1",
+      "tier": "Low",
+      "relationship": "transitive",
+      "parent": "sqlite3",
+      "manifest": "package.json",
+      "dependency_path": [
+        "app",
+        "sqlite3@5.1.7",
+        "node-gyp@8.4.1",
+        "make-fetch-happen@9.1.0",
+        "http-proxy-agent@4.0.1",
+        "@tootallnate/once@1.1.2"
+      ],
+      "top_risk_score": 3.0,
+      "intentionally_old_in_juice_shop": false,
+      "demo_role": "",
+      "evidence_ids": [
+        "G-faf988d854d1-GHSA-vpq2-c234-7xj6"
+      ],
+      "advisories": [
+        "GHSA-vpq2-c234-7xj6"
+      ],
+      "verified": {
+        "fix_versions_from": "OSV via GuardianAI report",
+        "fixed_versions": [
+          "2.0.1",
+          "3.0.1"
+        ]
+      },
+      "approval": {
+        "required": true,
+        "status": "pending",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "compatibility_impact": "HIGH",
+      "version_jump": "major",
+      "expected_risk_reduction": {
+        "findings_cleared": 1,
+        "by_severity": {
+          "Low": 1
+        },
+        "advisories_cleared": 1
+      },
+      "action": "override",
+      "how": "First check whether a newer 'sqlite3' release already depends on a fixed @tootallnate/once. If not, add a scoped npm override in package.json so only sqlite3's copy changes.",
+      "change": {
+        "file": "package.json",
+        "set": {
+          "overrides": {
+            "sqlite3": {
+              "@tootallnate/once": "2.0.1"
+            }
+          }
+        }
+      },
+      "commands": [
+        "git checkout -b fix/tootallnate-once-2.0.1",
+        "# edit package.json as shown in 'change', then:",
+        "npm install --package-lock-only --ignore-scripts --legacy-peer-deps",
+        "python3.12 -m guardian scan <juice-shop-path> --output day2/output/after_tootallnate-once.json"
+      ],
+      "rollback": "git revert the fix commit (or `git checkout -- package.json package-lock.json`), then rescan to confirm the original state.",
+      "verify_after_fix": {
+        "rescan": "none of evidence_ids should be present",
+        "also_check": "no new findings introduced; build and tests pass"
+      }
+    }
+  ],
+  "non_cve_recommendations": [
+    {
+      "action": "allowlist_or_review",
+      "title": "Install scripts on dependencies",
+      "recommendation": "Common for native packages (esbuild, fsevents, sqlite3). Review once, then allow-list known ones; keep --ignore-scripts for analysis.",
+      "count": 17,
+      "evidence_ids": [
+        "G-099baa5a9c79",
+        "G-0d4a20726080",
+        "G-2022df1f994f",
+        "G-2d905f87f8f9",
+        "G-60a62678aa7a",
+        "G-616cfd71b66e",
+        "G-797b063e3b3f",
+        "G-8495e98cb1df",
+        "G-a490e9fa0e99",
+        "G-a90dfe2e1fed",
+        "G-c3976e804eb1",
+        "G-cb1f877e6d96",
+        "G-d159ef64f070",
+        "G-f567ceac1b96",
+        "G-f8ed32d35300",
+        "G-fbd1254165e8",
+        "G-fce79e7d29b4"
+      ],
+      "verified_or_inferred": "heuristic (static rule), not proof of compromise",
+      "approval": {
+        "required": true,
+        "status": "pending"
+      }
+    },
+    {
+      "action": "escalate",
+      "title": "Heuristic source/backdoor signals",
+      "recommendation": "Static candidates, not proof. Human review of the flagged files; likely expected in a deliberately vulnerable app.",
+      "count": 3,
+      "evidence_ids": [
+        "G-3d3855c115ea",
+        "G-501cdba4b49e",
+        "G-dc984bdd405d"
+      ],
+      "verified_or_inferred": "heuristic (static rule), not proof of compromise",
+      "approval": {
+        "required": true,
+        "status": "pending"
+      }
+    },
+    {
+      "action": "review",
+      "title": "Review privileged workflow",
+      "recommendation": "Check pull_request_target / write permissions; restrict permissions and never run untrusted code with secrets.",
+      "count": 1,
+      "evidence_ids": [
+        "G-b5c943fa6162"
+      ],
+      "verified_or_inferred": "heuristic (static rule), not proof of compromise",
+      "approval": {
+        "required": true,
+        "status": "pending"
+      }
+    },
+    {
+      "action": "pin",
+      "title": "Pin GitHub Actions to full commit SHAs",
+      "recommendation": "Replace tag/branch refs (e.g. @v4, @main) with the full commit SHA, keeping the version in a comment.",
+      "count": 7,
+      "evidence_ids": [
+        "G-0dd758d0d25a",
+        "G-1f4c71f43bac",
+        "G-65ef6eb5156a",
+        "G-68901b30320e",
+        "G-9b10dc5c4b35",
+        "G-b94dcf64e88f",
+        "G-e5f85d2110f7"
+      ],
+      "verified_or_inferred": "heuristic (static rule), not proof of compromise",
+      "approval": {
+        "required": true,
+        "status": "pending"
+      }
+    },
+    {
+      "action": "pin",
+      "title": "Pin container base images to digests",
+      "recommendation": "Use image@sha256:<digest> for each FROM line; update deliberately via a reviewed change.",
+      "count": 5,
+      "evidence_ids": [
+        "G-2f97647f9e9d",
+        "G-5debe9163369",
+        "G-70175c1863ab",
+        "G-7c16c8b35f2d",
+        "G-f17f941b5220"
+      ],
+      "verified_or_inferred": "heuristic (static rule), not proof of compromise",
+      "approval": {
+        "required": true,
+        "status": "pending"
+      }
+    }
+  ]
+}
