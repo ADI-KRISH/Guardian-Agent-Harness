@@ -24,6 +24,7 @@
 | Reachability/provenance/maintainer analysis | Stretch capabilities not implemented |
 | Remediation recommendations and human approval | Implemented; see day2-human-approval.md |
 | Sandbox build/test/rescan | Docker-only pipeline with strict snapshot, build+test gating, rescan-only opt-in mode; unit-tested with mocked containers, live Docker run recorded in verification/ |
-| Automatic PR / merge / production deployment | Not implemented |
+| Commit approved fix to a review branch | Implemented behind a second human approval; local branch only |
+| Automatic push / PR / merge / production deployment | Not implemented by design |
 
 The runnable product closes the central Day 1 loop. The remaining design capabilities above are explicit boundaries, not hidden successful checks.

@@ -92,6 +92,9 @@ def serve(store, host='127.0.0.1', port=8787):
                         validate(store,data['plan_id'],validation_id,lambda stage:store.validation_progress(validation_id,stage),mode=mode)
                     threading.Thread(target=validation_work,daemon=True).start()
                     return self.send(202,{'validation_id':validation_id,'status':'running','applied':False})
+                if path=='/api/remediation/commit':
+                    from .commit import commit_validated_fix
+                    return self.send(200,commit_validated_fix(store,data['validation_id'],data.get('actor',''),data.get('reason',''),bool(data.get('accept_inconclusive'))))
                 if path=='/api/review': store.review(data['scan_id'],data['finding_id'],data['status'],data.get('actor',''),data.get('reason',''))
                 elif path=='/api/baseline': store.promote(data['scan_id'],data.get('actor',''),data.get('reason',''))
                 elif path=='/api/lessons/approve': store.approve_lesson(int(data['lesson_id']),data.get('actor',''),data.get('reason',''))

@@ -17,6 +17,7 @@ def main():
     review=sub.add_parser('review'); review.add_argument('scan_id'); review.add_argument('finding_id'); review.add_argument('status',choices=['open','confirmed','false positive','accepted']); review.add_argument('--actor',required=True); review.add_argument('--reason',required=True)
     baseline=sub.add_parser('baseline'); baseline.add_argument('scan_id'); baseline.add_argument('--actor',required=True); baseline.add_argument('--reason',required=True)
     lesson=sub.add_parser('approve-lesson'); lesson.add_argument('lesson_id',type=int); lesson.add_argument('--actor',required=True); lesson.add_argument('--reason',required=True)
+    commit=sub.add_parser('commit'); commit.add_argument('validation_id'); commit.add_argument('--actor',required=True); commit.add_argument('--reason',required=True); commit.add_argument('--accept-inconclusive',action='store_true')
     args=parser.parse_args(); store=Store(args.data)
     try:
         if args.command=='serve':
@@ -27,6 +28,9 @@ def main():
         elif args.command=='eval': result=evaluate()
         elif args.command=='review': store.review(args.scan_id,args.finding_id,args.status,args.actor,args.reason); result={'ok':True}
         elif args.command=='baseline': store.promote(args.scan_id,args.actor,args.reason); result={'ok':True}
+        elif args.command=='commit':
+            from .commit import commit_validated_fix
+            result=commit_validated_fix(store,args.validation_id,args.actor,args.reason,args.accept_inconclusive)
         elif args.command=='approve-lesson': store.approve_lesson(args.lesson_id,args.actor,args.reason); result={'ok':True}
         else:
             result=store.get(args.scan_id)

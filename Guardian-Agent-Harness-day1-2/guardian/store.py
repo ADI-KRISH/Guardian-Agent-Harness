@@ -125,6 +125,14 @@ class Store:
                        (plan['scan_id'],'Sandbox validator',result['plan_id']+': '+result['status'],
                         plan['finding_id']+'; validation '+result['id']+'; original repository unchanged',now()))
 
+    def record_commit(self, validation_id, info, scan_id, plan_id):
+        result = self.validation(validation_id); result['commit'] = info
+        with self.connect() as db:
+            db.execute('UPDATE validations SET data=? WHERE id=?',(json.dumps(result),validation_id))
+            db.execute('INSERT INTO audit(scan_id,actor,decision,reason,created) VALUES(?,?,?,?,?)',
+                       (scan_id,info['approved_by'],plan_id+': committed to branch '+info['branch'],
+                        'commit '+info['commit']+'; validation '+validation_id+'; '+info['reason']+'; not pushed or merged',info['created']))
+
     def recover_validations(self):
         with self.connect() as db:
             for row in db.execute("SELECT id,data FROM validations WHERE status='running'").fetchall():

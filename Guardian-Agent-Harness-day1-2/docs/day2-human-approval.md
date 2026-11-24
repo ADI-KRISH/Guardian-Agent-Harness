@@ -68,6 +68,16 @@ For every executable plan the worker now does, in order: strict hash-verified co
 - Optional `mode: "rescan_only"` on the decision/validate API (UI checkbox) skips install/build/test and can never return `verified`.
 - The result carries `checks` (`install`, `build`, `test`, `integrity`) and `verification_level` for the report.
 
+## Second approval: commit the validated fix
+
+After a `verified` (or explicitly accepted `inconclusive`) validation, a named reviewer can approve a commit: UI button **Approve & commit to branch**, CLI `python -m guardian commit VALIDATION_ID --actor NAME --reason TEXT [--accept-inconclusive]`, API `POST /api/remediation/commit`.
+
+- Creates branch `guardian/fix-<plan>` from `HEAD` using Git plumbing and a temporary index: the working tree, index and checked-out branch are never touched, and uncommitted user work is preserved.
+- Commits only the approved edit(s) plus the regenerated npm lockfile, byte-for-byte from the sandbox. It refuses if the sandbox file no longer equals the approved patch, if the file at `HEAD` differs from what was scanned, or if the branch already exists.
+- Commit message records finding, plan, validation status, build/test results, note, rollback command and `Approved-by`. A patch file is written to `.guardian/patches/`.
+- Hooks are disabled. **Nothing is pushed, merged or deployed.** Publishing and merging remain human actions (push the branch to your fork, open a pull request).
+- Recorded in the audit trail and on the validation result (`commit`).
+
 ## Report meanings
 
 - **Verified:** target reproduced before and absent after; configured commands passed; a test command ran successfully; both scans have complete supported coverage; no new high/critical/unknown findings were introduced.

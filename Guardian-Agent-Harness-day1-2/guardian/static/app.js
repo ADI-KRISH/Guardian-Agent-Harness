@@ -829,6 +829,20 @@ function showValidationResult(result, plan) {
   <pre style="margin-top:8px;font-size:10px;background:#1e292d;color:#d8e8e2;padding:8px;border-radius:4px;overflow-x:auto;max-height:160px">${esc(step.output || '(No output recorded)')}</pre>
 </details>`).join('');
 
+  const cm = result.commit;
+  const canCommit = ['verified','inconclusive'].includes(result.status) && !cm;
+  const commitHtml = cm ? `<div style="background:#edf7f3;border:1.5px solid #147c67;border-radius:8px;padding:12px;margin:12px 0;font-size:11px;line-height:1.6">
+  <strong style="color:#147c67">Committed to a new branch (not pushed, not merged)</strong><br>
+  Branch: <code>${esc(cm.branch)}</code> · Commit: <code>${esc(cm.commit.slice(0,12))}</code> · Approved by ${esc(cm.approved_by)}<br>
+  Files: ${cm.files.map(f => `<code>${esc(f)}</code>`).join(', ')}<br>
+  Repository: <code>${esc(cm.repository)}</code><br>
+  To publish: <code>git -C "${esc(cm.repository)}" push &lt;your-fork-remote&gt; ${esc(cm.branch)}</code>, then open a pull request. Rollback: <code>git revert ${esc(cm.commit.slice(0,12))}</code></div>` : canCommit ? `<form id="commit-form" style="background:#fff;border:1px solid #dcece5;border-radius:8px;padding:12px;margin:12px 0">
+  <strong style="font-size:11px;color:#1c7362;text-transform:uppercase">Human approval 2: commit this fix to a new branch</strong>
+  <p style="font-size:11px;color:#4f6d67;margin:6px 0">Creates a branch with the approved change in the scanned repository. Your working tree and current branch are not touched, and nothing is pushed or merged.</p>
+  <label>Reviewer name<input id="commit-actor" required maxlength="200" value="Security Engineer"></label>
+  <label>Reason<textarea id="commit-reason" required maxlength="4000">Reviewed the diff and sandbox result; approved for commit to a review branch</textarea></label>
+  ${result.status === 'inconclusive' ? '<label style="display:flex;gap:6px;align-items:center;font-size:11px"><input type="checkbox" id="commit-accept"> I understand the tests did not verify this change</label>' : ''}
+  <button class="primary" type="submit">Approve &amp; commit to branch</button></form>` : '';
   target.innerHTML = `
 <div style="margin-top:16px;border-top:1px solid #dcece5;padding-top:14px">
   <h3 style="font-size:11px;color:#1c7362;margin:0 0 8px;text-transform:uppercase;letter-spacing:1px">Sandbox Validation Result</h3>
@@ -836,6 +850,7 @@ function showValidationResult(result, plan) {
   ${checksHtml}
   ${detailsHtml}
   ${result.workspace ? `<p style="font-size:11px;color:#718781"><strong>Sandbox Copy:</strong> <code>${esc(result.workspace)}</code></p>` : ''}
+  ${commitHtml}
   ${stepsHtml ? `<div style="margin:12px 0"><strong style="font-size:11px;color:#4f6d67">Validation Steps Log:</strong>${stepsHtml}</div>` : ''}
   <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
     ${result.after_scan_id ? '<button class="primary" id="open-validation-scan">Inspect Patched Sandbox Artifact →</button>' : ''}
@@ -843,6 +858,21 @@ function showValidationResult(result, plan) {
   </div>
 </div>`;
 
+  const commitForm = $('#commit-form');
+  if (commitForm) commitForm.onsubmit = async event => {
+    event.preventDefault();
+    const button = commitForm.querySelector('button'); button.disabled = true;
+    try {
+      const info = await api('/api/remediation/commit', {
+        validation_id: result.id,
+        actor: ($('#commit-actor').value || '').trim(),
+        reason: ($('#commit-reason').value || '').trim(),
+        accept_inconclusive: !!$('#commit-accept')?.checked
+      });
+      toast('Committed to branch ' + info.branch);
+      showValidationResult({...result, commit: info}, plan);
+    } catch (error) { toast(error.message); button.disabled = false; }
+  };
   if ($('#open-validation-scan')) {
     $('#open-validation-scan').onclick = async () => {
       $('#drawer').hidden = true;
