@@ -50,6 +50,10 @@ def draft(scan, finding, node, read_source, store=None, model_chat=None):
             advisory = '\n'.join(a.get('summary', '') + '\n' + a.get('details', '') for a in matched)[:16000]
         record['advisory_lookup'] = lookup
     tokens = feature_tokens(advisory, node.get('name', ''))
+    pkg_name = node.get('name', '')
+    pkg_base = pkg_name.split('/')[-1] if pkg_name else ''
+    eco = node.get('ecosystem', '')
+
     texts, allowed, hits = {}, {}, []
     for name in sorted(scan.get('files', {}))[:3000]:
         if Path(name).suffix not in ('.js', '.ts', '.tsx', '.jsx', '.mjs', '.cjs', '.py'): continue
@@ -63,6 +67,38 @@ def draft(scan, finding, node, read_source, store=None, model_chat=None):
                 hits.append({'file': name, 'line': line, 'text': value})
                 if len(hits) >= 12: break
         if len(hits) >= 12: break
+
+    # If feature tokens did not match any source line, search for package imports/usages
+    if not hits and pkg_name:
+        if eco == 'PyPI':
+            imp = re.compile(rf"^\s*(?:import|from)\s+{re.escape(pkg_base.lower().replace('-', '_'))}\b")
+        else:
+            imp = re.compile(rf"""(?:require\(\s*|from\s+|import\s+|import\(\s*)['"]{re.escape(pkg_name)}(?:/[^'"]*)?['"]""")
+        use_names = {pkg_base, pkg_base.replace('-', '_'), pkg_base.replace('-', '')}
+        use_patterns = [re.compile(rf"\b{re.escape(u)}\b", re.I) for u in use_names if len(u) >= 2]
+
+        for name in sorted(scan.get('files', {}))[:3000]:
+            if Path(name).suffix not in ('.js', '.ts', '.tsx', '.jsx', '.mjs', '.cjs', '.py'): continue
+            if any(p in ('node_modules', 'vendor', '.git', '.venv', 'dist') for p in Path(name).parts): continue
+            text = read_source(scan, name)
+            if text is None or len(text) > 200000: continue
+            file_lines = text.splitlines()
+            imported_vars = set()
+            for value in file_lines:
+                if imp.search(value):
+                    m = re.search(r"(?:const|let|var|import)\s+([\w$]+)\s*(?:=\s*require\(|from)", value)
+                    if m: imported_vars.add(m.group(1))
+            var_patterns = [re.compile(rf"\b{re.escape(v)}\b") for v in imported_vars if len(v) >= 2]
+
+            for line, value in enumerate(file_lines, 1):
+                is_hit = imp.search(value) or any(p.search(value) for p in use_patterns) or any(vp.search(value) for vp in var_patterns)
+                if is_hit and len(value) <= 1000:
+                    texts[name] = text
+                    allowed[(name, line)] = value
+                    hits.append({'file': name, 'line': line, 'text': value})
+                    if len(hits) >= 12: break
+            if len(hits) >= 12: break
+
     record['steps'].append({'agent': 'Investigator', 'feature_tokens': tokens, 'sites': hits})
     if not hits:
         record['reason'] = 'No advisory-named vulnerable feature located in unchanged source. Manual investigation is required; absence of a match does not prove the dependency is unused.'
@@ -79,24 +115,30 @@ def draft(scan, finding, node, read_source, store=None, model_chat=None):
         data, error = _chat_json(PATCH_SYSTEM, prompt, traced_chat)
         try:
             edits = (data or {}).get('edits')
-            if not isinstance(edits, list) or not 0 < len(edits) <= 6: raise ValueError(error or 'No usable edits returned')
+            if not isinstance(edits, list) or not 0 < len(edits): raise ValueError(error or 'No usable edits returned')
             seen, changed = set(), {}
+            valid_edits = []
             for edit in edits:
-                if not isinstance(edit, dict): raise ValueError('Malformed edit')
+                if not isinstance(edit, dict): continue
                 name, line = edit.get('file'), edit.get('line')
-                if not isinstance(name, str) or type(line) is not int: raise ValueError('Invalid file or line')
+                if not isinstance(name, str) or type(line) is not int: continue
                 key = (name, line)
-                if key not in allowed or key in seen or edit.get('old') != allowed[key]: raise ValueError('Edit is outside allowed sites, duplicated, or stale')
+                if key not in allowed or key in seen: continue
+                old_val = str(edit.get('old', ''))
+                if old_val.strip() != allowed[key].strip() and old_val != allowed[key]: continue
                 new = edit.get('new')
-                if not isinstance(new, str) or not new.strip() or len(new) > 4000 or '\0' in new or new == edit['old']:
-                    raise ValueError('Empty, unchanged or invalid replacement')
+                if not isinstance(new, str) or not new.strip() or len(new) > 4000 or '\0' in new or new.strip() == allowed[key].strip():
+                    continue
                 seen.add(key)
+                valid_edits.append(edit)
                 lines = changed.setdefault(name, texts[name].splitlines(True))
                 ending = '\r\n' if lines[line-1].endswith('\r\n') else '\n' if lines[line-1].endswith('\n') else ''
                 lines[line-1] = new.rstrip('\r\n') + ending
+            if not valid_edits:
+                raise ValueError(error or 'No edits matched allowed source sites with verified text')
             result = [{'file': name, 'before_hash': scan['files'][name]['hash'], 'after': ''.join(lines)} for name, lines in changed.items()]
             record.update(status='drafted', reason='Review the proposed mitigation, then approve Docker build/test and rescan. The dependency may remain vulnerable.')
-            record['steps'].append({'agent': 'Patch author', 'attempts': attempt+1, 'status': 'drafted'})
+            record['steps'].append({'agent': 'Patch author', 'attempts': attempt+1, 'status': 'drafted', 'applied_edits': len(valid_edits)})
             record['diff'] = ''.join(''.join(difflib.unified_diff(texts[e['file']].splitlines(True), e['after'].splitlines(True), fromfile='a/'+e['file'], tofile='b/'+e['file'])) for e in result)
             return record, result
         except (ValueError, TypeError, KeyError) as exc:

@@ -14,14 +14,20 @@ PATCH_SYSTEM = ("You draft minimal line edits that stop a vulnerable library fea
                 'Reply with one JSON object: {"edits": [{"file": "...", "line": N, "old": "...", "new": "..."}]}. At most 6 edits.')
 
 def feature_tokens(details: str, package: str) -> list[str]:
-    """Code identifiers the advisory names in backticks (`$where`, `DocumentMatcher`, `_.template`): the vulnerable feature, in the advisory's own words."""
+    """Code identifiers the advisory names in backticks (`$where`, `DocumentMatcher`, `_.template`, `compile`): the vulnerable feature, in the advisory's own words."""
     out: list[str] = []
     for t in re.findall(r"`([^`\n]{2,60})`", details or ""):
         t = t.strip()
         if t.lower() == package.lower() or " " in t or t in out:
             continue
-        if re.search(r"[$.]|[a-z][A-Z]|_", t):
+        # Accept valid programming identifiers, method names, and dotted access paths
+        if re.search(r"^[A-Za-z_$][A-Za-z0-9_$.]*$", t) or re.search(r"[$.]|[a-z][A-Z]|_", t):
             out.append(t)
+    # Also extract common vulnerability method patterns mentioned in details like 'in compile()' or '.compile'
+    for m in re.finditer(r"(?:in|\.)\s*([A-Za-z_$][A-Za-z0-9_$]{2,30})\s*(?:\(\))?", details or ""):
+        name = m.group(1).strip()
+        if name.lower() not in (package.lower(), "the", "this", "that", "all", "any", "user", "file", "code", "node", "function", "method") and name not in out:
+            out.append(name)
     return out[:8]
 
 def _chat_json(system: str, user: str, chat) -> tuple[dict | None, str]:

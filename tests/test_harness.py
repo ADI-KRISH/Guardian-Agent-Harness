@@ -86,5 +86,19 @@ class HarnessTests(unittest.TestCase):
         self.assertEqual(result['status'], 'blocked')
         self.assertIn('Docker', result['error'])
 
+    def test_harness_generates_diff_when_osv_has_no_fix(self):
+        text = "const myPkg = require('my-pkg');\nmyPkg.doSomething(input);\n"
+        (self.root / 'app.js').write_text(text)
+        scan = {'source_root': str(self.root), 'files': {'app.js': {'hash': hashlib.sha256(text.encode()).hexdigest()}}}
+        finding = {'what': 'Prototype Pollution in my-pkg without backticks', 'advisory': 'GHSA-xxxx'}
+        node = {'name': 'my-pkg', 'ecosystem': 'npm'}
+        def reply(system, user):
+            return json.dumps({'edits': [{'file': 'app.js', 'line': 2, 'old': 'myPkg.doSomething(input);', 'new': 'myPkg.doSomething(sanitize(input));'}]})
+        record, edits = draft(scan, finding, node, source, model_chat=reply)
+        self.assertEqual(record['status'], 'drafted')
+        self.assertTrue(record.get('diff'))
+        self.assertIn('+myPkg.doSomething(sanitize(input));', record['diff'])
+        self.assertEqual(len(edits), 1)
+
 
 if __name__ == '__main__': unittest.main()
