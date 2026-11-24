@@ -66,6 +66,8 @@ def profile(scan, plan, read_source):
         cwd = str(target.parent); runtime = 'python'
         commands = [{'name':'install','argv':['python','-m','pip','install','--only-binary=:all:','--target=/work/.guardian-python','-r',target.name], 'network':True}]
     else:
+        if strategy == 'ai_mitigation' and not config.get('runtime'):
+            return {'runtime':'unsupported', 'commands':[], 'reason':'Source mitigation requires a supported npm manifest or explicit runtime/build/test configuration in .guardian-validation.json'}
         cwd = '.'; runtime = config.get('runtime','node')
     if runtime not in ('node','python'): raise ValueError('Supported validation runtimes are node and python')
     for name in ('build','test'):

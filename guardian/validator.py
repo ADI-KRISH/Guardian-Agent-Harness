@@ -273,11 +273,13 @@ def validate(store, plan_id, validation_id, progress=None):
         # - 'upgrade' (npm/PyPI package bump) needs strict copy + Docker build/test
         # - 'pin_digest'/'pin_sha' (workflow digest pins) only need a rescan; skip build/test
         strategy = plan.get('strategy','escalate')
-        needs_build = strategy == 'upgrade' and bool(profile.get('commands'))
+        needs_build = strategy == 'ai_mitigation' or (strategy == 'upgrade' and bool(profile.get('commands')))
 
         docker, image = None, 'isolated-process'
         if needs_build:
             progress('Checking Docker sandbox'); docker, image = runtime(profile)
+            if strategy == 'ai_mitigation' and not docker:
+                raise Blocked('AI-generated patches require a running Docker sandbox; host execution is not permitted')
         result['image_id'] = image; result['profile'] = profile
 
         progress('Copying approved source snapshot')
@@ -376,7 +378,12 @@ def validate(store, plan_id, validation_id, progress=None):
         skipped_auth_checks = bool(profile.get('skipped_auth_checks'))
 
         # Critical failures: install broke OR vulnerability still present OR new critical regressions
-        if not install_steps_passed or not checks['target_absent_after'] or checks['new_high_or_unknown_findings']:
+        if strategy == 'ai_mitigation':
+            result['status'] = 'inconclusive'
+            result['note'] = 'AI mitigation requires security review of behavior. Build/test and rescan evidence are recorded, but source edits do not prove the installed vulnerable dependency is fixed.'
+            if not all_non_skipped_passed or checks['new_high_or_unknown_findings']:
+                result['status'] = 'failed'
+        elif not install_steps_passed or not checks['target_absent_after'] or checks['new_high_or_unknown_findings']:
             result['status'] = 'failed'
             if not checks['target_absent_after']:
                 result['note'] = ('Target vulnerability still detected after applying fix. '

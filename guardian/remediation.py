@@ -153,6 +153,23 @@ def propose(scan, finding, store=None):
         plan['blockers'].append('Static evidence does not establish malicious intent. Removal requires dependency and behavior review.')
     else:
         plan['blockers'].append('Human investigation is required to choose a supported change.')
+    if rule == 'known-vulnerability' and not candidates:
+        from .harness import draft
+        try:
+            record, edits = draft(scan, finding, node, source, store)
+            plan['ai_harness'] = record
+            if edits:
+                plan['upgrade_blockers'] = plan['blockers']
+                plan.update(strategy='ai_mitigation', action='Review AI-generated source mitigation; approve sandbox validation',
+                            edits=edits, diff=record.pop('diff'), blockers=[], target_file=edits[0]['file'],
+                            compatibility='unknown', target_version=None)
+                plan['preconditions'] = {e['file']: e['before_hash'] for e in edits}
+                plan['compatibility_warning'] = 'AI-authored source changes may break behavior. Human review, Docker tests, and rescan are required. Keeping the affected dependency is not a resolved CVE.'
+            else:
+                plan['blockers'].append('AI harness: '+record.get('reason', 'No reviewable patch generated'))
+        except (OSError, ValueError, TypeError, KeyError) as exc:
+            plan['ai_harness'] = {'status':'unavailable', 'reason':str(exc)[:500]}
+            plan['blockers'].append('AI harness unavailable; no fix has been invented.')
     if not plan['diff']:
         plan['edits'] = []
     if plan['edits']:

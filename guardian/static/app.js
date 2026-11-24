@@ -602,6 +602,27 @@ ${plan.blockers.length ? `<h3>Required investigation</h3><ul>${plan.blockers.map
 <h3>Rollback guidance</h3><p>${esc(plan.rollback)}</p>
 <p>Plan ${esc(plan.id)}. The original repository is never modified by validation.</p>
 ${plan.candidate_verification ? `<h3>Candidate checks</h3><pre>${esc(JSON.stringify(plan.candidate_verification, null, 2))}</pre>` : ''}
+${plan.ai_harness ? (() => {
+  const h = plan.ai_harness;
+  const isOk = h.status === 'drafted';
+  const color = isOk ? '#1c7362' : h.status === 'investigation' ? '#7a5a1a' : '#c0392b';
+  const bg   = isOk ? '#edf7f3' : h.status === 'investigation' ? '#fffdf4' : '#fef2f2';
+  const bdr  = isOk ? '#a3d4c5' : h.status === 'investigation' ? '#d4a853' : '#e8c5c5';
+  const icon = isOk ? '&#129302;' : '&#9888;';
+  const sites = (h.steps || []).flatMap(s => s.sites || []);
+  return `<div style="background:${bg};border:1.5px solid ${bdr};border-radius:8px;padding:14px 16px;margin:14px 0">
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+    <span style="font-size:16px">${icon}</span>
+    <strong style="font-size:13px;color:${color}">AI Harness Fallback — ${esc(h.status || 'unknown').toUpperCase()}</strong>
+    ${h.model ? '<span style="font-size:10px;background:#fff;border:1px solid '+bdr+';border-radius:4px;padding:1px 7px;color:#4f6d67">'+esc(h.model)+'</span>' : ''}
+  </div>
+  <p style="margin:0 0 6px;font-size:12px;color:#4f4030;line-height:1.5">${esc(h.reason || h.verification || '')}</p>
+  ${h.advisory_lookup ? '<p style="font-size:11px;color:#8b96ac;margin:0 0 6px">Advisory lookup: '+esc(h.advisory_lookup)+'</p>' : ''}
+  ${sites.length ? '<details style="margin-top:8px"><summary style="cursor:pointer;font-size:11px;color:#4f6d67;font-weight:600">'+sites.length+' source site(s) examined</summary><pre style="font-size:10px;background:#fff;border:1px solid #dce8e3;border-radius:5px;padding:8px;margin-top:6px;max-height:120px;overflow:auto">'+esc(JSON.stringify(sites, null, 2))+'</pre></details>' : ''}
+  ${h.prompt_hash ? '<p style="font-size:10px;color:#8b96ac;margin:6px 0 0">Prompt hash: <code>'+esc(h.prompt_hash.slice(0,16))+'…</code> · Temperature 0</p>' : ''}
+  <p style="margin:8px 0 0;font-size:10px;color:#8b96ac">This is unvalidated AI inference. The vulnerable dependency may still be installed. Approve and run sandbox validation to verify. Human review required.</p>
+</div>`;
+})() : ''}
 ${plan.validation_profile ? `<h3>Sandbox execution plan</h3><p>${esc(plan.validation_profile.network_policy || plan.validation_profile.reason)}</p><pre>${esc(JSON.stringify(plan.validation_profile.commands, null, 2))}</pre><p>Checks not configured: ${esc((plan.validation_profile.missing_checks || []).join(', ') || 'None')}</p>` : ''}
 <div id="validation-result"></div>
 ${plan.status === 'approved' && plan.execution_ready && plan.validation_status !== 'running' ? '<button class="primary" id="retry-validation">Run approved proposal in sandbox</button>' : ''}
