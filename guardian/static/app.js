@@ -1306,6 +1306,36 @@ async function startScan(demo = false, customSource = null) {
 }
 
 /* ── Boot ────────────────────────────────────────────────────────── */
+let webhookRuns = [];
+function showWebhookRunStatus(run) {
+  $('#webhook-scan-status').textContent = run
+    ? `${run.status === 'complete' ? 'Scan ready — select it to view findings' : run.status}${run.error ? ': ' + run.error : ''}`
+    : 'No recorded pushes yet. Check GitHub → Settings → Webhooks → Recent deliveries.';
+}
+async function pollWebhookRuns() {
+  try {
+    webhookRuns = await api('/api/webhook-runs');
+    const select = $('#webhook-scan-select'), selected = select.value;
+    select.innerHTML = '<option value="">Select a GitHub push scan (' + webhookRuns.length + ')</option>' + webhookRuns.map(r =>
+      `<option value="${esc(r.id)}">${esc(r.repo.split('/').pop())} · ${esc(r.branch)} · ${esc((r.commit || '').slice(0, 7))} · ${esc(new Date(r.created).toLocaleString())} · ${esc(r.status)}</option>`
+    ).join('');
+    select.value = selected;
+    showWebhookRunStatus(webhookRuns.find(r => r.id === selected) || webhookRuns[0]);
+  } catch (e) {
+    $('#webhook-scan-status').textContent = 'Push history unavailable: ' + e.message;
+  } finally {
+    setTimeout(pollWebhookRuns, 5000);
+  }
+}
+$('#webhook-scan-select').onchange = async e => {
+  const run = webhookRuns.find(r => r.id === e.target.value);
+  showWebhookRunStatus(run);
+  if (run?.status === 'complete' && run.scan_id) {
+    try { await refresh(run.scan_id); switchTab('findings'); }
+    catch (err) { toast(err.message); }
+  }
+};
+pollWebhookRuns();
 $('#new-scan').onclick = () => $('#scan-dialog').showModal();
 $('#scan-form').onsubmit = e => { e.preventDefault(); startScan(); };
 $('#demo').onclick = () => startScan(true);
@@ -1426,65 +1456,64 @@ function openWatchRepos() {
   document.getElementById('ws-done').onclick = () => { document.getElementById('watch-secret-panel').style.display = 'none'; };
 
   // ── Tunnel controls ──────────────────────────────────────────────
+  let tunnelTimer = null;
+  let tunnelRequest = 0;
+  modal.addEventListener('close', () => { clearTimeout(tunnelTimer); tunnelRequest++; });
+  function paintTunnel(t) {
+    if (!modal.isConnected || !modal.open) return;
+    const urlDiv = modal.querySelector('#tunnel-url-display');
+    const startBtn = modal.querySelector('#tunnel-start-btn');
+    const stopBtn = modal.querySelector('#tunnel-stop-btn');
+    const hintDiv = modal.querySelector('#tunnel-install-hint');
+    const active = t.status === 'starting' || t.status === 'running';
+    startBtn.disabled = active;
+    startBtn.textContent = t.status === 'starting' ? 'Connecting…' : '⌁ Start tunnel';
+    startBtn.style.display = t.status === 'running' ? 'none' : '';
+    stopBtn.style.display = active ? '' : 'none';
+    const wsUrl = modal.querySelector('#ws-url');
+    if (wsUrl) wsUrl.textContent = t.url ? t.url + '/api/webhook/github' : 'Start tunnel to get a current URL';
+    if (t.status === 'running' && t.url) {
+      urlDiv.innerHTML = 'Public URL: <code style="user-select:all;color:#1c7362">' + esc(t.url + '/api/webhook/github') + '</code>';
+    } else if (t.status === 'starting') {
+      urlDiv.textContent = 'Connecting via ' + (t.tool || 'tunnel provider') + '… Startup is limited to 30 seconds.';
+    } else if (t.error) {
+      urlDiv.textContent = t.error;
+    } else {
+      urlDiv.textContent = 'Required so GitHub can reach your local server';
+    }
+    hintDiv.style.display = t.error || (t.status === 'starting' && t.log) ? '' : 'none';
+    hintDiv.innerHTML = t.log ? '<details><summary>Tunnel diagnostics</summary><pre style="white-space:pre-wrap;max-height:180px;overflow:auto">' + esc(t.log) + '</pre></details>' : '';
+  }
   async function refreshTunnelStatus() {
+    clearTimeout(tunnelTimer);
+    const request = ++tunnelRequest;
     try {
       const t = await api('/api/tunnel');
-      const urlDiv = document.getElementById('tunnel-url-display');
-      const startBtn = document.getElementById('tunnel-start-btn');
-      const stopBtn = document.getElementById('tunnel-stop-btn');
-      const hintDiv = document.getElementById('tunnel-install-hint');
-      if (!urlDiv) return;
-      if (t.status === 'running' && t.url) {
-        urlDiv.innerHTML = 'Public URL: <code style="user-select:all;color:#1c7362">' + esc(t.url + '/api/webhook/github') + '</code>';
-        startBtn.style.display = 'none';
-        stopBtn.style.display = '';
-        const wsUrlEl = document.getElementById('ws-url');
-        if (wsUrlEl) wsUrlEl.textContent = t.url + '/api/webhook/github';
-      } else if (t.status === 'starting') {
-        urlDiv.textContent = 'Starting tunnel...';
-        startBtn.disabled = true;
-      } else if (t.status === 'error') {
-        urlDiv.innerHTML = '<span style="color:#c0392b">&#9888; ' + esc(t.error || 'Tunnel error') + '</span>';
-        startBtn.disabled = false; startBtn.style.display = '';
-        stopBtn.style.display = 'none';
-      } else {
-        urlDiv.textContent = 'Required so GitHub can reach your local server';
-        startBtn.disabled = false; startBtn.style.display = '';
-        stopBtn.style.display = 'none';
-      }
-      if (hintDiv) hintDiv.style.display = 'none';
-    } catch(e) {}
+      if (request !== tunnelRequest || !modal.isConnected || !modal.open) return;
+      paintTunnel(t);
+    } catch (error) {
+      if (request !== tunnelRequest || !modal.isConnected || !modal.open) return;
+      paintTunnel({status:'error',error:'Cannot read tunnel status: '+error.message});
+    }
+    if (modal.isConnected && modal.open) tunnelTimer = setTimeout(refreshTunnelStatus,1500);
   }
-
-  document.getElementById('tunnel-start-btn').onclick = async () => {
-    const btn = document.getElementById('tunnel-start-btn');
-    const hintDiv = document.getElementById('tunnel-install-hint');
-    btn.disabled = true; btn.textContent = 'Starting...';
+  modal.querySelector('#tunnel-start-btn').onclick = async () => {
+    clearTimeout(tunnelTimer); tunnelRequest++;
+    paintTunnel({status:'starting'});
     try {
-      const r = await api('/api/tunnel/start', {});
-      if (r.status === 'not_installed' || r.install_options) {
-        hintDiv.style.display = '';
-        hintDiv.innerHTML = '<strong>No tunnel tool installed.</strong> Install one and restart GuardianAI:<br><br>'
-          + (r.install_options || []).map(o =>
-            '<b>' + esc(o.name) + '</b><br>'
-            + 'Mac: <code>' + esc(o.mac) + '</code><br>'
-            + 'Linux: <code>' + esc(o.linux) + '</code><br>'
-            + '<a href="' + esc(o.download) + '" target="_blank" rel="noopener">Download &#8599;</a>'
-          ).join('<br><br>');
-        btn.disabled = false; btn.textContent = '&#11041; Start tunnel';
-        return;
-      }
+      const result = await api('/api/tunnel/start', {});
+      paintTunnel(result);
       await refreshTunnelStatus();
-    } catch(e) {
-      btn.disabled = false; btn.textContent = '&#11041; Start tunnel';
+    } catch (error) {
+      paintTunnel({status:'error',error:'Tunnel startup failed: '+error.message});
     }
   };
-
-  document.getElementById('tunnel-stop-btn').onclick = async () => {
-    await api('/api/tunnel/stop', {});
-    setTimeout(refreshTunnelStatus, 500);
+  modal.querySelector('#tunnel-stop-btn').onclick = async () => {
+    clearTimeout(tunnelTimer); tunnelRequest++;
+    try { paintTunnel(await api('/api/tunnel/stop', {})); }
+    catch (error) { paintTunnel({status:'error',error:'Tunnel stop failed: '+error.message}); }
+    await refreshTunnelStatus();
   };
-
   refreshTunnelStatus();
 
   // ── Watched repo list ────────────────────────────────────────────
@@ -1516,7 +1545,10 @@ function openWatchRepos() {
           document.getElementById('ws-secret-display').textContent = 'Loading...';
           try {
             const data = await api('/api/watched/secret/' + btn.dataset.id);
-            document.getElementById('ws-secret-display').textContent = data.secret;
+            if (typeof data.webhook_secret !== 'string' || !data.webhook_secret.trim()) {
+              throw new Error('No webhook secret returned. Close Setup and try again.');
+            }
+            document.getElementById('ws-secret-display').textContent = data.webhook_secret;
           } catch(e) {
             document.getElementById('ws-secret-display').textContent = 'Error: ' + e.message;
           }

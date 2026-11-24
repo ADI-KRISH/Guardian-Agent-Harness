@@ -13,6 +13,10 @@ from .evaluation import evaluate
 
 def serve(store, host='127.0.0.1', port=8787):
     store.recover_validations()
+    for run in store.webhook_runs():
+        if run['status'] == 'running':
+            run.update(status='failed', error='Server stopped before this scan completed')
+            store.save_webhook_run(run)
     token=secrets.token_urlsafe(32); jobs={}; lock=threading.Lock()
     static=Path(__file__).parent/'static'
     class Handler(BaseHTTPRequestHandler):
@@ -36,6 +40,7 @@ def serve(store, host='127.0.0.1', port=8787):
                 if path.startswith('/api/validations/'):
                     return self.send(200,store.validation(path.rsplit('/',1)[-1]))
                 if path=='/api/scans': return self.send(200,store.list())
+                if path=='/api/webhook-runs': return self.send(200,store.webhook_runs())
                 if path=='/api/lessons': return self.send(200,store.lessons())
                 if path=='/api/tunnel': 
                     from . import tunnel; return self.send(200,tunnel.status())
@@ -81,16 +86,25 @@ def serve(store, host='127.0.0.1', port=8787):
                 if not hmac.compare_digest(sig,expected): return self.send(403,{'error':'Invalid webhook signature'})
                 # Queue auto-scan of the pushed branch
                 branch_url=f'{repo_url}/tree/{branch}'
+                from .store import now
+                run={'id':uuid.uuid4().hex[:12], 'created':now(), 'repo':repo_url, 'branch':branch, 'commit':payload.get('after',''), 'status':'running'}
                 with lock:
                     if any(j['status']=='running' for j in jobs.values()):
-                        return self.send(200,{'ok':True,'queued':False,'note':'A scan is already running; push recorded but not scanned yet'})
-                    jid=uuid.uuid4().hex[:12]
+                        run.update(status='skipped', error='Another scan was running. Redeliver this push from GitHub to retry.')
+                        store.save_webhook_run(run)
+                        return self.send(200,{'ok':True,'queued':False,'note':run['error']})
+                    jid=run['id']
                     jobs[jid]={'status':'running','stage':'Auto-scan from webhook push','trigger':'webhook','repo':repo_url,'branch':branch}
+                    store.save_webhook_run(run)
                 def webhook_work():
                     try:
                         scan=run_scan(branch_url,store,offline=False,progress=lambda s: None)
+                        run.update(status='complete', scan_id=scan['id'])
+                        store.save_webhook_run(run)
                         with lock: jobs[jid].update({'status':'complete','scan_id':scan['id'],'trigger':'webhook','branch':branch})
                     except Exception as exc:
+                        run.update(status='failed', error=str(exc)[:500])
+                        store.save_webhook_run(run)
                         with lock: jobs[jid].update({'status':'failed','error':str(exc),'trigger':'webhook'})
                 threading.Thread(target=webhook_work,daemon=True).start()
                 return self.send(202,{'ok':True,'job_id':jid,'branch':branch,'repo':repo_url})
@@ -202,4 +216,7 @@ def serve(store, host='127.0.0.1', port=8787):
     print(f'GuardianAI is running at http://127.0.0.1:{port}',flush=True)
     try: server.serve_forever()
     except KeyboardInterrupt: pass
-    finally: server.server_close()
+    finally:
+        from . import tunnel
+        tunnel.stop()
+        server.server_close()

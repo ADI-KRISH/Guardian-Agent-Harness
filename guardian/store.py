@@ -26,6 +26,7 @@ class Store:
             CREATE TABLE IF NOT EXISTS cache(key TEXT PRIMARY KEY, created TEXT, data TEXT);
             CREATE TABLE IF NOT EXISTS audit(id INTEGER PRIMARY KEY, scan_id TEXT, actor TEXT, decision TEXT, reason TEXT, created TEXT);
             CREATE TABLE IF NOT EXISTS watched_repos(id TEXT PRIMARY KEY, url TEXT, branches TEXT, webhook_secret TEXT, enabled INTEGER DEFAULT 1, actor TEXT, created TEXT);
+            CREATE TABLE IF NOT EXISTS webhook_runs(id TEXT PRIMARY KEY, data TEXT);
             CREATE TRIGGER IF NOT EXISTS audit_no_update BEFORE UPDATE ON audit BEGIN SELECT RAISE(ABORT,'append-only audit'); END;
             CREATE TRIGGER IF NOT EXISTS audit_no_delete BEFORE DELETE ON audit BEGIN SELECT RAISE(ABORT,'append-only audit'); END;
             ''')
@@ -157,10 +158,12 @@ class Store:
         return dict(row)
 
     def match_webhook(self, repo_url, branch):
+        def canonical(url):
+            return url.rstrip('/').removesuffix('.git').lower()
         with self.connect() as db:
             rows = db.execute('SELECT * FROM watched_repos WHERE enabled=1').fetchall()
         for row in rows:
-            if row['url'].rstrip('/') == repo_url.rstrip('/'):
+            if canonical(row['url']) == canonical(repo_url):
                 branches = json.loads(row['branches'])
                 if '*' in branches or branch in branches:
                     return dict(row)
@@ -217,6 +220,15 @@ class Store:
             db.execute('INSERT INTO remediation_decisions VALUES(?,?,?,?,?)', (plan_id, status, actor, reason, created))
             db.execute('INSERT INTO audit(scan_id,actor,decision,reason,created) VALUES(?,?,?,?,?)', (plan['scan_id'], actor, plan_id+': '+status, plan['finding_id']+'; '+reason+'; decision only; validation not run', created))
         return dict(plan_id=plan_id, status=status, validation_status='not_run', applied=False)
+
+    def save_webhook_run(self, run):
+        with self.connect() as db:
+            db.execute('INSERT OR REPLACE INTO webhook_runs VALUES(?,?)', (run['id'], json.dumps(run)))
+
+    def webhook_runs(self):
+        with self.connect() as db:
+            runs = [json.loads(r['data']) for r in db.execute('SELECT data FROM webhook_runs')]
+        return sorted(runs, key=lambda r: r['created'], reverse=True)[:100]
 
     def list(self):
         with self.connect() as db:

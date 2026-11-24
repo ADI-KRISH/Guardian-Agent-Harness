@@ -1,230 +1,188 @@
-"""Local tunnel manager — creates a public HTTPS URL for GitHub webhooks.
-
-Priority order (first available wins):
-  1. cloudflared  — free, no account, Homebrew install
-  2. ngrok        — free tier, account + authtoken required
-  3. localhost.run — zero-install, uses ssh (always on macOS/Linux)
-  4. serveo.net   — zero-install, uses ssh (fallback)
-
-The tunnel process runs as a daemon; its public URL is returned via the API.
-"""
+"""Non-blocking public tunnel lifecycle with bounded startup and process cleanup."""
+import atexit
+import codecs
 import json
 import os
 import re
+import selectors
 import shutil
 import subprocess
 import threading
 import time
 import urllib.request
+from urllib.parse import urlsplit
 
-_state = {
-    'process': None,
-    'url': None,
-    'tool': None,
-    'status': 'stopped',   # stopped | starting | running | error
-    'error': None,
-    'log': '',
-}
+STARTUP_TIMEOUT = 30
+LOG_LIMIT = 12000
+_state = dict(process=None, url=None, tool=None, status='stopped', error=None, log='')
 _lock = threading.Lock()
+_generation = 0
+_ANSI = re.compile(r'\x1b\][^\x07]*(?:\x07|\x1b\\)|\x1b\[[0-?]*[ -/]*[@-~]')
+
+
+def _snapshot():
+    """Caller owns _lock; never recursively acquire it."""
+    return {k:v for k,v in _state.items() if k != 'process'}
 
 
 def status():
     with _lock:
-        return {k: v for k, v in _state.items() if k != 'process'}
+        return _snapshot()
 
 
-def _set(**kw):
+def _update(generation, **values):
     with _lock:
-        _state.update(kw)
+        if generation != _generation: return False
+        _state.update(values)
+        return True
 
 
 def detect():
-    """Return ('cloudflared'|'ngrok'|'localhost.run'|'serveo'|None, path/None)."""
-    for name in ('cloudflared', 'ngrok'):
+    for name in ('cloudflared','ngrok'):
         path = shutil.which(name)
-        if path:
-            return name, path
-    # Common macOS install locations
-    for candidate in ('/usr/local/bin/cloudflared', '/opt/homebrew/bin/cloudflared',
-                      '/usr/local/bin/ngrok', '/opt/homebrew/bin/ngrok'):
-        if os.path.isfile(candidate):
-            tool = 'cloudflared' if 'cloudflared' in candidate else 'ngrok'
-            return tool, candidate
-    # Zero-install SSH-based tunnels (ssh is always available on macOS/Linux)
-    ssh_path = shutil.which('ssh')
-    if ssh_path:
-        return 'localhost.run', ssh_path   # preferred zero-install
-    return None, None
+        if path: return name,path
+        for prefix in ('/usr/local/bin','/opt/homebrew/bin'):
+            path = os.path.join(prefix,name)
+            if os.path.isfile(path) and os.access(path,os.X_OK): return name,path
+    ssh = shutil.which('ssh')
+    return ('localhost.run',ssh) if ssh else (None,None)
+
+
+def extract_url(text, tool):
+    """Parse complete provider hosts, including ANSI output and nested lhr.life names."""
+    # Extract before stripping OSC hyperlinks (whose label may be truncated).
+    clean = text.replace('\\/','/')
+    for candidate in re.findall(r'https://[a-zA-Z0-9.-]+(?=[^a-zA-Z0-9.-]|$)',clean):
+        host = urlsplit(candidate).hostname or ''
+        suffixes = ('trycloudflare.com',) if tool=='cloudflared' else ('lhr.life','localhost.run')
+        if any(host.endswith('.'+suffix) and host != 'admin.localhost.run' for suffix in suffixes):
+            return candidate
+    return None
 
 
 def _extract_cloudflared_url(text):
-    m = re.search(r'https://[a-zA-Z0-9-]+\.trycloudflare\.com', text)
-    return m.group(0) if m else None
+    return extract_url(text,'cloudflared')
 
 
-def _extract_ngrok_url_from_api():
-    """ngrok exposes its tunnel URL via a local REST API on port 4040."""
+def _extract_ngrok_url_from_api(port):
     try:
-        with urllib.request.urlopen('http://127.0.0.1:4040/api/tunnels', timeout=3) as r:
-            data = json.loads(r.read())
-        for t in data.get('tunnels', []):
-            if t.get('proto') == 'https':
-                return t['public_url']
-    except Exception:
+        opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+        with opener.open('http://127.0.0.1:4040/api/tunnels',timeout=.5) as response:
+            data = json.loads(response.read(65536))
+        for tunnel in data.get('tunnels',[]):
+            address = str(tunnel.get('config',{}).get('addr',''))
+            if address.isdigit(): address = 'http://127.0.0.1:'+address
+            elif '://' not in address: address = 'http://'+address
+            parsed = urlsplit(address)
+            url = tunnel.get('public_url','')
+            if tunnel.get('proto')=='https' and urlsplit(url).scheme=='https' and parsed.hostname in ('localhost','127.0.0.1') and parsed.port==port:
+                return url
+    except (OSError,ValueError,TypeError):
         pass
     return None
 
 
-def _run_cloudflared(binary, port):
-    _set(status='starting', url=None, error=None, log='')
-    cmd = [binary, 'tunnel', '--url', f'http://localhost:{port}', '--no-autoupdate']
-    buf = []
+def command(tool,binary,port):
+    if tool=='cloudflared':
+        return [binary,'tunnel','--url',f'http://127.0.0.1:{port}','--no-autoupdate']
+    if tool=='ngrok':
+        return [binary,'http',f'http://127.0.0.1:{port}','--log','stdout','--log-format','json']
+    return [binary,'-T','-F',os.devnull,
+            '-o','BatchMode=yes','-o','StrictHostKeyChecking=accept-new',
+            '-o','ExitOnForwardFailure=yes','-o','ConnectTimeout=10',
+            '-o','ServerAliveInterval=15','-o','ServerAliveCountMax=3',
+            '-o','IdentitiesOnly=yes','-o','IdentityAgent=none','-o','IdentityFile=none',
+            '-R',f'80:127.0.0.1:{port}','nokey@localhost.run','--','--output','json']
+
+
+def _terminate(process):
+    if process is None: return
     try:
-        proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
-                                text=True, bufsize=1)
-        with _lock:
-            _state['process'] = proc
-        for line in proc.stdout:
-            buf.append(line)
-            log_text = ''.join(buf[-40:])
-            with _lock:
-                _state['log'] = log_text
-            url = _extract_cloudflared_url(log_text)
-            if url and _state['status'] == 'starting':
-                _set(status='running', url=url, tool='cloudflared')
-        proc.wait()
-        _set(status='stopped', url=None)
-    except Exception as exc:
-        _set(status='error', error=str(exc))
+        if process.poll() is None:
+            process.terminate()
+            try: process.wait(timeout=2)
+            except subprocess.TimeoutExpired:
+                process.kill(); process.wait(timeout=2)
+    except OSError:
+        pass
 
 
-def _run_localhost_run(ssh_path, port):
-    """Zero-install tunnel via localhost.run (uses ssh, no account needed).
-
-    Command:
-        ssh -o StrictHostKeyChecking=no -R 80:localhost:<PORT> nokey@localhost.run
-    Outputs lines like:
-        https://abc123-xyz.lhr.life
-    """
-    _set(status='starting', url=None, error=None, log='')
-    cmd = [
-        ssh_path, '-o', 'StrictHostKeyChecking=no',
-        '-o', 'ServerAliveInterval=30',
-        '-R', f'80:localhost:{port}',
-        'nokey@localhost.run',
-    ]
-    buf = []
+def _run(generation,tool,binary,port):
+    proc = None
     try:
-        proc = subprocess.Popen(
-            cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
-            text=True, bufsize=1,
-        )
-        with _lock:
-            _state['process'] = proc
-        for line in proc.stdout:
-            buf.append(line)
-            log_text = ''.join(buf[-40:])
-            with _lock:
-                _state['log'] = log_text
-            # localhost.run prints the URL on its own line
-            m = re.search(r'https://[a-zA-Z0-9\-]+\.lhr\.life', log_text)
-            if m and _state['status'] == 'starting':
-                _set(status='running', url=m.group(0), tool='localhost.run')
-        proc.wait()
-        _set(status='stopped', url=None)
+        proc = subprocess.Popen(command(tool,binary,port),stdin=subprocess.DEVNULL,
+                                stdout=subprocess.PIPE,stderr=subprocess.STDOUT,bufsize=0)
+        if not _update(generation,process=proc): return
+        started = time.monotonic(); last_ngrok_poll = 0; found = False; raw = ''
+        decoder = codecs.getincrementaldecoder('utf-8')('replace')
+        with selectors.DefaultSelector() as selector:
+            selector.register(proc.stdout,selectors.EVENT_READ)
+            while True:
+                with _lock:
+                    if generation != _generation: return
+                events = selector.select(.15)
+                for key,_ in events:
+                    chunk = os.read(key.fd,4096)
+                    if chunk:
+                        raw = (raw+decoder.decode(chunk))[-LOG_LIMIT:]
+                        _update(generation,log=_ANSI.sub('',raw)[-LOG_LIMIT:])
+                        url = extract_url(raw,tool) if tool!='ngrok' else None
+                        if url:
+                            found = True
+                            _update(generation,status='running',url=url,error=None)
+                    else:
+                        selector.unregister(key.fileobj)
+                elapsed = time.monotonic()-started
+                if proc.poll() is not None:
+                    detail = _ANSI.sub('',raw).strip()[-700:]
+                    raise RuntimeError(f'{tool} exited (code {proc.returncode}). '+(detail or 'No diagnostic output was received.'))
+                if tool=='ngrok' and not found and elapsed-last_ngrok_poll>=.5:
+                    last_ngrok_poll=elapsed
+                    url = _extract_ngrok_url_from_api(port)
+                    if url:
+                        found=True; _update(generation,status='running',url=url,error=None)
+                if not found and elapsed>=STARTUP_TIMEOUT:
+                    raise TimeoutError(f'{tool} did not supply a public URL within {STARTUP_TIMEOUT}s. Check outbound network access and the tunnel log.')
     except Exception as exc:
-        _set(status='error', error=str(exc))
-
-
-def _run_ngrok(binary, port):
-    _set(status='starting', url=None, error=None, log='')
-    cmd = [binary, 'http', str(port)]
-    try:
-        proc = subprocess.Popen(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        with _lock:
-            _state['process'] = proc
-        # Poll the ngrok local API until a tunnel URL appears (up to 15 s)
-        for _ in range(30):
-            time.sleep(0.5)
-            if proc.poll() is not None:
-                _set(status='error', error='ngrok exited unexpectedly (check auth token)')
-                return
-            url = _extract_ngrok_url_from_api()
-            if url:
-                _set(status='running', url=url, tool='ngrok')
-                break
-        else:
-            _set(status='error', error='ngrok started but no HTTPS tunnel URL found after 15 s. '
-                 'Ensure you are logged in: run "ngrok config add-authtoken YOUR_TOKEN" first.')
-            proc.terminate()
-            return
-        proc.wait()
-        _set(status='stopped', url=None)
-    except Exception as exc:
-        _set(status='error', error=str(exc))
+        _update(generation,status='error',url=None,error=str(exc))
+    finally:
+        _terminate(proc)
+        if proc and proc.stdout: proc.stdout.close()
+        _update(generation,process=None)
 
 
 def start(port=8787):
+    global _generation
+    if isinstance(port,bool) or not isinstance(port,int) or not 1<=port<=65535:
+        raise ValueError('Invalid tunnel port')
     with _lock:
-        if _state['status'] in ('starting', 'running'):
-            return {'ok': False, 'error': 'Tunnel already running', **status()}
-        proc = _state.get('process')
-        if proc and proc.poll() is None:
-            proc.terminate()
-
-    tool, binary = detect()
-    if not tool:
-        return {
-            'ok': False,
-            'status': 'not_installed',
-            'error': 'No tunnel tool found',
-            'install_options': [
-                {
-                    'name': 'cloudflared (recommended — free, no account)',
-                    'mac': 'brew install cloudflared',
-                    'linux': 'wget -q https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb && sudo dpkg -i cloudflared-linux-amd64.deb',
-                    'download': 'https://github.com/cloudflare/cloudflared/releases/latest',
-                },
-                {
-                    'name': 'ngrok (requires free account + authtoken)',
-                    'mac': 'brew install ngrok/ngrok/ngrok',
-                    'linux': 'snap install ngrok',
-                    'download': 'https://ngrok.com/download',
-                },
-            ],
-        }
-
-    if tool == 'cloudflared':
-        target_fn = _run_cloudflared
-    elif tool == 'ngrok':
-        target_fn = _run_ngrok
-    else:  # localhost.run via ssh
-        target_fn = _run_localhost_run
-
-    worker = threading.Thread(
-        target=target_fn,
-        args=(binary, port),
-        daemon=True,
-    )
-    worker.start()
-    # Wait up to 20 s for the URL to appear (localhost.run via SSH can take longer)
-    max_wait = 40 if tool == 'localhost.run' else 24
-    for _ in range(max_wait):
-        time.sleep(0.5)
-        s = status()
-        if s['status'] == 'running':
-            return {'ok': True, **s}
-        if s['status'] == 'error':
-            return {'ok': False, **s}
-    s = status()
-    return {'ok': False, 'error': 'Tunnel URL not found in time; check logs', **s}
+        if _state['status'] in ('starting','running'):
+            return dict(ok=True,**_snapshot())
+        tool,binary = detect()
+        if not tool:
+            _state.update(status='not_installed',error='No tunnel client found. Install OpenSSH or cloudflared.',url=None,tool=None)
+            return dict(ok=False,**_snapshot())
+        old = _state['process']
+        _generation += 1
+        generation = _generation
+        _state.update(process=None,url=None,tool=tool,status='starting',error=None,log='')
+        result = dict(ok=True,**_snapshot())
+    # Never wait for network startup in the HTTP request. All cleanup is bounded.
+    def launch():
+        _terminate(old)
+        _run(generation,tool,binary,port)
+    threading.Thread(target=launch,daemon=True,name='guardian-tunnel').start()
+    return result
 
 
 def stop():
+    global _generation
     with _lock:
-        proc = _state.get('process')
-        if proc and proc.poll() is None:
-            proc.terminate()
-        _state.update(status='stopped', url=None, process=None)
-    return {'ok': True, 'status': 'stopped'}
+        _generation += 1  # Stale workers cannot overwrite a newer run's state.
+        proc = _state['process']
+        _state.update(process=None,url=None,tool=None,status='stopped',error=None,log='')
+    _terminate(proc)
+    return dict(ok=True,**status())
 
+
+atexit.register(stop)
