@@ -42,7 +42,6 @@ def source_path(source, store):
         if proc.returncode: raise ValueError('Git clone failed: '+proc.stderr[-800:])
         repo_url = f'https://github.com/{slug}' + (f'/tree/{branch}' if branch else '')
         return target, repo_url
-        return target, source.rstrip('/').removesuffix('.git')
     if '://' in source: raise ValueError('Only public HTTPS github.com owner/repository URLs are supported')
     path=Path(source).expanduser().resolve()
     if not path.is_dir(): raise ValueError('Repository directory does not exist')
