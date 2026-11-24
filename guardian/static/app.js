@@ -1348,3 +1348,241 @@ bindTabs();
   try { state.token = (await api('/api/session')).token; await refresh(); }
   catch (e) { toast(e.message); render(); }
 })();
+
+
+/* ══════════════════════════════════════════════════════════════════
+   WATCH REPOS MODAL  (auto-scan pipeline UI)
+   ══════════════════════════════════════════════════════════════════ */
+
+function openWatchRepos() {
+  const existing = document.getElementById('watch-repos-modal');
+  if (existing) { existing.showModal(); return; }
+
+  const modal = document.createElement('dialog');
+  modal.id = 'watch-repos-modal';
+  modal.style.cssText = 'border:none;border-radius:14px;padding:0;min-width:520px;max-width:720px;box-shadow:0 8px 48px rgba(0,0,0,.22);overflow:hidden';
+  modal.innerHTML = `
+<div style="background:#0d2c27;color:#fff;padding:20px 24px 16px;display:flex;justify-content:space-between;align-items:center">
+  <div>
+    <div style="font-size:9px;letter-spacing:2px;opacity:.6;margin-bottom:4px">AUTO-SCAN PIPELINE</div>
+    <h2 style="margin:0;font-size:17px;font-weight:700">&#8623; Watch Repositories</h2>
+  </div>
+  <button id="watch-close" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:17px;line-height:30px">&#215;</button>
+</div>
+
+<div style="padding:20px 24px">
+
+  <!-- TUNNEL PANEL -->
+  <div id="tunnel-panel" style="background:#f4f9f7;border:1px solid #c5d9d2;border-radius:8px;padding:14px 16px;margin-bottom:18px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+      <strong style="font-size:13px;color:#1c3a2f">&#8646; Public Tunnel <span style="font-size:10px;font-weight:400;color:#718781">(needed so GitHub can reach your local server)</span></strong>
+      <div style="display:flex;gap:8px">
+        <button id="tunnel-start-btn" style="padding:5px 14px;background:#1c7362;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:12px;font-weight:600">&#11041; Start tunnel</button>
+        <button id="tunnel-stop-btn" style="padding:5px 14px;background:#c0392b;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:12px;font-weight:600;display:none">&#9632; Stop</button>
+      </div>
+    </div>
+    <div id="tunnel-url-display" style="font-size:12px;color:#4f6d67">Required so GitHub can reach your local server</div>
+    <div id="tunnel-install-hint" style="display:none;margin-top:10px;padding:10px;background:#fff7de;border:1px solid #d4a853;border-radius:6px;font-size:12px;line-height:1.6"></div>
+  </div>
+
+  <!-- ADD REPO FORM -->
+  <div style="margin-bottom:16px">
+    <label style="display:block;font-size:12px;font-weight:600;color:#2d4e45;margin-bottom:4px">GitHub repository URL</label>
+    <div style="display:flex;gap:8px">
+      <input id="ws-url-input" placeholder="https://github.com/owner/repo" style="flex:1;padding:7px 10px;border:1px solid #c5d5cf;border-radius:6px;font-size:13px">
+      <input id="ws-branch-input" placeholder="Branch (e.g. main)" style="width:140px;padding:7px 10px;border:1px solid #c5d5cf;border-radius:6px;font-size:13px">
+      <button id="ws-add-btn" style="padding:7px 16px;background:#1c7362;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:13px;font-weight:600">Add</button>
+    </div>
+    <div id="ws-add-error" style="display:none;color:#c0392b;font-size:11px;margin-top:4px"></div>
+  </div>
+
+  <!-- REPO LIST -->
+  <div id="ws-repo-list" style="max-height:220px;overflow-y:auto;margin-bottom:16px">
+    <div style="text-align:center;padding:20px;color:#8b96ac;font-size:13px">Loading watched repos&#8230;</div>
+  </div>
+
+  <!-- WEBHOOK SETUP PANEL -->
+  <div id="watch-secret-panel" style="display:none;background:#fffdf4;border:1px solid #d4a853;border-radius:8px;padding:14px 16px;margin-bottom:14px">
+    <div style="font-size:11px;font-weight:700;color:#7a5a1a;text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px">GitHub Webhook Setup</div>
+    <ol style="margin:0 0 10px 16px;font-size:12px;line-height:1.9;color:#4f4030">
+      <li>Start the tunnel above to get your public URL</li>
+      <li>Go to your repo &#8594; Settings &#8594; Webhooks &#8594; Add webhook</li>
+      <li>Payload URL: <code id="ws-url" style="user-select:all;background:#fff8e8;padding:1px 5px;border-radius:3px;border:1px solid #d4c090">&#8230;start tunnel first&#8230;</code></li>
+      <li>Content type: <code>application/json</code></li>
+      <li>Secret: <code id="ws-secret-display" style="user-select:all;background:#fff8e8;padding:1px 5px;border-radius:3px;border:1px solid #d4c090">&#8230;select a repo&#8230;</code></li>
+      <li>Events: <strong>Just the push event</strong></li>
+    </ol>
+    <button id="ws-done" style="padding:5px 14px;border:1px solid #c5d5cf;background:#fff;border-radius:6px;cursor:pointer;font-size:12px">Done</button>
+  </div>
+
+  <div id="ws-status-msg" style="display:none;font-size:12px;color:#4f6d67;margin-bottom:8px"></div>
+</div>`;
+
+  document.body.appendChild(modal);
+  modal.showModal();
+
+  // Close button
+  document.getElementById('watch-close').onclick = () => { modal.close(); modal.remove(); };
+  document.getElementById('ws-done').onclick = () => { document.getElementById('watch-secret-panel').style.display = 'none'; };
+
+  // ── Tunnel controls ──────────────────────────────────────────────
+  async function refreshTunnelStatus() {
+    try {
+      const t = await api('/api/tunnel');
+      const urlDiv = document.getElementById('tunnel-url-display');
+      const startBtn = document.getElementById('tunnel-start-btn');
+      const stopBtn = document.getElementById('tunnel-stop-btn');
+      const hintDiv = document.getElementById('tunnel-install-hint');
+      if (!urlDiv) return;
+      if (t.status === 'running' && t.url) {
+        urlDiv.innerHTML = 'Public URL: <code style="user-select:all;color:#1c7362">' + esc(t.url + '/api/webhook/github') + '</code>';
+        startBtn.style.display = 'none';
+        stopBtn.style.display = '';
+        const wsUrlEl = document.getElementById('ws-url');
+        if (wsUrlEl) wsUrlEl.textContent = t.url + '/api/webhook/github';
+      } else if (t.status === 'starting') {
+        urlDiv.textContent = 'Starting tunnel...';
+        startBtn.disabled = true;
+      } else if (t.status === 'error') {
+        urlDiv.innerHTML = '<span style="color:#c0392b">&#9888; ' + esc(t.error || 'Tunnel error') + '</span>';
+        startBtn.disabled = false; startBtn.style.display = '';
+        stopBtn.style.display = 'none';
+      } else {
+        urlDiv.textContent = 'Required so GitHub can reach your local server';
+        startBtn.disabled = false; startBtn.style.display = '';
+        stopBtn.style.display = 'none';
+      }
+      if (hintDiv) hintDiv.style.display = 'none';
+    } catch(e) {}
+  }
+
+  document.getElementById('tunnel-start-btn').onclick = async () => {
+    const btn = document.getElementById('tunnel-start-btn');
+    const hintDiv = document.getElementById('tunnel-install-hint');
+    btn.disabled = true; btn.textContent = 'Starting...';
+    try {
+      const r = await api('/api/tunnel/start', {});
+      if (r.status === 'not_installed' || r.install_options) {
+        hintDiv.style.display = '';
+        hintDiv.innerHTML = '<strong>No tunnel tool installed.</strong> Install one and restart GuardianAI:<br><br>'
+          + (r.install_options || []).map(o =>
+            '<b>' + esc(o.name) + '</b><br>'
+            + 'Mac: <code>' + esc(o.mac) + '</code><br>'
+            + 'Linux: <code>' + esc(o.linux) + '</code><br>'
+            + '<a href="' + esc(o.download) + '" target="_blank" rel="noopener">Download &#8599;</a>'
+          ).join('<br><br>');
+        btn.disabled = false; btn.textContent = '&#11041; Start tunnel';
+        return;
+      }
+      await refreshTunnelStatus();
+    } catch(e) {
+      btn.disabled = false; btn.textContent = '&#11041; Start tunnel';
+    }
+  };
+
+  document.getElementById('tunnel-stop-btn').onclick = async () => {
+    await api('/api/tunnel/stop', {});
+    setTimeout(refreshTunnelStatus, 500);
+  };
+
+  refreshTunnelStatus();
+
+  // ── Watched repo list ────────────────────────────────────────────
+  async function loadWatchedRepos() {
+    const list = document.getElementById('ws-repo-list');
+    if (!list) return;
+    try {
+      const repos = await api('/api/watched');
+      if (!repos.length) {
+        list.innerHTML = '<div style="text-align:center;padding:20px;color:#8b96ac;font-size:13px">No watched repositories yet. Add one above.</div>';
+        return;
+      }
+      list.innerHTML = repos.map(r => `
+<div style="display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid #dce8e3;border-radius:7px;margin-bottom:7px;background:#fff">
+  <div style="flex:1;min-width:0">
+    <div style="font-size:13px;font-weight:600;color:#1c3a2f;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(r.url)}</div>
+    <div style="font-size:11px;color:#8b96ac">Branch: ${esc(r.branches || 'all')} &nbsp;&#183;&nbsp; ${r.enabled ? '<span style="color:#1c7362">&#9679; Active</span>' : '<span style="color:#8b96ac">Paused</span>'}</div>
+  </div>
+  <button class="ws-secret-btn" data-id="${esc(r.id)}" style="padding:4px 10px;border:1px solid #c5d5cf;background:#fff;border-radius:5px;cursor:pointer;font-size:11px" title="Show webhook secret">&#128273; Setup</button>
+  <button class="ws-toggle-btn" data-id="${esc(r.id)}" data-enabled="${r.enabled}" style="padding:4px 10px;border:1px solid #c5d5cf;background:#fff;border-radius:5px;cursor:pointer;font-size:11px">${r.enabled ? 'Pause' : 'Resume'}</button>
+  <button class="ws-remove-btn" data-id="${esc(r.id)}" style="padding:4px 10px;border:1px solid #e8c5c5;background:#fff;border-radius:5px;cursor:pointer;font-size:11px;color:#c0392b">Remove</button>
+</div>`).join('');
+
+      // Bind secret buttons
+      list.querySelectorAll('.ws-secret-btn').forEach(btn => {
+        btn.onclick = async () => {
+          const panel = document.getElementById('watch-secret-panel');
+          panel.style.display = '';
+          document.getElementById('ws-secret-display').textContent = 'Loading...';
+          try {
+            const data = await api('/api/watched/secret/' + btn.dataset.id);
+            document.getElementById('ws-secret-display').textContent = data.secret;
+          } catch(e) {
+            document.getElementById('ws-secret-display').textContent = 'Error: ' + e.message;
+          }
+        };
+      });
+
+      // Bind toggle buttons
+      list.querySelectorAll('.ws-toggle-btn').forEach(btn => {
+        btn.onclick = async () => {
+          btn.disabled = true;
+          try {
+            await api('/api/watched/toggle', { id: btn.dataset.id, enabled: btn.dataset.enabled === '0' || btn.dataset.enabled === 'false' });
+            await loadWatchedRepos();
+          } catch(e) { toast(e.message); btn.disabled = false; }
+        };
+      });
+
+      // Bind remove buttons
+      list.querySelectorAll('.ws-remove-btn').forEach(btn => {
+        btn.onclick = async () => {
+          if (!confirm('Remove this watched repo? Webhook must be deleted from GitHub manually.')) return;
+          btn.disabled = true;
+          try {
+            await api('/api/watched/remove', { id: btn.dataset.id });
+            await loadWatchedRepos();
+          } catch(e) { toast(e.message); btn.disabled = false; }
+        };
+      });
+    } catch(e) {
+      list.innerHTML = '<div style="color:#c0392b;padding:12px;font-size:12px">Error loading repos: ' + esc(e.message) + '</div>';
+    }
+  }
+
+  // Add repo handler
+  document.getElementById('ws-add-btn').onclick = async () => {
+    const urlInput = document.getElementById('ws-url-input');
+    const branchInput = document.getElementById('ws-branch-input');
+    const errEl = document.getElementById('ws-add-error');
+    const btn = document.getElementById('ws-add-btn');
+    errEl.style.display = 'none';
+    const url = (urlInput.value || '').trim();
+    const branch = (branchInput.value || '').trim() || 'main';
+    if (!url) { errEl.style.display = ''; errEl.textContent = 'Enter a GitHub repository URL'; return; }
+    if (!/^https:\/\/github\.com\/[^/]+\/[^/]+/.test(url)) {
+      errEl.style.display = ''; errEl.textContent = 'Only public https://github.com/owner/repo URLs are supported'; return;
+    }
+    btn.disabled = true; btn.textContent = 'Adding...';
+    try {
+      await api('/api/watched', { url, branches: branch, actor: 'User' });
+      urlInput.value = ''; branchInput.value = '';
+      await loadWatchedRepos();
+      const statusMsg = document.getElementById('ws-status-msg');
+      statusMsg.style.display = '';
+      statusMsg.innerHTML = '&#10003; Repo added. Click <strong>&#128273; Setup</strong> next to it to configure the GitHub webhook.';
+    } catch(e) {
+      errEl.style.display = ''; errEl.textContent = e.message;
+    } finally {
+      btn.disabled = false; btn.textContent = 'Add';
+    }
+  };
+
+  loadWatchedRepos();
+}
+
+/* ── Wire up Watch Repos button ─────────────────────────────────── */
+(function wireWatchRepos() {
+  const btn = document.getElementById('watch-repos-btn');
+  if (btn) btn.onclick = () => openWatchRepos();
+})();

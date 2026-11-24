@@ -1,3 +1,5 @@
+import hashlib
+import hmac
 import json
 import secrets
 import threading
@@ -35,6 +37,13 @@ def serve(store, host='127.0.0.1', port=8787):
                     return self.send(200,store.validation(path.rsplit('/',1)[-1]))
                 if path=='/api/scans': return self.send(200,store.list())
                 if path=='/api/lessons': return self.send(200,store.lessons())
+                if path=='/api/tunnel': 
+                    from . import tunnel; return self.send(200,tunnel.status())
+                if path=='/api/watched': return self.send(200,store.list_watched())
+                if path.startswith('/api/watched/secret/'):
+                    wid=path.rsplit('/',1)[-1]
+                    row=store.get_watched_secret(wid)
+                    return self.send(200,{'webhook_secret':row['webhook_secret']})
                 if path=='/api/evaluation': return self.send(200,evaluate())
                 if path.startswith('/api/jobs/'):
                     with lock: job=dict(jobs.get(path.rsplit('/',1)[-1],{}))
@@ -49,7 +58,48 @@ def serve(store, host='127.0.0.1', port=8787):
                 mime={'/':'text/html; charset=utf-8','/app.js':'text/javascript; charset=utf-8','/style.css':'text/css; charset=utf-8','/cytoscape.min.js':'text/javascript; charset=utf-8'}[path]
                 return self.send(200,(static/names[path]).read_bytes(),mime)
             except ValueError as exc: self.send(404,{'error':str(exc)})
+        def do_WEBHOOK(self):
+            """GitHub webhook — no session token; uses HMAC-SHA256 per watch entry."""
+            try:
+                size=int(self.headers.get('Content-Length','0'))
+                if not 0<size<=2*1024*1024: raise ValueError('Bad size')
+                body=self.rfile.read(size)
+                event=self.headers.get('X-GitHub-Event','')
+                if event not in ('push','ping'): return self.send(200,{'ok':True,'skipped':'irrelevant event'})
+                payload=json.loads(body)
+                if event=='ping': return self.send(200,{'ok':True,'pong':True})
+                # Extract repo URL and branch from payload
+                repo_url=(payload.get('repository',{}).get('html_url') or '').rstrip('/')
+                ref=payload.get('ref','')
+                branch=ref.removeprefix('refs/heads/')
+                if not repo_url or not branch: return self.send(200,{'ok':True,'skipped':'no repo or branch'})
+                watch=store.match_webhook(repo_url,branch)
+                if not watch: return self.send(200,{'ok':True,'skipped':'repo/branch not watched'})
+                # Verify HMAC
+                sig=self.headers.get('X-Hub-Signature-256','')
+                expected='sha256='+hmac.new(watch['webhook_secret'].encode(),body,hashlib.sha256).hexdigest()
+                if not hmac.compare_digest(sig,expected): return self.send(403,{'error':'Invalid webhook signature'})
+                # Queue auto-scan of the pushed branch
+                branch_url=f'{repo_url}/tree/{branch}'
+                with lock:
+                    if any(j['status']=='running' for j in jobs.values()):
+                        return self.send(200,{'ok':True,'queued':False,'note':'A scan is already running; push recorded but not scanned yet'})
+                    jid=uuid.uuid4().hex[:12]
+                    jobs[jid]={'status':'running','stage':'Auto-scan from webhook push','trigger':'webhook','repo':repo_url,'branch':branch}
+                def webhook_work():
+                    try:
+                        scan=run_scan(branch_url,store,offline=False,progress=lambda s: None)
+                        with lock: jobs[jid].update({'status':'complete','scan_id':scan['id'],'trigger':'webhook','branch':branch})
+                    except Exception as exc:
+                        with lock: jobs[jid].update({'status':'failed','error':str(exc),'trigger':'webhook'})
+                threading.Thread(target=webhook_work,daemon=True).start()
+                return self.send(202,{'ok':True,'job_id':jid,'branch':branch,'repo':repo_url})
+            except Exception as exc: return self.send(400,{'error':str(exc)[:200]})
+
         def do_POST(self):
+            # Webhook endpoint bypasses session token auth (uses HMAC instead)
+            if urlparse(self.path).path=='/api/webhook/github':
+                return self.do_WEBHOOK()
             if not self.valid_host() or self.headers.get('X-Guardian-Token')!=token:
                 return self.send(403,{'error':'Invalid same-origin session token'})
             origin=self.headers.get('Origin')
@@ -124,6 +174,23 @@ def serve(store, host='127.0.0.1', port=8787):
                     from .git import repo_info
                     info=repo_info(source_root); info['needs_fork']=info.get('is_remote_origin',False)
                     return self.send(200,info)
+                if path=='/api/watched':
+                    branches=[b.strip() for b in str(data.get('branches','*')).split(',') if b.strip()] or ['*']
+                    result=store.add_watched(str(data.get('url','')),branches,str(data.get('actor','')))
+                    return self.send(200,result)
+                if path=='/api/watched/toggle':
+                    store.toggle_watched(str(data.get('id','')),bool(data.get('enabled',True)))
+                    return self.send(200,{'ok':True})
+                if path=='/api/tunnel/start':
+                    from . import tunnel
+                    result=tunnel.start(port)
+                    return self.send(200,result)
+                if path=='/api/tunnel/stop':
+                    from . import tunnel
+                    return self.send(200,tunnel.stop())
+                if path=='/api/watched/remove':
+                    store.remove_watched(str(data.get('id','')))
+                    return self.send(200,{'ok':True})
                 if path=='/api/review': store.review(data['scan_id'],data['finding_id'],data['status'],data.get('actor',''),data.get('reason',''))
                 elif path=='/api/baseline': store.promote(data['scan_id'],data.get('actor',''),data.get('reason',''))
                 elif path=='/api/lessons/approve': store.approve_lesson(int(data['lesson_id']),data.get('actor',''),data.get('reason',''))

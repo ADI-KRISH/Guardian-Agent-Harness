@@ -25,6 +25,7 @@ class Store:
             CREATE TABLE IF NOT EXISTS remediation_decisions(plan_id TEXT PRIMARY KEY, status TEXT, actor TEXT, reason TEXT, created TEXT);
             CREATE TABLE IF NOT EXISTS cache(key TEXT PRIMARY KEY, created TEXT, data TEXT);
             CREATE TABLE IF NOT EXISTS audit(id INTEGER PRIMARY KEY, scan_id TEXT, actor TEXT, decision TEXT, reason TEXT, created TEXT);
+            CREATE TABLE IF NOT EXISTS watched_repos(id TEXT PRIMARY KEY, url TEXT, branches TEXT, webhook_secret TEXT, enabled INTEGER DEFAULT 1, actor TEXT, created TEXT);
             CREATE TRIGGER IF NOT EXISTS audit_no_update BEFORE UPDATE ON audit BEGIN SELECT RAISE(ABORT,'append-only audit'); END;
             CREATE TRIGGER IF NOT EXISTS audit_no_delete BEFORE DELETE ON audit BEGIN SELECT RAISE(ABORT,'append-only audit'); END;
             ''')
@@ -124,6 +125,46 @@ class Store:
             db.execute('INSERT INTO audit(scan_id,actor,decision,reason,created) VALUES(?,?,?,?,?)',
                        (plan['scan_id'],'Sandbox validator',result['plan_id']+': '+result['status'],
                         plan['finding_id']+'; validation '+result['id']+'; original repository unchanged',now()))
+
+    def list_watched(self):
+        with self.connect() as db:
+            return [dict(r) for r in db.execute('SELECT id,url,branches,enabled,actor,created FROM watched_repos ORDER BY created DESC')]
+
+    def add_watched(self, url, branches, actor):
+        import uuid, secrets as _secrets
+        url = url.strip().rstrip('/')
+        if not url.startswith('https://github.com/'):
+            raise ValueError('Only public https://github.com URLs are supported')
+        wid = uuid.uuid4().hex[:12]
+        secret = _secrets.token_hex(32)
+        with self.connect() as db:
+            db.execute('INSERT INTO watched_repos VALUES(?,?,?,?,1,?,?)',
+                       (wid, url, json.dumps(branches), secret, actor, now()))
+        return {'id': wid, 'url': url, 'branches': branches, 'webhook_secret': secret}
+
+    def remove_watched(self, watch_id):
+        with self.connect() as db:
+            db.execute('DELETE FROM watched_repos WHERE id=?', (watch_id,))
+
+    def toggle_watched(self, watch_id, enabled):
+        with self.connect() as db:
+            db.execute('UPDATE watched_repos SET enabled=? WHERE id=?', (1 if enabled else 0, watch_id))
+
+    def get_watched_secret(self, watch_id):
+        with self.connect() as db:
+            row = db.execute('SELECT webhook_secret,url,branches,enabled FROM watched_repos WHERE id=?', (watch_id,)).fetchone()
+        if not row: raise ValueError('Watched repo not found')
+        return dict(row)
+
+    def match_webhook(self, repo_url, branch):
+        with self.connect() as db:
+            rows = db.execute('SELECT * FROM watched_repos WHERE enabled=1').fetchall()
+        for row in rows:
+            if row['url'].rstrip('/') == repo_url.rstrip('/'):
+                branches = json.loads(row['branches'])
+                if '*' in branches or branch in branches:
+                    return dict(row)
+        return None
 
     def record_git_push(self, plan_id, git_result):
         """Persist the git push outcome into the latest validation row for this plan."""
