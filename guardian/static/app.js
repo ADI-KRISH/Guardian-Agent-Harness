@@ -825,6 +825,8 @@ function showValidationResult(result, plan) {
   <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
     ${result.after_scan_id ? '<button class="primary" id="open-validation-scan">Inspect Patched Sandbox Artifact →</button>' : ''}
     ${result.status !== 'running' ? '<button class="secondary" id="export-validation">Export validation JSON</button>' : ''}
+     ${result.status === 'verified' && result.git_push ? '<div style="background:#eaf5f1;border:1px solid #a3d4c5;border-radius:6px;padding:8px 12px;font-size:12px;color:#1c7362"><strong>&#10003; Already pushed</strong> &mdash; Branch: <code>' + esc(result.git_push.branch) + '</code> &nbsp; Commit: <code>' + esc(result.git_push.commit.slice(0,10)) + '</code>' + (result.git_push.pushed ? ' &rarr; <code>' + esc(result.git_push.remote) + '</code>' : ' (local)') + '</div>' : ''}
+     ${result.status === 'verified' && !result.git_push ? '<button class="primary" id="push-to-git" style="background:#1c7362">&#8679; Push fix to Git branch</button>' : ''}
   </div>
 </div>`;
 
@@ -844,6 +846,94 @@ function showValidationResult(result, plan) {
       setTimeout(() => URL.revokeObjectURL(url), 1000);
     };
   }
+  if ($('#push-to-git')) {
+    $('#push-to-git').onclick = () => openGitPush(plan, result);
+  }
+}
+
+function openGitPush(plan, validationResult) {
+  const existing = $('#git-push-modal');
+  if (existing) existing.remove();
+  const modal = document.createElement('dialog');
+  modal.id = 'git-push-modal';
+  modal.style.cssText = 'border:none;border-radius:12px;padding:28px;min-width:420px;max-width:600px;box-shadow:0 8px 40px rgba(0,0,0,.18)';
+  modal.innerHTML = `
+<h2 style="margin:0 0 6px;font-size:17px;color:#1c3a2f">Push fix to Git branch</h2>
+<p style="color:#4f6d67;font-size:13px;margin:0 0 16px">Sandbox validation is <strong>verified</strong>. Push the approved edits to a new branch.</p>
+<label style="display:block;margin-bottom:12px;font-size:13px;color:#2d4e45">Your name (commit author)<br>
+  <input id="git-actor" style="width:100%;margin-top:4px;padding:7px 10px;border:1px solid #c5d5cf;border-radius:6px;font-size:13px" placeholder="e.g. Alice Smith">
+</label>
+<label style="display:block;margin-bottom:4px;font-size:13px;color:#2d4e45">Fork URL <span style="color:#718781;font-weight:400">(required only if this is someone else's repo)</span><br>
+  <input id="git-fork-url" style="width:100%;margin-top:4px;padding:7px 10px;border:1px solid #c5d5cf;border-radius:6px;font-size:13px" placeholder="https://github.com/YOUR_USER/REPO.git">
+</label>
+<p style="color:#718781;font-size:11px;margin:4px 0 16px">Fork the repo on GitHub first if you do not own the origin remote, then paste your fork URL above.</p>
+<div id="git-push-info" style="font-size:12px;color:#4f6d67;background:#f0f7f5;border-radius:6px;padding:10px;margin-bottom:14px;min-height:36px">Loading repository info…</div>
+<div style="display:flex;gap:10px;justify-content:flex-end">
+  <button id="git-push-cancel" style="padding:8px 18px;border:1px solid #c5d5cf;background:#fff;border-radius:6px;cursor:pointer;font-size:13px">Cancel</button>
+  <button id="git-push-confirm" style="padding:8px 18px;background:#1c7362;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:13px;font-weight:600">&#8679; Push fix</button>
+</div>
+<div id="git-push-result" style="margin-top:14px"></div>`;
+  document.body.appendChild(modal);
+  modal.showModal();
+  $('#git-push-cancel').onclick = () => { modal.close(); modal.remove(); };
+
+  api('/api/remediation/repo_info', { plan_id: plan.id }).then(info => {
+    const infoEl = $('#git-push-info');
+    if (!infoEl) return;
+    if (info.needs_fork) {
+      infoEl.innerHTML = '<span style="color:#c0783a">&#9888; Remote repo detected: <strong>' + esc(info.remote_url || '') + '</strong>.<br>Fork it on GitHub/GitLab and paste your fork URL above before pushing.</span>';
+    } else if (info.is_git) {
+      infoEl.innerHTML = '<span style="color:#1c7362">&#10003; Local git repo.</span>' + (info.remote_url ? ' Remote: <code>' + esc(info.remote_url) + '</code>' : ' <em>No remote configured — branch will be created locally.</em>');
+    } else {
+      infoEl.innerHTML = '<span style="color:#c0783a">&#9888; ' + esc(info.message || 'Not a git repository. Git push unavailable.') + '</span>';
+    }
+  }).catch(() => {
+    const infoEl = $('#git-push-info');
+    if (infoEl) infoEl.textContent = 'Could not fetch repo info.';
+  });
+
+  $('#git-push-confirm').onclick = async () => {
+    const actor = ($('#git-actor') ? $('#git-actor').value : '').trim();
+    const forkUrl = ($('#git-fork-url') ? $('#git-fork-url').value : '').trim() || undefined;
+    const btn = $('#git-push-confirm');
+    btn.disabled = true; btn.textContent = 'Pushing…';
+    const resultEl = $('#git-push-result');
+    try {
+      const r = await api('/api/remediation/push', {
+        plan_id: plan.id,
+        validation_id: validationResult ? validationResult.id : '',
+        actor,
+        fork_url: forkUrl || null
+      });
+      resultEl.innerHTML = '<div style="background:#eaf5f1;border-radius:6px;padding:12px;border:1px solid #a3d4c5">'
+        + '<strong style="color:#1c7362">&#10003; ' + (r.pushed ? 'Pushed to remote!' : 'Branch created locally!') + '</strong><br>'
+        + '<strong>Branch:</strong> <code>' + esc(r.branch) + '</code><br>'
+        + '<strong>Commit:</strong> <code>' + esc(r.commit) + '</code><br>'
+        + (r.pushed ? '<strong>Remote:</strong> <code>' + esc(r.remote) + '</code>' : '<em>' + esc(r.push_result) + '</em>')
+        + (r.lockfiles_included && r.lockfiles_included.length ? '<br><strong>Lockfiles committed:</strong> <code>' + esc(r.lockfiles_included.join(', ')) + '</code> <span style="color:#4f6d67;font-size:11px">(regenerated from sandbox)</span>' : '')
+        + '<details style="margin-top:8px"><summary style="cursor:pointer;font-size:11px;color:#4f6d67">Commit message</summary>'
+        + '<pre style="font-size:11px;white-space:pre-wrap">' + esc(r.commit_message) + '</pre></details>'
+        + '</div>';
+      btn.textContent = '✓ Done';
+      // Add Close button after success
+      const closeBtn = document.createElement('button');
+      closeBtn.textContent = 'Close';
+      closeBtn.style.cssText = 'margin-top:12px;padding:8px 20px;border:1px solid #c5d5cf;background:#fff;border-radius:6px;cursor:pointer;font-size:13px;width:100%';
+      closeBtn.onclick = () => { modal.close(); modal.remove(); };
+      resultEl.appendChild(closeBtn);
+      // Replace push button with already-pushed banner in the validation panel
+      const pushBtn = document.getElementById('push-to-git');
+      if (pushBtn) {
+        const banner = document.createElement('div');
+        banner.style.cssText = 'background:#eaf5f1;border:1px solid #a3d4c5;border-radius:6px;padding:8px 12px;font-size:12px;color:#1c7362';
+        banner.innerHTML = '<strong>✓ Already pushed</strong> — Branch: <code>' + esc(r.branch) + '</code>';
+        pushBtn.replaceWith(banner);
+      }
+    } catch (err) {
+      resultEl.innerHTML = '<div style="background:#fef2f2;border-radius:6px;padding:10px;color:#c0392b;font-size:13px">&#10006; ' + esc(err.message) + '</div>';
+      btn.disabled = false; btn.textContent = '&#8679; Push fix';
+    }
+  };
 }
 
 function showFinding(id) {

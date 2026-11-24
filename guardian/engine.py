@@ -19,13 +19,29 @@ from .selfcheck import checks as self_checks
 
 
 def source_path(source, store):
-    if re.fullmatch(r'https://github\.com/[\w.-]+/[\w.-]+(?:\.git)?/?', source):
-        target=store.directory/'repositories'/hashlib.sha256(source.encode()).hexdigest()[:16]
+    # Match plain repo URL:  https://github.com/owner/repo[.git][/]
+    # Match branch URL:      https://github.com/owner/repo/tree/<branch>
+    plain  = re.fullmatch(r'https://github\.com/([\w.-]+/[\w.-]+?)(?:\.git)?/?', source)
+    branch_m = re.fullmatch(r'https://github\.com/([\w.-]+/[\w.-]+?)(?:\.git)?/tree/(.+?)/?', source)
+    if plain or branch_m:
+        # Canonical clone URL is always the plain repo form
+        slug   = (branch_m or plain).group(1)
+        branch = branch_m.group(2) if branch_m else None
+        clone_url = f'https://github.com/{slug}.git'
+        target = store.directory/'repositories'/hashlib.sha256(source.encode()).hexdigest()[:16]
         target.parent.mkdir(exist_ok=True)
         # Unique checkout: no stale results and no hooks, submodules or package installs.
-        target=target.with_name(target.name+'-'+uuid.uuid4().hex[:8])
-        proc=subprocess.run(['git','-c','core.hooksPath=/dev/null','clone','--depth','50','--no-recurse-submodules','--',source,str(target)],capture_output=True,text=True,timeout=120,env={'PATH':'/usr/bin:/bin:/usr/local/bin','GIT_TERMINAL_PROMPT':'0','GIT_CONFIG_NOSYSTEM':'1','GIT_CONFIG_GLOBAL':'/dev/null'})
+        target = target.with_name(target.name+'-'+uuid.uuid4().hex[:8])
+        cmd = ['git','-c','core.hooksPath=/dev/null','clone','--depth','50','--no-recurse-submodules']
+        if branch:
+            cmd += ['--branch', branch]
+        cmd += ['--', clone_url, str(target)]
+        proc = subprocess.run(cmd, capture_output=True, text=True, timeout=120,
+                              env={'PATH':'/usr/bin:/bin:/usr/local/bin','GIT_TERMINAL_PROMPT':'0',
+                                   'GIT_CONFIG_NOSYSTEM':'1','GIT_CONFIG_GLOBAL':'/dev/null'})
         if proc.returncode: raise ValueError('Git clone failed: '+proc.stderr[-800:])
+        repo_url = f'https://github.com/{slug}' + (f'/tree/{branch}' if branch else '')
+        return target, repo_url
         return target, source.rstrip('/').removesuffix('.git')
     if '://' in source: raise ValueError('Only public HTTPS github.com owner/repository URLs are supported')
     path=Path(source).expanduser().resolve()

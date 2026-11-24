@@ -125,6 +125,15 @@ class Store:
                        (plan['scan_id'],'Sandbox validator',result['plan_id']+': '+result['status'],
                         plan['finding_id']+'; validation '+result['id']+'; original repository unchanged',now()))
 
+    def record_git_push(self, plan_id, git_result):
+        """Persist the git push outcome into the latest validation row for this plan."""
+        with self.connect() as db:
+            row = db.execute('SELECT id,data FROM validations WHERE plan_id=? ORDER BY rowid DESC LIMIT 1', (plan_id,)).fetchone()
+            if row:
+                data = json.loads(row['data'])
+                data['git_push'] = git_result
+                db.execute('UPDATE validations SET data=? WHERE id=?', (json.dumps(data), row['id']))
+
     def recover_validations(self):
         with self.connect() as db:
             for row in db.execute("SELECT id,data FROM validations WHERE status='running'").fetchall():

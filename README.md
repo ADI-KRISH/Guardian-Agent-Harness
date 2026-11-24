@@ -109,6 +109,56 @@ This is an implemented Day 1 application, not every stretch item in the design. 
 See [scope map](docs/scope.md), [architecture](docs/architecture.md), [responsible-use note](docs/security.md), and [demo walkthrough](docs/demo.md).
 
 
-## Day 2: recommendations, approval and sandbox validation
+## Day 2 Architecture: Team Contributions (Prioritization to Human Approval)
 
-Open a finding and choose **Generate recommendation** to inspect a proposed diff or investigation plan, export JSON, and record approval or rejection with a reviewer and reason. For supported executable proposals, **Approve & validate in sandbox** applies the change only to a Docker workspace, runs configured checks, rescans and reports the outcome. See [implementation scope and API](docs/day2-human-approval.md) and [Day 1 audit](docs/day1-audit.md).
+In Day 2, GuardianAI extends the Day 1 supply-chain detection harness into an automated remediation pipeline governed by a strict human-in-the-loop approval gate. The workflow transforms raw vulnerability signals into actionable, non-hallucinated security fixes:
+
+```
+[ Prioritized Risk ] ──► [ Candidate Verification ] ──► [ Precision Patching ] ──► [ Remediation Brain ] ──► [ Human Approval Gate ]
+    (Member 1)                  (Member 2)                     (Member 3)                 (Member 4)                 (Member 5)
+```
+
+To deliver a reliable, enterprise-grade architecture where AI agents never autonomously execute code changes on live production files, our team of five divided the system up to the Human Approval Gate into five distinct ownership areas. Below is a detailed breakdown of each team member's technical contribution, the problems they solved, and the components they authored.
+
+### Member 1 — Contextual Risk Prioritization & Urgency Engine (`guardian/prioritizer.py`)
+
+Member 1 designed and implemented the contextual risk prioritizer, solving the critical flaw of industry-standard vulnerability scoring: raw CVSS scores are context-blind. In real-world software engineering, a CVSS 9.8 Critical vulnerability in a local testing linter or build documentation dependency poses significantly less operational danger than a CVSS 7.5 High vulnerability in an internet-facing production server. Relying solely on raw CVSS produces overwhelming alert fatigue, causing security teams to waste engineering cycles patching non-exploitable development tools while active production risks linger.
+
+To solve this, Member 1 developed an explainable policy engine that consumes the dependency knowledge graph topology and manifest metadata. The engine detects whether an affected package is confined to development scopes (`dev: true/false`) and cross-examines detection categories—including live malicious scripts, prototype pollutions, unpinned container digests, and supply-chain drift. The prioritizer calculates a calibrated policy score from 0.0 to 10.0 and assigns each finding to one of four deterministic urgency tiers: **P0 (Immediate Threat)** for runtime or remote execution risks in production dependencies; **P1 (Urgent Action)** for high-severity issues on reachable production paths; **P2 (Medium Priority)** for moderate risks or critical vulnerabilities safely quarantined within development scopes; and **P3 (Deferred)** for low-impact hygiene items. Additionally, Member 1 ensured that every single score produces an auditable `score_explanation` string, giving engineers and auditors full visibility into why a finding was elevated or downgraded.
+
+### Member 2 — Candidate Verification & OSV Boundary Checker (`guardian/candidates.py`)
+
+Member 2 authored the candidate verification engine, eliminating one of the greatest dangers of generative AI in supply-chain security: hallucinated package versions and non-existent releases. Large Language Models often suggest non-existent versions, pull deprecated library forks, or propose updates that inadvertently break downstream ecosystems. Member 2 replaced speculative guessing with deterministic registry verification across official package ecosystems, including the npm Registry (`registry.npmjs.org`) and PyPI (`pypi.org`).
+
+The engine queries live registry metadata and cross-references advisory fix boundaries from the Open Source Vulnerabilities (OSV) API. When evaluating an affected package, the candidate selector parses version constraints across all active CVEs affecting that component, discards versions within vulnerable ranges, and selects the earliest compatible secure release on the target branch (or the latest stable release if branch-local fixes are unavailable). Crucially, Member 2 implemented a secondary validation pass: before any candidate version is submitted to the remediation planner, it is independently re-scanned against the OSV database to verify that upgrading does not introduce any secondary or newly published vulnerabilities. If no safe candidate exists or if registry access is offline, the module cleanly records why automated patching cannot proceed, preventing unverified modifications from ever reaching the engineer.
+
+### Member 3 — Precision AST Manifest Patching & Non-CVE Reference Pinning (`guardian/patching.py`, `guardian/references.py`)
+
+Member 3 built the surgical file patching and reference resolution subsystem, responsible for generating exact, syntactically clean modifications across diverse project manifests without causing configuration corruption. Traditional automated dependency update tools often re-serialize JSON or TOML files through naive deserializers, wiping developer comments, altering trailing whitespace, scrambling key orders, and converting 2-space indentation into 4-space indentation. Such noisy diffs increase friction and cause engineers to reject automated pull requests.
+
+To overcome this, Member 3 implemented `guardian/patching.py`, which uses span-based Abstract Syntax Tree (AST) token parsing via Python's `json.JSONDecoder`. By inspecting character spans directly in the raw manifest text, the patcher replaces only the exact byte range of the target version string inside `package.json` or `pyproject.toml`, preserving 100% of the original indentation, comments, and file formatting. In parallel, Member 3 authored `guardian/references.py` to address non-CVE supply-chain hygiene. This module deterministically resolves mutable Docker base tags (such as `python:alpine` or `node:latest`) into immutable SHA-256 image content digests by querying the Docker Registry v2 manifest API, and resolves unpinned GitHub Actions tags (such as `actions/checkout@v4`) into exact, immutable 40-character Git commit SHAs via the GitHub REST API. This guarantees that build steps and container images are permanently immune to upstream tag mutability attacks.
+
+### Member 4 — Remediation Plan Orchestration & Unified Diff Generation (`guardian/remediation.py`)
+
+Member 4 architected the central remediation orchestrator—the "Brain" of the Day 2 pipeline. This engine synthesizes the risk assessment from Member 1, the verified candidates from Member 2, and the precision patchers from Member 3 into a canonical, human-reviewable remediation proposal object (`R-...`). 
+
+Member 4 implemented Semantic Versioning (SemVer) compatibility delta calculations, classifying every proposed upgrade as `patch` (bug fixes, minimal risk), `minor` (backwards-compatible features, moderate review needed), or `major` (breaking changes requiring regression testing). In complex nested package graphs where a vulnerable dependency is deeply embedded transitively (e.g., `nodejs-goof` → `tap` → `nyc` → `istanbul-reports` → `handlebars`), the direct parent cannot always be safely upgraded without breaking the root application. Member 4 solved this by generating npm manifest `"overrides"` (or yarn `"resolutions"`), forcing the package manager to pin the nested component to a secure release while keeping parent manifests intact. The engine computes standard unified diff hunks (`--- a/... +++ b/...`), captures SHA-256 precondition hashes of all target files to prevent race conditions against concurrent file edits, and formulates precise, non-destructive shell rollback commands (`git checkout -- ...` or patch reversals) so that developers can instantly undo changes if issues arise.
+
+### Member 5 — Human Governance, Drift Preconditions & Interactive Approval UI (`guardian/store.py`, `guardian/server.py`, `guardian/static/app.js`)
+
+Member 5 designed and implemented the human governance framework, cryptographic precondition enforcement, and the interactive web approval interface. In accordance with zero-trust AI principles, GuardianAI strictly prohibits autonomous code execution: an AI proposal must never touch repository files or sandbox environments without explicit, authenticated human authorization.
+
+Member 5 implemented the cryptographic precondition check inside `guardian/store.py`: when a human reviewer clicks "Approve", the server reads the current target files from disk, recomputes their live SHA-256 hashes, and compares them against the recorded precondition hashes from the original plan. If any file has drifted or been modified since the plan was generated, the operation instantly halts with an error, preventing stale or conflicting patch applications. Member 5 extended `guardian/server.py` to require named reviewer attribution (`actor`) and written rationale (`reason`) for every decision, recording all approvals and rejections in an immutable, append-only SQLite audit ledger. On the frontend, Member 5 developed the responsive slide-out remediation drawer in `guardian/static/app.js` and `index.html`. The interface renders rich priority badges, vulnerability advisory summaries, SemVer compatibility warnings, highlighted unified diffs, rollback instructions, and an intuitive approval form. This provides security leads and developers with everything needed to make confident, informed decisions in seconds.
+
+---
+
+## Day 2 Workflow Summary
+
+Together, these five components form a resilient, deterministic pre-approval pipeline:
+1. **Prioritization (Member 1)** ensures developers only spend time reviewing real threats, eliminating CVSS alert fatigue.
+2. **Verification (Member 2)** guarantees zero hallucinations by validating candidate versions against live registries and OSV databases.
+3. **Precision Patching (Member 3)** performs non-destructive AST byte replacements and pins Docker/GitHub supply-chain references to immutable SHAs.
+4. **Remediation Brain (Member 4)** computes SemVer risk deltas, handles transitive overrides, and drafts clean unified diffs with instant rollback plans.
+5. **Human Gate & UI (Member 5)** enforces human authorization, verifies cryptographic drift preconditions, audits every review in SQLite, and provides an interactive approval dashboard.
+
+Once approved by a human reviewer, executable proposals transition into the isolated Docker sandbox validator for build and test verification before being finalized. See [implementation scope and API](docs/day2-human-approval.md) and [Day 1 audit](docs/day1-audit.md).

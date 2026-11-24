@@ -91,6 +91,39 @@ def serve(store, host='127.0.0.1', port=8787):
                         validate(store,data['plan_id'],validation_id,lambda stage:store.validation_progress(validation_id,stage))
                     threading.Thread(target=validation_work,daemon=True).start()
                     return self.send(202,{'validation_id':validation_id,'status':'running','applied':False})
+                if path=='/api/remediation/push':
+                    plan_id=data.get('plan_id',''); actor=data.get('actor',''); fork_url=data.get('fork_url') or None
+                    plan=store.remediation_plan(plan_id)
+                    if plan.get('status')!='approved': raise ValueError('Human approval is required before pushing')
+                    validation_id=data.get('validation_id','')
+                    if validation_id:
+                        v=store.validation(validation_id)
+                        if v.get('status') not in ('verified',): raise ValueError('Sandbox validation must be verified before pushing (status: '+str(v.get('status'))+')')
+                    original=store.get(plan['scan_id'])
+                    target_finding=next((f for f in original['findings'] if f['id']==plan['finding_id']),None)
+                    if not target_finding: raise ValueError('Finding not found in scan')
+                    source_root=original.get('source_root',original.get('repo',''))
+                    if not source_root or source_root.startswith('https://'): raise ValueError('Source root is a remote URL. Clone the repository locally (or your fork) and rescan before pushing.')
+                    from .git import push_fix
+                    validation_id_push=data.get('validation_id','')
+                    sandbox_workspace=None
+                    if validation_id_push:
+                        try:
+                            vr=store.validation(validation_id_push)
+                            if vr.get('status') not in ('verified',): raise ValueError('Sandbox validation must be verified before pushing (status: '+str(vr.get('status'))+')')
+                            sandbox_workspace=vr.get('workspace')
+                        except ValueError as exc: raise
+                    git_result=push_fix(source_root,plan,target_finding,fork_url=fork_url,actor=actor,sandbox_workspace=sandbox_workspace)
+                    store.record_git_push(data.get('plan_id',''),git_result)
+                    store.audit(plan_id,actor or 'system','Git push',f'branch={git_result["branch"]} commit={git_result["commit"]} pushed={git_result["pushed"]}')
+                    return self.send(200,git_result)
+                if path=='/api/remediation/repo_info':
+                    plan_id=data.get('plan_id',''); plan=store.remediation_plan(plan_id)
+                    original=store.get(plan['scan_id']); source_root=original.get('source_root',original.get('repo',''))
+                    if not source_root or source_root.startswith('https://'): return self.send(200,{'is_git':False,'needs_fork':True,'remote_url':source_root,'message':'This was scanned from a remote URL. Clone the repository (or your fork) locally and rescan to enable git push.'})
+                    from .git import repo_info
+                    info=repo_info(source_root); info['needs_fork']=info.get('is_remote_origin',False)
+                    return self.send(200,info)
                 if path=='/api/review': store.review(data['scan_id'],data['finding_id'],data['status'],data.get('actor',''),data.get('reason',''))
                 elif path=='/api/baseline': store.promote(data['scan_id'],data.get('actor',''),data.get('reason',''))
                 elif path=='/api/lessons/approve': store.approve_lesson(int(data['lesson_id']),data.get('actor',''),data.get('reason',''))
