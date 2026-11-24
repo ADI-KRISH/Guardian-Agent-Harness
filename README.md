@@ -162,3 +162,33 @@ Together, these five components form a resilient, deterministic pre-approval pip
 5. **Human Gate & UI (Member 5)** enforces human authorization, verifies cryptographic drift preconditions, audits every review in SQLite, and provides an interactive approval dashboard.
 
 Once approved by a human reviewer, executable proposals transition into the isolated Docker sandbox validator for build and test verification before being finalized. See [implementation scope and API](docs/day2-human-approval.md) and [Day 1 audit](docs/day1-audit.md).
+
+### AI fallback when no verified upgrade is available
+
+Recommendation generation now calls `guardian/harness.py` when the deterministic
+candidate selector cannot supply an upgrade. The adapter uses the patch-author
+prompt, feature-token extraction and JSON parser from
+`guardian-harness.zip` → `guardian/agents/nofix.py`. It does not execute the ZIP's
+worktree creation, commits, publisher, or automatic patch application.
+
+The adapter reads unchanged scan-inventoried JavaScript/TypeScript/Python source,
+locates feature identifiers named in the advisory, and asks a local Ollama model
+for up to six edits at those sites. It checks exact old text, paths, duplicate
+edits, and scan hashes, then displays an unverified mitigation diff for human
+approval. It cannot generate a patch for every advisory or repository. Missing
+feature evidence, stale files, unavailable models, and invalid output produce an
+explicit investigation result. An unavailable OSV lookup is not evidence that
+no fixed version exists.
+
+Start Ollama separately and set `GUARDIAN_OLLAMA_MODEL` to an installed local
+model before starting Guardian; otherwise an installed Mistral model is preferred, then the first local model. No model is downloaded automatically and no hosted provider receives code.
+Restart Guardian after updating the backend. Open a finding and generate a new
+recommendation to see **AI harness fallback** details. Existing proposals retain
+their original content.
+
+After approval, AI patches require Docker (no host-process fallback), a supported
+npm manifest or explicit `.guardian-validation.json` runtime/build/test settings,
+and a rescan. Passing checks alone does not prove a source mitigation resolves
+the CVE; AI mitigation validation remains inconclusive pending security review,
+or fails when checks/regressions fail. The original checkout is not patched by
+recommendation generation.
