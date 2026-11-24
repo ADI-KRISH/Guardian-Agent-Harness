@@ -1,0 +1,148 @@
+{
+  "id": "de64f554791248f3",
+  "plan_id": "R-51a9c51873af7d08c66718a1",
+  "status": "verified",
+  "created": "2026-11-24T08:56:16.631337+00:00",
+  "steps": [
+    {
+      "name": "lockfile",
+      "argv": [
+        "npm",
+        "install",
+        "--package-lock-only",
+        "--ignore-scripts",
+        "--no-audit",
+        "--no-fund"
+      ],
+      "network": true,
+      "exit_code": 0,
+      "passed": true,
+      "timeout": false,
+      "log_limit_exceeded": false,
+      "output": "\nup to date in 1s\n",
+      "duration_seconds": 2.5
+    },
+    {
+      "name": "install",
+      "argv": [
+        "npm",
+        "ci",
+        "--ignore-scripts",
+        "--no-audit",
+        "--no-fund"
+      ],
+      "network": true,
+      "exit_code": 0,
+      "passed": true,
+      "timeout": false,
+      "log_limit_exceeded": false,
+      "output": "\nadded 1 package in 4s\n",
+      "duration_seconds": 5.58
+    },
+    {
+      "name": "test",
+      "argv": [
+        "npm",
+        "run",
+        "--ignore-scripts",
+        "test"
+      ],
+      "network": false,
+      "exit_code": 0,
+      "passed": true,
+      "timeout": false,
+      "log_limit_exceeded": false,
+      "output": "\n> guardian-live-integration-fixture@1.0.0 test\n> node test.js\n\nFunctional smoke test passed\n",
+      "duration_seconds": 1.77
+    }
+  ],
+  "original_modified": false,
+  "mode": "full",
+  "verification_level": "build+test",
+  "image_id": "sha256:66cb8ef75184df13dc0dcf866330488996b485d404db60555756865300ced4a5",
+  "profile": {
+    "runtime": "node",
+    "cwd": ".",
+    "commands": [
+      {
+        "name": "lockfile",
+        "argv": [
+          "npm",
+          "install",
+          "--package-lock-only",
+          "--ignore-scripts",
+          "--no-audit",
+          "--no-fund"
+        ],
+        "network": true
+      },
+      {
+        "name": "install",
+        "argv": [
+          "npm",
+          "ci",
+          "--ignore-scripts",
+          "--no-audit",
+          "--no-fund"
+        ],
+        "network": true
+      },
+      {
+        "name": "test",
+        "argv": [
+          "npm",
+          "run",
+          "--ignore-scripts",
+          "test"
+        ],
+        "network": false
+      }
+    ],
+    "missing_checks": [
+      "build"
+    ],
+    "skipped_auth_checks": [],
+    "network_policy": "Registry installation only; repository build/test commands run with networking disabled. No host credentials, Docker socket or original checkout are mounted."
+  },
+  "workspace": "/private/var/folders/xf/nw010krj41j8qsfdbk4s4lw00000gn/T/guardian-docker-e2e-0wn4mm1e/data/repositories/sandbox-de64f554791248f3",
+  "omitted_credentials": [],
+  "before_scan_id": "ae249e693342",
+  "after_scan_id": "c9d478700ca6",
+  "comparison": {
+    "target_observed_before": true,
+    "target_absent_after": true,
+    "coverage_complete": true,
+    "new_high_or_unknown_findings": [],
+    "new_findings": [
+      "G-edfc3c222920"
+    ],
+    "remaining_findings": [
+      "G-edfc3c222920"
+    ],
+    "sbom_added": [
+      [
+        "npm",
+        "lodash",
+        "4.18.1"
+      ]
+    ],
+    "sbom_removed": [
+      [
+        "npm",
+        "lodash",
+        "4.17.20"
+      ]
+    ]
+  },
+  "checks": {
+    "install": "passed",
+    "build": "not_configured",
+    "test": "passed",
+    "integrity": "passed",
+    "missing": [
+      "build"
+    ]
+  },
+  "note": "Verification is limited to configured checks and scanner coverage. Review remaining/new findings before merging; the original repository was not modified.",
+  "finished": "2026-11-24T08:56:26.728226+00:00"
+}
