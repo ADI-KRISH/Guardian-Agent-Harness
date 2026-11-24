@@ -1,0 +1,121 @@
+{
+  "schema": "guardian.investigation/v1",
+  "finding": {
+    "id": "GRD-704d795f51",
+    "rule": "CHANGE-INTEGRITY",
+    "category": "integrity",
+    "title": "Integrity hash changed for unchanged version lodash@4.17.15",
+    "severity": "critical"
+  },
+  "component": {
+    "id": "pkg:npm/lodash@4.17.15",
+    "name": "lodash",
+    "version": "4.17.15",
+    "ecosystem": "npm",
+    "direct": true,
+    "scope": "prod"
+  },
+  "generated_at": "2026-11-24T04:54:29Z",
+  "verified_evidence": [
+    {
+      "id": "F1",
+      "kind": "sbom-diff",
+      "source": "demo/baseline/package-lock.json",
+      "detail": "baseline integrity: sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmb..."
+    },
+    {
+      "id": "F2",
+      "kind": "lockfile-entry",
+      "source": "package-lock.json:node_modules/lodash",
+      "detail": "current integrity: sha512-WJAEnrj+gB2oUrTvMs/hGDhnO9wWZDAUwbYwgNb3E..."
+    },
+    {
+      "id": "F3",
+      "kind": "dependency-path",
+      "source": "dependency graph",
+      "detail": "shop-api@1.4.0 > lodash@4.17.15"
+    },
+    {
+      "id": "F4",
+      "kind": "baseline-diff",
+      "source": "baseline vs current",
+      "detail": "version unchanged: 4.17.15"
+    },
+    {
+      "id": "F5",
+      "kind": "baseline-diff",
+      "source": "baseline vs current",
+      "detail": "integrity: sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbN -> sha512-WJAEnrj+gB2oUrTvMs/hGDhnO9wWZDAUwbYwgNb3EUuzGyEBdHyxxUQKN2kqJqY/EEWBKv71jtRWGlRR1Nt"
+    },
+    {
+      "id": "F6",
+      "kind": "manifest",
+      "source": "package.json",
+      "detail": "declared as lodash: 4.17.15 (dependencies)"
+    },
+    {
+      "id": "F7",
+      "kind": "registry",
+      "source": "registry.npmjs.org",
+      "detail": "latest dist-tag: 4.18.1; 117 versions published"
+    },
+    {
+      "id": "F8",
+      "kind": "registry",
+      "source": "registry.npmjs.org",
+      "detail": "package first published 2012-04-23"
+    },
+    {
+      "id": "F9",
+      "kind": "registry",
+      "source": "registry.npmjs.org",
+      "detail": "version 4.17.15 published 2019-07-19"
+    },
+    {
+      "id": "F10",
+      "kind": "provenance",
+      "source": "registry.npmjs.org",
+      "detail": "no npm provenance attestation for 4.17.15 (build origin not verifiable)"
+    },
+    {
+      "id": "F11",
+      "kind": "registry",
+      "source": "registry.npmjs.org",
+      "detail": "version published by npm user 'jdalton'"
+    },
+    {
+      "id": "F12",
+      "kind": "provenance",
+      "source": "registry.npmjs.org",
+      "detail": "source repository: git+https://github.com/lodash/lodash.git"
+    },
+    {
+      "id": "F13",
+      "kind": "git-history",
+      "source": "git log package-lock.json",
+      "detail": "no history available (shallow clone or untracked file)"
+    }
+  ],
+  "inference": {
+    "by": "rule-based",
+    "hypothesis": "The same version now has different bytes than before, which points to lockfile tampering or a compromised mirror.",
+    "assessment": "Rule-based inference from the verified facts; no AI model was used.",
+    "verdict": "suspicious",
+    "cited_facts": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F5",
+      "F6"
+    ],
+    "missing_evidence": [],
+    "next_steps": [
+      "block the component in policy until reviewed",
+      "restore from the trusted baseline / pin to a reviewed commit",
+      "escalate to security review"
+    ],
+    "confidence": "medium"
+  },
+  "note": "verified_evidence comes from deterministic sources; inference is model/rule output and must be reviewed"
+}

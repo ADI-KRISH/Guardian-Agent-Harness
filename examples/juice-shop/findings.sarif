@@ -663,6 +663,26 @@
           }
         },
         {
+          "ruleId": "VULN-KNOWN",
+          "level": "error",
+          "message": {
+            "text": "Known vulnerability in ws@8.18.0: ws: Memory exhaustion DoS from tiny fragments and data chunks | path: juice-shop@20.4.0-SNAPSHOT > frontend@20.4.0-SNAPSHOT > ethers@5.8.0 > @ethersproject/providers@5.8.0 > ws@8.18.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontend/package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "high",
+            "guardianId": "GRD-58397be730"
+          }
+        },
+        {
           "ruleId": "CICD-UNPINNED-ACTION",
           "level": "warning",
           "message": {
@@ -1314,6 +1334,26 @@
           }
         },
         {
+          "ruleId": "VULN-KNOWN",
+          "level": "warning",
+          "message": {
+            "text": "Known vulnerability in ws@8.18.0: ws: Uninitialized memory disclosure | path: juice-shop@20.4.0-SNAPSHOT > frontend@20.4.0-SNAPSHOT > ethers@5.8.0 > @ethersproject/providers@5.8.0 > ws@8.18.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontend/package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "medium",
+            "guardianId": "GRD-88414e0db6"
+          }
+        },
+        {
           "ruleId": "CICD-UNPINNED-ACTION",
           "level": "note",
           "message": {
@@ -1359,6 +1399,126 @@
           "properties": {
             "severity": "low",
             "guardianId": "GRD-32d4bb8f8d"
+          }
+        },
+        {
+          "ruleId": "INSTALL-SCRIPT",
+          "level": "note",
+          "message": {
+            "text": "@fortawesome/fontawesome-common-types@0.2.36 runs a custom install script | path: juice-shop@20.4.0-SNAPSHOT > frontend@20.4.0-SNAPSHOT > @fortawesome/fontawesome-svg-core@1.2.36 > @fortawesome/fontawesome-common-types@0.2.36"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontend/package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "low",
+            "guardianId": "GRD-04624cebc1"
+          }
+        },
+        {
+          "ruleId": "INSTALL-SCRIPT",
+          "level": "note",
+          "message": {
+            "text": "@fortawesome/fontawesome-svg-core@1.2.36 runs a custom install script | path: juice-shop@20.4.0-SNAPSHOT > frontend@20.4.0-SNAPSHOT > @fortawesome/fontawesome-svg-core@1.2.36"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontend/package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "low",
+            "guardianId": "GRD-28a8b0c25f"
+          }
+        },
+        {
+          "ruleId": "INSTALL-SCRIPT",
+          "level": "note",
+          "message": {
+            "text": "@fortawesome/free-brands-svg-icons@5.15.4 runs a custom install script | path: juice-shop@20.4.0-SNAPSHOT > frontend@20.4.0-SNAPSHOT > @fortawesome/free-brands-svg-icons@5.15.4"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontend/package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "low",
+            "guardianId": "GRD-d70b8b07ef"
+          }
+        },
+        {
+          "ruleId": "INSTALL-SCRIPT",
+          "level": "note",
+          "message": {
+            "text": "@fortawesome/free-regular-svg-icons@5.15.4 runs a custom install script | path: juice-shop@20.4.0-SNAPSHOT > frontend@20.4.0-SNAPSHOT > @fortawesome/free-regular-svg-icons@5.15.4"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontend/package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "low",
+            "guardianId": "GRD-468dc5528a"
+          }
+        },
+        {
+          "ruleId": "INSTALL-SCRIPT",
+          "level": "note",
+          "message": {
+            "text": "@fortawesome/free-solid-svg-icons@5.15.4 runs a custom install script | path: juice-shop@20.4.0-SNAPSHOT > frontend@20.4.0-SNAPSHOT > @fortawesome/free-solid-svg-icons@5.15.4"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontend/package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "low",
+            "guardianId": "GRD-103518a0a7"
+          }
+        },
+        {
+          "ruleId": "INSTALL-SCRIPT",
+          "level": "note",
+          "message": {
+            "text": "@parcel/watcher@2.6.0 runs a custom install script | path: juice-shop@20.4.0-SNAPSHOT > frontend@20.4.0-SNAPSHOT > @angular/build@22.3.0 > @parcel/watcher@2.6.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontend/package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "low",
+            "guardianId": "GRD-2040272568"
           }
         },
         {
@@ -1514,6 +1674,26 @@
           }
         },
         {
+          "ruleId": "VULN-KNOWN",
+          "level": "note",
+          "message": {
+            "text": "Known vulnerability in elliptic@6.6.1: Elliptic Uses a Cryptographic Primitive with a Risky Implementation | path: juice-shop@20.4.0-SNAPSHOT > frontend@20.4.0-SNAPSHOT > ethers@5.8.0 > @ethersproject/signing-key@5.8.0 > elliptic@6.6.1"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontend/package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "low",
+            "guardianId": "GRD-fc03a49989"
+          }
+        },
+        {
           "ruleId": "INSTALL-SCRIPT",
           "level": "note",
           "message": {
@@ -1571,6 +1751,46 @@
           "properties": {
             "severity": "info",
             "guardianId": "GRD-e301ad5c05"
+          }
+        },
+        {
+          "ruleId": "INSTALL-SCRIPT",
+          "level": "note",
+          "message": {
+            "text": "lmdb@3.5.9 runs a standard native-build install script | path: juice-shop@20.4.0-SNAPSHOT > frontend@20.4.0-SNAPSHOT > @angular/build@22.3.0 > lmdb@3.5.9"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontend/package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "info",
+            "guardianId": "GRD-05c1562602"
+          }
+        },
+        {
+          "ruleId": "INSTALL-SCRIPT",
+          "level": "note",
+          "message": {
+            "text": "msgpackr-extract@3.0.7 runs a standard native-build install script | path: juice-shop@20.4.0-SNAPSHOT > frontend@20.4.0-SNAPSHOT > @angular/build@22.3.0 > lmdb@3.5.9 > msgpackr@1.12.1 > msgpackr-extract@3.0.7"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontend/package-lock.json"
+                }
+              }
+            }
+          ],
+          "properties": {
+            "severity": "info",
+            "guardianId": "GRD-b3e62f88b6"
           }
         },
         {

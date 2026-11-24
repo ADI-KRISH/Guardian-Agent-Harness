@@ -1,0 +1,484 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Dependency graph · shop-api@1.4.0</title>
+<style>
+*{box-sizing:border-box} body{margin:0;font:14px/1.45 Inter,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#1b2430;background:#f5f6f8}
+header{background:#0f2537;color:#fff;padding:18px 28px} header h1{margin:0;font-size:21px} header p{margin:4px 0 0;opacity:.8;font-size:13px}
+main{padding:18px 28px 40px} .cards{display:flex;gap:10px;flex-wrap:wrap}
+.c{background:#fff;border-radius:10px;padding:10px 16px;min-width:120px;box-shadow:0 1px 2px #0001} .c b{font-size:22px;display:block} .c span{color:#5b6573;font-size:12.5px}
+.meta{color:#5b6573;font-size:13px;margin:10px 0} .sev i{font-style:normal;color:#fff;border-radius:4px;padding:2px 8px;font-size:12px;margin-right:5px}
+.s-critical{background:#b3261e} .s-high{background:#d9480f} .s-medium{background:#c08b00} .s-low{background:#3b6fb6}
+.tabs{display:flex;gap:4px;margin:18px 0 0} .tabs button{border:0;background:#e4e7eb;padding:9px 16px;border-radius:8px 8px 0 0;cursor:pointer;font:inherit}
+.tabs button.on{background:#fff;font-weight:600} .panel{display:none;background:#fff;border-radius:0 10px 10px 10px;padding:14px;box-shadow:0 1px 2px #0001} .panel.on{display:block}
+.zoom{height:calc(100vh - 320px);min-height:420px;overflow:hidden;border:1px solid #eef0f3;border-radius:8px;cursor:grab;position:relative;background:#fff}
+.zoom svg{transform-origin:0 0;position:absolute;left:0;top:0} .ztools{margin-bottom:8px;display:flex;gap:6px;align-items:center}
+button.sm{border:1px solid #ccd;background:#fff;border-radius:5px;padding:4px 10px;cursor:pointer;font:inherit;font-size:13px}
+.filters{display:flex;gap:10px;margin:4px 0 10px;align-items:center;flex-wrap:wrap} input,select{padding:5px 8px;border:1px solid #ccd;border-radius:5px;font:inherit}
+.tree{font:13px/1.6 ui-monospace,Menlo,Consolas,monospace;max-height:70vh;overflow:auto}
+.tree ul{list-style:none;padding-left:18px;margin:0;border-left:1px dotted #ccd} .tree>ul{border:0;padding-left:0}
+.tw{display:inline-block;width:14px;cursor:pointer;color:#57606a} .tn.hit{background:#fff3a3} .dev{color:#8b949e}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin:0 4px 1px 2px}
+.bdg{color:#fff;border-radius:3px;padding:0 5px;font-size:11px;margin-left:6px}
+table{border-collapse:collapse;width:100%;font-size:13px} th,td{padding:6px 8px;border-bottom:1px solid #eef0f3;text-align:left}
+th{cursor:pointer;background:#f7f8fa;position:sticky;top:0} .tbl{max-height:70vh;overflow:auto} small{color:#6b7480}
+</style></head><body>
+<header><h1>Dependency graph · shop-api@1.4.0</h1><p> · inputs: package-lock.json · generated 2026-11-24T04:54:28Z</p></header>
+<main>
+<div class="cards"><div class="c"><b>157</b><span>components</span></div><div class="c"><b>211</b><span>dependency edges</span></div><div class="c"><b>14</b><span>direct</span></div><div class="c"><b>143</b><span>transitive</span></div><div class="c"><b>6</b><span>max depth</span></div><div class="c"><b>1</b><span>unreachable</span></div></div>
+<div class="meta"><b>Ecosystems:</b> 152 npm · 2 docker · 3 github-actions &nbsp; <b>Scopes:</b> 81 dev · 72 prod · 1 build · 3 ci &nbsp; <span class="sev"><i class="s-critical">10 critical</i><i class="s-high">31 high</i><i class="s-medium">18 medium</i><i class="s-low">12 low</i></span></div>
+<div class="tabs"><button class="on" data-p="p1">Risk paths</button><button data-p="p2">Full graph explorer</button><button data-p="p3">All components</button></div>
+<section class="panel on" id="p1">
+ <div class="ztools"><button class="sm" id="zin">+</button><button class="sm" id="zout">−</button><button class="sm" id="zfit">fit</button>
+ <small>Only routes from the app to high/critical findings. Drag to pan, scroll to zoom, hover a box for its findings. Dashed = dev / build / CI / optional.</small></div>
+ <div class="zoom" id="zbox"><svg width="685pt" height="704pt"
+ viewBox="0.00 0.00 684.50 703.50" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 699.5)">
+<title>risk</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-699.5 680.5,-699.5 680.5,4 -4,4"/>
+<text text-anchor="middle" x="338.25" y="-682.7" font-family="Helvetica,sans-Serif" font-size="11.00">Risk paths: shop&#45;api@1.4.0 (findings &gt;= high)</text>
+<g id="clust1" class="cluster">
+<title>cluster_legend</title>
+<polygon fill="none" stroke="#dddddd" points="8,-435.5 8,-667.5 134,-667.5 134,-435.5 8,-435.5"/>
+<text text-anchor="middle" x="71" y="-656.3" font-family="Helvetica,sans-Serif" font-size="9.00">legend</text>
+</g>
+<!-- root -->
+<g id="node1" class="node">
+<title>root</title>
+<path fill="#0f2537" stroke="#0f2537" d="M105,-371.5C105,-371.5 37,-371.5 37,-371.5 31,-371.5 25,-365.5 25,-359.5 25,-359.5 25,-347.5 25,-347.5 25,-341.5 31,-335.5 37,-335.5 37,-335.5 105,-335.5 105,-335.5 111,-335.5 117,-341.5 117,-347.5 117,-347.5 117,-359.5 117,-359.5 117,-365.5 111,-371.5 105,-371.5"/>
+<text text-anchor="middle" x="71" y="-351" font-family="Helvetica,sans-Serif" font-size="10.00" fill="white">shop&#45;api@1.4.0</text>
+</g>
+<!-- pkg:docker/fastbuilds/node&#45;runtime@18 -->
+<g id="node2" class="node">
+<title>pkg:docker/fastbuilds/node&#45;runtime@18</title>
+<g id="a_node2"><a xlink:title="[high] Image &#39;fastbuilds/node&#45;runtime&#39; comes from a non&#45;allowlisted publisher (docker.io)">
+<polygon fill="#ffe8d9" stroke="#d9480f" stroke-width="2" points="335.5,-625.5 180.5,-625.5 180.5,-621.5 176.5,-621.5 176.5,-617.5 180.5,-617.5 180.5,-597.5 176.5,-597.5 176.5,-593.5 180.5,-593.5 180.5,-589.5 335.5,-589.5 335.5,-625.5"/>
+<polyline fill="none" stroke="#d9480f" stroke-width="2" points="180.5,-621.5 184.5,-621.5 184.5,-617.5 180.5,-617.5 "/>
+<polyline fill="none" stroke="#d9480f" stroke-width="2" points="180.5,-597.5 184.5,-597.5 184.5,-593.5 180.5,-593.5 "/>
+<text text-anchor="middle" x="258" y="-610.5" font-family="Helvetica,sans-Serif" font-size="10.00">fastbuilds/node&#45;runtime@18</text>
+<text text-anchor="middle" x="258" y="-599.5" font-family="Helvetica,sans-Serif" font-size="10.00">1 finding · high</text>
+</a>
+</g>
+</g>
+<!-- root&#45;&gt;pkg:docker/fastbuilds/node&#45;runtime@18 -->
+<g id="edge12" class="edge">
+<title>root&#45;&gt;pkg:docker/fastbuilds/node&#45;runtime@18</title>
+<path fill="none" stroke="#d9480f" d="M117.04,-366.71C123.49,-370.29 129.46,-374.81 134,-380.5 190.35,-451.23 111.52,-512.82 171.5,-580.5 173.09,-582.29 174.8,-583.97 176.61,-585.54"/>
+<polygon fill="#d9480f" stroke="#d9480f" points="175.58,-587.4 181.61,-589.43 178.16,-584.09 175.58,-587.4"/>
+</g>
+<!-- pkg:githubactions/quick&#45;actions/npm&#45;cache@main -->
+<g id="node3" class="node">
+<title>pkg:githubactions/quick&#45;actions/npm&#45;cache@main</title>
+<g id="a_node3"><a xlink:title="[high] GitHub Action quick&#45;actions/npm&#45;cache: branch/unversioned ref &#39;main&#39; (code changes on every run)">
+<polygon fill="#ffe8d9" stroke="#d9480f" stroke-width="2" stroke-dasharray="5,2" points="344.5,-571 171.5,-571 171.5,-567 167.5,-567 167.5,-563 171.5,-563 171.5,-538 167.5,-538 167.5,-534 171.5,-534 171.5,-530 344.5,-530 344.5,-571"/>
+<polyline fill="none" stroke="#d9480f" stroke-width="2" stroke-dasharray="5,2" points="171.5,-567 175.5,-567 175.5,-563 171.5,-563 "/>
+<polyline fill="none" stroke="#d9480f" stroke-width="2" stroke-dasharray="5,2" points="171.5,-538 175.5,-538 175.5,-534 171.5,-534 "/>
+<text text-anchor="middle" x="258" y="-559" font-family="Helvetica,sans-Serif" font-size="10.00">quick&#45;actions/npm&#45;cache@main</text>
+<text text-anchor="middle" x="258" y="-548" font-family="Helvetica,sans-Serif" font-size="10.00">1 finding · high</text>
+<text text-anchor="middle" x="258" y="-537" font-family="Helvetica,sans-Serif" font-size="10.00">(ci)</text>
+</a>
+</g>
+</g>
+<!-- root&#45;&gt;pkg:githubactions/quick&#45;actions/npm&#45;cache@main -->
+<g id="edge13" class="edge">
+<title>root&#45;&gt;pkg:githubactions/quick&#45;actions/npm&#45;cache@main</title>
+<path fill="none" stroke="#d9480f" d="M117.3,-367.35C123.56,-370.84 129.41,-375.16 134,-380.5 176.27,-429.68 127.21,-474.14 171.5,-521.5 172.95,-523.05 174.48,-524.51 176.08,-525.89"/>
+<polygon fill="#d9480f" stroke="#d9480f" points="175.07,-527.77 181.09,-529.82 177.66,-524.47 175.07,-527.77"/>
+</g>
+<!-- pkg:npm/crossenv@6.1.1 -->
+<g id="node5" class="node">
+<title>pkg:npm/crossenv@6.1.1</title>
+<g id="a_node5"><a xlink:title="[critical] Suspicious install script in crossenv@6.1.1&#10;[critical] crossenv was taken down by npm security (malicious package)&#10;[high] Possible typosquat: &#39;crossenv&#39; looks like &#39;cross&#45;env&#39;">
+<path fill="#f9dedc" stroke="#b3261e" stroke-width="2" stroke-dasharray="5,2" d="M299,-512C299,-512 217,-512 217,-512 211,-512 205,-506 205,-500 205,-500 205,-483 205,-483 205,-477 211,-471 217,-471 217,-471 299,-471 299,-471 305,-471 311,-477 311,-483 311,-483 311,-500 311,-500 311,-506 305,-512 299,-512"/>
+<text text-anchor="middle" x="258" y="-500" font-family="Helvetica,sans-Serif" font-size="10.00">crossenv@6.1.1</text>
+<text text-anchor="middle" x="258" y="-489" font-family="Helvetica,sans-Serif" font-size="10.00">3 findings · critical</text>
+<text text-anchor="middle" x="258" y="-478" font-family="Helvetica,sans-Serif" font-size="10.00">(dev)</text>
+</a>
+</g>
+</g>
+<!-- root&#45;&gt;pkg:npm/crossenv@6.1.1 -->
+<g id="edge14" class="edge">
+<title>root&#45;&gt;pkg:npm/crossenv@6.1.1</title>
+<path fill="none" stroke="#b3261e" d="M117.16,-368.43C123.28,-371.75 129.13,-375.74 134,-380.5 162.37,-408.23 142.13,-434.83 171.5,-461.5 179.46,-468.73 189.26,-474.24 199.36,-478.42"/>
+<polygon fill="#b3261e" stroke="#b3261e" points="198.63,-480.4 204.99,-480.62 200.16,-476.48 198.63,-480.4"/>
+</g>
+<!-- pkg:npm/debug&#45;helper&#45;utils@1.0.2 -->
+<g id="node6" class="node">
+<title>pkg:npm/debug&#45;helper&#45;utils@1.0.2</title>
+<g id="a_node6"><a xlink:title="[high] Lockfile root declares &#39;debug&#45;helper&#45;utils&#39; which is not in package.json">
+<path fill="#ffe8d9" stroke="#d9480f" stroke-width="2" d="M316,-452.5C316,-452.5 200,-452.5 200,-452.5 194,-452.5 188,-446.5 188,-440.5 188,-440.5 188,-428.5 188,-428.5 188,-422.5 194,-416.5 200,-416.5 200,-416.5 316,-416.5 316,-416.5 322,-416.5 328,-422.5 328,-428.5 328,-428.5 328,-440.5 328,-440.5 328,-446.5 322,-452.5 316,-452.5"/>
+<text text-anchor="middle" x="258" y="-437.5" font-family="Helvetica,sans-Serif" font-size="10.00">debug&#45;helper&#45;utils@1.0.2</text>
+<text text-anchor="middle" x="258" y="-426.5" font-family="Helvetica,sans-Serif" font-size="10.00">1 finding · high</text>
+</a>
+</g>
+</g>
+<!-- root&#45;&gt;pkg:npm/debug&#45;helper&#45;utils@1.0.2 -->
+<g id="edge15" class="edge">
+<title>root&#45;&gt;pkg:npm/debug&#45;helper&#45;utils@1.0.2</title>
+<path fill="none" stroke="#d9480f" d="M116.6,-371.55C122.55,-374.35 128.49,-377.36 134,-380.5 151.85,-390.66 153.14,-398.29 171.5,-407.5 176.3,-409.91 181.36,-412.16 186.53,-414.25"/>
+<polygon fill="#d9480f" stroke="#d9480f" points="185.81,-416.22 192.16,-416.46 187.34,-412.31 185.81,-416.22"/>
+</g>
+<!-- pkg:npm/event&#45;stream@3.3.6 -->
+<g id="node7" class="node">
+<title>pkg:npm/event&#45;stream@3.3.6</title>
+<g id="a_node7"><a xlink:title="[critical] Known vulnerability in event&#45;stream@3.3.6: Critical severity vulnerability that affects event&#45;stream and flatmap&#45;stream&#10;[high] event&#45;stream@3.3.6 is not published on the registry (unpublished or fabricated version)">
+<path fill="#f9dedc" stroke="#b3261e" stroke-width="2" d="M304,-398.5C304,-398.5 212,-398.5 212,-398.5 206,-398.5 200,-392.5 200,-386.5 200,-386.5 200,-374.5 200,-374.5 200,-368.5 206,-362.5 212,-362.5 212,-362.5 304,-362.5 304,-362.5 310,-362.5 316,-368.5 316,-374.5 316,-374.5 316,-386.5 316,-386.5 316,-392.5 310,-398.5 304,-398.5"/>
+<text text-anchor="middle" x="258" y="-383.5" font-family="Helvetica,sans-Serif" font-size="10.00">event&#45;stream@3.3.6</text>
+<text text-anchor="middle" x="258" y="-372.5" font-family="Helvetica,sans-Serif" font-size="10.00">2 findings · critical</text>
+</a>
+</g>
+</g>
+<!-- root&#45;&gt;pkg:npm/event&#45;stream@3.3.6 -->
+<g id="edge16" class="edge">
+<title>root&#45;&gt;pkg:npm/event&#45;stream@3.3.6</title>
+<path fill="none" stroke="#b3261e" d="M117.26,-360.1C140.33,-363.47 168.77,-367.62 193.95,-371.3"/>
+<polygon fill="#b3261e" stroke="#b3261e" points="193.7,-373.38 199.94,-372.17 194.31,-369.23 193.7,-373.38"/>
+</g>
+<!-- pkg:npm/express@4.17.1 -->
+<g id="node8" class="node">
+<title>pkg:npm/express@4.17.1</title>
+<path fill="white" stroke="#9aa1a9" d="M293.5,-344.5C293.5,-344.5 222.5,-344.5 222.5,-344.5 216.5,-344.5 210.5,-338.5 210.5,-332.5 210.5,-332.5 210.5,-320.5 210.5,-320.5 210.5,-314.5 216.5,-308.5 222.5,-308.5 222.5,-308.5 293.5,-308.5 293.5,-308.5 299.5,-308.5 305.5,-314.5 305.5,-320.5 305.5,-320.5 305.5,-332.5 305.5,-332.5 305.5,-338.5 299.5,-344.5 293.5,-344.5"/>
+<text text-anchor="middle" x="258" y="-324" font-family="Helvetica,sans-Serif" font-size="10.00">express@4.17.1</text>
+</g>
+<!-- root&#45;&gt;pkg:npm/express@4.17.1 -->
+<g id="edge17" class="edge">
+<title>root&#45;&gt;pkg:npm/express@4.17.1</title>
+<path fill="none" stroke="#9aa1a9" d="M117.26,-346.9C143.51,-343.06 176.71,-338.22 204.16,-334.21"/>
+<polygon fill="#9aa1a9" stroke="#9aa1a9" points="204.65,-336.26 210.28,-333.32 204.04,-332.11 204.65,-336.26"/>
+</g>
+<!-- pkg:npm/lodash@4.17.15 -->
+<g id="node12" class="node">
+<title>pkg:npm/lodash@4.17.15</title>
+<g id="a_node12"><a xlink:title="[critical] Integrity hash changed for unchanged version lodash@4.17.15&#10;[critical] Lockfile hash for lodash@4.17.15 does not match the registry&#10;[high] Known vulnerability in lodash@4.17.15: Command Injection in lodash&#10;[high] Known vulnerability in lodash@4.17.15: Prototype Pollution in lodash&#10;[high] Known vulnerability in lodash@4.17.15: lodash vulnerable to Code Injection via `_.template` imports key names">
+<path fill="#f9dedc" stroke="#b3261e" stroke-width="2" d="M299,-290.5C299,-290.5 217,-290.5 217,-290.5 211,-290.5 205,-284.5 205,-278.5 205,-278.5 205,-266.5 205,-266.5 205,-260.5 211,-254.5 217,-254.5 217,-254.5 299,-254.5 299,-254.5 305,-254.5 311,-260.5 311,-266.5 311,-266.5 311,-278.5 311,-278.5 311,-284.5 305,-290.5 299,-290.5"/>
+<text text-anchor="middle" x="258" y="-275.5" font-family="Helvetica,sans-Serif" font-size="10.00">lodash@4.17.15</text>
+<text text-anchor="middle" x="258" y="-264.5" font-family="Helvetica,sans-Serif" font-size="10.00">5 findings · critical</text>
+</a>
+</g>
+</g>
+<!-- root&#45;&gt;pkg:npm/lodash@4.17.15 -->
+<g id="edge18" class="edge">
+<title>root&#45;&gt;pkg:npm/lodash@4.17.15</title>
+<path fill="none" stroke="#b3261e" d="M101.74,-335.41C121.13,-324.11 147.26,-309.79 171.5,-299.5 180.28,-295.77 189.76,-292.28 199.09,-289.13"/>
+<polygon fill="#b3261e" stroke="#b3261e" points="199.84,-291.09 204.88,-287.21 198.52,-287.1 199.84,-291.09"/>
+</g>
+<!-- pkg:npm/minimist@1.2.5 -->
+<g id="node14" class="node">
+<title>pkg:npm/minimist@1.2.5</title>
+<g id="a_node14"><a xlink:title="[critical] Known vulnerability in minimist@1.2.5: Prototype Pollution in minimist&#10;[high] Download source for minimist@1.2.5 changed: registry.npmjs.org &#45;&gt; registry.npmjs&#45;cdn.com&#10;[high] minimist@1.2.5 is fetched over plain HTTP">
+<path fill="#f9dedc" stroke="#b3261e" stroke-width="2" d="M299,-236.5C299,-236.5 217,-236.5 217,-236.5 211,-236.5 205,-230.5 205,-224.5 205,-224.5 205,-212.5 205,-212.5 205,-206.5 211,-200.5 217,-200.5 217,-200.5 299,-200.5 299,-200.5 305,-200.5 311,-206.5 311,-212.5 311,-212.5 311,-224.5 311,-224.5 311,-230.5 305,-236.5 299,-236.5"/>
+<text text-anchor="middle" x="258" y="-221.5" font-family="Helvetica,sans-Serif" font-size="10.00">minimist@1.2.5</text>
+<text text-anchor="middle" x="258" y="-210.5" font-family="Helvetica,sans-Serif" font-size="10.00">3 findings · critical</text>
+</a>
+</g>
+</g>
+<!-- root&#45;&gt;pkg:npm/minimist@1.2.5 -->
+<g id="edge19" class="edge">
+<title>root&#45;&gt;pkg:npm/minimist@1.2.5</title>
+<path fill="none" stroke="#b3261e" d="M84.27,-335.09C101.18,-311.11 133.85,-269.43 171.5,-245.5 179.96,-240.13 189.57,-235.75 199.21,-232.2"/>
+<polygon fill="#b3261e" stroke="#b3261e" points="199.92,-234.18 204.89,-230.21 198.53,-230.22 199.92,-234.18"/>
+</g>
+<!-- pkg:npm/mocha@8.4.0 -->
+<g id="node15" class="node">
+<title>pkg:npm/mocha@8.4.0</title>
+<path fill="white" stroke="#9aa1a9" stroke-dasharray="5,2" d="M287.5,-182.5C287.5,-182.5 228.5,-182.5 228.5,-182.5 222.5,-182.5 216.5,-176.5 216.5,-170.5 216.5,-170.5 216.5,-158.5 216.5,-158.5 216.5,-152.5 222.5,-146.5 228.5,-146.5 228.5,-146.5 287.5,-146.5 287.5,-146.5 293.5,-146.5 299.5,-152.5 299.5,-158.5 299.5,-158.5 299.5,-170.5 299.5,-170.5 299.5,-176.5 293.5,-182.5 287.5,-182.5"/>
+<text text-anchor="middle" x="258" y="-167.5" font-family="Helvetica,sans-Serif" font-size="10.00">mocha@8.4.0</text>
+<text text-anchor="middle" x="258" y="-156.5" font-family="Helvetica,sans-Serif" font-size="10.00">(dev)</text>
+</g>
+<!-- root&#45;&gt;pkg:npm/mocha@8.4.0 -->
+<g id="edge20" class="edge">
+<title>root&#45;&gt;pkg:npm/mocha@8.4.0</title>
+<path fill="none" stroke="#9aa1a9" d="M78.28,-335.24C90.72,-301.75 121.68,-230.4 171.5,-191.5 182.67,-182.78 196.71,-176.84 210.17,-172.82"/>
+<polygon fill="#9aa1a9" stroke="#9aa1a9" points="211.09,-174.74 216.3,-171.1 209.95,-170.7 211.09,-174.74"/>
+</g>
+<!-- pkg:npm/node&#45;fetch@2.6.0 -->
+<g id="node17" class="node">
+<title>pkg:npm/node&#45;fetch@2.6.0</title>
+<g id="a_node17"><a xlink:title="[high] Known vulnerability in node&#45;fetch@2.6.0: node&#45;fetch forwards secure headers to untrusted sites">
+<path fill="#ffe8d9" stroke="#d9480f" stroke-width="2" d="M297.5,-128.5C297.5,-128.5 218.5,-128.5 218.5,-128.5 212.5,-128.5 206.5,-122.5 206.5,-116.5 206.5,-116.5 206.5,-104.5 206.5,-104.5 206.5,-98.5 212.5,-92.5 218.5,-92.5 218.5,-92.5 297.5,-92.5 297.5,-92.5 303.5,-92.5 309.5,-98.5 309.5,-104.5 309.5,-104.5 309.5,-116.5 309.5,-116.5 309.5,-122.5 303.5,-128.5 297.5,-128.5"/>
+<text text-anchor="middle" x="258" y="-113.5" font-family="Helvetica,sans-Serif" font-size="10.00">node&#45;fetch@2.6.0</text>
+<text text-anchor="middle" x="258" y="-102.5" font-family="Helvetica,sans-Serif" font-size="10.00">1 finding · high</text>
+</a>
+</g>
+</g>
+<!-- root&#45;&gt;pkg:npm/node&#45;fetch@2.6.0 -->
+<g id="edge21" class="edge">
+<title>root&#45;&gt;pkg:npm/node&#45;fetch@2.6.0</title>
+<path fill="none" stroke="#d9480f" d="M75.18,-335.47C83.41,-294.24 109.25,-192.38 171.5,-137.5 179.78,-130.2 190.02,-124.88 200.52,-120.99"/>
+<polygon fill="#d9480f" stroke="#d9480f" points="201.37,-122.92 206.36,-118.98 200,-118.95 201.37,-122.92"/>
+</g>
+<!-- pkg:npm/body&#45;parser@1.19.0 -->
+<g id="node4" class="node">
+<title>pkg:npm/body&#45;parser@1.19.0</title>
+<g id="a_node4"><a xlink:title="[high] Known vulnerability in body&#45;parser@1.19.0: body&#45;parser vulnerable to Denial of Service via trailing bytes after a compressed request body&#10;[high] Known vulnerability in body&#45;parser@1.19.0: body&#45;parser vulnerable to denial of service when url encoding is enabled">
+<path fill="#ffe8d9" stroke="#d9480f" stroke-width="2" d="M504.5,-398.5C504.5,-398.5 413.5,-398.5 413.5,-398.5 407.5,-398.5 401.5,-392.5 401.5,-386.5 401.5,-386.5 401.5,-374.5 401.5,-374.5 401.5,-368.5 407.5,-362.5 413.5,-362.5 413.5,-362.5 504.5,-362.5 504.5,-362.5 510.5,-362.5 516.5,-368.5 516.5,-374.5 516.5,-374.5 516.5,-386.5 516.5,-386.5 516.5,-392.5 510.5,-398.5 504.5,-398.5"/>
+<text text-anchor="middle" x="459" y="-383.5" font-family="Helvetica,sans-Serif" font-size="10.00">body&#45;parser@1.19.0</text>
+<text text-anchor="middle" x="459" y="-372.5" font-family="Helvetica,sans-Serif" font-size="10.00">2 findings · high</text>
+</a>
+</g>
+</g>
+<!-- pkg:npm/qs@6.7.0 -->
+<g id="node19" class="node">
+<title>pkg:npm/qs@6.7.0</title>
+<g id="a_node19"><a xlink:title="[high] Known vulnerability in qs@6.7.0: qs vulnerable to Prototype Pollution">
+<path fill="#ffe8d9" stroke="#d9480f" stroke-width="2" d="M657.5,-327.5C657.5,-327.5 592.5,-327.5 592.5,-327.5 586.5,-327.5 580.5,-321.5 580.5,-315.5 580.5,-315.5 580.5,-303.5 580.5,-303.5 580.5,-297.5 586.5,-291.5 592.5,-291.5 592.5,-291.5 657.5,-291.5 657.5,-291.5 663.5,-291.5 669.5,-297.5 669.5,-303.5 669.5,-303.5 669.5,-315.5 669.5,-315.5 669.5,-321.5 663.5,-327.5 657.5,-327.5"/>
+<text text-anchor="middle" x="625" y="-312.5" font-family="Helvetica,sans-Serif" font-size="10.00">qs@6.7.0</text>
+<text text-anchor="middle" x="625" y="-301.5" font-family="Helvetica,sans-Serif" font-size="10.00">1 finding · high</text>
+</a>
+</g>
+</g>
+<!-- pkg:npm/body&#45;parser@1.19.0&#45;&gt;pkg:npm/qs@6.7.0 -->
+<g id="edge1" class="edge">
+<title>pkg:npm/body&#45;parser@1.19.0&#45;&gt;pkg:npm/qs@6.7.0</title>
+<path fill="none" stroke="#d9480f" d="M508.73,-362.38C516.06,-359.5 523.51,-356.48 530.5,-353.5 547.26,-346.36 565.43,-337.96 581.26,-330.43"/>
+<polygon fill="#d9480f" stroke="#d9480f" points="582.47,-332.18 586.98,-327.7 580.66,-328.39 582.47,-332.18"/>
+</g>
+<!-- pkg:npm/flatmap&#45;stream@0.1.1 -->
+<g id="node9" class="node">
+<title>pkg:npm/flatmap&#45;stream@0.1.1</title>
+<g id="a_node9"><a xlink:title="[critical] Known malicious package in flatmap&#45;stream@0.1.1: Malicious Package in flatmap&#45;stream&#10;[critical] flatmap&#45;stream was taken down by npm security (malicious package)&#10;[critical] Known vulnerability in flatmap&#45;stream@0.1.1: Critical severity vulnerability that affects event&#45;stream and flatmap&#45;stream">
+<path fill="#f9dedc" stroke="#b3261e" stroke-width="2" d="M510,-452.5C510,-452.5 408,-452.5 408,-452.5 402,-452.5 396,-446.5 396,-440.5 396,-440.5 396,-428.5 396,-428.5 396,-422.5 402,-416.5 408,-416.5 408,-416.5 510,-416.5 510,-416.5 516,-416.5 522,-422.5 522,-428.5 522,-428.5 522,-440.5 522,-440.5 522,-446.5 516,-452.5 510,-452.5"/>
+<text text-anchor="middle" x="459" y="-437.5" font-family="Helvetica,sans-Serif" font-size="10.00">flatmap&#45;stream@0.1.1</text>
+<text text-anchor="middle" x="459" y="-426.5" font-family="Helvetica,sans-Serif" font-size="10.00">3 findings · critical</text>
+</a>
+</g>
+</g>
+<!-- pkg:npm/event&#45;stream@3.3.6&#45;&gt;pkg:npm/flatmap&#45;stream@0.1.1 -->
+<g id="edge2" class="edge">
+<title>pkg:npm/event&#45;stream@3.3.6&#45;&gt;pkg:npm/flatmap&#45;stream@0.1.1</title>
+<path fill="none" stroke="#b3261e" d="M316.03,-395.97C339,-402.21 365.7,-409.45 389.7,-415.97"/>
+<polygon fill="#b3261e" stroke="#b3261e" points="389.4,-418.06 395.74,-417.6 390.5,-414.01 389.4,-418.06"/>
+</g>
+<!-- pkg:npm/express@4.17.1&#45;&gt;pkg:npm/body&#45;parser@1.19.0 -->
+<g id="edge3" class="edge">
+<title>pkg:npm/express@4.17.1&#45;&gt;pkg:npm/body&#45;parser@1.19.0</title>
+<path fill="none" stroke="#d9480f" d="M305.66,-339.16C332.36,-346.41 366.22,-355.6 395.23,-363.47"/>
+<polygon fill="#d9480f" stroke="#d9480f" points="395.01,-365.58 401.35,-365.13 396.11,-361.53 395.01,-365.58"/>
+</g>
+<!-- pkg:npm/path&#45;to&#45;regexp@0.1.7 -->
+<g id="node18" class="node">
+<title>pkg:npm/path&#45;to&#45;regexp@0.1.7</title>
+<g id="a_node18"><a xlink:title="[high] Known vulnerability in path&#45;to&#45;regexp@0.1.7: path&#45;to&#45;regexp contains a ReDoS&#10;[high] Known vulnerability in path&#45;to&#45;regexp@0.1.7: path&#45;to&#45;regexp outputs backtracking regular expressions&#10;[high] Known vulnerability in path&#45;to&#45;regexp@0.1.7: path&#45;to&#45;regexp vulnerable to Regular Expression Denial of Service via multiple route parameters">
+<path fill="#ffe8d9" stroke="#d9480f" stroke-width="2" d="M508.5,-344.5C508.5,-344.5 409.5,-344.5 409.5,-344.5 403.5,-344.5 397.5,-338.5 397.5,-332.5 397.5,-332.5 397.5,-320.5 397.5,-320.5 397.5,-314.5 403.5,-308.5 409.5,-308.5 409.5,-308.5 508.5,-308.5 508.5,-308.5 514.5,-308.5 520.5,-314.5 520.5,-320.5 520.5,-320.5 520.5,-332.5 520.5,-332.5 520.5,-338.5 514.5,-344.5 508.5,-344.5"/>
+<text text-anchor="middle" x="459" y="-329.5" font-family="Helvetica,sans-Serif" font-size="10.00">path&#45;to&#45;regexp@0.1.7</text>
+<text text-anchor="middle" x="459" y="-318.5" font-family="Helvetica,sans-Serif" font-size="10.00">3 findings · high</text>
+</a>
+</g>
+</g>
+<!-- pkg:npm/express@4.17.1&#45;&gt;pkg:npm/path&#45;to&#45;regexp@0.1.7 -->
+<g id="edge4" class="edge">
+<title>pkg:npm/express@4.17.1&#45;&gt;pkg:npm/path&#45;to&#45;regexp@0.1.7</title>
+<path fill="none" stroke="#d9480f" d="M305.66,-326.5C331.08,-326.5 362.98,-326.5 391.01,-326.5"/>
+<polygon fill="#d9480f" stroke="#d9480f" points="391.3,-328.6 397.3,-326.5 391.3,-324.4 391.3,-328.6"/>
+</g>
+<!-- pkg:npm/express@4.17.1&#45;&gt;pkg:npm/qs@6.7.0 -->
+<g id="edge5" class="edge">
+<title>pkg:npm/express@4.17.1&#45;&gt;pkg:npm/qs@6.7.0</title>
+<path fill="none" stroke="#d9480f" d="M305.63,-314.27C329.86,-308.54 360.06,-302.35 387.5,-299.5 450.72,-292.93 467.03,-296.12 530.5,-299.5 544.76,-300.26 560.2,-301.67 574.34,-303.19"/>
+<polygon fill="#d9480f" stroke="#d9480f" points="574.12,-305.28 580.32,-303.85 574.58,-301.11 574.12,-305.28"/>
+</g>
+<!-- pkg:npm/glob@7.1.6 -->
+<g id="node10" class="node">
+<title>pkg:npm/glob@7.1.6</title>
+<path fill="white" stroke="#9aa1a9" stroke-dasharray="5,2" d="M482.5,-252.5C482.5,-252.5 435.5,-252.5 435.5,-252.5 429.5,-252.5 423.5,-246.5 423.5,-240.5 423.5,-240.5 423.5,-228.5 423.5,-228.5 423.5,-222.5 429.5,-216.5 435.5,-216.5 435.5,-216.5 482.5,-216.5 482.5,-216.5 488.5,-216.5 494.5,-222.5 494.5,-228.5 494.5,-228.5 494.5,-240.5 494.5,-240.5 494.5,-246.5 488.5,-252.5 482.5,-252.5"/>
+<text text-anchor="middle" x="459" y="-237.5" font-family="Helvetica,sans-Serif" font-size="10.00">glob@7.1.6</text>
+<text text-anchor="middle" x="459" y="-226.5" font-family="Helvetica,sans-Serif" font-size="10.00">(dev)</text>
+</g>
+<!-- pkg:npm/minimatch@3.0.4 -->
+<g id="node13" class="node">
+<title>pkg:npm/minimatch@3.0.4</title>
+<g id="a_node13"><a xlink:title="[high] Known vulnerability in minimatch@3.0.4: minimatch ReDoS vulnerability&#10;[high] Known vulnerability in minimatch@3.0.4: minimatch ReDoS: nested *() extglobs generate catastrophically backtracking regular expressions&#10;[high] Known vulnerability in minimatch@3.0.4: minimatch has ReDoS: matchOne() combinatorial backtracking via multiple non&#45;adjacent GLOBSTAR segments&#10;[high] Known vulnerability in minimatch@3.0.4: minimatch has a ReDoS via repeated wildcards with non&#45;matching literal in pattern">
+<path fill="#ffe8d9" stroke="#d9480f" stroke-width="2" stroke-dasharray="5,2" d="M664.5,-226C664.5,-226 585.5,-226 585.5,-226 579.5,-226 573.5,-220 573.5,-214 573.5,-214 573.5,-197 573.5,-197 573.5,-191 579.5,-185 585.5,-185 585.5,-185 664.5,-185 664.5,-185 670.5,-185 676.5,-191 676.5,-197 676.5,-197 676.5,-214 676.5,-214 676.5,-220 670.5,-226 664.5,-226"/>
+<text text-anchor="middle" x="625" y="-214" font-family="Helvetica,sans-Serif" font-size="10.00">minimatch@3.0.4</text>
+<text text-anchor="middle" x="625" y="-203" font-family="Helvetica,sans-Serif" font-size="10.00">4 findings · high</text>
+<text text-anchor="middle" x="625" y="-192" font-family="Helvetica,sans-Serif" font-size="10.00">(dev)</text>
+</a>
+</g>
+</g>
+<!-- pkg:npm/glob@7.1.6&#45;&gt;pkg:npm/minimatch@3.0.4 -->
+<g id="edge6" class="edge">
+<title>pkg:npm/glob@7.1.6&#45;&gt;pkg:npm/minimatch@3.0.4</title>
+<path fill="none" stroke="#d9480f" d="M494.78,-228.35C515.84,-224.63 543.21,-219.79 567.34,-215.52"/>
+<polygon fill="#d9480f" stroke="#d9480f" points="567.85,-217.56 573.39,-214.45 567.12,-213.43 567.85,-217.56"/>
+</g>
+<!-- pkg:npm/js&#45;yaml@4.0.0 -->
+<g id="node11" class="node">
+<title>pkg:npm/js&#45;yaml@4.0.0</title>
+<g id="a_node11"><a xlink:title="[high] Known vulnerability in js&#45;yaml@4.0.0: JS&#45;YAML: Quadratic CPU consumption in !!omap resolution (3.x and 4.x) — CVE&#45;2026&#45;59870 fix not backported&#10;[high] Known vulnerability in js&#45;yaml@4.0.0: js&#45;yaml: YAML merge&#45;key chains can force quadratic CPU consumption&#10;[high] Known vulnerability in js&#45;yaml@4.0.0: js&#45;yaml: maxTotalMergeKeys does not limit CPU use for empty merge sources">
+<path fill="#ffe8d9" stroke="#d9480f" stroke-width="2" stroke-dasharray="5,2" d="M494,-198C494,-198 424,-198 424,-198 418,-198 412,-192 412,-186 412,-186 412,-169 412,-169 412,-163 418,-157 424,-157 424,-157 494,-157 494,-157 500,-157 506,-163 506,-169 506,-169 506,-186 506,-186 506,-192 500,-198 494,-198"/>
+<text text-anchor="middle" x="459" y="-186" font-family="Helvetica,sans-Serif" font-size="10.00">js&#45;yaml@4.0.0</text>
+<text text-anchor="middle" x="459" y="-175" font-family="Helvetica,sans-Serif" font-size="10.00">3 findings · high</text>
+<text text-anchor="middle" x="459" y="-164" font-family="Helvetica,sans-Serif" font-size="10.00">(dev)</text>
+</a>
+</g>
+</g>
+<!-- pkg:npm/mocha@8.4.0&#45;&gt;pkg:npm/glob@7.1.6 -->
+<g id="edge7" class="edge">
+<title>pkg:npm/mocha@8.4.0&#45;&gt;pkg:npm/glob@7.1.6</title>
+<path fill="none" stroke="#9aa1a9" d="M299.6,-176.81C313.86,-181.27 329.94,-186.45 344.5,-191.5 368.99,-200 396.15,-210.26 417.76,-218.62"/>
+<polygon fill="#9aa1a9" stroke="#9aa1a9" points="417.06,-220.6 423.41,-220.82 418.58,-216.69 417.06,-220.6"/>
+</g>
+<!-- pkg:npm/mocha@8.4.0&#45;&gt;pkg:npm/js&#45;yaml@4.0.0 -->
+<g id="edge8" class="edge">
+<title>pkg:npm/mocha@8.4.0&#45;&gt;pkg:npm/js&#45;yaml@4.0.0</title>
+<path fill="none" stroke="#d9480f" d="M299.75,-167.16C330.37,-169.16 372.54,-171.92 405.66,-174.08"/>
+<polygon fill="#d9480f" stroke="#d9480f" points="405.61,-176.18 411.73,-174.48 405.88,-171.99 405.61,-176.18"/>
+</g>
+<!-- pkg:npm/mocha@8.4.0&#45;&gt;pkg:npm/minimatch@3.0.4 -->
+<g id="edge9" class="edge">
+<title>pkg:npm/mocha@8.4.0&#45;&gt;pkg:npm/minimatch@3.0.4</title>
+<path fill="none" stroke="#d9480f" d="M299.93,-153.56C353.89,-141.02 451.24,-124.91 530.5,-147.5 553.64,-154.09 576.65,-168.24 594.05,-180.91"/>
+<polygon fill="#d9480f" stroke="#d9480f" points="593.19,-182.9 599.26,-184.79 595.7,-179.52 593.19,-182.9"/>
+</g>
+<!-- pkg:npm/nanoid@3.1.20 -->
+<g id="node16" class="node">
+<title>pkg:npm/nanoid@3.1.20</title>
+<g id="a_node16"><a xlink:title="[high] Known vulnerability in nanoid@3.1.20: nanoid: Integer Overflow or Wraparound&#10;[high] Known vulnerability in nanoid@3.1.20: nanoid: custom generators can loop indefinitely when size is zero&#10;[high] Known vulnerability in nanoid@3.1.20: nanoid: non&#45;secure generators can loop indefinitely with negative size">
+<path fill="#ffe8d9" stroke="#d9480f" stroke-width="2" stroke-dasharray="5,2" d="M494,-100C494,-100 424,-100 424,-100 418,-100 412,-94 412,-88 412,-88 412,-71 412,-71 412,-65 418,-59 424,-59 424,-59 494,-59 494,-59 500,-59 506,-65 506,-71 506,-71 506,-88 506,-88 506,-94 500,-100 494,-100"/>
+<text text-anchor="middle" x="459" y="-88" font-family="Helvetica,sans-Serif" font-size="10.00">nanoid@3.1.20</text>
+<text text-anchor="middle" x="459" y="-77" font-family="Helvetica,sans-Serif" font-size="10.00">3 findings · high</text>
+<text text-anchor="middle" x="459" y="-66" font-family="Helvetica,sans-Serif" font-size="10.00">(dev)</text>
+</a>
+</g>
+</g>
+<!-- pkg:npm/mocha@8.4.0&#45;&gt;pkg:npm/nanoid@3.1.20 -->
+<g id="edge10" class="edge">
+<title>pkg:npm/mocha@8.4.0&#45;&gt;pkg:npm/nanoid@3.1.20</title>
+<path fill="none" stroke="#d9480f" d="M299.57,-153.37C313.97,-148.98 330.15,-143.54 344.5,-137.5 364.47,-129.09 368.24,-124.43 387.5,-114.5 394.86,-110.71 402.68,-106.75 410.33,-102.92"/>
+<polygon fill="#d9480f" stroke="#d9480f" points="411.71,-104.58 416.14,-100.02 409.84,-100.82 411.71,-104.58"/>
+</g>
+<!-- pkg:npm/serialize&#45;javascript@5.0.1 -->
+<g id="node20" class="node">
+<title>pkg:npm/serialize&#45;javascript@5.0.1</title>
+<g id="a_node20"><a xlink:title="[high] Known vulnerability in serialize&#45;javascript@5.0.1: Serialize JavaScript is Vulnerable to RCE via RegExp.flags and Date.prototype.toISOString()">
+<path fill="#ffe8d9" stroke="#d9480f" stroke-width="2" stroke-dasharray="5,2" d="M518.5,-41C518.5,-41 399.5,-41 399.5,-41 393.5,-41 387.5,-35 387.5,-29 387.5,-29 387.5,-12 387.5,-12 387.5,-6 393.5,0 399.5,0 399.5,0 518.5,0 518.5,0 524.5,0 530.5,-6 530.5,-12 530.5,-12 530.5,-29 530.5,-29 530.5,-35 524.5,-41 518.5,-41"/>
+<text text-anchor="middle" x="459" y="-29" font-family="Helvetica,sans-Serif" font-size="10.00">serialize&#45;javascript@5.0.1</text>
+<text text-anchor="middle" x="459" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">1 finding · high</text>
+<text text-anchor="middle" x="459" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">(dev)</text>
+</a>
+</g>
+</g>
+<!-- pkg:npm/mocha@8.4.0&#45;&gt;pkg:npm/serialize&#45;javascript@5.0.1 -->
+<g id="edge11" class="edge">
+<title>pkg:npm/mocha@8.4.0&#45;&gt;pkg:npm/serialize&#45;javascript@5.0.1</title>
+<path fill="none" stroke="#d9480f" d="M299.79,-158.65C315.19,-154.75 332,-148.27 344.5,-137.5 377.48,-109.09 355.75,-79.28 387.5,-49.5 389.35,-47.77 391.31,-46.13 393.36,-44.59"/>
+<polygon fill="#d9480f" stroke="#d9480f" points="394.58,-46.31 398.31,-41.16 392.18,-42.86 394.58,-46.31"/>
+</g>
+<!-- pkg:npm/ua&#45;parser&#45;js@0.7.29 -->
+<g id="node21" class="node">
+<title>pkg:npm/ua&#45;parser&#45;js@0.7.29</title>
+<g id="a_node21"><a xlink:title="[critical] Known malicious package in ua&#45;parser&#45;js@0.7.29: Embedded malware in ua&#45;parser&#45;js&#10;[high] ua&#45;parser&#45;js@0.7.29 is not published on the registry (unpublished or fabricated version)">
+<path fill="#f9dedc" stroke="#b3261e" stroke-width="2" d="M116.5,-425.5C116.5,-425.5 25.5,-425.5 25.5,-425.5 19.5,-425.5 13.5,-419.5 13.5,-413.5 13.5,-413.5 13.5,-401.5 13.5,-401.5 13.5,-395.5 19.5,-389.5 25.5,-389.5 25.5,-389.5 116.5,-389.5 116.5,-389.5 122.5,-389.5 128.5,-395.5 128.5,-401.5 128.5,-401.5 128.5,-413.5 128.5,-413.5 128.5,-419.5 122.5,-425.5 116.5,-425.5"/>
+<text text-anchor="middle" x="71" y="-410.5" font-family="Helvetica,sans-Serif" font-size="10.00">ua&#45;parser&#45;js@0.7.29</text>
+<text text-anchor="middle" x="71" y="-399.5" font-family="Helvetica,sans-Serif" font-size="10.00">2 findings · critical</text>
+</a>
+</g>
+</g>
+<!-- lg_critical -->
+<g id="node22" class="node">
+<title>lg_critical</title>
+<path fill="#f9dedc" stroke="#b3261e" stroke-width="2" d="M86,-641.5C86,-641.5 56,-641.5 56,-641.5 50,-641.5 44,-635.5 44,-629.5 44,-629.5 44,-617.5 44,-617.5 44,-611.5 50,-605.5 56,-605.5 56,-605.5 86,-605.5 86,-605.5 92,-605.5 98,-611.5 98,-617.5 98,-617.5 98,-629.5 98,-629.5 98,-635.5 92,-641.5 86,-641.5"/>
+<text text-anchor="middle" x="71" y="-621.3" font-family="Helvetica,sans-Serif" font-size="9.00">critical</text>
+</g>
+<!-- lg_high -->
+<g id="node23" class="node">
+<title>lg_high</title>
+<path fill="#ffe8d9" stroke="#d9480f" stroke-width="2" d="M86,-587.5C86,-587.5 56,-587.5 56,-587.5 50,-587.5 44,-581.5 44,-575.5 44,-575.5 44,-563.5 44,-563.5 44,-557.5 50,-551.5 56,-551.5 56,-551.5 86,-551.5 86,-551.5 92,-551.5 98,-557.5 98,-563.5 98,-563.5 98,-575.5 98,-575.5 98,-581.5 92,-587.5 86,-587.5"/>
+<text text-anchor="middle" x="71" y="-567.3" font-family="Helvetica,sans-Serif" font-size="9.00">high</text>
+</g>
+<!-- lg_medium -->
+<g id="node24" class="node">
+<title>lg_medium</title>
+<path fill="#fff4cc" stroke="#e0a800" stroke-width="2" d="M86,-533.5C86,-533.5 56,-533.5 56,-533.5 50,-533.5 44,-527.5 44,-521.5 44,-521.5 44,-509.5 44,-509.5 44,-503.5 50,-497.5 56,-497.5 56,-497.5 86,-497.5 86,-497.5 92,-497.5 98,-503.5 98,-509.5 98,-509.5 98,-521.5 98,-521.5 98,-527.5 92,-533.5 86,-533.5"/>
+<text text-anchor="middle" x="71" y="-513.3" font-family="Helvetica,sans-Serif" font-size="9.00">medium</text>
+</g>
+<!-- lg_dev -->
+<g id="node25" class="node">
+<title>lg_dev</title>
+<path fill="none" stroke="#9aa1a9" stroke-dasharray="5,2" d="M114,-479.5C114,-479.5 28,-479.5 28,-479.5 22,-479.5 16,-473.5 16,-467.5 16,-467.5 16,-455.5 16,-455.5 16,-449.5 22,-443.5 28,-443.5 28,-443.5 114,-443.5 114,-443.5 120,-443.5 126,-449.5 126,-455.5 126,-455.5 126,-467.5 126,-467.5 126,-473.5 120,-479.5 114,-479.5"/>
+<text text-anchor="middle" x="71" y="-459.3" font-family="Helvetica,sans-Serif" font-size="9.00">dev / build / ci scope</text>
+</g>
+</g>
+</svg>
+</div>
+</section>
+<section class="panel" id="p2">
+ <div class="filters"><label><input type="checkbox" id="gRisky" checked> only branches that lead to findings</label>
+ <input id="gQ" placeholder="find package, e.g. lodash" size="28"><button class="sm" id="gGo">find</button>
+ <button class="sm" id="gExpand">expand risky</button><button class="sm" id="gCollapse">collapse all</button><span id="gMsg" class="meta"></span></div>
+ <div id="gTree" class="tree"></div>
+ <script id="gData" type="application/json">{"nodes":[{"l":"shop-api@1.4.0","s":null,"n":0,"sc":"prod","d":1,"b":"critical"},{"l":"fastbuilds/node-runtime@18","s":"high","n":2,"sc":"prod","e":"docker","d":1,"t":["[high] Image 'fastbuilds/node-runtime' comes from a non-allowlisted publisher (docker.io)","[low] Image 'fastbuilds/node-runtime:18' is not pinned by digest"],"b":"high"},{"l":"node@latest","s":"medium","n":1,"sc":"build","e":"docker","d":1,"t":["[medium] Image 'node' uses a mutable tag (latest)"],"b":"medium"},{"l":"actions/checkout@v4","s":"low","n":1,"sc":"ci","e":"github-actions","d":1,"t":["[low] GitHub Action actions/checkout: first-party action pinned to mutable tag 'v4'"],"b":"low"},{"l":"actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8","s":null,"n":0,"sc":"ci","e":"github-actions","d":1,"t":[],"b":null},{"l":"quick-actions/npm-cache@main","s":"high","n":1,"sc":"ci","e":"github-actions","d":1,"t":["[high] GitHub Action quick-actions/npm-cache: branch/unversioned ref 'main' (code changes on every run)"],"b":"high"},{"l":"@ungap/promise-all-settled@1.1.2","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"accepts@1.3.8","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"ansi-colors@4.1.1","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"ansi-regex@3.0.1","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"ansi-regex@5.0.1","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"ansi-styles@4.3.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"anymatch@3.1.3","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"argparse@2.0.1","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"array-flatten@1.1.1","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"balanced-match@1.0.2","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"binary-extensions@2.3.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"body-parser@1.19.0","s":"high","n":3,"sc":"prod","e":"npm","d":0,"t":["[high] Known vulnerability in body-parser@1.19.0: body-parser vulnerable to Denial of Service via trailing bytes after a compressed request body","[high] Known vulnerability in body-parser@1.19.0: body-parser vulnerable to denial of service when url encoding is enabled","[low] Known vulnerability in body-parser@1.19.0: body-parser vulnerable to denial of service when invalid limit value silently disables size enforcement"],"b":"high"},{"l":"brace-expansion@1.1.22","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"braces@3.0.3","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"browser-stdout@1.3.1","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"bytes@3.1.0","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"camelcase@6.3.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"chalk@4.1.2","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"chokidar@3.5.1","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":"info"},{"l":"cliui@7.0.4","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"color-convert@2.0.1","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"color-name@1.1.4","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"concat-map@0.0.1","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"content-disposition@0.5.3","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"content-type@1.0.5","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"cookie-signature@1.0.6","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"cookie@0.4.0","s":"low","n":1,"sc":"prod","e":"npm","d":0,"t":["[low] Known vulnerability in cookie@0.4.0: cookie accepts cookie name, path, and domain with out of bounds characters"],"b":"low"},{"l":"cross-env@7.0.3","s":null,"n":0,"sc":"prod","e":"npm","d":1,"t":[],"b":null},{"l":"cross-spawn@7.0.6","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"crossenv@6.1.1","s":"critical","n":4,"sc":"dev","e":"npm","d":1,"t":["[critical] Suspicious install script in crossenv@6.1.1","[critical] crossenv was taken down by npm security (malicious package)","[high] Possible typosquat: 'crossenv' looks like 'cross-env'","[medium] New direct dependency: crossenv@6.1.1"],"b":"critical"},{"l":"debug-helper-utils@1.0.2","s":"high","n":5,"sc":"prod","e":"npm","d":1,"t":["[high] Lockfile root declares 'debug-helper-utils' which is not in package.json","[medium] debug-helper-utils@1.0.2 has no integrity hash in the lockfile","[medium] debug-helper-utils@1.0.2 resolved from outside the npm registry (npm.corp-artifacts.net)","[medium] New direct dependency: debug-helper-utils@1.0.2","[low] debug-helper-utils@1.0.2 runs an install-time script (contents not inspected)"],"b":"high"},{"l":"debug@2.6.9","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"debug@4.3.1","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"decamelize@4.0.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"depd@1.1.2","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"destroy@1.0.4","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"diff@5.0.0","s":"low","n":1,"sc":"dev","e":"npm","d":0,"t":["[low] Known vulnerability in diff@5.0.0: jsdiff has a Denial of Service vulnerability in parsePatch and applyPatch"],"b":"low"},{"l":"duplexer@0.1.2","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"ee-first@1.1.1","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"emoji-regex@8.0.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"encodeurl@1.0.4","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"escalade@3.2.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"escape-html@1.0.3","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"escape-string-regexp@4.0.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"etag@1.8.1","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"event-stream@3.3.6","s":"critical","n":3,"sc":"prod","e":"npm","d":1,"t":["[critical] Known vulnerability in event-stream@3.3.6: Critical severity vulnerability that affects event-stream and flatmap-stream","[high] event-stream@3.3.6 is not published on the registry (unpublished or fabricated version)","[info] event-stream changed: 3.3.4 -> 3.3.6"],"b":"critical"},{"l":"express@4.17.1","s":"medium","n":2,"sc":"prod","e":"npm","d":1,"t":["[medium] Known vulnerability in express@4.17.1: Express.js Open Redirect in malformed URLs","[low] Known vulnerability in express@4.17.1: express vulnerable to XSS via response.redirect()"],"b":"high"},{"l":"fill-range@7.1.1","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"finalhandler@1.1.2","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"find-up@5.0.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"flat@5.0.2","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"flatmap-stream@0.1.1","s":"critical","n":4,"sc":"prod","e":"npm","d":0,"t":["[critical] Known malicious package in flatmap-stream@0.1.1: Malicious Package in flatmap-stream","[critical] flatmap-stream was taken down by npm security (malicious package)","[critical] Known vulnerability in flatmap-stream@0.1.1: Critical severity vulnerability that affects event-stream and flatmap-stream","[info] New transitive dependency: flatmap-stream@0.1.1"],"b":"critical"},{"l":"forwarded@0.2.0","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"fresh@0.5.2","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"from@0.1.7","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"fs.realpath@1.0.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"fsevents@2.3.3","s":"info","n":1,"sc":"dev","e":"npm","d":0,"t":["[info] fsevents@2.3.3 runs a standard native-build install script"],"b":"info"},{"l":"get-caller-file@2.0.5","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"glob-parent@5.1.2","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"glob@7.1.6","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":"high"},{"l":"growl@1.10.5","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"has-flag@4.0.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"he@1.2.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"http-errors@1.7.2","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"iconv-lite@0.4.24","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"inflight@1.0.6","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"inherits@2.0.3","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"ipaddr.js@1.9.1","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"is-binary-path@2.1.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"is-extglob@2.1.1","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"is-fullwidth-code-point@2.0.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"is-fullwidth-code-point@3.0.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"is-glob@4.0.3","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"is-number@7.0.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"is-plain-obj@2.1.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"isexe@2.0.0","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"js-yaml@4.0.0","s":"high","n":5,"sc":"dev","e":"npm","d":0,"t":["[high] Known vulnerability in js-yaml@4.0.0: JS-YAML: Quadratic CPU consumption in !!omap resolution (3.x and 4.x) \u2014 CVE-2026-59870 fix not backported","[high] Known vulnerability in js-yaml@4.0.0: js-yaml: YAML merge-key chains can force quadratic CPU consumption","[high] Known vulnerability in js-yaml@4.0.0: js-yaml: maxTotalMergeKeys does not limit CPU use for empty merge sources","[medium] Known vulnerability in js-yaml@4.0.0: JS-YAML: Quadratic-complexity DoS in merge key handling via repeated aliases","[medium] Known vulnerability in js-yaml@4.0.0: js-yaml has prototype pollution in merge (<<)"],"b":"high"},{"l":"locate-path@6.0.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"lodash@4.17.15","s":"critical","n":7,"sc":"prod","e":"npm","d":1,"t":["[critical] Integrity hash changed for unchanged version lodash@4.17.15","[critical] Lockfile hash for lodash@4.17.15 does not match the registry","[high] Known vulnerability in lodash@4.17.15: Command Injection in lodash","[high] Known vulnerability in lodash@4.17.15: Prototype Pollution in lodash","[high] Known vulnerability in lodash@4.17.15: lodash vulnerable to Code Injection via `_.template` imports key names","[medium] Known vulnerability in lodash@4.17.15: Lodash has Prototype Pollution Vulnerability in `_.unset`, `_.omit`, and `_.pullAt` functions"],"b":"critical"},{"l":"log-symbols@4.0.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"map-stream@0.1.0","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"media-typer@0.3.0","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"merge-descriptors@1.0.1","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"methods@1.1.2","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"mime-db@1.52.0","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"mime-types@2.1.35","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"mime@1.6.0","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"minimatch@3.0.4","s":"high","n":4,"sc":"dev","e":"npm","d":0,"t":["[high] Known vulnerability in minimatch@3.0.4: minimatch ReDoS vulnerability","[high] Known vulnerability in minimatch@3.0.4: minimatch ReDoS: nested *() extglobs generate catastrophically backtracking regular expressions","[high] Known vulnerability in minimatch@3.0.4: minimatch has ReDoS: matchOne() combinatorial backtracking via multiple non-adjacent GLOBSTAR segments","[high] Known vulnerability in minimatch@3.0.4: minimatch has a ReDoS via repeated wildcards with non-matching literal in pattern"],"b":"high"},{"l":"minimist@1.2.5","s":"critical","n":3,"sc":"prod","e":"npm","d":1,"t":["[critical] Known vulnerability in minimist@1.2.5: Prototype Pollution in minimist","[high] Download source for minimist@1.2.5 changed: registry.npmjs.org -> registry.npmjs-cdn.com","[high] minimist@1.2.5 is fetched over plain HTTP"],"b":"critical"},{"l":"mocha@8.4.0","s":null,"n":0,"sc":"dev","e":"npm","d":1,"t":[],"b":"high"},{"l":"ms@2.0.0","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"ms@2.1.1","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"ms@2.1.2","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"ms@2.1.3","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"nanoid@3.1.20","s":"high","n":5,"sc":"dev","e":"npm","d":0,"t":["[high] Known vulnerability in nanoid@3.1.20: nanoid: Integer Overflow or Wraparound","[high] Known vulnerability in nanoid@3.1.20: nanoid: custom generators can loop indefinitely when size is zero","[high] Known vulnerability in nanoid@3.1.20: nanoid: non-secure generators can loop indefinitely with negative size","[medium] Known vulnerability in nanoid@3.1.20: Exposure of Sensitive Information to an Unauthorized Actor in nanoid","[medium] Known vulnerability in nanoid@3.1.20: Predictable results in nanoid generation when given non-integer values"],"b":"high"},{"l":"negotiator@0.6.3","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"node-fetch@2.6.0","s":"high","n":2,"sc":"prod","e":"npm","d":1,"t":["[high] Known vulnerability in node-fetch@2.6.0: node-fetch forwards secure headers to untrusted sites","[low] Known vulnerability in node-fetch@2.6.0: The `size` option isn't honored after following a redirect in node-fetch"],"b":"high"},{"l":"normalize-path@3.0.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"on-finished@2.3.0","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"once@1.4.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"p-limit@3.1.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"p-locate@5.0.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"parseurl@1.3.3","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"path-exists@4.0.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"path-is-absolute@1.0.1","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"path-key@3.1.1","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"path-to-regexp@0.1.7","s":"high","n":3,"sc":"prod","e":"npm","d":0,"t":["[high] Known vulnerability in path-to-regexp@0.1.7: path-to-regexp contains a ReDoS","[high] Known vulnerability in path-to-regexp@0.1.7: path-to-regexp outputs backtracking regular expressions","[high] Known vulnerability in path-to-regexp@0.1.7: path-to-regexp vulnerable to Regular Expression Denial of Service via multiple route parameters"],"b":"high"},{"l":"pause-stream@0.0.11","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"picomatch@2.3.2","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"proxy-addr@2.0.8","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"qs@6.7.0","s":"high","n":5,"sc":"prod","e":"npm","d":0,"t":["[high] Known vulnerability in qs@6.7.0: qs vulnerable to Prototype Pollution","[medium] Known vulnerability in qs@6.7.0: qs : qs.stringify with arrayFormat 'comma' throws an uncaught TypeError on array elements carrying a non-callable own to","[medium] Known vulnerability in qs@6.7.0: qs's arrayLimit bypass in its bracket notation allows DoS via memory exhaustion","[medium] Known vulnerability in qs@6.7.0: qs: Denial of Service via Attacker Controlled isBuffer","[low] Known vulnerability in qs@6.7.0: qs's arrayLimit bypass in comma parsing allows denial of service"],"b":"high"},{"l":"randombytes@2.1.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"range-parser@1.2.1","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"raw-body@2.4.0","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"readdirp@3.5.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"require-directory@2.1.1","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"safe-buffer@5.1.2","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"safer-buffer@2.1.2","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"send@0.17.1","s":"low","n":1,"sc":"prod","e":"npm","d":0,"t":["[low] Known vulnerability in send@0.17.1: send vulnerable to template injection that can lead to XSS"],"b":"low"},{"l":"serialize-javascript@5.0.1","s":"high","n":3,"sc":"dev","e":"npm","d":0,"t":["[high] Known vulnerability in serialize-javascript@5.0.1: Serialize JavaScript is Vulnerable to RCE via RegExp.flags and Date.prototype.toISOString()","[medium] Known vulnerability in serialize-javascript@5.0.1: Serialize JavaScript has CPU Exhaustion Denial of Service via crafted array-like objects","[low] Known vulnerability in serialize-javascript@5.0.1: Serialize JavaScript: Cross-site scripting (XSS) via unescaped <\/script at the end of a serialized function body"],"b":"high"},{"l":"serve-static@1.14.1","s":"low","n":1,"sc":"prod","e":"npm","d":0,"t":["[low] Known vulnerability in serve-static@1.14.1: serve-static vulnerable to template injection that can lead to XSS"],"b":"low"},{"l":"setprototypeof@1.1.1","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"shebang-command@2.0.0","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"shebang-regex@3.0.0","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"split@0.3.3","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"statuses@1.5.0","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"stream-combiner@0.0.4","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"string-width@2.1.1","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"string-width@4.2.3","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"strip-ansi@4.0.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"strip-ansi@6.0.1","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"strip-json-comments@3.1.1","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"supports-color@7.2.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"supports-color@8.1.1","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"through@2.3.8","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"to-regex-range@5.0.1","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"toidentifier@1.0.0","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"type-is@1.6.18","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"ua-parser-js@0.7.29","s":"critical","n":4,"sc":"prod","e":"npm","d":0,"t":["[critical] Known malicious package in ua-parser-js@0.7.29: Embedded malware in ua-parser-js","[high] ua-parser-js@0.7.29 is not published on the registry (unpublished or fabricated version)","[medium] ua-parser-js@0.7.29 is in the lockfile but nothing depends on it","[info] New transitive dependency: ua-parser-js@0.7.29"],"b":"critical"},{"l":"unpipe@1.0.0","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"utils-merge@1.0.1","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"vary@1.1.2","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"which@2.0.2","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"wide-align@1.1.3","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"workerpool@6.1.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"wrap-ansi@7.0.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"wrappy@1.0.2","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"y18n@5.0.8","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"yargs-parser@20.2.4","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"yargs-unparser@2.0.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"yargs@16.2.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"yocto-queue@0.1.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null}],"kids":[[1,2,3,4,5,33,35,36,51,52,84,94,95,102],[],[],[],[],[],[],[91,101],[],[],[],[26],[103,114],[],[],[],[],[21,30,37,40,69,70,104,116,119,143],[15,28],[53],[],[],[],[11,138],[12,19,62,64,74,78,103,120],[134,136,151],[27],[],[],[122],[],[],[],[34],[111,128,148],[34],[],[96],[98],[],[],[],[],[],[],[],[],[],[],[],[],[43,57,60,86,113,130,132,140],[7,14,17,29,30,31,32,37,40,46,48,50,54,59,88,89,104,108,112,115,116,118,122,124,126,127,131,143,146,147],[141],[37,46,48,104,108,131,145],[83,109],[],[],[],[],[],[],[],[],[78],[61,71,72,93,105,110],[],[],[],[40,72,127,131,142],[123],[105,152],[],[],[16],[],[],[],[75],[],[],[],[13],[107],[],[23],[],[],[],[],[],[90],[],[18],[],[6,8,20,24,38,42,49,55,65,66,68,82,85,93,99,100,125,137,139,148,149,150,154,155,156],[],[],[],[],[],[],[],[],[44],[152],[157],[106],[],[],[],[],[],[140],[],[58,73],[],[122],[],[21,69,70,145],[114],[],[],[],[37,40,41,46,48,50,59,69,92,97,104,118,131],[117],[46,48,108,124],[],[129],[],[140],[],[43],[76,135],[45,77,136],[9],[10],[],[67],[67],[],[79],[],[87,91],[],[],[],[],[81],[133],[],[11,134,136],[],[],[],[22,39,56,80],[25,47,63,121,134,153,154],[]],"orphans":[144]}</script>
+</section>
+<section class="panel" id="p3">
+ <div class="filters"><input id="tQ" placeholder="filter…" size="30"><select id="tS"><option value="">all scopes</option><option>prod</option><option>dev</option><option>optional</option><option>build</option><option>ci</option></select>
+ <label><input type="checkbox" id="tF"> with findings only</label><span id="tN" class="meta"></span></div>
+ <div class="tbl"><table><thead><tr><th data-k="0">package</th><th data-k="1">ecosystem</th><th data-k="2">scope</th><th data-k="3">relation</th><th data-k="4">worst finding</th><th data-k="5">findings</th><th data-k="6">dependencies</th></tr></thead><tbody id="tB"></tbody></table></div>
+</section>
+</main>
+<script>
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tabs button,.panel').forEach(x=>x.classList.remove('on'));b.classList.add('on');document.getElementById(b.dataset.p).classList.add('on');if(b.dataset.p==='p1')fit();});
+// zoom / pan on the risk SVG
+const box=document.getElementById('zbox'), svg=box.querySelector('svg'); let s=1,x=0,y=0,drag=null;
+const ap=()=>{if(svg)svg.style.transform=`translate(${x}px,${y}px) scale(${s})`};
+function fit(){ if(!svg)return; const w=svg.viewBox.baseVal.width||svg.getBBox().width, h=svg.viewBox.baseVal.height||svg.getBBox().height;
+  svg.setAttribute('width',w); svg.setAttribute('height',h); s=Math.min(box.clientWidth/w,box.clientHeight/h)*0.97; x=(box.clientWidth-w*s)/2; y=(box.clientHeight-h*s)/2; ap(); }
+const zoom=(f,cx=box.clientWidth/2,cy=box.clientHeight/2)=>{x=cx-(cx-x)*f;y=cy-(cy-y)*f;s*=f;ap();};
+box.addEventListener('wheel',ev=>{ev.preventDefault();const r=box.getBoundingClientRect();zoom(ev.deltaY<0?1.15:1/1.15,ev.clientX-r.left,ev.clientY-r.top);},{passive:false});
+box.onmousedown=ev=>{drag=[ev.clientX-x,ev.clientY-y];box.style.cursor='grabbing'}; window.onmouseup=()=>{drag=null;box.style.cursor='grab'};
+window.onmousemove=ev=>{if(drag){x=ev.clientX-drag[0];y=ev.clientY-drag[1];ap();}};
+zin.onclick=()=>zoom(1.25); zout.onclick=()=>zoom(0.8); zfit.onclick=fit; window.onload=fit; window.onresize=fit;
+// component table
+const ROWS=[["fastbuilds/node-runtime@18","docker","prod","direct","high",2,0],["node@latest","docker","build","direct","medium",1,0],["actions/checkout@v4","github-actions","ci","direct","low",1,0],["actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8","github-actions","ci","direct","",0,0],["quick-actions/npm-cache@main","github-actions","ci","direct","high",1,0],["@ungap/promise-all-settled@1.1.2","npm","dev","transitive","",0,0],["accepts@1.3.8","npm","prod","transitive","",0,2],["ansi-colors@4.1.1","npm","dev","transitive","",0,0],["ansi-regex@3.0.1","npm","dev","transitive","",0,0],["ansi-regex@5.0.1","npm","dev","transitive","",0,0],["ansi-styles@4.3.0","npm","dev","transitive","",0,1],["anymatch@3.1.3","npm","dev","transitive","",0,2],["argparse@2.0.1","npm","dev","transitive","",0,0],["array-flatten@1.1.1","npm","prod","transitive","",0,0],["balanced-match@1.0.2","npm","dev","transitive","",0,0],["binary-extensions@2.3.0","npm","dev","transitive","",0,0],["body-parser@1.19.0","npm","prod","transitive","high",3,10],["brace-expansion@1.1.22","npm","dev","transitive","",0,2],["braces@3.0.3","npm","dev","transitive","",0,1],["browser-stdout@1.3.1","npm","dev","transitive","",0,0],["bytes@3.1.0","npm","prod","transitive","",0,0],["camelcase@6.3.0","npm","dev","transitive","",0,0],["chalk@4.1.2","npm","dev","transitive","",0,2],["chokidar@3.5.1","npm","dev","transitive","",0,8],["cliui@7.0.4","npm","dev","transitive","",0,3],["color-convert@2.0.1","npm","dev","transitive","",0,1],["color-name@1.1.4","npm","dev","transitive","",0,0],["concat-map@0.0.1","npm","dev","transitive","",0,0],["content-disposition@0.5.3","npm","prod","transitive","",0,1],["content-type@1.0.5","npm","prod","transitive","",0,0],["cookie-signature@1.0.6","npm","prod","transitive","",0,0],["cookie@0.4.0","npm","prod","transitive","low",1,0],["cross-env@7.0.3","npm","prod","direct","",0,1],["cross-spawn@7.0.6","npm","prod","transitive","",0,3],["crossenv@6.1.1","npm","dev","direct","critical",4,1],["debug-helper-utils@1.0.2","npm","prod","direct","high",5,0],["debug@2.6.9","npm","prod","transitive","",0,1],["debug@4.3.1","npm","dev","transitive","",0,1],["decamelize@4.0.0","npm","dev","transitive","",0,0],["depd@1.1.2","npm","prod","transitive","",0,0],["destroy@1.0.4","npm","prod","transitive","",0,0],["diff@5.0.0","npm","dev","transitive","low",1,0],["duplexer@0.1.2","npm","prod","transitive","",0,0],["ee-first@1.1.1","npm","prod","transitive","",0,0],["emoji-regex@8.0.0","npm","dev","transitive","",0,0],["encodeurl@1.0.4","npm","prod","transitive","",0,0],["escalade@3.2.0","npm","dev","transitive","",0,0],["escape-html@1.0.3","npm","prod","transitive","",0,0],["escape-string-regexp@4.0.0","npm","dev","transitive","",0,0],["etag@1.8.1","npm","prod","transitive","",0,0],["event-stream@3.3.6","npm","prod","direct","critical",3,8],["express@4.17.1","npm","prod","direct","medium",2,30],["fill-range@7.1.1","npm","dev","transitive","",0,1],["finalhandler@1.1.2","npm","prod","transitive","",0,7],["find-up@5.0.0","npm","dev","transitive","",0,2],["flat@5.0.2","npm","dev","transitive","",0,0],["flatmap-stream@0.1.1","npm","prod","transitive","critical",4,0],["forwarded@0.2.0","npm","prod","transitive","",0,0],["fresh@0.5.2","npm","prod","transitive","",0,0],["from@0.1.7","npm","prod","transitive","",0,0],["fs.realpath@1.0.0","npm","dev","transitive","",0,0],["fsevents@2.3.3","npm","dev","transitive","info",1,0],["get-caller-file@2.0.5","npm","dev","transitive","",0,0],["glob-parent@5.1.2","npm","dev","transitive","",0,1],["glob@7.1.6","npm","dev","transitive","",0,6],["growl@1.10.5","npm","dev","transitive","",0,0],["has-flag@4.0.0","npm","dev","transitive","",0,0],["he@1.2.0","npm","dev","transitive","",0,0],["http-errors@1.7.2","npm","prod","transitive","",0,5],["iconv-lite@0.4.24","npm","prod","transitive","",0,1],["inflight@1.0.6","npm","dev","transitive","",0,2],["inherits@2.0.3","npm","prod","transitive","",0,0],["ipaddr.js@1.9.1","npm","prod","transitive","",0,0],["is-binary-path@2.1.0","npm","dev","transitive","",0,1],["is-extglob@2.1.1","npm","dev","transitive","",0,0],["is-fullwidth-code-point@2.0.0","npm","dev","transitive","",0,0],["is-fullwidth-code-point@3.0.0","npm","dev","transitive","",0,0],["is-glob@4.0.3","npm","dev","transitive","",0,1],["is-number@7.0.0","npm","dev","transitive","",0,0],["is-plain-obj@2.1.0","npm","dev","transitive","",0,0],["isexe@2.0.0","npm","prod","transitive","",0,0],["js-yaml@4.0.0","npm","dev","transitive","high",5,1],["locate-path@6.0.0","npm","dev","transitive","",0,1],["lodash@4.17.15","npm","prod","direct","critical",7,0],["log-symbols@4.0.0","npm","dev","transitive","",0,1],["map-stream@0.1.0","npm","prod","transitive","",0,0],["media-typer@0.3.0","npm","prod","transitive","",0,0],["merge-descriptors@1.0.1","npm","prod","transitive","",0,0],["methods@1.1.2","npm","prod","transitive","",0,0],["mime-db@1.52.0","npm","prod","transitive","",0,0],["mime-types@2.1.35","npm","prod","transitive","",0,1],["mime@1.6.0","npm","prod","transitive","",0,0],["minimatch@3.0.4","npm","dev","transitive","high",4,1],["minimist@1.2.5","npm","prod","direct","critical",3,0],["mocha@8.4.0","npm","dev","direct","",0,25],["ms@2.0.0","npm","prod","transitive","",0,0],["ms@2.1.1","npm","prod","transitive","",0,0],["ms@2.1.2","npm","dev","transitive","",0,0],["ms@2.1.3","npm","dev","transitive","",0,0],["nanoid@3.1.20","npm","dev","transitive","high",5,0],["negotiator@0.6.3","npm","prod","transitive","",0,0],["node-fetch@2.6.0","npm","prod","direct","high",2,0],["normalize-path@3.0.0","npm","dev","transitive","",0,0],["on-finished@2.3.0","npm","prod","transitive","",0,1],["once@1.4.0","npm","dev","transitive","",0,1],["p-limit@3.1.0","npm","dev","transitive","",0,1],["p-locate@5.0.0","npm","dev","transitive","",0,1],["parseurl@1.3.3","npm","prod","transitive","",0,0],["path-exists@4.0.0","npm","dev","transitive","",0,0],["path-is-absolute@1.0.1","npm","dev","transitive","",0,0],["path-key@3.1.1","npm","prod","transitive","",0,0],["path-to-regexp@0.1.7","npm","prod","transitive","high",3,0],["pause-stream@0.0.11","npm","prod","transitive","",0,1],["picomatch@2.3.2","npm","dev","transitive","",0,0],["proxy-addr@2.0.8","npm","prod","transitive","",0,2],["qs@6.7.0","npm","prod","transitive","high",5,0],["randombytes@2.1.0","npm","dev","transitive","",0,1],["range-parser@1.2.1","npm","prod","transitive","",0,0],["raw-body@2.4.0","npm","prod","transitive","",0,4],["readdirp@3.5.0","npm","dev","transitive","",0,1],["require-directory@2.1.1","npm","dev","transitive","",0,0],["safe-buffer@5.1.2","npm","prod","transitive","",0,0],["safer-buffer@2.1.2","npm","prod","transitive","",0,0],["send@0.17.1","npm","prod","transitive","low",1,13],["serialize-javascript@5.0.1","npm","dev","transitive","high",3,1],["serve-static@1.14.1","npm","prod","transitive","low",1,4],["setprototypeof@1.1.1","npm","prod","transitive","",0,0],["shebang-command@2.0.0","npm","prod","transitive","",0,1],["shebang-regex@3.0.0","npm","prod","transitive","",0,0],["split@0.3.3","npm","prod","transitive","",0,1],["statuses@1.5.0","npm","prod","transitive","",0,0],["stream-combiner@0.0.4","npm","prod","transitive","",0,1],["string-width@2.1.1","npm","dev","transitive","",0,2],["string-width@4.2.3","npm","dev","transitive","",0,3],["strip-ansi@4.0.0","npm","dev","transitive","",0,1],["strip-ansi@6.0.1","npm","dev","transitive","",0,1],["strip-json-comments@3.1.1","npm","dev","transitive","",0,0],["supports-color@7.2.0","npm","dev","transitive","",0,1],["supports-color@8.1.1","npm","dev","transitive","",0,1],["through@2.3.8","npm","prod","transitive","",0,0],["to-regex-range@5.0.1","npm","dev","transitive","",0,1],["toidentifier@1.0.0","npm","prod","transitive","",0,0],["type-is@1.6.18","npm","prod","transitive","",0,2],["ua-parser-js@0.7.29","npm","prod","transitive","critical",4,0],["unpipe@1.0.0","npm","prod","transitive","",0,0],["utils-merge@1.0.1","npm","prod","transitive","",0,0],["vary@1.1.2","npm","prod","transitive","",0,0],["which@2.0.2","npm","prod","transitive","",0,1],["wide-align@1.1.3","npm","dev","transitive","",0,1],["workerpool@6.1.0","npm","dev","transitive","",0,0],["wrap-ansi@7.0.0","npm","dev","transitive","",0,3],["wrappy@1.0.2","npm","dev","transitive","",0,0],["y18n@5.0.8","npm","dev","transitive","",0,0],["yargs-parser@20.2.4","npm","dev","transitive","",0,0],["yargs-unparser@2.0.0","npm","dev","transitive","",0,4],["yargs@16.2.0","npm","dev","transitive","",0,7],["yocto-queue@0.1.0","npm","dev","transitive","",0,0]], R={critical:4,high:3,medium:2,low:1,info:0,'':-1}; let sk=4, sd=-1;
+function tbl(){ const q=tQ.value.toLowerCase(), sc=tS.value, f=tF.checked;
+  let r=ROWS.filter(o=>(!q||o[0].toLowerCase().includes(q))&&(!sc||o[2]===sc)&&(!f||o[5]>0));
+  r.sort((a,b)=>{let A=a[sk],B=b[sk]; if(sk===4){A=R[A];B=R[B]} return (A>B?1:A<B?-1:0)*sd;});
+  tN.textContent=` ${r.length.toLocaleString()} of ${ROWS.length.toLocaleString()}`;
+  tB.innerHTML=r.slice(0,2000).map(o=>`<tr><td>${o[0].replace(/</g,'&lt;')}</td><td>${o[1]}</td><td>${o[2]}</td><td>${o[3]}</td><td>${o[4]?`<span class="bdg s-${o[4]}">${o[4]}</span>`:''}</td><td>${o[5]||''}</td><td>${o[6]}</td></tr>`).join(''); }
+document.querySelectorAll('th').forEach(t=>t.onclick=()=>{const k=+t.dataset.k; sd=(sk===k)?-sd:-1; sk=k; tbl();});
+[tQ,tS,tF].forEach(el=>el.addEventListener('input',tbl)); tbl();
+</script>
+<script>
+(()=>{
+const G=JSON.parse(document.getElementById('gData').textContent), N=G.nodes, K=G.kids;
+const C={critical:'#b3261e',high:'#d9480f',medium:'#c08b00',low:'#3b6fb6',info:'#9aa1a9'};
+const R={critical:4,high:3,medium:2,low:1,info:0};
+const root=document.getElementById('gTree'), risky=document.getElementById('gRisky'), msg=document.getElementById('gMsg');
+const show=i=>!risky.checked || (N[i].b && R[N[i].b]>=1);
+function li(i,anc){
+  const n=N[i], el=document.createElement('li'); el.dataset.i=i;
+  const kids=K[i].filter(k=>!anc.has(k));
+  const tw=document.createElement('span'); tw.className='tw'; tw.textContent=kids.length?'▸':' ';
+  const lab=document.createElement('span'); lab.className='tn'+(n.sc!=='prod'?' dev':'');
+  let h='';
+  if(n.b) h+=`<span class="dot" title="worst below: ${n.b}" style="background:${C[n.b]}"></span>`; else h+='<span class="dot"></span>';
+  h+=n.l.replace(/</g,'&lt;')+(n.sc!=='prod'?` <small>(${n.sc})</small>`:'')+(kids.length?` <small>[${kids.length}]</small>`:'');
+  if(n.s) h+=`<span class="bdg" style="background:${C[n.s]}" title="${(n.t||[]).join('\n').replace(/"/g,'&quot;')}">${n.n} ${n.s}</span>`;
+  lab.innerHTML=h; el.append(tw,lab);
+  el._open=false; el._anc=new Set([...anc,i]);
+  const toggle=()=>{ if(!kids.length) return; if(el._open){el.querySelector('ul')?.remove(); el._open=false; tw.textContent='▸'; return;}
+    const ul=document.createElement('ul'); kids.filter(show).forEach(k=>ul.append(li(k,el._anc)));
+    const hidden=kids.length-ul.children.length; if(hidden){const m=document.createElement('li'); m.innerHTML=`<small>… ${hidden} clean dependenc${hidden>1?'ies':'y'} hidden</small>`; ul.append(m);}
+    el.append(ul); el._open=true; tw.textContent='▾'; };
+  tw.onclick=toggle; lab.ondblclick=toggle; el._toggle=toggle; return el;
+}
+function render(){ root.innerHTML=''; const ul=document.createElement('ul'); ul.append(li(0,new Set())); 
+  if(G.orphans.length){const o=document.createElement('li'); o.innerHTML='<b>Orphans (in lockfile, nothing depends on them)</b>'; const u=document.createElement('ul'); G.orphans.forEach(i=>u.append(li(i,new Set()))); o.append(u); ul.append(o);}
+  root.append(ul); ul.firstChild._toggle(); }
+function expandRisky(el,depth){ if(depth>12) return; const i=+el.dataset.i; if(!(N[i].b && R[N[i].b]>=3)) return;
+  if(!el._open) el._toggle(); el.querySelectorAll(':scope>ul>li').forEach(c=>{ if(c.dataset.i) expandRisky(c,depth+1); }); }
+function pathTo(t){ const prev=new Map([[0,-1]]), q=[0]; while(q.length){const x=q.shift(); if(x===t) break; for(const k of K[x]) if(!prev.has(k)){prev.set(k,x); q.push(k);}}
+  if(!prev.has(t)) return null; const p=[]; for(let x=t;x!==-1;x=prev.get(x)) p.unshift(x); return p; }
+function find(){ const q=document.getElementById('gQ').value.trim().toLowerCase(); if(!q) return;
+  const hits=N.map((n,i)=>[n,i]).filter(([n])=>n.l.toLowerCase().includes(q)).map(([,i])=>i);
+  if(!hits.length){msg.textContent=' no match'; return;}
+  risky.checked=false; render(); let shown=0;
+  for(const t of hits.slice(0,10)){ const p=pathTo(t); if(!p) continue; let el=root.querySelector('li[data-i="0"]');
+    for(const i of p.slice(1)){ if(!el._open) el._toggle(); el=[...el.querySelectorAll(':scope>ul>li')].find(c=>+c.dataset.i===i); if(!el) break; }
+    if(el){ el.querySelector('.tn').classList.add('hit'); shown++; if(shown===1) el.scrollIntoView({block:'center'}); } }
+  msg.textContent=` ${hits.length} match(es), showing path to ${shown}`; }
+risky.onchange=render; document.getElementById('gGo').onclick=find;
+document.getElementById('gQ').onkeydown=e=>{if(e.key==='Enter') find();};
+document.getElementById('gExpand').onclick=()=>{risky.checked=true; render(); expandRisky(root.querySelector('li[data-i="0"]'),0);};
+document.getElementById('gCollapse').onclick=render;
+render();
+})();
+</script>
+</body></html>

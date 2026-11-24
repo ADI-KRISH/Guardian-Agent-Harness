@@ -1,0 +1,90 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Supply Chain Guardian architecture</title><style>
+*{box-sizing:border-box;margin:0}
+body{width:1600px;height:900px;font-family:Inter,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#1b2430;background:#f5f6f8;position:relative;overflow:hidden}
+h1{position:absolute;left:48px;top:26px;font-size:29px}
+.sub{position:absolute;left:48px;top:66px;color:#5b6573;font-size:14.5px}
+.box{position:absolute;background:#fff;border-radius:11px;padding:9px 12px;box-shadow:0 1px 3px #0002;font-size:12px;line-height:1.4;border:1.5px solid #d5d9df;overflow:hidden}
+.box b{display:block;font-size:14px;margin-bottom:2px}
+.agent{border-color:#16703a;background:#f3fbf6}.agent b{color:#16703a}
+.ai{border-color:#c08b00;background:#fff8e1}.ai b{color:#8a5a00}
+.human{border:2.5px solid #b3261e;background:#fff1f0}.human b{color:#b3261e}
+.data{background:#eaeff6}.store{border-color:#5b6573;background:#eef1f5}
+.lbl{position:absolute;font-size:10.5px;font-weight:700;letter-spacing:.7px;color:#6b7480;text-transform:uppercase}
+.tag{display:inline-block;font-size:9.5px;font-weight:700;border-radius:9px;padding:1px 6px;margin-left:5px;vertical-align:2px;color:#fff}
+svg{position:absolute;left:0;top:0;pointer-events:none}
+.legend{position:absolute;left:48px;top:820px;font-size:12px;color:#5b6573;display:flex;gap:22px}
+.legend i{display:inline-block;width:24px;height:0;border-top:2.5px solid;vertical-align:4px;margin-right:6px}
+code{font-size:11px}
+</style></head><body>
+<h1>Software Supply Chain Guardian: architecture</h1>
+<div class="sub">Deterministic evidence first. AI only explains and infers, behind guardrails. Nothing changes without a named human approval; the Guardian never merges or deploys.</div>
+
+<div class="lbl" style="left:48px;top:118px">inputs (pinned commit)</div>
+<div class="lbl" style="left:358px;top:118px">see &amp; detect</div>
+<div class="lbl" style="left:668px;top:118px">reason</div>
+<div class="lbl" style="left:978px;top:118px">decide</div>
+<div class="lbl" style="left:1288px;top:118px">prove &amp; report</div>
+
+<div class="box data" style="left:48px;top:140px;width:270px;height:80px"><b>Git repository</b>remote · branch · commit SHA · clean-tree check</div>
+<div class="box data" style="left:48px;top:232px;width:270px;height:80px"><b>Manifests &amp; lockfiles</b>package.json + lock (root, frontend) · pom.xml · requirements.txt</div>
+<div class="box data" style="left:48px;top:324px;width:270px;height:80px"><b>Build &amp; CI files</b>Dockerfiles · docker-compose · GitHub Actions workflows</div>
+<div class="box data" style="left:48px;top:416px;width:270px;height:80px;border-style:dashed"><b>External SBOMs (optional)</b>syft image SBOM · CycloneDX · SPDX</div>
+
+<div class="box agent" style="left:358px;top:140px;width:270px;height:130px"><b>1 · Discover</b>Components with exact versions, direct + transitive, scope (prod / dev / CI)<br>→ CycloneDX 1.5 SBOM, dependency graph, path to every package, provenance</div>
+<div class="box agent" style="left:358px;top:310px;width:270px;height:186px"><b>2 · Detect</b>Known CVEs + malicious packages<br>Typosquats · unexpected / orphan deps<br>Install scripts (actual script text)<br>Lockfile tampering vs baseline + registry<br>Untrusted / mutable images · CI pinning<br>→ findings with evidence + initial severity</div>
+
+<div class="box agent" style="left:668px;top:140px;width:270px;height:130px"><b>3 · Analyze</b>Reachability from a source import scan · exposure (server / browser / install-time / CI) · production use · CVSS exploitability<br>→ explainable score 0-100, P1-P4, confidence</div>
+<div class="box agent" style="left:668px;top:310px;width:270px;height:186px"><b>Investigator</b>Deep-dive on one non-CVE risk:<br>baseline vs current lockfile + manifest, registry provenance &amp; publish data, install-script text, what a CI ref resolves to, git history<br>→ <u>verified facts</u> kept apart from <u>inference</u></div>
+
+<div class="box agent" style="left:978px;top:140px;width:270px;height:130px"><b>4 · Remediation planner</b>Options per risk: upgrade · lockfile refresh · upgrade parent · override · pin SHA · remove · replace · block · escalate · accept<br>each with risk reduction, compatibility, rollback</div>
+<div class="box human" style="left:978px;top:310px;width:270px;height:186px"><b>Human approval <span class="tag" style="background:#b3261e">GATE</span></b>A named person approves, rejects or accepts each risk with a written reason (+ review date for accepted risk).<br><br>The approved option is hash-locked: if the plan changes afterwards, the Validator refuses to apply it.</div>
+
+<div class="box agent" style="left:1288px;top:140px;width:270px;height:130px"><b>5 · Validator</b>Isolated clone + new branch · apply fix · regenerate lockfile · build · unit + integration tests before vs after · rescan · before/after SBOM · new-vuln check</div>
+<div class="box agent" style="left:1288px;top:310px;width:270px;height:86px"><b>Reporter</b>Guardian report (HTML + JSON) · residual &amp; accepted risk · final confidence · SARIF</div>
+<div class="box human" style="left:1288px;top:416px;width:270px;height:80px"><b>Human review &amp; merge</b>Branch + evidence handed over; Guardian never pushes, merges or deploys</div>
+
+<div class="lbl" style="left:48px;top:516px">data sources (read-only)</div>
+<div class="box data" style="left:48px;top:550px;width:180px;height:110px"><b>Vulnerability DBs</b>OSV.dev · GitHub Advisory DB · offline snapshot</div>
+<div class="box data" style="left:243px;top:550px;width:190px;height:110px"><b>npm registry</b>versions · hashes · publish dates · attestations · take-downs</div>
+<div class="box data" style="left:448px;top:550px;width:180px;height:110px"><b>GitHub</b>git ls-remote: action ref → commit SHA</div>
+
+<div class="lbl" style="left:818px;top:522px">ai (optional, pluggable)</div>
+<div class="box ai" style="left:668px;top:550px;width:270px;height:110px"><b>Guardrails <span class="tag" style="background:#c08b00">AI</span></b>JSON schema · cited evidence must exist · no new CVE / version / URL strings · priority moves ±1 level max · rejected → deterministic fallback</div>
+<div class="box ai" style="left:978px;top:550px;width:270px;height:110px"><b>LLM <span class="tag" style="background:#c08b00">AI</span></b>Claude API or local model (Ollama). Sees evidence JSON only: no source code, no secrets. Temperature 0, cached, prompts versioned by hash.</div>
+<div class="box data" style="left:1288px;top:550px;width:270px;height:110px"><b>Policy-as-code</b><code>policies/*.json</code>: block malicious / tampered components, risk budget (no open P1 in prod), pinned CI actions. Exit code gates CI.</div>
+
+<div class="box store" style="left:48px;top:700px;width:1510px;height:92px"><b>Evidence store: one run directory per scan</b>
+sbom.cdx.json · dependency-graph.json / .html · findings.json / .sarif · analysis.json · investigation-*.json / .md · plan.json / .md · work/before + work/after (isolated clones) · after-scan/ · validation.json · guardian-report.html / .json<br>
+<b style="display:inline;font-size:12px">audit.jsonl</b>: append-only, SHA-256 hash-chained log of every step: actor (guardian / ai:model / human:name), action, input hashes, decisions. <code>guardian audit</code> detects any edited or deleted entry.</div>
+
+<svg width="1600" height="900"><defs>
+<marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#5b6573"/></marker>
+<marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#b3261e"/></marker>
+<marker id="y" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#c08b00"/></marker>
+<marker id="ys" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M10,0L0,5L10,10z" fill="#c08b00"/></marker></defs>
+<g stroke="#5b6573" stroke-width="2" fill="none">
+ <path d="M318 180 H338 M318 272 H338 M318 364 H338 M318 456 H338 M338 180 V456"/>
+ <path d="M338 205 H354" marker-end="url(#a)"/>
+ <path d="M493 270 V306" marker-end="url(#a)"/>
+ <path d="M628 400 H648 V205 H664" marker-end="url(#a)"/>
+ <path d="M938 205 H974" marker-end="url(#a)"/>
+ <path d="M803 270 V306" stroke-dasharray="5 4" marker-end="url(#a)"/>
+ <path d="M338 546 V538 H493 V500" marker-end="url(#a)"/><path d="M138 550 V538 H338 M538 550 V538 H493"/>
+ <path d="M1423 270 V306" marker-end="url(#a)"/>
+ <path d="M1423 550 V500" stroke-dasharray="5 4" marker-end="url(#a)"/>
+</g>
+<g stroke="#b3261e" stroke-width="3" fill="none">
+ <path d="M1113 270 V306" marker-end="url(#r)"/>
+ <path d="M1248 400 H1268 V205 H1284" marker-end="url(#r)"/>
+ <path d="M1423 396 V412" marker-end="url(#r)"/>
+</g>
+<g stroke="#c08b00" stroke-width="2.4" fill="none">
+ <path d="M803 500 V546" marker-end="url(#y)" marker-start="url(#ys)"/>
+ <path d="M942 605 H974" marker-end="url(#y)" marker-start="url(#ys)"/>
+</g>
+<g stroke="#9aa3ae" stroke-width="1.5" fill="none" stroke-dasharray="2 4"><path d="M183 660 V696 M803 660 V696 M1113 660 V696 M1423 660 V696"/></g>
+</svg>
+<div class="legend"><span><i style="border-color:#5b6573"></i>data / evidence flow</span><span><i style="border-color:#b3261e"></i>approval-controlled path</span>
+<span><i style="border-color:#c08b00"></i>guarded AI interaction</span><span><i style="border-color:#5b6573;border-top-style:dashed"></i>optional / policy</span>
+<span>All agents write to the evidence store and the audit chain.</span></div>
+</body></html>

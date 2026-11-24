@@ -145,6 +145,18 @@ class Detection(unittest.TestCase):
         self.assertEqual(crossenv_script.severity, "critical")
         self.assertTrue(all(v["status"] == "ok" for v in res["meta"]["checks"].values()), res["meta"]["checks"])
 
+    def test_graph_views(self):
+        from guardian import graph
+        inv, ctx = discover(ROOT / "demo" / "compromised")
+        res = detect(inv, ctx, vuln_source="offline", online=False)
+        dot = graph.risk_subgraph_dot(inv, res["findings"], "high")
+        self.assertIn('"pkg:npm/event-stream@3.3.6" -> "pkg:npm/flatmap-stream@0.1.1"', dot)
+        self.assertNotIn("pkg:npm/accepts@", dot)          # clean packages are left out
+        t = graph.tree_data(inv, res["findings"])
+        self.assertEqual(t["nodes"][0]["b"], "critical")   # root sees the worst risk below it
+        labels = [t["nodes"][i]["l"] for i in t["orphans"]]
+        self.assertIn("ua-parser-js@0.7.29", labels)
+
     def test_clean_baseline_has_no_tamper_findings(self):
         inv, ctx = discover(ROOT / "demo" / "baseline")
         res = detect(inv, ctx, vuln_source="offline", baseline=ROOT / "demo" / "baseline" / "package-lock.json",

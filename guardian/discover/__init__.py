@@ -19,6 +19,9 @@ def discover(project_dir: Path, extra_sboms: Optional[List[Path]] = None, images
     found = []
     if npm.parse(project_dir, inv):
         found.append("npm")
+    for sub_dir in _sub_npm_projects(project_dir):
+        _graft_sub_npm(inv, project_dir, sub_dir)
+        found.append(f"npm:{sub_dir.relative_to(project_dir)}")
     if maven.parse(project_dir, inv, tgf_file=maven_tree):
         found.append("maven")
     if python_reqs.parse(project_dir, inv):
@@ -56,6 +59,84 @@ def discover(project_dir: Path, extra_sboms: Optional[List[Path]] = None, images
     return inv, context
 
 
+def _sub_npm_projects(project_dir: Path) -> List[Path]:
+    """Other npm projects inside the repo (e.g. frontend/) that have their own lockfile."""
+    out = []
+    for lock in sorted(project_dir.rglob("package-lock.json")):
+        rel = lock.relative_to(project_dir)
+        if lock.parent == project_dir or any(p in containers.SKIP_DIRS for p in rel.parts[:-1]):
+            continue
+        out.append(lock.parent)
+    return out
+
+
+def _graft_sub_npm(inv: Inventory, project_dir: Path, sub_dir: Path) -> None:
+    """Parse sub_dir's lockfile and hang it under an application node linked from the root."""
+    from ..models import Component
+    rel = str(sub_dir.relative_to(project_dir))
+    sub = Inventory(project=rel)
+    npm.parse(sub_dir, sub)
+    name, _, ver = sub.project.rpartition("@") if "@" in sub.project.lstrip("@") else (sub.project, "", None)
+    app = inv.add(Component(name=name or rel, version=ver or None, ecosystem="npm", type="application",
+                            direct=True, source_files=[f"{rel}/package.json"], locations=[rel],
+                            properties={"subproject": rel}))
+    inv.link(ROOT_ID, app.id)
+    for c in sub.components.values():
+        c.source_files = [f"{rel}/{f}" for f in c.source_files]
+        c.locations = [f"{rel}/{l}" for l in c.locations]
+        inv.add(c)
+    for parent, kids in sub.edges.items():
+        for k in kids:
+            inv.link(app.id if parent == ROOT_ID else parent, k)
+    inv.sources += [f"{rel}/{s}" for s in sub.sources]
+    inv.notes += [f"{rel}: {n}" for n in sub.notes]
+
+
+def prod_only(inv: Inventory) -> Inventory:
+    """Drop dev / optional / build / CI-only components and any edges touching them."""
+    keep = {cid for cid, c in inv.components.items() if c.scope == "prod" or c.type == "application"}
+    out = Inventory(project=inv.project, sources=list(inv.sources), notes=list(inv.notes) +
+                    ["--prod-only: dev, optional, build and CI-scoped components excluded"])
+    out.components = {k: v for k, v in inv.components.items() if k in keep}
+    out.edges = {a: {b for b in bs if b in keep} for a, bs in inv.edges.items() if a in keep or a == ROOT_ID}
+    if hasattr(inv, "lock_root_declared"):
+        out.lock_root_declared = inv.lock_root_declared
+    return out
+
+
+def provenance(project_dir: Path, inv: Inventory, argv: Optional[List[str]] = None) -> dict:
+    """Exactly what this graph was built from: command, inputs (with sha256), git commit."""
+    import hashlib
+    import sys
+    from datetime import datetime, timezone
+    from .. import __version__
+
+    def git(*a):
+        try:
+            return subprocess.run(["git", "-C", str(project_dir), *a], capture_output=True, text=True,
+                                  timeout=20).stdout.strip() or None
+        except (OSError, subprocess.SubprocessError):
+            return None
+    inputs = []
+    for s in inv.sources:
+        f = Path(s) if Path(s).is_absolute() else project_dir / s
+        if f.is_file():
+            entry = {"path": s, "sha256": hashlib.sha256(f.read_bytes()).hexdigest()}
+            tracked = git("ls-files", "--error-unmatch", s)
+            entry["git_tracked"] = bool(tracked)
+            inputs.append(entry)
+    dirty = git("status", "--porcelain", "--untracked-files=no")
+    return {
+        "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "tool": f"supply-chain-guardian {__version__}",
+        "command": " ".join(["python3 -m guardian"] + list(argv if argv is not None else sys.argv[1:])),
+        "project_dir": str(project_dir),
+        "git": {"remote": git("remote", "get-url", "origin"), "branch": git("branch", "--show-current"),
+                "commit": git("rev-parse", "HEAD"), "dirty": bool(dirty)} if git("rev-parse", "HEAD") else None,
+        "inputs": inputs,
+    }
+
+
 def _graft_image(inv: Inventory, sub: Inventory, image: str) -> None:
     """Attach an image's OS/app packages under the image node."""
     from ..models import Component
@@ -69,11 +150,14 @@ def _graft_image(inv: Inventory, sub: Inventory, image: str) -> None:
             inv.link(img.id if parent == ROOT_ID else parent, k)
 
 
-def write_outputs(inv: Inventory, out_dir: Path) -> dict:
+def write_outputs(inv: Inventory, out_dir: Path, prov: Optional[dict] = None) -> dict:
     out_dir.mkdir(parents=True, exist_ok=True)
     sbom.write_cyclonedx(inv, out_dir / "sbom.cdx.json")
     (out_dir / "inventory.json").write_text(json.dumps(inv.to_dict(), indent=2))
     graph = graph_json(inv)
+    if prov:
+        graph = {"provenance": prov, "stats": stats(inv), **graph}
+        (out_dir / "provenance.json").write_text(json.dumps(prov, indent=2))
     (out_dir / "dependency-graph.json").write_text(json.dumps(graph, indent=2))
     (out_dir / "dependency-graph.dot").write_text(to_dot(inv))
     return graph

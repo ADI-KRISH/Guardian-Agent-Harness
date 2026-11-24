@@ -5,11 +5,13 @@
     "stage": "discover+detect",
     "version": "0.1.0"
   },
-  "generated_at": "2026-11-23T09:47:00Z",
+  "generated_at": "2026-11-24T04:54:11Z",
   "project": "juice-shop@20.4.0-SNAPSHOT",
   "inputs": [
     "package.json",
     "package-lock.json",
+    "frontend/package.json",
+    "frontend/package-lock.json",
     "Dockerfile",
     "infrastructure/Dockerfile",
     "test/smoke/Dockerfile",
@@ -34,27 +36,28 @@
   ],
   "ecosystems": [
     "npm",
+    "npm:frontend",
     "dockerfile",
     "github-actions"
   ],
   "coverage_notes": [],
   "inventory": {
-    "components": 1143,
-    "direct": 133,
-    "transitive": 1010,
+    "components": 1692,
+    "direct": 190,
+    "transitive": 1502,
     "by_ecosystem": {
-      "npm": 1108,
+      "npm": 1657,
       "docker": 10,
       "github-actions": 25
     },
     "by_scope": {
-      "prod": 472,
-      "dev": 596,
-      "optional": 47,
+      "prod": 803,
+      "dev": 671,
+      "optional": 190,
       "build": 3,
       "ci": 25
     },
-    "edges": 2182,
+    "edges": 3414,
     "unreachable_from_root": 0,
     "max_depth": 10
   },
@@ -63,7 +66,7 @@
   "checks": {
     "vulnerabilities": {
       "status": "ok",
-      "findings": 53
+      "findings": 56
     },
     "typosquatting": {
       "status": "ok",
@@ -71,7 +74,7 @@
     },
     "install_scripts": {
       "status": "ok",
-      "findings": 6
+      "findings": 14
     },
     "lockfile_integrity": {
       "status": "ok",
@@ -96,19 +99,19 @@
   },
   "baseline_diff": null,
   "summary": {
-    "total": 78,
+    "total": 89,
     "by_severity": {
       "critical": 7,
-      "high": 23,
-      "medium": 33,
-      "low": 11,
-      "info": 4
+      "high": 24,
+      "medium": 34,
+      "low": 18,
+      "info": 6
     },
     "by_category": {
-      "vulnerability": 53,
+      "vulnerability": 56,
       "cicd": 8,
       "untrusted-image": 11,
-      "install-script": 6
+      "install-script": 14
     }
   },
   "findings": [
@@ -1991,6 +1994,81 @@
         ]
       },
       "id": "GRD-542423db49"
+    },
+    {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in ws@8.18.0: ws: Memory exhaustion DoS from tiny fragments and data chunks",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/ws@8.18.0",
+        "name": "ws",
+        "version": "8.18.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-96hv-2xvq-fx4p: ws: Memory exhaustion DoS from tiny fragments and data chunks",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "frontend/package-lock.json",
+          "detail": "installed ws@8.18.0 is inside affected range >=8.0.0 <8.21.0",
+          "location": "frontend/node_modules/ws"
+        },
+        {
+          "kind": "cvss",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "CVSS 7.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "ethers@5.8.0",
+          "@ethersproject/providers@5.8.0",
+          "ws@8.18.0"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "@wagmi/core@0.5.8",
+          "ethers@5.8.0",
+          "@ethersproject/providers@5.8.0",
+          "ws@8.18.0"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-96hv-2xvq-fx4p"
+      ],
+      "identifiers": [
+        "GHSA-96hv-2xvq-fx4p"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "8.21.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "frontend@20.4.0-SNAPSHOT"
+        ],
+        "cvss_score": 7.5,
+        "cwe": [
+          "CWE-400",
+          "CWE-770",
+          "CWE-1050"
+        ]
+      },
+      "id": "GRD-58397be730"
     },
     {
       "rule": "CICD-UNPINNED-ACTION",
@@ -3889,6 +3967,79 @@
       "id": "GRD-981fd74289"
     },
     {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in ws@8.18.0: ws: Uninitialized memory disclosure",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/ws@8.18.0",
+        "name": "ws",
+        "version": "8.18.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-58qx-3vcg-4xpx: ws: Uninitialized memory disclosure",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "frontend/package-lock.json",
+          "detail": "installed ws@8.18.0 is inside affected range >=8.0.0 <8.20.1",
+          "location": "frontend/node_modules/ws"
+        },
+        {
+          "kind": "cvss",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "CVSS 4.4 (CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:N/A:N)",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "ethers@5.8.0",
+          "@ethersproject/providers@5.8.0",
+          "ws@8.18.0"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "@wagmi/core@0.5.8",
+          "ethers@5.8.0",
+          "@ethersproject/providers@5.8.0",
+          "ws@8.18.0"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-58qx-3vcg-4xpx"
+      ],
+      "identifiers": [
+        "GHSA-58qx-3vcg-4xpx"
+      ],
+      "fix": {
+        "fixed_versions": [
+          "8.20.1"
+        ],
+        "available": true,
+        "introduced_via": [
+          "frontend@20.4.0-SNAPSHOT"
+        ],
+        "cvss_score": 4.4,
+        "cwe": [
+          "CWE-908"
+        ]
+      },
+      "id": "GRD-88414e0db6"
+    },
+    {
       "rule": "CICD-UNPINNED-ACTION",
       "category": "cicd",
       "title": "GitHub Action actions/checkout: first-party action pinned to mutable tag 'v6'",
@@ -4011,6 +4162,291 @@
         "suggestion": "pin to a full commit SHA: uses: github/codeql-action/init@<40-char-sha> # v3"
       },
       "id": "GRD-32d4bb8f8d"
+    },
+    {
+      "rule": "INSTALL-SCRIPT",
+      "category": "install-script",
+      "title": "@fortawesome/fontawesome-common-types@0.2.36 runs a custom install script",
+      "severity": "low",
+      "component": {
+        "id": "pkg:npm/%40fortawesome/fontawesome-common-types@0.2.36",
+        "name": "@fortawesome/fontawesome-common-types",
+        "version": "0.2.36",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "lockfile-entry",
+          "source": "frontend/package-lock.json",
+          "detail": "hasInstallScript: true",
+          "location": "frontend/node_modules/@fortawesome/fontawesome-common-types"
+        },
+        {
+          "kind": "script",
+          "source": "registry.npmjs.org/@fortawesome/fontawesome-common-types/0.2.36",
+          "detail": "postinstall: node attribution.js",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "@fortawesome/fontawesome-svg-core@1.2.36",
+          "@fortawesome/fontawesome-common-types@0.2.36"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "@fortawesome/free-brands-svg-icons@5.15.4",
+          "@fortawesome/fontawesome-common-types@0.2.36"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "@fortawesome/free-regular-svg-icons@5.15.4",
+          "@fortawesome/fontawesome-common-types@0.2.36"
+        ]
+      ],
+      "confidence": "medium",
+      "evidence_type": "verified",
+      "references": [],
+      "identifiers": [],
+      "fix": {
+        "suggestion": "install with --ignore-scripts and allowlist required builds; pin version"
+      },
+      "id": "GRD-04624cebc1"
+    },
+    {
+      "rule": "INSTALL-SCRIPT",
+      "category": "install-script",
+      "title": "@fortawesome/fontawesome-svg-core@1.2.36 runs a custom install script",
+      "severity": "low",
+      "component": {
+        "id": "pkg:npm/%40fortawesome/fontawesome-svg-core@1.2.36",
+        "name": "@fortawesome/fontawesome-svg-core",
+        "version": "1.2.36",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "lockfile-entry",
+          "source": "frontend/package-lock.json",
+          "detail": "hasInstallScript: true",
+          "location": "frontend/node_modules/@fortawesome/fontawesome-svg-core"
+        },
+        {
+          "kind": "script",
+          "source": "registry.npmjs.org/@fortawesome/fontawesome-svg-core/1.2.36",
+          "detail": "postinstall: node attribution.js",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "@fortawesome/fontawesome-svg-core@1.2.36"
+        ]
+      ],
+      "confidence": "medium",
+      "evidence_type": "verified",
+      "references": [],
+      "identifiers": [],
+      "fix": {
+        "suggestion": "install with --ignore-scripts and allowlist required builds; pin version"
+      },
+      "id": "GRD-28a8b0c25f"
+    },
+    {
+      "rule": "INSTALL-SCRIPT",
+      "category": "install-script",
+      "title": "@fortawesome/free-brands-svg-icons@5.15.4 runs a custom install script",
+      "severity": "low",
+      "component": {
+        "id": "pkg:npm/%40fortawesome/free-brands-svg-icons@5.15.4",
+        "name": "@fortawesome/free-brands-svg-icons",
+        "version": "5.15.4",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "lockfile-entry",
+          "source": "frontend/package-lock.json",
+          "detail": "hasInstallScript: true",
+          "location": "frontend/node_modules/@fortawesome/free-brands-svg-icons"
+        },
+        {
+          "kind": "script",
+          "source": "registry.npmjs.org/@fortawesome/free-brands-svg-icons/5.15.4",
+          "detail": "postinstall: node attribution.js",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "@fortawesome/free-brands-svg-icons@5.15.4"
+        ]
+      ],
+      "confidence": "medium",
+      "evidence_type": "verified",
+      "references": [],
+      "identifiers": [],
+      "fix": {
+        "suggestion": "install with --ignore-scripts and allowlist required builds; pin version"
+      },
+      "id": "GRD-d70b8b07ef"
+    },
+    {
+      "rule": "INSTALL-SCRIPT",
+      "category": "install-script",
+      "title": "@fortawesome/free-regular-svg-icons@5.15.4 runs a custom install script",
+      "severity": "low",
+      "component": {
+        "id": "pkg:npm/%40fortawesome/free-regular-svg-icons@5.15.4",
+        "name": "@fortawesome/free-regular-svg-icons",
+        "version": "5.15.4",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "lockfile-entry",
+          "source": "frontend/package-lock.json",
+          "detail": "hasInstallScript: true",
+          "location": "frontend/node_modules/@fortawesome/free-regular-svg-icons"
+        },
+        {
+          "kind": "script",
+          "source": "registry.npmjs.org/@fortawesome/free-regular-svg-icons/5.15.4",
+          "detail": "postinstall: node attribution.js",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "@fortawesome/free-regular-svg-icons@5.15.4"
+        ]
+      ],
+      "confidence": "medium",
+      "evidence_type": "verified",
+      "references": [],
+      "identifiers": [],
+      "fix": {
+        "suggestion": "install with --ignore-scripts and allowlist required builds; pin version"
+      },
+      "id": "GRD-468dc5528a"
+    },
+    {
+      "rule": "INSTALL-SCRIPT",
+      "category": "install-script",
+      "title": "@fortawesome/free-solid-svg-icons@5.15.4 runs a custom install script",
+      "severity": "low",
+      "component": {
+        "id": "pkg:npm/%40fortawesome/free-solid-svg-icons@5.15.4",
+        "name": "@fortawesome/free-solid-svg-icons",
+        "version": "5.15.4",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "lockfile-entry",
+          "source": "frontend/package-lock.json",
+          "detail": "hasInstallScript: true",
+          "location": "frontend/node_modules/@fortawesome/free-solid-svg-icons"
+        },
+        {
+          "kind": "script",
+          "source": "registry.npmjs.org/@fortawesome/free-solid-svg-icons/5.15.4",
+          "detail": "postinstall: node attribution.js",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "@fortawesome/free-solid-svg-icons@5.15.4"
+        ]
+      ],
+      "confidence": "medium",
+      "evidence_type": "verified",
+      "references": [],
+      "identifiers": [],
+      "fix": {
+        "suggestion": "install with --ignore-scripts and allowlist required builds; pin version"
+      },
+      "id": "GRD-103518a0a7"
+    },
+    {
+      "rule": "INSTALL-SCRIPT",
+      "category": "install-script",
+      "title": "@parcel/watcher@2.6.0 runs a custom install script",
+      "severity": "low",
+      "component": {
+        "id": "pkg:npm/%40parcel/watcher@2.6.0",
+        "name": "@parcel/watcher",
+        "version": "2.6.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "lockfile-entry",
+          "source": "frontend/package-lock.json",
+          "detail": "hasInstallScript: true",
+          "location": "frontend/node_modules/@parcel/watcher"
+        },
+        {
+          "kind": "script",
+          "source": "registry.npmjs.org/@parcel/watcher/2.6.0",
+          "detail": "install: node scripts/build-from-source.js",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "@angular/build@22.3.0",
+          "@parcel/watcher@2.6.0"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "sass@1.108.2",
+          "@parcel/watcher@2.6.0"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "@angular/build@22.3.0",
+          "sass@1.108.2",
+          "@parcel/watcher@2.6.0"
+        ]
+      ],
+      "confidence": "medium",
+      "evidence_type": "verified",
+      "references": [],
+      "identifiers": [],
+      "fix": {
+        "suggestion": "install with --ignore-scripts and allowlist required builds; pin version"
+      },
+      "id": "GRD-2040272568"
     },
     {
       "rule": "INSTALL-SCRIPT",
@@ -4282,6 +4718,85 @@
       "id": "GRD-7403c836c5"
     },
     {
+      "rule": "VULN-KNOWN",
+      "category": "vulnerability",
+      "title": "Known vulnerability in elliptic@6.6.1: Elliptic Uses a Cryptographic Primitive with a Risky Implementation",
+      "severity": "low",
+      "component": {
+        "id": "pkg:npm/elliptic@6.6.1",
+        "name": "elliptic",
+        "version": "6.6.1",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "evidence": [
+        {
+          "kind": "advisory",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "GHSA-848j-6mx2-7j84: Elliptic Uses a Cryptographic Primitive with a Risky Implementation",
+          "location": null
+        },
+        {
+          "kind": "version-match",
+          "source": "frontend/package-lock.json",
+          "detail": "installed elliptic@6.6.1 is inside affected range <=6.6.1",
+          "location": "frontend/node_modules/elliptic"
+        },
+        {
+          "kind": "cvss",
+          "source": "registry.npmjs.org advisories (GitHub Advisory DB)",
+          "detail": "CVSS 5.6 (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L)",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "ethers@5.8.0",
+          "@ethersproject/signing-key@5.8.0",
+          "elliptic@6.6.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "@wagmi/core@0.5.8",
+          "ethers@5.8.0",
+          "@ethersproject/signing-key@5.8.0",
+          "elliptic@6.6.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "ethers@5.8.0",
+          "@ethersproject/hdnode@5.8.0",
+          "@ethersproject/signing-key@5.8.0",
+          "elliptic@6.6.1"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [
+        "https://github.com/advisories/GHSA-848j-6mx2-7j84"
+      ],
+      "identifiers": [
+        "GHSA-848j-6mx2-7j84"
+      ],
+      "fix": {
+        "fixed_versions": [],
+        "available": false,
+        "introduced_via": [
+          "frontend@20.4.0-SNAPSHOT"
+        ],
+        "cvss_score": 5.6,
+        "cwe": [
+          "CWE-1240"
+        ]
+      },
+      "id": "GRD-fc03a49989"
+    },
+    {
       "rule": "INSTALL-SCRIPT",
       "category": "install-script",
       "title": "esbuild@0.28.2 runs a standard native-build install script",
@@ -4292,7 +4807,7 @@
         "version": "0.28.2",
         "ecosystem": "npm",
         "direct": false,
-        "scope": "dev"
+        "scope": "prod"
       },
       "evidence": [
         {
@@ -4312,6 +4827,18 @@
         [
           "juice-shop@20.4.0-SNAPSHOT",
           "tsx@4.23.15",
+          "esbuild@0.28.2"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "@angular/build@22.3.0",
+          "esbuild@0.28.2"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "@cyclonedx/cyclonedx-esbuild@1.4.4",
           "esbuild@0.28.2"
         ]
       ],
@@ -4355,6 +4882,20 @@
         [
           "juice-shop@20.4.0-SNAPSHOT",
           "tsx@4.23.15",
+          "fsevents@2.3.3"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "@angular/build@22.3.0",
+          "vite@8.3.8",
+          "fsevents@2.3.3"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "vitest@4.1.12",
+          "vite@8.3.8",
           "fsevents@2.3.3"
         ]
       ],
@@ -4405,6 +4946,13 @@
           "@cyclonedx/cyclonedx-npm@4.2.1",
           "@cyclonedx/cyclonedx-library@10.5.1",
           "libxmljs2@0.37.0"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "@cyclonedx/cyclonedx-esbuild@1.4.4",
+          "@cyclonedx/cyclonedx-library@10.5.1",
+          "libxmljs2@0.37.0"
         ]
       ],
       "confidence": "high",
@@ -4415,6 +4963,96 @@
         "suggestion": "install with --ignore-scripts and allowlist required builds; pin version"
       },
       "id": "GRD-e301ad5c05"
+    },
+    {
+      "rule": "INSTALL-SCRIPT",
+      "category": "install-script",
+      "title": "lmdb@3.5.9 runs a standard native-build install script",
+      "severity": "info",
+      "component": {
+        "id": "pkg:npm/lmdb@3.5.9",
+        "name": "lmdb",
+        "version": "3.5.9",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "optional"
+      },
+      "evidence": [
+        {
+          "kind": "lockfile-entry",
+          "source": "frontend/package-lock.json",
+          "detail": "hasInstallScript: true",
+          "location": "frontend/node_modules/lmdb"
+        },
+        {
+          "kind": "script",
+          "source": "registry.npmjs.org/lmdb/3.5.9",
+          "detail": "install: node-gyp-build-optional-packages",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "@angular/build@22.3.0",
+          "lmdb@3.5.9"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [],
+      "identifiers": [],
+      "fix": {
+        "suggestion": "install with --ignore-scripts and allowlist required builds; pin version"
+      },
+      "id": "GRD-05c1562602"
+    },
+    {
+      "rule": "INSTALL-SCRIPT",
+      "category": "install-script",
+      "title": "msgpackr-extract@3.0.7 runs a standard native-build install script",
+      "severity": "info",
+      "component": {
+        "id": "pkg:npm/msgpackr-extract@3.0.7",
+        "name": "msgpackr-extract",
+        "version": "3.0.7",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "optional"
+      },
+      "evidence": [
+        {
+          "kind": "lockfile-entry",
+          "source": "frontend/package-lock.json",
+          "detail": "hasInstallScript: true",
+          "location": "frontend/node_modules/msgpackr-extract"
+        },
+        {
+          "kind": "script",
+          "source": "registry.npmjs.org/msgpackr-extract/3.0.7",
+          "detail": "install: node-gyp-build-optional-packages",
+          "location": null
+        }
+      ],
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "@angular/build@22.3.0",
+          "lmdb@3.5.9",
+          "msgpackr@1.12.1",
+          "msgpackr-extract@3.0.7"
+        ]
+      ],
+      "confidence": "high",
+      "evidence_type": "verified",
+      "references": [],
+      "identifiers": [],
+      "fix": {
+        "suggestion": "install with --ignore-scripts and allowlist required builds; pin version"
+      },
+      "id": "GRD-b3e62f88b6"
     },
     {
       "rule": "INSTALL-SCRIPT",

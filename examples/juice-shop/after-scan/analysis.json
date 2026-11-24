@@ -1,0 +1,6423 @@
+{
+  "schema": "guardian.analysis/v1",
+  "project": "juice-shop@20.4.0-SNAPSHOT",
+  "ai": {
+    "provider": "none",
+    "model": "",
+    "enabled": false,
+    "prompt": "prompts/analyst_system.md",
+    "prompt_sha": "0e912c410a71",
+    "calls": 0,
+    "accepted": 0,
+    "rejected": 0,
+    "errors": 0
+  },
+  "context": {
+    "source_files_scanned": 680,
+    "subprojects": [
+      "",
+      "frontend"
+    ],
+    "exposed_ports": [
+      "3000"
+    ],
+    "packages_imported_by_prod_code": {
+      "<root>": 56,
+      "frontend": 43
+    }
+  },
+  "summary": {
+    "P1-urgent": 24,
+    "P2-high": 21,
+    "P3-medium": 12,
+    "P4-low": 29
+  },
+  "urgent": [
+    "GRD-27658816a6",
+    "GRD-f30fc17d4a",
+    "GRD-2d7f8fdaa9",
+    "GRD-ec409d792d",
+    "GRD-21ff3f02f2",
+    "GRD-8c533f5a81",
+    "GRD-a4254ed143",
+    "GRD-b57ae0df1d",
+    "GRD-f488b5ad0f",
+    "GRD-f9f7b41e3b",
+    "GRD-ac227d148c",
+    "GRD-981fd74289",
+    "GRD-000db4f725",
+    "GRD-ddea97271f",
+    "GRD-95bed168b0",
+    "GRD-58397be730",
+    "GRD-3a0beadd6d",
+    "GRD-7646ef6cfd",
+    "GRD-aa81ed47ab",
+    "GRD-23dff82a3e",
+    "GRD-6c6abee780",
+    "GRD-29e67796f1",
+    "GRD-e9592c2979",
+    "GRD-0f37244f8d"
+  ],
+  "production_findings": 67,
+  "ranked": [
+    {
+      "finding_id": "GRD-27658816a6",
+      "title": "Known vulnerability in jsonwebtoken@0.1.0: Verification Bypass in jsonwebtoken",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "critical",
+      "component": {
+        "id": "pkg:npm/jsonwebtoken@0.1.0",
+        "name": "jsonwebtoken",
+        "version": "0.1.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 100,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 90,
+          "why": "detector severity 'critical'"
+        },
+        {
+          "factor": "reachability",
+          "points": 10,
+          "why": "vulnerable package is imported directly by production code: imported directly by 4 production source file(s)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "imported",
+        "detail": "imported directly by 4 production source file(s)",
+        "files": [
+          "lib/insecurity.ts",
+          "routes/authenticatedUsers.ts",
+          "routes/verify.ts",
+          "routes/passkey.ts"
+        ]
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "4.2.2"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express-jwt@0.1.3"
+        ],
+        "cvss_score": null,
+        "cwe": [
+          "CWE-20"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "express-jwt@0.1.3",
+          "jsonwebtoken@0.1.0"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-f30fc17d4a",
+      "title": "Known vulnerability in jsonwebtoken@0.1.0: jsonwebtoken unrestricted key type could lead to legacy keys usage ",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/jsonwebtoken@0.1.0",
+        "name": "jsonwebtoken",
+        "version": "0.1.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 100,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 81,
+          "why": "CVSS 8.1"
+        },
+        {
+          "factor": "reachability",
+          "points": 10,
+          "why": "vulnerable package is imported directly by production code: imported directly by 4 production source file(s)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "imported",
+        "detail": "imported directly by 4 production source file(s)",
+        "files": [
+          "lib/insecurity.ts",
+          "routes/authenticatedUsers.ts",
+          "routes/verify.ts",
+          "routes/passkey.ts"
+        ]
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "9.0.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express-jwt@0.1.3"
+        ],
+        "cvss_score": 8.1,
+        "cwe": [
+          "CWE-327"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "express-jwt@0.1.3",
+          "jsonwebtoken@0.1.0"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-2d7f8fdaa9",
+      "title": "Known vulnerability in jsonwebtoken@0.4.0: Verification Bypass in jsonwebtoken",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "critical",
+      "component": {
+        "id": "pkg:npm/jsonwebtoken@0.4.0",
+        "name": "jsonwebtoken",
+        "version": "0.4.0",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 100,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 90,
+          "why": "detector severity 'critical'"
+        },
+        {
+          "factor": "reachability",
+          "points": 10,
+          "why": "vulnerable package is imported directly by production code: imported directly by 4 production source file(s)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "imported",
+        "detail": "imported directly by 4 production source file(s)",
+        "files": [
+          "lib/insecurity.ts",
+          "routes/authenticatedUsers.ts",
+          "routes/verify.ts",
+          "routes/passkey.ts"
+        ]
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "4.2.2"
+        ],
+        "available": true,
+        "introduced_via": [
+          "jsonwebtoken@0.4.0"
+        ],
+        "cvss_score": null,
+        "cwe": [
+          "CWE-20"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "jsonwebtoken@0.4.0"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-ec409d792d",
+      "title": "Known vulnerability in jsonwebtoken@0.4.0: jsonwebtoken unrestricted key type could lead to legacy keys usage ",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/jsonwebtoken@0.4.0",
+        "name": "jsonwebtoken",
+        "version": "0.4.0",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 100,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 81,
+          "why": "CVSS 8.1"
+        },
+        {
+          "factor": "reachability",
+          "points": 10,
+          "why": "vulnerable package is imported directly by production code: imported directly by 4 production source file(s)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "imported",
+        "detail": "imported directly by 4 production source file(s)",
+        "files": [
+          "lib/insecurity.ts",
+          "routes/authenticatedUsers.ts",
+          "routes/verify.ts",
+          "routes/passkey.ts"
+        ]
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "9.0.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "jsonwebtoken@0.4.0"
+        ],
+        "cvss_score": 8.1,
+        "cwe": [
+          "CWE-327"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "jsonwebtoken@0.4.0"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-21ff3f02f2",
+      "title": "Known vulnerability in jws@0.2.6: Forgeable Public/Private Tokens in jws",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/jws@0.2.6",
+        "name": "jws",
+        "version": "0.2.6",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 100,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 87,
+          "why": "CVSS 8.7"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:N)"
+        },
+        {
+          "factor": "reachability",
+          "points": 10,
+          "why": "vulnerable package is imported directly by production code: imported directly by 3 production source file(s)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "imported",
+        "detail": "imported directly by 3 production source file(s)",
+        "files": [
+          "lib/insecurity.ts",
+          "routes/verify.ts",
+          "routes/passkey.ts"
+        ]
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "3.0.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express-jwt@0.1.3",
+          "jsonwebtoken@0.4.0"
+        ],
+        "cvss_score": 8.7,
+        "cwe": []
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "jsonwebtoken@0.4.0",
+          "jws@0.2.6"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "express-jwt@0.1.3",
+          "jsonwebtoken@0.1.0",
+          "jws@0.2.6"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-8c533f5a81",
+      "title": "Known vulnerability in jws@0.2.6: auth0/node-jws Improperly Verifies HMAC Signature",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/jws@0.2.6",
+        "name": "jws",
+        "version": "0.2.6",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 100,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 75,
+          "why": "CVSS 7.5"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N)"
+        },
+        {
+          "factor": "reachability",
+          "points": 10,
+          "why": "vulnerable package is imported directly by production code: imported directly by 3 production source file(s)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "imported",
+        "detail": "imported directly by 3 production source file(s)",
+        "files": [
+          "lib/insecurity.ts",
+          "routes/verify.ts",
+          "routes/passkey.ts"
+        ]
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "3.2.3"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express-jwt@0.1.3",
+          "jsonwebtoken@0.4.0"
+        ],
+        "cvss_score": 7.5,
+        "cwe": [
+          "CWE-347"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "jsonwebtoken@0.4.0",
+          "jws@0.2.6"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "express-jwt@0.1.3",
+          "jsonwebtoken@0.1.0",
+          "jws@0.2.6"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-a4254ed143",
+      "title": "Known vulnerability in lodash@2.4.2: Prototype Pollution in lodash",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "critical",
+      "component": {
+        "id": "pkg:npm/lodash@2.4.2",
+        "name": "lodash",
+        "version": "2.4.2",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 100,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 91,
+          "why": "CVSS 9.1"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H)"
+        },
+        {
+          "factor": "reachability",
+          "points": 5,
+          "why": "pulled in by a dependency that production code imports: pulled in by 'sanitize-html', which production code imports (lib/insecurity.ts)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "parent-imported",
+        "detail": "pulled in by 'sanitize-html', which production code imports (lib/insecurity.ts)",
+        "files": [
+          "lib/insecurity.ts",
+          "lib/challengeUtils.ts"
+        ],
+        "via": "sanitize-html"
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "4.17.12"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sanitize-html@1.4.2"
+        ],
+        "cvss_score": 9.1,
+        "cwe": [
+          "CWE-20",
+          "CWE-1321"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sanitize-html@1.4.2",
+          "lodash@2.4.2"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-b57ae0df1d",
+      "title": "Known vulnerability in marsdb@0.6.11: Command Injection in marsdb",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "critical",
+      "component": {
+        "id": "pkg:npm/marsdb@0.6.11",
+        "name": "marsdb",
+        "version": "0.6.11",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 100,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 90,
+          "why": "detector severity 'critical'"
+        },
+        {
+          "factor": "reachability",
+          "points": 10,
+          "why": "vulnerable package is imported directly by production code: imported directly by 1 production source file(s)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "imported",
+        "detail": "imported directly by 1 production source file(s)",
+        "files": [
+          "data/mongodb.ts"
+        ]
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [],
+        "available": false,
+        "introduced_via": [
+          "marsdb@0.6.11"
+        ],
+        "cvss_score": null,
+        "cwe": [
+          "CWE-77"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "marsdb@0.6.11"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-f488b5ad0f",
+      "title": "Known vulnerability in sanitize-html@1.4.2: Sanitize-html Vulnerable To REDoS Attacks",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/sanitize-html@1.4.2",
+        "name": "sanitize-html",
+        "version": "1.4.2",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 100,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 75,
+          "why": "CVSS 7.5"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)"
+        },
+        {
+          "factor": "reachability",
+          "points": 10,
+          "why": "vulnerable package is imported directly by production code: imported directly by 2 production source file(s)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "imported",
+        "detail": "imported directly by 2 production source file(s)",
+        "files": [
+          "lib/insecurity.ts",
+          "lib/challengeUtils.ts"
+        ]
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "2.7.1"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sanitize-html@1.4.2"
+        ],
+        "cvss_score": 7.5,
+        "cwe": [
+          "CWE-1333"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sanitize-html@1.4.2"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-f9f7b41e3b",
+      "title": "Known vulnerability in moment@2.0.0: Path Traversal: 'dir/../../filename' in moment.locale",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/moment@2.0.0",
+        "name": "moment",
+        "version": "2.0.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 95,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 75,
+          "why": "CVSS 7.5"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N)"
+        },
+        {
+          "factor": "reachability",
+          "points": 5,
+          "why": "pulled in by a dependency that production code imports: pulled in by 'express-jwt', which production code imports (lib/insecurity.ts)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "parent-imported",
+        "detail": "pulled in by 'express-jwt', which production code imports (lib/insecurity.ts)",
+        "files": [
+          "lib/insecurity.ts"
+        ],
+        "via": "express-jwt"
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "2.29.2"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express-jwt@0.1.3"
+        ],
+        "cvss_score": 7.5,
+        "cwe": [
+          "CWE-22",
+          "CWE-27"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "express-jwt@0.1.3",
+          "jsonwebtoken@0.1.0",
+          "moment@2.0.0"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-ac227d148c",
+      "title": "Known vulnerability in moment@2.0.0: Regular Expression Denial of Service in moment",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/moment@2.0.0",
+        "name": "moment",
+        "version": "2.0.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 95,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 75,
+          "why": "CVSS 7.5"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)"
+        },
+        {
+          "factor": "reachability",
+          "points": 5,
+          "why": "pulled in by a dependency that production code imports: pulled in by 'express-jwt', which production code imports (lib/insecurity.ts)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "parent-imported",
+        "detail": "pulled in by 'express-jwt', which production code imports (lib/insecurity.ts)",
+        "files": [
+          "lib/insecurity.ts"
+        ],
+        "via": "express-jwt"
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "2.19.3"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express-jwt@0.1.3"
+        ],
+        "cvss_score": 7.5,
+        "cwe": [
+          "CWE-400"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "express-jwt@0.1.3",
+          "jsonwebtoken@0.1.0",
+          "moment@2.0.0"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-981fd74289",
+      "title": "Known vulnerability in uuid@8.3.2: uuid: Missing buffer bounds check in v3/v5/v6 when buf is provided",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/uuid@8.3.2",
+        "name": "uuid",
+        "version": "8.3.2",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 95,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 75,
+          "why": "CVSS 7.5"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N)"
+        },
+        {
+          "factor": "reachability",
+          "points": 5,
+          "why": "pulled in by a dependency that production code imports: pulled in by 'sequelize', which production code imports (models/captcha.ts)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "parent-imported",
+        "detail": "pulled in by 'sequelize', which production code imports (models/captcha.ts)",
+        "files": [
+          "models/captcha.ts",
+          "models/securityQuestion.ts",
+          "models/challenge.ts",
+          "models/product.ts",
+          "models/index.ts"
+        ],
+        "via": "sequelize"
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "11.1.1"
+        ],
+        "available": true,
+        "introduced_via": [
+          "@istanbuljs/nyc-config-typescript@1.0.2",
+          "nyc@15.1.0",
+          "sequelize@6.37.8"
+        ],
+        "cvss_score": 7.5,
+        "cwe": [
+          "CWE-787",
+          "CWE-1285"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sequelize@6.37.8",
+          "uuid@8.3.2"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "nyc@15.1.0",
+          "istanbul-lib-processinfo@2.0.3",
+          "uuid@8.3.2"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "@istanbuljs/nyc-config-typescript@1.0.2",
+          "nyc@15.1.0",
+          "istanbul-lib-processinfo@2.0.3",
+          "uuid@8.3.2"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-000db4f725",
+      "title": "Known vulnerability in express-jwt@0.1.3: Authorization bypass in express-jwt",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/express-jwt@0.1.3",
+        "name": "express-jwt",
+        "version": "0.1.3",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 92,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 77,
+          "why": "CVSS 7.7"
+        },
+        {
+          "factor": "exploitability",
+          "points": -5,
+          "why": "needs user interaction (CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:C/C:H/I:H/A:N)"
+        },
+        {
+          "factor": "reachability",
+          "points": 10,
+          "why": "vulnerable package is imported directly by production code: imported directly by 1 production source file(s)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "imported",
+        "detail": "imported directly by 1 production source file(s)",
+        "files": [
+          "lib/insecurity.ts"
+        ]
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "6.0.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express-jwt@0.1.3"
+        ],
+        "cvss_score": 7.7,
+        "cwe": [
+          "CWE-285",
+          "CWE-863"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "express-jwt@0.1.3"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-ddea97271f",
+      "title": "Known vulnerability in notevil@1.3.3: Sandbox escape in notevil and argencoders-notevil",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/notevil@1.3.3",
+        "name": "notevil",
+        "version": "1.3.3",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 90,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 65,
+          "why": "CVSS 6.5"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N)"
+        },
+        {
+          "factor": "reachability",
+          "points": 10,
+          "why": "vulnerable package is imported directly by production code: imported directly by 1 production source file(s)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "imported",
+        "detail": "imported directly by 1 production source file(s)",
+        "files": [
+          "routes/b2bOrder.ts"
+        ]
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [],
+        "available": false,
+        "introduced_via": [
+          "notevil@1.3.3"
+        ],
+        "cvss_score": 6.5,
+        "cwe": [
+          "CWE-1321"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "notevil@1.3.3"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-95bed168b0",
+      "title": "Known vulnerability in lodash@2.4.2: Prototype Pollution in lodash",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/lodash@2.4.2",
+        "name": "lodash",
+        "version": "2.4.2",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 85,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 70,
+          "why": "detector severity 'high'"
+        },
+        {
+          "factor": "reachability",
+          "points": 5,
+          "why": "pulled in by a dependency that production code imports: pulled in by 'sanitize-html', which production code imports (lib/insecurity.ts)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "parent-imported",
+        "detail": "pulled in by 'sanitize-html', which production code imports (lib/insecurity.ts)",
+        "files": [
+          "lib/insecurity.ts",
+          "lib/challengeUtils.ts"
+        ],
+        "via": "sanitize-html"
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "4.17.11"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sanitize-html@1.4.2"
+        ],
+        "cvss_score": null,
+        "cwe": [
+          "CWE-400"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sanitize-html@1.4.2",
+          "lodash@2.4.2"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-58397be730",
+      "title": "Known vulnerability in ws@8.18.0: ws: Memory exhaustion DoS from tiny fragments and data chunks",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/ws@8.18.0",
+        "name": "ws",
+        "version": "8.18.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 85,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 75,
+          "why": "CVSS 7.5"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)"
+        },
+        {
+          "factor": "reachability",
+          "points": 5,
+          "why": "pulled in by a dependency that production code imports: pulled in by 'ethers', which production code imports (frontend/src/app/web3-sandbox/web3-sandbox.component.ts)"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "parent-imported",
+        "detail": "pulled in by 'ethers', which production code imports (frontend/src/app/web3-sandbox/web3-sandbox.component.ts)",
+        "files": [
+          "frontend/src/app/web3-sandbox/web3-sandbox.component.ts",
+          "frontend/src/app/faucet/faucet.component.ts",
+          "frontend/src/app/wallet-web3/wallet-web3.component.ts"
+        ],
+        "via": "ethers"
+      },
+      "exposure": {
+        "context": "browser",
+        "production": true,
+        "detail": "shipped in the 'frontend' client bundle; runs in users' browsers"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "8.21.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "frontend@20.4.0-SNAPSHOT"
+        ],
+        "cvss_score": 7.5,
+        "cwe": [
+          "CWE-400",
+          "CWE-770",
+          "CWE-1050"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "ethers@5.8.0",
+          "@ethersproject/providers@5.8.0",
+          "ws@8.18.0"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "@wagmi/core@0.5.8",
+          "ethers@5.8.0",
+          "@ethersproject/providers@5.8.0",
+          "ws@8.18.0"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-3a0beadd6d",
+      "title": "Known vulnerability in jsonwebtoken@0.1.0: jsonwebtoken vulnerable to signature validation bypass due to insecure default algorithm in jwt.verify()",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/jsonwebtoken@0.1.0",
+        "name": "jsonwebtoken",
+        "version": "0.1.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 84,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 64,
+          "why": "CVSS 6.4"
+        },
+        {
+          "factor": "reachability",
+          "points": 10,
+          "why": "vulnerable package is imported directly by production code: imported directly by 4 production source file(s)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "imported",
+        "detail": "imported directly by 4 production source file(s)",
+        "files": [
+          "lib/insecurity.ts",
+          "routes/authenticatedUsers.ts",
+          "routes/verify.ts",
+          "routes/passkey.ts"
+        ]
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "9.0.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express-jwt@0.1.3"
+        ],
+        "cvss_score": 6.4,
+        "cwe": [
+          "CWE-287",
+          "CWE-327",
+          "CWE-347"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "express-jwt@0.1.3",
+          "jsonwebtoken@0.1.0"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-7646ef6cfd",
+      "title": "Known vulnerability in jsonwebtoken@0.4.0: jsonwebtoken vulnerable to signature validation bypass due to insecure default algorithm in jwt.verify()",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/jsonwebtoken@0.4.0",
+        "name": "jsonwebtoken",
+        "version": "0.4.0",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 84,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 64,
+          "why": "CVSS 6.4"
+        },
+        {
+          "factor": "reachability",
+          "points": 10,
+          "why": "vulnerable package is imported directly by production code: imported directly by 4 production source file(s)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "imported",
+        "detail": "imported directly by 4 production source file(s)",
+        "files": [
+          "lib/insecurity.ts",
+          "routes/authenticatedUsers.ts",
+          "routes/verify.ts",
+          "routes/passkey.ts"
+        ]
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "9.0.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "jsonwebtoken@0.4.0"
+        ],
+        "cvss_score": 6.4,
+        "cwe": [
+          "CWE-287",
+          "CWE-327",
+          "CWE-347"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "jsonwebtoken@0.4.0"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-aa81ed47ab",
+      "title": "Known vulnerability in tar@6.2.1: Race Condition in node-tar Path Reservations via Unicode Ligature Collisions on macOS APFS",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/tar@6.2.1",
+        "name": "tar",
+        "version": "6.2.1",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 83,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 88,
+          "why": "CVSS 8.8"
+        },
+        {
+          "factor": "exploitability",
+          "points": -5,
+          "why": "needs user interaction (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:H/A:L)"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'sqlite3' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'sqlite3' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "7.5.4"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sqlite3@5.1.7"
+        ],
+        "cvss_score": 8.8,
+        "cwe": [
+          "CWE-176",
+          "CWE-367"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "make-fetch-happen@9.1.0",
+          "cacache@15.3.0",
+          "tar@6.2.1"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-23dff82a3e",
+      "title": "Known vulnerability in lodash@2.4.2: Prototype Pollution in lodash",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/lodash@2.4.2",
+        "name": "lodash",
+        "version": "2.4.2",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 80,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 65,
+          "why": "CVSS 6.5"
+        },
+        {
+          "factor": "reachability",
+          "points": 5,
+          "why": "pulled in by a dependency that production code imports: pulled in by 'sanitize-html', which production code imports (lib/insecurity.ts)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "parent-imported",
+        "detail": "pulled in by 'sanitize-html', which production code imports (lib/insecurity.ts)",
+        "files": [
+          "lib/insecurity.ts",
+          "lib/challengeUtils.ts"
+        ],
+        "via": "sanitize-html"
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "4.17.5"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sanitize-html@1.4.2"
+        ],
+        "cvss_score": 6.5,
+        "cwe": [
+          "CWE-471",
+          "CWE-1321"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sanitize-html@1.4.2",
+          "lodash@2.4.2"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-6c6abee780",
+      "title": "Known vulnerability in moment@2.0.0: Regular Expression Denial of Service in moment",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/moment@2.0.0",
+        "name": "moment",
+        "version": "2.0.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 80,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 65,
+          "why": "CVSS 6.5"
+        },
+        {
+          "factor": "reachability",
+          "points": 5,
+          "why": "pulled in by a dependency that production code imports: pulled in by 'express-jwt', which production code imports (lib/insecurity.ts)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "parent-imported",
+        "detail": "pulled in by 'express-jwt', which production code imports (lib/insecurity.ts)",
+        "files": [
+          "lib/insecurity.ts"
+        ],
+        "via": "express-jwt"
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "2.11.2"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express-jwt@0.1.3"
+        ],
+        "cvss_score": 6.5,
+        "cwe": [
+          "CWE-400"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "express-jwt@0.1.3",
+          "jsonwebtoken@0.1.0",
+          "moment@2.0.0"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-29e67796f1",
+      "title": "Known vulnerability in tar@6.2.1: node-tar: Decompression/parse DoS via unlimited input",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "critical",
+      "component": {
+        "id": "pkg:npm/tar@6.2.1",
+        "name": "tar",
+        "version": "6.2.1",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 80,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 75,
+          "why": "CVSS 7.5"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'sqlite3' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'sqlite3' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "7.5.19"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sqlite3@5.1.7"
+        ],
+        "cvss_score": 7.5,
+        "cwe": [
+          "CWE-770"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "make-fetch-happen@9.1.0",
+          "cacache@15.3.0",
+          "tar@6.2.1"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-e9592c2979",
+      "title": "Known vulnerability in tar@6.2.1: node-tar: Negative tar entry size causes infinite loop in archive replace",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/tar@6.2.1",
+        "name": "tar",
+        "version": "6.2.1",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 80,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 75,
+          "why": "CVSS 7.5"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'sqlite3' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'sqlite3' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "7.5.18"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sqlite3@5.1.7"
+        ],
+        "cvss_score": 7.5,
+        "cwe": [
+          "CWE-835"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "make-fetch-happen@9.1.0",
+          "cacache@15.3.0",
+          "tar@6.2.1"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-0f37244f8d",
+      "title": "Known vulnerability in tar@6.2.1: node-tar: Uncontrolled recursion in mapHas/filesFilter allows uncatchable stack-overflow DoS via crafted long-path tar w",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/tar@6.2.1",
+        "name": "tar",
+        "version": "6.2.1",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 80,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 75,
+          "why": "CVSS 7.5"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'sqlite3' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'sqlite3' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "7.5.21"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sqlite3@5.1.7"
+        ],
+        "cvss_score": 7.5,
+        "cwe": [
+          "CWE-400",
+          "CWE-674"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "make-fetch-happen@9.1.0",
+          "cacache@15.3.0",
+          "tar@6.2.1"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-1ef8b63c28",
+      "title": "Known vulnerability in file-type@16.5.4: file-type affected by infinite loop in ASF parser on malformed input with zero-size sub-header",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/file-type@16.5.4",
+        "name": "file-type",
+        "version": "16.5.4",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 78,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 53,
+          "why": "CVSS 5.3"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L)"
+        },
+        {
+          "factor": "reachability",
+          "points": 10,
+          "why": "vulnerable package is imported directly by production code: imported directly by 1 production source file(s)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "imported",
+        "detail": "imported directly by 1 production source file(s)",
+        "files": [
+          "routes/profileImageFileUpload.ts"
+        ]
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "21.3.1"
+        ],
+        "available": true,
+        "introduced_via": [
+          "file-type@16.5.4"
+        ],
+        "cvss_score": 5.3,
+        "cwe": [
+          "CWE-835"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "file-type@16.5.4"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-bd51fc8de8",
+      "title": "Known vulnerability in sanitize-html@1.4.2: Improper Input Validation in sanitize-html",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/sanitize-html@1.4.2",
+        "name": "sanitize-html",
+        "version": "1.4.2",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 78,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 53,
+          "why": "CVSS 5.3"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N)"
+        },
+        {
+          "factor": "reachability",
+          "points": 10,
+          "why": "vulnerable package is imported directly by production code: imported directly by 2 production source file(s)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "imported",
+        "detail": "imported directly by 2 production source file(s)",
+        "files": [
+          "lib/insecurity.ts",
+          "lib/challengeUtils.ts"
+        ]
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "2.3.2"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sanitize-html@1.4.2"
+        ],
+        "cvss_score": 5.3,
+        "cwe": [
+          "CWE-20"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sanitize-html@1.4.2"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-b0e32746a8",
+      "title": "Known vulnerability in sanitize-html@1.4.2: Improper Input Validation in sanitize-html",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/sanitize-html@1.4.2",
+        "name": "sanitize-html",
+        "version": "1.4.2",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 78,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 53,
+          "why": "CVSS 5.3"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N)"
+        },
+        {
+          "factor": "reachability",
+          "points": 10,
+          "why": "vulnerable package is imported directly by production code: imported directly by 2 production source file(s)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "imported",
+        "detail": "imported directly by 2 production source file(s)",
+        "files": [
+          "lib/insecurity.ts",
+          "lib/challengeUtils.ts"
+        ]
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "2.3.1"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sanitize-html@1.4.2"
+        ],
+        "cvss_score": 5.3,
+        "cwe": [
+          "CWE-20"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sanitize-html@1.4.2"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-48e427a2ff",
+      "title": "Known vulnerability in sanitize-html@1.4.2: sanitize-html Information Exposure vulnerability",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/sanitize-html@1.4.2",
+        "name": "sanitize-html",
+        "version": "1.4.2",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 78,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 53,
+          "why": "CVSS 5.3"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N)"
+        },
+        {
+          "factor": "reachability",
+          "points": 10,
+          "why": "vulnerable package is imported directly by production code: imported directly by 2 production source file(s)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "imported",
+        "detail": "imported directly by 2 production source file(s)",
+        "files": [
+          "lib/insecurity.ts",
+          "lib/challengeUtils.ts"
+        ]
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "2.12.1"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sanitize-html@1.4.2"
+        ],
+        "cvss_score": 5.3,
+        "cwe": [
+          "CWE-200",
+          "CWE-538"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sanitize-html@1.4.2"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-f54abcfcae",
+      "title": "Known vulnerability in lodash@2.4.2: Command Injection in lodash",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/lodash@2.4.2",
+        "name": "lodash",
+        "version": "2.4.2",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 77,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 72,
+          "why": "CVSS 7.2"
+        },
+        {
+          "factor": "exploitability",
+          "points": -10,
+          "why": "needs high privileges (CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H)"
+        },
+        {
+          "factor": "reachability",
+          "points": 5,
+          "why": "pulled in by a dependency that production code imports: pulled in by 'sanitize-html', which production code imports (lib/insecurity.ts)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "parent-imported",
+        "detail": "pulled in by 'sanitize-html', which production code imports (lib/insecurity.ts)",
+        "files": [
+          "lib/insecurity.ts",
+          "lib/challengeUtils.ts"
+        ],
+        "via": "sanitize-html"
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "4.17.21"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sanitize-html@1.4.2"
+        ],
+        "cvss_score": 7.2,
+        "cwe": [
+          "CWE-77",
+          "CWE-94"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sanitize-html@1.4.2",
+          "lodash@2.4.2"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-399c16e057",
+      "title": "Known vulnerability in tar@6.2.1: node-tar Vulnerable to Arbitrary File Creation/Overwrite via Hardlink Path Traversal",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/tar@6.2.1",
+        "name": "tar",
+        "version": "6.2.1",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 77,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 82,
+          "why": "CVSS 8.2"
+        },
+        {
+          "factor": "exploitability",
+          "points": -5,
+          "why": "needs user interaction (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:L/A:N)"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'sqlite3' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'sqlite3' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "7.5.7"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sqlite3@5.1.7"
+        ],
+        "cvss_score": 8.2,
+        "cwe": [
+          "CWE-22",
+          "CWE-59"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "make-fetch-happen@9.1.0",
+          "cacache@15.3.0",
+          "tar@6.2.1"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-bfca965251",
+      "title": "Known vulnerability in sanitize-html@1.4.2: ApostropheCMS: Mutation-XSS / allowedTags bypass via literal `</textarea/>` solidus close",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/sanitize-html@1.4.2",
+        "name": "sanitize-html",
+        "version": "1.4.2",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 76,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 61,
+          "why": "CVSS 6.1"
+        },
+        {
+          "factor": "exploitability",
+          "points": -5,
+          "why": "needs user interaction (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N)"
+        },
+        {
+          "factor": "reachability",
+          "points": 10,
+          "why": "vulnerable package is imported directly by production code: imported directly by 2 production source file(s)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "imported",
+        "detail": "imported directly by 2 production source file(s)",
+        "files": [
+          "lib/insecurity.ts",
+          "lib/challengeUtils.ts"
+        ]
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "2.17.6"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sanitize-html@1.4.2"
+        ],
+        "cvss_score": 6.1,
+        "cwe": [
+          "CWE-79"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sanitize-html@1.4.2"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-4daae006ca",
+      "title": "Known vulnerability in sanitize-html@1.4.2: Cross-Site Scripting in sanitize-html",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/sanitize-html@1.4.2",
+        "name": "sanitize-html",
+        "version": "1.4.2",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 76,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 61,
+          "why": "CVSS 6.1"
+        },
+        {
+          "factor": "exploitability",
+          "points": -5,
+          "why": "needs user interaction (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N)"
+        },
+        {
+          "factor": "reachability",
+          "points": 10,
+          "why": "vulnerable package is imported directly by production code: imported directly by 2 production source file(s)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "imported",
+        "detail": "imported directly by 2 production source file(s)",
+        "files": [
+          "lib/insecurity.ts",
+          "lib/challengeUtils.ts"
+        ]
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "1.4.3"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sanitize-html@1.4.2"
+        ],
+        "cvss_score": 6.1,
+        "cwe": [
+          "CWE-79"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sanitize-html@1.4.2"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-442b903de7",
+      "title": "Known vulnerability in sanitize-html@1.4.2: sanitize-html is vulnerable to XSS through incomprehensive sanitization",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/sanitize-html@1.4.2",
+        "name": "sanitize-html",
+        "version": "1.4.2",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 76,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 61,
+          "why": "CVSS 6.1"
+        },
+        {
+          "factor": "exploitability",
+          "points": -5,
+          "why": "needs user interaction (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N)"
+        },
+        {
+          "factor": "reachability",
+          "points": 10,
+          "why": "vulnerable package is imported directly by production code: imported directly by 2 production source file(s)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "imported",
+        "detail": "imported directly by 2 production source file(s)",
+        "files": [
+          "lib/insecurity.ts",
+          "lib/challengeUtils.ts"
+        ]
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "2.0.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sanitize-html@1.4.2"
+        ],
+        "cvss_score": 6.1,
+        "cwe": [
+          "CWE-79"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sanitize-html@1.4.2"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-9d996a60f5",
+      "title": "Image 'bkimminich/juice-shop' comes from a non-allowlisted publisher (docker.io)",
+      "category": "untrusted-image",
+      "rule": "IMAGE-UNTRUSTED-SOURCE",
+      "severity": "high",
+      "component": {
+        "id": "pkg:docker/bkimminich/juice-shop@latest",
+        "name": "bkimminich/juice-shop",
+        "version": "latest",
+        "ecosystem": "docker",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 75,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 70,
+          "why": "detector severity 'high'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "part of a shipped container image (base image of a shipped container (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "verified advisory + exact version + reachability evidence"
+        ]
+      },
+      "reachability": {
+        "level": "n/a",
+        "detail": "not a code library (image / CI component)",
+        "files": []
+      },
+      "exposure": {
+        "context": "runtime-image",
+        "production": true,
+        "detail": "base image of a shipped container (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "suggestion": "use an official / verified-publisher image or add the publisher to the allowlist after review"
+      },
+      "dependency_paths": [],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-faa461971a",
+      "title": "Workflow pipes a downloaded script into a shell",
+      "category": "cicd",
+      "rule": "CICD-PIPE-TO-SHELL",
+      "severity": "high",
+      "component": null,
+      "score": 75,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 70,
+          "why": "detector severity 'high'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "runs in CI with access to repository secrets (defined in .github/workflows/ci.yml)"
+        }
+      ],
+      "confidence": {
+        "value": 0.9,
+        "label": "high",
+        "reasons": [
+          "verified advisory + exact version + reachability evidence"
+        ]
+      },
+      "reachability": {
+        "level": "n/a",
+        "detail": "finding is about a file, not a package",
+        "files": []
+      },
+      "exposure": {
+        "context": "ci-pipeline",
+        "production": false,
+        "detail": "defined in .github/workflows/ci.yml"
+      },
+      "production": false,
+      "fix": null,
+      "dependency_paths": [],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-bfd3f2d517",
+      "title": "Known vulnerability in jsonwebtoken@0.1.0: jsonwebtoken's insecure implementation of key retrieval function could lead to Forgeable Public/Private Tokens from RSA ",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/jsonwebtoken@0.1.0",
+        "name": "jsonwebtoken",
+        "version": "0.1.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 70,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 50,
+          "why": "CVSS 5.0"
+        },
+        {
+          "factor": "reachability",
+          "points": 10,
+          "why": "vulnerable package is imported directly by production code: imported directly by 4 production source file(s)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "imported",
+        "detail": "imported directly by 4 production source file(s)",
+        "files": [
+          "lib/insecurity.ts",
+          "routes/authenticatedUsers.ts",
+          "routes/verify.ts",
+          "routes/passkey.ts"
+        ]
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "9.0.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express-jwt@0.1.3"
+        ],
+        "cvss_score": 5.0,
+        "cwe": [
+          "CWE-287",
+          "CWE-1259"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "express-jwt@0.1.3",
+          "jsonwebtoken@0.1.0"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-d92934aba6",
+      "title": "Known vulnerability in jsonwebtoken@0.4.0: jsonwebtoken's insecure implementation of key retrieval function could lead to Forgeable Public/Private Tokens from RSA ",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/jsonwebtoken@0.4.0",
+        "name": "jsonwebtoken",
+        "version": "0.4.0",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 70,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 50,
+          "why": "CVSS 5.0"
+        },
+        {
+          "factor": "reachability",
+          "points": 10,
+          "why": "vulnerable package is imported directly by production code: imported directly by 4 production source file(s)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "imported",
+        "detail": "imported directly by 4 production source file(s)",
+        "files": [
+          "lib/insecurity.ts",
+          "routes/authenticatedUsers.ts",
+          "routes/verify.ts",
+          "routes/passkey.ts"
+        ]
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "9.0.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "jsonwebtoken@0.4.0"
+        ],
+        "cvss_score": 5.0,
+        "cwe": [
+          "CWE-287",
+          "CWE-1259"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "jsonwebtoken@0.4.0"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-b8d5a1975f",
+      "title": "Known vulnerability in tar@6.2.1: node-tar Symlink Path Traversal via Drive-Relative Linkpath",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/tar@6.2.1",
+        "name": "tar",
+        "version": "6.2.1",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 70,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 70,
+          "why": "detector severity 'high'"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'sqlite3' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'sqlite3' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "7.5.11"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sqlite3@5.1.7"
+        ],
+        "cvss_score": null,
+        "cwe": [
+          "CWE-22"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "make-fetch-happen@9.1.0",
+          "cacache@15.3.0",
+          "tar@6.2.1"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-c54360c062",
+      "title": "Known vulnerability in tar@6.2.1: node-tar is Vulnerable to Arbitrary File Overwrite and Symlink Poisoning via Insufficient Path Sanitization",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/tar@6.2.1",
+        "name": "tar",
+        "version": "6.2.1",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 70,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 70,
+          "why": "detector severity 'high'"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'sqlite3' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'sqlite3' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "7.5.3"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sqlite3@5.1.7"
+        ],
+        "cvss_score": null,
+        "cwe": [
+          "CWE-22"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "make-fetch-happen@9.1.0",
+          "cacache@15.3.0",
+          "tar@6.2.1"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-542423db49",
+      "title": "Known vulnerability in tar@6.2.1: tar has Hardlink Path Traversal via Drive-Relative Linkpath",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/tar@6.2.1",
+        "name": "tar",
+        "version": "6.2.1",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 70,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 70,
+          "why": "detector severity 'high'"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'sqlite3' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'sqlite3' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "7.5.10"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sqlite3@5.1.7"
+        ],
+        "cvss_score": null,
+        "cwe": [
+          "CWE-22",
+          "CWE-59"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "make-fetch-happen@9.1.0",
+          "cacache@15.3.0",
+          "tar@6.2.1"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-b66e0194cc",
+      "title": "Known vulnerability in sanitize-html@1.4.2: ApostropheCMS: Incomplete CVE-2026-53606: `meta http-equiv=refresh` `content` still ships `javascript:` / `data:` URLs",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/sanitize-html@1.4.2",
+        "name": "sanitize-html",
+        "version": "1.4.2",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 69,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 54,
+          "why": "CVSS 5.4"
+        },
+        {
+          "factor": "exploitability",
+          "points": -5,
+          "why": "needs user interaction (CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N)"
+        },
+        {
+          "factor": "reachability",
+          "points": 10,
+          "why": "vulnerable package is imported directly by production code: imported directly by 2 production source file(s)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "imported",
+        "detail": "imported directly by 2 production source file(s)",
+        "files": [
+          "lib/insecurity.ts",
+          "lib/challengeUtils.ts"
+        ]
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "2.18.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sanitize-html@1.4.2"
+        ],
+        "cvss_score": 5.4,
+        "cwe": [
+          "CWE-79"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sanitize-html@1.4.2"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-fc03a49989",
+      "title": "Known vulnerability in elliptic@6.6.1: Elliptic Uses a Cryptographic Primitive with a Risky Implementation",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "low",
+      "component": {
+        "id": "pkg:npm/elliptic@6.6.1",
+        "name": "elliptic",
+        "version": "6.6.1",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 66,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 56,
+          "why": "CVSS 5.6"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L)"
+        },
+        {
+          "factor": "reachability",
+          "points": 5,
+          "why": "pulled in by a dependency that production code imports: pulled in by 'ethers', which production code imports (frontend/src/app/web3-sandbox/web3-sandbox.component.ts)"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "parent-imported",
+        "detail": "pulled in by 'ethers', which production code imports (frontend/src/app/web3-sandbox/web3-sandbox.component.ts)",
+        "files": [
+          "frontend/src/app/web3-sandbox/web3-sandbox.component.ts",
+          "frontend/src/app/faucet/faucet.component.ts",
+          "frontend/src/app/wallet-web3/wallet-web3.component.ts"
+        ],
+        "via": "ethers"
+      },
+      "exposure": {
+        "context": "browser",
+        "production": true,
+        "detail": "shipped in the 'frontend' client bundle; runs in users' browsers"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [],
+        "available": false,
+        "introduced_via": [
+          "frontend@20.4.0-SNAPSHOT"
+        ],
+        "cvss_score": 5.6,
+        "cwe": [
+          "CWE-1240"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "ethers@5.8.0",
+          "@ethersproject/signing-key@5.8.0",
+          "elliptic@6.6.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "@wagmi/core@0.5.8",
+          "ethers@5.8.0",
+          "@ethersproject/signing-key@5.8.0",
+          "elliptic@6.6.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "ethers@5.8.0",
+          "@ethersproject/hdnode@5.8.0",
+          "@ethersproject/signing-key@5.8.0",
+          "elliptic@6.6.1"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-befcc4a77b",
+      "title": "Known vulnerability in sanitize-html@1.4.2: ApostropheCMS sanitize-html: nonTextTags discard region ends early on an implied close, letting <noscript> content rende",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/sanitize-html@1.4.2",
+        "name": "sanitize-html",
+        "version": "1.4.2",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 65,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 45,
+          "why": "detector severity 'medium'"
+        },
+        {
+          "factor": "reachability",
+          "points": 10,
+          "why": "vulnerable package is imported directly by production code: imported directly by 2 production source file(s)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "imported",
+        "detail": "imported directly by 2 production source file(s)",
+        "files": [
+          "lib/insecurity.ts",
+          "lib/challengeUtils.ts"
+        ]
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "2.18.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sanitize-html@1.4.2"
+        ],
+        "cvss_score": null,
+        "cwe": [
+          "CWE-79"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sanitize-html@1.4.2"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-28b884891a",
+      "title": "Known vulnerability in sanitize-html@1.4.2: Cross-Site Scripting in sanitize-html",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/sanitize-html@1.4.2",
+        "name": "sanitize-html",
+        "version": "1.4.2",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 65,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 45,
+          "why": "detector severity 'medium'"
+        },
+        {
+          "factor": "reachability",
+          "points": 10,
+          "why": "vulnerable package is imported directly by production code: imported directly by 2 production source file(s)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "imported",
+        "detail": "imported directly by 2 production source file(s)",
+        "files": [
+          "lib/insecurity.ts",
+          "lib/challengeUtils.ts"
+        ]
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "1.11.2"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sanitize-html@1.4.2"
+        ],
+        "cvss_score": null,
+        "cwe": [
+          "CWE-79"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sanitize-html@1.4.2"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-9f27d5d797",
+      "title": "Known vulnerability in base64url@0.0.6: Out-of-bounds Read in base64url",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/base64url@0.0.6",
+        "name": "base64url",
+        "version": "0.0.6",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 60,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 45,
+          "why": "detector severity 'medium'"
+        },
+        {
+          "factor": "reachability",
+          "points": 5,
+          "why": "pulled in by a dependency that production code imports: pulled in by 'jsonwebtoken', which production code imports (lib/insecurity.ts)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "parent-imported",
+        "detail": "pulled in by 'jsonwebtoken', which production code imports (lib/insecurity.ts)",
+        "files": [
+          "lib/insecurity.ts",
+          "routes/authenticatedUsers.ts",
+          "routes/verify.ts",
+          "routes/passkey.ts"
+        ],
+        "via": "jsonwebtoken"
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "3.0.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express-jwt@0.1.3",
+          "jsonwebtoken@0.4.0"
+        ],
+        "cvss_score": null,
+        "cwe": [
+          "CWE-125"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "jsonwebtoken@0.4.0",
+          "jws@0.2.6",
+          "base64url@0.0.6"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "express-jwt@0.1.3",
+          "jsonwebtoken@0.1.0",
+          "jws@0.2.6",
+          "base64url@0.0.6"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "jsonwebtoken@0.4.0",
+          "jws@0.2.6",
+          "jwa@0.0.1",
+          "base64url@0.0.6"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-6dee96ffc4",
+      "title": "Known vulnerability in tar@6.2.1: node-tar: Process crash via PAX numeric path type confusion",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/tar@6.2.1",
+        "name": "tar",
+        "version": "6.2.1",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 58,
+      "priority": "P3-medium",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 53,
+          "why": "CVSS 5.3"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L)"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'sqlite3' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'sqlite3' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "7.5.18"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sqlite3@5.1.7"
+        ],
+        "cvss_score": 5.3,
+        "cwe": [
+          "CWE-704"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "make-fetch-happen@9.1.0",
+          "cacache@15.3.0",
+          "tar@6.2.1"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-7145c614a4",
+      "title": "Known vulnerability in tar@6.2.1: node-tar: Uncaught Exception DoS via NUL byte in PAX path/linkpath records",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/tar@6.2.1",
+        "name": "tar",
+        "version": "6.2.1",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 58,
+      "priority": "P3-medium",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 53,
+          "why": "CVSS 5.3"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L)"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'sqlite3' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'sqlite3' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "7.5.17"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sqlite3@5.1.7"
+        ],
+        "cvss_score": 5.3,
+        "cwe": [
+          "CWE-248"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "make-fetch-happen@9.1.0",
+          "cacache@15.3.0",
+          "tar@6.2.1"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-2945fd4159",
+      "title": "Known vulnerability in tar@6.2.1: Arbitrary File Read/Write via Hardlink Target Escape Through Symlink Chain in node-tar Extraction",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/tar@6.2.1",
+        "name": "tar",
+        "version": "6.2.1",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 56,
+      "priority": "P3-medium",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 71,
+          "why": "CVSS 7.1"
+        },
+        {
+          "factor": "exploitability",
+          "points": -15,
+          "why": "needs user interaction; needs local/physical access (CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:N)"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'sqlite3' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'sqlite3' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "7.5.8"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sqlite3@5.1.7"
+        ],
+        "cvss_score": 7.1,
+        "cwe": [
+          "CWE-22"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "make-fetch-happen@9.1.0",
+          "cacache@15.3.0",
+          "tar@6.2.1"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-13ef80dcf2",
+      "title": "GitHub Action coverallsapp/github-action: third-party action pinned to mutable tag 'v2'",
+      "category": "cicd",
+      "rule": "CICD-UNPINNED-ACTION",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:githubactions/coverallsapp/github-action@v2",
+        "name": "coverallsapp/github-action",
+        "version": "v2",
+        "ecosystem": "github-actions",
+        "direct": true,
+        "scope": "ci"
+      },
+      "score": 50,
+      "priority": "P3-medium",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 45,
+          "why": "detector severity 'medium'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "runs in CI with access to repository secrets (runs in CI with access to repository tokens/secrets)"
+        }
+      ],
+      "confidence": {
+        "value": 0.9,
+        "label": "high",
+        "reasons": [
+          "verified advisory + exact version + reachability evidence"
+        ]
+      },
+      "reachability": {
+        "level": "n/a",
+        "detail": "not a code library (image / CI component)",
+        "files": []
+      },
+      "exposure": {
+        "context": "ci-pipeline",
+        "production": false,
+        "detail": "runs in CI with access to repository tokens/secrets"
+      },
+      "production": false,
+      "fix": {
+        "suggestion": "pin to a full commit SHA: uses: coverallsapp/github-action@<40-char-sha> # v2"
+      },
+      "dependency_paths": [],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-68aa098915",
+      "title": "GitHub Action peter-evans/create-pull-request: third-party action pinned to mutable tag 'v8'",
+      "category": "cicd",
+      "rule": "CICD-UNPINNED-ACTION",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:githubactions/peter-evans/create-pull-request@v8",
+        "name": "peter-evans/create-pull-request",
+        "version": "v8",
+        "ecosystem": "github-actions",
+        "direct": true,
+        "scope": "ci"
+      },
+      "score": 50,
+      "priority": "P3-medium",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 45,
+          "why": "detector severity 'medium'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "runs in CI with access to repository secrets (runs in CI with access to repository tokens/secrets)"
+        }
+      ],
+      "confidence": {
+        "value": 0.9,
+        "label": "high",
+        "reasons": [
+          "verified advisory + exact version + reachability evidence"
+        ]
+      },
+      "reachability": {
+        "level": "n/a",
+        "detail": "not a code library (image / CI component)",
+        "files": []
+      },
+      "exposure": {
+        "context": "ci-pipeline",
+        "production": false,
+        "detail": "runs in CI with access to repository tokens/secrets"
+      },
+      "production": false,
+      "fix": {
+        "suggestion": "pin to a full commit SHA: uses: peter-evans/create-pull-request@<40-char-sha> # v8"
+      },
+      "dependency_paths": [],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-53a57b3741",
+      "title": "Image 'alpine' uses a mutable tag (implicit latest)",
+      "category": "untrusted-image",
+      "rule": "IMAGE-MUTABLE-TAG",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:docker/alpine@latest",
+        "name": "alpine",
+        "version": "latest",
+        "ecosystem": "docker",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 50,
+      "priority": "P3-medium",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 45,
+          "why": "detector severity 'medium'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "part of a shipped container image (base image of a shipped container (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.9,
+        "label": "high",
+        "reasons": [
+          "verified advisory + exact version + reachability evidence"
+        ]
+      },
+      "reachability": {
+        "level": "n/a",
+        "detail": "not a code library (image / CI component)",
+        "files": []
+      },
+      "exposure": {
+        "context": "runtime-image",
+        "production": true,
+        "detail": "base image of a shipped container (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "suggestion": "pin to a version tag and digest, e.g. alpine:<version>@sha256:<digest>"
+      },
+      "dependency_paths": [],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-99be4be03b",
+      "title": "Image 'bkimminich/juice-shop' uses a mutable tag (latest)",
+      "category": "untrusted-image",
+      "rule": "IMAGE-MUTABLE-TAG",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:docker/bkimminich/juice-shop@latest",
+        "name": "bkimminich/juice-shop",
+        "version": "latest",
+        "ecosystem": "docker",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 50,
+      "priority": "P3-medium",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 45,
+          "why": "detector severity 'medium'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "part of a shipped container image (base image of a shipped container (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.9,
+        "label": "high",
+        "reasons": [
+          "verified advisory + exact version + reachability evidence"
+        ]
+      },
+      "reachability": {
+        "level": "n/a",
+        "detail": "not a code library (image / CI component)",
+        "files": []
+      },
+      "exposure": {
+        "context": "runtime-image",
+        "production": true,
+        "detail": "base image of a shipped container (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "suggestion": "pin to a version tag and digest, e.g. bkimminich/juice-shop:<version>@sha256:<digest>"
+      },
+      "dependency_paths": [],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-b20b764572",
+      "title": "Image 'gcr.io/distroless/nodejs24-debian13' uses a mutable tag (implicit latest)",
+      "category": "untrusted-image",
+      "rule": "IMAGE-MUTABLE-TAG",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:docker/gcr.io/distroless/nodejs24-debian13@latest",
+        "name": "gcr.io/distroless/nodejs24-debian13",
+        "version": "latest",
+        "ecosystem": "docker",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 50,
+      "priority": "P3-medium",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 45,
+          "why": "detector severity 'medium'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "part of a shipped container image (base image of a shipped container (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.9,
+        "label": "high",
+        "reasons": [
+          "verified advisory + exact version + reachability evidence"
+        ]
+      },
+      "reachability": {
+        "level": "n/a",
+        "detail": "not a code library (image / CI component)",
+        "files": []
+      },
+      "exposure": {
+        "context": "runtime-image",
+        "production": true,
+        "detail": "base image of a shipped container (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "suggestion": "pin to a version tag and digest, e.g. gcr.io/distroless/nodejs24-debian13:<version>@sha256:<digest>"
+      },
+      "dependency_paths": [],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-ce993dc67e",
+      "title": "Image 'juice-shop' uses a mutable tag (latest)",
+      "category": "untrusted-image",
+      "rule": "IMAGE-MUTABLE-TAG",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:docker/juice-shop@latest",
+        "name": "juice-shop",
+        "version": "latest",
+        "ecosystem": "docker",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 50,
+      "priority": "P3-medium",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 45,
+          "why": "detector severity 'medium'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "part of a shipped container image (base image of a shipped container (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.9,
+        "label": "high",
+        "reasons": [
+          "verified advisory + exact version + reachability evidence"
+        ]
+      },
+      "reachability": {
+        "level": "n/a",
+        "detail": "not a code library (image / CI component)",
+        "files": []
+      },
+      "exposure": {
+        "context": "runtime-image",
+        "production": true,
+        "detail": "base image of a shipped container (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "suggestion": "pin to a version tag and digest, e.g. juice-shop:<version>@sha256:<digest>"
+      },
+      "dependency_paths": [],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-17dc05f63a",
+      "title": "Known vulnerability in hbs@4.4.0: hbs: Insertion of Sensitive Information into Externally-Accessible File or Directory and Exposure of Sensitive Informati",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/hbs@4.4.0",
+        "name": "hbs",
+        "version": "4.4.0",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 45,
+      "priority": "P3-medium",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 40,
+          "why": "CVSS 4.0"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:L/I:N/A:N)"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'hbs' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'hbs' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [],
+        "available": false,
+        "introduced_via": [
+          "hbs@4.4.0"
+        ],
+        "cvss_score": 4.0,
+        "cwe": [
+          "CWE-94",
+          "CWE-200",
+          "CWE-538"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "hbs@4.4.0"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-fe2edc9c3d",
+      "title": "Known vulnerability in tar@6.2.1: node-tar applies PAX size override to intermediary GNU long-name/long-link headers, causing tar parser interpretation di",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/tar@6.2.1",
+        "name": "tar",
+        "version": "6.2.1",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 45,
+      "priority": "P3-medium",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 45,
+          "why": "detector severity 'medium'"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'sqlite3' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process, network-facing (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'sqlite3' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "7.5.16"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sqlite3@5.1.7"
+        ],
+        "cvss_score": null,
+        "cwe": [
+          "CWE-436"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "tar@6.2.1"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "make-fetch-happen@9.1.0",
+          "cacache@15.3.0",
+          "tar@6.2.1"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-88414e0db6",
+      "title": "Known vulnerability in ws@8.18.0: ws: Uninitialized memory disclosure",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/ws@8.18.0",
+        "name": "ws",
+        "version": "8.18.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 39,
+      "priority": "P3-medium",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 44,
+          "why": "CVSS 4.4"
+        },
+        {
+          "factor": "exploitability",
+          "points": -10,
+          "why": "needs high privileges (CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:N/A:N)"
+        },
+        {
+          "factor": "reachability",
+          "points": 5,
+          "why": "pulled in by a dependency that production code imports: pulled in by 'ethers', which production code imports (frontend/src/app/web3-sandbox/web3-sandbox.component.ts)"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "parent-imported",
+        "detail": "pulled in by 'ethers', which production code imports (frontend/src/app/web3-sandbox/web3-sandbox.component.ts)",
+        "files": [
+          "frontend/src/app/web3-sandbox/web3-sandbox.component.ts",
+          "frontend/src/app/faucet/faucet.component.ts",
+          "frontend/src/app/wallet-web3/wallet-web3.component.ts"
+        ],
+        "via": "ethers"
+      },
+      "exposure": {
+        "context": "browser",
+        "production": true,
+        "detail": "shipped in the 'frontend' client bundle; runs in users' browsers"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "8.20.1"
+        ],
+        "available": true,
+        "introduced_via": [
+          "frontend@20.4.0-SNAPSHOT"
+        ],
+        "cvss_score": 4.4,
+        "cwe": [
+          "CWE-908"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "ethers@5.8.0",
+          "@ethersproject/providers@5.8.0",
+          "ws@8.18.0"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "@wagmi/core@0.5.8",
+          "ethers@5.8.0",
+          "@ethersproject/providers@5.8.0",
+          "ws@8.18.0"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-0c0ba9db8c",
+      "title": "Base image node:20.19.2-bookworm is end-of-life (2026-04-30)",
+      "category": "untrusted-image",
+      "rule": "IMAGE-EOL",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:docker/node@20.19.2-bookworm",
+        "name": "node",
+        "version": "20.19.2-bookworm",
+        "ecosystem": "docker",
+        "direct": true,
+        "scope": "build"
+      },
+      "score": 30,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 45,
+          "why": "detector severity 'medium'"
+        },
+        {
+          "factor": "exposure",
+          "points": -15,
+          "why": "build-stage image, not shipped (build stage only, not shipped)"
+        }
+      ],
+      "confidence": {
+        "value": 0.9,
+        "label": "high",
+        "reasons": [
+          "verified advisory + exact version + reachability evidence"
+        ]
+      },
+      "reachability": {
+        "level": "n/a",
+        "detail": "not a code library (image / CI component)",
+        "files": []
+      },
+      "exposure": {
+        "context": "image-build-stage",
+        "production": false,
+        "detail": "build stage only, not shipped"
+      },
+      "production": false,
+      "fix": {
+        "suggestion": "move to a supported release line"
+      },
+      "dependency_paths": [],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-8a20a6dec8",
+      "title": "Base image node:20.19.2-bookworm-slim is end-of-life (2026-04-30)",
+      "category": "untrusted-image",
+      "rule": "IMAGE-EOL",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:docker/node@20.19.2-bookworm-slim",
+        "name": "node",
+        "version": "20.19.2-bookworm-slim",
+        "ecosystem": "docker",
+        "direct": true,
+        "scope": "build"
+      },
+      "score": 30,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 45,
+          "why": "detector severity 'medium'"
+        },
+        {
+          "factor": "exposure",
+          "points": -15,
+          "why": "build-stage image, not shipped (build stage only, not shipped)"
+        }
+      ],
+      "confidence": {
+        "value": 0.9,
+        "label": "high",
+        "reasons": [
+          "verified advisory + exact version + reachability evidence"
+        ]
+      },
+      "reachability": {
+        "level": "n/a",
+        "detail": "not a code library (image / CI component)",
+        "files": []
+      },
+      "exposure": {
+        "context": "image-build-stage",
+        "production": false,
+        "detail": "build stage only, not shipped"
+      },
+      "production": false,
+      "fix": {
+        "suggestion": "move to a supported release line"
+      },
+      "dependency_paths": [],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-eff1a2b835",
+      "title": "Known vulnerability in @cyclonedx/cyclonedx-npm@4.2.1: @cyclonedx/cyclonedx-npm: Shell Injection via Unsanitized --workspace Argument",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/%40cyclonedx/cyclonedx-npm@4.2.1",
+        "name": "@cyclonedx/cyclonedx-npm",
+        "version": "4.2.1",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "dev"
+      },
+      "score": 30,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 70,
+          "why": "detector severity 'high'"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): '@cyclonedx/cyclonedx-npm' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": -30,
+          "why": "dev-only dependency, not shipped to production (devDependency: not installed in production)"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'@cyclonedx/cyclonedx-npm' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "dev-tooling",
+        "production": false,
+        "detail": "devDependency: not installed in production"
+      },
+      "production": false,
+      "fix": {
+        "fixed_versions": [
+          "5.0.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "@cyclonedx/cyclonedx-npm@4.2.1"
+        ],
+        "cvss_score": null,
+        "cwe": [
+          "CWE-78"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "@cyclonedx/cyclonedx-npm@4.2.1"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-60b08f3779",
+      "title": "Known vulnerability in @cyclonedx/cyclonedx-npm@4.2.1: @cyclonedx/cyclonedx-npm: Shell Injection via Unsanitized --workspace Argument on Windows",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/%40cyclonedx/cyclonedx-npm@4.2.1",
+        "name": "@cyclonedx/cyclonedx-npm",
+        "version": "4.2.1",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "dev"
+      },
+      "score": 30,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 70,
+          "why": "detector severity 'high'"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): '@cyclonedx/cyclonedx-npm' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": -30,
+          "why": "dev-only dependency, not shipped to production (devDependency: not installed in production)"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'@cyclonedx/cyclonedx-npm' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "dev-tooling",
+        "production": false,
+        "detail": "devDependency: not installed in production"
+      },
+      "production": false,
+      "fix": {
+        "fixed_versions": [
+          "6.0.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "@cyclonedx/cyclonedx-npm@4.2.1"
+        ],
+        "cvss_score": null,
+        "cwe": [
+          "CWE-78"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "@cyclonedx/cyclonedx-npm@4.2.1"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-04624cebc1",
+      "title": "@fortawesome/fontawesome-common-types@0.2.36 runs a custom install script",
+      "category": "install-script",
+      "rule": "INSTALL-SCRIPT",
+      "severity": "low",
+      "component": {
+        "id": "pkg:npm/%40fortawesome/fontawesome-common-types@0.2.36",
+        "name": "@fortawesome/fontawesome-common-types",
+        "version": "0.2.36",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 25,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 20,
+          "why": "detector severity 'low'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "executes at install time on developer and CI machines (scope does not reduce this)"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "verified advisory + exact version + reachability evidence"
+        ]
+      },
+      "reachability": {
+        "level": "parent-imported",
+        "detail": "pulled in by '@fortawesome/fontawesome-svg-core', which production code imports (frontend/src/app/app.component.ts)",
+        "files": [
+          "frontend/src/app/app.component.ts",
+          "frontend/src/app/token-sale/token-sale.component.ts",
+          "frontend/src/app/forgot-password/forgot-password.component.ts",
+          "frontend/src/app/change-password/change-password.component.ts",
+          "frontend/src/app/administration/administration.component.ts"
+        ],
+        "via": "@fortawesome/fontawesome-svg-core"
+      },
+      "exposure": {
+        "context": "browser",
+        "production": true,
+        "detail": "shipped in the 'frontend' client bundle; runs in users' browsers"
+      },
+      "production": true,
+      "fix": {
+        "suggestion": "install with --ignore-scripts and allowlist required builds; pin version"
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "@fortawesome/fontawesome-svg-core@1.2.36",
+          "@fortawesome/fontawesome-common-types@0.2.36"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "@fortawesome/free-brands-svg-icons@5.15.4",
+          "@fortawesome/fontawesome-common-types@0.2.36"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "@fortawesome/free-regular-svg-icons@5.15.4",
+          "@fortawesome/fontawesome-common-types@0.2.36"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-28a8b0c25f",
+      "title": "@fortawesome/fontawesome-svg-core@1.2.36 runs a custom install script",
+      "category": "install-script",
+      "rule": "INSTALL-SCRIPT",
+      "severity": "low",
+      "component": {
+        "id": "pkg:npm/%40fortawesome/fontawesome-svg-core@1.2.36",
+        "name": "@fortawesome/fontawesome-svg-core",
+        "version": "1.2.36",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 25,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 20,
+          "why": "detector severity 'low'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "executes at install time on developer and CI machines (scope does not reduce this)"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "verified advisory + exact version + reachability evidence"
+        ]
+      },
+      "reachability": {
+        "level": "imported",
+        "detail": "imported directly by 20 production source file(s)",
+        "files": [
+          "frontend/src/app/app.component.ts",
+          "frontend/src/app/token-sale/token-sale.component.ts",
+          "frontend/src/app/forgot-password/forgot-password.component.ts",
+          "frontend/src/app/change-password/change-password.component.ts",
+          "frontend/src/app/administration/administration.component.ts"
+        ]
+      },
+      "exposure": {
+        "context": "browser",
+        "production": true,
+        "detail": "shipped in the 'frontend' client bundle; runs in users' browsers"
+      },
+      "production": true,
+      "fix": {
+        "suggestion": "install with --ignore-scripts and allowlist required builds; pin version"
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "@fortawesome/fontawesome-svg-core@1.2.36"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-d70b8b07ef",
+      "title": "@fortawesome/free-brands-svg-icons@5.15.4 runs a custom install script",
+      "category": "install-script",
+      "rule": "INSTALL-SCRIPT",
+      "severity": "low",
+      "component": {
+        "id": "pkg:npm/%40fortawesome/free-brands-svg-icons@5.15.4",
+        "name": "@fortawesome/free-brands-svg-icons",
+        "version": "5.15.4",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 25,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 20,
+          "why": "detector severity 'low'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "executes at install time on developer and CI machines (scope does not reduce this)"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "verified advisory + exact version + reachability evidence"
+        ]
+      },
+      "reachability": {
+        "level": "imported",
+        "detail": "imported directly by 9 production source file(s)",
+        "files": [
+          "frontend/src/app/token-sale/token-sale.component.ts",
+          "frontend/src/app/order-completion/order-completion.component.ts",
+          "frontend/src/app/challenge-status-badge/challenge-status-badge.component.ts",
+          "frontend/src/app/navbar/navbar.component.ts",
+          "frontend/src/app/payment/payment.component.ts"
+        ]
+      },
+      "exposure": {
+        "context": "browser",
+        "production": true,
+        "detail": "shipped in the 'frontend' client bundle; runs in users' browsers"
+      },
+      "production": true,
+      "fix": {
+        "suggestion": "install with --ignore-scripts and allowlist required builds; pin version"
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "@fortawesome/free-brands-svg-icons@5.15.4"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-468dc5528a",
+      "title": "@fortawesome/free-regular-svg-icons@5.15.4 runs a custom install script",
+      "category": "install-script",
+      "rule": "INSTALL-SCRIPT",
+      "severity": "low",
+      "component": {
+        "id": "pkg:npm/%40fortawesome/free-regular-svg-icons@5.15.4",
+        "name": "@fortawesome/free-regular-svg-icons",
+        "version": "5.15.4",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 25,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 20,
+          "why": "detector severity 'low'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "executes at install time on developer and CI machines (scope does not reduce this)"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "verified advisory + exact version + reachability evidence"
+        ]
+      },
+      "reachability": {
+        "level": "imported",
+        "detail": "imported directly by 8 production source file(s)",
+        "files": [
+          "frontend/src/app/token-sale/token-sale.component.ts",
+          "frontend/src/app/forgot-password/forgot-password.component.ts",
+          "frontend/src/app/change-password/change-password.component.ts",
+          "frontend/src/app/payment-method/payment-method.component.ts",
+          "frontend/src/app/navbar/navbar.component.ts"
+        ]
+      },
+      "exposure": {
+        "context": "browser",
+        "production": true,
+        "detail": "shipped in the 'frontend' client bundle; runs in users' browsers"
+      },
+      "production": true,
+      "fix": {
+        "suggestion": "install with --ignore-scripts and allowlist required builds; pin version"
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "@fortawesome/free-regular-svg-icons@5.15.4"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-103518a0a7",
+      "title": "@fortawesome/free-solid-svg-icons@5.15.4 runs a custom install script",
+      "category": "install-script",
+      "rule": "INSTALL-SCRIPT",
+      "severity": "low",
+      "component": {
+        "id": "pkg:npm/%40fortawesome/free-solid-svg-icons@5.15.4",
+        "name": "@fortawesome/free-solid-svg-icons",
+        "version": "5.15.4",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 25,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 20,
+          "why": "detector severity 'low'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "executes at install time on developer and CI machines (scope does not reduce this)"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "verified advisory + exact version + reachability evidence"
+        ]
+      },
+      "reachability": {
+        "level": "imported",
+        "detail": "imported directly by 20 production source file(s)",
+        "files": [
+          "frontend/src/app/token-sale/token-sale.component.ts",
+          "frontend/src/app/forgot-password/forgot-password.component.ts",
+          "frontend/src/app/change-password/change-password.component.ts",
+          "frontend/src/app/administration/administration.component.ts",
+          "frontend/src/app/payment-method/payment-method.component.ts"
+        ]
+      },
+      "exposure": {
+        "context": "browser",
+        "production": true,
+        "detail": "shipped in the 'frontend' client bundle; runs in users' browsers"
+      },
+      "production": true,
+      "fix": {
+        "suggestion": "install with --ignore-scripts and allowlist required builds; pin version"
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "@fortawesome/free-solid-svg-icons@5.15.4"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-2040272568",
+      "title": "@parcel/watcher@2.6.0 runs a custom install script",
+      "category": "install-script",
+      "rule": "INSTALL-SCRIPT",
+      "severity": "low",
+      "component": {
+        "id": "pkg:npm/%40parcel/watcher@2.6.0",
+        "name": "@parcel/watcher",
+        "version": "2.6.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 25,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 20,
+          "why": "detector severity 'low'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "executes at install time on developer and CI machines (scope does not reduce this)"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'@angular/build' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "browser",
+        "production": true,
+        "detail": "shipped in the 'frontend' client bundle; runs in users' browsers"
+      },
+      "production": true,
+      "fix": {
+        "suggestion": "install with --ignore-scripts and allowlist required builds; pin version"
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "@angular/build@22.3.0",
+          "@parcel/watcher@2.6.0"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "sass@1.108.2",
+          "@parcel/watcher@2.6.0"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "@angular/build@22.3.0",
+          "sass@1.108.2",
+          "@parcel/watcher@2.6.0"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-d9cf28cd98",
+      "title": "@scarf/scarf@1.4.0 runs a custom install script",
+      "category": "install-script",
+      "rule": "INSTALL-SCRIPT",
+      "severity": "low",
+      "component": {
+        "id": "pkg:npm/%40scarf/scarf@1.4.0",
+        "name": "@scarf/scarf",
+        "version": "1.4.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 25,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 20,
+          "why": "detector severity 'low'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "executes at install time on developer and CI machines (scope does not reduce this)"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "verified advisory + exact version + reachability evidence"
+        ]
+      },
+      "reachability": {
+        "level": "parent-imported",
+        "detail": "pulled in by 'swagger-ui-express', which production code imports (server.ts)",
+        "files": [
+          "server.ts"
+        ],
+        "via": "swagger-ui-express"
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "suggestion": "install with --ignore-scripts and allowlist required builds; pin version"
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "swagger-ui-express@5.0.1",
+          "swagger-ui-dist@5.36.0",
+          "@scarf/scarf@1.4.0"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-0c7d7b0da1",
+      "title": "Dockerfile installs build tool 'typescript@^6.0.3' without an exact version",
+      "category": "untrusted-image",
+      "rule": "IMAGE-UNPINNED-TOOL",
+      "severity": "low",
+      "component": null,
+      "score": 25,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 20,
+          "why": "detector severity 'low'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "part of a shipped container image (defined in Dockerfile)"
+        }
+      ],
+      "confidence": {
+        "value": 0.9,
+        "label": "high",
+        "reasons": [
+          "verified advisory + exact version + reachability evidence"
+        ]
+      },
+      "reachability": {
+        "level": "n/a",
+        "detail": "finding is about a file, not a package",
+        "files": []
+      },
+      "exposure": {
+        "context": "runtime-image",
+        "production": true,
+        "detail": "defined in Dockerfile"
+      },
+      "production": true,
+      "fix": {
+        "suggestion": "pin exact tool versions in images so rebuilds are reproducible"
+      },
+      "dependency_paths": [],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-2c057c877d",
+      "title": "GitHub Action actions/checkout: first-party action pinned to mutable tag 'v6'",
+      "category": "cicd",
+      "rule": "CICD-UNPINNED-ACTION",
+      "severity": "low",
+      "component": {
+        "id": "pkg:githubactions/actions/checkout@v6",
+        "name": "actions/checkout",
+        "version": "v6",
+        "ecosystem": "github-actions",
+        "direct": true,
+        "scope": "ci"
+      },
+      "score": 25,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 20,
+          "why": "detector severity 'low'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "runs in CI with access to repository secrets (runs in CI with access to repository tokens/secrets)"
+        }
+      ],
+      "confidence": {
+        "value": 0.9,
+        "label": "high",
+        "reasons": [
+          "verified advisory + exact version + reachability evidence"
+        ]
+      },
+      "reachability": {
+        "level": "n/a",
+        "detail": "not a code library (image / CI component)",
+        "files": []
+      },
+      "exposure": {
+        "context": "ci-pipeline",
+        "production": false,
+        "detail": "runs in CI with access to repository tokens/secrets"
+      },
+      "production": false,
+      "fix": {
+        "suggestion": "pin to a full commit SHA: uses: actions/checkout@<40-char-sha> # v6"
+      },
+      "dependency_paths": [],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-6fe5b806a1",
+      "title": "GitHub Action github/codeql-action/analyze: first-party action pinned to mutable tag 'v3'",
+      "category": "cicd",
+      "rule": "CICD-UNPINNED-ACTION",
+      "severity": "low",
+      "component": {
+        "id": "pkg:githubactions/github/codeql-action/analyze@v3",
+        "name": "github/codeql-action/analyze",
+        "version": "v3",
+        "ecosystem": "github-actions",
+        "direct": true,
+        "scope": "ci"
+      },
+      "score": 25,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 20,
+          "why": "detector severity 'low'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "runs in CI with access to repository secrets (runs in CI with access to repository tokens/secrets)"
+        }
+      ],
+      "confidence": {
+        "value": 0.9,
+        "label": "high",
+        "reasons": [
+          "verified advisory + exact version + reachability evidence"
+        ]
+      },
+      "reachability": {
+        "level": "n/a",
+        "detail": "not a code library (image / CI component)",
+        "files": []
+      },
+      "exposure": {
+        "context": "ci-pipeline",
+        "production": false,
+        "detail": "runs in CI with access to repository tokens/secrets"
+      },
+      "production": false,
+      "fix": {
+        "suggestion": "pin to a full commit SHA: uses: github/codeql-action/analyze@<40-char-sha> # v3"
+      },
+      "dependency_paths": [],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-52345dfecd",
+      "title": "GitHub Action github/codeql-action/autobuild: first-party action pinned to mutable tag 'v3'",
+      "category": "cicd",
+      "rule": "CICD-UNPINNED-ACTION",
+      "severity": "low",
+      "component": {
+        "id": "pkg:githubactions/github/codeql-action/autobuild@v3",
+        "name": "github/codeql-action/autobuild",
+        "version": "v3",
+        "ecosystem": "github-actions",
+        "direct": true,
+        "scope": "ci"
+      },
+      "score": 25,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 20,
+          "why": "detector severity 'low'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "runs in CI with access to repository secrets (runs in CI with access to repository tokens/secrets)"
+        }
+      ],
+      "confidence": {
+        "value": 0.9,
+        "label": "high",
+        "reasons": [
+          "verified advisory + exact version + reachability evidence"
+        ]
+      },
+      "reachability": {
+        "level": "n/a",
+        "detail": "not a code library (image / CI component)",
+        "files": []
+      },
+      "exposure": {
+        "context": "ci-pipeline",
+        "production": false,
+        "detail": "runs in CI with access to repository tokens/secrets"
+      },
+      "production": false,
+      "fix": {
+        "suggestion": "pin to a full commit SHA: uses: github/codeql-action/autobuild@<40-char-sha> # v3"
+      },
+      "dependency_paths": [],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-32d4bb8f8d",
+      "title": "GitHub Action github/codeql-action/init: first-party action pinned to mutable tag 'v3'",
+      "category": "cicd",
+      "rule": "CICD-UNPINNED-ACTION",
+      "severity": "low",
+      "component": {
+        "id": "pkg:githubactions/github/codeql-action/init@v3",
+        "name": "github/codeql-action/init",
+        "version": "v3",
+        "ecosystem": "github-actions",
+        "direct": true,
+        "scope": "ci"
+      },
+      "score": 25,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 20,
+          "why": "detector severity 'low'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "runs in CI with access to repository secrets (runs in CI with access to repository tokens/secrets)"
+        }
+      ],
+      "confidence": {
+        "value": 0.9,
+        "label": "high",
+        "reasons": [
+          "verified advisory + exact version + reachability evidence"
+        ]
+      },
+      "reachability": {
+        "level": "n/a",
+        "detail": "not a code library (image / CI component)",
+        "files": []
+      },
+      "exposure": {
+        "context": "ci-pipeline",
+        "production": false,
+        "detail": "runs in CI with access to repository tokens/secrets"
+      },
+      "production": false,
+      "fix": {
+        "suggestion": "pin to a full commit SHA: uses: github/codeql-action/init@<40-char-sha> # v3"
+      },
+      "dependency_paths": [],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-4c148132fc",
+      "title": "Image 'mongo:4.4.29' is not pinned by digest",
+      "category": "untrusted-image",
+      "rule": "IMAGE-NO-DIGEST",
+      "severity": "low",
+      "component": {
+        "id": "pkg:docker/mongo@4.4.29",
+        "name": "mongo",
+        "version": "4.4.29",
+        "ecosystem": "docker",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 25,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 20,
+          "why": "detector severity 'low'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "part of a shipped container image (base image of a shipped container (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.9,
+        "label": "high",
+        "reasons": [
+          "verified advisory + exact version + reachability evidence"
+        ]
+      },
+      "reachability": {
+        "level": "n/a",
+        "detail": "not a code library (image / CI component)",
+        "files": []
+      },
+      "exposure": {
+        "context": "runtime-image",
+        "production": true,
+        "detail": "base image of a shipped container (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "suggestion": "append @sha256:<digest> so the tag cannot be silently re-pointed"
+      },
+      "dependency_paths": [],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-5c84ae7bb2",
+      "title": "Image 'nginx:1.28.0-alpine' is not pinned by digest",
+      "category": "untrusted-image",
+      "rule": "IMAGE-NO-DIGEST",
+      "severity": "low",
+      "component": {
+        "id": "pkg:docker/nginx@1.28.0-alpine",
+        "name": "nginx",
+        "version": "1.28.0-alpine",
+        "ecosystem": "docker",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 25,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 20,
+          "why": "detector severity 'low'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "part of a shipped container image (base image of a shipped container (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.9,
+        "label": "high",
+        "reasons": [
+          "verified advisory + exact version + reachability evidence"
+        ]
+      },
+      "reachability": {
+        "level": "n/a",
+        "detail": "not a code library (image / CI component)",
+        "files": []
+      },
+      "exposure": {
+        "context": "runtime-image",
+        "production": true,
+        "detail": "base image of a shipped container (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "suggestion": "append @sha256:<digest> so the tag cannot be silently re-pointed"
+      },
+      "dependency_paths": [],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-f83c2be859",
+      "title": "Image 'redis:7.4.4-alpine' is not pinned by digest",
+      "category": "untrusted-image",
+      "rule": "IMAGE-NO-DIGEST",
+      "severity": "low",
+      "component": {
+        "id": "pkg:docker/redis@7.4.4-alpine",
+        "name": "redis",
+        "version": "7.4.4-alpine",
+        "ecosystem": "docker",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 25,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 20,
+          "why": "detector severity 'low'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "part of a shipped container image (base image of a shipped container (EXPOSE 3000))"
+        }
+      ],
+      "confidence": {
+        "value": 0.9,
+        "label": "high",
+        "reasons": [
+          "verified advisory + exact version + reachability evidence"
+        ]
+      },
+      "reachability": {
+        "level": "n/a",
+        "detail": "not a code library (image / CI component)",
+        "files": []
+      },
+      "exposure": {
+        "context": "runtime-image",
+        "production": true,
+        "detail": "base image of a shipped container (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "suggestion": "append @sha256:<digest> so the tag cannot be silently re-pointed"
+      },
+      "dependency_paths": [],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-945102c354",
+      "title": "cypress@16.3.0 runs a custom install script",
+      "category": "install-script",
+      "rule": "INSTALL-SCRIPT",
+      "severity": "low",
+      "component": {
+        "id": "pkg:npm/cypress@16.3.0",
+        "name": "cypress",
+        "version": "16.3.0",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "dev"
+      },
+      "score": 25,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 20,
+          "why": "detector severity 'low'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "executes at install time on developer and CI machines (scope does not reduce this)"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "verified advisory + exact version + reachability evidence"
+        ]
+      },
+      "reachability": {
+        "level": "imported",
+        "detail": "imported directly by 1 production source file(s)",
+        "files": [
+          "cypress.config.ts"
+        ]
+      },
+      "exposure": {
+        "context": "dev-tooling",
+        "production": false,
+        "detail": "devDependency: not installed in production"
+      },
+      "production": false,
+      "fix": {
+        "suggestion": "install with --ignore-scripts and allowlist required builds; pin version"
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "cypress@16.3.0"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-c0393ae548",
+      "title": "esbuild@0.28.2 runs a standard native-build install script",
+      "category": "install-script",
+      "rule": "INSTALL-SCRIPT",
+      "severity": "info",
+      "component": {
+        "id": "pkg:npm/esbuild@0.28.2",
+        "name": "esbuild",
+        "version": "0.28.2",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 10,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 5,
+          "why": "detector severity 'info'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "executes at install time on developer and CI machines (scope does not reduce this)"
+        }
+      ],
+      "confidence": {
+        "value": 0.9,
+        "label": "high",
+        "reasons": [
+          "verified advisory + exact version + reachability evidence"
+        ]
+      },
+      "reachability": {
+        "level": "test-only",
+        "detail": "only test code imports 'vitest' (frontend/src/app/shared/codemirror-extensions.spec.ts)",
+        "files": [
+          "frontend/src/app/shared/codemirror-extensions.spec.ts",
+          "frontend/src/app/coding-challenge-page/helpers/handle-verdict.spec.ts"
+        ]
+      },
+      "exposure": {
+        "context": "browser",
+        "production": true,
+        "detail": "shipped in the 'frontend' client bundle; runs in users' browsers"
+      },
+      "production": true,
+      "fix": {
+        "suggestion": "install with --ignore-scripts and allowlist required builds; pin version"
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "tsx@4.23.15",
+          "esbuild@0.28.2"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "@angular/build@22.3.0",
+          "esbuild@0.28.2"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "@cyclonedx/cyclonedx-esbuild@1.4.4",
+          "esbuild@0.28.2"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-6bf1cce81c",
+      "title": "fsevents@2.3.3 runs a standard native-build install script",
+      "category": "install-script",
+      "rule": "INSTALL-SCRIPT",
+      "severity": "info",
+      "component": {
+        "id": "pkg:npm/fsevents@2.3.3",
+        "name": "fsevents",
+        "version": "2.3.3",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "dev"
+      },
+      "score": 10,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 5,
+          "why": "detector severity 'info'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "executes at install time on developer and CI machines (scope does not reduce this)"
+        }
+      ],
+      "confidence": {
+        "value": 0.9,
+        "label": "high",
+        "reasons": [
+          "verified advisory + exact version + reachability evidence"
+        ]
+      },
+      "reachability": {
+        "level": "test-only",
+        "detail": "only test code imports 'vitest' (frontend/src/app/shared/codemirror-extensions.spec.ts)",
+        "files": [
+          "frontend/src/app/shared/codemirror-extensions.spec.ts",
+          "frontend/src/app/coding-challenge-page/helpers/handle-verdict.spec.ts"
+        ]
+      },
+      "exposure": {
+        "context": "dev-tooling",
+        "production": false,
+        "detail": "devDependency: not installed in production"
+      },
+      "production": false,
+      "fix": {
+        "suggestion": "install with --ignore-scripts and allowlist required builds; pin version"
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "tsx@4.23.15",
+          "fsevents@2.3.3"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "@angular/build@22.3.0",
+          "vite@8.3.8",
+          "fsevents@2.3.3"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "vitest@4.1.12",
+          "vite@8.3.8",
+          "fsevents@2.3.3"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-e301ad5c05",
+      "title": "libxmljs2@0.37.0 runs a standard native-build install script",
+      "category": "install-script",
+      "rule": "INSTALL-SCRIPT",
+      "severity": "info",
+      "component": {
+        "id": "pkg:npm/libxmljs2@0.37.0",
+        "name": "libxmljs2",
+        "version": "0.37.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "dev"
+      },
+      "score": 10,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 5,
+          "why": "detector severity 'info'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "executes at install time on developer and CI machines (scope does not reduce this)"
+        }
+      ],
+      "confidence": {
+        "value": 0.8,
+        "label": "high",
+        "reasons": [
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'@cyclonedx/cyclonedx-npm' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "dev-tooling",
+        "production": false,
+        "detail": "devDependency: not installed in production"
+      },
+      "production": false,
+      "fix": {
+        "suggestion": "install with --ignore-scripts and allowlist required builds; pin version"
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "@cyclonedx/cyclonedx-npm@4.2.1",
+          "libxmljs2@0.37.0"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "@cyclonedx/cyclonedx-npm@4.2.1",
+          "@cyclonedx/cyclonedx-library@10.5.1",
+          "libxmljs2@0.37.0"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "@cyclonedx/cyclonedx-esbuild@1.4.4",
+          "@cyclonedx/cyclonedx-library@10.5.1",
+          "libxmljs2@0.37.0"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-05c1562602",
+      "title": "lmdb@3.5.9 runs a standard native-build install script",
+      "category": "install-script",
+      "rule": "INSTALL-SCRIPT",
+      "severity": "info",
+      "component": {
+        "id": "pkg:npm/lmdb@3.5.9",
+        "name": "lmdb",
+        "version": "3.5.9",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "optional"
+      },
+      "score": 10,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 5,
+          "why": "detector severity 'info'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "executes at install time on developer and CI machines (scope does not reduce this)"
+        }
+      ],
+      "confidence": {
+        "value": 0.8,
+        "label": "high",
+        "reasons": [
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'@angular/build' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "install-time",
+        "production": false,
+        "detail": "optional / install-time dependency (e.g. native build tooling)"
+      },
+      "production": false,
+      "fix": {
+        "suggestion": "install with --ignore-scripts and allowlist required builds; pin version"
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "@angular/build@22.3.0",
+          "lmdb@3.5.9"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-b3e62f88b6",
+      "title": "msgpackr-extract@3.0.7 runs a standard native-build install script",
+      "category": "install-script",
+      "rule": "INSTALL-SCRIPT",
+      "severity": "info",
+      "component": {
+        "id": "pkg:npm/msgpackr-extract@3.0.7",
+        "name": "msgpackr-extract",
+        "version": "3.0.7",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "optional"
+      },
+      "score": 10,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 5,
+          "why": "detector severity 'info'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "executes at install time on developer and CI machines (scope does not reduce this)"
+        }
+      ],
+      "confidence": {
+        "value": 0.8,
+        "label": "high",
+        "reasons": [
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'@angular/build' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "install-time",
+        "production": false,
+        "detail": "optional / install-time dependency (e.g. native build tooling)"
+      },
+      "production": false,
+      "fix": {
+        "suggestion": "install with --ignore-scripts and allowlist required builds; pin version"
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "frontend@20.4.0-SNAPSHOT",
+          "@angular/build@22.3.0",
+          "lmdb@3.5.9",
+          "msgpackr@1.12.1",
+          "msgpackr-extract@3.0.7"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-a2241d2330",
+      "title": "sqlite3@5.1.7 runs a standard native-build install script",
+      "category": "install-script",
+      "rule": "INSTALL-SCRIPT",
+      "severity": "info",
+      "component": {
+        "id": "pkg:npm/sqlite3@5.1.7",
+        "name": "sqlite3",
+        "version": "5.1.7",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 10,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 5,
+          "why": "detector severity 'info'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "executes at install time on developer and CI machines (scope does not reduce this)"
+        }
+      ],
+      "confidence": {
+        "value": 0.8,
+        "label": "high",
+        "reasons": [
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'sqlite3' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process, network-facing (EXPOSE 3000)"
+      },
+      "production": true,
+      "fix": {
+        "suggestion": "install with --ignore-scripts and allowlist required builds; pin version"
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-035c157e9c",
+      "title": "Known vulnerability in glob@10.5.0: Glob: AbortSignal cancellation bypass allows post-timeout filesystem traversal",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/glob@10.5.0",
+        "name": "glob",
+        "version": "10.5.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "dev"
+      },
+      "score": 5,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 45,
+          "why": "detector severity 'medium'"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): '@cyclonedx/cyclonedx-npm' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": -30,
+          "why": "dev-only dependency, not shipped to production (devDependency: not installed in production)"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'@cyclonedx/cyclonedx-npm' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "dev-tooling",
+        "production": false,
+        "detail": "devDependency: not installed in production"
+      },
+      "production": false,
+      "fix": {
+        "fixed_versions": [
+          "14.0.2"
+        ],
+        "available": true,
+        "introduced_via": [
+          "@cyclonedx/cyclonedx-npm@4.2.1"
+        ],
+        "cvss_score": null,
+        "cwe": [
+          "CWE-400"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "@cyclonedx/cyclonedx-npm@4.2.1",
+          "libxmljs2@0.37.0",
+          "node-gyp@11.5.0",
+          "make-fetch-happen@14.0.3",
+          "cacache@19.0.1",
+          "glob@10.5.0"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "@cyclonedx/cyclonedx-npm@4.2.1",
+          "@cyclonedx/cyclonedx-library@10.5.1",
+          "libxmljs2@0.37.0",
+          "node-gyp@11.5.0",
+          "make-fetch-happen@14.0.3",
+          "cacache@19.0.1",
+          "glob@10.5.0"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-8d4b8975db",
+      "title": "Known vulnerability in minimatch@9.0.9: minimatch has potential denial of service via globparts amplification",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/minimatch@9.0.9",
+        "name": "minimatch",
+        "version": "9.0.9",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "dev"
+      },
+      "score": 5,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 45,
+          "why": "detector severity 'medium'"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): '@cyclonedx/cyclonedx-npm' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": -30,
+          "why": "dev-only dependency, not shipped to production (devDependency: not installed in production)"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'@cyclonedx/cyclonedx-npm' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "dev-tooling",
+        "production": false,
+        "detail": "devDependency: not installed in production"
+      },
+      "production": false,
+      "fix": {
+        "fixed_versions": [
+          "11.0.1"
+        ],
+        "available": true,
+        "introduced_via": [
+          "@cyclonedx/cyclonedx-npm@4.2.1"
+        ],
+        "cvss_score": null,
+        "cwe": [
+          "CWE-405"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "@cyclonedx/cyclonedx-npm@4.2.1",
+          "libxmljs2@0.37.0",
+          "node-gyp@11.5.0",
+          "make-fetch-happen@14.0.3",
+          "cacache@19.0.1",
+          "glob@10.5.0",
+          "minimatch@9.0.9"
+        ],
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "@cyclonedx/cyclonedx-npm@4.2.1",
+          "@cyclonedx/cyclonedx-library@10.5.1",
+          "libxmljs2@0.37.0",
+          "node-gyp@11.5.0",
+          "make-fetch-happen@14.0.3",
+          "cacache@19.0.1",
+          "glob@10.5.0",
+          "minimatch@9.0.9"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-7403c836c5",
+      "title": "Known vulnerability in @tootallnate/once@1.1.2: @tootallnate/once vulnerable to Incorrect Control Flow Scoping",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "low",
+      "component": {
+        "id": "pkg:npm/%40tootallnate/once@1.1.2",
+        "name": "@tootallnate/once",
+        "version": "1.1.2",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "optional"
+      },
+      "score": 0,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 33,
+          "why": "CVSS 3.3"
+        },
+        {
+          "factor": "exploitability",
+          "points": -10,
+          "why": "needs local/physical access (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L)"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'sqlite3' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": -20,
+          "why": "install-time / optional tooling, not in the running app (optional / install-time dependency (e.g. native build tooling))"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'sqlite3' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "install-time",
+        "production": false,
+        "detail": "optional / install-time dependency (e.g. native build tooling)"
+      },
+      "production": false,
+      "fix": {
+        "fixed_versions": [
+          "2.0.1"
+        ],
+        "available": true,
+        "introduced_via": [
+          "sqlite3@5.1.7"
+        ],
+        "cvss_score": 3.3,
+        "cwe": [
+          "CWE-705"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "juice-shop@20.4.0-SNAPSHOT",
+          "sqlite3@5.1.7",
+          "node-gyp@8.4.1",
+          "make-fetch-happen@9.1.0",
+          "http-proxy-agent@4.0.1",
+          "@tootallnate/once@1.1.2"
+        ]
+      ],
+      "ai": null
+    }
+  ]
+}

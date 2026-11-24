@@ -1,0 +1,2007 @@
+{
+  "schema": "guardian.plan/v1",
+  "project": "shop-api@1.4.0",
+  "items": [
+    {
+      "item_id": "R1",
+      "title": "lodash@4.17.15: integrity, vulnerability",
+      "priority": "P1-urgent",
+      "score": 100,
+      "findings": [
+        "GRD-704d795f51",
+        "GRD-21c00fec6e",
+        "GRD-ad2936893a",
+        "GRD-844e5ccc16",
+        "GRD-a128fcec7d",
+        "GRD-e21d6bab29"
+      ],
+      "categories": [
+        "integrity",
+        "vulnerability"
+      ],
+      "component": {
+        "id": "pkg:npm/lodash@4.17.15",
+        "name": "lodash",
+        "version": "4.17.15",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "lodash@4.17.15"
+        ]
+      ],
+      "reachability": {
+        "level": "unknown",
+        "detail": "'lodash' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "status": "pending-approval",
+      "approval": null,
+      "options": [
+        {
+          "option_id": "R1.a",
+          "action": "upgrade",
+          "recommended": true,
+          "description": "Upgrade lodash 4.17.15 -> 4.18.0 (minor)",
+          "changes": [
+            {
+              "type": "package-json",
+              "subproject": "",
+              "op": "set-dep",
+              "name": "lodash",
+              "value": "4.18.0",
+              "section": "dependencies"
+            }
+          ],
+          "risk_reduction": {
+            "findings_resolved": [
+              "GRD-704d795f51",
+              "GRD-21c00fec6e",
+              "GRD-ad2936893a",
+              "GRD-844e5ccc16",
+              "GRD-a128fcec7d",
+              "GRD-e21d6bab29"
+            ],
+            "score_removed": 497,
+            "estimate": true,
+            "note": "expected; confirmed by rescan during validation"
+          },
+          "compatibility": {
+            "level": "low",
+            "reasons": [
+              "semver minor change"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        },
+        {
+          "option_id": "R1.b",
+          "action": "accept",
+          "description": "Accept the risk (requires a written justification and an expiry/review date)",
+          "changes": [],
+          "risk_reduction": {
+            "findings_resolved": [],
+            "score_removed": 0,
+            "estimate": false,
+            "note": "risk accepted, recorded as residual"
+          },
+          "compatibility": {
+            "level": "none",
+            "reasons": [
+              "no change"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        },
+        {
+          "option_id": "R1.c",
+          "action": "escalate",
+          "recommended": false,
+          "description": "Request security review; keep the component blocked by policy meanwhile",
+          "changes": [],
+          "risk_reduction": {
+            "findings_resolved": [],
+            "score_removed": 0,
+            "estimate": true,
+            "note": "risk unchanged until review decision"
+          },
+          "compatibility": {
+            "level": "none",
+            "reasons": [
+              "no code change"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        }
+      ]
+    },
+    {
+      "item_id": "R2",
+      "title": "flatmap-stream@0.1.1: malicious-package, vulnerability",
+      "priority": "P1-urgent",
+      "score": 100,
+      "findings": [
+        "GRD-613706260e",
+        "GRD-73005cb429",
+        "GRD-ca39c1eed2"
+      ],
+      "categories": [
+        "malicious-package",
+        "vulnerability"
+      ],
+      "component": {
+        "id": "pkg:npm/flatmap-stream@0.1.1",
+        "name": "flatmap-stream",
+        "version": "0.1.1",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "event-stream@3.3.6",
+          "flatmap-stream@0.1.1"
+        ]
+      ],
+      "reachability": {
+        "level": "unknown",
+        "detail": "'event-stream' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "status": "pending-approval",
+      "approval": null,
+      "options": [
+        {
+          "option_id": "R2.a",
+          "action": "remove",
+          "recommended": true,
+          "description": "Remove 'flatmap-stream' and regenerate the lockfile; block it in policy",
+          "changes": [
+            {
+              "type": "lockfile",
+              "subproject": "",
+              "op": "regenerate"
+            }
+          ],
+          "risk_reduction": {
+            "findings_resolved": [
+              "GRD-613706260e",
+              "GRD-73005cb429",
+              "GRD-ca39c1eed2"
+            ],
+            "score_removed": 300,
+            "estimate": true,
+            "note": "expected; confirmed by rescan during validation"
+          },
+          "compatibility": {
+            "level": "low",
+            "reasons": [
+              "no source file imports it"
+            ]
+          },
+          "follow_up": [
+            "rotate any credentials present on machines that installed it"
+          ],
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        },
+        {
+          "option_id": "R2.c",
+          "action": "escalate",
+          "recommended": false,
+          "description": "Request security review; keep the component blocked by policy meanwhile",
+          "changes": [],
+          "risk_reduction": {
+            "findings_resolved": [],
+            "score_removed": 0,
+            "estimate": true,
+            "note": "risk unchanged until review decision"
+          },
+          "compatibility": {
+            "level": "none",
+            "reasons": [
+              "no code change"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        }
+      ]
+    },
+    {
+      "item_id": "R3",
+      "title": "ua-parser-js@0.7.29: integrity, malicious-package",
+      "priority": "P1-urgent",
+      "score": 100,
+      "findings": [
+        "GRD-98f61e9402",
+        "GRD-d91accc1c1"
+      ],
+      "categories": [
+        "integrity",
+        "malicious-package"
+      ],
+      "component": {
+        "id": "pkg:npm/ua-parser-js@0.7.29",
+        "name": "ua-parser-js",
+        "version": "0.7.29",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "dependency_paths": [],
+      "reachability": {
+        "level": "orphan",
+        "detail": "no dependency path from the application",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "status": "pending-approval",
+      "approval": null,
+      "options": [
+        {
+          "option_id": "R3.a",
+          "action": "remove",
+          "recommended": true,
+          "description": "Remove 'ua-parser-js' and regenerate the lockfile; block it in policy",
+          "changes": [
+            {
+              "type": "lockfile",
+              "subproject": "",
+              "op": "regenerate"
+            }
+          ],
+          "risk_reduction": {
+            "findings_resolved": [
+              "GRD-98f61e9402",
+              "GRD-d91accc1c1"
+            ],
+            "score_removed": 175,
+            "estimate": true,
+            "note": "expected; confirmed by rescan during validation"
+          },
+          "compatibility": {
+            "level": "low",
+            "reasons": [
+              "no source file imports it"
+            ]
+          },
+          "follow_up": [
+            "rotate any credentials present on machines that installed it"
+          ],
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        },
+        {
+          "option_id": "R3.c",
+          "action": "escalate",
+          "recommended": false,
+          "description": "Request security review; keep the component blocked by policy meanwhile",
+          "changes": [],
+          "risk_reduction": {
+            "findings_resolved": [],
+            "score_removed": 0,
+            "estimate": true,
+            "note": "risk unchanged until review decision"
+          },
+          "compatibility": {
+            "level": "none",
+            "reasons": [
+              "no code change"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        }
+      ]
+    },
+    {
+      "item_id": "R4",
+      "title": "event-stream@3.3.6: integrity, vulnerability",
+      "priority": "P1-urgent",
+      "score": 100,
+      "findings": [
+        "GRD-0ed05bf1fe",
+        "GRD-0bb2f898bb"
+      ],
+      "categories": [
+        "integrity",
+        "vulnerability"
+      ],
+      "component": {
+        "id": "pkg:npm/event-stream@3.3.6",
+        "name": "event-stream",
+        "version": "3.3.6",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "event-stream@3.3.6"
+        ]
+      ],
+      "reachability": {
+        "level": "unknown",
+        "detail": "'event-stream' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "status": "pending-approval",
+      "approval": null,
+      "options": [
+        {
+          "option_id": "R4.a",
+          "action": "upgrade",
+          "recommended": true,
+          "description": "Upgrade event-stream 3.3.6 -> 4.0.0 (major)",
+          "changes": [
+            {
+              "type": "package-json",
+              "subproject": "",
+              "op": "set-dep",
+              "name": "event-stream",
+              "value": "4.0.0",
+              "section": "dependencies"
+            }
+          ],
+          "risk_reduction": {
+            "findings_resolved": [
+              "GRD-0ed05bf1fe",
+              "GRD-0bb2f898bb"
+            ],
+            "score_removed": 175,
+            "estimate": true,
+            "note": "expected; confirmed by rescan during validation"
+          },
+          "compatibility": {
+            "level": "high",
+            "reasons": [
+              "semver major change",
+              "breaking API changes possible; build + tests must pass before approval is final"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        },
+        {
+          "option_id": "R4.b",
+          "action": "accept",
+          "description": "Accept the risk (requires a written justification and an expiry/review date)",
+          "changes": [],
+          "risk_reduction": {
+            "findings_resolved": [],
+            "score_removed": 0,
+            "estimate": false,
+            "note": "risk accepted, recorded as residual"
+          },
+          "compatibility": {
+            "level": "none",
+            "reasons": [
+              "no change"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        },
+        {
+          "option_id": "R4.c",
+          "action": "escalate",
+          "recommended": false,
+          "description": "Request security review; keep the component blocked by policy meanwhile",
+          "changes": [],
+          "risk_reduction": {
+            "findings_resolved": [],
+            "score_removed": 0,
+            "estimate": true,
+            "note": "risk unchanged until review decision"
+          },
+          "compatibility": {
+            "level": "none",
+            "reasons": [
+              "no code change"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        }
+      ]
+    },
+    {
+      "item_id": "R5",
+      "title": "minimist@1.2.5: integrity, vulnerability",
+      "priority": "P1-urgent",
+      "score": 100,
+      "findings": [
+        "GRD-2dd08017e5",
+        "GRD-cbacc02b07",
+        "GRD-dfc22d0f2f"
+      ],
+      "categories": [
+        "integrity",
+        "vulnerability"
+      ],
+      "component": {
+        "id": "pkg:npm/minimist@1.2.5",
+        "name": "minimist",
+        "version": "1.2.5",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "minimist@1.2.5"
+        ]
+      ],
+      "reachability": {
+        "level": "unknown",
+        "detail": "'minimist' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "status": "pending-approval",
+      "approval": null,
+      "options": [
+        {
+          "option_id": "R5.a",
+          "action": "upgrade",
+          "recommended": true,
+          "description": "Upgrade minimist 1.2.5 -> 1.2.6 (patch)",
+          "changes": [
+            {
+              "type": "package-json",
+              "subproject": "",
+              "op": "set-dep",
+              "name": "minimist",
+              "value": "1.2.6",
+              "section": "dependencies"
+            }
+          ],
+          "risk_reduction": {
+            "findings_resolved": [
+              "GRD-2dd08017e5",
+              "GRD-cbacc02b07",
+              "GRD-dfc22d0f2f"
+            ],
+            "score_removed": 250,
+            "estimate": true,
+            "note": "expected; confirmed by rescan during validation"
+          },
+          "compatibility": {
+            "level": "low",
+            "reasons": [
+              "semver patch change"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        },
+        {
+          "option_id": "R5.b",
+          "action": "accept",
+          "description": "Accept the risk (requires a written justification and an expiry/review date)",
+          "changes": [],
+          "risk_reduction": {
+            "findings_resolved": [],
+            "score_removed": 0,
+            "estimate": false,
+            "note": "risk accepted, recorded as residual"
+          },
+          "compatibility": {
+            "level": "none",
+            "reasons": [
+              "no change"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        },
+        {
+          "option_id": "R5.c",
+          "action": "escalate",
+          "recommended": false,
+          "description": "Request security review; keep the component blocked by policy meanwhile",
+          "changes": [],
+          "risk_reduction": {
+            "findings_resolved": [],
+            "score_removed": 0,
+            "estimate": true,
+            "note": "risk unchanged until review decision"
+          },
+          "compatibility": {
+            "level": "none",
+            "reasons": [
+              "no code change"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        }
+      ]
+    },
+    {
+      "item_id": "R6",
+      "title": "crossenv@6.1.1: install-script, malicious-package, typosquat",
+      "priority": "P1-urgent",
+      "score": 100,
+      "findings": [
+        "GRD-ae3966a225",
+        "GRD-d59b7c1df8",
+        "GRD-d2c4aa3ad1"
+      ],
+      "categories": [
+        "install-script",
+        "malicious-package",
+        "typosquat"
+      ],
+      "component": {
+        "id": "pkg:npm/crossenv@6.1.1",
+        "name": "crossenv",
+        "version": "6.1.1",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "dev"
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "crossenv@6.1.1"
+        ]
+      ],
+      "reachability": {
+        "level": "unknown",
+        "detail": "'crossenv' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "dev-tooling",
+        "production": false,
+        "detail": "devDependency: not installed in production"
+      },
+      "status": "pending-approval",
+      "approval": null,
+      "options": [
+        {
+          "option_id": "R6.a",
+          "action": "remove",
+          "recommended": true,
+          "description": "Remove 'crossenv' and regenerate the lockfile; block it in policy",
+          "changes": [
+            {
+              "type": "package-json",
+              "subproject": "",
+              "op": "remove-dep",
+              "name": "crossenv"
+            }
+          ],
+          "risk_reduction": {
+            "findings_resolved": [
+              "GRD-ae3966a225",
+              "GRD-d59b7c1df8",
+              "GRD-d2c4aa3ad1"
+            ],
+            "score_removed": 270,
+            "estimate": true,
+            "note": "expected; confirmed by rescan during validation"
+          },
+          "compatibility": {
+            "level": "low",
+            "reasons": [
+              "no source file imports it"
+            ]
+          },
+          "follow_up": [
+            "rotate any credentials present on machines that installed it"
+          ],
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        },
+        {
+          "option_id": "R6.b",
+          "action": "replace",
+          "description": "Replace 'crossenv' with the intended package 'cross-env'",
+          "changes": [
+            {
+              "type": "package-json",
+              "subproject": "",
+              "op": "remove-dep",
+              "name": "crossenv"
+            },
+            {
+              "type": "package-json",
+              "subproject": "",
+              "op": "set-dep",
+              "name": "cross-env",
+              "value": "latest-at-apply",
+              "section": "devDependencies"
+            }
+          ],
+          "risk_reduction": {
+            "findings_resolved": [
+              "GRD-ae3966a225",
+              "GRD-d59b7c1df8",
+              "GRD-d2c4aa3ad1"
+            ],
+            "score_removed": 270,
+            "estimate": true,
+            "note": "expected; confirmed by rescan during validation"
+          },
+          "compatibility": {
+            "level": "low",
+            "reasons": [
+              "same intended functionality"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        },
+        {
+          "option_id": "R6.c",
+          "action": "escalate",
+          "recommended": false,
+          "description": "Request security review; keep the component blocked by policy meanwhile",
+          "changes": [],
+          "risk_reduction": {
+            "findings_resolved": [],
+            "score_removed": 0,
+            "estimate": true,
+            "note": "risk unchanged until review decision"
+          },
+          "compatibility": {
+            "level": "none",
+            "reasons": [
+              "no code change"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        }
+      ]
+    },
+    {
+      "item_id": "R7",
+      "title": "body-parser@1.19.0: 2 known vulnerabilities",
+      "priority": "P1-urgent",
+      "score": 95,
+      "findings": [
+        "GRD-b38171a52f",
+        "GRD-7c9e777fa6"
+      ],
+      "categories": [
+        "vulnerability"
+      ],
+      "component": {
+        "id": "pkg:npm/body-parser@1.19.0",
+        "name": "body-parser",
+        "version": "1.19.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "express@4.17.1",
+          "body-parser@1.19.0"
+        ]
+      ],
+      "reachability": {
+        "level": "parent-imported",
+        "detail": "pulled in by 'express', which production code imports (server.js)",
+        "files": [
+          "server.js"
+        ],
+        "via": "express"
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "status": "pending-approval",
+      "approval": null,
+      "options": [
+        {
+          "option_id": "R7.a",
+          "action": "upgrade-parent",
+          "recommended": true,
+          "description": "Upgrade direct dependency express 4.17.1 -> 4.22.0 (minor); express@4.22.0 requires body-parser ~1.20.3, which admits a fixed version",
+          "changes": [
+            {
+              "type": "package-json",
+              "subproject": "",
+              "op": "set-dep",
+              "name": "express",
+              "value": "4.22.0",
+              "section": "dependencies"
+            }
+          ],
+          "risk_reduction": {
+            "findings_resolved": [
+              "GRD-b38171a52f",
+              "GRD-7c9e777fa6"
+            ],
+            "score_removed": 190,
+            "estimate": true,
+            "note": "expected; the parent upgrade may also change other transitive packages"
+          },
+          "compatibility": {
+            "level": "low",
+            "reasons": [
+              "semver minor change",
+              "1 source file(s) import express: server.js"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        },
+        {
+          "option_id": "R7.b",
+          "action": "override",
+          "description": "Force body-parser@1.20.9 with npm overrides",
+          "changes": [
+            {
+              "type": "package-json",
+              "subproject": "",
+              "op": "set-override",
+              "name": "body-parser",
+              "value": "1.20.9"
+            }
+          ],
+          "risk_reduction": {
+            "findings_resolved": [
+              "GRD-b38171a52f",
+              "GRD-7c9e777fa6"
+            ],
+            "score_removed": 190,
+            "estimate": true,
+            "note": "expected; confirmed by rescan during validation"
+          },
+          "compatibility": {
+            "level": "high",
+            "reasons": [
+              "outside the declared range (express declares 1.19.0): parent may break"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        },
+        {
+          "option_id": "R7.c",
+          "action": "accept",
+          "description": "Accept the risk (requires a written justification and an expiry/review date)",
+          "changes": [],
+          "risk_reduction": {
+            "findings_resolved": [],
+            "score_removed": 0,
+            "estimate": false,
+            "note": "risk accepted, recorded as residual"
+          },
+          "compatibility": {
+            "level": "none",
+            "reasons": [
+              "no change"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        },
+        {
+          "option_id": "R7.d",
+          "action": "escalate",
+          "recommended": false,
+          "description": "Request security review; keep the component blocked by policy meanwhile",
+          "changes": [],
+          "risk_reduction": {
+            "findings_resolved": [],
+            "score_removed": 0,
+            "estimate": true,
+            "note": "risk unchanged until review decision"
+          },
+          "compatibility": {
+            "level": "none",
+            "reasons": [
+              "no code change"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        }
+      ]
+    },
+    {
+      "item_id": "R8",
+      "title": "path-to-regexp@0.1.7: 3 known vulnerabilities",
+      "priority": "P1-urgent",
+      "score": 95,
+      "findings": [
+        "GRD-1c5fa4dd94",
+        "GRD-e29370793e",
+        "GRD-1f7ff0a614"
+      ],
+      "categories": [
+        "vulnerability"
+      ],
+      "component": {
+        "id": "pkg:npm/path-to-regexp@0.1.7",
+        "name": "path-to-regexp",
+        "version": "0.1.7",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "express@4.17.1",
+          "path-to-regexp@0.1.7"
+        ]
+      ],
+      "reachability": {
+        "level": "parent-imported",
+        "detail": "pulled in by 'express', which production code imports (server.js)",
+        "files": [
+          "server.js"
+        ],
+        "via": "express"
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "status": "pending-approval",
+      "approval": null,
+      "options": [
+        {
+          "option_id": "R8.a",
+          "action": "upgrade-parent",
+          "recommended": true,
+          "description": "Upgrade direct dependency express 4.17.1 -> 4.22.0 (minor); express@4.22.0 requires path-to-regexp ~0.1.12, which admits a fixed version",
+          "changes": [
+            {
+              "type": "package-json",
+              "subproject": "",
+              "op": "set-dep",
+              "name": "express",
+              "value": "4.22.0",
+              "section": "dependencies"
+            }
+          ],
+          "risk_reduction": {
+            "findings_resolved": [
+              "GRD-1c5fa4dd94",
+              "GRD-e29370793e",
+              "GRD-1f7ff0a614"
+            ],
+            "score_removed": 285,
+            "estimate": true,
+            "note": "expected; the parent upgrade may also change other transitive packages"
+          },
+          "compatibility": {
+            "level": "low",
+            "reasons": [
+              "semver minor change",
+              "1 source file(s) import express: server.js"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        },
+        {
+          "option_id": "R8.b",
+          "action": "override",
+          "description": "Force path-to-regexp@0.1.13 with npm overrides",
+          "changes": [
+            {
+              "type": "package-json",
+              "subproject": "",
+              "op": "set-override",
+              "name": "path-to-regexp",
+              "value": "0.1.13"
+            }
+          ],
+          "risk_reduction": {
+            "findings_resolved": [
+              "GRD-1c5fa4dd94",
+              "GRD-e29370793e",
+              "GRD-1f7ff0a614"
+            ],
+            "score_removed": 285,
+            "estimate": true,
+            "note": "expected; confirmed by rescan during validation"
+          },
+          "compatibility": {
+            "level": "high",
+            "reasons": [
+              "outside the declared range (express declares 0.1.7): parent may break"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        },
+        {
+          "option_id": "R8.c",
+          "action": "accept",
+          "description": "Accept the risk (requires a written justification and an expiry/review date)",
+          "changes": [],
+          "risk_reduction": {
+            "findings_resolved": [],
+            "score_removed": 0,
+            "estimate": false,
+            "note": "risk accepted, recorded as residual"
+          },
+          "compatibility": {
+            "level": "none",
+            "reasons": [
+              "no change"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        },
+        {
+          "option_id": "R8.d",
+          "action": "escalate",
+          "recommended": false,
+          "description": "Request security review; keep the component blocked by policy meanwhile",
+          "changes": [],
+          "risk_reduction": {
+            "findings_resolved": [],
+            "score_removed": 0,
+            "estimate": true,
+            "note": "risk unchanged until review decision"
+          },
+          "compatibility": {
+            "level": "none",
+            "reasons": [
+              "no code change"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        }
+      ]
+    },
+    {
+      "item_id": "R9",
+      "title": "qs@6.7.0: 3 known vulnerabilities",
+      "priority": "P1-urgent",
+      "score": 95,
+      "findings": [
+        "GRD-c83abdd646",
+        "GRD-89e19feeeb",
+        "GRD-26b5a19a16"
+      ],
+      "categories": [
+        "vulnerability"
+      ],
+      "component": {
+        "id": "pkg:npm/qs@6.7.0",
+        "name": "qs",
+        "version": "6.7.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "express@4.17.1",
+          "qs@6.7.0"
+        ],
+        [
+          "shop-api@1.4.0",
+          "express@4.17.1",
+          "body-parser@1.19.0",
+          "qs@6.7.0"
+        ]
+      ],
+      "reachability": {
+        "level": "parent-imported",
+        "detail": "pulled in by 'express', which production code imports (server.js)",
+        "files": [
+          "server.js"
+        ],
+        "via": "express"
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "status": "pending-approval",
+      "approval": null,
+      "options": [
+        {
+          "option_id": "R9.a",
+          "action": "upgrade-parent",
+          "recommended": true,
+          "description": "Upgrade direct dependency express 4.17.1 -> 4.22.3 (minor); express@4.22.3 requires qs ~6.16.0, which admits a fixed version",
+          "changes": [
+            {
+              "type": "package-json",
+              "subproject": "",
+              "op": "set-dep",
+              "name": "express",
+              "value": "4.22.3",
+              "section": "dependencies"
+            }
+          ],
+          "risk_reduction": {
+            "findings_resolved": [
+              "GRD-c83abdd646",
+              "GRD-89e19feeeb",
+              "GRD-26b5a19a16"
+            ],
+            "score_removed": 241,
+            "estimate": true,
+            "note": "expected; the parent upgrade may also change other transitive packages"
+          },
+          "compatibility": {
+            "level": "low",
+            "reasons": [
+              "semver minor change",
+              "1 source file(s) import express: server.js"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        },
+        {
+          "option_id": "R9.b",
+          "action": "override",
+          "description": "Force qs@6.16.1 with npm overrides",
+          "changes": [
+            {
+              "type": "package-json",
+              "subproject": "",
+              "op": "set-override",
+              "name": "qs",
+              "value": "6.16.1"
+            }
+          ],
+          "risk_reduction": {
+            "findings_resolved": [
+              "GRD-c83abdd646",
+              "GRD-89e19feeeb",
+              "GRD-26b5a19a16"
+            ],
+            "score_removed": 241,
+            "estimate": true,
+            "note": "expected; confirmed by rescan during validation"
+          },
+          "compatibility": {
+            "level": "high",
+            "reasons": [
+              "outside the declared range (body-parser declares 6.7.0; express declares 6.7.0): parent may break"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        },
+        {
+          "option_id": "R9.c",
+          "action": "accept",
+          "description": "Accept the risk (requires a written justification and an expiry/review date)",
+          "changes": [],
+          "risk_reduction": {
+            "findings_resolved": [],
+            "score_removed": 0,
+            "estimate": false,
+            "note": "risk accepted, recorded as residual"
+          },
+          "compatibility": {
+            "level": "none",
+            "reasons": [
+              "no change"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        },
+        {
+          "option_id": "R9.d",
+          "action": "escalate",
+          "recommended": false,
+          "description": "Request security review; keep the component blocked by policy meanwhile",
+          "changes": [],
+          "risk_reduction": {
+            "findings_resolved": [],
+            "score_removed": 0,
+            "estimate": true,
+            "note": "risk unchanged until review decision"
+          },
+          "compatibility": {
+            "level": "none",
+            "reasons": [
+              "no code change"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        }
+      ]
+    },
+    {
+      "item_id": "R10",
+      "title": "node-fetch@2.6.0: 1 known vulnerability",
+      "priority": "P1-urgent",
+      "score": 88,
+      "findings": [
+        "GRD-575e3b161a"
+      ],
+      "categories": [
+        "vulnerability"
+      ],
+      "component": {
+        "id": "pkg:npm/node-fetch@2.6.0",
+        "name": "node-fetch",
+        "version": "2.6.0",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "node-fetch@2.6.0"
+        ]
+      ],
+      "reachability": {
+        "level": "unknown",
+        "detail": "'node-fetch' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "status": "pending-approval",
+      "approval": null,
+      "options": [
+        {
+          "option_id": "R10.a",
+          "action": "upgrade",
+          "recommended": true,
+          "description": "Upgrade node-fetch 2.6.0 -> 2.6.7 (patch)",
+          "changes": [
+            {
+              "type": "package-json",
+              "subproject": "",
+              "op": "set-dep",
+              "name": "node-fetch",
+              "value": "2.6.7",
+              "section": "dependencies"
+            }
+          ],
+          "risk_reduction": {
+            "findings_resolved": [
+              "GRD-575e3b161a"
+            ],
+            "score_removed": 88,
+            "estimate": true,
+            "note": "expected; confirmed by rescan during validation"
+          },
+          "compatibility": {
+            "level": "low",
+            "reasons": [
+              "semver patch change"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        },
+        {
+          "option_id": "R10.b",
+          "action": "accept",
+          "description": "Accept the risk (requires a written justification and an expiry/review date)",
+          "changes": [],
+          "risk_reduction": {
+            "findings_resolved": [],
+            "score_removed": 0,
+            "estimate": false,
+            "note": "risk accepted, recorded as residual"
+          },
+          "compatibility": {
+            "level": "none",
+            "reasons": [
+              "no change"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        },
+        {
+          "option_id": "R10.c",
+          "action": "escalate",
+          "recommended": false,
+          "description": "Request security review; keep the component blocked by policy meanwhile",
+          "changes": [],
+          "risk_reduction": {
+            "findings_resolved": [],
+            "score_removed": 0,
+            "estimate": true,
+            "note": "risk unchanged until review decision"
+          },
+          "compatibility": {
+            "level": "none",
+            "reasons": [
+              "no code change"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        }
+      ]
+    },
+    {
+      "item_id": "R11",
+      "title": "express@4.17.1: 2 known vulnerabilities",
+      "priority": "P2-high",
+      "score": 76,
+      "findings": [
+        "GRD-0bd24c48d9",
+        "GRD-b92c8f07bb"
+      ],
+      "categories": [
+        "vulnerability"
+      ],
+      "component": {
+        "id": "pkg:npm/express@4.17.1",
+        "name": "express",
+        "version": "4.17.1",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "express@4.17.1"
+        ]
+      ],
+      "reachability": {
+        "level": "imported",
+        "detail": "imported directly by 1 production source file(s)",
+        "files": [
+          "server.js"
+        ]
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "status": "pending-approval",
+      "approval": null,
+      "options": [
+        {
+          "option_id": "R11.a",
+          "action": "upgrade",
+          "recommended": true,
+          "description": "Upgrade express 4.17.1 -> 4.20.0 (minor)",
+          "changes": [
+            {
+              "type": "package-json",
+              "subproject": "",
+              "op": "set-dep",
+              "name": "express",
+              "value": "4.20.0",
+              "section": "dependencies"
+            }
+          ],
+          "risk_reduction": {
+            "findings_resolved": [
+              "GRD-0bd24c48d9",
+              "GRD-b92c8f07bb"
+            ],
+            "score_removed": 141,
+            "estimate": true,
+            "note": "expected; confirmed by rescan during validation"
+          },
+          "compatibility": {
+            "level": "low",
+            "reasons": [
+              "semver minor change",
+              "1 source file(s) import express: server.js"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        },
+        {
+          "option_id": "R11.b",
+          "action": "accept",
+          "description": "Accept the risk (requires a written justification and an expiry/review date)",
+          "changes": [],
+          "risk_reduction": {
+            "findings_resolved": [],
+            "score_removed": 0,
+            "estimate": false,
+            "note": "risk accepted, recorded as residual"
+          },
+          "compatibility": {
+            "level": "none",
+            "reasons": [
+              "no change"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        },
+        {
+          "option_id": "R11.c",
+          "action": "escalate",
+          "recommended": false,
+          "description": "Request security review; keep the component blocked by policy meanwhile",
+          "changes": [],
+          "risk_reduction": {
+            "findings_resolved": [],
+            "score_removed": 0,
+            "estimate": true,
+            "note": "risk unchanged until review decision"
+          },
+          "compatibility": {
+            "level": "none",
+            "reasons": [
+              "no code change"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        }
+      ]
+    },
+    {
+      "item_id": "R12",
+      "title": "Dockerfile: RUN pipes a downloaded script into a shell",
+      "priority": "P2-high",
+      "score": 75,
+      "findings": [
+        "GRD-09f992c3b6"
+      ],
+      "categories": [
+        "untrusted-image"
+      ],
+      "component": null,
+      "dependency_paths": [],
+      "reachability": {
+        "level": "n/a",
+        "detail": "finding is about a file, not a package",
+        "files": []
+      },
+      "exposure": {
+        "context": "runtime-image",
+        "production": true,
+        "detail": "defined in Dockerfile"
+      },
+      "status": "pending-approval",
+      "approval": null,
+      "options": [
+        {
+          "option_id": "R12.a",
+          "action": "escalate",
+          "recommended": true,
+          "description": "Request security review; keep the component blocked by policy meanwhile",
+          "changes": [],
+          "risk_reduction": {
+            "findings_resolved": [],
+            "score_removed": 0,
+            "estimate": true,
+            "note": "risk unchanged until review decision"
+          },
+          "compatibility": {
+            "level": "none",
+            "reasons": [
+              "no code change"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        },
+        {
+          "option_id": "R12.b",
+          "action": "accept",
+          "description": "Accept the risk (requires a written justification and an expiry/review date)",
+          "changes": [],
+          "risk_reduction": {
+            "findings_resolved": [],
+            "score_removed": 0,
+            "estimate": false,
+            "note": "risk accepted, recorded as residual"
+          },
+          "compatibility": {
+            "level": "none",
+            "reasons": [
+              "no change"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        }
+      ]
+    },
+    {
+      "item_id": "R13",
+      "title": "quick-actions/npm-cache@main: cicd",
+      "priority": "P2-high",
+      "score": 75,
+      "findings": [
+        "GRD-04410445f6"
+      ],
+      "categories": [
+        "cicd"
+      ],
+      "component": {
+        "id": "pkg:githubactions/quick-actions/npm-cache@main",
+        "name": "quick-actions/npm-cache",
+        "version": "main",
+        "ecosystem": "github-actions",
+        "direct": true,
+        "scope": "ci"
+      },
+      "dependency_paths": [],
+      "reachability": {
+        "level": "n/a",
+        "detail": "not a code library (image / CI component)",
+        "files": []
+      },
+      "exposure": {
+        "context": "ci-pipeline",
+        "production": false,
+        "detail": "runs in CI with access to repository tokens/secrets"
+      },
+      "status": "pending-approval",
+      "approval": null,
+      "options": [
+        {
+          "option_id": "R13.a",
+          "action": "escalate",
+          "recommended": true,
+          "description": "Request security review; keep the component blocked by policy meanwhile",
+          "changes": [],
+          "risk_reduction": {
+            "findings_resolved": [],
+            "score_removed": 0,
+            "estimate": true,
+            "note": "risk unchanged until review decision"
+          },
+          "compatibility": {
+            "level": "none",
+            "reasons": [
+              "no code change"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        }
+      ]
+    },
+    {
+      "item_id": "R14",
+      "title": "fastbuilds/node-runtime@18: untrusted-image",
+      "priority": "P2-high",
+      "score": 75,
+      "findings": [
+        "GRD-a0dfadd0ab"
+      ],
+      "categories": [
+        "untrusted-image"
+      ],
+      "component": {
+        "id": "pkg:docker/fastbuilds/node-runtime@18",
+        "name": "fastbuilds/node-runtime",
+        "version": "18",
+        "ecosystem": "docker",
+        "direct": true,
+        "scope": "prod"
+      },
+      "dependency_paths": [],
+      "reachability": {
+        "level": "n/a",
+        "detail": "not a code library (image / CI component)",
+        "files": []
+      },
+      "exposure": {
+        "context": "runtime-image",
+        "production": true,
+        "detail": "base image of a shipped container"
+      },
+      "status": "pending-approval",
+      "approval": null,
+      "options": [
+        {
+          "option_id": "R14.a",
+          "action": "pin",
+          "recommended": true,
+          "description": "Pin 'fastbuilds/node-runtime' to an explicit version tag + sha256 digest from a trusted registry (digest lookup needs registry access; filled in by the reviewer)",
+          "changes": [],
+          "risk_reduction": {
+            "findings_resolved": [
+              "GRD-a0dfadd0ab"
+            ],
+            "score_removed": 75,
+            "estimate": true,
+            "note": "expected; confirmed by rescan during validation"
+          },
+          "compatibility": {
+            "level": "low",
+            "reasons": [
+              "same image if pinned to the current digest"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        },
+        {
+          "option_id": "R14.b",
+          "action": "escalate",
+          "recommended": false,
+          "description": "Request security review; keep the component blocked by policy meanwhile",
+          "changes": [],
+          "risk_reduction": {
+            "findings_resolved": [],
+            "score_removed": 0,
+            "estimate": true,
+            "note": "risk unchanged until review decision"
+          },
+          "compatibility": {
+            "level": "none",
+            "reasons": [
+              "no code change"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        }
+      ]
+    },
+    {
+      "item_id": "R15",
+      "title": "debug-helper-utils@1.0.2: unexpected-dependency",
+      "priority": "P2-high",
+      "score": 75,
+      "findings": [
+        "GRD-46055a5e2c"
+      ],
+      "categories": [
+        "unexpected-dependency"
+      ],
+      "component": {
+        "id": "pkg:npm/debug-helper-utils@1.0.2",
+        "name": "debug-helper-utils",
+        "version": "1.0.2",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "debug-helper-utils@1.0.2"
+        ]
+      ],
+      "reachability": {
+        "level": "unknown",
+        "detail": "no import of debug-helper-utils found; may still be loaded dynamically",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "status": "pending-approval",
+      "approval": null,
+      "options": [
+        {
+          "option_id": "R15.a",
+          "action": "lock-regenerate",
+          "recommended": true,
+          "description": "Regenerate the lockfile from package.json using the public registry (drops injected entries and re-fetches trusted hashes)",
+          "changes": [
+            {
+              "type": "lockfile",
+              "subproject": "",
+              "op": "regenerate"
+            }
+          ],
+          "risk_reduction": {
+            "findings_resolved": [
+              "GRD-46055a5e2c"
+            ],
+            "score_removed": 75,
+            "estimate": true,
+            "note": "expected; confirmed by rescan during validation"
+          },
+          "compatibility": {
+            "level": "medium",
+            "reasons": [
+              "other transitive versions may move within their ranges"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        },
+        {
+          "option_id": "R15.b",
+          "action": "escalate",
+          "recommended": false,
+          "description": "Request security review; keep the component blocked by policy meanwhile",
+          "changes": [],
+          "risk_reduction": {
+            "findings_resolved": [],
+            "score_removed": 0,
+            "estimate": true,
+            "note": "risk unchanged until review decision"
+          },
+          "compatibility": {
+            "level": "none",
+            "reasons": [
+              "no code change"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        }
+      ]
+    },
+    {
+      "item_id": "R16",
+      "title": "Untrusted event data interpolated into a workflow step",
+      "priority": "P2-high",
+      "score": 75,
+      "findings": [
+        "GRD-86639082f3"
+      ],
+      "categories": [
+        "cicd"
+      ],
+      "component": null,
+      "dependency_paths": [],
+      "reachability": {
+        "level": "n/a",
+        "detail": "finding is about a file, not a package",
+        "files": []
+      },
+      "exposure": {
+        "context": "ci-pipeline",
+        "production": false,
+        "detail": "defined in .github/workflows/ci.yml"
+      },
+      "status": "pending-approval",
+      "approval": null,
+      "options": [
+        {
+          "option_id": "R16.a",
+          "action": "escalate",
+          "recommended": true,
+          "description": "Request security review; keep the component blocked by policy meanwhile",
+          "changes": [],
+          "risk_reduction": {
+            "findings_resolved": [],
+            "score_removed": 0,
+            "estimate": true,
+            "note": "risk unchanged until review decision"
+          },
+          "compatibility": {
+            "level": "none",
+            "reasons": [
+              "no code change"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        },
+        {
+          "option_id": "R16.b",
+          "action": "accept",
+          "description": "Accept the risk (requires a written justification and an expiry/review date)",
+          "changes": [],
+          "risk_reduction": {
+            "findings_resolved": [],
+            "score_removed": 0,
+            "estimate": false,
+            "note": "risk accepted, recorded as residual"
+          },
+          "compatibility": {
+            "level": "none",
+            "reasons": [
+              "no change"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        }
+      ]
+    },
+    {
+      "item_id": "R17",
+      "title": "send@0.17.1: 1 known vulnerability",
+      "priority": "P2-high",
+      "score": 60,
+      "findings": [
+        "GRD-b92970fd54"
+      ],
+      "categories": [
+        "vulnerability"
+      ],
+      "component": {
+        "id": "pkg:npm/send@0.17.1",
+        "name": "send",
+        "version": "0.17.1",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "express@4.17.1",
+          "send@0.17.1"
+        ],
+        [
+          "shop-api@1.4.0",
+          "express@4.17.1",
+          "serve-static@1.14.1",
+          "send@0.17.1"
+        ]
+      ],
+      "reachability": {
+        "level": "parent-imported",
+        "detail": "pulled in by 'express', which production code imports (server.js)",
+        "files": [
+          "server.js"
+        ],
+        "via": "express"
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "status": "pending-approval",
+      "approval": null,
+      "options": [
+        {
+          "option_id": "R17.a",
+          "action": "upgrade-parent",
+          "recommended": true,
+          "description": "Upgrade direct dependency express 4.17.1 -> 4.20.0 (minor); express@4.20.0 requires send 0.19.0, which admits a fixed version",
+          "changes": [
+            {
+              "type": "package-json",
+              "subproject": "",
+              "op": "set-dep",
+              "name": "express",
+              "value": "4.20.0",
+              "section": "dependencies"
+            }
+          ],
+          "risk_reduction": {
+            "findings_resolved": [
+              "GRD-b92970fd54"
+            ],
+            "score_removed": 60,
+            "estimate": true,
+            "note": "expected; the parent upgrade may also change other transitive packages"
+          },
+          "compatibility": {
+            "level": "low",
+            "reasons": [
+              "semver minor change",
+              "1 source file(s) import express: server.js"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        },
+        {
+          "option_id": "R17.b",
+          "action": "override",
+          "description": "Force send@0.19.0 with npm overrides",
+          "changes": [
+            {
+              "type": "package-json",
+              "subproject": "",
+              "op": "set-override",
+              "name": "send",
+              "value": "0.19.0"
+            }
+          ],
+          "risk_reduction": {
+            "findings_resolved": [
+              "GRD-b92970fd54"
+            ],
+            "score_removed": 60,
+            "estimate": true,
+            "note": "expected; confirmed by rescan during validation"
+          },
+          "compatibility": {
+            "level": "high",
+            "reasons": [
+              "outside the declared range (express declares 0.17.1; serve-static declares 0.17.1): parent may break"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        },
+        {
+          "option_id": "R17.c",
+          "action": "accept",
+          "description": "Accept the risk (requires a written justification and an expiry/review date)",
+          "changes": [],
+          "risk_reduction": {
+            "findings_resolved": [],
+            "score_removed": 0,
+            "estimate": false,
+            "note": "risk accepted, recorded as residual"
+          },
+          "compatibility": {
+            "level": "none",
+            "reasons": [
+              "no change"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        },
+        {
+          "option_id": "R17.d",
+          "action": "escalate",
+          "recommended": false,
+          "description": "Request security review; keep the component blocked by policy meanwhile",
+          "changes": [],
+          "risk_reduction": {
+            "findings_resolved": [],
+            "score_removed": 0,
+            "estimate": true,
+            "note": "risk unchanged until review decision"
+          },
+          "compatibility": {
+            "level": "none",
+            "reasons": [
+              "no code change"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        }
+      ]
+    },
+    {
+      "item_id": "R18",
+      "title": "serve-static@1.14.1: 1 known vulnerability",
+      "priority": "P2-high",
+      "score": 60,
+      "findings": [
+        "GRD-6a3bfab569"
+      ],
+      "categories": [
+        "vulnerability"
+      ],
+      "component": {
+        "id": "pkg:npm/serve-static@1.14.1",
+        "name": "serve-static",
+        "version": "1.14.1",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "express@4.17.1",
+          "serve-static@1.14.1"
+        ]
+      ],
+      "reachability": {
+        "level": "parent-imported",
+        "detail": "pulled in by 'express', which production code imports (server.js)",
+        "files": [
+          "server.js"
+        ],
+        "via": "express"
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "status": "pending-approval",
+      "approval": null,
+      "options": [
+        {
+          "option_id": "R18.a",
+          "action": "upgrade-parent",
+          "recommended": true,
+          "description": "Upgrade direct dependency express 4.17.1 -> 4.20.0 (minor); express@4.20.0 requires serve-static 1.16.0, which admits a fixed version",
+          "changes": [
+            {
+              "type": "package-json",
+              "subproject": "",
+              "op": "set-dep",
+              "name": "express",
+              "value": "4.20.0",
+              "section": "dependencies"
+            }
+          ],
+          "risk_reduction": {
+            "findings_resolved": [
+              "GRD-6a3bfab569"
+            ],
+            "score_removed": 60,
+            "estimate": true,
+            "note": "expected; the parent upgrade may also change other transitive packages"
+          },
+          "compatibility": {
+            "level": "low",
+            "reasons": [
+              "semver minor change",
+              "1 source file(s) import express: server.js"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        },
+        {
+          "option_id": "R18.b",
+          "action": "override",
+          "description": "Force serve-static@1.16.0 with npm overrides",
+          "changes": [
+            {
+              "type": "package-json",
+              "subproject": "",
+              "op": "set-override",
+              "name": "serve-static",
+              "value": "1.16.0"
+            }
+          ],
+          "risk_reduction": {
+            "findings_resolved": [
+              "GRD-6a3bfab569"
+            ],
+            "score_removed": 60,
+            "estimate": true,
+            "note": "expected; confirmed by rescan during validation"
+          },
+          "compatibility": {
+            "level": "high",
+            "reasons": [
+              "outside the declared range (express declares 1.14.1): parent may break"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        },
+        {
+          "option_id": "R18.c",
+          "action": "accept",
+          "description": "Accept the risk (requires a written justification and an expiry/review date)",
+          "changes": [],
+          "risk_reduction": {
+            "findings_resolved": [],
+            "score_removed": 0,
+            "estimate": false,
+            "note": "risk accepted, recorded as residual"
+          },
+          "compatibility": {
+            "level": "none",
+            "reasons": [
+              "no change"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        },
+        {
+          "option_id": "R18.d",
+          "action": "escalate",
+          "recommended": false,
+          "description": "Request security review; keep the component blocked by policy meanwhile",
+          "changes": [],
+          "risk_reduction": {
+            "findings_resolved": [],
+            "score_removed": 0,
+            "estimate": true,
+            "note": "risk unchanged until review decision"
+          },
+          "compatibility": {
+            "level": "none",
+            "reasons": [
+              "no code change"
+            ]
+          },
+          "rollback": "the change is a single commit on branch guardian/fix-*; `git revert <commit>` or delete the branch (nothing is merged automatically)"
+        }
+      ]
+    }
+  ],
+  "policy": "No change is applied without an explicit human approval recorded in this plan. The Guardian never pushes, merges, deploys or releases.",
+  "deferred": [],
+  "generated_at": "2026-11-24T04:54:29Z"
+}

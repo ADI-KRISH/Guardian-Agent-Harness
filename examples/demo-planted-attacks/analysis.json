@@ -1,0 +1,5536 @@
+{
+  "schema": "guardian.analysis/v1",
+  "project": "shop-api@1.4.0",
+  "ai": {
+    "provider": "none",
+    "model": "",
+    "enabled": false,
+    "prompt": "prompts/analyst_system.md",
+    "prompt_sha": "0e912c410a71",
+    "calls": 0,
+    "accepted": 0,
+    "rejected": 0,
+    "errors": 0
+  },
+  "context": {
+    "source_files_scanned": 1,
+    "subprojects": [
+      ""
+    ],
+    "exposed_ports": [],
+    "packages_imported_by_prod_code": {
+      "<root>": 1
+    }
+  },
+  "summary": {
+    "P1-urgent": 18,
+    "P2-high": 19,
+    "P3-medium": 19,
+    "P4-low": 19
+  },
+  "urgent": [
+    "GRD-704d795f51",
+    "GRD-613706260e",
+    "GRD-98f61e9402",
+    "GRD-0ed05bf1fe",
+    "GRD-73005cb429",
+    "GRD-2dd08017e5",
+    "GRD-21c00fec6e",
+    "GRD-ae3966a225",
+    "GRD-ca39c1eed2",
+    "GRD-b38171a52f",
+    "GRD-7c9e777fa6",
+    "GRD-1c5fa4dd94",
+    "GRD-e29370793e",
+    "GRD-1f7ff0a614",
+    "GRD-c83abdd646",
+    "GRD-d59b7c1df8",
+    "GRD-575e3b161a",
+    "GRD-ad2936893a"
+  ],
+  "production_findings": 47,
+  "ranked": [
+    {
+      "finding_id": "GRD-704d795f51",
+      "title": "Integrity hash changed for unchanged version lodash@4.17.15",
+      "category": "integrity",
+      "rule": "CHANGE-INTEGRITY",
+      "severity": "critical",
+      "component": {
+        "id": "pkg:npm/lodash@4.17.15",
+        "name": "lodash",
+        "version": "4.17.15",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 100,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 90,
+          "why": "detector severity 'critical'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "executes at install time on developer and CI machines (scope does not reduce this)"
+        },
+        {
+          "factor": "tamper-signal",
+          "points": 10,
+          "why": "same version, different bytes: possible tampering"
+        }
+      ],
+      "confidence": {
+        "value": 0.8,
+        "label": "high",
+        "reasons": [
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'lodash' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "suggestion": "same version must always have the same bytes: treat as tampering, restore baseline lockfile"
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "lodash@4.17.15"
+        ]
+      ],
+      "ai": {
+        "by": "deterministic-template",
+        "accepted": true,
+        "summary": "Integrity hash changed for unchanged version lodash@4.17.15. It enters the app via shop-api@1.4.0 > lodash@4.17.15.",
+        "exploitability": "No CVSS vector available; exploitability not assessed.",
+        "reachability": "unknown: 'lodash' not imported but referenced in package.json (CLI / config use). Exposure: server: runs in the server process.",
+        "recommended_priority": "P1-urgent",
+        "priority_change_reason": "",
+        "cited_evidence": [
+          "E3",
+          "E4",
+          "E5"
+        ],
+        "unknowns": [],
+        "confidence": "medium"
+      }
+    },
+    {
+      "finding_id": "GRD-613706260e",
+      "title": "Known malicious package in flatmap-stream@0.1.1: Malicious Package in flatmap-stream",
+      "category": "malicious-package",
+      "rule": "MAL-KNOWN",
+      "severity": "critical",
+      "component": {
+        "id": "pkg:npm/flatmap-stream@0.1.1",
+        "name": "flatmap-stream",
+        "version": "0.1.1",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 100,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "malicious",
+          "points": 100,
+          "why": "known malicious package: always urgent"
+        }
+      ],
+      "confidence": {
+        "value": 0.9,
+        "label": "high",
+        "reasons": [
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'event-stream' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [],
+        "available": false,
+        "introduced_via": [
+          "event-stream@3.3.6"
+        ],
+        "cvss_score": 9.8,
+        "cwe": [
+          "CWE-506"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "event-stream@3.3.6",
+          "flatmap-stream@0.1.1"
+        ]
+      ],
+      "ai": {
+        "by": "deterministic-template",
+        "accepted": true,
+        "summary": "Known malicious package in flatmap-stream@0.1.1: Malicious Package in flatmap-stream. It enters the app via shop-api@1.4.0 > event-stream@3.3.6 > flatmap-stream@0.1.1.",
+        "exploitability": "No CVSS vector available; exploitability not assessed.",
+        "reachability": "unknown: 'event-stream' not imported but referenced in package.json (CLI / config use). Exposure: server: runs in the server process.",
+        "recommended_priority": "P1-urgent",
+        "priority_change_reason": "",
+        "cited_evidence": [
+          "E1",
+          "E4",
+          "E5",
+          "E6"
+        ],
+        "unknowns": [],
+        "confidence": "medium"
+      }
+    },
+    {
+      "finding_id": "GRD-98f61e9402",
+      "title": "Known malicious package in ua-parser-js@0.7.29: Embedded malware in ua-parser-js",
+      "category": "malicious-package",
+      "rule": "MAL-KNOWN",
+      "severity": "critical",
+      "component": {
+        "id": "pkg:npm/ua-parser-js@0.7.29",
+        "name": "ua-parser-js",
+        "version": "0.7.29",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 100,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "malicious",
+          "points": 100,
+          "why": "known malicious package: always urgent"
+        }
+      ],
+      "confidence": {
+        "value": 0.9,
+        "label": "high",
+        "reasons": [
+          "verified advisory + exact version + reachability evidence"
+        ]
+      },
+      "reachability": {
+        "level": "orphan",
+        "detail": "no dependency path from the application",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "0.7.30"
+        ],
+        "available": true,
+        "introduced_via": [],
+        "cvss_score": 8.8,
+        "cwe": [
+          "CWE-506",
+          "CWE-912"
+        ]
+      },
+      "dependency_paths": [],
+      "ai": {
+        "by": "deterministic-template",
+        "accepted": true,
+        "summary": "Known malicious package in ua-parser-js@0.7.29: Embedded malware in ua-parser-js. A fixed version exists (0.7.30).",
+        "exploitability": "No CVSS vector available; exploitability not assessed.",
+        "reachability": "orphan: no dependency path from the application. Exposure: server: runs in the server process.",
+        "recommended_priority": "P1-urgent",
+        "priority_change_reason": "",
+        "cited_evidence": [
+          "E1",
+          "E4",
+          "E5"
+        ],
+        "unknowns": [],
+        "confidence": "medium"
+      }
+    },
+    {
+      "finding_id": "GRD-0ed05bf1fe",
+      "title": "Known vulnerability in event-stream@3.3.6: Critical severity vulnerability that affects event-stream and flatmap-stream",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "critical",
+      "component": {
+        "id": "pkg:npm/event-stream@3.3.6",
+        "name": "event-stream",
+        "version": "3.3.6",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 100,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 98,
+          "why": "CVSS 9.8"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H)"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'event-stream' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process)"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'event-stream' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "4.0.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "event-stream@3.3.6"
+        ],
+        "cvss_score": 9.8,
+        "cwe": [
+          "CWE-506"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "event-stream@3.3.6"
+        ]
+      ],
+      "ai": {
+        "by": "deterministic-template",
+        "accepted": true,
+        "summary": "Known vulnerability in event-stream@3.3.6: Critical severity vulnerability that affects event-stream and flatmap-stream. It enters the app via shop-api@1.4.0 > event-stream@3.3.6. A fixed version exists (4.0.0).",
+        "exploitability": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H)",
+        "reachability": "unknown: 'event-stream' not imported but referenced in package.json (CLI / config use). Exposure: server: runs in the server process.",
+        "recommended_priority": "P1-urgent",
+        "priority_change_reason": "",
+        "cited_evidence": [
+          "E1",
+          "E4",
+          "E5",
+          "E6"
+        ],
+        "unknowns": [
+          "whether the vulnerable function is actually called (function-level reachability)"
+        ],
+        "confidence": "medium"
+      }
+    },
+    {
+      "finding_id": "GRD-73005cb429",
+      "title": "Known vulnerability in flatmap-stream@0.1.1: Critical severity vulnerability that affects event-stream and flatmap-stream",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "critical",
+      "component": {
+        "id": "pkg:npm/flatmap-stream@0.1.1",
+        "name": "flatmap-stream",
+        "version": "0.1.1",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 100,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 98,
+          "why": "CVSS 9.8"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H)"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'event-stream' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process)"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'event-stream' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [],
+        "available": false,
+        "introduced_via": [
+          "event-stream@3.3.6"
+        ],
+        "cvss_score": 9.8,
+        "cwe": [
+          "CWE-506"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "event-stream@3.3.6",
+          "flatmap-stream@0.1.1"
+        ]
+      ],
+      "ai": {
+        "by": "deterministic-template",
+        "accepted": true,
+        "summary": "Known vulnerability in flatmap-stream@0.1.1: Critical severity vulnerability that affects event-stream and flatmap-stream. It enters the app via shop-api@1.4.0 > event-stream@3.3.6 > flatmap-stream@0.1.1.",
+        "exploitability": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H)",
+        "reachability": "unknown: 'event-stream' not imported but referenced in package.json (CLI / config use). Exposure: server: runs in the server process.",
+        "recommended_priority": "P1-urgent",
+        "priority_change_reason": "",
+        "cited_evidence": [
+          "E1",
+          "E4",
+          "E5",
+          "E6"
+        ],
+        "unknowns": [
+          "whether the vulnerable function is actually called (function-level reachability)"
+        ],
+        "confidence": "medium"
+      }
+    },
+    {
+      "finding_id": "GRD-2dd08017e5",
+      "title": "Known vulnerability in minimist@1.2.5: Prototype Pollution in minimist",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "critical",
+      "component": {
+        "id": "pkg:npm/minimist@1.2.5",
+        "name": "minimist",
+        "version": "1.2.5",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 100,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 98,
+          "why": "CVSS 9.8"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H)"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'minimist' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process)"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'minimist' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "1.2.6"
+        ],
+        "available": true,
+        "introduced_via": [
+          "minimist@1.2.5"
+        ],
+        "cvss_score": 9.8,
+        "cwe": [
+          "CWE-1321"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "minimist@1.2.5"
+        ]
+      ],
+      "ai": {
+        "by": "deterministic-template",
+        "accepted": true,
+        "summary": "Known vulnerability in minimist@1.2.5: Prototype Pollution in minimist. It enters the app via shop-api@1.4.0 > minimist@1.2.5. A fixed version exists (1.2.6).",
+        "exploitability": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H)",
+        "reachability": "unknown: 'minimist' not imported but referenced in package.json (CLI / config use). Exposure: server: runs in the server process.",
+        "recommended_priority": "P1-urgent",
+        "priority_change_reason": "",
+        "cited_evidence": [
+          "E1",
+          "E4",
+          "E5",
+          "E6"
+        ],
+        "unknowns": [
+          "whether the vulnerable function is actually called (function-level reachability)"
+        ],
+        "confidence": "medium"
+      }
+    },
+    {
+      "finding_id": "GRD-21c00fec6e",
+      "title": "Lockfile hash for lodash@4.17.15 does not match the registry",
+      "category": "integrity",
+      "rule": "INTEGRITY-REGISTRY-MISMATCH",
+      "severity": "critical",
+      "component": {
+        "id": "pkg:npm/lodash@4.17.15",
+        "name": "lodash",
+        "version": "4.17.15",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 100,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 90,
+          "why": "detector severity 'critical'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "executes at install time on developer and CI machines (scope does not reduce this)"
+        },
+        {
+          "factor": "tamper-signal",
+          "points": 10,
+          "why": "same version, different bytes: possible tampering"
+        }
+      ],
+      "confidence": {
+        "value": 0.8,
+        "label": "high",
+        "reasons": [
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'lodash' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "suggestion": "treat as tampering: do not install; restore lockfile from trusted commit"
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "lodash@4.17.15"
+        ]
+      ],
+      "ai": {
+        "by": "deterministic-template",
+        "accepted": true,
+        "summary": "Lockfile hash for lodash@4.17.15 does not match the registry. It enters the app via shop-api@1.4.0 > lodash@4.17.15.",
+        "exploitability": "No CVSS vector available; exploitability not assessed.",
+        "reachability": "unknown: 'lodash' not imported but referenced in package.json (CLI / config use). Exposure: server: runs in the server process.",
+        "recommended_priority": "P1-urgent",
+        "priority_change_reason": "",
+        "cited_evidence": [
+          "E3",
+          "E4",
+          "E5"
+        ],
+        "unknowns": [],
+        "confidence": "medium"
+      }
+    },
+    {
+      "finding_id": "GRD-ae3966a225",
+      "title": "crossenv was taken down by npm security (malicious package)",
+      "category": "malicious-package",
+      "rule": "REGISTRY-SECURITY-HOLDER",
+      "severity": "critical",
+      "component": {
+        "id": "pkg:npm/crossenv@6.1.1",
+        "name": "crossenv",
+        "version": "6.1.1",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "dev"
+      },
+      "score": 100,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "malicious",
+          "points": 100,
+          "why": "known malicious package: always urgent"
+        }
+      ],
+      "confidence": {
+        "value": 0.9,
+        "label": "high",
+        "reasons": [
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'crossenv' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "dev-tooling",
+        "production": false,
+        "detail": "devDependency: not installed in production"
+      },
+      "production": false,
+      "fix": {
+        "suggestion": "remove immediately; rotate any secrets present on machines that installed it"
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "crossenv@6.1.1"
+        ]
+      ],
+      "ai": {
+        "by": "deterministic-template",
+        "accepted": true,
+        "summary": "crossenv was taken down by npm security (malicious package). It enters the app via shop-api@1.4.0 > crossenv@6.1.1.",
+        "exploitability": "No CVSS vector available; exploitability not assessed.",
+        "reachability": "unknown: 'crossenv' not imported but referenced in package.json (CLI / config use). Exposure: dev-tooling: devDependency: not installed in production.",
+        "recommended_priority": "P1-urgent",
+        "priority_change_reason": "",
+        "cited_evidence": [
+          "E3",
+          "E4",
+          "E5"
+        ],
+        "unknowns": [],
+        "confidence": "medium"
+      }
+    },
+    {
+      "finding_id": "GRD-ca39c1eed2",
+      "title": "flatmap-stream was taken down by npm security (malicious package)",
+      "category": "malicious-package",
+      "rule": "REGISTRY-SECURITY-HOLDER",
+      "severity": "critical",
+      "component": {
+        "id": "pkg:npm/flatmap-stream@0.1.1",
+        "name": "flatmap-stream",
+        "version": "0.1.1",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 100,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "malicious",
+          "points": 100,
+          "why": "known malicious package: always urgent"
+        }
+      ],
+      "confidence": {
+        "value": 0.9,
+        "label": "high",
+        "reasons": [
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'event-stream' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "suggestion": "remove immediately; rotate any secrets present on machines that installed it"
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "event-stream@3.3.6",
+          "flatmap-stream@0.1.1"
+        ]
+      ],
+      "ai": {
+        "by": "deterministic-template",
+        "accepted": true,
+        "summary": "flatmap-stream was taken down by npm security (malicious package). It enters the app via shop-api@1.4.0 > event-stream@3.3.6 > flatmap-stream@0.1.1.",
+        "exploitability": "No CVSS vector available; exploitability not assessed.",
+        "reachability": "unknown: 'event-stream' not imported but referenced in package.json (CLI / config use). Exposure: server: runs in the server process.",
+        "recommended_priority": "P1-urgent",
+        "priority_change_reason": "",
+        "cited_evidence": [
+          "E3",
+          "E4",
+          "E5"
+        ],
+        "unknowns": [],
+        "confidence": "medium"
+      }
+    },
+    {
+      "finding_id": "GRD-b38171a52f",
+      "title": "Known vulnerability in body-parser@1.19.0: body-parser vulnerable to Denial of Service via trailing bytes after a compressed request body",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/body-parser@1.19.0",
+        "name": "body-parser",
+        "version": "1.19.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 95,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 75,
+          "why": "CVSS 7.5"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)"
+        },
+        {
+          "factor": "reachability",
+          "points": 5,
+          "why": "pulled in by a dependency that production code imports: pulled in by 'express', which production code imports (server.js)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process)"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "parent-imported",
+        "detail": "pulled in by 'express', which production code imports (server.js)",
+        "files": [
+          "server.js"
+        ],
+        "via": "express"
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "1.20.9"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express@4.17.1"
+        ],
+        "cvss_score": 7.5,
+        "cwe": [
+          "CWE-248"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "express@4.17.1",
+          "body-parser@1.19.0"
+        ]
+      ],
+      "ai": {
+        "by": "deterministic-template",
+        "accepted": true,
+        "summary": "Known vulnerability in body-parser@1.19.0: body-parser vulnerable to Denial of Service via trailing bytes after a compressed request body. It enters the app via shop-api@1.4.0 > express@4.17.1 > body-parser@1.19.0. A fixed version exists (1.20.9).",
+        "exploitability": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)",
+        "reachability": "parent-imported: pulled in by 'express', which production code imports (server.js). Exposure: server: runs in the server process.",
+        "recommended_priority": "P1-urgent",
+        "priority_change_reason": "",
+        "cited_evidence": [
+          "E1",
+          "E4",
+          "E5",
+          "E6"
+        ],
+        "unknowns": [
+          "whether the vulnerable function is actually called (function-level reachability)"
+        ],
+        "confidence": "medium"
+      }
+    },
+    {
+      "finding_id": "GRD-7c9e777fa6",
+      "title": "Known vulnerability in body-parser@1.19.0: body-parser vulnerable to denial of service when url encoding is enabled",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/body-parser@1.19.0",
+        "name": "body-parser",
+        "version": "1.19.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 95,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 75,
+          "why": "CVSS 7.5"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)"
+        },
+        {
+          "factor": "reachability",
+          "points": 5,
+          "why": "pulled in by a dependency that production code imports: pulled in by 'express', which production code imports (server.js)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process)"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "parent-imported",
+        "detail": "pulled in by 'express', which production code imports (server.js)",
+        "files": [
+          "server.js"
+        ],
+        "via": "express"
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "1.20.3"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express@4.17.1"
+        ],
+        "cvss_score": 7.5,
+        "cwe": [
+          "CWE-405"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "express@4.17.1",
+          "body-parser@1.19.0"
+        ]
+      ],
+      "ai": {
+        "by": "deterministic-template",
+        "accepted": true,
+        "summary": "Known vulnerability in body-parser@1.19.0: body-parser vulnerable to denial of service when url encoding is enabled. It enters the app via shop-api@1.4.0 > express@4.17.1 > body-parser@1.19.0. A fixed version exists (1.20.3).",
+        "exploitability": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)",
+        "reachability": "parent-imported: pulled in by 'express', which production code imports (server.js). Exposure: server: runs in the server process.",
+        "recommended_priority": "P1-urgent",
+        "priority_change_reason": "",
+        "cited_evidence": [
+          "E1",
+          "E4",
+          "E5",
+          "E6"
+        ],
+        "unknowns": [
+          "whether the vulnerable function is actually called (function-level reachability)"
+        ],
+        "confidence": "medium"
+      }
+    },
+    {
+      "finding_id": "GRD-1c5fa4dd94",
+      "title": "Known vulnerability in path-to-regexp@0.1.7: path-to-regexp contains a ReDoS",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/path-to-regexp@0.1.7",
+        "name": "path-to-regexp",
+        "version": "0.1.7",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 95,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 75,
+          "why": "CVSS 7.5"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)"
+        },
+        {
+          "factor": "reachability",
+          "points": 5,
+          "why": "pulled in by a dependency that production code imports: pulled in by 'express', which production code imports (server.js)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process)"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "parent-imported",
+        "detail": "pulled in by 'express', which production code imports (server.js)",
+        "files": [
+          "server.js"
+        ],
+        "via": "express"
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "0.1.12"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express@4.17.1"
+        ],
+        "cvss_score": 7.5,
+        "cwe": [
+          "CWE-1333"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "express@4.17.1",
+          "path-to-regexp@0.1.7"
+        ]
+      ],
+      "ai": {
+        "by": "deterministic-template",
+        "accepted": true,
+        "summary": "Known vulnerability in path-to-regexp@0.1.7: path-to-regexp contains a ReDoS. It enters the app via shop-api@1.4.0 > express@4.17.1 > path-to-regexp@0.1.7. A fixed version exists (0.1.12).",
+        "exploitability": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)",
+        "reachability": "parent-imported: pulled in by 'express', which production code imports (server.js). Exposure: server: runs in the server process.",
+        "recommended_priority": "P1-urgent",
+        "priority_change_reason": "",
+        "cited_evidence": [
+          "E1",
+          "E4",
+          "E5",
+          "E6"
+        ],
+        "unknowns": [
+          "whether the vulnerable function is actually called (function-level reachability)"
+        ],
+        "confidence": "medium"
+      }
+    },
+    {
+      "finding_id": "GRD-e29370793e",
+      "title": "Known vulnerability in path-to-regexp@0.1.7: path-to-regexp outputs backtracking regular expressions",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/path-to-regexp@0.1.7",
+        "name": "path-to-regexp",
+        "version": "0.1.7",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 95,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 75,
+          "why": "CVSS 7.5"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)"
+        },
+        {
+          "factor": "reachability",
+          "points": 5,
+          "why": "pulled in by a dependency that production code imports: pulled in by 'express', which production code imports (server.js)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process)"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "parent-imported",
+        "detail": "pulled in by 'express', which production code imports (server.js)",
+        "files": [
+          "server.js"
+        ],
+        "via": "express"
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "0.1.10"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express@4.17.1"
+        ],
+        "cvss_score": 7.5,
+        "cwe": [
+          "CWE-1333"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "express@4.17.1",
+          "path-to-regexp@0.1.7"
+        ]
+      ],
+      "ai": {
+        "by": "deterministic-template",
+        "accepted": true,
+        "summary": "Known vulnerability in path-to-regexp@0.1.7: path-to-regexp outputs backtracking regular expressions. It enters the app via shop-api@1.4.0 > express@4.17.1 > path-to-regexp@0.1.7. A fixed version exists (0.1.10).",
+        "exploitability": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)",
+        "reachability": "parent-imported: pulled in by 'express', which production code imports (server.js). Exposure: server: runs in the server process.",
+        "recommended_priority": "P1-urgent",
+        "priority_change_reason": "",
+        "cited_evidence": [
+          "E1",
+          "E4",
+          "E5",
+          "E6"
+        ],
+        "unknowns": [
+          "whether the vulnerable function is actually called (function-level reachability)"
+        ],
+        "confidence": "medium"
+      }
+    },
+    {
+      "finding_id": "GRD-1f7ff0a614",
+      "title": "Known vulnerability in path-to-regexp@0.1.7: path-to-regexp vulnerable to Regular Expression Denial of Service via multiple route parameters",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/path-to-regexp@0.1.7",
+        "name": "path-to-regexp",
+        "version": "0.1.7",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 95,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 75,
+          "why": "CVSS 7.5"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)"
+        },
+        {
+          "factor": "reachability",
+          "points": 5,
+          "why": "pulled in by a dependency that production code imports: pulled in by 'express', which production code imports (server.js)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process)"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "parent-imported",
+        "detail": "pulled in by 'express', which production code imports (server.js)",
+        "files": [
+          "server.js"
+        ],
+        "via": "express"
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "0.1.13"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express@4.17.1"
+        ],
+        "cvss_score": 7.5,
+        "cwe": [
+          "CWE-1333"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "express@4.17.1",
+          "path-to-regexp@0.1.7"
+        ]
+      ],
+      "ai": {
+        "by": "deterministic-template",
+        "accepted": true,
+        "summary": "Known vulnerability in path-to-regexp@0.1.7: path-to-regexp vulnerable to Regular Expression Denial of Service via multiple route parameters. It enters the app via shop-api@1.4.0 > express@4.17.1 > path-to-regexp@0.1.7. A fixed version exists (0.1.13).",
+        "exploitability": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)",
+        "reachability": "parent-imported: pulled in by 'express', which production code imports (server.js). Exposure: server: runs in the server process.",
+        "recommended_priority": "P1-urgent",
+        "priority_change_reason": "",
+        "cited_evidence": [
+          "E1",
+          "E4",
+          "E5",
+          "E6"
+        ],
+        "unknowns": [
+          "whether the vulnerable function is actually called (function-level reachability)"
+        ],
+        "confidence": "medium"
+      }
+    },
+    {
+      "finding_id": "GRD-c83abdd646",
+      "title": "Known vulnerability in qs@6.7.0: qs vulnerable to Prototype Pollution",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/qs@6.7.0",
+        "name": "qs",
+        "version": "6.7.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 95,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 75,
+          "why": "CVSS 7.5"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)"
+        },
+        {
+          "factor": "reachability",
+          "points": 5,
+          "why": "pulled in by a dependency that production code imports: pulled in by 'express', which production code imports (server.js)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process)"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "parent-imported",
+        "detail": "pulled in by 'express', which production code imports (server.js)",
+        "files": [
+          "server.js"
+        ],
+        "via": "express"
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "6.7.3"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express@4.17.1"
+        ],
+        "cvss_score": 7.5,
+        "cwe": [
+          "CWE-1321"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "express@4.17.1",
+          "qs@6.7.0"
+        ],
+        [
+          "shop-api@1.4.0",
+          "express@4.17.1",
+          "body-parser@1.19.0",
+          "qs@6.7.0"
+        ]
+      ],
+      "ai": {
+        "by": "deterministic-template",
+        "accepted": true,
+        "summary": "Known vulnerability in qs@6.7.0: qs vulnerable to Prototype Pollution. It enters the app via shop-api@1.4.0 > express@4.17.1 > body-parser@1.19.0 > qs@6.7.0. A fixed version exists (6.7.3).",
+        "exploitability": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)",
+        "reachability": "parent-imported: pulled in by 'express', which production code imports (server.js). Exposure: server: runs in the server process.",
+        "recommended_priority": "P1-urgent",
+        "priority_change_reason": "",
+        "cited_evidence": [
+          "E1",
+          "E4",
+          "E5",
+          "E6"
+        ],
+        "unknowns": [
+          "whether the vulnerable function is actually called (function-level reachability)"
+        ],
+        "confidence": "medium"
+      }
+    },
+    {
+      "finding_id": "GRD-d59b7c1df8",
+      "title": "Suspicious install script in crossenv@6.1.1",
+      "category": "install-script",
+      "rule": "INSTALL-SCRIPT",
+      "severity": "critical",
+      "component": {
+        "id": "pkg:npm/crossenv@6.1.1",
+        "name": "crossenv",
+        "version": "6.1.1",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "dev"
+      },
+      "score": 95,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 90,
+          "why": "detector severity 'critical'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "executes at install time on developer and CI machines (scope does not reduce this)"
+        }
+      ],
+      "confidence": {
+        "value": 0.55,
+        "label": "low",
+        "reasons": [
+          "finding is pattern-based (heuristic)",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'crossenv' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "dev-tooling",
+        "production": false,
+        "detail": "devDependency: not installed in production"
+      },
+      "production": false,
+      "fix": {
+        "suggestion": "install with --ignore-scripts and allowlist required builds; pin version"
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "crossenv@6.1.1"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-575e3b161a",
+      "title": "Known vulnerability in node-fetch@2.6.0: node-fetch forwards secure headers to untrusted sites",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/node-fetch@2.6.0",
+        "name": "node-fetch",
+        "version": "2.6.0",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 88,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 88,
+          "why": "CVSS 8.8"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'node-fetch' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process)"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'node-fetch' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "2.6.7"
+        ],
+        "available": true,
+        "introduced_via": [
+          "node-fetch@2.6.0"
+        ],
+        "cvss_score": 8.8,
+        "cwe": [
+          "CWE-173",
+          "CWE-200",
+          "CWE-601"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "node-fetch@2.6.0"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-ad2936893a",
+      "title": "Known vulnerability in lodash@4.17.15: lodash vulnerable to Code Injection via `_.template` imports key names",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/lodash@4.17.15",
+        "name": "lodash",
+        "version": "4.17.15",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 86,
+      "priority": "P1-urgent",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 81,
+          "why": "CVSS 8.1"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H)"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'lodash' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process)"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'lodash' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "4.18.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "lodash@4.17.15"
+        ],
+        "cvss_score": 8.1,
+        "cwe": [
+          "CWE-94"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "lodash@4.17.15"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-844e5ccc16",
+      "title": "Known vulnerability in lodash@4.17.15: Prototype Pollution in lodash",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/lodash@4.17.15",
+        "name": "lodash",
+        "version": "4.17.15",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 79,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 74,
+          "why": "CVSS 7.4"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:H)"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'lodash' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process)"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'lodash' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "4.17.19"
+        ],
+        "available": true,
+        "introduced_via": [
+          "lodash@4.17.15"
+        ],
+        "cvss_score": 7.4,
+        "cwe": [
+          "CWE-770",
+          "CWE-1321"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "lodash@4.17.15"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-0bd24c48d9",
+      "title": "Known vulnerability in express@4.17.1: Express.js Open Redirect in malformed URLs",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/express@4.17.1",
+        "name": "express",
+        "version": "4.17.1",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 76,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 61,
+          "why": "CVSS 6.1"
+        },
+        {
+          "factor": "exploitability",
+          "points": -5,
+          "why": "needs user interaction (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N)"
+        },
+        {
+          "factor": "reachability",
+          "points": 10,
+          "why": "vulnerable package is imported directly by production code: imported directly by 1 production source file(s)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process)"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "imported",
+        "detail": "imported directly by 1 production source file(s)",
+        "files": [
+          "server.js"
+        ]
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "4.19.2"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express@4.17.1"
+        ],
+        "cvss_score": 6.1,
+        "cwe": [
+          "CWE-601",
+          "CWE-1286"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "express@4.17.1"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-09f992c3b6",
+      "title": "Dockerfile: RUN pipes a downloaded script into a shell",
+      "category": "untrusted-image",
+      "rule": "IMAGE-PIPE-TO-SHELL",
+      "severity": "high",
+      "component": null,
+      "score": 75,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 70,
+          "why": "detector severity 'high'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "part of a shipped container image (defined in Dockerfile)"
+        }
+      ],
+      "confidence": {
+        "value": 0.9,
+        "label": "high",
+        "reasons": [
+          "verified advisory + exact version + reachability evidence"
+        ]
+      },
+      "reachability": {
+        "level": "n/a",
+        "detail": "finding is about a file, not a package",
+        "files": []
+      },
+      "exposure": {
+        "context": "runtime-image",
+        "production": true,
+        "detail": "defined in Dockerfile"
+      },
+      "production": true,
+      "fix": null,
+      "dependency_paths": [],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-cbacc02b07",
+      "title": "Download source for minimist@1.2.5 changed: registry.npmjs.org -> registry.npmjs-cdn.com",
+      "category": "integrity",
+      "rule": "CHANGE-SOURCE",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/minimist@1.2.5",
+        "name": "minimist",
+        "version": "1.2.5",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 75,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 70,
+          "why": "detector severity 'high'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "executes at install time on developer and CI machines (scope does not reduce this)"
+        }
+      ],
+      "confidence": {
+        "value": 0.8,
+        "label": "high",
+        "reasons": [
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'minimist' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": null,
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "minimist@1.2.5"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-04410445f6",
+      "title": "GitHub Action quick-actions/npm-cache: branch/unversioned ref 'main' (code changes on every run)",
+      "category": "cicd",
+      "rule": "CICD-UNPINNED-ACTION",
+      "severity": "high",
+      "component": {
+        "id": "pkg:githubactions/quick-actions/npm-cache@main",
+        "name": "quick-actions/npm-cache",
+        "version": "main",
+        "ecosystem": "github-actions",
+        "direct": true,
+        "scope": "ci"
+      },
+      "score": 75,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 70,
+          "why": "detector severity 'high'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "runs in CI with access to repository secrets (runs in CI with access to repository tokens/secrets)"
+        }
+      ],
+      "confidence": {
+        "value": 0.9,
+        "label": "high",
+        "reasons": [
+          "verified advisory + exact version + reachability evidence"
+        ]
+      },
+      "reachability": {
+        "level": "n/a",
+        "detail": "not a code library (image / CI component)",
+        "files": []
+      },
+      "exposure": {
+        "context": "ci-pipeline",
+        "production": false,
+        "detail": "runs in CI with access to repository tokens/secrets"
+      },
+      "production": false,
+      "fix": {
+        "suggestion": "pin to a full commit SHA: uses: quick-actions/npm-cache@<40-char-sha> # main"
+      },
+      "dependency_paths": [],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-a0dfadd0ab",
+      "title": "Image 'fastbuilds/node-runtime' comes from a non-allowlisted publisher (docker.io)",
+      "category": "untrusted-image",
+      "rule": "IMAGE-UNTRUSTED-SOURCE",
+      "severity": "high",
+      "component": {
+        "id": "pkg:docker/fastbuilds/node-runtime@18",
+        "name": "fastbuilds/node-runtime",
+        "version": "18",
+        "ecosystem": "docker",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 75,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 70,
+          "why": "detector severity 'high'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "part of a shipped container image (base image of a shipped container)"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "verified advisory + exact version + reachability evidence"
+        ]
+      },
+      "reachability": {
+        "level": "n/a",
+        "detail": "not a code library (image / CI component)",
+        "files": []
+      },
+      "exposure": {
+        "context": "runtime-image",
+        "production": true,
+        "detail": "base image of a shipped container"
+      },
+      "production": true,
+      "fix": {
+        "suggestion": "use an official / verified-publisher image or add the publisher to the allowlist after review"
+      },
+      "dependency_paths": [],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-46055a5e2c",
+      "title": "Lockfile root declares 'debug-helper-utils' which is not in package.json",
+      "category": "unexpected-dependency",
+      "rule": "UNEXPECTED-LOCK-ONLY-DEP",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/debug-helper-utils@1.0.2",
+        "name": "debug-helper-utils",
+        "version": "1.0.2",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 75,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 70,
+          "why": "detector severity 'high'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "executes at install time on developer and CI machines (scope does not reduce this)"
+        }
+      ],
+      "confidence": {
+        "value": 0.8,
+        "label": "high",
+        "reasons": [
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "no import of debug-helper-utils found; may still be loaded dynamically",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "suggestion": "lockfile was edited outside npm or is out of sync; regenerate and review the diff"
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "debug-helper-utils@1.0.2"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-d2c4aa3ad1",
+      "title": "Possible typosquat: 'crossenv' looks like 'cross-env'",
+      "category": "typosquat",
+      "rule": "TYPOSQUAT",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/crossenv@6.1.1",
+        "name": "crossenv",
+        "version": "6.1.1",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "dev"
+      },
+      "score": 75,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 70,
+          "why": "detector severity 'high'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "executes at install time on developer and CI machines (scope does not reduce this)"
+        }
+      ],
+      "confidence": {
+        "value": 0.55,
+        "label": "low",
+        "reasons": [
+          "finding is pattern-based (heuristic)",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'crossenv' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "dev-tooling",
+        "production": false,
+        "detail": "devDependency: not installed in production"
+      },
+      "production": false,
+      "fix": {
+        "suggestion": "verify intent; if 'cross-env' was meant, replace 'crossenv' with 'cross-env'",
+        "versions_in_tree": [
+          "6.1.1"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "crossenv@6.1.1"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-86639082f3",
+      "title": "Untrusted event data interpolated into a workflow step",
+      "category": "cicd",
+      "rule": "CICD-SCRIPT-INJECTION",
+      "severity": "high",
+      "component": null,
+      "score": 75,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 70,
+          "why": "detector severity 'high'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "runs in CI with access to repository secrets (defined in .github/workflows/ci.yml)"
+        }
+      ],
+      "confidence": {
+        "value": 0.6,
+        "label": "medium",
+        "reasons": [
+          "finding is pattern-based (heuristic)"
+        ]
+      },
+      "reachability": {
+        "level": "n/a",
+        "detail": "finding is about a file, not a package",
+        "files": []
+      },
+      "exposure": {
+        "context": "ci-pipeline",
+        "production": false,
+        "detail": "defined in .github/workflows/ci.yml"
+      },
+      "production": false,
+      "fix": {
+        "suggestion": "pass the value via env: and reference it as \"$VAR\""
+      },
+      "dependency_paths": [],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-0bb2f898bb",
+      "title": "event-stream@3.3.6 is not published on the registry (unpublished or fabricated version)",
+      "category": "integrity",
+      "rule": "REGISTRY-VERSION-MISSING",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/event-stream@3.3.6",
+        "name": "event-stream",
+        "version": "3.3.6",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 75,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 70,
+          "why": "detector severity 'high'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "executes at install time on developer and CI machines (scope does not reduce this)"
+        }
+      ],
+      "confidence": {
+        "value": 0.8,
+        "label": "high",
+        "reasons": [
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'event-stream' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": null,
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "event-stream@3.3.6"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-dfc22d0f2f",
+      "title": "minimist@1.2.5 is fetched over plain HTTP",
+      "category": "integrity",
+      "rule": "INTEGRITY-INSECURE-URL",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/minimist@1.2.5",
+        "name": "minimist",
+        "version": "1.2.5",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 75,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 70,
+          "why": "detector severity 'high'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "executes at install time on developer and CI machines (scope does not reduce this)"
+        }
+      ],
+      "confidence": {
+        "value": 0.8,
+        "label": "high",
+        "reasons": [
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'minimist' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": null,
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "minimist@1.2.5"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-d91accc1c1",
+      "title": "ua-parser-js@0.7.29 is not published on the registry (unpublished or fabricated version)",
+      "category": "integrity",
+      "rule": "REGISTRY-VERSION-MISSING",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/ua-parser-js@0.7.29",
+        "name": "ua-parser-js",
+        "version": "0.7.29",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 75,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 70,
+          "why": "detector severity 'high'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "executes at install time on developer and CI machines (scope does not reduce this)"
+        }
+      ],
+      "confidence": {
+        "value": 0.9,
+        "label": "high",
+        "reasons": [
+          "verified advisory + exact version + reachability evidence"
+        ]
+      },
+      "reachability": {
+        "level": "orphan",
+        "detail": "no dependency path from the application",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": null,
+      "dependency_paths": [],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-89e19feeeb",
+      "title": "Known vulnerability in qs@6.7.0: qs : qs.stringify with arrayFormat 'comma' throws an uncaught TypeError on array elements carrying a non-callable own to",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/qs@6.7.0",
+        "name": "qs",
+        "version": "6.7.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 73,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 53,
+          "why": "CVSS 5.3"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L)"
+        },
+        {
+          "factor": "reachability",
+          "points": 5,
+          "why": "pulled in by a dependency that production code imports: pulled in by 'express', which production code imports (server.js)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process)"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "parent-imported",
+        "detail": "pulled in by 'express', which production code imports (server.js)",
+        "files": [
+          "server.js"
+        ],
+        "via": "express"
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "6.16.1"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express@4.17.1"
+        ],
+        "cvss_score": 5.3,
+        "cwe": [
+          "CWE-248",
+          "CWE-704"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "express@4.17.1",
+          "qs@6.7.0"
+        ],
+        [
+          "shop-api@1.4.0",
+          "express@4.17.1",
+          "body-parser@1.19.0",
+          "qs@6.7.0"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-26b5a19a16",
+      "title": "Known vulnerability in qs@6.7.0: qs: Denial of Service via Attacker Controlled isBuffer",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/qs@6.7.0",
+        "name": "qs",
+        "version": "6.7.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 73,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 53,
+          "why": "CVSS 5.3"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L)"
+        },
+        {
+          "factor": "reachability",
+          "points": 5,
+          "why": "pulled in by a dependency that production code imports: pulled in by 'express', which production code imports (server.js)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process)"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "parent-imported",
+        "detail": "pulled in by 'express', which production code imports (server.js)",
+        "files": [
+          "server.js"
+        ],
+        "via": "express"
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "6.16.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express@4.17.1"
+        ],
+        "cvss_score": 5.3,
+        "cwe": [
+          "CWE-248",
+          "CWE-703"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "express@4.17.1",
+          "qs@6.7.0"
+        ],
+        [
+          "shop-api@1.4.0",
+          "express@4.17.1",
+          "body-parser@1.19.0",
+          "qs@6.7.0"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-a128fcec7d",
+      "title": "Known vulnerability in lodash@4.17.15: Lodash has Prototype Pollution Vulnerability in `_.unset`, `_.omit`, and `_.pullAt` functions",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/lodash@4.17.15",
+        "name": "lodash",
+        "version": "4.17.15",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 70,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 65,
+          "why": "CVSS 6.5"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L)"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'lodash' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process)"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'lodash' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "4.17.23"
+        ],
+        "available": true,
+        "introduced_via": [
+          "lodash@4.17.15"
+        ],
+        "cvss_score": 6.5,
+        "cwe": [
+          "CWE-1321"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "lodash@4.17.15"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-b92c8f07bb",
+      "title": "Known vulnerability in express@4.17.1: express vulnerable to XSS via response.redirect()",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "low",
+      "component": {
+        "id": "pkg:npm/express@4.17.1",
+        "name": "express",
+        "version": "4.17.1",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 65,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 50,
+          "why": "CVSS 5.0"
+        },
+        {
+          "factor": "exploitability",
+          "points": -5,
+          "why": "needs user interaction (CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:L)"
+        },
+        {
+          "factor": "reachability",
+          "points": 10,
+          "why": "vulnerable package is imported directly by production code: imported directly by 1 production source file(s)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process)"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "imported",
+        "detail": "imported directly by 1 production source file(s)",
+        "files": [
+          "server.js"
+        ]
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "4.20.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express@4.17.1"
+        ],
+        "cvss_score": 5.0,
+        "cwe": [
+          "CWE-79"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "express@4.17.1"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-e21d6bab29",
+      "title": "Known vulnerability in lodash@4.17.15: Command Injection in lodash",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/lodash@4.17.15",
+        "name": "lodash",
+        "version": "4.17.15",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 62,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 72,
+          "why": "CVSS 7.2"
+        },
+        {
+          "factor": "exploitability",
+          "points": -10,
+          "why": "needs high privileges (CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H)"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'lodash' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process)"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'lodash' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "4.17.21"
+        ],
+        "available": true,
+        "introduced_via": [
+          "lodash@4.17.15"
+        ],
+        "cvss_score": 7.2,
+        "cwe": [
+          "CWE-77",
+          "CWE-94"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "lodash@4.17.15"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-b92970fd54",
+      "title": "Known vulnerability in send@0.17.1: send vulnerable to template injection that can lead to XSS",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "low",
+      "component": {
+        "id": "pkg:npm/send@0.17.1",
+        "name": "send",
+        "version": "0.17.1",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 60,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 50,
+          "why": "CVSS 5.0"
+        },
+        {
+          "factor": "exploitability",
+          "points": -5,
+          "why": "needs user interaction (CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:L)"
+        },
+        {
+          "factor": "reachability",
+          "points": 5,
+          "why": "pulled in by a dependency that production code imports: pulled in by 'express', which production code imports (server.js)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process)"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "parent-imported",
+        "detail": "pulled in by 'express', which production code imports (server.js)",
+        "files": [
+          "server.js"
+        ],
+        "via": "express"
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "0.19.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express@4.17.1"
+        ],
+        "cvss_score": 5.0,
+        "cwe": [
+          "CWE-79"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "express@4.17.1",
+          "send@0.17.1"
+        ],
+        [
+          "shop-api@1.4.0",
+          "express@4.17.1",
+          "serve-static@1.14.1",
+          "send@0.17.1"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-6a3bfab569",
+      "title": "Known vulnerability in serve-static@1.14.1: serve-static vulnerable to template injection that can lead to XSS",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "low",
+      "component": {
+        "id": "pkg:npm/serve-static@1.14.1",
+        "name": "serve-static",
+        "version": "1.14.1",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 60,
+      "priority": "P2-high",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 50,
+          "why": "CVSS 5.0"
+        },
+        {
+          "factor": "exploitability",
+          "points": -5,
+          "why": "needs user interaction (CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:L)"
+        },
+        {
+          "factor": "reachability",
+          "points": 5,
+          "why": "pulled in by a dependency that production code imports: pulled in by 'express', which production code imports (server.js)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process)"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "parent-imported",
+        "detail": "pulled in by 'express', which production code imports (server.js)",
+        "files": [
+          "server.js"
+        ],
+        "via": "express"
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "1.16.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express@4.17.1"
+        ],
+        "cvss_score": 5.0,
+        "cwe": [
+          "CWE-79"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "express@4.17.1",
+          "serve-static@1.14.1"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-d268e6a322",
+      "title": "Known vulnerability in lodash@4.17.15: Regular Expression Denial of Service (ReDoS) in lodash",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/lodash@4.17.15",
+        "name": "lodash",
+        "version": "4.17.15",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 58,
+      "priority": "P3-medium",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 53,
+          "why": "CVSS 5.3"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L)"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'lodash' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process)"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'lodash' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "4.17.21"
+        ],
+        "available": true,
+        "introduced_via": [
+          "lodash@4.17.15"
+        ],
+        "cvss_score": 5.3,
+        "cwe": [
+          "CWE-400",
+          "CWE-1333"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "lodash@4.17.15"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-11583fc40e",
+      "title": "Known vulnerability in body-parser@1.19.0: body-parser vulnerable to denial of service when invalid limit value silently disables size enforcement",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "low",
+      "component": {
+        "id": "pkg:npm/body-parser@1.19.0",
+        "name": "body-parser",
+        "version": "1.19.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 57,
+      "priority": "P3-medium",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 37,
+          "why": "CVSS 3.7"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L)"
+        },
+        {
+          "factor": "reachability",
+          "points": 5,
+          "why": "pulled in by a dependency that production code imports: pulled in by 'express', which production code imports (server.js)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process)"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "parent-imported",
+        "detail": "pulled in by 'express', which production code imports (server.js)",
+        "files": [
+          "server.js"
+        ],
+        "via": "express"
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "1.20.6"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express@4.17.1"
+        ],
+        "cvss_score": 3.7,
+        "cwe": [
+          "CWE-770"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "express@4.17.1",
+          "body-parser@1.19.0"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-21cb217e64",
+      "title": "Known vulnerability in qs@6.7.0: qs's arrayLimit bypass in comma parsing allows denial of service",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "low",
+      "component": {
+        "id": "pkg:npm/qs@6.7.0",
+        "name": "qs",
+        "version": "6.7.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 57,
+      "priority": "P3-medium",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 37,
+          "why": "CVSS 3.7"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L)"
+        },
+        {
+          "factor": "reachability",
+          "points": 5,
+          "why": "pulled in by a dependency that production code imports: pulled in by 'express', which production code imports (server.js)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process)"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "parent-imported",
+        "detail": "pulled in by 'express', which production code imports (server.js)",
+        "files": [
+          "server.js"
+        ],
+        "via": "express"
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "6.14.2"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express@4.17.1"
+        ],
+        "cvss_score": 3.7,
+        "cwe": [
+          "CWE-20"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "express@4.17.1",
+          "qs@6.7.0"
+        ],
+        [
+          "shop-api@1.4.0",
+          "express@4.17.1",
+          "body-parser@1.19.0",
+          "qs@6.7.0"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-e1d691c1d2",
+      "title": "Known vulnerability in qs@6.7.0: qs's arrayLimit bypass in its bracket notation allows DoS via memory exhaustion",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/qs@6.7.0",
+        "name": "qs",
+        "version": "6.7.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 57,
+      "priority": "P3-medium",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 37,
+          "why": "CVSS 3.7"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L)"
+        },
+        {
+          "factor": "reachability",
+          "points": 5,
+          "why": "pulled in by a dependency that production code imports: pulled in by 'express', which production code imports (server.js)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process)"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "parent-imported",
+        "detail": "pulled in by 'express', which production code imports (server.js)",
+        "files": [
+          "server.js"
+        ],
+        "via": "express"
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "6.14.1"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express@4.17.1"
+        ],
+        "cvss_score": 3.7,
+        "cwe": [
+          "CWE-20"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "express@4.17.1",
+          "qs@6.7.0"
+        ],
+        [
+          "shop-api@1.4.0",
+          "express@4.17.1",
+          "body-parser@1.19.0",
+          "qs@6.7.0"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-1387eece0e",
+      "title": "New direct dependency: crossenv@6.1.1",
+      "category": "unexpected-dependency",
+      "rule": "CHANGE-NEW-PACKAGE",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/crossenv@6.1.1",
+        "name": "crossenv",
+        "version": "6.1.1",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "dev"
+      },
+      "score": 50,
+      "priority": "P3-medium",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 45,
+          "why": "detector severity 'medium'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "executes at install time on developer and CI machines (scope does not reduce this)"
+        }
+      ],
+      "confidence": {
+        "value": 0.8,
+        "label": "high",
+        "reasons": [
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'crossenv' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "dev-tooling",
+        "production": false,
+        "detail": "devDependency: not installed in production"
+      },
+      "production": false,
+      "fix": {
+        "introduced_via": [
+          "crossenv@6.1.1"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "crossenv@6.1.1"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-4b17ae29e8",
+      "title": "New direct dependency: debug-helper-utils@1.0.2",
+      "category": "unexpected-dependency",
+      "rule": "CHANGE-NEW-PACKAGE",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/debug-helper-utils@1.0.2",
+        "name": "debug-helper-utils",
+        "version": "1.0.2",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 50,
+      "priority": "P3-medium",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 45,
+          "why": "detector severity 'medium'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "executes at install time on developer and CI machines (scope does not reduce this)"
+        }
+      ],
+      "confidence": {
+        "value": 0.8,
+        "label": "high",
+        "reasons": [
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "no import of debug-helper-utils found; may still be loaded dynamically",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "introduced_via": [
+          "debug-helper-utils@1.0.2"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "debug-helper-utils@1.0.2"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-ad6c4933dc",
+      "title": "Workflow grants write-all token permissions",
+      "category": "cicd",
+      "rule": "CICD-BROAD-PERMISSIONS",
+      "severity": "medium",
+      "component": null,
+      "score": 50,
+      "priority": "P3-medium",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 45,
+          "why": "detector severity 'medium'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "runs in CI with access to repository secrets (defined in .github/workflows/ci.yml)"
+        }
+      ],
+      "confidence": {
+        "value": 0.9,
+        "label": "high",
+        "reasons": [
+          "verified advisory + exact version + reachability evidence"
+        ]
+      },
+      "reachability": {
+        "level": "n/a",
+        "detail": "finding is about a file, not a package",
+        "files": []
+      },
+      "exposure": {
+        "context": "ci-pipeline",
+        "production": false,
+        "detail": "defined in .github/workflows/ci.yml"
+      },
+      "production": false,
+      "fix": null,
+      "dependency_paths": [],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-5e99ff3e09",
+      "title": "debug-helper-utils@1.0.2 has no integrity hash in the lockfile",
+      "category": "integrity",
+      "rule": "INTEGRITY-MISSING",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/debug-helper-utils@1.0.2",
+        "name": "debug-helper-utils",
+        "version": "1.0.2",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 50,
+      "priority": "P3-medium",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 45,
+          "why": "detector severity 'medium'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "executes at install time on developer and CI machines (scope does not reduce this)"
+        }
+      ],
+      "confidence": {
+        "value": 0.8,
+        "label": "high",
+        "reasons": [
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "no import of debug-helper-utils found; may still be loaded dynamically",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": null,
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "debug-helper-utils@1.0.2"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-a8cedcd7ed",
+      "title": "debug-helper-utils@1.0.2 resolved from outside the npm registry (npm.corp-artifacts.net)",
+      "category": "integrity",
+      "rule": "INTEGRITY-UNTRUSTED-SOURCE",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/debug-helper-utils@1.0.2",
+        "name": "debug-helper-utils",
+        "version": "1.0.2",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 50,
+      "priority": "P3-medium",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 45,
+          "why": "detector severity 'medium'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "executes at install time on developer and CI machines (scope does not reduce this)"
+        }
+      ],
+      "confidence": {
+        "value": 0.8,
+        "label": "high",
+        "reasons": [
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "no import of debug-helper-utils found; may still be loaded dynamically",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": null,
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "debug-helper-utils@1.0.2"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-4932c67577",
+      "title": "ua-parser-js@0.7.29 is in the lockfile but nothing depends on it",
+      "category": "unexpected-dependency",
+      "rule": "UNEXPECTED-ORPHAN",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/ua-parser-js@0.7.29",
+        "name": "ua-parser-js",
+        "version": "0.7.29",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 50,
+      "priority": "P3-medium",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 45,
+          "why": "detector severity 'medium'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "executes at install time on developer and CI machines (scope does not reduce this)"
+        }
+      ],
+      "confidence": {
+        "value": 0.9,
+        "label": "high",
+        "reasons": [
+          "verified advisory + exact version + reachability evidence"
+        ]
+      },
+      "reachability": {
+        "level": "orphan",
+        "detail": "no dependency path from the application",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "suggestion": "remove (npm prune) unless intentionally vendored; check who added it"
+      },
+      "dependency_paths": [],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-66c66a37b9",
+      "title": "Known vulnerability in serialize-javascript@5.0.1: Serialize JavaScript is Vulnerable to RCE via RegExp.flags and Date.prototype.toISOString()",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/serialize-javascript@5.0.1",
+        "name": "serialize-javascript",
+        "version": "5.0.1",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "dev"
+      },
+      "score": 46,
+      "priority": "P3-medium",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 81,
+          "why": "CVSS 8.1"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H)"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'mocha' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": -30,
+          "why": "dev-only dependency, not shipped to production (devDependency: not installed in production)"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'mocha' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "dev-tooling",
+        "production": false,
+        "detail": "devDependency: not installed in production"
+      },
+      "production": false,
+      "fix": {
+        "fixed_versions": [
+          "7.0.3"
+        ],
+        "available": true,
+        "introduced_via": [
+          "mocha@8.4.0"
+        ],
+        "cvss_score": 8.1,
+        "cwe": [
+          "CWE-96"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "mocha@8.4.0",
+          "serialize-javascript@5.0.1"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-46855e70de",
+      "title": "Known vulnerability in js-yaml@4.0.0: JS-YAML: Quadratic CPU consumption in !!omap resolution (3.x and 4.x) \u2014 CVE-2026-59870 fix not backported",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/js-yaml@4.0.0",
+        "name": "js-yaml",
+        "version": "4.0.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "dev"
+      },
+      "score": 40,
+      "priority": "P3-medium",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 75,
+          "why": "CVSS 7.5"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'mocha' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": -30,
+          "why": "dev-only dependency, not shipped to production (devDependency: not installed in production)"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'mocha' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "dev-tooling",
+        "production": false,
+        "detail": "devDependency: not installed in production"
+      },
+      "production": false,
+      "fix": {
+        "fixed_versions": [
+          "4.3.1"
+        ],
+        "available": true,
+        "introduced_via": [
+          "mocha@8.4.0"
+        ],
+        "cvss_score": 7.5,
+        "cwe": [
+          "CWE-407"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "mocha@8.4.0",
+          "js-yaml@4.0.0"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-e7a20cd82a",
+      "title": "Known vulnerability in js-yaml@4.0.0: js-yaml: YAML merge-key chains can force quadratic CPU consumption",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/js-yaml@4.0.0",
+        "name": "js-yaml",
+        "version": "4.0.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "dev"
+      },
+      "score": 40,
+      "priority": "P3-medium",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 75,
+          "why": "CVSS 7.5"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'mocha' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": -30,
+          "why": "dev-only dependency, not shipped to production (devDependency: not installed in production)"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'mocha' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "dev-tooling",
+        "production": false,
+        "detail": "devDependency: not installed in production"
+      },
+      "production": false,
+      "fix": {
+        "fixed_versions": [
+          "4.3.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "mocha@8.4.0"
+        ],
+        "cvss_score": 7.5,
+        "cwe": [
+          "CWE-400",
+          "CWE-407"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "mocha@8.4.0",
+          "js-yaml@4.0.0"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-745c229a21",
+      "title": "Known vulnerability in js-yaml@4.0.0: js-yaml: maxTotalMergeKeys does not limit CPU use for empty merge sources",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/js-yaml@4.0.0",
+        "name": "js-yaml",
+        "version": "4.0.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "dev"
+      },
+      "score": 40,
+      "priority": "P3-medium",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 75,
+          "why": "CVSS 7.5"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'mocha' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": -30,
+          "why": "dev-only dependency, not shipped to production (devDependency: not installed in production)"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'mocha' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "dev-tooling",
+        "production": false,
+        "detail": "devDependency: not installed in production"
+      },
+      "production": false,
+      "fix": {
+        "fixed_versions": [
+          "4.3.2"
+        ],
+        "available": true,
+        "introduced_via": [
+          "mocha@8.4.0"
+        ],
+        "cvss_score": 7.5,
+        "cwe": [
+          "CWE-400",
+          "CWE-407"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "mocha@8.4.0",
+          "js-yaml@4.0.0"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-c10ccf2b40",
+      "title": "Known vulnerability in minimatch@3.0.4: minimatch ReDoS vulnerability",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/minimatch@3.0.4",
+        "name": "minimatch",
+        "version": "3.0.4",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "dev"
+      },
+      "score": 40,
+      "priority": "P3-medium",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 75,
+          "why": "CVSS 7.5"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'mocha' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": -30,
+          "why": "dev-only dependency, not shipped to production (devDependency: not installed in production)"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'mocha' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "dev-tooling",
+        "production": false,
+        "detail": "devDependency: not installed in production"
+      },
+      "production": false,
+      "fix": {
+        "fixed_versions": [
+          "3.0.5"
+        ],
+        "available": true,
+        "introduced_via": [
+          "mocha@8.4.0"
+        ],
+        "cvss_score": 7.5,
+        "cwe": [
+          "CWE-400",
+          "CWE-1333"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "mocha@8.4.0",
+          "minimatch@3.0.4"
+        ],
+        [
+          "shop-api@1.4.0",
+          "mocha@8.4.0",
+          "glob@7.1.6",
+          "minimatch@3.0.4"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-7a9576dd66",
+      "title": "Known vulnerability in minimatch@3.0.4: minimatch ReDoS: nested *() extglobs generate catastrophically backtracking regular expressions",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/minimatch@3.0.4",
+        "name": "minimatch",
+        "version": "3.0.4",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "dev"
+      },
+      "score": 40,
+      "priority": "P3-medium",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 75,
+          "why": "CVSS 7.5"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'mocha' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": -30,
+          "why": "dev-only dependency, not shipped to production (devDependency: not installed in production)"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'mocha' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "dev-tooling",
+        "production": false,
+        "detail": "devDependency: not installed in production"
+      },
+      "production": false,
+      "fix": {
+        "fixed_versions": [
+          "3.1.4"
+        ],
+        "available": true,
+        "introduced_via": [
+          "mocha@8.4.0"
+        ],
+        "cvss_score": 7.5,
+        "cwe": [
+          "CWE-1333"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "mocha@8.4.0",
+          "minimatch@3.0.4"
+        ],
+        [
+          "shop-api@1.4.0",
+          "mocha@8.4.0",
+          "glob@7.1.6",
+          "minimatch@3.0.4"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-58616691cd",
+      "title": "Known vulnerability in minimatch@3.0.4: minimatch has ReDoS: matchOne() combinatorial backtracking via multiple non-adjacent GLOBSTAR segments",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/minimatch@3.0.4",
+        "name": "minimatch",
+        "version": "3.0.4",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "dev"
+      },
+      "score": 40,
+      "priority": "P3-medium",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 75,
+          "why": "CVSS 7.5"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'mocha' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": -30,
+          "why": "dev-only dependency, not shipped to production (devDependency: not installed in production)"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'mocha' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "dev-tooling",
+        "production": false,
+        "detail": "devDependency: not installed in production"
+      },
+      "production": false,
+      "fix": {
+        "fixed_versions": [
+          "3.1.3"
+        ],
+        "available": true,
+        "introduced_via": [
+          "mocha@8.4.0"
+        ],
+        "cvss_score": 7.5,
+        "cwe": [
+          "CWE-407"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "mocha@8.4.0",
+          "minimatch@3.0.4"
+        ],
+        [
+          "shop-api@1.4.0",
+          "mocha@8.4.0",
+          "glob@7.1.6",
+          "minimatch@3.0.4"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-89215d2ced",
+      "title": "Known vulnerability in nanoid@3.1.20: nanoid: Integer Overflow or Wraparound",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/nanoid@3.1.20",
+        "name": "nanoid",
+        "version": "3.1.20",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "dev"
+      },
+      "score": 39,
+      "priority": "P3-medium",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 74,
+          "why": "CVSS 7.4"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N)"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'mocha' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": -30,
+          "why": "dev-only dependency, not shipped to production (devDependency: not installed in production)"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'mocha' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "dev-tooling",
+        "production": false,
+        "detail": "devDependency: not installed in production"
+      },
+      "production": false,
+      "fix": {
+        "fixed_versions": [
+          "3.3.12"
+        ],
+        "available": true,
+        "introduced_via": [
+          "mocha@8.4.0"
+        ],
+        "cvss_score": 7.4,
+        "cwe": [
+          "CWE-190"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "mocha@8.4.0",
+          "nanoid@3.1.20"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-b530dd30bd",
+      "title": "Known vulnerability in cookie@0.4.0: cookie accepts cookie name, path, and domain with out of bounds characters",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "low",
+      "component": {
+        "id": "pkg:npm/cookie@0.4.0",
+        "name": "cookie",
+        "version": "0.4.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 35,
+      "priority": "P3-medium",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 20,
+          "why": "detector severity 'low'"
+        },
+        {
+          "factor": "reachability",
+          "points": 5,
+          "why": "pulled in by a dependency that production code imports: pulled in by 'express', which production code imports (server.js)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process)"
+        }
+      ],
+      "confidence": {
+        "value": 0.85,
+        "label": "high",
+        "reasons": [
+          "version match only; vulnerable function use not proven"
+        ]
+      },
+      "reachability": {
+        "level": "parent-imported",
+        "detail": "pulled in by 'express', which production code imports (server.js)",
+        "files": [
+          "server.js"
+        ],
+        "via": "express"
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "0.7.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "express@4.17.1"
+        ],
+        "cvss_score": null,
+        "cwe": [
+          "CWE-74"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "express@4.17.1",
+          "cookie@0.4.0"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-3c26c523d8",
+      "title": "Image 'node' uses a mutable tag (latest)",
+      "category": "untrusted-image",
+      "rule": "IMAGE-MUTABLE-TAG",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:docker/node@latest",
+        "name": "node",
+        "version": "latest",
+        "ecosystem": "docker",
+        "direct": true,
+        "scope": "build"
+      },
+      "score": 30,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 45,
+          "why": "detector severity 'medium'"
+        },
+        {
+          "factor": "exposure",
+          "points": -15,
+          "why": "build-stage image, not shipped (build stage only, not shipped)"
+        }
+      ],
+      "confidence": {
+        "value": 0.9,
+        "label": "high",
+        "reasons": [
+          "verified advisory + exact version + reachability evidence"
+        ]
+      },
+      "reachability": {
+        "level": "n/a",
+        "detail": "not a code library (image / CI component)",
+        "files": []
+      },
+      "exposure": {
+        "context": "image-build-stage",
+        "production": false,
+        "detail": "build stage only, not shipped"
+      },
+      "production": false,
+      "fix": {
+        "suggestion": "pin to a version tag and digest, e.g. node:<version>@sha256:<digest>"
+      },
+      "dependency_paths": [],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-1bb0a68bcd",
+      "title": "Known vulnerability in minimatch@3.0.4: minimatch has a ReDoS via repeated wildcards with non-matching literal in pattern",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/minimatch@3.0.4",
+        "name": "minimatch",
+        "version": "3.0.4",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "dev"
+      },
+      "score": 30,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 70,
+          "why": "detector severity 'high'"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'mocha' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": -30,
+          "why": "dev-only dependency, not shipped to production (devDependency: not installed in production)"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'mocha' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "dev-tooling",
+        "production": false,
+        "detail": "devDependency: not installed in production"
+      },
+      "production": false,
+      "fix": {
+        "fixed_versions": [
+          "3.1.3"
+        ],
+        "available": true,
+        "introduced_via": [
+          "mocha@8.4.0"
+        ],
+        "cvss_score": null,
+        "cwe": [
+          "CWE-1333"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "mocha@8.4.0",
+          "minimatch@3.0.4"
+        ],
+        [
+          "shop-api@1.4.0",
+          "mocha@8.4.0",
+          "glob@7.1.6",
+          "minimatch@3.0.4"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-0045796781",
+      "title": "GitHub Action actions/checkout: first-party action pinned to mutable tag 'v4'",
+      "category": "cicd",
+      "rule": "CICD-UNPINNED-ACTION",
+      "severity": "low",
+      "component": {
+        "id": "pkg:githubactions/actions/checkout@v4",
+        "name": "actions/checkout",
+        "version": "v4",
+        "ecosystem": "github-actions",
+        "direct": true,
+        "scope": "ci"
+      },
+      "score": 25,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 20,
+          "why": "detector severity 'low'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "runs in CI with access to repository secrets (runs in CI with access to repository tokens/secrets)"
+        }
+      ],
+      "confidence": {
+        "value": 0.9,
+        "label": "high",
+        "reasons": [
+          "verified advisory + exact version + reachability evidence"
+        ]
+      },
+      "reachability": {
+        "level": "n/a",
+        "detail": "not a code library (image / CI component)",
+        "files": []
+      },
+      "exposure": {
+        "context": "ci-pipeline",
+        "production": false,
+        "detail": "runs in CI with access to repository tokens/secrets"
+      },
+      "production": false,
+      "fix": {
+        "suggestion": "pin to a full commit SHA: uses: actions/checkout@<40-char-sha> # v4"
+      },
+      "dependency_paths": [],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-179def240a",
+      "title": "Image 'fastbuilds/node-runtime:18' is not pinned by digest",
+      "category": "untrusted-image",
+      "rule": "IMAGE-NO-DIGEST",
+      "severity": "low",
+      "component": {
+        "id": "pkg:docker/fastbuilds/node-runtime@18",
+        "name": "fastbuilds/node-runtime",
+        "version": "18",
+        "ecosystem": "docker",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 25,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 20,
+          "why": "detector severity 'low'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "part of a shipped container image (base image of a shipped container)"
+        }
+      ],
+      "confidence": {
+        "value": 0.9,
+        "label": "high",
+        "reasons": [
+          "verified advisory + exact version + reachability evidence"
+        ]
+      },
+      "reachability": {
+        "level": "n/a",
+        "detail": "not a code library (image / CI component)",
+        "files": []
+      },
+      "exposure": {
+        "context": "runtime-image",
+        "production": true,
+        "detail": "base image of a shipped container"
+      },
+      "production": true,
+      "fix": {
+        "suggestion": "append @sha256:<digest> so the tag cannot be silently re-pointed"
+      },
+      "dependency_paths": [],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-a5912c6d8d",
+      "title": "debug-helper-utils@1.0.2 runs an install-time script (contents not inspected)",
+      "category": "install-script",
+      "rule": "INSTALL-SCRIPT",
+      "severity": "low",
+      "component": {
+        "id": "pkg:npm/debug-helper-utils@1.0.2",
+        "name": "debug-helper-utils",
+        "version": "1.0.2",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 25,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 20,
+          "why": "detector severity 'low'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "executes at install time on developer and CI machines (scope does not reduce this)"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "no import of debug-helper-utils found; may still be loaded dynamically",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "suggestion": "inspect script; consider `npm ci --ignore-scripts` + allowlist"
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "debug-helper-utils@1.0.2"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-edf2c05b8a",
+      "title": "Known vulnerability in nanoid@3.1.20: nanoid: custom generators can loop indefinitely when size is zero",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/nanoid@3.1.20",
+        "name": "nanoid",
+        "version": "3.1.20",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "dev"
+      },
+      "score": 24,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 59,
+          "why": "CVSS 5.9"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H)"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'mocha' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": -30,
+          "why": "dev-only dependency, not shipped to production (devDependency: not installed in production)"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'mocha' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "dev-tooling",
+        "production": false,
+        "detail": "devDependency: not installed in production"
+      },
+      "production": false,
+      "fix": {
+        "fixed_versions": [
+          "3.3.18"
+        ],
+        "available": true,
+        "introduced_via": [
+          "mocha@8.4.0"
+        ],
+        "cvss_score": 5.9,
+        "cwe": [
+          "CWE-835"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "mocha@8.4.0",
+          "nanoid@3.1.20"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-28e4ff8f49",
+      "title": "Known vulnerability in nanoid@3.1.20: nanoid: non-secure generators can loop indefinitely with negative size",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "high",
+      "component": {
+        "id": "pkg:npm/nanoid@3.1.20",
+        "name": "nanoid",
+        "version": "3.1.20",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "dev"
+      },
+      "score": 24,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 59,
+          "why": "CVSS 5.9"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H)"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'mocha' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": -30,
+          "why": "dev-only dependency, not shipped to production (devDependency: not installed in production)"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'mocha' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "dev-tooling",
+        "production": false,
+        "detail": "devDependency: not installed in production"
+      },
+      "production": false,
+      "fix": {
+        "fixed_versions": [
+          "3.3.16"
+        ],
+        "available": true,
+        "introduced_via": [
+          "mocha@8.4.0"
+        ],
+        "cvss_score": 5.9,
+        "cwe": [
+          "CWE-835"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "mocha@8.4.0",
+          "nanoid@3.1.20"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-5d10b6e47d",
+      "title": "Known vulnerability in serialize-javascript@5.0.1: Serialize JavaScript has CPU Exhaustion Denial of Service via crafted array-like objects",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/serialize-javascript@5.0.1",
+        "name": "serialize-javascript",
+        "version": "5.0.1",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "dev"
+      },
+      "score": 24,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 59,
+          "why": "CVSS 5.9"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H)"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'mocha' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": -30,
+          "why": "dev-only dependency, not shipped to production (devDependency: not installed in production)"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'mocha' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "dev-tooling",
+        "production": false,
+        "detail": "devDependency: not installed in production"
+      },
+      "production": false,
+      "fix": {
+        "fixed_versions": [
+          "7.0.5"
+        ],
+        "available": true,
+        "introduced_via": [
+          "mocha@8.4.0"
+        ],
+        "cvss_score": 5.9,
+        "cwe": [
+          "CWE-400",
+          "CWE-834"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "mocha@8.4.0",
+          "serialize-javascript@5.0.1"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-cac3402646",
+      "title": "Known vulnerability in node-fetch@2.6.0: The `size` option isn't honored after following a redirect in node-fetch",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "low",
+      "component": {
+        "id": "pkg:npm/node-fetch@2.6.0",
+        "name": "node-fetch",
+        "version": "2.6.0",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 21,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 26,
+          "why": "CVSS 2.6"
+        },
+        {
+          "factor": "exploitability",
+          "points": -5,
+          "why": "needs user interaction (CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:U/C:N/I:N/A:L)"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'node-fetch' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": 10,
+          "why": "runs in a network-facing server process (runs in the server process)"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'node-fetch' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "fixed_versions": [
+          "2.6.1"
+        ],
+        "available": true,
+        "introduced_via": [
+          "node-fetch@2.6.0"
+        ],
+        "cvss_score": 2.6,
+        "cwe": [
+          "CWE-20",
+          "CWE-770"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "node-fetch@2.6.0"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-b003d43ebf",
+      "title": "Known vulnerability in js-yaml@4.0.0: JS-YAML: Quadratic-complexity DoS in merge key handling via repeated aliases",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/js-yaml@4.0.0",
+        "name": "js-yaml",
+        "version": "4.0.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "dev"
+      },
+      "score": 18,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 53,
+          "why": "CVSS 5.3"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L)"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'mocha' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": -30,
+          "why": "dev-only dependency, not shipped to production (devDependency: not installed in production)"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'mocha' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "dev-tooling",
+        "production": false,
+        "detail": "devDependency: not installed in production"
+      },
+      "production": false,
+      "fix": {
+        "fixed_versions": [
+          "4.2.0"
+        ],
+        "available": true,
+        "introduced_via": [
+          "mocha@8.4.0"
+        ],
+        "cvss_score": 5.3,
+        "cwe": [
+          "CWE-407"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "mocha@8.4.0",
+          "js-yaml@4.0.0"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-acfcf230f1",
+      "title": "Known vulnerability in js-yaml@4.0.0: js-yaml has prototype pollution in merge (<<)",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/js-yaml@4.0.0",
+        "name": "js-yaml",
+        "version": "4.0.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "dev"
+      },
+      "score": 18,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 53,
+          "why": "CVSS 5.3"
+        },
+        {
+          "factor": "exploitability",
+          "points": 5,
+          "why": "remotely exploitable without credentials or user action (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N)"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'mocha' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": -30,
+          "why": "dev-only dependency, not shipped to production (devDependency: not installed in production)"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'mocha' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "dev-tooling",
+        "production": false,
+        "detail": "devDependency: not installed in production"
+      },
+      "production": false,
+      "fix": {
+        "fixed_versions": [
+          "4.1.1"
+        ],
+        "available": true,
+        "introduced_via": [
+          "mocha@8.4.0"
+        ],
+        "cvss_score": 5.3,
+        "cwe": [
+          "CWE-1321"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "mocha@8.4.0",
+          "js-yaml@4.0.0"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-aef1f39854",
+      "title": "New transitive dependency: flatmap-stream@0.1.1",
+      "category": "unexpected-dependency",
+      "rule": "CHANGE-NEW-PACKAGE",
+      "severity": "info",
+      "component": {
+        "id": "pkg:npm/flatmap-stream@0.1.1",
+        "name": "flatmap-stream",
+        "version": "0.1.1",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 10,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 5,
+          "why": "detector severity 'info'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "executes at install time on developer and CI machines (scope does not reduce this)"
+        }
+      ],
+      "confidence": {
+        "value": 0.8,
+        "label": "high",
+        "reasons": [
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'event-stream' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "introduced_via": [
+          "event-stream@3.3.6"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "event-stream@3.3.6",
+          "flatmap-stream@0.1.1"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-1d01f76d70",
+      "title": "New transitive dependency: ua-parser-js@0.7.29",
+      "category": "unexpected-dependency",
+      "rule": "CHANGE-NEW-PACKAGE",
+      "severity": "info",
+      "component": {
+        "id": "pkg:npm/ua-parser-js@0.7.29",
+        "name": "ua-parser-js",
+        "version": "0.7.29",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "prod"
+      },
+      "score": 10,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 5,
+          "why": "detector severity 'info'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "executes at install time on developer and CI machines (scope does not reduce this)"
+        }
+      ],
+      "confidence": {
+        "value": 0.9,
+        "label": "high",
+        "reasons": [
+          "verified advisory + exact version + reachability evidence"
+        ]
+      },
+      "reachability": {
+        "level": "orphan",
+        "detail": "no dependency path from the application",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": {
+        "introduced_via": []
+      },
+      "dependency_paths": [],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-72d6b0c46f",
+      "title": "event-stream changed: 3.3.4 -> 3.3.6",
+      "category": "unexpected-dependency",
+      "rule": "CHANGE-VERSION",
+      "severity": "info",
+      "component": {
+        "id": "pkg:npm/event-stream@3.3.6",
+        "name": "event-stream",
+        "version": "3.3.6",
+        "ecosystem": "npm",
+        "direct": true,
+        "scope": "prod"
+      },
+      "score": 10,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 5,
+          "why": "detector severity 'info'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "executes at install time on developer and CI machines (scope does not reduce this)"
+        }
+      ],
+      "confidence": {
+        "value": 0.8,
+        "label": "high",
+        "reasons": [
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'event-stream' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "server",
+        "production": true,
+        "detail": "runs in the server process"
+      },
+      "production": true,
+      "fix": null,
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "event-stream@3.3.6"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-6bf1cce81c",
+      "title": "fsevents@2.3.3 runs a standard native-build install script",
+      "category": "install-script",
+      "rule": "INSTALL-SCRIPT",
+      "severity": "info",
+      "component": {
+        "id": "pkg:npm/fsevents@2.3.3",
+        "name": "fsevents",
+        "version": "2.3.3",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "dev"
+      },
+      "score": 10,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 5,
+          "why": "detector severity 'info'"
+        },
+        {
+          "factor": "exposure",
+          "points": 5,
+          "why": "executes at install time on developer and CI machines (scope does not reduce this)"
+        }
+      ],
+      "confidence": {
+        "value": 0.8,
+        "label": "high",
+        "reasons": [
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'mocha' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "dev-tooling",
+        "production": false,
+        "detail": "devDependency: not installed in production"
+      },
+      "production": false,
+      "fix": {
+        "suggestion": "install with --ignore-scripts and allowlist required builds; pin version"
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "mocha@8.4.0",
+          "chokidar@3.5.1",
+          "fsevents@2.3.3"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-a93a3b77dd",
+      "title": "Known vulnerability in nanoid@3.1.20: Exposure of Sensitive Information to an Unauthorized Actor in nanoid",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/nanoid@3.1.20",
+        "name": "nanoid",
+        "version": "3.1.20",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "dev"
+      },
+      "score": 5,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 55,
+          "why": "CVSS 5.5"
+        },
+        {
+          "factor": "exploitability",
+          "points": -10,
+          "why": "needs local/physical access (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N)"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'mocha' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": -30,
+          "why": "dev-only dependency, not shipped to production (devDependency: not installed in production)"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'mocha' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "dev-tooling",
+        "production": false,
+        "detail": "devDependency: not installed in production"
+      },
+      "production": false,
+      "fix": {
+        "fixed_versions": [
+          "3.1.31"
+        ],
+        "available": true,
+        "introduced_via": [
+          "mocha@8.4.0"
+        ],
+        "cvss_score": 5.5,
+        "cwe": [
+          "CWE-200",
+          "CWE-704"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "mocha@8.4.0",
+          "nanoid@3.1.20"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-ab191ff106",
+      "title": "Known vulnerability in nanoid@3.1.20: Predictable results in nanoid generation when given non-integer values",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "medium",
+      "component": {
+        "id": "pkg:npm/nanoid@3.1.20",
+        "name": "nanoid",
+        "version": "3.1.20",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "dev"
+      },
+      "score": 3,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 43,
+          "why": "CVSS 4.3"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'mocha' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": -30,
+          "why": "dev-only dependency, not shipped to production (devDependency: not installed in production)"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'mocha' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "dev-tooling",
+        "production": false,
+        "detail": "devDependency: not installed in production"
+      },
+      "production": false,
+      "fix": {
+        "fixed_versions": [
+          "3.3.8"
+        ],
+        "available": true,
+        "introduced_via": [
+          "mocha@8.4.0"
+        ],
+        "cvss_score": 4.3,
+        "cwe": [
+          "CWE-835"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "mocha@8.4.0",
+          "nanoid@3.1.20"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-b9d736681d",
+      "title": "Known vulnerability in diff@5.0.0: jsdiff has a Denial of Service vulnerability in parsePatch and applyPatch",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "low",
+      "component": {
+        "id": "pkg:npm/diff@5.0.0",
+        "name": "diff",
+        "version": "5.0.0",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "dev"
+      },
+      "score": 0,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 20,
+          "why": "detector severity 'low'"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'mocha' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": -30,
+          "why": "dev-only dependency, not shipped to production (devDependency: not installed in production)"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'mocha' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "dev-tooling",
+        "production": false,
+        "detail": "devDependency: not installed in production"
+      },
+      "production": false,
+      "fix": {
+        "fixed_versions": [
+          "5.2.2"
+        ],
+        "available": true,
+        "introduced_via": [
+          "mocha@8.4.0"
+        ],
+        "cvss_score": null,
+        "cwe": [
+          "CWE-400",
+          "CWE-1333"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "mocha@8.4.0",
+          "diff@5.0.0"
+        ]
+      ],
+      "ai": null
+    },
+    {
+      "finding_id": "GRD-fefc70206b",
+      "title": "Known vulnerability in serialize-javascript@5.0.1: Serialize JavaScript: Cross-site scripting (XSS) via unescaped </script at the end of a serialized function body",
+      "category": "vulnerability",
+      "rule": "VULN-KNOWN",
+      "severity": "low",
+      "component": {
+        "id": "pkg:npm/serialize-javascript@5.0.1",
+        "name": "serialize-javascript",
+        "version": "5.0.1",
+        "ecosystem": "npm",
+        "direct": false,
+        "scope": "dev"
+      },
+      "score": 0,
+      "priority": "P4-low",
+      "factors": [
+        {
+          "factor": "severity",
+          "points": 20,
+          "why": "detector severity 'low'"
+        },
+        {
+          "factor": "reachability",
+          "points": -10,
+          "why": "no import found (weak evidence: may be loaded dynamically or via CLI): 'mocha' not imported but referenced in package.json (CLI / config use)"
+        },
+        {
+          "factor": "exposure",
+          "points": -30,
+          "why": "dev-only dependency, not shipped to production (devDependency: not installed in production)"
+        }
+      ],
+      "confidence": {
+        "value": 0.75,
+        "label": "medium",
+        "reasons": [
+          "version match only; vulnerable function use not proven",
+          "reachability unknown"
+        ]
+      },
+      "reachability": {
+        "level": "unknown",
+        "detail": "'mocha' not imported but referenced in package.json (CLI / config use)",
+        "files": []
+      },
+      "exposure": {
+        "context": "dev-tooling",
+        "production": false,
+        "detail": "devDependency: not installed in production"
+      },
+      "production": false,
+      "fix": {
+        "fixed_versions": [
+          "7.1.3"
+        ],
+        "available": true,
+        "introduced_via": [
+          "mocha@8.4.0"
+        ],
+        "cvss_score": null,
+        "cwe": [
+          "CWE-79"
+        ]
+      },
+      "dependency_paths": [
+        [
+          "shop-api@1.4.0",
+          "mocha@8.4.0",
+          "serialize-javascript@5.0.1"
+        ]
+      ],
+      "ai": null
+    }
+  ]
+}

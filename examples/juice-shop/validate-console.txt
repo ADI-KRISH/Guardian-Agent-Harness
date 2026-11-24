@@ -1,0 +1,7 @@
+[validate] VERIFIED  branch guardian/fix-20261124045421 (1461c892d4)
+  R1 upgrade-parent: 2/2 resolved -> VERIFIED (confidence high)
+  R15 pin: 1/1 resolved -> VERIFIED (confidence medium)
+  build after: ok; tests before [{'cmd': 'npm run test:server', 'exit': 0, 'pass': 410, 'fail': 0, 'skipped': 2, 'total': 412}, {'cmd': 'npm run test:api', 'exit': 1, 'pass': 573, 'fail': 7, 'skipped': 6, 'total': 586}] after [{'cmd': 'npm run test:server', 'exit': 0, 'pass': 412, 'fail': 0, 'skipped': 2, 'total': 414}, {'cmd': 'npm run test:api', 'exit': 1, 'pass': 573, 'fail': 7, 'skipped': 6, 'total': 586}]
+  production risk 4628 -> 4428; P1 26 -> 24; new findings 0 (0 high/critical)
+  report: /home/claude/runs/juice-shop/guardian-report.html
+exit 0

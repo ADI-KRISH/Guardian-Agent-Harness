@@ -1,0 +1,288 @@
+{
+  "schema": "guardian.validation/v1",
+  "run_id": "20261124045421",
+  "branch": "guardian/fix-20261124045421",
+  "commit": "1461c892d440b957852e821b7c0db9da0280d5a1",
+  "workspace": "/home/claude/runs/juice-shop/work/after",
+  "overall": "VERIFIED",
+  "items": [
+    {
+      "item_id": "R1",
+      "option": "R1.a",
+      "action": "upgrade-parent",
+      "description": "Upgrade direct dependency pdfkit 0.11.0 -> 0.12.2 (major); pdfkit@0.12.2 requires crypto-js ^4.0.0, which admits a fixed version",
+      "approved_by": "TEST-RUN by Claude (not a real human approval)",
+      "approval_reason": "critical crypto-js weakness reachable via pdfkit (routes/order.ts); upgrade parent pdfkit 0.11 -> 0.12",
+      "findings_targeted": [
+        "GRD-2d0d24aad6",
+        "GRD-5ab3d5bccb"
+      ],
+      "resolved": [
+        "GRD-2d0d24aad6",
+        "GRD-5ab3d5bccb"
+      ],
+      "still_present": [],
+      "score_before": 200,
+      "test_coverage": {
+        "pdfkit": {
+          "imported_by": [
+            "routes/order.ts"
+          ],
+          "tests_exercising_importers": [
+            "test/cypress/e2e/b2bOrder.spec.ts",
+            "test/server/order.unit.test.ts"
+          ]
+        }
+      },
+      "verdict": "VERIFIED",
+      "confidence": "high"
+    },
+    {
+      "item_id": "R15",
+      "option": "R15.a",
+      "action": "pin",
+      "description": "Pin calibreapp/image-actions to commit cfe6ba91a2f0 (what 'main' resolves to today)",
+      "approved_by": "TEST-RUN by Claude (not a real human approval)",
+      "approval_reason": "pin third-party action to the commit it runs today; no behaviour change",
+      "findings_targeted": [
+        "GRD-46b77d7f63"
+      ],
+      "resolved": [
+        "GRD-46b77d7f63"
+      ],
+      "still_present": [],
+      "score_before": 75,
+      "test_coverage": {},
+      "verdict": "VERIFIED",
+      "confidence": "medium"
+    }
+  ],
+  "apply_log": [
+    {
+      "change": {
+        "type": "package-json",
+        "subproject": "",
+        "op": "set-dep",
+        "name": "pdfkit",
+        "value": "^0.12.2",
+        "section": "dependencies",
+        "applied_value": "^0.12.2"
+      },
+      "result": "edited package.json"
+    },
+    {
+      "change": {
+        "type": "text-replace",
+        "file": ".github/workflows/image_actions.yml",
+        "line": 33,
+        "old": "calibreapp/image-actions@main",
+        "new": "calibreapp/image-actions@cfe6ba91a2f0e9046d44e2088d002378daeb4a9c # main"
+      },
+      "result": "replaced"
+    },
+    {
+      "lockfile": ".",
+      "op": "regenerate",
+      "cmd": "npm install --package-lock-only --ignore-scripts --no-audit --no-fund --legacy-peer-deps",
+      "exit": 0,
+      "seconds": 0.7
+    }
+  ],
+  "manifest_diff": "diff --git a/.github/workflows/image_actions.yml b/.github/workflows/image_actions.yml\nindex 64e3374..af20390 100644\n--- a/.github/workflows/image_actions.yml\n+++ b/.github/workflows/image_actions.yml\n@@ -30,7 +30,7 @@ jobs:\n         uses: actions/checkout@v6\n       - name: Compress Images\n         id: calibre\n-        uses: calibreapp/image-actions@main\n+        uses: calibreapp/image-actions@cfe6ba91a2f0e9046d44e2088d002378daeb4a9c # main\n         with:\n           githubToken: ${{ secrets.GITHUB_TOKEN }}\n           ignorePaths: '**/3d_keychain.jpg,**/favorite-hiking-place.png,**/5.png'\ndiff --git a/package.json b/package.json\nindex cd78114..1412b18 100644\n--- a/package.json\n+++ b/package.json\n@@ -128,7 +128,7 @@\n     \"multer\": \"^2.4.0\",\n     \"notevil\": \"^1.3.3\",\n     \"otplib\": \"^13.4.0\",\n-    \"pdfkit\": \"^0.11.0\",\n+    \"pdfkit\": \"^0.12.2\",\n     \"prom-client\": \"^15.1.3\",\n     \"proxy-agent\": \"^8.0.2\",\n     \"pug\": \"^3.0.3\",\n",
+  "files_changed": ".github/workflows/image_actions.yml |  2 +-\n package-lock.json                   | 18 +++++++++---------\n package.json                        |  2 +-\n 3 files changed, 11 insertions(+), 11 deletions(-)",
+  "build_test": {
+    "before": {
+      "workspace": "before (baseline)",
+      "steps": [
+        {
+          "cmd": "npm ci --ignore-scripts --no-audit --no-fund --legacy-peer-deps",
+          "exit": 0,
+          "seconds": 13.5,
+          "tail": "\nadded 1223 packages in 13s\nnpm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.\nnpm warn deprecated dottie@2.0.7: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.\nnpm warn deprecated @npmcli/move-file@1.1.2: This functionality has been moved to @npmcli/fs\nnpm warn deprecated npmlog@6.0.2: This package is no longer supported.\nnpm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported\nnpm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me\nnpm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me\nnpm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me\nnpm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me\nnpm warn deprecated jws@0.2.6: Security update: Versions below 3.0.0 are deprecated.\nnpm warn deprecated prebuild-install@7.1.3: No longer maintained. Please contact the author of the relevant native addon; alternatives are available.\nnpm warn deprecated are-we-there-yet@3.0.1: This package is no longer supported.\nnpm warn deprecated jsonwebtoken@0.1.0: Critical vulnerability fix in v5.0.0. See https://auth0.com/blog/2015/03/31/critical-vulnerabilities-in-json-web-token-libraries/\nnpm warn deprecated jsonwebtoken@0.4.0: Critical vulnerability fix in v5.0.0. See https://auth0.com/blog/2015/03/31/critical-vulnerabilities-in-json-web-token-libraries/\nnpm warn deprecated notevil@1.3.3: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.\nnpm warn deprecated messageformat@2.3.0: Package renamed as '@messageformat/core', see messageformat.github.io for more details. 'messageformat@4' will eventually provide a polyfill for Intl.MessageFormat, once it's been defined by Unicode & ECMA.\nnpm warn deprecated gauge@4.0.4: This package is no longer supported.\nnpm warn deprecated crypto-js@3.3.0: Active development of CryptoJS has been discontinued. This library is no longer maintained.\nnpm warn deprecated tar@6.2.1: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me\nnpm warn deprecated prom-client@15.1.3: prom-client has been replaced by @prometheus-io/client\nnpm warn deprecated uuid@8.3.2: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).\nnpm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me\nnpm warn deprecated eslint@9.39.5: This version is no longer supported. Please see https://eslint.org/version-support for other options.\n",
+          "step": "setup"
+        },
+        {
+          "cmd": "npm rebuild sqlite3",
+          "exit": 0,
+          "seconds": 0.5,
+          "tail": "rebuilt dependencies successfully\n",
+          "step": "setup"
+        },
+        {
+          "cmd": "cd frontend && npm ci --ignore-scripts --legacy-peer-deps --no-audit --no-fund && python3 /home/claude/guardian/tools/sandbox_no_font_inline.py . && NODE_OPTIONS=--max-old-space-size=4096 npx ng build --configuration production",
+          "exit": 0,
+          "seconds": 26.4,
+          "tail": "\nadded 719 packages in 11s\nfont inlining disabled in angular.json\n\u276f Building...\n\u2714 Building...\nInitial chunk files                         | Names                           |  Raw size | Estimated transfer size\nmain.js                                     | main                            |   1.81 MB |               364.51 kB\nstyles.css                                  | styles                          | 157.56 kB |                17.24 kB\npolyfills.js                                | polyfills                       |  34.59 kB |                11.33 kB\nscripts.js                                  | scripts                         |  20.70 kB |                 6.09 kB\nrolldown-runtime-kqx1xuJ_.js                | -                               | 262 bytes |               262 bytes\n\n                                            | Initial total                   |   2.02 MB |               399.44 kB\n\nLazy chunk files                            | Names                           |  Raw size | Estimated transfer size\nchunk-C8KaBQ9q.js                           | -                               | 523.27 kB |               150.44 kB\nchunk-DxuNjxxc.js                           | -                               | 481.85 kB |               133.17 kB\nrecycle.component-UQIZPNo3.js               | recycle-component               | 100.26 kB |                19.34 kB\nabout.component-RKHa5ksj.js                 | about-component                 |  90.67 kB |                19.31 kB\ncoding-challenge-page.component-Bu9WlS-T.js | coding-challenge-page-component |  45.04 kB |                13.36 kB\nhacking-instructor-3d8D0QRK.js              | index                           |  36.65 kB |                 9.24 kB\nweb3-sandbox.module-KswlfCS8.js             | web3-sandbox-module             |  17.58 kB |                 5.56 kB\nfaucet.module-CroZ1uiQ.js                   | faucet-module                   |  12.44 kB |                 3.91 kB\nconfetti-DN5d5KdC.js                        | index                           |  11.23 kB |                 4.10 kB\nchunk-6hZgLGBt.js                           | -                               |   9.28 kB |               869 bytes\nwallet-web3.module-Cc-Ufemo.js              | wallet-web3-module              |   7.42 kB |                 2.76 kB\n\nApplication bundle generation complete. [14.097 seconds] - 2026-11-24T04:55:03.276Z\n\nOutput location: /home/claude/runs/juice-shop/work/before/frontend/dist/frontend\n\nnpm warn deprecated @stylistic/stylelint-plugin@3.1.3: Please upgrade to v5 or later.\nnpm warn deprecated eslint@9.39.5: This version is no longer supported. Please see https://eslint.org/version-support for other options.\n",
+          "step": "before_setup"
+        },
+        {
+          "cmd": "npm run build:server",
+          "exit": 0,
+          "seconds": 5.0,
+          "tail": "\n> juice-shop@20.4.0-SNAPSHOT build:server\n> tsc\n\n",
+          "step": "build"
+        },
+        {
+          "cmd": "npm run test:server",
+          "exit": 0,
+          "seconds": 15.0,
+          "tail": "allenge\" is solved when forged token HMAC-signed with public RSA-key has string \"rsa_lord@\" in the payload\n          ---\n          duration_ms: 0.413368\n          type: 'test'\n          ...\n        # Subtest: \"jwtForgedChallenge\" is not solved when token regularly signed with private RSA-key has email rsa_lord@juice-sh.op in the payload\n        ok 6 - \"jwtForgedChallenge\" is not solved when token regularly signed with private RSA-key has email rsa_lord@juice-sh.op in the payload\n          ---\n          duration_ms: 1.044803\n          type: 'test'\n          ...\n        # Subtest: \"iacLeakedKeyChallenge\" is solved when RS256-signed token has email cloud-admin@juice-sh.op in the payload\n        ok 7 - \"iacLeakedKeyChallenge\" is solved when RS256-signed token has email cloud-admin@juice-sh.op in the payload\n          ---\n          duration_ms: 1.060722\n          type: 'test'\n          ...\n        # Subtest: \"iacLeakedKeyChallenge\" is solved when RS256-signed token has string \"cloud-admin@\" in the payload\n        ok 8 - \"iacLeakedKeyChallenge\" is solved when RS256-signed token has string \"cloud-admin@\" in the payload\n          ---\n          duration_ms: 0.872616\n          type: 'test'\n          ...\n        # Subtest: \"iacLeakedKeyChallenge\" is not solved when token has wrong email\n        ok 9 - \"iacLeakedKeyChallenge\" is not solved when token has wrong email\n          ---\n          duration_ms: 0.947351\n          type: 'test'\n          ...\n        1..9\n    ok 5 - jwtChallenges\n      ---\n      duration_ms: 9.755902\n      type: 'suite'\n      ...\n# Subtest: web3Wallet\n    # Subtest: creates event listener on first call and returns 200\n    ok 1 - creates event listener on first call and returns 200\n      ---\n      duration_ms: 142.550414\n      type: 'test'\n      ...\n    # Subtest: returns 200 when event listener is already created\n    ok 2 - returns 200 when event listener is already created\n      ---\n      duration_ms: 0.191155\n      type: 'test'\n      ...\n    # Subtest: returns 500 when an unexpected error occurs\n    ok 3 - returns 500 when an unexpected error occurs\n      ---\n      duration_ms: 0.209726\n      type: 'test'\n      ...\n    1..3\nok 38 - web3Wallet\n  ---\n  duration_ms: 143.62615\n  type: 'suite'\n  ...\n# Subtest: webhook\n    # Subtest: notify\n        # Subtest: ignores errors where no webhook URL is provided via environment variable\n        ok 1 - ignores errors where no webhook URL is provided via environment variable\n          ---\n          duration_ms: 0.494169\n          type: 'test'\n          ...\n        # Subtest: fails when supplied webhook is not a valid URL\n        ok 2 - fails when supplied webhook is not a valid URL\n          ---\n          duration_ms: 10.125739\n          type: 'test'\n          ...\n        # Subtest: submits POST with payload to existing URL\n        ok 3 - submits POST with payload to existing URL\n          ---\n          duration_ms: 19.82819\n          type: 'test'\n          ...\n        1..3\n    ok 1 - notify\n      ---\n      duration_ms: 31.036236\n      type: 'suite'\n      ...\n    1..1\nok 39 - webhook\n  ---\n  duration_ms: 31.254346\n  type: 'suite'\n  ...\n# Subtest: xml\n    # Subtest: should parse a simple XML string\n    ok 1 - should parse a simple XML string\n      ---\n      duration_ms: 274.408965\n      type: 'test'\n      ...\n    # Subtest: should expand internal entities\n    ok 2 - should expand internal entities\n      ---\n      duration_ms: 1.491923\n      type: 'test'\n      ...\n    # Subtest: should throw error on malformed XML\n    ok 3 - should throw error on malformed XML\n      ---\n      duration_ms: 3.098511\n      type: 'test'\n      ...\n    # Subtest: should timeout on entity expansion bomb\n    ok 4 - should timeout on entity expansion bomb\n      ---\n      duration_ms: 1.654891\n      type: 'test'\n      ...\n    1..4\nok 40 - xml\n  ---\n  duration_ms: 281.367466\n  type: 'suite'\n  ...\n1..40\n# tests 412\n# suites 126\n# pass 410\n# fail 0\n# cancelled 0\n# skipped 2\n# todo 0\n# duration_ms 14889.780523\n",
+          "step": "test",
+          "summary": {
+            "pass": 410,
+            "fail": 0,
+            "skipped": 2,
+            "total": 412
+          }
+        },
+        {
+          "cmd": "npm run test:api",
+          "exit": 1,
+          "seconds": 106.7,
+          "tail": "eval for challenge without code snippet throws error\n      ---\n      duration_ms: 23.1104\n      type: 'test'\n      ...\n    # Subtest: GET code snippet retrieval for challenge with code snippet\n    ok 3 - GET code snippet retrieval for challenge with code snippet\n      ---\n      duration_ms: 14.59065\n      type: 'test'\n      ...\n    1..3\nok 100 - /snippets/:challenge\n  ---\n  duration_ms: 654.116031\n  type: 'suite'\n  ...\n# Subtest: snippets/verdict\n    # Subtest: should check for the incorrect lines\n    ok 1 - should check for the incorrect lines\n      ---\n      duration_ms: 45.743787\n      type: 'test'\n      ...\n    # Subtest: should check for the correct lines\n    ok 2 - should check for the correct lines\n      ---\n      duration_ms: 60.6002\n      type: 'test'\n      ...\n    # Subtest: POST with unknown challenge key returns 404\n    ok 3 - POST with unknown challenge key returns 404\n      ---\n      duration_ms: 29.521668\n      type: 'test'\n      ...\n    # Subtest: POST without selectedLines returns false verdict\n    ok 4 - POST without selectedLines returns false verdict\n      ---\n      duration_ms: 28.5773\n      type: 'test'\n      ...\n    # Subtest: POST with empty selectedLines array returns false verdict\n    ok 5 - POST with empty selectedLines array returns false verdict\n      ---\n      duration_ms: 19.09143\n      type: 'test'\n      ...\n    1..5\nok 101 - snippets/verdict\n  ---\n  duration_ms: 184.046022\n  type: 'suite'\n  ...\n# Subtest: snippets/verdict (hint progression for loginAdminChallenge)\n    # Subtest: returns no hint on the first wrong attempt\n    ok 1 - returns no hint on the first wrong attempt\n      ---\n      duration_ms: 10.156722\n      type: 'test'\n      ...\n    # Subtest: returns the first hint text on the second wrong attempt\n    ok 2 - returns the first hint text on the second wrong attempt\n      ---\n      duration_ms: 8.443311\n      type: 'test'\n      ...\n    # Subtest: returns a line-number hint after all text hints are exhausted\n    ok 3 - returns a line-number hint after all text hints are exhausted\n      ---\n      duration_ms: 30.56638\n      type: 'test'\n      ...\n    1..3\nok 102 - snippets/verdict (hint progression for loginAdminChallenge)\n  ---\n  duration_ms: 49.405327\n  type: 'suite'\n  ...\n# Subtest: /api/Wallets\n    # Subtest: GET wallet is forbidden via public API\n    ok 1 - GET wallet is forbidden via public API\n      ---\n      duration_ms: 17.252838\n      type: 'test'\n      ...\n    # Subtest: GET wallet retrieves wallet amount of requesting user\n    ok 2 - GET wallet retrieves wallet amount of requesting user\n      ---\n      duration_ms: 27.461521\n      type: 'test'\n      ...\n    # Subtest: PUT wallet is forbidden via public API\n    ok 3 - PUT wallet is forbidden via public API\n      ---\n      duration_ms: 7.952556\n      type: 'test'\n      ...\n    # Subtest: PUT charge wallet from credit card of requesting user\n    ok 4 - PUT charge wallet from credit card of requesting user\n      ---\n      duration_ms: 38.80951\n      type: 'test'\n      ...\n    # Subtest: PUT charge wallet from foreign credit card is forbidden\n    ok 5 - PUT charge wallet from foreign credit card is forbidden\n      ---\n      duration_ms: 16.417408\n      type: 'test'\n      ...\n    # Subtest: PUT charge wallet without credit card is forbidden\n    ok 6 - PUT charge wallet without credit card is forbidden\n      ---\n      duration_ms: 11.329892\n      type: 'test'\n      ...\n    # Subtest: GET wallet balance for user without a wallet returns 404\n    ok 7 - GET wallet balance for user without a wallet returns 404\n      ---\n      duration_ms: 64.626166\n      type: 'test'\n      ...\n    1..7\nok 103 - /api/Wallets\n  ---\n  duration_ms: 719.277324\n  type: 'suite'\n  ...\n# Subtest: /rest/web3/walletExploitAddress\nok 104 - /rest/web3/walletExploitAddress # SKIP ALCHEMY_API_KEY not set\n  ---\n  duration_ms: 0.31494\n  type: 'suite'\n  ...\n1..104\n# tests 586\n# suites 120\n# pass 573\n# fail 7\n# cancelled 0\n# skipped 6\n# todo 0\n# duration_ms 106611.35612\n",
+          "step": "test",
+          "summary": {
+            "pass": 573,
+            "fail": 7,
+            "skipped": 6,
+            "total": 586
+          }
+        }
+      ],
+      "build_ok": true,
+      "tests": [
+        {
+          "cmd": "npm run test:server",
+          "exit": 0,
+          "pass": 410,
+          "fail": 0,
+          "skipped": 2,
+          "total": 412
+        },
+        {
+          "cmd": "npm run test:api",
+          "exit": 1,
+          "pass": 573,
+          "fail": 7,
+          "skipped": 6,
+          "total": 586
+        }
+      ]
+    },
+    "after": {
+      "workspace": "after (fix branch)",
+      "steps": [
+        {
+          "cmd": "npm ci --ignore-scripts --no-audit --no-fund --legacy-peer-deps",
+          "exit": 0,
+          "seconds": 12.9,
+          "tail": "\nadded 1223 packages in 13s\nnpm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.\nnpm warn deprecated dottie@2.0.7: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.\nnpm warn deprecated @npmcli/move-file@1.1.2: This functionality has been moved to @npmcli/fs\nnpm warn deprecated npmlog@6.0.2: This package is no longer supported.\nnpm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported\nnpm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me\nnpm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me\nnpm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me\nnpm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me\nnpm warn deprecated jws@0.2.6: Security update: Versions below 3.0.0 are deprecated.\nnpm warn deprecated prebuild-install@7.1.3: No longer maintained. Please contact the author of the relevant native addon; alternatives are available.\nnpm warn deprecated are-we-there-yet@3.0.1: This package is no longer supported.\nnpm warn deprecated jsonwebtoken@0.1.0: Critical vulnerability fix in v5.0.0. See https://auth0.com/blog/2015/03/31/critical-vulnerabilities-in-json-web-token-libraries/\nnpm warn deprecated jsonwebtoken@0.4.0: Critical vulnerability fix in v5.0.0. See https://auth0.com/blog/2015/03/31/critical-vulnerabilities-in-json-web-token-libraries/\nnpm warn deprecated notevil@1.3.3: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.\nnpm warn deprecated messageformat@2.3.0: Package renamed as '@messageformat/core', see messageformat.github.io for more details. 'messageformat@4' will eventually provide a polyfill for Intl.MessageFormat, once it's been defined by Unicode & ECMA.\nnpm warn deprecated gauge@4.0.4: This package is no longer supported.\nnpm warn deprecated tar@6.2.1: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me\nnpm warn deprecated crypto-js@4.2.0: Active development of CryptoJS has been discontinued. This library is no longer maintained.\nnpm warn deprecated prom-client@15.1.3: prom-client has been replaced by @prometheus-io/client\nnpm warn deprecated uuid@8.3.2: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).\nnpm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me\nnpm warn deprecated eslint@9.39.5: This version is no longer supported. Please see https://eslint.org/version-support for other options.\n",
+          "step": "setup"
+        },
+        {
+          "cmd": "npm rebuild sqlite3",
+          "exit": 0,
+          "seconds": 0.5,
+          "tail": "rebuilt dependencies successfully\n",
+          "step": "setup"
+        },
+        {
+          "cmd": "npm run build:server",
+          "exit": 0,
+          "seconds": 5.9,
+          "tail": "\n> juice-shop@20.4.0-SNAPSHOT build:server\n> tsc\n\n",
+          "step": "build"
+        },
+        {
+          "cmd": "npm run test:server",
+          "exit": 0,
+          "seconds": 15.4,
+          "tail": "ge\" is solved when RS256-signed token has email cloud-admin@juice-sh.op in the payload\n        ok 7 - \"iacLeakedKeyChallenge\" is solved when RS256-signed token has email cloud-admin@juice-sh.op in the payload\n          ---\n          duration_ms: 0.87562\n          type: 'test'\n          ...\n        # Subtest: \"iacLeakedKeyChallenge\" is solved when RS256-signed token has string \"cloud-admin@\" in the payload\n        ok 8 - \"iacLeakedKeyChallenge\" is solved when RS256-signed token has string \"cloud-admin@\" in the payload\n          ---\n          duration_ms: 0.734559\n          type: 'test'\n          ...\n        # Subtest: \"iacLeakedKeyChallenge\" is not solved when token has wrong email\n        ok 9 - \"iacLeakedKeyChallenge\" is not solved when token has wrong email\n          ---\n          duration_ms: 0.763759\n          type: 'test'\n          ...\n        1..9\n    ok 5 - jwtChallenges\n      ---\n      duration_ms: 8.054578\n      type: 'suite'\n      ...\n    # Subtest: checkSystemPromptSimilarity\n        # Subtest: should return true if similarity is above threshold\n        ok 1 - should return true if similarity is above threshold\n          ---\n          duration_ms: 0.207806\n          type: 'test'\n          ...\n        # Subtest: should return false if similarity is below threshold\n        ok 2 - should return false if similarity is below threshold\n          ---\n          duration_ms: 0.084625\n          type: 'test'\n          ...\n        1..2\n    ok 6 - checkSystemPromptSimilarity\n      ---\n      duration_ms: 0.344382\n      type: 'suite'\n      ...\n# Subtest: web3Wallet\n    # Subtest: creates event listener on first call and returns 200\n    ok 1 - creates event listener on first call and returns 200\n      ---\n      duration_ms: 130.521561\n      type: 'test'\n      ...\n    # Subtest: returns 200 when event listener is already created\n    ok 2 - returns 200 when event listener is already created\n      ---\n      duration_ms: 0.158401\n      type: 'test'\n      ...\n    # Subtest: returns 500 when an unexpected error occurs\n    ok 3 - returns 500 when an unexpected error occurs\n      ---\n      duration_ms: 0.195719\n      type: 'test'\n      ...\n    1..3\nok 39 - web3Wallet\n  ---\n  duration_ms: 131.438114\n  type: 'suite'\n  ...\n# Subtest: webhook\n    # Subtest: notify\n        # Subtest: ignores errors where no webhook URL is provided via environment variable\n        ok 1 - ignores errors where no webhook URL is provided via environment variable\n          ---\n          duration_ms: 0.527492\n          type: 'test'\n          ...\n        # Subtest: fails when supplied webhook is not a valid URL\n        ok 2 - fails when supplied webhook is not a valid URL\n          ---\n          duration_ms: 11.422594\n          type: 'test'\n          ...\n        # Subtest: submits POST with payload to existing URL\n        ok 3 - submits POST with payload to existing URL\n          ---\n          duration_ms: 22.804391\n          type: 'test'\n          ...\n        1..3\n    ok 1 - notify\n      ---\n      duration_ms: 35.44804\n      type: 'suite'\n      ...\n    1..1\nok 40 - webhook\n  ---\n  duration_ms: 35.70767\n  type: 'suite'\n  ...\n# Subtest: xml\n    # Subtest: should parse a simple XML string\n    ok 1 - should parse a simple XML string\n      ---\n      duration_ms: 354.245431\n      type: 'test'\n      ...\n    # Subtest: should expand internal entities\n    ok 2 - should expand internal entities\n      ---\n      duration_ms: 1.660254\n      type: 'test'\n      ...\n    # Subtest: should throw error on malformed XML\n    ok 3 - should throw error on malformed XML\n      ---\n      duration_ms: 3.299479\n      type: 'test'\n      ...\n    # Subtest: should timeout on entity expansion bomb\n    ok 4 - should timeout on entity expansion bomb\n      ---\n      duration_ms: 1.564499\n      type: 'test'\n      ...\n    1..4\nok 41 - xml\n  ---\n  duration_ms: 361.471832\n  type: 'suite'\n  ...\n1..41\n# tests 414\n# suites 126\n# pass 412\n# fail 0\n# cancelled 0\n# skipped 2\n# todo 0\n# duration_ms 15303.039561\n",
+          "step": "test",
+          "summary": {
+            "pass": 412,
+            "fail": 0,
+            "skipped": 2,
+            "total": 414
+          }
+        },
+        {
+          "cmd": "npm run test:api",
+          "exit": 1,
+          "seconds": 102.8,
+          "tail": "allenge without code snippet throws error\n      ---\n      duration_ms: 12.380356\n      type: 'test'\n      ...\n    # Subtest: GET code snippet retrieval for challenge with code snippet\n    ok 3 - GET code snippet retrieval for challenge with code snippet\n      ---\n      duration_ms: 23.760308\n      type: 'test'\n      ...\n    1..3\nok 100 - /snippets/:challenge\n  ---\n  duration_ms: 633.68809\n  type: 'suite'\n  ...\n# Subtest: snippets/verdict\n    # Subtest: should check for the incorrect lines\n    ok 1 - should check for the incorrect lines\n      ---\n      duration_ms: 54.099592\n      type: 'test'\n      ...\n    # Subtest: should check for the correct lines\n    ok 2 - should check for the correct lines\n      ---\n      duration_ms: 58.798062\n      type: 'test'\n      ...\n    # Subtest: POST with unknown challenge key returns 404\n    ok 3 - POST with unknown challenge key returns 404\n      ---\n      duration_ms: 35.364238\n      type: 'test'\n      ...\n    # Subtest: POST without selectedLines returns false verdict\n    ok 4 - POST without selectedLines returns false verdict\n      ---\n      duration_ms: 21.015391\n      type: 'test'\n      ...\n    # Subtest: POST with empty selectedLines array returns false verdict\n    ok 5 - POST with empty selectedLines array returns false verdict\n      ---\n      duration_ms: 20.872965\n      type: 'test'\n      ...\n    1..5\nok 101 - snippets/verdict\n  ---\n  duration_ms: 190.840465\n  type: 'suite'\n  ...\n# Subtest: snippets/verdict (hint progression for loginAdminChallenge)\n    # Subtest: returns no hint on the first wrong attempt\n    ok 1 - returns no hint on the first wrong attempt\n      ---\n      duration_ms: 11.467652\n      type: 'test'\n      ...\n    # Subtest: returns the first hint text on the second wrong attempt\n    ok 2 - returns the first hint text on the second wrong attempt\n      ---\n      duration_ms: 9.239619\n      type: 'test'\n      ...\n    # Subtest: returns a line-number hint after all text hints are exhausted\n    ok 3 - returns a line-number hint after all text hints are exhausted\n      ---\n      duration_ms: 29.231948\n      type: 'test'\n      ...\n    1..3\nok 102 - snippets/verdict (hint progression for loginAdminChallenge)\n  ---\n  duration_ms: 50.233301\n  type: 'suite'\n  ...\n# Subtest: /api/Wallets\n    # Subtest: GET wallet is forbidden via public API\n    ok 1 - GET wallet is forbidden via public API\n      ---\n      duration_ms: 17.659136\n      type: 'test'\n      ...\n    # Subtest: GET wallet retrieves wallet amount of requesting user\n    ok 2 - GET wallet retrieves wallet amount of requesting user\n      ---\n      duration_ms: 21.272661\n      type: 'test'\n      ...\n    # Subtest: PUT wallet is forbidden via public API\n    ok 3 - PUT wallet is forbidden via public API\n      ---\n      duration_ms: 8.112097\n      type: 'test'\n      ...\n    # Subtest: PUT charge wallet from credit card of requesting user\n    ok 4 - PUT charge wallet from credit card of requesting user\n      ---\n      duration_ms: 35.717685\n      type: 'test'\n      ...\n    # Subtest: PUT charge wallet from foreign credit card is forbidden\n    ok 5 - PUT charge wallet from foreign credit card is forbidden\n      ---\n      duration_ms: 13.951153\n      type: 'test'\n      ...\n    # Subtest: PUT charge wallet without credit card is forbidden\n    ok 6 - PUT charge wallet without credit card is forbidden\n      ---\n      duration_ms: 11.555819\n      type: 'test'\n      ...\n    # Subtest: GET wallet balance for user without a wallet returns 404\n    ok 7 - GET wallet balance for user without a wallet returns 404\n      ---\n      duration_ms: 65.287022\n      type: 'test'\n      ...\n    1..7\nok 103 - /api/Wallets\n  ---\n  duration_ms: 807.431612\n  type: 'suite'\n  ...\n# Subtest: /rest/web3/walletExploitAddress\nok 104 - /rest/web3/walletExploitAddress # SKIP ALCHEMY_API_KEY not set\n  ---\n  duration_ms: 0.378067\n  type: 'suite'\n  ...\n1..104\n# tests 586\n# suites 120\n# pass 573\n# fail 7\n# cancelled 0\n# skipped 6\n# todo 0\n# duration_ms 102689.021327\n",
+          "step": "test",
+          "summary": {
+            "pass": 573,
+            "fail": 7,
+            "skipped": 6,
+            "total": 586
+          }
+        }
+      ],
+      "build_ok": true,
+      "tests": [
+        {
+          "cmd": "npm run test:server",
+          "exit": 0,
+          "pass": 412,
+          "fail": 0,
+          "skipped": 2,
+          "total": 414
+        },
+        {
+          "cmd": "npm run test:api",
+          "exit": 1,
+          "pass": 573,
+          "fail": 7,
+          "skipped": 6,
+          "total": 586
+        }
+      ]
+    },
+    "tests_no_regression": true,
+    "test_notes": [
+      "npm run test:server: no regression (fail 0 -> 0)",
+      "npm run test:server: reported test total differs (412 -> 414); this runner's totals vary between runs, so failures are compared instead",
+      "npm run test:api: no regression (fail 7 -> 7; 7 pre-existing failure(s) also fail on baseline)"
+    ],
+    "reused_artifacts": [
+      "frontend/dist: reused from baseline build (frontend unchanged)"
+    ]
+  },
+  "rescan": {
+    "findings_before": 89,
+    "findings_after": 86,
+    "priority_before": {
+      "P1-urgent": 26,
+      "P2-high": 22,
+      "P3-medium": 12,
+      "P4-low": 29
+    },
+    "priority_after": {
+      "P1-urgent": 24,
+      "P2-high": 21,
+      "P3-medium": 12,
+      "P4-low": 29
+    },
+    "risk_score_production_before": 4628,
+    "risk_score_production_after": 4428,
+    "newly_introduced": [],
+    "newly_introduced_high_or_critical": 0
+  },
+  "sbom_diff": {
+    "baseline": "before",
+    "added": 0,
+    "removed": 0,
+    "version_changed": 3,
+    "added_list": [],
+    "removed_list": [],
+    "changed_list": [
+      "crypto-js: 3.3.0 -> 4.2.0",
+      "pdfkit: 0.11.0 -> 0.12.3",
+      "calibreapp/image-actions: main -> cfe6ba91a2f0e9046d44e2088d002378daeb4a9c"
+    ]
+  },
+  "rollback": "Nothing was merged or pushed. Discard with `git branch -D guardian/fix-20261124045421` in /home/claude/runs/juice-shop/work/after, or after a merge, `git revert 1461c892d440`.",
+  "human_next_step": "Review the branch diff and the evidence below, then open a PR / merge yourself."
+}

@@ -1,0 +1,13 @@
+{
+  "description": "Default Guardian gate: block known-malicious and tampered components, no unaccepted P1 risk in production, CI actions pinned.",
+  "block": [
+    {"category": "malicious-package", "why": "known malicious package"},
+    {"rule": "CHANGE-INTEGRITY", "why": "lockfile hash changed for an unchanged version"},
+    {"rule": "INTEGRITY-REGISTRY-MISMATCH", "why": "lockfile hash differs from the registry"},
+    {"rule": "UNEXPECTED-LOCK-ONLY-DEP", "why": "dependency injected into the lockfile only"},
+    {"rule": "TYPOSQUAT", "min_severity": "high", "why": "likely typosquat with install script / registry red flags"}
+  ],
+  "max_open_production": {"P1-urgent": 0},
+  "require_actions_pinned": "third-party",
+  "allow_accepted_risk": true
+}

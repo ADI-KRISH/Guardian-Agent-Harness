@@ -1,0 +1,74 @@
+digraph risk {
+  rankdir=LR; graph [fontname="Helvetica", fontsize=11, nodesep=0.25, ranksep=0.6, label="Risk paths: juice-shop@20.4.0-SNAPSHOT (findings >= high)", labelloc=t];
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=10, fillcolor=white, color="#9aa1a9"];
+  edge [color="#9aa1a9", arrowsize=0.6];
+  "root" [label="juice-shop@20.4.0-SNAPSHOT", fillcolor="#0f2537", fontcolor=white, color="#0f2537"];
+  "pkg:docker/bkimminich/juice-shop@latest" [label="bkimminich/juice-shop@latest\n1 finding · high", fillcolor="#ffe8d9", color="#d9480f", penwidth=2, tooltip="[high] Image 'bkimminich/juice-shop' comes from a non-allowlisted publisher (docker.io)", shape=component];
+  "pkg:githubactions/calibreapp/image-actions@main" [label="calibreapp/image-actions@main\n1 finding · high\n(ci)", fillcolor="#ffe8d9", color="#d9480f", penwidth=2, tooltip="[high] GitHub Action calibreapp/image-actions: branch/unversioned ref 'main' (code changes on every run)", style="rounded,filled,dashed", shape=component];
+  "pkg:npm/%40cyclonedx/cyclonedx-npm@4.2.1" [label="@cyclonedx/cyclonedx-npm@4.2.1\n2 findings · high\n(dev)", fillcolor="#ffe8d9", color="#d9480f", penwidth=2, tooltip="[high] Known vulnerability in @cyclonedx/cyclonedx-npm@4.2.1: @cyclonedx/cyclonedx-npm: Shell Injection via Unsanitized --workspace Argument
+[high] Known vulnerability in @cyclonedx/cyclonedx-npm@4.2.1: @cyclonedx/cyclonedx-npm: Shell Injection via Unsanitized --workspace Argument on Windows", style="rounded,filled,dashed"];
+  "pkg:npm/%40ethersproject/providers@5.8.0" [label="@ethersproject/providers@5.8.0"];
+  "pkg:npm/%40wagmi/core@0.5.8" [label="@wagmi/core@0.5.8"];
+  "pkg:npm/cacache@15.3.0" [label="cacache@15.3.0\n(optional)", style="rounded,filled,dashed"];
+  "pkg:npm/crypto-js@3.3.0" [label="crypto-js@3.3.0\n2 findings · critical", fillcolor="#f9dedc", color="#b3261e", penwidth=2, tooltip="[critical] Known vulnerability in crypto-js@3.3.0: crypto-js PBKDF2 1,000 times weaker than specified in 1993 and 1.3M times weaker than current standard
+[critical] Known vulnerability in crypto-js@3.3.0: crypto-js: Insufficient Entropy in Cryptographic Secret Generation via Vulnerable CryptoJS Dependency Chain"];
+  "pkg:npm/ethers@5.8.0" [label="ethers@5.8.0"];
+  "pkg:npm/express-jwt@0.1.3" [label="express-jwt@0.1.3\n1 finding · high", fillcolor="#ffe8d9", color="#d9480f", penwidth=2, tooltip="[high] Known vulnerability in express-jwt@0.1.3: Authorization bypass in express-jwt"];
+  "pkg:npm/frontend@20.4.0-SNAPSHOT" [label="frontend@20.4.0-SNAPSHOT"];
+  "pkg:npm/jsonwebtoken@0.1.0" [label="jsonwebtoken@0.1.0\n2 findings · critical", fillcolor="#f9dedc", color="#b3261e", penwidth=2, tooltip="[critical] Known vulnerability in jsonwebtoken@0.1.0: Verification Bypass in jsonwebtoken
+[high] Known vulnerability in jsonwebtoken@0.1.0: jsonwebtoken unrestricted key type could lead to legacy keys usage "];
+  "pkg:npm/jsonwebtoken@0.4.0" [label="jsonwebtoken@0.4.0\n2 findings · critical", fillcolor="#f9dedc", color="#b3261e", penwidth=2, tooltip="[critical] Known vulnerability in jsonwebtoken@0.4.0: Verification Bypass in jsonwebtoken
+[high] Known vulnerability in jsonwebtoken@0.4.0: jsonwebtoken unrestricted key type could lead to legacy keys usage "];
+  "pkg:npm/jws@0.2.6" [label="jws@0.2.6\n2 findings · high", fillcolor="#ffe8d9", color="#d9480f", penwidth=2, tooltip="[high] Known vulnerability in jws@0.2.6: Forgeable Public/Private Tokens in jws
+[high] Known vulnerability in jws@0.2.6: auth0/node-jws Improperly Verifies HMAC Signature"];
+  "pkg:npm/lodash@2.4.2" [label="lodash@2.4.2\n3 findings · critical", fillcolor="#f9dedc", color="#b3261e", penwidth=2, tooltip="[critical] Known vulnerability in lodash@2.4.2: Prototype Pollution in lodash
+[high] Known vulnerability in lodash@2.4.2: Command Injection in lodash
+[high] Known vulnerability in lodash@2.4.2: Prototype Pollution in lodash"];
+  "pkg:npm/make-fetch-happen@9.1.0" [label="make-fetch-happen@9.1.0\n(optional)", style="rounded,filled,dashed"];
+  "pkg:npm/marsdb@0.6.11" [label="marsdb@0.6.11\n1 finding · critical", fillcolor="#f9dedc", color="#b3261e", penwidth=2, tooltip="[critical] Known vulnerability in marsdb@0.6.11: Command Injection in marsdb"];
+  "pkg:npm/moment@2.0.0" [label="moment@2.0.0\n2 findings · high", fillcolor="#ffe8d9", color="#d9480f", penwidth=2, tooltip="[high] Known vulnerability in moment@2.0.0: Path Traversal: 'dir/../../filename' in moment.locale
+[high] Known vulnerability in moment@2.0.0: Regular Expression Denial of Service in moment"];
+  "pkg:npm/node-gyp@8.4.1" [label="node-gyp@8.4.1\n(optional)", style="rounded,filled,dashed"];
+  "pkg:npm/pdfkit@0.11.0" [label="pdfkit@0.11.0"];
+  "pkg:npm/sanitize-html@1.4.2" [label="sanitize-html@1.4.2\n1 finding · high", fillcolor="#ffe8d9", color="#d9480f", penwidth=2, tooltip="[high] Known vulnerability in sanitize-html@1.4.2: Sanitize-html Vulnerable To REDoS Attacks"];
+  "pkg:npm/sqlite3@5.1.7" [label="sqlite3@5.1.7"];
+  "pkg:npm/tar@6.2.1" [label="tar@6.2.1\n9 findings · critical", fillcolor="#f9dedc", color="#b3261e", penwidth=2, tooltip="[critical] Known vulnerability in tar@6.2.1: node-tar: Decompression/parse DoS via unlimited input
+[high] Known vulnerability in tar@6.2.1: Arbitrary File Read/Write via Hardlink Target Escape Through Symlink Chain in node-tar Extraction
+[high] Known vulnerability in tar@6.2.1: Race Condition in node-tar Path Reservations via Unicode Ligature Collisions on macOS APFS
+[high] Known vulnerability in tar@6.2.1: node-tar Symlink Path Traversal via Drive-Relative Linkpath
+[high] Known vulnerability in tar@6.2.1: node-tar Vulnerable to Arbitrary File Creation/Overwrite via Hardlink Path Traversal
+[high] Known vulnerability in tar@6.2.1: node-tar is Vulnerable to Arbitrary File Overwrite and Symlink Poisoning via Insufficient Path Sanitization"];
+  "pkg:npm/ws@8.18.0" [label="ws@8.18.0\n1 finding · high", fillcolor="#ffe8d9", color="#d9480f", penwidth=2, tooltip="[high] Known vulnerability in ws@8.18.0: ws: Memory exhaustion DoS from tiny fragments and data chunks"];
+  "pkg:npm/%40ethersproject/providers@5.8.0" -> "pkg:npm/ws@8.18.0" [color="#d9480f"];
+  "pkg:npm/%40wagmi/core@0.5.8" -> "pkg:npm/ethers@5.8.0" [color="#9aa1a9"];
+  "pkg:npm/cacache@15.3.0" -> "pkg:npm/tar@6.2.1" [color="#b3261e"];
+  "pkg:npm/ethers@5.8.0" -> "pkg:npm/%40ethersproject/providers@5.8.0" [color="#9aa1a9"];
+  "pkg:npm/express-jwt@0.1.3" -> "pkg:npm/jsonwebtoken@0.1.0" [color="#b3261e"];
+  "pkg:npm/frontend@20.4.0-SNAPSHOT" -> "pkg:npm/%40wagmi/core@0.5.8" [color="#9aa1a9"];
+  "pkg:npm/frontend@20.4.0-SNAPSHOT" -> "pkg:npm/ethers@5.8.0" [color="#9aa1a9"];
+  "pkg:npm/jsonwebtoken@0.1.0" -> "pkg:npm/jws@0.2.6" [color="#d9480f"];
+  "pkg:npm/jsonwebtoken@0.1.0" -> "pkg:npm/moment@2.0.0" [color="#d9480f"];
+  "pkg:npm/jsonwebtoken@0.4.0" -> "pkg:npm/jws@0.2.6" [color="#d9480f"];
+  "pkg:npm/make-fetch-happen@9.1.0" -> "pkg:npm/cacache@15.3.0" [color="#9aa1a9"];
+  "pkg:npm/node-gyp@8.4.1" -> "pkg:npm/make-fetch-happen@9.1.0" [color="#9aa1a9"];
+  "pkg:npm/node-gyp@8.4.1" -> "pkg:npm/tar@6.2.1" [color="#b3261e"];
+  "pkg:npm/pdfkit@0.11.0" -> "pkg:npm/crypto-js@3.3.0" [color="#b3261e"];
+  "pkg:npm/sanitize-html@1.4.2" -> "pkg:npm/lodash@2.4.2" [color="#b3261e"];
+  "pkg:npm/sqlite3@5.1.7" -> "pkg:npm/node-gyp@8.4.1" [color="#9aa1a9"];
+  "pkg:npm/sqlite3@5.1.7" -> "pkg:npm/tar@6.2.1" [color="#b3261e"];
+  "root" -> "pkg:docker/bkimminich/juice-shop@latest" [color="#d9480f"];
+  "root" -> "pkg:githubactions/calibreapp/image-actions@main" [color="#d9480f"];
+  "root" -> "pkg:npm/%40cyclonedx/cyclonedx-npm@4.2.1" [color="#d9480f"];
+  "root" -> "pkg:npm/express-jwt@0.1.3" [color="#d9480f"];
+  "root" -> "pkg:npm/frontend@20.4.0-SNAPSHOT" [color="#9aa1a9"];
+  "root" -> "pkg:npm/jsonwebtoken@0.4.0" [color="#b3261e"];
+  "root" -> "pkg:npm/marsdb@0.6.11" [color="#b3261e"];
+  "root" -> "pkg:npm/pdfkit@0.11.0" [color="#9aa1a9"];
+  "root" -> "pkg:npm/sanitize-html@1.4.2" [color="#d9480f"];
+  "root" -> "pkg:npm/sqlite3@5.1.7" [color="#9aa1a9"];
+  subgraph cluster_legend { label="legend"; fontsize=9; color="#dddddd";
+    "lg_critical" [label="critical", fillcolor="#f9dedc", color="#b3261e", penwidth=2, fontsize=9];
+    "lg_high" [label="high", fillcolor="#ffe8d9", color="#d9480f", penwidth=2, fontsize=9];
+    "lg_medium" [label="medium", fillcolor="#fff4cc", color="#e0a800", penwidth=2, fontsize=9];
+    "lg_dev" [label="dev / build / ci scope", style="rounded,dashed", fontsize=9]; }
+}

@@ -1,0 +1,139 @@
+{
+  "generated_at": "2026-11-24T04:59:28Z",
+  "tool": "supply-chain-guardian 0.1.0",
+  "command": "python3 -m guardian validate-rescan",
+  "project_dir": "/home/claude/runs/juice-shop/work/after",
+  "git": {
+    "remote": "/home/claude/geshna-b/juice-shop",
+    "branch": "guardian/fix-20261124045421",
+    "commit": "1461c892d440b957852e821b7c0db9da0280d5a1",
+    "dirty": false
+  },
+  "inputs": [
+    {
+      "path": "package.json",
+      "sha256": "c4bcaec5a187129e8d84eb6cbe4f683f915f7165f58f1344f8238cd37980cb35",
+      "git_tracked": true
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "67ab8db637c895fbdf09826215d15b9b161e6977020f0b0fd52cf55c2785f5c7",
+      "git_tracked": true
+    },
+    {
+      "path": "frontend/package.json",
+      "sha256": "5d9517a6e22bf945cc5b6be34bf4d6ab2c6bd93b39ec65a08539aa6af98cd869",
+      "git_tracked": true
+    },
+    {
+      "path": "frontend/package-lock.json",
+      "sha256": "040c474d3db6502706d422904f05179282ddfa15109e715d171814f449ccfdff",
+      "git_tracked": true
+    },
+    {
+      "path": "Dockerfile",
+      "sha256": "86038fd6786420a64fb641cb4d6d77e2c17cc3d90fcd35e76fcfd58852092b46",
+      "git_tracked": true
+    },
+    {
+      "path": "infrastructure/Dockerfile",
+      "sha256": "61816073966202c6fbb630efeadd06af54b4daecc265fc108a6fbf5eb213ddf6",
+      "git_tracked": true
+    },
+    {
+      "path": "test/smoke/Dockerfile",
+      "sha256": "cb71771fe53d36a1c5bfd2a5929802fee2124c9bc1fddf8239fbe9c91eca0315",
+      "git_tracked": true
+    },
+    {
+      "path": "docker-compose.test.yml",
+      "sha256": "22e3b8c34338a3cc2ddf37433bf8b155c44c8cd017d60e1d5f391f037810ebc2",
+      "git_tracked": true
+    },
+    {
+      "path": "infrastructure/docker-compose.yml",
+      "sha256": "0d766ec7e7bdc2e2527208cbc41143d1c78e1d3178ab28e92b5fe15cfb8108b8",
+      "git_tracked": true
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha256": "c45d0b089d0df6031dd53fd6e06711d349b0365ba7d3fcc2a09ee2c9b6d4f612",
+      "git_tracked": true
+    },
+    {
+      "path": ".github/workflows/codeql-analysis.yml",
+      "sha256": "221342ccae65027ab6edef21010aa0c6c0ea8a042325ea265e9c42038ac9c165",
+      "git_tracked": true
+    },
+    {
+      "path": ".github/workflows/frontend-bundle-analysis.yml",
+      "sha256": "a2651ca7fc5ceaaebecb0dc611413be8b104e96d2c48a9842e6c11d147bc6f15",
+      "git_tracked": true
+    },
+    {
+      "path": ".github/workflows/image_actions.yml",
+      "sha256": "5466fbac2b7045560eecda4838b796a8d9d6cff3a34b43821e16dd9f32078c60",
+      "git_tracked": true
+    },
+    {
+      "path": ".github/workflows/issue-compliance.yml",
+      "sha256": "3e9d002e4aa60931c41de6e90e1ffb9eca61f2817fc80c21281d6644df70fc2c",
+      "git_tracked": true
+    },
+    {
+      "path": ".github/workflows/lint-fixer.yml",
+      "sha256": "8f2e38df3d21c24e8ede306fa52d138b0beea47b60a1f9a798b1cc39275e09a2",
+      "git_tracked": true
+    },
+    {
+      "path": ".github/workflows/lock.yml",
+      "sha256": "5a19a73947fb1db01abe7676bd848d9b20c6b254ab74bfcbb07503ccf014d1b7",
+      "git_tracked": true
+    },
+    {
+      "path": ".github/workflows/pr-compliance.yml",
+      "sha256": "a564de635af7e5014e5d41b6113beefc3955f16e22ba7fdf4103a213468421b6",
+      "git_tracked": true
+    },
+    {
+      "path": ".github/workflows/rebase.yml",
+      "sha256": "d15644d22a5f61e1000abced65a35c015800e5b53063604738e953b2a35714b2",
+      "git_tracked": true
+    },
+    {
+      "path": ".github/workflows/release.yml",
+      "sha256": "a6b75c7d1fa9aed66a4876fe5a2381131c5be974f669ae52c36a5859e208beb7",
+      "git_tracked": true
+    },
+    {
+      "path": ".github/workflows/stale.yml",
+      "sha256": "7fdc6fea42d01bef18635a1683419e333464c2747bf36bc1e65c11b5a17aefa8",
+      "git_tracked": true
+    },
+    {
+      "path": ".github/workflows/update-challenges-ebook.yml",
+      "sha256": "cb4c1a976e74b176ff47106a26174be4e41b4c872f3cb3ff91efcc5dbd48c06b",
+      "git_tracked": true
+    },
+    {
+      "path": ".github/workflows/update-challenges-www-legacy.yml",
+      "sha256": "426121cf5955b012bfb55e12b70a4766637f5ad1a811aa42ce724626983de5ac",
+      "git_tracked": true
+    },
+    {
+      "path": ".github/workflows/update-challenges-www.yml",
+      "sha256": "f52d9760c9dd201bc47c29b2245705a90efb9533be25e7ecefee04d07da3456e",
+      "git_tracked": true
+    },
+    {
+      "path": ".github/workflows/update-news-www-legacy.yml",
+      "sha256": "e36ecb64ac2fe8a356b6293e984a1f37aae2600fe1207c4b4ec1f5cee54c16a5",
+      "git_tracked": true
+    },
+    {
+      "path": ".github/workflows/update-news-www.yml",
+      "sha256": "d4d577fff30a170ef08b6ff1ea144a7f30aa15c9d9ccf2298c82053bffa95699",
+      "git_tracked": true
+    }
+  ]
+}

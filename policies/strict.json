@@ -1,0 +1,10 @@
+{
+  "description": "Strict gate for release branches.",
+  "block": [
+    {"category": "malicious-package"}, {"category": "typosquat"}, {"category": "integrity", "min_severity": "high"},
+    {"category": "unexpected-dependency", "min_severity": "high"}, {"rule": "IMAGE-MUTABLE-TAG"}, {"rule": "CICD-PIPE-TO-SHELL"}
+  ],
+  "max_open_production": {"P1-urgent": 0, "P2-high": 0},
+  "require_actions_pinned": "all",
+  "allow_accepted_risk": false
+}
