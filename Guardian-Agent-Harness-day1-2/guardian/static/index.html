@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>GuardianAI · Supply chain intelligence</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/cytoscape.min.js"></script>
+    <script defer src="/app.js"></script>
+</head>
+
+<body>
+<aside class="sidebar"><a class="brand" href="/" aria-label="GuardianAI home"><span class="shield">G</span>Guardian<span>AI</span></a><div class="workspace"><span class="workspace-icon">G</span><div>Security workspace<small>Local environment</small></div><span class="dot"></span></div><div class="nav-label">WORKSPACE</div><nav id="nav"><button data-tab="overview" class="active"><span>◫</span>Overview</button><button data-tab="findings"><span>◈</span>Findings <b id="nav-count">0</b></button><button data-tab="graph"><span>⌘</span>Knowledge graph</button><button data-tab="changes"><span>⇄</span>Changes</button><button data-tab="memory"><span>▣</span>Memory & learning</button><button data-tab="activity"><span>≋</span>Audit trail</button></nav><div class="nav-label">ASSURANCE</div><nav><button data-tab="evaluation"><span>☑</span>Evaluation suite</button></nav><div class="sidebar-footer"><span class="dot"></span> Read-only analysis<small>Evidence first. Human decisions.</small><div class="version">GUARDIAN HARNESS <span>v0.1.0</span></div></div></aside>
+<div class="shell"><header><div class="breadcrumb">Workspace <span>/</span> <strong id="crumb">Overview</strong></div><div class="header-right"><span class="local-pill">● LOCAL</span><button class="icon-button" id="refresh" title="Refresh scans">↻</button><span class="avatar">G</span></div></header>
+<main><div class="page-heading"><div><div class="eyebrow">SOFTWARE SUPPLY CHAIN INTELLIGENCE</div><h1 id="page-title">Security overview<span class="title-dot">.</span></h1><p id="page-subtitle">Know what’s inside. Understand what changed. Investigate what matters.</p></div><button class="primary" id="new-scan">＋ New scan</button></div>
+<div class="repo-bar"><div class="repo-icon">⌘</div><div><strong id="repo-name">Your supply chain, in focus</strong><small id="repo-meta">Start a scan to build an evidence-backed inventory</small></div><select id="scan-select" aria-label="Scan history"><option>No scans yet</option></select><button class="primary" id="rescan-repo" title="Run a fresh scan on this repository" style="margin-left:8px">↺ Rescan</button><button class="subtle" id="export">↓ Export JSON</button><button class="subtle" id="export-pdf">⎙ PDF report</button></div>
+<div id="notice" class="notice" hidden></div><div id="content"></div>
+<footer>GuardianAI <span>•</span> Static analysis. Traceable evidence. Human-controlled trust.<span class="footer-right" id="last-scan">Ready to scan</span></footer></main></div>
+<dialog id="scan-dialog"><form id="scan-form"><div class="dialog-top"><span class="eyebrow">START AN INVESTIGATION</span><button type="button" class="close" data-close="scan-dialog">×</button></div><h2>What would you like to scan?</h2><p>Read manifests, source, workflows and container configuration without executing project code.</p><label>Repository path or public GitHub URL<input id="source" placeholder="/path/to/repository or https://github.com/org/repo" autocomplete="off"></label><label class="checkbox"><input type="checkbox" id="offline">Offline mode <span>Use fresh cached advisories only</span></label><label class="checkbox"><input type="checkbox" id="ai-opt">AI investigation <span>Local Ollama only — no data leaves your machine</span></label><label class="checkbox"><input type="checkbox" id="scan-images-opt">Scan container images <span>Requires Trivy installed; pulls image metadata from registry</span></label><div class="dialog-actions"><button type="button" class="secondary" id="demo">Try planted demo</button><button class="primary" type="submit">Run analysis →</button></div><small>The demo contains a synthetic dependency inventory and deliberate policy violations.</small></form></dialog>
+<dialog id="review-dialog"><form id="review-form"><div class="dialog-top"><span class="eyebrow">HUMAN REVIEW</span><button type="button" class="close" data-close="review-dialog">×</button></div><h2 id="review-title">Review finding</h2><input type="hidden" id="review-target"><label id="status-label">Decision<select id="review-status"><option value="confirmed">Confirmed</option><option value="false positive">False positive</option><option value="accepted">Accepted risk</option><option value="open">Reopen</option></select></label><label>Reviewer name<input id="actor" required placeholder="Your name"></label><label>Reason<textarea id="reason" required placeholder="Explain the decision and supporting evidence"></textarea></label><div class="dialog-actions"><button class="primary" type="submit">Save decision</button></div></form></dialog>
+<div id="drawer" class="drawer" hidden></div><div id="toast" role="status" hidden></div>
+</body></html>
+
+</html>

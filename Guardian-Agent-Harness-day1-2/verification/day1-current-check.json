@@ -1,0 +1,5152 @@
+{
+  "scan_id": "4ea67ab9c938",
+  "mode": "offline; existing checkout; no repository install or build",
+  "repo": "/Users/ananthakrishnans/Documents/bosh/.guardian/repositories/7f5e2e6e03c6fd0e-cb9b7888",
+  "coverage": {
+    "inventory": "complete",
+    "warnings": [],
+    "vulnerabilities": [
+      {
+        "component": "pkg:npm/%40sindresorhus/is@0.14.0#package-lock.json#node_modules/@sindresorhus/is",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/%40snyk/gemfile@1.2.0#package-lock.json#node_modules/@snyk/gemfile",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/%40snyk/cli-interface@2.3.0#package-lock.json#node_modules/@snyk/cli-interface",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/%40snyk/cocoapods-lockfile-parser@3.0.0#package-lock.json#node_modules/@snyk/cocoapods-lockfile-parser",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/%40snyk/composer-lockfile-parser@1.2.0#package-lock.json#node_modules/@snyk/composer-lockfile-parser",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/lodash@4.17.15#package-lock.json#node_modules/@snyk/composer-lockfile-parser/node_modules/lodash",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/lodash@4.17.15#package-lock.json#node_modules/@snyk/ruby-semver/node_modules/lodash",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/lodash@4.17.15#package-lock.json#node_modules/dotnet-deps-parser/node_modules/lodash",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/lodash@4.17.15#package-lock.json#node_modules/graphlib/node_modules/lodash",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/lodash@4.17.15#package-lock.json#node_modules/inquirer/node_modules/lodash",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/lodash@4.17.15#package-lock.json#node_modules/snyk-config/node_modules/lodash",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/lodash@4.17.15#package-lock.json#node_modules/snyk-mvn-plugin/node_modules/lodash",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/lodash@4.17.15#package-lock.json#node_modules/snyk-nodejs-lockfile-parser/node_modules/lodash",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/lodash@4.17.15#package-lock.json#node_modules/snyk-nuget-plugin/node_modules/lodash",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/lodash@4.17.15#package-lock.json#node_modules/snyk/node_modules/lodash",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/semver@6.3.0#package-lock.json#node_modules/@snyk/dep-graph/node_modules/semver",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/semver@6.3.0#package-lock.json#node_modules/nodemon/node_modules/make-dir/node_modules/semver",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/semver@6.3.0#package-lock.json#node_modules/nodemon/node_modules/package-json/node_modules/semver",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/semver@6.3.0#package-lock.json#node_modules/nodemon/node_modules/semver-diff/node_modules/semver",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/semver@6.3.0#package-lock.json#node_modules/snyk-docker-plugin/node_modules/semver",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/semver@6.3.0#package-lock.json#node_modules/snyk-policy/node_modules/semver",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/semver@6.3.0#package-lock.json#node_modules/snyk-sbt-plugin/node_modules/semver",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/semver@6.3.0#package-lock.json#node_modules/snyk/node_modules/semver",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/%40types/bunyan@1.8.6#package-lock.json#node_modules/@types/bunyan",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/%40szmarczak/http-timer@1.1.2#package-lock.json#node_modules/@szmarczak/http-timer",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/%40snyk/cli-interface@1.5.0#package-lock.json#node_modules/@snyk/snyk-cocoapods-plugin/node_modules/@snyk/cli-interface",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/%40snyk/snyk-cocoapods-plugin@2.0.1#package-lock.json#node_modules/@snyk/snyk-cocoapods-plugin",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/%40snyk/dep-graph@1.13.1#package-lock.json#node_modules/@snyk/dep-graph",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/%40snyk/ruby-semver@2.0.4#package-lock.json#node_modules/@snyk/ruby-semver",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/%40types/agent-base@4.2.0#package-lock.json#node_modules/@types/agent-base",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/%40types/color-name@1.1.1#package-lock.json#node_modules/@types/color-name",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/%40types/debug@4.1.5#package-lock.json#node_modules/@types/debug",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/%40types/events@3.0.0#package-lock.json#node_modules/@types/events",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/%40types/node@13.1.7#package-lock.json#node_modules/@types/node",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/%40types/semver@5.5.0#package-lock.json#node_modules/@types/semver",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/%40types/js-yaml@3.12.1#package-lock.json#node_modules/@types/js-yaml",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/%40types/xml2js@0.4.3#package-lock.json#node_modules/@types/xml2js",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/abbrev@1.1.1#package-lock.json#node_modules/abbrev",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/%40yarnpkg/lockfile@1.1.0#package-lock.json#node_modules/@yarnpkg/lockfile",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/%40types/restify@4.3.6#package-lock.json#node_modules/@types/restify",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/acorn@6.4.2#package-lock.json#node_modules/acorn",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/accepts@1.1.4#package-lock.json#node_modules/accepts",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/acorn-node@1.6.2#package-lock.json#node_modules/acorn-node",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/acorn-dynamic-import@4.0.0#package-lock.json#node_modules/acorn-dynamic-import",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/acorn-walk@6.1.1#package-lock.json#node_modules/acorn-walk",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ajv@6.10.2#package-lock.json#node_modules/ajv",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/agent-base@4.3.0#package-lock.json#node_modules/agent-base",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/adm-zip@0.4.7#package-lock.json#node_modules/adm-zip",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ansi-align@2.0.0#package-lock.json#node_modules/ansi-align",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ansi-escapes@3.2.0#package-lock.json#node_modules/ansi-escapes",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ansi-regex@2.1.1#package-lock.json#node_modules/ansi-regex",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ansi-regex@2.1.1#package-lock.json#node_modules/nyc/node_modules/ansi-regex",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/any-promise@1.3.0#package-lock.json#node_modules/any-promise",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ansi-styles@3.2.1#package-lock.json#node_modules/ansi-styles",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/app-root-path@3.0.0#package-lock.json#node_modules/app-root-path",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/anymatch@3.1.2#package-lock.json#node_modules/anymatch",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ansicolors@0.3.2#package-lock.json#node_modules/ansicolors",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/archy@1.0.0#package-lock.json#node_modules/archy",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/archy@1.0.0#package-lock.json#node_modules/nyc/node_modules/archy",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/array-filter@0.0.1#package-lock.json#node_modules/array-filter",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/argparse@1.0.10#package-lock.json#node_modules/argparse",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/array-map@0.0.0#package-lock.json#node_modules/array-map",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/array-reduce@0.0.0#package-lock.json#node_modules/array-reduce",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/asap@2.0.6#package-lock.json#node_modules/asap",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/asn1.js@4.10.1#package-lock.json#node_modules/asn1.js",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/assert-plus@1.0.0#package-lock.json#node_modules/assert-plus",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/asn1@0.2.4#package-lock.json#node_modules/asn1",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/assert@1.4.1#package-lock.json#node_modules/assert",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/util@0.10.3#package-lock.json#node_modules/assert/node_modules/util",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/inherits@2.0.1#package-lock.json#node_modules/assert/node_modules/inherits",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/async-cache@0.1.5#package-lock.json#node_modules/async-cache",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ast-types@0.13.2#package-lock.json#node_modules/ast-types",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/async@0.9.0#package-lock.json#node_modules/async",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/balanced-match@1.0.0#package-lock.json#node_modules/balanced-match",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/balanced-match@1.0.0#package-lock.json#node_modules/nyc/node_modules/balanced-match",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/base64-js@1.3.0#package-lock.json#node_modules/base64-js",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/aws4@1.9.1#package-lock.json#node_modules/aws4",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/aws-sign2@0.7.0#package-lock.json#node_modules/aws-sign2",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/bcrypt-pbkdf@1.0.2#package-lock.json#node_modules/bcrypt-pbkdf",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/asynckit@0.4.0#package-lock.json#node_modules/asynckit",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/readable-stream@3.4.0#package-lock.json#node_modules/bl/node_modules/readable-stream",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/readable-stream@3.4.0#package-lock.json#node_modules/tar-stream/node_modules/readable-stream",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/basic-auth@2.0.1#package-lock.json#node_modules/basic-auth",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/bind-obj-methods@2.0.0#package-lock.json#node_modules/bind-obj-methods",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/binary-extensions@2.2.0#package-lock.json#node_modules/binary-extensions",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/bl@3.0.0#package-lock.json#node_modules/bl",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/bignumber.js@9.0.0#package-lock.json#node_modules/bignumber.js",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/bluebird@3.5.4#package-lock.json#node_modules/bluebird",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/safe-buffer@5.2.0#package-lock.json#node_modules/bl/node_modules/safe-buffer",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/safe-buffer@5.2.0#package-lock.json#node_modules/tar-stream/node_modules/safe-buffer",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/body-parser@1.9.0#package-lock.json#node_modules/body-parser",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/string_decoder@1.3.0#package-lock.json#node_modules/bl/node_modules/string_decoder",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/string_decoder@1.3.0#package-lock.json#node_modules/tar-stream/node_modules/string_decoder",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/bn.js@4.11.8#package-lock.json#node_modules/bn.js",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/iconv-lite@0.4.4#package-lock.json#node_modules/body-parser/node_modules/iconv-lite",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/iconv-lite@0.4.4#package-lock.json#node_modules/raw-body/node_modules/iconv-lite",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/boxen@1.3.0#package-lock.json#node_modules/boxen",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/camelcase@4.1.0#package-lock.json#node_modules/boxen/node_modules/camelcase",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/camelcase@4.1.0#package-lock.json#node_modules/nyc/node_modules/yargs-parser/node_modules/camelcase",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/camelcase@4.1.0#package-lock.json#node_modules/nyc/node_modules/yargs/node_modules/camelcase",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/browser-pack@6.1.0#package-lock.json#node_modules/browser-pack",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/browser-resolve@1.11.3#package-lock.json#node_modules/browser-resolve",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/braces@3.0.2#package-lock.json#node_modules/braces",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/brorand@1.1.0#package-lock.json#node_modules/brorand",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/browserify@13.3.0#package-lock.json#node_modules/browserify",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/brace-expansion@1.1.11#package-lock.json#node_modules/brace-expansion",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/brace-expansion@1.1.11#package-lock.json#node_modules/nyc/node_modules/brace-expansion",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/defined@1.0.0#package-lock.json#node_modules/browser-pack/node_modules/defined",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/defined@1.0.0#package-lock.json#node_modules/browserify/node_modules/defined",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/defined@1.0.0#package-lock.json#node_modules/detective/node_modules/defined",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/defined@1.0.0#package-lock.json#node_modules/module-deps/node_modules/defined",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/resolve@1.1.7#package-lock.json#node_modules/browser-resolve/node_modules/resolve",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/browserify-des@1.0.2#package-lock.json#node_modules/browserify-des",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/browserify-cipher@1.0.1#package-lock.json#node_modules/browserify-cipher",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/browserify-rsa@4.0.1#package-lock.json#node_modules/browserify-rsa",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/browserify-aes@1.2.0#package-lock.json#node_modules/browserify-aes",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/browserify-sign@4.0.4#package-lock.json#node_modules/browserify-sign",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/isarray@1.0.0#package-lock.json#node_modules/browserify/node_modules/isarray",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/isarray@1.0.0#package-lock.json#node_modules/buffer/node_modules/isarray",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/isarray@1.0.0#package-lock.json#node_modules/concat-stream/node_modules/isarray",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/isarray@1.0.0#package-lock.json#node_modules/duplexer2/node_modules/isarray",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/isarray@1.0.0#package-lock.json#node_modules/get-uri/node_modules/isarray",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/isarray@1.0.0#package-lock.json#node_modules/insert-module-globals/node_modules/isarray",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/isarray@1.0.0#package-lock.json#node_modules/jszip/node_modules/isarray",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/isarray@1.0.0#package-lock.json#node_modules/module-deps/node_modules/isarray",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/isarray@1.0.0#package-lock.json#node_modules/nyc/node_modules/isarray",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/isarray@1.0.0#package-lock.json#node_modules/read-only-stream/node_modules/isarray",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/isarray@1.0.0#package-lock.json#node_modules/readable-stream/node_modules/isarray",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/isarray@1.0.0#package-lock.json#node_modules/stream-browserify/node_modules/isarray",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/isarray@1.0.0#package-lock.json#node_modules/stream-combiner2/node_modules/isarray",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/isarray@1.0.0#package-lock.json#node_modules/stream-http/node_modules/isarray",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/isarray@1.0.0#package-lock.json#node_modules/stream-splicer/node_modules/isarray",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/isarray@1.0.0#package-lock.json#node_modules/tap-mocha-reporter/node_modules/isarray",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/isarray@1.0.0#package-lock.json#node_modules/through2/node_modules/isarray",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/punycode@1.4.1#package-lock.json#node_modules/browserify/node_modules/punycode",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/punycode@1.4.1#package-lock.json#node_modules/tough-cookie/node_modules/punycode",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/punycode@1.4.1#package-lock.json#node_modules/unicode-length/node_modules/punycode",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/readable-stream@2.3.6#package-lock.json#node_modules/browserify/node_modules/readable-stream",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/readable-stream@2.3.6#package-lock.json#node_modules/duplexer2/node_modules/readable-stream",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/readable-stream@2.3.6#package-lock.json#node_modules/insert-module-globals/node_modules/readable-stream",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/readable-stream@2.3.6#package-lock.json#node_modules/module-deps/node_modules/readable-stream",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/readable-stream@2.3.6#package-lock.json#node_modules/read-only-stream/node_modules/readable-stream",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/readable-stream@2.3.6#package-lock.json#node_modules/stream-browserify/node_modules/readable-stream",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/readable-stream@2.3.6#package-lock.json#node_modules/stream-combiner2/node_modules/readable-stream",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/readable-stream@2.3.6#package-lock.json#node_modules/stream-http/node_modules/readable-stream",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/readable-stream@2.3.6#package-lock.json#node_modules/stream-splicer/node_modules/readable-stream",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/readable-stream@2.3.6#package-lock.json#node_modules/through2/node_modules/readable-stream",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/browserify-zlib@0.1.4#package-lock.json#node_modules/browserify-zlib",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/buffer@4.9.1#package-lock.json#node_modules/buffer",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/buffer-from@1.1.1#package-lock.json#node_modules/buffer-from",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/bson@0.4.23#package-lock.json#node_modules/bson",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/string_decoder@1.1.1#package-lock.json#node_modules/browserify/node_modules/readable-stream/node_modules/string_decoder",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/string_decoder@1.1.1#package-lock.json#node_modules/duplexer2/node_modules/string_decoder",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/string_decoder@1.1.1#package-lock.json#node_modules/get-uri/node_modules/string_decoder",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/string_decoder@1.1.1#package-lock.json#node_modules/insert-module-globals/node_modules/string_decoder",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/string_decoder@1.1.1#package-lock.json#node_modules/jszip/node_modules/string_decoder",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/string_decoder@1.1.1#package-lock.json#node_modules/module-deps/node_modules/string_decoder",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/string_decoder@1.1.1#package-lock.json#node_modules/read-only-stream/node_modules/string_decoder",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/string_decoder@1.1.1#package-lock.json#node_modules/readable-stream/node_modules/string_decoder",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/string_decoder@1.1.1#package-lock.json#node_modules/stream-browserify/node_modules/string_decoder",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/string_decoder@1.1.1#package-lock.json#node_modules/stream-combiner2/node_modules/string_decoder",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/string_decoder@1.1.1#package-lock.json#node_modules/stream-http/node_modules/string_decoder",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/string_decoder@1.1.1#package-lock.json#node_modules/stream-splicer/node_modules/string_decoder",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/string_decoder@1.1.1#package-lock.json#node_modules/tap-mocha-reporter/node_modules/string_decoder",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/string_decoder@1.1.1#package-lock.json#node_modules/through2/node_modules/string_decoder",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/builtin-status-codes@3.0.0#package-lock.json#node_modules/builtin-status-codes",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/buffer-xor@1.0.3#package-lock.json#node_modules/buffer-xor",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/busboy@0.3.1#package-lock.json#node_modules/busboy",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/get-stream@5.2.0#package-lock.json#node_modules/cacheable-request/node_modules/get-stream",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/normalize-url@4.5.1#package-lock.json#node_modules/cacheable-request/node_modules/normalize-url",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/bytes@1.0.0#package-lock.json#node_modules/bytes",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/cacheable-request@6.1.0#package-lock.json#node_modules/cacheable-request",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/camelcase@2.1.1#package-lock.json#node_modules/camelcase",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/cached-path-relative@1.0.2#package-lock.json#node_modules/cached-path-relative",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/capture-stack-trace@1.0.1#package-lock.json#node_modules/capture-stack-trace",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/lowercase-keys@2.0.0#package-lock.json#node_modules/cacheable-request/node_modules/lowercase-keys",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/caseless@0.12.0#package-lock.json#node_modules/caseless",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/chardet@0.7.0#package-lock.json#node_modules/chardet",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/cfenv@1.2.2#package-lock.json#node_modules/cfenv",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/chalk@2.4.2#package-lock.json#node_modules/chalk",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/chokidar@3.5.1#package-lock.json#node_modules/chokidar",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/cipher-base@1.0.4#package-lock.json#node_modules/cipher-base",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/clean-yaml-object@0.1.0#package-lock.json#node_modules/clean-yaml-object",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ci-info@1.6.0#package-lock.json#node_modules/ci-info",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/cli-cursor@2.1.0#package-lock.json#node_modules/cli-cursor",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/cli-boxes@1.0.0#package-lock.json#node_modules/cli-boxes",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ansi-regex@5.0.0#package-lock.json#node_modules/cli-highlight/node_modules/ansi-regex",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ansi-regex@5.0.0#package-lock.json#node_modules/nodemon/node_modules/string-width/node_modules/ansi-regex",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/cli-highlight@2.1.4#package-lock.json#node_modules/cli-highlight",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ansi-styles@4.2.1#package-lock.json#node_modules/cli-highlight/node_modules/ansi-styles",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/color-name@1.1.4#package-lock.json#node_modules/cli-highlight/node_modules/color-name",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/color-name@1.1.4#package-lock.json#node_modules/nodemon/node_modules/color-name",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/cliui@6.0.0#package-lock.json#node_modules/cli-highlight/node_modules/cliui",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/chalk@3.0.0#package-lock.json#node_modules/cli-highlight/node_modules/chalk",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/chalk@3.0.0#package-lock.json#node_modules/nodemon/node_modules/chalk",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-fullwidth-code-point@3.0.0#package-lock.json#node_modules/cli-highlight/node_modules/is-fullwidth-code-point",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-fullwidth-code-point@3.0.0#package-lock.json#node_modules/nodemon/node_modules/string-width/node_modules/is-fullwidth-code-point",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/has-flag@4.0.0#package-lock.json#node_modules/cli-highlight/node_modules/has-flag",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/has-flag@4.0.0#package-lock.json#node_modules/nodemon/node_modules/has-flag",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/color-convert@2.0.1#package-lock.json#node_modules/cli-highlight/node_modules/color-convert",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/color-convert@2.0.1#package-lock.json#node_modules/nodemon/node_modules/color-convert",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/emoji-regex@8.0.0#package-lock.json#node_modules/cli-highlight/node_modules/emoji-regex",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/emoji-regex@8.0.0#package-lock.json#node_modules/nodemon/node_modules/string-width/node_modules/emoji-regex",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/string-width@4.2.0#package-lock.json#node_modules/cli-highlight/node_modules/string-width",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/yargs@15.4.1#package-lock.json#node_modules/cli-highlight/node_modules/yargs",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/strip-ansi@6.0.0#package-lock.json#node_modules/cli-highlight/node_modules/strip-ansi",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/strip-ansi@6.0.0#package-lock.json#node_modules/nodemon/node_modules/string-width/node_modules/strip-ansi",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/y18n@4.0.0#package-lock.json#node_modules/cli-highlight/node_modules/y18n",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/y18n@4.0.0#package-lock.json#node_modules/typeorm/node_modules/y18n",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/supports-color@7.1.0#package-lock.json#node_modules/cli-highlight/node_modules/supports-color",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/cli-width@2.2.0#package-lock.json#node_modules/cli-width",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/cli-spinner@0.2.10#package-lock.json#node_modules/cli-spinner",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/cliui@3.2.0#package-lock.json#node_modules/cliui",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/wrap-ansi@6.2.0#package-lock.json#node_modules/cli-highlight/node_modules/wrap-ansi",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/wrap-ansi@2.1.0#package-lock.json#node_modules/cliui/node_modules/wrap-ansi",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/wrap-ansi@2.1.0#package-lock.json#node_modules/nyc/node_modules/wrap-ansi",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-fullwidth-code-point@1.0.0#package-lock.json#node_modules/cliui/node_modules/is-fullwidth-code-point",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-fullwidth-code-point@1.0.0#package-lock.json#node_modules/nyc/node_modules/wrap-ansi/node_modules/is-fullwidth-code-point",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-fullwidth-code-point@1.0.0#package-lock.json#node_modules/yargs/node_modules/is-fullwidth-code-point",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/clone-deep@0.3.0#package-lock.json#node_modules/clone-deep",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/string-width@1.0.2#package-lock.json#node_modules/cliui/node_modules/string-width",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/string-width@1.0.2#package-lock.json#node_modules/nyc/node_modules/wrap-ansi/node_modules/string-width",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/string-width@1.0.2#package-lock.json#node_modules/yargs/node_modules/string-width",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/clone-response@1.0.2#package-lock.json#node_modules/clone-response",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/code-point-at@1.1.0#package-lock.json#node_modules/code-point-at",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/code-point-at@1.1.0#package-lock.json#node_modules/nyc/node_modules/code-point-at",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/co@4.6.0#package-lock.json#node_modules/co",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/color-convert@1.9.3#package-lock.json#node_modules/color-convert",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/color-name@1.1.3#package-lock.json#node_modules/color-name",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/combine-source-map@0.8.0#package-lock.json#node_modules/combine-source-map",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/color-support@1.1.3#package-lock.json#node_modules/color-support",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/combined-stream@1.0.8#package-lock.json#node_modules/combined-stream",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/concat-stream@1.5.2#package-lock.json#node_modules/concat-stream",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/process-nextick-args@1.0.7#package-lock.json#node_modules/concat-stream/node_modules/process-nextick-args",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/concat-map@0.0.1#package-lock.json#node_modules/concat-map",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/concat-map@0.0.1#package-lock.json#node_modules/nyc/node_modules/concat-map",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/readable-stream@2.0.6#package-lock.json#node_modules/concat-stream/node_modules/readable-stream",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/config-chain@1.1.12#package-lock.json#node_modules/config-chain",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/connect-busboy@0.0.2#package-lock.json#node_modules/connect-busboy",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/configstore@3.1.2#package-lock.json#node_modules/configstore",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ini@1.3.5#package-lock.json#node_modules/config-chain/node_modules/ini",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ini@1.3.5#package-lock.json#node_modules/global-dirs/node_modules/ini",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ini@1.3.5#package-lock.json#node_modules/nconf/node_modules/ini",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ini@1.3.5#package-lock.json#node_modules/rc/node_modules/ini",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/console-browserify@1.1.0#package-lock.json#node_modules/console-browserify",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/constants-browserify@1.0.0#package-lock.json#node_modules/constants-browserify",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/content-type@1.0.4#package-lock.json#node_modules/content-type",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/content-disposition@0.5.0#package-lock.json#node_modules/content-disposition",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/consolidate@0.14.5#package-lock.json#node_modules/consolidate",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/cookie-signature@1.0.6#package-lock.json#node_modules/cookie-signature",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/cookie-signature@1.0.6#package-lock.json#node_modules/express/node_modules/cookie-signature",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/convert-source-map@1.1.3#package-lock.json#node_modules/convert-source-map",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/core-util-is@1.0.2#package-lock.json#node_modules/core-util-is",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/core-js@3.6.4#package-lock.json#node_modules/core-js",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/crc@3.2.1#package-lock.json#node_modules/crc",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/cookie@0.1.2#package-lock.json#node_modules/cookie",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/create-ecdh@4.0.3#package-lock.json#node_modules/create-ecdh",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/create-hmac@1.1.7#package-lock.json#node_modules/create-hmac",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/coveralls@3.0.9#package-lock.json#node_modules/coveralls",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/lru-cache@4.1.5#package-lock.json#node_modules/cross-spawn/node_modules/lru-cache",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/lru-cache@4.1.5#package-lock.json#node_modules/snyk-resolve-deps/node_modules/lru-cache",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/lru-cache@4.1.5#package-lock.json#node_modules/snyk-try-require/node_modules/lru-cache",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/lru-cache@4.1.5#package-lock.json#node_modules/term-size/node_modules/lru-cache",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/create-error-class@3.0.2#package-lock.json#node_modules/create-error-class",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/create-hash@1.2.0#package-lock.json#node_modules/create-hash",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/crypto-browserify@3.12.0#package-lock.json#node_modules/crypto-browserify",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/cross-spawn@4.0.2#package-lock.json#node_modules/cross-spawn",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/cross-spawn@4.0.2#package-lock.json#node_modules/nyc/node_modules/cross-spawn",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/data-uri-to-buffer@1.2.0#package-lock.json#node_modules/data-uri-to-buffer",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/dash-ast@1.0.0#package-lock.json#node_modules/dash-ast",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/decamelize@1.2.0#package-lock.json#node_modules/decamelize",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/decamelize@1.2.0#package-lock.json#node_modules/nyc/node_modules/decamelize",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/crypto-random-string@1.0.0#package-lock.json#node_modules/crypto-random-string",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/dashdash@1.14.1#package-lock.json#node_modules/dashdash",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ms@2.1.1#package-lock.json#node_modules/debug/node_modules/ms",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/debug@4.1.1#package-lock.json#node_modules/debug",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/date-now@0.1.4#package-lock.json#node_modules/date-now",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/deep-is@0.1.3#package-lock.json#node_modules/deep-is",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/deep-extend@0.6.0#package-lock.json#node_modules/deep-extend",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/decompress-response@3.3.0#package-lock.json#node_modules/decompress-response",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/defer-to-connect@1.1.3#package-lock.json#node_modules/defer-to-connect",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/esprima@3.1.3#package-lock.json#node_modules/degenerator/node_modules/esprima",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/esprima@3.1.3#package-lock.json#node_modules/escodegen/node_modules/esprima",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/degenerator@1.0.4#package-lock.json#node_modules/degenerator",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/delayed-stream@1.0.0#package-lock.json#node_modules/delayed-stream",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/denque@1.4.1#package-lock.json#node_modules/denque",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/depd@1.0.1#package-lock.json#node_modules/depd",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/deps-sort@2.0.0#package-lock.json#node_modules/deps-sort",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/acorn@5.7.4#package-lock.json#node_modules/detective/node_modules/acorn",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/des.js@1.0.0#package-lock.json#node_modules/des.js",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/detective@4.7.1#package-lock.json#node_modules/detective",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/destroy@1.0.3#package-lock.json#node_modules/destroy",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/dicer@0.3.0#package-lock.json#node_modules/dicer",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/diffie-hellman@5.0.3#package-lock.json#node_modules/diffie-hellman",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/diff@1.4.0#package-lock.json#node_modules/diff",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/dockerfile-ast@0.0.16#package-lock.json#node_modules/dockerfile-ast",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/xml2js@0.4.19#package-lock.json#node_modules/dotnet-deps-parser/node_modules/xml2js",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/dot-prop@4.2.0#package-lock.json#node_modules/dot-prop",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/domain-browser@1.1.7#package-lock.json#node_modules/domain-browser",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/duplexer2@0.1.4#package-lock.json#node_modules/duplexer2",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/dotenv@6.2.0#package-lock.json#node_modules/dotenv",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/dotnet-deps-parser@4.9.0#package-lock.json#node_modules/dotnet-deps-parser",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/duplexer3@0.1.4#package-lock.json#node_modules/duplexer3",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/dustjs-helpers@1.5.0#package-lock.json#node_modules/dustjs-helpers",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ecc-jsbn@0.1.2#package-lock.json#node_modules/ecc-jsbn",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ee-first@1.0.5#package-lock.json#node_modules/ee-first",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ejs-locals@1.0.2#package-lock.json#node_modules/ejs-locals",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/dustjs-linkedin@2.5.0#package-lock.json#node_modules/dustjs-linkedin",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ejs@0.8.8#package-lock.json#node_modules/ejs-locals/node_modules/ejs",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ejs@1.0.0#package-lock.json#node_modules/ejs",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/emoji-regex@7.0.3#package-lock.json#node_modules/emoji-regex",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/elliptic@6.4.1#package-lock.json#node_modules/elliptic",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/end-of-stream@1.4.4#package-lock.json#node_modules/end-of-stream",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/email-validator@2.0.4#package-lock.json#node_modules/email-validator",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/errorhandler@1.2.0#package-lock.json#node_modules/errorhandler",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/es6-promise@2.1.1#package-lock.json#node_modules/es6-promise",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/es6-promise@4.2.8#package-lock.json#node_modules/es6-promisify/node_modules/es6-promise",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/es6-promisify@5.0.0#package-lock.json#node_modules/es6-promisify",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/escape-string-regexp@1.0.5#package-lock.json#node_modules/escape-string-regexp",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/escape-string-regexp@1.0.5#package-lock.json#node_modules/nyc/node_modules/escape-string-regexp",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/escodegen@1.12.1#package-lock.json#node_modules/escodegen",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/escape-html@1.0.1#package-lock.json#node_modules/escape-html",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/source-map@0.6.1#package-lock.json#node_modules/escodegen/node_modules/source-map",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/source-map@0.6.1#package-lock.json#node_modules/handlebars/node_modules/source-map",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/source-map@0.6.1#package-lock.json#node_modules/nyc/node_modules/merge-source-map/node_modules/source-map",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/source-map@0.6.1#package-lock.json#node_modules/source-map-support/node_modules/source-map",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/esprima@4.0.1#package-lock.json#node_modules/esprima",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/esutils@2.0.3#package-lock.json#node_modules/esutils",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/estraverse@4.3.0#package-lock.json#node_modules/estraverse",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/escape-goat@2.1.1#package-lock.json#node_modules/escape-goat",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/etag@1.6.0#package-lock.json#node_modules/etag",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/events@1.1.1#package-lock.json#node_modules/events",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/events-to-array@1.1.2#package-lock.json#node_modules/events-to-array",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/express@4.12.4#package-lock.json#node_modules/express",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/evp_bytestokey@1.0.3#package-lock.json#node_modules/evp_bytestokey",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/execa@1.0.0#package-lock.json#node_modules/execa",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/cross-spawn@6.0.5#package-lock.json#node_modules/execa/node_modules/cross-spawn",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/express-session@1.17.2#package-lock.json#node_modules/express-session",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/express-fileupload@0.0.5#package-lock.json#node_modules/express-fileupload",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/cookie@0.4.1#package-lock.json#node_modules/express-session/node_modules/cookie",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ms@2.0.0#package-lock.json#node_modules/express-session/node_modules/ms",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ms@2.0.0#package-lock.json#node_modules/get-uri/node_modules/ms",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ms@2.0.0#package-lock.json#node_modules/http-proxy-agent/node_modules/ms",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ms@2.0.0#package-lock.json#node_modules/method-override/node_modules/ms",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ms@2.0.0#package-lock.json#node_modules/morgan/node_modules/ms",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ms@2.0.0#package-lock.json#node_modules/nyc/node_modules/ms",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ms@2.0.0#package-lock.json#node_modules/tap-mocha-reporter/node_modules/ms",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ms@2.0.0#package-lock.json#node_modules/undefsafe/node_modules/ms",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/depd@2.0.0#package-lock.json#node_modules/express-session/node_modules/depd",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/depd@2.0.0#package-lock.json#node_modules/morgan/node_modules/depd",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/safe-buffer@5.2.1#package-lock.json#node_modules/express-session/node_modules/safe-buffer",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ee-first@1.1.0#package-lock.json#node_modules/express/node_modules/ee-first",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ee-first@1.1.0#package-lock.json#node_modules/finalhandler/node_modules/ee-first",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ee-first@1.1.0#package-lock.json#node_modules/send/node_modules/ee-first",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/debug@2.6.9#package-lock.json#node_modules/express-session/node_modules/debug",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/debug@2.6.9#package-lock.json#node_modules/get-uri/node_modules/debug",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/debug@2.6.9#package-lock.json#node_modules/morgan/node_modules/debug",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/debug@2.6.9#package-lock.json#node_modules/nyc/node_modules/debug",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/debug@2.6.9#package-lock.json#node_modules/tap-mocha-reporter/node_modules/debug",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/debug@2.6.9#package-lock.json#node_modules/undefsafe/node_modules/debug",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/accepts@1.2.13#package-lock.json#node_modules/express/node_modules/accepts",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/debug@2.2.0#package-lock.json#node_modules/express/node_modules/debug",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/debug@2.2.0#package-lock.json#node_modules/finalhandler/node_modules/debug",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/debug@2.2.0#package-lock.json#node_modules/mquery/node_modules/debug",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/debug@2.2.0#package-lock.json#node_modules/send/node_modules/debug",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/mime-db@1.39.0#package-lock.json#node_modules/express/node_modules/mime-db",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/negotiator@0.5.3#package-lock.json#node_modules/express/node_modules/negotiator",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ms@0.7.1#package-lock.json#node_modules/express/node_modules/ms",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ms@0.7.1#package-lock.json#node_modules/finalhandler/node_modules/ms",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ms@0.7.1#package-lock.json#node_modules/mongoose/node_modules/ms",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ms@0.7.1#package-lock.json#node_modules/mquery/node_modules/ms",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ms@0.7.1#package-lock.json#node_modules/send/node_modules/ms",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/mime-types@2.1.23#package-lock.json#node_modules/express/node_modules/mime-types",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/qs@2.4.2#package-lock.json#node_modules/express/node_modules/qs",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/on-finished@2.2.1#package-lock.json#node_modules/express/node_modules/on-finished",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/on-finished@2.2.1#package-lock.json#node_modules/finalhandler/node_modules/on-finished",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/on-finished@2.2.1#package-lock.json#node_modules/send/node_modules/on-finished",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/type-is@1.6.16#package-lock.json#node_modules/express/node_modules/type-is",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/extend@3.0.2#package-lock.json#node_modules/extend",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/external-editor@3.1.0#package-lock.json#node_modules/external-editor",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/extsprintf@1.3.0#package-lock.json#node_modules/extsprintf",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/fast-deep-equal@2.0.1#package-lock.json#node_modules/fast-deep-equal",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/fast-json-stable-stringify@2.1.0#package-lock.json#node_modules/fast-json-stable-stringify",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/fast-levenshtein@2.0.6#package-lock.json#node_modules/fast-levenshtein",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/figlet@1.5.0#package-lock.json#node_modules/figlet",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/fd@0.0.3#package-lock.json#node_modules/fd",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/figures@2.0.0#package-lock.json#node_modules/figures",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/fill-range@7.0.1#package-lock.json#node_modules/fill-range",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/file-type@8.1.0#package-lock.json#node_modules/file-type",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/file-uri-to-path@1.0.0#package-lock.json#node_modules/file-uri-to-path",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/finalhandler@0.3.6#package-lock.json#node_modules/finalhandler",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/for-own@1.0.0#package-lock.json#node_modules/for-own",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/find-up@4.1.0#package-lock.json#node_modules/find-up",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/foreground-child@1.5.6#package-lock.json#node_modules/foreground-child",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/foreground-child@1.5.6#package-lock.json#node_modules/nyc/node_modules/foreground-child",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/forever-agent@0.6.1#package-lock.json#node_modules/forever-agent",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/for-in@1.0.2#package-lock.json#node_modules/for-in",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/for-in@1.0.2#package-lock.json#node_modules/nyc/node_modules/for-in",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/form-data@2.3.3#package-lock.json#node_modules/form-data",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/foreachasync@3.0.0#package-lock.json#node_modules/foreachasync",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/mime-db@1.43.0#package-lock.json#node_modules/form-data/node_modules/mime-db",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/mime-db@1.43.0#package-lock.json#node_modules/request/node_modules/mime-db",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/mime-types@2.1.26#package-lock.json#node_modules/form-data/node_modules/mime-types",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/mime-types@2.1.26#package-lock.json#node_modules/request/node_modules/mime-types",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/fs-constants@1.0.0#package-lock.json#node_modules/fs-constants",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/fresh@0.2.4#package-lock.json#node_modules/fresh",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/fs-extra@0.22.1#package-lock.json#node_modules/fs-extra",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/fsevents@2.3.2#package-lock.json#node_modules/fsevents",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/fs.realpath@1.0.0#package-lock.json#node_modules/fs.realpath",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/fs.realpath@1.0.0#package-lock.json#node_modules/nyc/node_modules/fs.realpath",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/fs-exists-cached@1.0.0#package-lock.json#node_modules/fs-exists-cached",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/forwarded@0.1.2#package-lock.json#node_modules/forwarded",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ftp@0.3.10#package-lock.json#node_modules/ftp",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/function-bind@1.1.1#package-lock.json#node_modules/function-bind",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/get-assigned-identifiers@1.2.0#package-lock.json#node_modules/get-assigned-identifiers",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/readable-stream@1.1.14#package-lock.json#node_modules/ftp/node_modules/readable-stream",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/get-caller-file@2.0.5#package-lock.json#node_modules/get-caller-file",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/function-loop@1.0.2#package-lock.json#node_modules/function-loop",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/getpass@0.1.7#package-lock.json#node_modules/getpass",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/get-stream@4.1.0#package-lock.json#node_modules/get-stream",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/readable-stream@2.3.7#package-lock.json#node_modules/get-uri/node_modules/readable-stream",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/readable-stream@2.3.7#package-lock.json#node_modules/jszip/node_modules/readable-stream",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/readable-stream@2.3.7#package-lock.json#node_modules/readable-stream",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/readable-stream@2.3.7#package-lock.json#node_modules/tap-mocha-reporter/node_modules/readable-stream",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/git-up@4.0.1#package-lock.json#node_modules/git-up",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/get-uri@2.0.4#package-lock.json#node_modules/get-uri",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/git-url-parse@11.1.2#package-lock.json#node_modules/git-url-parse",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/glob@7.1.3#package-lock.json#node_modules/glob",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/graceful-fs@4.1.15#package-lock.json#node_modules/graceful-fs",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/global-dirs@0.1.1#package-lock.json#node_modules/global-dirs",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/got@6.7.1#package-lock.json#node_modules/got",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/glob-parent@5.1.2#package-lock.json#node_modules/glob-parent",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/handlebars@4.0.14#package-lock.json#node_modules/handlebars",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/get-stream@3.0.0#package-lock.json#node_modules/got/node_modules/get-stream",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/get-stream@3.0.0#package-lock.json#node_modules/nyc/node_modules/get-stream",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/get-stream@3.0.0#package-lock.json#node_modules/term-size/node_modules/get-stream",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/async@2.6.3#package-lock.json#node_modules/handlebars/node_modules/async",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/lodash@4.17.21#package-lock.json#node_modules/handlebars/node_modules/lodash",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/has@1.0.3#package-lock.json#node_modules/has",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/har-schema@2.0.0#package-lock.json#node_modules/har-schema",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/has-flag@3.0.0#package-lock.json#node_modules/has-flag",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/graphlib@2.1.8#package-lock.json#node_modules/graphlib",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/hash-base@3.0.4#package-lock.json#node_modules/hash-base",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/hbs@4.0.4#package-lock.json#node_modules/hbs",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/has-yarn@2.1.0#package-lock.json#node_modules/has-yarn",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/har-validator@5.1.3#package-lock.json#node_modules/har-validator",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/has-ansi@2.0.0#package-lock.json#node_modules/has-ansi",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/has-ansi@2.0.0#package-lock.json#node_modules/nyc/node_modules/has-ansi",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/hash.js@1.1.7#package-lock.json#node_modules/hash.js",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/hooks-fixed@1.1.0#package-lock.json#node_modules/hooks-fixed",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/htmlescape@1.1.1#package-lock.json#node_modules/htmlescape",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/hosted-git-info@2.8.5#package-lock.json#node_modules/hosted-git-info",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/highlight.js@9.18.1#package-lock.json#node_modules/highlight.js",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/hmac-drbg@1.0.1#package-lock.json#node_modules/hmac-drbg",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/inherits@2.0.4#package-lock.json#node_modules/http-errors/node_modules/inherits",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/depd@1.1.2#package-lock.json#node_modules/http-errors/node_modules/depd",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/http-cache-semantics@4.1.0#package-lock.json#node_modules/http-cache-semantics",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/http-proxy-agent@2.1.0#package-lock.json#node_modules/http-proxy-agent",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/http-errors@1.7.3#package-lock.json#node_modules/http-errors",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/debug@3.1.0#package-lock.json#node_modules/http-proxy-agent/node_modules/debug",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/debug@3.1.0#package-lock.json#node_modules/method-override/node_modules/debug",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/debug@3.1.0#package-lock.json#node_modules/nyc/node_modules/istanbul-lib-source-maps/node_modules/debug",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/http-signature@1.2.0#package-lock.json#node_modules/http-signature",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/https-browserify@0.0.1#package-lock.json#node_modules/https-browserify",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/https-proxy-agent@3.0.1#package-lock.json#node_modules/https-proxy-agent",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/humanize-ms@1.0.1#package-lock.json#node_modules/humanize-ms",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/iconv-lite@0.4.24#package-lock.json#node_modules/iconv-lite",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/debug@3.2.6#package-lock.json#node_modules/https-proxy-agent/node_modules/debug",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/debug@3.2.6#package-lock.json#node_modules/snyk-config/node_modules/debug",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/debug@3.2.6#package-lock.json#node_modules/snyk-module/node_modules/debug",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/debug@3.2.6#package-lock.json#node_modules/snyk-mvn-plugin/node_modules/needle/node_modules/debug",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/debug@3.2.6#package-lock.json#node_modules/snyk-nuget-plugin/node_modules/debug",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/debug@3.2.6#package-lock.json#node_modules/snyk-policy/node_modules/debug",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/debug@3.2.6#package-lock.json#node_modules/snyk-resolve-deps/node_modules/debug",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/debug@3.2.6#package-lock.json#node_modules/snyk-resolve/node_modules/debug",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/debug@3.2.6#package-lock.json#node_modules/snyk-try-require/node_modules/debug",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/debug@3.2.6#package-lock.json#node_modules/snyk/node_modules/debug",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ms@0.6.2#package-lock.json#node_modules/humanize-ms/node_modules/ms",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ms@2.1.2#package-lock.json#node_modules/https-proxy-agent/node_modules/ms",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ms@2.1.2#package-lock.json#node_modules/snyk-config/node_modules/ms",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ms@2.1.2#package-lock.json#node_modules/snyk-module/node_modules/ms",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ms@2.1.2#package-lock.json#node_modules/snyk-mvn-plugin/node_modules/ms",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ms@2.1.2#package-lock.json#node_modules/snyk-nuget-plugin/node_modules/ms",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ms@2.1.2#package-lock.json#node_modules/snyk-policy/node_modules/ms",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ms@2.1.2#package-lock.json#node_modules/snyk-resolve-deps/node_modules/ms",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ms@2.1.2#package-lock.json#node_modules/snyk-resolve/node_modules/ms",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ms@2.1.2#package-lock.json#node_modules/snyk-try-require/node_modules/ms",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ms@2.1.2#package-lock.json#node_modules/snyk/node_modules/ms",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/import-lazy@2.1.0#package-lock.json#node_modules/import-lazy",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ignore-by-default@1.0.1#package-lock.json#node_modules/ignore-by-default",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ieee754@1.1.13#package-lock.json#node_modules/ieee754",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/immediate@3.0.6#package-lock.json#node_modules/immediate",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/imurmurhash@0.1.4#package-lock.json#node_modules/imurmurhash",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/imurmurhash@0.1.4#package-lock.json#node_modules/nyc/node_modules/imurmurhash",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/indexof@0.0.1#package-lock.json#node_modules/indexof",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/inflight@1.0.6#package-lock.json#node_modules/inflight",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/inflight@1.0.6#package-lock.json#node_modules/nyc/node_modules/inflight",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/inherits@2.0.3#package-lock.json#node_modules/inherits",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/inherits@2.0.3#package-lock.json#node_modules/nyc/node_modules/inherits",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ini@1.1.0#package-lock.json#node_modules/ini",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/strip-ansi@5.2.0#package-lock.json#node_modules/inquirer/node_modules/strip-ansi",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/strip-ansi@5.2.0#package-lock.json#node_modules/nodemon/node_modules/strip-ansi",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/strip-ansi@5.2.0#package-lock.json#node_modules/snyk/node_modules/strip-ansi",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/strip-ansi@5.2.0#package-lock.json#node_modules/typeorm/node_modules/strip-ansi",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/strip-ansi@5.2.0#package-lock.json#node_modules/wrap-ansi/node_modules/strip-ansi",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/inquirer@6.5.2#package-lock.json#node_modules/inquirer",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ip@1.1.5#package-lock.json#node_modules/ip",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/inline-source-map@0.6.2#package-lock.json#node_modules/inline-source-map",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ipaddr.js@1.0.5#package-lock.json#node_modules/ipaddr.js",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/concat-stream@1.6.2#package-lock.json#node_modules/insert-module-globals/node_modules/concat-stream",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/insert-module-globals@7.2.0#package-lock.json#node_modules/insert-module-globals",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ansi-regex@4.1.0#package-lock.json#node_modules/inquirer/node_modules/ansi-regex",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ansi-regex@4.1.0#package-lock.json#node_modules/nodemon/node_modules/ansi-regex",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ansi-regex@4.1.0#package-lock.json#node_modules/snyk/node_modules/ansi-regex",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ansi-regex@4.1.0#package-lock.json#node_modules/typeorm/node_modules/ansi-regex",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ansi-regex@4.1.0#package-lock.json#node_modules/wrap-ansi/node_modules/ansi-regex",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-buffer@1.1.6#package-lock.json#node_modules/is-buffer",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-buffer@1.1.6#package-lock.json#node_modules/nyc/node_modules/is-buffer",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-extendable@0.1.1#package-lock.json#node_modules/is-extendable",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-extendable@0.1.1#package-lock.json#node_modules/nyc/node_modules/is-extendable",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-binary-path@2.1.0#package-lock.json#node_modules/is-binary-path",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/invert-kv@1.0.0#package-lock.json#node_modules/invert-kv",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/invert-kv@1.0.0#package-lock.json#node_modules/nyc/node_modules/invert-kv",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-ci@1.2.1#package-lock.json#node_modules/is-ci",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-installed-globally@0.1.0#package-lock.json#node_modules/is-installed-globally",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-extglob@2.1.1#package-lock.json#node_modules/is-extglob",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-npm@1.0.0#package-lock.json#node_modules/is-npm",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-number@7.0.0#package-lock.json#node_modules/is-number",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-obj@1.0.1#package-lock.json#node_modules/is-obj",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-glob@4.0.1#package-lock.json#node_modules/is-glob",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-fullwidth-code-point@2.0.0#package-lock.json#node_modules/is-fullwidth-code-point",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-fullwidth-code-point@2.0.0#package-lock.json#node_modules/nyc/node_modules/is-fullwidth-code-point",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-path-inside@1.0.1#package-lock.json#node_modules/is-path-inside",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-plain-object@2.0.4#package-lock.json#node_modules/is-plain-object",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-plain-object@2.0.4#package-lock.json#node_modules/nyc/node_modules/is-plain-object",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-promise@2.1.0#package-lock.json#node_modules/is-promise",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-retry-allowed@1.2.0#package-lock.json#node_modules/is-retry-allowed",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-redirect@1.0.0#package-lock.json#node_modules/is-redirect",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-ssh@1.3.1#package-lock.json#node_modules/is-ssh",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-yarn-global@0.3.0#package-lock.json#node_modules/is-yarn-global",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-stream@1.1.0#package-lock.json#node_modules/is-stream",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-stream@1.1.0#package-lock.json#node_modules/nyc/node_modules/is-stream",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-wsl@1.1.0#package-lock.json#node_modules/is-wsl",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-typedarray@1.0.0#package-lock.json#node_modules/is-typedarray",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/isobject@3.0.1#package-lock.json#node_modules/isobject",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/isobject@3.0.1#package-lock.json#node_modules/nyc/node_modules/base/node_modules/isobject",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/isobject@3.0.1#package-lock.json#node_modules/nyc/node_modules/cache-base/node_modules/isobject",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/isobject@3.0.1#package-lock.json#node_modules/nyc/node_modules/class-utils/node_modules/isobject",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/isobject@3.0.1#package-lock.json#node_modules/nyc/node_modules/define-property/node_modules/isobject",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/isobject@3.0.1#package-lock.json#node_modules/nyc/node_modules/has-value/node_modules/isobject",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/isobject@3.0.1#package-lock.json#node_modules/nyc/node_modules/is-plain-object/node_modules/isobject",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/isobject@3.0.1#package-lock.json#node_modules/nyc/node_modules/isobject",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/isobject@3.0.1#package-lock.json#node_modules/nyc/node_modules/object-visit/node_modules/isobject",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/isobject@3.0.1#package-lock.json#node_modules/nyc/node_modules/object.pick/node_modules/isobject",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/isobject@3.0.1#package-lock.json#node_modules/nyc/node_modules/snapdragon-node/node_modules/isobject",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/isobject@3.0.1#package-lock.json#node_modules/nyc/node_modules/test-exclude/node_modules/isobject",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/isobject@3.0.1#package-lock.json#node_modules/nyc/node_modules/unset-value/node_modules/isobject",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/isexe@2.0.0#package-lock.json#node_modules/isexe",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/isexe@2.0.0#package-lock.json#node_modules/nyc/node_modules/isexe",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/isstream@0.1.2#package-lock.json#node_modules/isstream",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/json-buffer@3.0.0#package-lock.json#node_modules/json-buffer",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/js-yaml@3.13.1#package-lock.json#node_modules/js-yaml",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/isarray@0.0.1#package-lock.json#node_modules/isarray",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/jquery@2.2.4#package-lock.json#node_modules/jquery",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/jsbn@0.1.1#package-lock.json#node_modules/jsbn",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/json-schema-traverse@0.4.1#package-lock.json#node_modules/json-schema-traverse",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/jsonfile@2.4.0#package-lock.json#node_modules/jsonfile",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/json-stable-stringify@0.0.1#package-lock.json#node_modules/json-stable-stringify",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/json-stringify-safe@5.0.1#package-lock.json#node_modules/json-stringify-safe",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/JSONStream@1.3.5#package-lock.json#node_modules/JSONStream",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/json-schema@0.2.3#package-lock.json#node_modules/json-schema",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/jsonify@0.0.0#package-lock.json#node_modules/jsonify",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/jsonparse@1.3.1#package-lock.json#node_modules/jsonparse",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/pako@1.0.10#package-lock.json#node_modules/jszip/node_modules/pako",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/jsprim@1.4.1#package-lock.json#node_modules/jsprim",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/jszip@3.2.2#package-lock.json#node_modules/jszip",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/kerberos@0.0.24#package-lock.json#node_modules/kerberos",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/kareem@1.0.1#package-lock.json#node_modules/kareem",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/kind-of@3.2.2#package-lock.json#node_modules/kind-of",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/kind-of@3.2.2#package-lock.json#node_modules/nyc/node_modules/has-values/node_modules/is-number/node_modules/kind-of",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/kind-of@3.2.2#package-lock.json#node_modules/nyc/node_modules/kind-of",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/kind-of@3.2.2#package-lock.json#node_modules/nyc/node_modules/test-exclude/node_modules/expand-brackets/node_modules/is-accessor-descriptor/node_modules/kind-of",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/kind-of@3.2.2#package-lock.json#node_modules/nyc/node_modules/test-exclude/node_modules/expand-brackets/node_modules/is-data-descriptor/node_modules/kind-of",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/kind-of@3.2.2#package-lock.json#node_modules/nyc/node_modules/test-exclude/node_modules/is-number/node_modules/kind-of",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/keyv@3.1.0#package-lock.json#node_modules/keyv",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/lcid@1.0.0#package-lock.json#node_modules/lcid",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/lcid@1.0.0#package-lock.json#node_modules/nyc/node_modules/lcid",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/isarray@2.0.4#package-lock.json#node_modules/labeled-stream-splicer/node_modules/isarray",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/lazy-cache@0.2.7#package-lock.json#node_modules/lazy-cache",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/latest-version@3.1.0#package-lock.json#node_modules/latest-version",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/levn@0.3.0#package-lock.json#node_modules/levn",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/locate-path@5.0.0#package-lock.json#node_modules/locate-path",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/labeled-stream-splicer@2.0.1#package-lock.json#node_modules/labeled-stream-splicer",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/lie@3.3.0#package-lock.json#node_modules/lie",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/lcov-parse@1.0.0#package-lock.json#node_modules/lcov-parse",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/lodash.assign@4.2.0#package-lock.json#node_modules/lodash.assign",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/lodash.assignin@4.2.0#package-lock.json#node_modules/lodash.assignin",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/lodash@4.17.4#package-lock.json#node_modules/lodash",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/lodash.clone@4.5.0#package-lock.json#node_modules/lodash.clone",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/lodash.clonedeep@4.5.0#package-lock.json#node_modules/lodash.clonedeep",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/lodash.memoize@3.0.4#package-lock.json#node_modules/lodash.memoize",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/lodash.set@4.3.2#package-lock.json#node_modules/lodash.set",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/lodash.flatten@4.4.0#package-lock.json#node_modules/lodash.flatten",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/log-driver@1.2.7#package-lock.json#node_modules/log-driver",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/lodash.get@4.4.2#package-lock.json#node_modules/lodash.get",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/lowercase-keys@1.0.1#package-lock.json#node_modules/lowercase-keys",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/macos-release@2.3.0#package-lock.json#node_modules/macos-release",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/lru-cache@2.3.1#package-lock.json#node_modules/lru-cache",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/md5.js@1.3.5#package-lock.json#node_modules/md5.js",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/make-dir@1.3.0#package-lock.json#node_modules/make-dir",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/marked@0.3.5#package-lock.json#node_modules/marked",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/media-typer@0.3.0#package-lock.json#node_modules/media-typer",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/memory-pager@1.5.0#package-lock.json#node_modules/memory-pager",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/merge-descriptors@1.0.0#package-lock.json#node_modules/merge-descriptors",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/vary@1.1.2#package-lock.json#node_modules/method-override/node_modules/vary",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/method-override@3.0.0#package-lock.json#node_modules/method-override",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/mime@1.3.4#package-lock.json#node_modules/mime",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/methods@1.1.2#package-lock.json#node_modules/methods",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/mime-types@2.0.14#package-lock.json#node_modules/mime-types",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/mime-db@1.12.0#package-lock.json#node_modules/mime-db",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/mimic-fn@1.2.0#package-lock.json#node_modules/mimic-fn",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/mimic-fn@1.2.0#package-lock.json#node_modules/nyc/node_modules/mimic-fn",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/miller-rabin@4.0.1#package-lock.json#node_modules/miller-rabin",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/mimic-response@1.0.1#package-lock.json#node_modules/mimic-response",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/minimalistic-assert@1.0.1#package-lock.json#node_modules/minimalistic-assert",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/minimalistic-crypto-utils@1.0.1#package-lock.json#node_modules/minimalistic-crypto-utils",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/yallist@3.1.1#package-lock.json#node_modules/minipass/node_modules/yallist",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/yallist@3.1.1#package-lock.json#node_modules/proxy-agent/node_modules/yallist",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/minipass@2.9.0#package-lock.json#node_modules/minipass",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/for-in@0.1.8#package-lock.json#node_modules/mixin-object/node_modules/for-in",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/minimatch@3.0.4#package-lock.json#node_modules/minimatch",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/minimatch@3.0.4#package-lock.json#node_modules/nyc/node_modules/minimatch",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/minimist@1.2.0#package-lock.json#node_modules/minimist",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/mkdirp@0.3.5#package-lock.json#node_modules/mkdirp",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/mixin-object@2.0.1#package-lock.json#node_modules/mixin-object",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/module-deps@4.1.1#package-lock.json#node_modules/module-deps",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/moment@2.15.1#package-lock.json#node_modules/moment",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/mongodb-core@1.2.19#package-lock.json#node_modules/mongodb-core",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/mongodb@3.5.9#package-lock.json#node_modules/mongodb",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/bl@2.2.0#package-lock.json#node_modules/mongodb/node_modules/bl",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/bson@1.1.4#package-lock.json#node_modules/mongodb/node_modules/bson",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/mongoose@4.2.4#package-lock.json#node_modules/mongoose",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ee-first@1.1.1#package-lock.json#node_modules/morgan/node_modules/ee-first",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/readable-stream@1.0.31#package-lock.json#node_modules/mongoose/node_modules/readable-stream",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/mongodb@2.0.46#package-lock.json#node_modules/mongoose/node_modules/mongodb",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/mquery@1.6.3#package-lock.json#node_modules/mquery",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/on-finished@2.3.0#package-lock.json#node_modules/morgan/node_modules/on-finished",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/mpath@0.1.1#package-lock.json#node_modules/mpath",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/morgan@1.10.0#package-lock.json#node_modules/morgan",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/mpromise@0.5.4#package-lock.json#node_modules/mpromise",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/muri@1.0.0#package-lock.json#node_modules/muri",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ms@0.7.3#package-lock.json#node_modules/ms",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/bluebird@2.9.26#package-lock.json#node_modules/mquery/node_modules/bluebird",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/mz@2.7.0#package-lock.json#node_modules/mz",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/nconf@0.10.0#package-lock.json#node_modules/nconf",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/nan@2.10.0#package-lock.json#node_modules/nan",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/mysql@2.18.1#package-lock.json#node_modules/mysql",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/negotiator@0.4.9#package-lock.json#node_modules/negotiator",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/needle@2.3.0#package-lock.json#node_modules/needle",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/async@1.5.2#package-lock.json#node_modules/nconf/node_modules/async",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/async@1.5.2#package-lock.json#node_modules/nyc/node_modules/async",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/mute-stream@0.0.7#package-lock.json#node_modules/mute-stream",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/netmask@1.0.6#package-lock.json#node_modules/netmask",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/string-width@3.1.0#package-lock.json#node_modules/nodemon/node_modules/ansi-align/node_modules/string-width",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/string-width@3.1.0#package-lock.json#node_modules/typeorm/node_modules/string-width",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/string-width@3.1.0#package-lock.json#node_modules/wrap-ansi/node_modules/string-width",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ansi-styles@4.3.0#package-lock.json#node_modules/nodemon/node_modules/ansi-styles",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/nodemon@2.0.7#package-lock.json#node_modules/nodemon",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ansi-align@3.0.0#package-lock.json#node_modules/nodemon/node_modules/ansi-align",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/nice-try@1.0.5#package-lock.json#node_modules/nice-try",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/boxen@4.2.0#package-lock.json#node_modules/nodemon/node_modules/boxen",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/camelcase@5.3.1#package-lock.json#node_modules/nodemon/node_modules/camelcase",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/camelcase@5.3.1#package-lock.json#node_modules/typeorm/node_modules/camelcase",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/camelcase@5.3.1#package-lock.json#node_modules/yargs-parser/node_modules/camelcase",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/supports-color@7.2.0#package-lock.json#node_modules/nodemon/node_modules/chalk/node_modules/supports-color",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/cli-boxes@2.2.1#package-lock.json#node_modules/nodemon/node_modules/cli-boxes",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ci-info@2.0.0#package-lock.json#node_modules/nodemon/node_modules/ci-info",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/debug@3.2.7#package-lock.json#node_modules/nodemon/node_modules/debug",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/crypto-random-string@2.0.0#package-lock.json#node_modules/nodemon/node_modules/crypto-random-string",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/dot-prop@5.3.0#package-lock.json#node_modules/nodemon/node_modules/dot-prop",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/configstore@5.0.1#package-lock.json#node_modules/nodemon/node_modules/configstore",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/global-dirs@2.1.0#package-lock.json#node_modules/nodemon/node_modules/global-dirs",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ini@1.3.7#package-lock.json#node_modules/nodemon/node_modules/ini",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-npm@4.0.0#package-lock.json#node_modules/nodemon/node_modules/is-npm",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-ci@2.0.0#package-lock.json#node_modules/nodemon/node_modules/is-ci",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/got@9.6.0#package-lock.json#node_modules/nodemon/node_modules/got",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ms@2.1.3#package-lock.json#node_modules/nodemon/node_modules/ms",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-obj@2.0.0#package-lock.json#node_modules/nodemon/node_modules/is-obj",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-installed-globally@0.3.2#package-lock.json#node_modules/nodemon/node_modules/is-installed-globally",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-path-inside@3.0.3#package-lock.json#node_modules/nodemon/node_modules/is-path-inside",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/prepend-http@2.0.0#package-lock.json#node_modules/nodemon/node_modules/prepend-http",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/make-dir@3.1.0#package-lock.json#node_modules/nodemon/node_modules/make-dir",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/latest-version@5.1.0#package-lock.json#node_modules/nodemon/node_modules/latest-version",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/semver@5.7.1#package-lock.json#node_modules/nodemon/node_modules/semver",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/package-json@6.5.0#package-lock.json#node_modules/nodemon/node_modules/package-json",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/registry-url@5.1.0#package-lock.json#node_modules/nodemon/node_modules/registry-url",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/registry-auth-token@4.2.1#package-lock.json#node_modules/nodemon/node_modules/registry-auth-token",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/semver-diff@3.1.1#package-lock.json#node_modules/nodemon/node_modules/semver-diff",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/term-size@2.2.1#package-lock.json#node_modules/nodemon/node_modules/term-size",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/unique-string@2.0.0#package-lock.json#node_modules/nodemon/node_modules/unique-string",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/string-width@4.2.2#package-lock.json#node_modules/nodemon/node_modules/string-width",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/write-file-atomic@3.0.3#package-lock.json#node_modules/nodemon/node_modules/write-file-atomic",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/url-parse-lax@3.0.0#package-lock.json#node_modules/nodemon/node_modules/url-parse-lax",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/nopt@2.2.1#package-lock.json#node_modules/nopt",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/xdg-basedir@4.0.0#package-lock.json#node_modules/nodemon/node_modules/xdg-basedir",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/update-notifier@4.1.3#package-lock.json#node_modules/nodemon/node_modules/update-notifier",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/normalize-path@3.0.0#package-lock.json#node_modules/normalize-path",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/widest-line@3.1.0#package-lock.json#node_modules/nodemon/node_modules/widest-line",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/normalize-url@3.3.0#package-lock.json#node_modules/normalize-url",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/npm-run-path@2.0.2#package-lock.json#node_modules/npm-run-path",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/npm-run-path@2.0.2#package-lock.json#node_modules/nyc/node_modules/npm-run-path",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/npmconf@0.0.24#package-lock.json#node_modules/npmconf",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/inherits@1.0.2#package-lock.json#node_modules/npmconf/node_modules/inherits",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/number-is-nan@1.0.1#package-lock.json#node_modules/number-is-nan",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/number-is-nan@1.0.1#package-lock.json#node_modules/nyc/node_modules/number-is-nan",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/once@1.1.1#package-lock.json#node_modules/npmconf/node_modules/once",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/align-text@0.1.4#package-lock.json#node_modules/nyc/node_modules/align-text",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/semver@1.1.4#package-lock.json#node_modules/npmconf/node_modules/semver",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/nyc@11.9.0#package-lock.json#node_modules/nyc",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/amdefine@1.0.1#package-lock.json#node_modules/nyc/node_modules/amdefine",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ansi-styles@2.2.1#package-lock.json#node_modules/nyc/node_modules/ansi-styles",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ansi-styles@2.2.1#package-lock.json#node_modules/yargonaut/node_modules/ansi-styles",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/append-transform@0.4.0#package-lock.json#node_modules/nyc/node_modules/append-transform",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/arr-diff@4.0.0#package-lock.json#node_modules/nyc/node_modules/arr-diff",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/arr-diff@4.0.0#package-lock.json#node_modules/nyc/node_modules/nanomatch/node_modules/arr-diff",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/arr-diff@4.0.0#package-lock.json#node_modules/nyc/node_modules/test-exclude/node_modules/arr-diff",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/arr-union@3.1.0#package-lock.json#node_modules/nyc/node_modules/arr-union",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/arr-flatten@1.1.0#package-lock.json#node_modules/nyc/node_modules/arr-flatten",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/atob@2.1.1#package-lock.json#node_modules/nyc/node_modules/atob",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/assign-symbols@1.0.0#package-lock.json#node_modules/nyc/node_modules/assign-symbols",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/arrify@1.0.1#package-lock.json#node_modules/nyc/node_modules/arrify",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/array-unique@0.3.2#package-lock.json#node_modules/nyc/node_modules/array-unique",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/array-unique@0.3.2#package-lock.json#node_modules/nyc/node_modules/nanomatch/node_modules/array-unique",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/array-unique@0.3.2#package-lock.json#node_modules/nyc/node_modules/test-exclude/node_modules/array-unique",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/babel-code-frame@6.26.0#package-lock.json#node_modules/nyc/node_modules/babel-code-frame",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/babel-messages@6.23.0#package-lock.json#node_modules/nyc/node_modules/babel-messages",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/babel-template@6.26.0#package-lock.json#node_modules/nyc/node_modules/babel-template",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/babel-generator@6.26.1#package-lock.json#node_modules/nyc/node_modules/babel-generator",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/base@0.11.2#package-lock.json#node_modules/nyc/node_modules/base",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/babel-runtime@6.26.0#package-lock.json#node_modules/nyc/node_modules/babel-runtime",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/babel-traverse@6.26.0#package-lock.json#node_modules/nyc/node_modules/babel-traverse",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/babel-types@6.26.0#package-lock.json#node_modules/nyc/node_modules/babel-types",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-accessor-descriptor@1.0.0#package-lock.json#node_modules/nyc/node_modules/base/node_modules/is-accessor-descriptor",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-accessor-descriptor@1.0.0#package-lock.json#node_modules/nyc/node_modules/define-property/node_modules/is-accessor-descriptor",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-accessor-descriptor@1.0.0#package-lock.json#node_modules/nyc/node_modules/extglob/node_modules/is-accessor-descriptor",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-accessor-descriptor@1.0.0#package-lock.json#node_modules/nyc/node_modules/snapdragon-node/node_modules/is-accessor-descriptor",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-accessor-descriptor@1.0.0#package-lock.json#node_modules/nyc/node_modules/test-exclude/node_modules/is-accessor-descriptor",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/define-property@1.0.0#package-lock.json#node_modules/nyc/node_modules/base/node_modules/define-property",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/define-property@1.0.0#package-lock.json#node_modules/nyc/node_modules/extglob/node_modules/define-property",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/define-property@1.0.0#package-lock.json#node_modules/nyc/node_modules/snapdragon-node/node_modules/define-property",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/define-property@1.0.0#package-lock.json#node_modules/nyc/node_modules/test-exclude/node_modules/extglob/node_modules/define-property",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-data-descriptor@1.0.0#package-lock.json#node_modules/nyc/node_modules/base/node_modules/is-data-descriptor",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-data-descriptor@1.0.0#package-lock.json#node_modules/nyc/node_modules/define-property/node_modules/is-data-descriptor",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-data-descriptor@1.0.0#package-lock.json#node_modules/nyc/node_modules/extglob/node_modules/is-data-descriptor",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-data-descriptor@1.0.0#package-lock.json#node_modules/nyc/node_modules/snapdragon-node/node_modules/is-data-descriptor",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-data-descriptor@1.0.0#package-lock.json#node_modules/nyc/node_modules/test-exclude/node_modules/is-data-descriptor",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/babylon@6.18.0#package-lock.json#node_modules/nyc/node_modules/babylon",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-descriptor@1.0.2#package-lock.json#node_modules/nyc/node_modules/base/node_modules/is-descriptor",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-descriptor@1.0.2#package-lock.json#node_modules/nyc/node_modules/define-property/node_modules/is-descriptor",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-descriptor@1.0.2#package-lock.json#node_modules/nyc/node_modules/extglob/node_modules/is-descriptor",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-descriptor@1.0.2#package-lock.json#node_modules/nyc/node_modules/snapdragon-node/node_modules/is-descriptor",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-descriptor@1.0.2#package-lock.json#node_modules/nyc/node_modules/test-exclude/node_modules/is-descriptor",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/braces@2.3.2#package-lock.json#node_modules/nyc/node_modules/braces",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/braces@2.3.2#package-lock.json#node_modules/nyc/node_modules/test-exclude/node_modules/braces",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/caching-transform@1.0.1#package-lock.json#node_modules/nyc/node_modules/caching-transform",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/extend-shallow@2.0.1#package-lock.json#node_modules/nyc/node_modules/braces/node_modules/extend-shallow",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/extend-shallow@2.0.1#package-lock.json#node_modules/nyc/node_modules/expand-brackets/node_modules/extend-shallow",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/extend-shallow@2.0.1#package-lock.json#node_modules/nyc/node_modules/extglob/node_modules/extend-shallow",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/extend-shallow@2.0.1#package-lock.json#node_modules/nyc/node_modules/fill-range/node_modules/extend-shallow",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/extend-shallow@2.0.1#package-lock.json#node_modules/nyc/node_modules/set-value/node_modules/extend-shallow",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/extend-shallow@2.0.1#package-lock.json#node_modules/nyc/node_modules/snapdragon/node_modules/extend-shallow",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/extend-shallow@2.0.1#package-lock.json#node_modules/nyc/node_modules/test-exclude/node_modules/braces/node_modules/extend-shallow",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/extend-shallow@2.0.1#package-lock.json#node_modules/nyc/node_modules/test-exclude/node_modules/expand-brackets/node_modules/extend-shallow",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/extend-shallow@2.0.1#package-lock.json#node_modules/nyc/node_modules/test-exclude/node_modules/extglob/node_modules/extend-shallow",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/extend-shallow@2.0.1#package-lock.json#node_modules/nyc/node_modules/test-exclude/node_modules/fill-range/node_modules/extend-shallow",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/extend-shallow@2.0.1#package-lock.json#node_modules/nyc/node_modules/union-value/node_modules/extend-shallow",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/kind-of@6.0.2#package-lock.json#node_modules/nyc/node_modules/base/node_modules/kind-of",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/kind-of@6.0.2#package-lock.json#node_modules/nyc/node_modules/define-property/node_modules/kind-of",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/kind-of@6.0.2#package-lock.json#node_modules/nyc/node_modules/extglob/node_modules/kind-of",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/kind-of@6.0.2#package-lock.json#node_modules/nyc/node_modules/micromatch/node_modules/kind-of",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/kind-of@6.0.2#package-lock.json#node_modules/nyc/node_modules/nanomatch/node_modules/kind-of",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/kind-of@6.0.2#package-lock.json#node_modules/nyc/node_modules/snapdragon-node/node_modules/kind-of",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/kind-of@6.0.2#package-lock.json#node_modules/nyc/node_modules/test-exclude/node_modules/kind-of",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/kind-of@6.0.2#package-lock.json#node_modules/nyc/node_modules/use/node_modules/kind-of",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/builtin-modules@1.1.1#package-lock.json#node_modules/nyc/node_modules/builtin-modules",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/cache-base@1.0.1#package-lock.json#node_modules/nyc/node_modules/cache-base",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/center-align@0.1.3#package-lock.json#node_modules/nyc/node_modules/center-align",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/chalk@1.1.3#package-lock.json#node_modules/nyc/node_modules/chalk",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/chalk@1.1.3#package-lock.json#node_modules/yargonaut/node_modules/chalk",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/camelcase@1.2.1#package-lock.json#node_modules/nyc/node_modules/camelcase",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/wordwrap@0.0.2#package-lock.json#node_modules/nyc/node_modules/cliui/node_modules/wordwrap",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/collection-visit@1.0.0#package-lock.json#node_modules/nyc/node_modules/collection-visit",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/component-emitter@1.2.1#package-lock.json#node_modules/nyc/node_modules/component-emitter",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/commondir@1.0.1#package-lock.json#node_modules/nyc/node_modules/commondir",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/class-utils@0.3.6#package-lock.json#node_modules/nyc/node_modules/class-utils",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/cliui@2.1.0#package-lock.json#node_modules/nyc/node_modules/cliui",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/decode-uri-component@0.2.0#package-lock.json#node_modules/nyc/node_modules/decode-uri-component",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/define-property@0.2.5#package-lock.json#node_modules/nyc/node_modules/class-utils/node_modules/define-property",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/define-property@0.2.5#package-lock.json#node_modules/nyc/node_modules/expand-brackets/node_modules/define-property",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/define-property@0.2.5#package-lock.json#node_modules/nyc/node_modules/object-copy/node_modules/define-property",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/define-property@0.2.5#package-lock.json#node_modules/nyc/node_modules/snapdragon/node_modules/define-property",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/define-property@0.2.5#package-lock.json#node_modules/nyc/node_modules/static-extend/node_modules/define-property",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/define-property@0.2.5#package-lock.json#node_modules/nyc/node_modules/test-exclude/node_modules/expand-brackets/node_modules/define-property",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/debug-log@1.0.1#package-lock.json#node_modules/nyc/node_modules/debug-log",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/copy-descriptor@0.1.1#package-lock.json#node_modules/nyc/node_modules/copy-descriptor",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/core-js@2.5.6#package-lock.json#node_modules/nyc/node_modules/core-js",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/convert-source-map@1.5.1#package-lock.json#node_modules/nyc/node_modules/convert-source-map",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/define-property@2.0.2#package-lock.json#node_modules/nyc/node_modules/define-property",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/error-ex@1.3.1#package-lock.json#node_modules/nyc/node_modules/error-ex",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/detect-indent@4.0.0#package-lock.json#node_modules/nyc/node_modules/detect-indent",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/esutils@2.0.2#package-lock.json#node_modules/nyc/node_modules/esutils",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/default-require-extensions@1.0.0#package-lock.json#node_modules/nyc/node_modules/default-require-extensions",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/execa@0.7.0#package-lock.json#node_modules/nyc/node_modules/execa",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/execa@0.7.0#package-lock.json#node_modules/term-size/node_modules/execa",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/expand-brackets@2.1.4#package-lock.json#node_modules/nyc/node_modules/expand-brackets",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/expand-brackets@2.1.4#package-lock.json#node_modules/nyc/node_modules/test-exclude/node_modules/expand-brackets",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/cross-spawn@5.1.0#package-lock.json#node_modules/nyc/node_modules/execa/node_modules/cross-spawn",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/cross-spawn@5.1.0#package-lock.json#node_modules/term-size/node_modules/cross-spawn",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/extend-shallow@3.0.2#package-lock.json#node_modules/nyc/node_modules/extend-shallow",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-extendable@1.0.1#package-lock.json#node_modules/nyc/node_modules/extend-shallow/node_modules/is-extendable",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-extendable@1.0.1#package-lock.json#node_modules/nyc/node_modules/mixin-deep/node_modules/is-extendable",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/fill-range@4.0.0#package-lock.json#node_modules/nyc/node_modules/fill-range",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/fill-range@4.0.0#package-lock.json#node_modules/nyc/node_modules/test-exclude/node_modules/fill-range",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/find-up@2.1.0#package-lock.json#node_modules/nyc/node_modules/find-up",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/get-caller-file@1.0.2#package-lock.json#node_modules/nyc/node_modules/get-caller-file",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/extglob@2.0.4#package-lock.json#node_modules/nyc/node_modules/extglob",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/extglob@2.0.4#package-lock.json#node_modules/nyc/node_modules/test-exclude/node_modules/extglob",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/glob@7.1.2#package-lock.json#node_modules/nyc/node_modules/glob",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/get-value@2.0.6#package-lock.json#node_modules/nyc/node_modules/get-value",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/fragment-cache@0.2.1#package-lock.json#node_modules/nyc/node_modules/fragment-cache",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/find-cache-dir@0.1.1#package-lock.json#node_modules/nyc/node_modules/find-cache-dir",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/globals@9.18.0#package-lock.json#node_modules/nyc/node_modules/globals",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/source-map@0.4.4#package-lock.json#node_modules/nyc/node_modules/handlebars/node_modules/source-map",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/graceful-fs@4.1.11#package-lock.json#node_modules/nyc/node_modules/graceful-fs",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/kind-of@4.0.0#package-lock.json#node_modules/nyc/node_modules/has-values/node_modules/kind-of",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/handlebars@4.0.11#package-lock.json#node_modules/nyc/node_modules/handlebars",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/has-values@1.0.0#package-lock.json#node_modules/nyc/node_modules/has-values",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/has-flag@1.0.0#package-lock.json#node_modules/nyc/node_modules/has-flag",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/has-value@1.0.0#package-lock.json#node_modules/nyc/node_modules/has-value",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/hosted-git-info@2.6.0#package-lock.json#node_modules/nyc/node_modules/hosted-git-info",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-number@3.0.0#package-lock.json#node_modules/nyc/node_modules/has-values/node_modules/is-number",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-number@3.0.0#package-lock.json#node_modules/nyc/node_modules/is-number",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-number@3.0.0#package-lock.json#node_modules/nyc/node_modules/test-exclude/node_modules/is-number",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-number@3.0.0#package-lock.json#node_modules/nyc/node_modules/to-regex-range/node_modules/is-number",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/invariant@2.2.4#package-lock.json#node_modules/nyc/node_modules/invariant",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-accessor-descriptor@0.1.6#package-lock.json#node_modules/nyc/node_modules/is-accessor-descriptor",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-accessor-descriptor@0.1.6#package-lock.json#node_modules/nyc/node_modules/test-exclude/node_modules/expand-brackets/node_modules/is-accessor-descriptor",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-arrayish@0.2.1#package-lock.json#node_modules/nyc/node_modules/is-arrayish",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-builtin-module@1.0.0#package-lock.json#node_modules/nyc/node_modules/is-builtin-module",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-data-descriptor@0.1.4#package-lock.json#node_modules/nyc/node_modules/is-data-descriptor",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-data-descriptor@0.1.4#package-lock.json#node_modules/nyc/node_modules/test-exclude/node_modules/expand-brackets/node_modules/is-data-descriptor",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/kind-of@5.1.0#package-lock.json#node_modules/nyc/node_modules/is-descriptor/node_modules/kind-of",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/kind-of@5.1.0#package-lock.json#node_modules/nyc/node_modules/test-exclude/node_modules/expand-brackets/node_modules/kind-of",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-descriptor@0.1.6#package-lock.json#node_modules/nyc/node_modules/is-descriptor",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-descriptor@0.1.6#package-lock.json#node_modules/nyc/node_modules/test-exclude/node_modules/expand-brackets/node_modules/is-descriptor",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-odd@2.0.0#package-lock.json#node_modules/nyc/node_modules/is-odd",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-utf8@0.2.1#package-lock.json#node_modules/nyc/node_modules/is-utf8",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-finite@1.0.2#package-lock.json#node_modules/nyc/node_modules/is-finite",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/istanbul-lib-hook@1.1.0#package-lock.json#node_modules/nyc/node_modules/istanbul-lib-hook",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/istanbul-lib-coverage@1.2.0#package-lock.json#node_modules/nyc/node_modules/istanbul-lib-coverage",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-number@4.0.0#package-lock.json#node_modules/nyc/node_modules/is-odd/node_modules/is-number",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/is-windows@1.0.2#package-lock.json#node_modules/nyc/node_modules/is-windows",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/istanbul-lib-instrument@1.10.1#package-lock.json#node_modules/nyc/node_modules/istanbul-lib-instrument",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/istanbul-lib-source-maps@1.2.3#package-lock.json#node_modules/nyc/node_modules/istanbul-lib-source-maps",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/jsesc@1.3.0#package-lock.json#node_modules/nyc/node_modules/jsesc",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/supports-color@3.2.3#package-lock.json#node_modules/nyc/node_modules/istanbul-lib-report/node_modules/supports-color",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/istanbul-lib-report@1.1.3#package-lock.json#node_modules/nyc/node_modules/istanbul-lib-report",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/js-tokens@3.0.2#package-lock.json#node_modules/nyc/node_modules/js-tokens",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/lazy-cache@1.0.4#package-lock.json#node_modules/nyc/node_modules/lazy-cache",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/load-json-file@1.1.0#package-lock.json#node_modules/nyc/node_modules/load-json-file",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/istanbul-reports@1.4.0#package-lock.json#node_modules/nyc/node_modules/istanbul-reports",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/loose-envify@1.3.1#package-lock.json#node_modules/nyc/node_modules/loose-envify",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/lodash@4.17.10#package-lock.json#node_modules/nyc/node_modules/lodash",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/path-exists@3.0.0#package-lock.json#node_modules/nyc/node_modules/locate-path/node_modules/path-exists",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/path-exists@3.0.0#package-lock.json#node_modules/typeorm/node_modules/path-exists",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/map-visit@1.0.0#package-lock.json#node_modules/nyc/node_modules/map-visit",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/longest@1.0.1#package-lock.json#node_modules/nyc/node_modules/longest",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/map-cache@0.2.2#package-lock.json#node_modules/nyc/node_modules/map-cache",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/locate-path@2.0.0#package-lock.json#node_modules/nyc/node_modules/locate-path",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/lru-cache@4.1.3#package-lock.json#node_modules/nyc/node_modules/lru-cache",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/mem@1.1.0#package-lock.json#node_modules/nyc/node_modules/mem",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/md5-hex@1.3.0#package-lock.json#node_modules/nyc/node_modules/md5-hex",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/merge-source-map@1.1.0#package-lock.json#node_modules/nyc/node_modules/merge-source-map",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/minimist@0.0.8#package-lock.json#node_modules/nyc/node_modules/minimist",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/minimist@0.0.8#package-lock.json#node_modules/tap/node_modules/minimist",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/object-assign@4.1.1#package-lock.json#node_modules/nyc/node_modules/object-assign",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/object-assign@4.1.1#package-lock.json#node_modules/object-assign",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/micromatch@3.1.10#package-lock.json#node_modules/nyc/node_modules/micromatch",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/micromatch@3.1.10#package-lock.json#node_modules/nyc/node_modules/test-exclude/node_modules/micromatch",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/mixin-deep@1.3.1#package-lock.json#node_modules/nyc/node_modules/mixin-deep",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/mkdirp@0.5.1#package-lock.json#node_modules/nyc/node_modules/mkdirp",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/mkdirp@0.5.1#package-lock.json#node_modules/tap/node_modules/mkdirp",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/md5-o-matic@0.1.1#package-lock.json#node_modules/nyc/node_modules/md5-o-matic",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/normalize-package-data@2.4.0#package-lock.json#node_modules/nyc/node_modules/normalize-package-data",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/nanomatch@1.2.9#package-lock.json#node_modules/nyc/node_modules/nanomatch",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/object-visit@1.0.1#package-lock.json#node_modules/nyc/node_modules/object-visit",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/object-copy@0.1.0#package-lock.json#node_modules/nyc/node_modules/object-copy",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/optimist@0.6.1#package-lock.json#node_modules/nyc/node_modules/optimist",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/optimist@0.6.1#package-lock.json#node_modules/optimist",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/object.pick@1.3.0#package-lock.json#node_modules/nyc/node_modules/object.pick",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/once@1.4.0#package-lock.json#node_modules/nyc/node_modules/once",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/once@1.4.0#package-lock.json#node_modules/once",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/os-homedir@1.0.2#package-lock.json#node_modules/nyc/node_modules/os-homedir",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/os-homedir@1.0.2#package-lock.json#node_modules/os-homedir",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/os-locale@2.1.0#package-lock.json#node_modules/nyc/node_modules/os-locale",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/p-limit@1.2.0#package-lock.json#node_modules/nyc/node_modules/p-limit",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/p-finally@1.0.0#package-lock.json#node_modules/nyc/node_modules/p-finally",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/p-finally@1.0.0#package-lock.json#node_modules/p-finally",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/p-locate@2.0.0#package-lock.json#node_modules/nyc/node_modules/p-locate",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/pascalcase@0.1.1#package-lock.json#node_modules/nyc/node_modules/pascalcase",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/parse-json@2.2.0#package-lock.json#node_modules/nyc/node_modules/parse-json",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/p-try@1.0.0#package-lock.json#node_modules/nyc/node_modules/p-try",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/path-is-absolute@1.0.1#package-lock.json#node_modules/nyc/node_modules/path-is-absolute",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/path-is-absolute@1.0.1#package-lock.json#node_modules/path-is-absolute",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/path-parse@1.0.5#package-lock.json#node_modules/nyc/node_modules/path-parse",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/path-exists@2.1.0#package-lock.json#node_modules/nyc/node_modules/path-exists",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/path-type@1.1.0#package-lock.json#node_modules/nyc/node_modules/path-type",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/path-key@2.0.1#package-lock.json#node_modules/nyc/node_modules/path-key",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/path-key@2.0.1#package-lock.json#node_modules/path-key",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/pinkie@2.0.4#package-lock.json#node_modules/nyc/node_modules/pinkie",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/pinkie-promise@2.0.1#package-lock.json#node_modules/nyc/node_modules/pinkie-promise",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/pkg-dir@1.0.0#package-lock.json#node_modules/nyc/node_modules/pkg-dir",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/pify@2.3.0#package-lock.json#node_modules/nyc/node_modules/pify",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/find-up@1.1.2#package-lock.json#node_modules/nyc/node_modules/pkg-dir/node_modules/find-up",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/find-up@1.1.2#package-lock.json#node_modules/nyc/node_modules/read-pkg-up/node_modules/find-up",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/read-pkg-up@1.0.1#package-lock.json#node_modules/nyc/node_modules/read-pkg-up",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/read-pkg@1.1.0#package-lock.json#node_modules/nyc/node_modules/read-pkg",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/pseudomap@1.0.2#package-lock.json#node_modules/nyc/node_modules/pseudomap",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/pseudomap@1.0.2#package-lock.json#node_modules/pseudomap",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/posix-character-classes@0.1.1#package-lock.json#node_modules/nyc/node_modules/posix-character-classes",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/regenerator-runtime@0.11.1#package-lock.json#node_modules/nyc/node_modules/regenerator-runtime",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/repeating@2.0.1#package-lock.json#node_modules/nyc/node_modules/repeating",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/repeat-element@1.1.2#package-lock.json#node_modules/nyc/node_modules/repeat-element",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/regex-not@1.0.2#package-lock.json#node_modules/nyc/node_modules/regex-not",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/repeat-string@1.6.1#package-lock.json#node_modules/nyc/node_modules/repeat-string",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/require-main-filename@1.0.1#package-lock.json#node_modules/nyc/node_modules/require-main-filename",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/resolve-from@2.0.0#package-lock.json#node_modules/nyc/node_modules/resolve-from",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/resolve-from@2.0.0#package-lock.json#node_modules/resolve-from",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ret@0.1.15#package-lock.json#node_modules/nyc/node_modules/ret",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/resolve-url@0.2.1#package-lock.json#node_modules/nyc/node_modules/resolve-url",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/require-directory@2.1.1#package-lock.json#node_modules/nyc/node_modules/require-directory",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/require-directory@2.1.1#package-lock.json#node_modules/require-directory",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/rimraf@2.6.2#package-lock.json#node_modules/nyc/node_modules/rimraf",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/right-align@0.1.3#package-lock.json#node_modules/nyc/node_modules/right-align",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/safe-regex@1.1.0#package-lock.json#node_modules/nyc/node_modules/safe-regex",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/semver@5.5.0#package-lock.json#node_modules/nyc/node_modules/semver",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/shebang-command@1.2.0#package-lock.json#node_modules/nyc/node_modules/shebang-command",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/shebang-command@1.2.0#package-lock.json#node_modules/shebang-command",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/set-value@2.0.0#package-lock.json#node_modules/nyc/node_modules/set-value",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/signal-exit@3.0.2#package-lock.json#node_modules/nyc/node_modules/signal-exit",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/signal-exit@3.0.2#package-lock.json#node_modules/signal-exit",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/slide@1.1.6#package-lock.json#node_modules/nyc/node_modules/slide",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/shebang-regex@1.0.0#package-lock.json#node_modules/nyc/node_modules/shebang-regex",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/shebang-regex@1.0.0#package-lock.json#node_modules/shebang-regex",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/set-blocking@2.0.0#package-lock.json#node_modules/nyc/node_modules/set-blocking",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/set-blocking@2.0.0#package-lock.json#node_modules/set-blocking",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/snapdragon-util@3.0.1#package-lock.json#node_modules/nyc/node_modules/snapdragon-util",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/source-map-resolve@0.5.1#package-lock.json#node_modules/nyc/node_modules/source-map-resolve",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/snapdragon-node@2.1.1#package-lock.json#node_modules/nyc/node_modules/snapdragon-node",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/spdx-correct@3.0.0#package-lock.json#node_modules/nyc/node_modules/spdx-correct",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/source-map@0.5.7#package-lock.json#node_modules/nyc/node_modules/source-map",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/source-map@0.5.7#package-lock.json#node_modules/source-map",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/source-map-url@0.4.0#package-lock.json#node_modules/nyc/node_modules/source-map-url",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/snapdragon@0.8.2#package-lock.json#node_modules/nyc/node_modules/snapdragon",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/spdx-exceptions@2.1.0#package-lock.json#node_modules/nyc/node_modules/spdx-exceptions",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/spawn-wrap@1.4.2#package-lock.json#node_modules/nyc/node_modules/spawn-wrap",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/spdx-expression-parse@3.0.0#package-lock.json#node_modules/nyc/node_modules/spdx-expression-parse",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/static-extend@0.1.2#package-lock.json#node_modules/nyc/node_modules/static-extend",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/spdx-license-ids@3.0.0#package-lock.json#node_modules/nyc/node_modules/spdx-license-ids",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/string-width@2.1.1#package-lock.json#node_modules/nyc/node_modules/string-width",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/string-width@2.1.1#package-lock.json#node_modules/string-width",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/strip-ansi@4.0.0#package-lock.json#node_modules/nyc/node_modules/string-width/node_modules/strip-ansi",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/strip-ansi@4.0.0#package-lock.json#node_modules/nyc/node_modules/yargs/node_modules/strip-ansi",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/strip-ansi@4.0.0#package-lock.json#node_modules/string-width/node_modules/strip-ansi",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/split-string@3.1.0#package-lock.json#node_modules/nyc/node_modules/split-string",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/strip-ansi@3.0.1#package-lock.json#node_modules/nyc/node_modules/strip-ansi",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/strip-ansi@3.0.1#package-lock.json#node_modules/strip-ansi",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/strip-bom@2.0.0#package-lock.json#node_modules/nyc/node_modules/strip-bom",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/strip-eof@1.0.0#package-lock.json#node_modules/nyc/node_modules/strip-eof",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/strip-eof@1.0.0#package-lock.json#node_modules/strip-eof",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/supports-color@2.0.0#package-lock.json#node_modules/nyc/node_modules/supports-color",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/supports-color@2.0.0#package-lock.json#node_modules/yargonaut/node_modules/supports-color",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/test-exclude@4.2.1#package-lock.json#node_modules/nyc/node_modules/test-exclude",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/to-object-path@0.3.0#package-lock.json#node_modules/nyc/node_modules/to-object-path",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/to-regex-range@2.1.1#package-lock.json#node_modules/nyc/node_modules/to-regex-range",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/to-fast-properties@1.0.3#package-lock.json#node_modules/nyc/node_modules/to-fast-properties",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/to-regex@3.0.2#package-lock.json#node_modules/nyc/node_modules/to-regex",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ansi-regex@3.0.0#package-lock.json#node_modules/nyc/node_modules/string-width/node_modules/ansi-regex",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ansi-regex@3.0.0#package-lock.json#node_modules/nyc/node_modules/yargs/node_modules/ansi-regex",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ansi-regex@3.0.0#package-lock.json#node_modules/string-width/node_modules/ansi-regex",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/yargs@3.10.0#package-lock.json#node_modules/nyc/node_modules/uglify-js/node_modules/yargs",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/uglify-js@2.8.29#package-lock.json#node_modules/nyc/node_modules/uglify-js",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/trim-right@1.0.1#package-lock.json#node_modules/nyc/node_modules/trim-right",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/union-value@1.0.0#package-lock.json#node_modules/nyc/node_modules/union-value",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/uglify-to-browserify@1.0.2#package-lock.json#node_modules/nyc/node_modules/uglify-to-browserify",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/set-value@0.4.3#package-lock.json#node_modules/nyc/node_modules/union-value/node_modules/set-value",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/unset-value@1.0.0#package-lock.json#node_modules/nyc/node_modules/unset-value",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/isobject@2.1.0#package-lock.json#node_modules/nyc/node_modules/unset-value/node_modules/has-value/node_modules/isobject",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/urix@0.1.0#package-lock.json#node_modules/nyc/node_modules/urix",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/has-value@0.3.1#package-lock.json#node_modules/nyc/node_modules/unset-value/node_modules/has-value",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/has-values@0.1.4#package-lock.json#node_modules/nyc/node_modules/unset-value/node_modules/has-values",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/use@3.1.0#package-lock.json#node_modules/nyc/node_modules/use",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/validate-npm-package-license@3.0.3#package-lock.json#node_modules/nyc/node_modules/validate-npm-package-license",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/which-module@2.0.0#package-lock.json#node_modules/nyc/node_modules/which-module",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/which-module@2.0.0#package-lock.json#node_modules/which-module",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/which@1.3.0#package-lock.json#node_modules/nyc/node_modules/which",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/yallist@2.1.2#package-lock.json#node_modules/nyc/node_modules/yallist",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/yallist@2.1.2#package-lock.json#node_modules/yallist",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/wordwrap@0.0.3#package-lock.json#node_modules/nyc/node_modules/wordwrap",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/wordwrap@0.0.3#package-lock.json#node_modules/wordwrap",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/window-size@0.1.0#package-lock.json#node_modules/nyc/node_modules/window-size",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/write-file-atomic@1.3.4#package-lock.json#node_modules/nyc/node_modules/write-file-atomic",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/yargs@11.1.0#package-lock.json#node_modules/nyc/node_modules/yargs",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/y18n@3.2.1#package-lock.json#node_modules/nyc/node_modules/y18n",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/y18n@3.2.1#package-lock.json#node_modules/y18n",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/wrappy@1.0.2#package-lock.json#node_modules/nyc/node_modules/wrappy",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/wrappy@1.0.2#package-lock.json#node_modules/wrappy",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/yargs-parser@8.1.0#package-lock.json#node_modules/nyc/node_modules/yargs-parser",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/cliui@4.1.0#package-lock.json#node_modules/nyc/node_modules/yargs/node_modules/cliui",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/on-finished@2.1.0#package-lock.json#node_modules/on-finished",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/opener@1.5.1#package-lock.json#node_modules/opener",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/object-hash@1.3.1#package-lock.json#node_modules/object-hash",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/onetime@2.0.1#package-lock.json#node_modules/onetime",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/opn@5.5.0#package-lock.json#node_modules/opn",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/on-headers@1.0.2#package-lock.json#node_modules/on-headers",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/optional@0.1.4#package-lock.json#node_modules/optional",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/minimist@0.0.10#package-lock.json#node_modules/optimist/node_modules/minimist",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/optionator@0.8.3#package-lock.json#node_modules/optionator",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/os-browserify@0.1.2#package-lock.json#node_modules/os-browserify",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/os-locale@1.4.0#package-lock.json#node_modules/os-locale",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/oauth-sign@0.9.0#package-lock.json#node_modules/oauth-sign",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/yargs-parser@9.0.2#package-lock.json#node_modules/nyc/node_modules/yargs/node_modules/yargs-parser",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/osenv@0.0.3#package-lock.json#node_modules/osenv",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/os-tmpdir@1.0.2#package-lock.json#node_modules/os-tmpdir",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/p-cancelable@1.1.0#package-lock.json#node_modules/p-cancelable",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/own-or-env@1.0.1#package-lock.json#node_modules/own-or-env",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/own-or@1.0.0#package-lock.json#node_modules/own-or",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/os-name@3.1.0#package-lock.json#node_modules/os-name",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/p-try@2.2.0#package-lock.json#node_modules/p-try",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/p-map@2.1.0#package-lock.json#node_modules/p-map",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/pac-proxy-agent@3.0.1#package-lock.json#node_modules/pac-proxy-agent",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/bytes@3.1.0#package-lock.json#node_modules/pac-proxy-agent/node_modules/bytes",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/p-limit@2.3.0#package-lock.json#node_modules/p-limit",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/p-locate@4.1.0#package-lock.json#node_modules/p-locate",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/raw-body@2.4.1#package-lock.json#node_modules/pac-proxy-agent/node_modules/raw-body",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/package-json@4.0.1#package-lock.json#node_modules/package-json",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/pako@0.2.9#package-lock.json#node_modules/pako",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/parent-require@1.0.0#package-lock.json#node_modules/parent-require",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/parents@1.0.1#package-lock.json#node_modules/parents",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/pac-resolver@3.0.0#package-lock.json#node_modules/pac-resolver",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/parse5@5.1.1#package-lock.json#node_modules/parse5",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/parse-url@5.0.1#package-lock.json#node_modules/parse-url",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/parseurl@1.3.3#package-lock.json#node_modules/parseurl",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/parse5-htmlparser2-tree-adapter@5.1.1#package-lock.json#node_modules/parse5-htmlparser2-tree-adapter",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/parse-path@4.0.1#package-lock.json#node_modules/parse-path",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/parse-asn1@5.1.4#package-lock.json#node_modules/parse-asn1",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/path-browserify@0.0.1#package-lock.json#node_modules/path-browserify",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/path-platform@0.11.15#package-lock.json#node_modules/path-platform",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/path-is-inside@1.0.2#package-lock.json#node_modules/path-is-inside",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/path-to-regexp@0.1.3#package-lock.json#node_modules/path-to-regexp",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/path-parse@1.0.6#package-lock.json#node_modules/path-parse",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/path-exists@4.0.0#package-lock.json#node_modules/path-exists",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/picomatch@2.3.0#package-lock.json#node_modules/picomatch",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/pify@3.0.0#package-lock.json#node_modules/pify",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ports@1.1.0#package-lock.json#node_modules/ports",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/pbkdf2@3.0.17#package-lock.json#node_modules/pbkdf2",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/prelude-ls@1.1.2#package-lock.json#node_modules/prelude-ls",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/performance-now@2.1.0#package-lock.json#node_modules/performance-now",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/prepend-http@1.0.4#package-lock.json#node_modules/prepend-http",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/process-nextick-args@2.0.0#package-lock.json#node_modules/process-nextick-args",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/process@0.11.10#package-lock.json#node_modules/process",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/proto-list@1.2.4#package-lock.json#node_modules/proto-list",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/promise@7.3.1#package-lock.json#node_modules/promise",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/proxy-from-env@1.0.0#package-lock.json#node_modules/proxy-from-env",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/lru-cache@5.1.1#package-lock.json#node_modules/proxy-agent/node_modules/lru-cache",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/proxy-addr@1.0.10#package-lock.json#node_modules/proxy-addr",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/pstree.remy@1.1.8#package-lock.json#node_modules/pstree.remy",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/proxy-agent@3.1.1#package-lock.json#node_modules/proxy-agent",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/pump@3.0.0#package-lock.json#node_modules/pump",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/public-encrypt@4.0.3#package-lock.json#node_modules/public-encrypt",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/protocols@1.4.7#package-lock.json#node_modules/protocols",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/pupa@2.1.1#package-lock.json#node_modules/pupa",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/psl@1.7.0#package-lock.json#node_modules/psl",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/querystring-es3@0.2.1#package-lock.json#node_modules/querystring-es3",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/punycode@2.1.1#package-lock.json#node_modules/punycode",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/qs@2.2.4#package-lock.json#node_modules/qs",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/random-bytes@1.0.0#package-lock.json#node_modules/random-bytes",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/randomfill@1.0.4#package-lock.json#node_modules/randomfill",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/rc@1.2.8#package-lock.json#node_modules/rc",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/raw-body@1.3.0#package-lock.json#node_modules/raw-body",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/read-only-stream@2.0.0#package-lock.json#node_modules/read-only-stream",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/reflect-metadata@0.1.13#package-lock.json#node_modules/reflect-metadata",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/querystring@0.2.0#package-lock.json#node_modules/querystring",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/randombytes@2.1.0#package-lock.json#node_modules/randombytes",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/regexp-clone@0.0.1#package-lock.json#node_modules/regexp-clone",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/readdirp@3.5.0#package-lock.json#node_modules/readdirp",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/registry-url@3.1.0#package-lock.json#node_modules/registry-url",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/registry-auth-token@3.4.0#package-lock.json#node_modules/registry-auth-token",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/request@2.88.0#package-lock.json#node_modules/request",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/range-parser@1.0.3#package-lock.json#node_modules/range-parser",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/resolve@1.10.0#package-lock.json#node_modules/resolve",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/rimraf@2.6.3#package-lock.json#node_modules/rimraf",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/require-main-filename@2.0.0#package-lock.json#node_modules/require-main-filename",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/restore-cursor@2.0.0#package-lock.json#node_modules/restore-cursor",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/responselike@1.0.2#package-lock.json#node_modules/responselike",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/run-async@2.3.0#package-lock.json#node_modules/run-async",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/safer-buffer@2.1.2#package-lock.json#node_modules/safer-buffer",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/rxjs@6.5.4#package-lock.json#node_modules/rxjs",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/qs@6.5.2#package-lock.json#node_modules/request/node_modules/qs",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/safe-buffer@5.1.2#package-lock.json#node_modules/safe-buffer",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/require_optional@1.0.1#package-lock.json#node_modules/require_optional",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/saslprep@1.0.3#package-lock.json#node_modules/saslprep",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/sax@1.2.4#package-lock.json#node_modules/sax",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/ripemd160@2.0.2#package-lock.json#node_modules/ripemd160",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/secure-keys@1.0.0#package-lock.json#node_modules/secure-keys",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/send@0.12.3#package-lock.json#node_modules/send",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/semver@5.7.0#package-lock.json#node_modules/semver",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/setprototypeof@1.1.1#package-lock.json#node_modules/setprototypeof",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/set-immediate-shim@1.0.1#package-lock.json#node_modules/set-immediate-shim",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/serve-static@1.9.3#package-lock.json#node_modules/serve-static",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/shasum@1.0.2#package-lock.json#node_modules/shasum",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/kind-of@2.0.1#package-lock.json#node_modules/shallow-clone/node_modules/kind-of",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/shallow-clone@0.1.2#package-lock.json#node_modules/shallow-clone",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/sha.js@2.4.11#package-lock.json#node_modules/sha.js",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/shell-quote@1.6.1#package-lock.json#node_modules/shell-quote",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/smart-buffer@4.1.0#package-lock.json#node_modules/smart-buffer",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/simple-concat@1.0.0#package-lock.json#node_modules/simple-concat",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/semver-diff@2.1.0#package-lock.json#node_modules/semver-diff",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/snyk@1.278.1#package-lock.json#node_modules/snyk",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/snyk-config@2.2.3#package-lock.json#node_modules/snyk-config",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/snyk-go-parser@1.3.1#package-lock.json#node_modules/snyk-go-parser",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/snyk-go-plugin@1.11.1#package-lock.json#node_modules/snyk-go-plugin",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/sliced@0.0.5#package-lock.json#node_modules/sliced",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/snyk-gradle-plugin@3.2.2#package-lock.json#node_modules/snyk-gradle-plugin",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/snyk-module@1.9.1#package-lock.json#node_modules/snyk-module",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/snyk-docker-plugin@1.33.1#package-lock.json#node_modules/snyk-docker-plugin",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/snyk-mvn-plugin@2.7.0#package-lock.json#node_modules/snyk-mvn-plugin",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/needle@2.4.0#package-lock.json#node_modules/snyk-mvn-plugin/node_modules/needle",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/%40snyk/cli-interface@2.2.0#package-lock.json#node_modules/snyk-gradle-plugin/node_modules/@snyk/cli-interface",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/%40snyk/cli-interface@2.2.0#package-lock.json#node_modules/snyk-mvn-plugin/node_modules/@snyk/cli-interface",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/%40snyk/cli-interface@2.2.0#package-lock.json#node_modules/snyk-php-plugin/node_modules/@snyk/cli-interface",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/snyk-nuget-plugin@1.16.0#package-lock.json#node_modules/snyk-nuget-plugin",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/tmp@0.1.0#package-lock.json#node_modules/snyk-mvn-plugin/node_modules/tmp",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/tmp@0.1.0#package-lock.json#node_modules/snyk-sbt-plugin/node_modules/tmp",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/snyk-nodejs-lockfile-parser@1.17.0#package-lock.json#node_modules/snyk-nodejs-lockfile-parser",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/snyk-php-plugin@1.7.0#package-lock.json#node_modules/snyk-php-plugin",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/snyk-policy@1.13.5#package-lock.json#node_modules/snyk-policy",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/tslib@1.9.3#package-lock.json#node_modules/snyk-mvn-plugin/node_modules/tslib",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/tslib@1.9.3#package-lock.json#node_modules/snyk-php-plugin/node_modules/tslib",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/snyk-paket-parser@1.5.0#package-lock.json#node_modules/snyk-paket-parser",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/snyk-resolve-deps@4.4.0#package-lock.json#node_modules/snyk-resolve-deps",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/%40types/node@6.14.9#package-lock.json#node_modules/snyk-resolve-deps/node_modules/@types/node",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/snyk-python-plugin@1.16.0#package-lock.json#node_modules/snyk-python-plugin",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/snyk-sbt-plugin@2.11.0#package-lock.json#node_modules/snyk-sbt-plugin",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/snyk-resolve@1.0.1#package-lock.json#node_modules/snyk-resolve",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/snyk-tree@1.0.0#package-lock.json#node_modules/snyk-tree",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/socks-proxy-agent@4.0.2#package-lock.json#node_modules/socks-proxy-agent",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/sprintf-js@1.0.3#package-lock.json#node_modules/sprintf-js",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/sparse-bitfield@3.0.3#package-lock.json#node_modules/sparse-bitfield",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/source-map-support@0.5.16#package-lock.json#node_modules/source-map-support",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/snyk-try-require@1.3.1#package-lock.json#node_modules/snyk-try-require",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/socks@2.3.3#package-lock.json#node_modules/socks",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/sqlstring@2.3.1#package-lock.json#node_modules/sqlstring",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/graceful-fs@1.2.3#package-lock.json#node_modules/st/node_modules/graceful-fs",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/negotiator@0.2.8#package-lock.json#node_modules/st/node_modules/negotiator",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/st@0.2.4#package-lock.json#node_modules/st",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/sshpk@1.16.1#package-lock.json#node_modules/sshpk",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/agent-base@4.2.1#package-lock.json#node_modules/socks-proxy-agent/node_modules/agent-base",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/stream-combiner2@1.1.1#package-lock.json#node_modules/stream-combiner2",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/stream-buffers@3.0.2#package-lock.json#node_modules/stream-buffers",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/stream-http@2.8.3#package-lock.json#node_modules/stream-http",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/statuses@1.5.0#package-lock.json#node_modules/statuses",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/diff@4.0.2#package-lock.json#node_modules/snyk/node_modules/diff",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/stack-utils@1.0.2#package-lock.json#node_modules/stack-utils",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/stream-browserify@2.0.2#package-lock.json#node_modules/stream-browserify",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/string_decoder@0.10.31#package-lock.json#node_modules/string_decoder",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/stream-splicer@2.0.0#package-lock.json#node_modules/stream-splicer",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/streamsearch@0.1.2#package-lock.json#node_modules/streamsearch",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/supports-color@5.5.0#package-lock.json#node_modules/supports-color",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/streamifier@0.1.1#package-lock.json#node_modules/streamifier",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/mime@1.2.11#package-lock.json#node_modules/st/node_modules/mime",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/subarg@1.0.0#package-lock.json#node_modules/subarg",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/tap@11.1.5#package-lock.json#node_modules/tap",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/tap-mocha-reporter@3.0.9#package-lock.json#node_modules/tap-mocha-reporter",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/tap-parser@5.4.0#package-lock.json#node_modules/tap-mocha-reporter/node_modules/tap-parser",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/strip-json-comments@2.0.1#package-lock.json#node_modules/strip-json-comments",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/syntax-error@1.4.0#package-lock.json#node_modules/syntax-error",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/temp-dir@1.0.0#package-lock.json#node_modules/temp-dir",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/tap-parser@7.0.0#package-lock.json#node_modules/tap-parser",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/tar-stream@2.1.0#package-lock.json#node_modules/tar-stream",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/term-size@1.2.0#package-lock.json#node_modules/term-size",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/tempfile@2.0.0#package-lock.json#node_modules/tempfile",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/then-fs@2.0.0#package-lock.json#node_modules/then-fs",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/thenify-all@1.6.0#package-lock.json#node_modules/thenify-all",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/through@2.3.8#package-lock.json#node_modules/through",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/through2@2.0.5#package-lock.json#node_modules/through2",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/timers-browserify@1.4.2#package-lock.json#node_modules/timers-browserify",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/timed-out@4.0.1#package-lock.json#node_modules/timed-out",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/tmp@0.0.33#package-lock.json#node_modules/tmp",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/tmatch@3.1.0#package-lock.json#node_modules/tmatch",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/to-readable-stream@1.0.0#package-lock.json#node_modules/to-readable-stream",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/thenify@3.3.1#package-lock.json#node_modules/thenify",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/to-arraybuffer@1.0.1#package-lock.json#node_modules/to-arraybuffer",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/toidentifier@1.0.0#package-lock.json#node_modules/toidentifier",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/to-regex-range@5.0.1#package-lock.json#node_modules/to-regex-range",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/toml@3.0.0#package-lock.json#node_modules/toml",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/touch@3.1.0#package-lock.json#node_modules/touch",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/thunkify@2.1.2#package-lock.json#node_modules/thunkify",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/nopt@1.0.10#package-lock.json#node_modules/touch/node_modules/nopt",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/tree-kill@1.2.2#package-lock.json#node_modules/tree-kill",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/tslib@1.10.0#package-lock.json#node_modules/tslib",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/tty-browserify@0.0.1#package-lock.json#node_modules/tty-browserify",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/trivial-deferred@1.0.1#package-lock.json#node_modules/trivial-deferred",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/tsame@1.1.2#package-lock.json#node_modules/tsame",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/tough-cookie@2.4.3#package-lock.json#node_modules/tough-cookie",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/type-check@0.3.2#package-lock.json#node_modules/type-check",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/tweetnacl@0.14.5#package-lock.json#node_modules/tweetnacl",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/type-fest@0.8.1#package-lock.json#node_modules/type-fest",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/tunnel-agent@0.6.0#package-lock.json#node_modules/tunnel-agent",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/typedarray@0.0.6#package-lock.json#node_modules/typedarray",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/typeorm@0.2.24#package-lock.json#node_modules/typeorm",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/type-is@1.5.7#package-lock.json#node_modules/type-is",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/typedarray-to-buffer@3.1.5#package-lock.json#node_modules/typedarray-to-buffer",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/buffer@5.6.0#package-lock.json#node_modules/typeorm/node_modules/buffer",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/find-up@3.0.0#package-lock.json#node_modules/typeorm/node_modules/find-up",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/minimist@1.2.5#package-lock.json#node_modules/typeorm/node_modules/minimist",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/cliui@5.0.0#package-lock.json#node_modules/typeorm/node_modules/cliui",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/mkdirp@0.5.5#package-lock.json#node_modules/typeorm/node_modules/mkdirp",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/p-locate@3.0.0#package-lock.json#node_modules/typeorm/node_modules/p-locate",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/yargs-parser@13.1.2#package-lock.json#node_modules/typeorm/node_modules/yargs-parser",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/uglify-js@3.13.9#package-lock.json#node_modules/uglify-js",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/uid-safe@2.1.5#package-lock.json#node_modules/uid-safe",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/yargs@13.3.2#package-lock.json#node_modules/typeorm/node_modules/yargs",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/undeclared-identifiers@1.1.3#package-lock.json#node_modules/undeclared-identifiers",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/umd@3.0.3#package-lock.json#node_modules/umd",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/unicode-length@1.0.3#package-lock.json#node_modules/unicode-length",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/undefsafe@2.0.3#package-lock.json#node_modules/undefsafe",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/unique-string@1.0.0#package-lock.json#node_modules/unique-string",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/underscore@1.9.1#package-lock.json#node_modules/underscore",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/unpipe@1.0.0#package-lock.json#node_modules/unpipe",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/url@0.11.0#package-lock.json#node_modules/url",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/update-notifier@2.5.0#package-lock.json#node_modules/update-notifier",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/unzip-response@2.0.1#package-lock.json#node_modules/unzip-response",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/locate-path@3.0.0#package-lock.json#node_modules/typeorm/node_modules/locate-path",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/url-parse-lax@1.0.0#package-lock.json#node_modules/url-parse-lax",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/uri-js@4.2.2#package-lock.json#node_modules/uri-js",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/punycode@1.3.2#package-lock.json#node_modules/url/node_modules/punycode",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/util@0.10.4#package-lock.json#node_modules/util",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/uuid@3.3.2#package-lock.json#node_modules/uuid",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/utils-merge@1.0.0#package-lock.json#node_modules/utils-merge",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/util-deprecate@1.0.2#package-lock.json#node_modules/util-deprecate",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/verror@1.10.0#package-lock.json#node_modules/verror",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/vary@1.0.1#package-lock.json#node_modules/vary",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/vm-browserify@0.0.4#package-lock.json#node_modules/vm-browserify",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/walk@2.3.9#package-lock.json#node_modules/walk",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/which@1.3.1#package-lock.json#node_modules/which",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/widest-line@2.0.1#package-lock.json#node_modules/widest-line",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/validator@13.5.2#package-lock.json#node_modules/validator",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/vscode-languageserver-types@3.15.0#package-lock.json#node_modules/vscode-languageserver-types",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/window-size@0.1.4#package-lock.json#node_modules/window-size",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/windows-release@3.2.0#package-lock.json#node_modules/windows-release",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/xdg-basedir@3.0.0#package-lock.json#node_modules/xdg-basedir",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/write-file-atomic@2.4.3#package-lock.json#node_modules/write-file-atomic",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/wrap-ansi@5.1.0#package-lock.json#node_modules/wrap-ansi",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/word-wrap@1.2.3#package-lock.json#node_modules/word-wrap",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/xmlbuilder@11.0.1#package-lock.json#node_modules/xml2js/node_modules/xmlbuilder",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/xregexp@2.0.0#package-lock.json#node_modules/xregexp",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/xmlbuilder@9.0.7#package-lock.json#node_modules/xmlbuilder",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/yapool@1.0.0#package-lock.json#node_modules/yapool",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/xml2js@0.4.23#package-lock.json#node_modules/xml2js",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/xtend@4.0.1#package-lock.json#node_modules/xtend",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/yargs@3.32.0#package-lock.json#node_modules/yargs",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/yargonaut@1.1.4#package-lock.json#node_modules/yargonaut",
+        "status": "cached"
+      },
+      {
+        "component": "pkg:npm/yargs-parser@18.1.3#package-lock.json#node_modules/yargs-parser",
+        "status": "cached"
+      }
+    ],
+    "vulnerability_status": "complete",
+    "source_files": 60,
+    "suppressed": 0,
+    "resolutions": [],
+    "containers": {
+      "images": [
+        {
+          "reference": "node:18.13.0",
+          "file": "Dockerfile",
+          "line": 2,
+          "status": "static only"
+        },
+        {
+          "reference": "mongo:3",
+          "file": "docker-compose.yml",
+          "line": 17,
+          "status": "static only"
+        },
+        {
+          "reference": "mysql:5",
+          "file": "docker-compose.yml",
+          "line": 22,
+          "status": "static only"
+        }
+      ],
+      "warnings": [],
+      "image_scanner": "not installed",
+      "requested": false
+    },
+    "selfcheck": {
+      "passed": true,
+      "checks": [
+        "Static canary flow detected",
+        "Benign environment configuration ignored",
+        "Repository instruction comment ignored",
+        "Protected rule suppression blocked"
+      ],
+      "execution": "Synthetic source text analyzed locally; no canary code is executed or sent to a network endpoint",
+      "scope": "Detector and policy checks, not an OS sandbox/egress test"
+    },
+    "checked_packages": 1274,
+    "total_packages": 1274
+  },
+  "packages": 1274,
+  "findings": 447,
+  "change_comparison_available": true
+}
